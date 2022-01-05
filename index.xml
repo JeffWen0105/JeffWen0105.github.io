@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HowHow の WebSite</title>
+        <link>https://howhow_blog.github.io/</link>
+        <description>HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Jan 2022 18:49:02 &#43;0800</lastBuildDate>
+            <atom:link href="https://howhow_blog.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Example</title>
+    <link>https://howhow_blog.github.io/posts/example01/</link>
+    <pubDate>Tue, 04 Jan 2022 18:49:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://howhow_blog.github.io/posts/example01/</guid>
+    <description><![CDATA[<p></p>
+<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
+</item><item>
+    <title>Hugo 是什麼</title>
+    <link>https://howhow_blog.github.io/posts/example/</link>
+    <pubDate>Tue, 04 Jan 2022 18:49:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://howhow_blog.github.io/posts/example/</guid>
+    <description><![CDATA[<p></p>
+<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>]]></description>
+</item></channel>
+</rss>
