@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>網路基礎介紹 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="網路基礎介紹" />
+<meta property="og:description" content="
+網路介紹： OSI與 TCP/IP 模組 、 網路設備 、網路服務等基礎介紹." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.howhow.tk/posts/base-network/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-06T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="網路基礎介紹"/>
+<meta name="twitter:description" content="
+網路介紹： OSI與 TCP/IP 模組 、 網路設備 、網路服務等基礎介紹."/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.howhow.tk/posts/base-network/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "網路基礎介紹",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.howhow.tk\/posts\/base-network\/"
+        },"genre": "posts","keywords": "NetWork, CCNA","wordcount":  1502 ,
+        "url": "http:\/\/blog.howhow.tk\/posts\/base-network\/","datePublished": "2022-01-06T00:00:00+00:00","dateModified": "2022-01-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">網路基礎介紹</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>NetWork</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-06">2022-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1502 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#osi-vs-tcpip-模組比較">OSI VS TCP/IP 模組比較</a></li>
+    <li><a href="#網路設備">網路設備</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#網路服務">網路服務</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/WnRKqgH.jpg"
+        data-srcset="https://i.imgur.com/WnRKqgH.jpg, https://i.imgur.com/WnRKqgH.jpg 1.5x, https://i.imgur.com/WnRKqgH.jpg 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/WnRKqgH.jpg"
+        title="https://i.imgur.com/WnRKqgH.jpg" /></p>
+<p>網路介紹： OSI與 TCP/IP 模組 、 網路設備 、網路服務等基礎介紹.</p>
+<h1 id="網路基礎">網路基礎</h1>
+<h2 id="osi-vs-tcpip-模組比較">OSI VS TCP/IP 模組比較</h2>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/gDZCwUM.jpg" title="https://i.imgur.com/gDZCwUM.jpg" data-thumbnail="https://i.imgur.com/gDZCwUM.jpg" data-sub-html="<h2>來源至CCNA</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/gDZCwUM.jpg"
+            data-srcset="https://i.imgur.com/gDZCwUM.jpg, https://i.imgur.com/gDZCwUM.jpg 1.5x, https://i.imgur.com/gDZCwUM.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/gDZCwUM.jpg" />
+    </a><figcaption class="image-caption">來源至CCNA</figcaption>
+    </figure></p>
+<p>OSI 模組區分為七層架構， TCP/IP 模組為四層架構 ， 各有各的優點，最終各取的優點成為下圖最右邊架構，保留 OSI 模組的第一層（實體層）及第二層（資料連結層），合併 TCP/IP 第三層（網路層）、第四層（傳輸層）、第五層（應用層）。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>現在主流都以 TCP/IP 新的模組架構稱呼各層級</strong></div>
+        </div>
+    </div>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/OOZzPNE.jpg" title="https://i.imgur.com/OOZzPNE.jpg" data-thumbnail="https://i.imgur.com/OOZzPNE.jpg" data-sub-html="<h2>來源至CCNA</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/OOZzPNE.jpg"
+            data-srcset="https://i.imgur.com/OOZzPNE.jpg, https://i.imgur.com/OOZzPNE.jpg 1.5x, https://i.imgur.com/OOZzPNE.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/OOZzPNE.jpg" />
+    </a><figcaption class="image-caption">來源至CCNA</figcaption>
+    </figure></p>
+<hr>
+<h2 id="網路設備">網路設備</h2>
+<ul>
+<li>集線器(HUB)</li>
+<li>橋接器(Bridge)</li>
+<li>交換器(Switch)</li>
+<li>路由器(Router)</li>
+</ul>
+<h4 id="集線器hub">集線器(HUB)</h4>
+<p>集線器利用雙絞（RJ45）線將同一辦公室內的電腦接上，方便各電腦傳輸入（出）資料，及集中管理（星狀拓樸），屬於 OSI 模組第一層（實體層）網路設備。</p>
+<ul>
+<li>
+<p>優點</p>
+<ul>
+<li>容易加入或移除電腦設備。</li>
+</ul>
+</li>
+<li>
+<p>缺點</p>
+<ul>
+<li>星狀拓樸如一個 Hub 設備故障，連接的電腦均會無法使用網路。</li>
+<li>一台電腦發送訊號，所有電腦都會收到（使用廣播方式），增加頻寬損耗。</li>
+</ul>
+</li>
+</ul>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/MdUawa8.jpg" title="https://i.imgur.com/MdUawa8.jpg" data-thumbnail="https://i.imgur.com/MdUawa8.jpg" data-sub-html="<h2>來源至WikiPedia</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/MdUawa8.jpg"
+            data-srcset="https://i.imgur.com/MdUawa8.jpg, https://i.imgur.com/MdUawa8.jpg 1.5x, https://i.imgur.com/MdUawa8.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/MdUawa8.jpg" />
+    </a><figcaption class="image-caption">來源至WikiPedia</figcaption>
+    </figure></p>
+<h4 id="橋接器bridge">橋接器(Bridge)</h4>
+<p>橋接器主要應用為集線器擴增網路區段，上述說到集線器會透過廣播發送訊號，如果一個區域電腦過多且同時發送訊息，將會大幅增加網路交通問題，故使用橋接器區分不同網路區段，屬於 OSI 模組第二層（資料連結層）網路設備，透過學習不同區段的 MAC 位址，轉送及篩選廣播訊框，舒緩網路交通瓶頸。</p>
+<ul>
+<li>
+<p>優點</p>
+<ul>
+<li>增加網路區段。</li>
+<li>減少過多電腦的交通瓶頸。</li>
+<li>連接不同網路設備。</li>
+</ul>
+</li>
+<li>
+<p>缺點</p>
+<ul>
+<li>同網路區段還是需藉由集線器整合，還是會有頻寬損耗問題。</li>
+<li>產生網路風暴時無法消除。</li>
+</ul>
+</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>網路風暴是指因人為接錯線路，導致大量廣播在網路迴路內，使正常網路信號無法流通。</strong></div>
+        </div>
+    </div>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/WOX3L8a.jpg" title="https://i.imgur.com/WOX3L8a.jpg" data-thumbnail="https://i.imgur.com/WOX3L8a.jpg" data-sub-html="<h2>來源至TP-LINK</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/WOX3L8a.jpg"
+            data-srcset="https://i.imgur.com/WOX3L8a.jpg, https://i.imgur.com/WOX3L8a.jpg 1.5x, https://i.imgur.com/WOX3L8a.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/WOX3L8a.jpg" />
+    </a><figcaption class="image-caption">來源至TP-LINK</figcaption>
+    </figure></p>
+<h4 id="交換器switch">交換器(Switch)</h4>
+<p>交換器具備橋接器及集線器的功能，會自動記錄網路上電腦硬體的 MAC 位址，可以大幅降低網路傳輸頻寬瓶頸，目前大多數都改用交換器取代集線器及橋接器等網路設備，屬於 OSI 模組第二層（資料連結層）網路設備。</p>
+<ul>
+<li>
+<p>優點</p>
+<ul>
+<li>自行學習MAC位置</li>
+<li>電腦等網路設備不需設定可以直接支援交換器。</li>
+<li>可以使用V-LAN切割網段。</li>
+<li>較專業設定具備 Spanning Tree 演算法，可以降低網路風暴的影響。</li>
+</ul>
+</li>
+<li>
+<p>缺點</p>
+<ul>
+<li>囿於要篩選MAC會有一定的攻耗，越頂級交換器單價越高。</li>
+</ul>
+</li>
+</ul>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/isOxK3Z.png" title="https://i.imgur.com/isOxK3Z.png" data-thumbnail="https://i.imgur.com/isOxK3Z.png" data-sub-html="<h2>來源至CISCO</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/isOxK3Z.png"
+            data-srcset="https://i.imgur.com/isOxK3Z.png, https://i.imgur.com/isOxK3Z.png 1.5x, https://i.imgur.com/isOxK3Z.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/isOxK3Z.png" />
+    </a><figcaption class="image-caption">來源至CISCO</figcaption>
+    </figure></p>
+<h4 id="路由器router">路由器(Router)</h4>
+<p>路由器主要應用在不同連接不同的網段、不同的網路架構，路由器可以隔絕網路廣播，並選擇最佳路徑傳遞資訊，路由器中有路由表可以記錄網路位址、下一站路由器的位址等，屬於 OSI 模組第四層（網路層）網路設備。</p>
+<ul>
+<li>
+<p>優點</p>
+<ul>
+<li>提供不同網段之間的訊框路由。</li>
+<li>隔絕廣播訊框傳遞。</li>
+</ul>
+</li>
+<li>
+<p>缺點</p>
+<ul>
+<li>路由器及電腦設備均設定及規劃。</li>
+</ul>
+</li>
+</ul>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/9QSdgyk.jpg" title="https://i.imgur.com/9QSdgyk.jpg" data-thumbnail="https://i.imgur.com/9QSdgyk.jpg" data-sub-html="<h2>來源至D-Link</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/9QSdgyk.jpg"
+            data-srcset="https://i.imgur.com/9QSdgyk.jpg, https://i.imgur.com/9QSdgyk.jpg 1.5x, https://i.imgur.com/9QSdgyk.jpg 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/9QSdgyk.jpg" />
+    </a><figcaption class="image-caption">來源至D-Link</figcaption>
+    </figure></p>
+<hr>
+<h2 id="網路服務">網路服務</h2>
+<ul>
+<li>DHCP</li>
+<li>DNS</li>
+<li>WWW</li>
+</ul>
+<h4 id="dhcp-dynamic-host-configuration-protocol-動態主機設定協定">DHCP （Dynamic Host Configuration Protocol 動態主機設定協定)</h4>
+<p>DHCP 透過該服務可以讓用戶端的電腦可以自動取得IP，在DHCP上提供一個IP發放範圍，預設電腦會自動尋找DHCP服務，並向該DHCP服務（伺服器）租賃IP，租賃IP的時效可以透過設定改變，每達到租約一半時間內，客戶端電腦將會發送請求給伺服器再次延長IP租約。</p>
+<ul>
+<li>
+<p>發送租約包含：</p>
+<ul>
+<li>IP位址</li>
+<li>子網路遮罩 (Subnet Mask)</li>
+<li>預設閘道 (Default GatWay)</li>
+<li>網域名稱 (Domain Name)</li>
+<li>網域名稱伺服器位址</li>
+</ul>
+</li>
+</ul>
+<h4 id="dns--domain-name-system-網域名稱系統-">DNS ( Domain Name System 網域名稱系統 )</h4>
+<p>DNS 主要功能為記錄IP及對應的網域名稱，網路通訊均透過 IP，惟沒有意義的 IP 數字對於人類難以記憶，相對於有意義的英文名稱比較，故網路名稱系統將存放 IP 網域名稱對照，例如 google.com　對應的IP為 172.217.163.46 ，所以如果想要有自己在網際網路上的域名需至對應的公司進行註冊（年費）才行。</p>
+<h4 id="www--world-wide-web-全球資訊網-">WWW ( World Wide Web 全球資訊網 )</h4>
+<p>網際網路相信大家都不陌生，網頁主要是文字檔案格式化和超文件標示語言（HTML），透過該工具讓全世界的人都能在網際網路上互動。</p>
+<ul>
+<li>
+<p>常用的網頁伺服器:</p>
+<ul>
+<li>IIS (Internet Information Services)</li>
+<li>Apache (Apache HTTP Server)</li>
+<li>Nginx</li>
+</ul>
+</li>
+</ul></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=http%3a%2f%2fblog.howhow.tk%2fposts%2fbase-network%2f"
+  width="100%"
+  frameborder="0"
+></iframe><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">NetWork</a>,&nbsp;<a href="/tags/ccna/">CCNA</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HowHow</a></span>&nbsp;|&nbsp;<span class="license">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - HowHow の WebSite</title>
+        <link>http://blog.howhow.tk/tags/</link>
+        <description>Tags - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>CCNA</title>
+    <link>http://blog.howhow.tk/tags/ccna/</link>
+    <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/tags/ccna/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>NetWork</title>
+    <link>http://blog.howhow.tk/tags/network/</link>
+    <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/tags/network/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>
