@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - Tag - HowHow の WebSite</title>
+        <link>http://blog.howhow.tk/tags/linux/</link>
+        <description>Linux - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux 常用指令 - ls 檢視檔案與目錄</title>
+    <link>http://blog.howhow.tk/posts/linux-ls/</link>
+    <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/posts/linux-ls/</guid>
+    <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/0KrHVYQ.jpg) -->
+<p>LS 是 Linux(Unix Like) 最常使用命令之一，用來檢視檔案與目錄的狀態。</p>]]></description>
+</item></channel>
+</rss>
