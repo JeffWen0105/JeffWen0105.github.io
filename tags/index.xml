@@ -4,19 +4,26 @@
         <link>http://blog.howhow.tk/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux</title>
+    <link>http://blog.howhow.tk/tags/linux/</link>
+    <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Redhat</title>
+    <link>http://blog.howhow.tk/tags/redhat/</link>
+    <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/tags/redhat/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>CommandLine</title>
     <link>http://blog.howhow.tk/tags/commandline/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>http://blog.howhow.tk/tags/commandline/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Linux</title>
-    <link>http://blog.howhow.tk/tags/linux/</link>
-    <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>http://blog.howhow.tk/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Python</title>
