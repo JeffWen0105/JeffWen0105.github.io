@@ -4,12 +4,19 @@
         <link>http://blog.howhow.tk/categories/</link>
         <description>Categories - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
     <title>Linux</title>
     <link>http://blog.howhow.tk/categories/linux/</link>
-    <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>http://blog.howhow.tk/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>NetWork</title>
+    <link>http://blog.howhow.tk/categories/network/</link>
+    <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/categories/network/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Python</title>
@@ -17,13 +24,6 @@
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>http://blog.howhow.tk/categories/python/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>NetWork</title>
-    <link>http://blog.howhow.tk/categories/network/</link>
-    <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>http://blog.howhow.tk/categories/network/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

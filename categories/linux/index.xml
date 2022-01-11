@@ -4,7 +4,15 @@
         <link>http://blog.howhow.tk/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 設定 SSH Tunneling (Port Forwarding)</title>
+    <link>http://blog.howhow.tk/posts/linux-ssh-tunnel/</link>
+    <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/posts/linux-ssh-tunnel/</guid>
+    <description><![CDATA[<p></p>
+<p>SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。</p>]]></description>
+</item><item>
     <title>Linux - RedHat 8 圖形介面與終端介面切換</title>
     <link>http://blog.howhow.tk/posts/linux-redhat-ptty/</link>
     <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
