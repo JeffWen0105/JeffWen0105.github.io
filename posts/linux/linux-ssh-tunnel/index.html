@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - 設定 SSH Tunneling (Port Forwarding) - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 設定 SSH Tunneling (Port Forwarding)" />
+<meta property="og:description" content="
+
+SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.howhow.tk/posts/linux/linux-ssh-tunnel/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-11T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - 設定 SSH Tunneling (Port Forwarding)"/>
+<meta name="twitter:description" content="
+
+SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.howhow.tk/posts/linux/linux-ssh-tunnel/" /><link rel="prev" href="http://blog.howhow.tk/posts/linux/linux-redhat-ptty/" /><link rel="next" href="http://blog.howhow.tk/posts/linux/linux-permission-file/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - 設定 SSH Tunneling (Port Forwarding)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/blog.howhow.tk\/posts\/linux\/linux-ssh-tunnel\/"
+        },"genre": "posts","keywords": "Linux, NetWork","wordcount":  1037 ,
+        "url": "http:\/\/blog.howhow.tk\/posts\/linux\/linux-ssh-tunnel\/","datePublished": "2022-01-11T00:00:00+00:00","dateModified": "2022-01-11T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 設定 SSH Tunneling (Port Forwarding)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a>&nbsp;<a href="/categories/network/"><i class="far fa-folder fa-fw"></i>NetWork</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1037 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什麼是-ssh-tunneling-port-forwarding">什麼是 SSH Tunneling (Port Forwarding)？</a></li>
+    <li><a href="#ssh-tunneling--port-forwarding--三種模式">SSH Tunneling ( Port Forwarding ) 三種模式：</a>
+      <ul>
+        <li><a href="#1-local-port-forwarding-轉發模式">1. Local Port Forwarding 轉發模式</a>
+          <ul>
+            <li><a href="#11-基本指令">1.1 基本指令</a></li>
+            <li><a href="#12-使用情境">1.2 使用情境</a></li>
+            <li><a href="#13-使用指令">1.3 使用指令</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-remote-port-forwarding-轉發模式">2. Remote Port Forwarding 轉發模式</a>
+          <ul>
+            <li><a href="#21-基本指令">2.1 基本指令</a></li>
+            <li><a href="#22-使用情境">2.2 使用情境</a></li>
+            <li><a href="#23-使用指令">2.3 使用指令</a></li>
+            <li><a href="#24-進階使用透過-server-端分享轉發-client-服務出去">2.4 進階使用（透過 Server 端分享轉發 Client 服務出去)</a></li>
+            <li><a href="#3-dynamic-port-forwarding">3 Dynamic Port Forwarding</a></li>
+            <li><a href="#31-基本指令">3.1 基本指令</a></li>
+            <li><a href="#32-使用情境">3.2 使用情境</a></li>
+            <li><a href="#33-使用指令">3.3 使用指令</a></li>
+          </ul>
+        </li>
+        <li><a href="#進階小技巧主廚私房菜">進階小技巧，主廚私房菜</a></li>
+      </ul>
+    </li>
+    <li><a href="#結論">結論</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/rNQD2xd.jpg"
+        data-srcset="https://i.imgur.com/rNQD2xd.jpg, https://i.imgur.com/rNQD2xd.jpg 1.5x, https://i.imgur.com/rNQD2xd.jpg 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/rNQD2xd.jpg"
+        title="https://i.imgur.com/rNQD2xd.jpg" /></p>
+<!-- ![](https://i.imgur.com/dUOOeLZ.jpg) -->
+<p>SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。</p>
+<h1 id="linux---設定-ssh-tunneling-port-forwarding">Linux - 設定 SSH Tunneling (Port Forwarding)</h1>
+<h2 id="什麼是-ssh-tunneling-port-forwarding">什麼是 SSH Tunneling (Port Forwarding)？</h2>
+<p>SSH Tunneling 是網路上的 A、B 兩點形成一個「隧道」，讓兩端能夠穿透某些限制（Ex. 防火牆），或是能將其傳輸內容加密。而 SSH Tunneling 在有開放 SSH port (預設阜號 22) 下可以順利進行，就好像是雪山隧道一樣（不受山脈限制穿透臺北與宜蘭兩地) ~</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>SSH Tunneling 將 A 點的 Port 轉發給 B 點 Port ，所以又稱為 SSH Port Forwarding</strong></div>
+        </div>
+    </div>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/LFg81A6.png"
+        data-srcset="https://i.imgur.com/LFg81A6.png, https://i.imgur.com/LFg81A6.png 1.5x, https://i.imgur.com/LFg81A6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/LFg81A6.png"
+        title="https://i.imgur.com/LFg81A6.png" /></p>
+<h2 id="ssh-tunneling--port-forwarding--三種模式">SSH Tunneling ( Port Forwarding ) 三種模式：</h2>
+<ol>
+<li>Local Port Forwarding</li>
+<li>Remote Port Forwarding</li>
+<li>Dynamic Port Forwarding</li>
+</ol>
+<h3 id="1-local-port-forwarding-轉發模式">1. Local Port Forwarding 轉發模式</h3>
+<h4 id="11-基本指令">1.1 基本指令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L <span class="o">[</span>LOCAL_IP:<span class="o">]</span>LOCAL_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="12-使用情境">1.2 使用情境</h4>
+<p>目標伺服器 （Server） 防火牆只有開放 SSH 22 阜號其餘均關閉，想要訪問該目標 8088 服務。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/PVpqotS.png"
+        data-srcset="https://i.imgur.com/PVpqotS.png, https://i.imgur.com/PVpqotS.png 1.5x, https://i.imgur.com/PVpqotS.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/PVpqotS.png"
+        title="https://i.imgur.com/PVpqotS.png" /></p>
+<p>此時可以透過 Local Port Forwarding 轉發功能將伺服器端的 8088 port 服務透過 SSH (22 port) 隧道傳遞，並在 Client 使用 9453 port (可任意選擇沒有使用的 Port) 讀取該服務。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/jnS3q4J.png"
+        data-srcset="https://i.imgur.com/jnS3q4J.png, https://i.imgur.com/jnS3q4J.png 1.5x, https://i.imgur.com/jnS3q4J.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/jnS3q4J.png"
+        title="https://i.imgur.com/jnS3q4J.png" /></p>
+<h4 id="13-使用指令">1.3 使用指令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<ol>
+<li>Client 可以透過瀏覽器輸入 127.0.0.1:9453 訪問服務</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>LOCAL_IP 可以不填寫，預設就是 127.0.0.1 ，如要開啟給別的人訪問轉發的服務，將 LOCAL_IP 改為 0.0.0.0 即可。</li>
+</ol>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<hr>
+<h3 id="2-remote-port-forwarding-轉發模式">2. Remote Port Forwarding 轉發模式</h3>
+<h4 id="21-基本指令">2.1 基本指令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="22-使用情境">2.2 使用情境</h4>
+<p>伺服器( server ) 防火牆只有開放 SSH 22 阜號其餘均關閉，伺服器( server )反相要訪問 Client 啟動的 8088 服務。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/IcIzcJp.png"
+        data-srcset="https://i.imgur.com/IcIzcJp.png, https://i.imgur.com/IcIzcJp.png 1.5x, https://i.imgur.com/IcIzcJp.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/IcIzcJp.png"
+        title="https://i.imgur.com/IcIzcJp.png" /></p>
+<p>此時可以透過 Remote Port Forwarding 轉發功能將 Client 端的 8088 port 服務透過 SSH (22 port) 隧道傳遞，並在 Server 使用 9453 port (可任意選擇沒有使用的 Port) 讀取該服務。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/rOX4HoN.png"
+        data-srcset="https://i.imgur.com/rOX4HoN.png, https://i.imgur.com/rOX4HoN.png 1.5x, https://i.imgur.com/rOX4HoN.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/rOX4HoN.png"
+        title="https://i.imgur.com/rOX4HoN.png" /></p>
+<h4 id="23-使用指令">2.3 使用指令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>Server 端可以透過 curl 127.0.0.1:9453 訪問服務</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h4 id="24-進階使用透過-server-端分享轉發-client-服務出去">2.4 進階使用（透過 Server 端分享轉發 Client 服務出去)</h4>
+<p>在 Server 使用 Nginx 反向代理 9453 port 至 80 port (防火牆開放 80 port) ， 就可以透過外部網路訪問 Client 8080 服務。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/MKYXHm6.png"
+        data-srcset="https://i.imgur.com/MKYXHm6.png, https://i.imgur.com/MKYXHm6.png 1.5x, https://i.imgur.com/MKYXHm6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/MKYXHm6.png"
+        title="https://i.imgur.com/MKYXHm6.png" /></p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw"></i>小疑惑<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>問什麼不直接開啟 Server 防火牆 9453 Port ，讓外部網路訪問就好了，何必再透過 Nginx 多繞一圈呢？
+<ul>
+<li>因為 ssh 安全機制，預設在 Server 端只能透過 Localhost 訪問，故需透 Nginx 多一層代理。</li>
+<li>如果要強迫關閉該安全機制，需要在 Server 端的 /etc/ssh/sshd_config 配置檔內的 GatewayPorts 改成 yes （非常不安全，建議不使用此方案)</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<hr>
+<h4 id="3-dynamic-port-forwarding">3 Dynamic Port Forwarding</h4>
+<h4 id="31-基本指令">3.1 基本指令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="32-使用情境">3.2 使用情境</h4>
+<p>在 SSH Server 上啟動一個 SOCKS 代理伺服器，簡單的來說就是讓 Sever 變成自己的代理伺服器，可以來瀏覽網頁隱藏自己的真實IP以及跳板至其他國家 （VPN的概念）</p>
+<h4 id="33-使用指令">3.3 使用指令</h4>
+<ol>
+<li>客戶端輸入</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -D 127.0.0.1:9453 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>修改瀏覽器 Proxy socks (以 Firefox 為例)</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/3LKaJUT.png"
+        data-srcset="https://i.imgur.com/3LKaJUT.png, https://i.imgur.com/3LKaJUT.png 1.5x, https://i.imgur.com/3LKaJUT.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/3LKaJUT.png"
+        title="https://i.imgur.com/3LKaJUT.png" /></p>
+<ol start="3">
+<li>瀏覽器就能快樂的訪問 ( 跳到日本的伺服器 )</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/0Onj9oF.png"
+        data-srcset="https://i.imgur.com/0Onj9oF.png, https://i.imgur.com/0Onj9oF.png 1.5x, https://i.imgur.com/0Onj9oF.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/0Onj9oF.png"
+        title="https://i.imgur.com/0Onj9oF.png" /></p>
+<hr>
+<h3 id="進階小技巧主廚私房菜">進階小技巧，主廚私房菜</h3>
+<ul>
+<li>
+<p>轉發常用的 SSH 指令參數</p>
+<ul>
+<li>-N 不要執行任何遠端指令。</li>
+<li>-f 讓 ssh 指令在背景執行，讓你可以繼續用 Shell 做事情。通常會搭上面的 -N 使用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="結論">結論</h2>
+<ul>
+<li>
+<p>Local 跟 Remote Forwarding 的差異主要在 Port 開啟的地方，一個是客戶端向伺服器端請求資料，另一個者反之;另外 Dynamic Port Forwarding 就是常用的 Proxy 的功能。</p>
+</li>
+<li>
+<p>透過上述的教學，是不是就能感受的 SSH Tunneling 特別的強大好用，容易操作又能有效的達成目的，還不快點來試試康 ~~~~</p>
+</li>
+</ul></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=http%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2flinux-ssh-tunnel%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/network/">NetWork</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/linux-redhat-ptty/" class="prev" rel="prev" title="Linux - RedHat 8 圖形介面與終端介面切換"><i class="fas fa-angle-left fa-fw"></i>Linux - RedHat 8 圖形介面與終端介面切換</a>
+            <a href="/posts/linux/linux-permission-file/" class="next" rel="next" title="Linux - 檔案及目錄權限">Linux - 檔案及目錄權限<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HowHow</a></span>&nbsp;|&nbsp;<span class="license">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
