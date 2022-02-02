@@ -6,11 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/python/" rel="self" type="application/rss+xml" /><item>
     <title>Python 函式三劍客 Map, Filter, and Reduce</title>
-    <link>http://blog.howhow.tk/posts/python3-fun/</link>
+    <link>http://blog.howhow.tk/posts/python/python3-fun/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/python3-fun/</guid>
+    <guid>http://blog.howhow.tk/posts/python/python3-fun/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/yhBUXDh.jpg) -->
 <p>Python 的 Map, Filter, Reduce 三劍客函數使用教學.</p>]]></description>
 </item></channel>
 </rss>

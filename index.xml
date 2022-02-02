@@ -4,64 +4,88 @@
         <link>http://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="http://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux - 壓縮與打包工具 tar</title>
+    <link>http://blog.howhow.tk/posts/linux/linux-compress/</link>
+    <pubDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/posts/linux/linux-compress/</guid>
+    <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/OOqsnnY.png) -->
+<p>Linux tar 壓縮及打包工具使用方式</p>]]></description>
+</item><item>
+    <title>Linux - SSH 連線機制及遠程複製</title>
+    <link>http://blog.howhow.tk/posts/linux/linux-ssh-basics/</link>
+    <pubDate>Sun, 23 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://blog.howhow.tk/posts/linux/linux-ssh-basics/</guid>
+    <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/nFgUeMD.jpg) -->
+<p>SSH 連線機制及遠程複製</p>]]></description>
+</item><item>
     <title>Linux - Sudo 提升權限成為管理者</title>
-    <link>http://blog.howhow.tk/posts/linux-sudo-command/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-sudo-command/</link>
     <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-sudo-command/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-sudo-command/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/OELFGSu.jpg) -->
 <p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>]]></description>
 </item><item>
     <title>Linux - 檔案及目錄權限</title>
-    <link>http://blog.howhow.tk/posts/linux-permission-file/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-permission-file/</link>
     <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-permission-file/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-permission-file/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/nIhJpUq.jpg) -->
 <p>Linux 檔案及權限管理，時常遇見的問題。</p>]]></description>
 </item><item>
     <title>Linux - 設定 SSH Tunneling (Port Forwarding)</title>
-    <link>http://blog.howhow.tk/posts/linux-ssh-tunnel/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-ssh-tunnel/</link>
     <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-ssh-tunnel/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-ssh-tunnel/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/dUOOeLZ.jpg) -->
 <p>SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。</p>]]></description>
 </item><item>
     <title>Linux - RedHat 8 圖形介面與終端介面切換</title>
-    <link>http://blog.howhow.tk/posts/linux-redhat-ptty/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-redhat-ptty/</link>
     <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-redhat-ptty/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-redhat-ptty/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/djNf4od.png) -->
 <p>RedHat 8 圖形介面與終端介面切換教學。</p>]]></description>
 </item><item>
     <title>Linux 常用指令 - ls 檢視檔案與目錄</title>
-    <link>http://blog.howhow.tk/posts/linux-ls/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-ls/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-ls/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-ls/</guid>
     <description><![CDATA[<p></p>
 <!-- ![](https://i.imgur.com/0KrHVYQ.jpg) -->
 <p>LS 是 Linux(Unix Like) 最常使用命令之一，用來檢視檔案與目錄的狀態。</p>]]></description>
 </item><item>
     <title>Python 函式三劍客 Map, Filter, and Reduce</title>
-    <link>http://blog.howhow.tk/posts/python3-fun/</link>
+    <link>http://blog.howhow.tk/posts/python/python3-fun/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/python3-fun/</guid>
+    <guid>http://blog.howhow.tk/posts/python/python3-fun/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/yhBUXDh.jpg) -->
 <p>Python 的 Map, Filter, Reduce 三劍客函數使用教學.</p>]]></description>
 </item><item>
     <title>網路基礎介紹</title>
-    <link>http://blog.howhow.tk/posts/base-network/</link>
+    <link>http://blog.howhow.tk/posts/ccna/base-network/</link>
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/base-network/</guid>
+    <guid>http://blog.howhow.tk/posts/ccna/base-network/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/WnRKqgH.jpg) -->
 <p>網路介紹： OSI與 TCP/IP 模組 、 網路設備 、網路服務等基礎介紹.</p>]]></description>
 </item></channel>
 </rss>

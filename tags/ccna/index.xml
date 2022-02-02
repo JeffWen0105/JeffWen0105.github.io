@@ -6,11 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/ccna/" rel="self" type="application/rss+xml" /><item>
     <title>網路基礎介紹</title>
-    <link>http://blog.howhow.tk/posts/base-network/</link>
+    <link>http://blog.howhow.tk/posts/ccna/base-network/</link>
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/base-network/</guid>
+    <guid>http://blog.howhow.tk/posts/ccna/base-network/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/WnRKqgH.jpg) -->
 <p>網路介紹： OSI與 TCP/IP 模組 、 網路設備 、網路服務等基礎介紹.</p>]]></description>
 </item></channel>
 </rss>

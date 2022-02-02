@@ -6,11 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/tags/redhat/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - RedHat 8 圖形介面與終端介面切換</title>
-    <link>http://blog.howhow.tk/posts/linux-redhat-ptty/</link>
+    <link>http://blog.howhow.tk/posts/linux/linux-redhat-ptty/</link>
     <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/posts/linux-redhat-ptty/</guid>
+    <guid>http://blog.howhow.tk/posts/linux/linux-redhat-ptty/</guid>
     <description><![CDATA[<p></p>
+<!-- ![](https://i.imgur.com/djNf4od.png) -->
 <p>RedHat 8 圖形介面與終端介面切換教學。</p>]]></description>
 </item></channel>
 </rss>
