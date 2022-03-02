@@ -1,29 +1,29 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Categories - Category - HowHow の WebSite</title>
-        <link>http://blog.howhow.tk/categories/</link>
+        <link>https://blog.howhow.tk/categories/</link>
         <description>Categories - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 02 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
     <title>Linux</title>
-    <link>http://blog.howhow.tk/categories/linux/</link>
-    <pubDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <link>https://blog.howhow.tk/categories/linux/</link>
+    <pubDate>Wed, 02 Feb 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/categories/linux/</guid>
+    <guid>https://blog.howhow.tk/categories/linux/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>NetWork</title>
-    <link>http://blog.howhow.tk/categories/network/</link>
+    <link>https://blog.howhow.tk/categories/network/</link>
     <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/categories/network/</guid>
+    <guid>https://blog.howhow.tk/categories/network/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Python</title>
-    <link>http://blog.howhow.tk/categories/python/</link>
+    <link>https://blog.howhow.tk/categories/python/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>http://blog.howhow.tk/categories/python/</guid>
+    <guid>https://blog.howhow.tk/categories/python/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

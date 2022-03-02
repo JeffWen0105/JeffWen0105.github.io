@@ -7,22 +7,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Linux - Sudo 提升權限成為管理者 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - Sudo 提升權限成為管理者" />
 <meta property="og:description" content="
-
 Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://blog.howhow.tk/posts/linux/linux-sudo-command/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/linux-sudo-command/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-01-18T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - Sudo 提升權限成為管理者"/>
 <meta name="twitter:description" content="
-
 Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？"/>
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://blog.howhow.tk/posts/linux/linux-sudo-command/" /><link rel="prev" href="http://blog.howhow.tk/posts/linux/linux-permission-file/" /><link rel="next" href="http://blog.howhow.tk/posts/linux/linux-ssh-basics/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/linux-sudo-command/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/linux-permission-file/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/linux-ssh-basics/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,9 +28,9 @@ Linux 大多數系統管理工作僅能系統管理者操作，不過如果有�
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/blog.howhow.tk\/posts\/linux\/linux-sudo-command\/"
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/linux-sudo-command\/"
         },"genre": "posts","keywords": "Linux","wordcount":  313 ,
-        "url": "http:\/\/blog.howhow.tk\/posts\/linux\/linux-sudo-command\/","datePublished": "2022-01-18T00:00:00+00:00","dateModified": "2022-01-18T00:00:00+00:00","publisher": {
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/linux-sudo-command\/","datePublished": "2022-01-18T00:00:00+00:00","dateModified": "2022-01-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
                 "@type": "Person",
@@ -105,15 +103,7 @@ Linux 大多數系統管理工作僅能系統管理者操作，不過如果有�
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/vbsNLVT.jpg"
-        data-srcset="https://i.imgur.com/vbsNLVT.jpg, https://i.imgur.com/vbsNLVT.jpg 1.5x, https://i.imgur.com/vbsNLVT.jpg 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/vbsNLVT.jpg"
-        title="https://i.imgur.com/vbsNLVT.jpg" /></p>
-<!-- ![](https://i.imgur.com/OELFGSu.jpg) -->
+            </div><div class="content" id="content"><!-- ![](https://i.imgur.com/vbsNLVT.jpg) -->
 <p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>
 <h1 id="linux---sudo-提升權限成為管理者">Linux - Sudo 提升權限成為管理者</h1>
 <h3 id="1sudo-設定">1.Sudo 設定</h3>
@@ -185,7 +175,7 @@ visudo
 <p>透過 sudo file 配置，可以很方便的指定使用者去做有限度的管理者操作 。</p></div><iframe
   class="LikeCoin"
   height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=http%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2flinux-sudo-command%2f"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2flinux-sudo-command%2f"
   width="100%"
   frameborder="0"
 ></iframe>
@@ -226,7 +216,7 @@ visudo
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">HowHow</a></span>&nbsp;|&nbsp;<span class="license">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</span></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
         </div>
     </footer></div>
 
