@@ -4,22 +4,29 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 02 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - YUM 安裝及更新套件</title>
     <link>https://blog.howhow.tk/posts/linux/linux-yum/</link>
-    <pubDate>Wed, 02 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <pubDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/linux-yum/</guid>
     <description><![CDATA[<p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>]]></description>
 </item><item>
     <title>Linux - RPM 套件管理工具</title>
     <link>https://blog.howhow.tk/posts/linux/linux-rpm/</link>
-    <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <pubDate>Tue, 01 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/linux-rpm/</guid>
     <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
+</item><item>
+    <title>Docker -  CMD 與 ENTRYPOINT 差別</title>
+    <link>https://blog.howhow.tk/posts/docker/docker-dockerfile-cmd-entryporint/</link>
+    <pubDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/docker/docker-dockerfile-cmd-entryporint/</guid>
+    <description><![CDATA[<p>在 Dockerfile 在最末端會看到 Image 會有 CMD 及 ENTRYPOINT 不同寫法，兩種都是執行容器第一個PID要執行的指令，不過用法到底差別在哪呢？</p>]]></description>
 </item><item>
     <title>Linux - 壓縮與打包工具 tar</title>
     <link>https://blog.howhow.tk/posts/linux/linux-compress/</link>
@@ -76,13 +83,5 @@
     <guid>https://blog.howhow.tk/posts/linux/linux-ls/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/4usuAP6.jpg) -->
 <p>LS 是 Linux(Unix Like) 最常使用命令之一，用來檢視檔案與目錄的狀態。</p>]]></description>
-</item><item>
-    <title>Python 函式三劍客 Map, Filter, and Reduce</title>
-    <link>https://blog.howhow.tk/posts/python/python3-fun/</link>
-    <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/python/python3-fun/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/UvAxLaK.jpg) -->
-<p>Python 的 Map, Filter, Reduce 三劍客函數使用教學.</p>]]></description>
 </item></channel>
 </rss>
