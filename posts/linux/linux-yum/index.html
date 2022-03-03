@@ -114,6 +114,7 @@
     </div>
 <h2 id="yum-使用方式">YUM 使用方式</h2>
 <p>YUM 在 RHEL 8 之後改成 DNF ，不過對於習慣使用 YUM 指令的人不用擔心，此指令並沒有被棄用，還是可以用，只是實際運作改為 DNF</p>
+<hr>
 <h3 id="1-yum-搜尋套件">1. YUM 搜尋套件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -150,7 +151,8 @@ zsh.x86_64 : Powerful interactive shell
 zsh-html.noarch : Zsh shell manual in html format
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="2-yum-套件清單">2. YUM 套件清單</h3>
+</div><hr>
+<h3 id="2-yum-套件清單">2. YUM 套件清單</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -172,7 +174,8 @@ firewalld.noarch                     0.9.3-7.el8                             <sp
 firewalld-filesystem.noarch          0.9.3-7.el8                             <span class="ni">@anaconda</span> 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="3-yum-套件詳細訊息">3. YUM 套件詳細訊息</h3>
+</div><hr>
+<h3 id="3-yum-套件詳細訊息">3. YUM 套件詳細訊息</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -219,7 +222,8 @@ Description  : firewalld is a firewall service daemon that provides a dynamic cu
              : firewall with a D-Bus interface.
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="4-yum-查看路徑檔案套件為何">4. YUM 查看路徑檔案套件為何</h3>
+</div><hr>
+<h3 id="4-yum-查看路徑檔案套件為何">4. YUM 查看路徑檔案套件為何</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -247,7 +251,8 @@ Matched from:
 Filename    : /var/www/html
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="5-yum-安裝套件">5. YUM 安裝套件</h3>
+</div><hr>
+<h3 id="5-yum-安裝套件">5. YUM 安裝套件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -293,7 +298,8 @@ Installing dependencies:
 ...
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="6-yum-套件更新">6. YUM 套件更新</h3>
+</div><hr>
+<h3 id="6-yum-套件更新">6. YUM 套件更新</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -352,7 +358,8 @@ Upgrading:
 ...
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="7-yum-移除套件">7. YUM 移除套件</h3>
+</div><hr>
+<h3 id="7-yum-移除套件">7. YUM 移除套件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -391,7 +398,8 @@ Remove  1 Package
 ...
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="8-yum-group-套件列表">8. YUM Group 套件列表</h3>
+</div><hr>
+<h3 id="8-yum-group-套件列表">8. YUM Group 套件列表</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -470,6 +478,7 @@ Available Groups:
 </div></div>
         </div>
     </div>
+<hr>
 <h3 id="9-yum-module-streams">9. YUM Module Streams</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -506,9 +515,9 @@ postgresql               13                      client, server [d]             
 Hint: [d]efault, [e]nabled, [x]disabled, [i]nstalled
 </code></pre></td></tr></table>
 </div>
-</div><p><em>d : 表示預設會進行安裝版本</em>
-<em>i : 表示已經安裝的版本</em>
-<em>e : 後續移除重新安裝都會使用該版本</em>
+</div><p><em>d : 表示預設會進行安裝版本</em><br>
+<em>i : 表示已經安裝的版本</em><br>
+<em>e : 後續移除重新安裝都會使用該版本</em><br>
 <em>x : 此本版不進行安裝</em></p>
 <p>如上述，目前已經安裝 10 版本的 postgresql ，如因業務需要要改用 9.6 版本的可以執行如下步驟</p>
 <div class="highlight"><div class="chroma">
@@ -556,7 +565,8 @@ postgresql               12                    client, server [d]               
 postgresql               13                    client, server [d]                   PostgreSQL server and client module  
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="10-yum-history-套件歷史紀錄">10. YUM history 套件歷史紀錄</h3>
+</div><hr>
+<h3 id="10-yum-history-套件歷史紀錄">10. YUM history 套件歷史紀錄</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -630,7 +640,8 @@ Packages Altered:
 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="yum-小結">YUM 小結</h2>
+</div><hr>
+<h2 id="yum-小結">YUM 小結</h2>
 <p>YUM 真的是一的十分棒的管理工具，不過還是要<strong>記得一件事情，RHEL 8 以後其實是改成 DNF 了喔</strong>，如下顯示</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
