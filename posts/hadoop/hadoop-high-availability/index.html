@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-high-availability\/"
-        },"genre": "posts","keywords": "Hadoop","wordcount":  1850 ,
+        },"genre": "posts","keywords": "Hadoop","wordcount":  2032 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-high-availability\/","datePublished": "2021-02-09T00:00:00+00:00","dateModified": "2021-02-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -77,8 +77,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hadoop - 高可性用配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hadoop/"><i class="far fa-folder fa-fw"></i>Hadoop</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-09">2021-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1850 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-09">2021-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2032 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -118,6 +118,7 @@
         <li><a href="#27-新增及刪除yarn-sitexml並scp到其他台電腦">27. 新增及刪除yarn-site.xml，並SCP到其他台電腦</a></li>
         <li><a href="#28-依序啟動下列服務">28. 依序啟動下列服務</a></li>
         <li><a href="#29-測試resourcemanager故障自動轉移resourcemanager限定">29. 測試ResourceManager故障自動轉移(Resourcemanager限定)</a></li>
+        <li><a href="#附錄---服務開啟及關閉">附錄 - 服務開啟及關閉</a></li>
       </ul>
     </li>
   </ul>
@@ -615,7 +616,7 @@ hdfs haadmin -getServiceState nn2
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hdfs haadmin -transitionToStandby nn1
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs haadmin -transitionToStandby nn1
 hdfs haadmin -getServiceState nn1
 hdfs haadmin -getServiceState nn2
 hdfs haadmin -transitionToActive nn2
@@ -683,9 +684,14 @@ hdfs haadmin -getServiceState nn2
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget http://ftp.tc.edu.tw/pub/Apache/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>如果載點失效，請至<a href="https://zookeeper.apache.org/releases.html" target="_blank" rel="noopener noreffer">Apache Zookeeper 官網下載</a></li>
-</ul>
+</div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如果載點失效，請至<a href="https://zookeeper.apache.org/releases.html" target="_blank" rel="noopener noreffer">Apache Zookeeper 官網下載</a></strong></div>
+        </div>
+    </div>
 <ol start="2">
 <li>解壓縮</li>
 </ol>
@@ -1228,7 +1234,73 @@ yarn rmadmin -getServiceState rm2
         title="https://i.imgur.com/JLblhkX.png" /></p>
 </div>
         </div>
-    </div></div><iframe
+    </div>
+<h3 id="附錄---服務開啟及關閉">附錄 - 服務開啟及關閉</h3>
+<ol>
+<li>Hadoop 服務開啟 （啟用 HA)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#ZooKeeper啟動</span>
+zkServer.sh start
+
+<span class="c1">#NameNode啟動</span>
+start-dfs.sh
+
+<span class="c1">#ResourceManager啟動</span>
+start-yarn.sh
+
+<span class="c1">#Historyserver啟動</span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Hadoop 服務關閉 （啟用 HA)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Historyserver停止</span>
+mapred --daemon stop historyserver
+
+<span class="c1">#ResourceManager停止</span>
+stop-yarn.sh
+
+<span class="c1">#NameNode停止</span>
+stop-dfs.sh
+
+
+<span class="c1">#ZooKeeper停止</span>
+zkServer.sh stop
+</code></pre></td></tr></table>
+</div>
+</div></div><iframe
   class="LikeCoin"
   height="235"
   src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fhadoop%2fhadoop-high-availability%2f"

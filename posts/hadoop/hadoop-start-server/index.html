@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-start-server\/"
-        },"genre": "posts","keywords": "Hadoop","wordcount":  952 ,
+        },"genre": "posts","keywords": "Hadoop","wordcount":  1114 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-start-server\/","datePublished": "2021-02-07T00:00:00+00:00","dateModified": "2021-02-07T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -77,8 +77,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hadoop - 啟動服務</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hadoop/"><i class="far fa-folder fa-fw"></i>Hadoop</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-07">2021-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;952 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-07">2021-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1114 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -89,7 +89,7 @@
     <li><a href="#機器基本訊息">機器基本訊息:</a></li>
     <li><a href="#建置步驟---啟動服務">建置步驟 - 啟動服務：</a>
       <ul>
-        <li><a href="#1-複製電腦-管理者身份">1. 複製電腦 (<strong>管理者身份</strong>)</a></li>
+        <li><a href="#1-複製電腦---依不同條件執行">1. 複製電腦 - 依不同條件執行</a></li>
         <li><a href="#2---namenode-formathadoop身份">2.   Namenode format(<strong>hadoop身份</strong>)</a></li>
         <li><a href="#3-啟動hdfshadoop身份">3. 啟動hdfs(<strong>hadoop身份</strong>)</a></li>
         <li><a href="#4-啟動yarnhadoop身份">4. 啟動yarn(<strong>hadoop身份</strong>)</a></li>
@@ -163,39 +163,33 @@
 </ol>
 <hr>
 <h2 id="建置步驟---啟動服務">建置步驟 - 啟動服務：</h2>
-<h3 id="1-複製電腦-管理者身份">1. 複製電腦 (<strong>管理者身份</strong>)</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">* 使用前檢查事項:
-* 停用IPv6
-* 建立hadoop帳號
-* 完成無密碼login
-* 建立hosts檔
-* 建立worker檔
-* 安裝OpenSSH server
-* OpenJDK8安裝並設定
-* 下載hadoop並修改完環境變數及相關設定
-* 確認無誤再執行不然會多做很多事情...
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
+<h3 id="1-複製電腦---依不同條件執行">1. 複製電腦 - 依不同條件執行</h3>
+<div class="details admonition warning open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>必須完成事項清單<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">使用 VMware Player 複製方式，如需自行建設五台機器可忽略此步驟</div>
+            <div class="admonition-content"><ul>
+<li><i class="far fa-square fa-fw"></i> 使用前檢查事項:</li>
+<li><i class="far fa-square fa-fw"></i> 停用IPv6</li>
+<li><i class="far fa-square fa-fw"></i> 建立hadoop帳號</li>
+<li><i class="far fa-square fa-fw"></i> 完成無密碼login</li>
+<li><i class="far fa-square fa-fw"></i> 建立hosts檔</li>
+<li><i class="far fa-square fa-fw"></i> 建立worker檔</li>
+<li><i class="far fa-square fa-fw"></i> 啟動 SSH server</li>
+<li><i class="far fa-square fa-fw"></i> OpenJDK8安裝並設定</li>
+<li><i class="far fa-square fa-fw"></i> 下載hadoop並修改完環境變數及相關設定</li>
+</ul>
+<p><strong>上述步驟確認無誤再執行</strong></div>
+        </div>
+    </div>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>可替代方案<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">本步驟使用 VMware Player 複製方式，如需自行建設五台機器<br>
+可選擇其它替代方案</div>
         </div>
     </div>
 <ol>
@@ -453,7 +447,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi 30 100
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -488,7 +482,12 @@
         data-sizes="auto"
         alt="https://i.imgur.com/0B4yjNo.png"
         title="https://i.imgur.com/0B4yjNo.png" /></p>
-<p>會自動建立hadoop的目錄</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>會自動建立hadoop的目錄</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -497,19 +496,24 @@
         data-sizes="auto"
         alt="https://i.imgur.com/HQfxlPk.png"
         title="https://i.imgur.com/HQfxlPk.png" /></p>
+</div>
+        </div>
+    </div>
+<hr>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p>完成上述步驟，已經成功安裝並啟動 Hadoop，後續尚有進階操作可以選:</p>
-<pre><code>1. Spark 及 Jupyter NoteBook 應用程式安裝  
-2. 叢集高可用性 HA(high availability)架設  
-3. Spark on R 架設  
+<pre><code>1. [Spark 及 Jupyter NoteBook 應用程式安裝](https://how64bit.com/posts/hadoop/hadoop-spark-jupyter/)
+2. [叢集高可用性 HA(high availability)架設](https://how64bit.com/posts/hadoop/hadoop-high-availability/)
+3. [Spark on R 架設](https://how64bit.com/posts/hadoop/hadoop-spark-on-r/)
 </code></pre>
 </div>
         </div>
     </div>
+<hr>
 <h3 id="附錄---服務開啟及關閉">附錄 - 服務開啟及關閉</h3>
 <ol>
 <li>Hadoop 服務開啟 （未啟用 HA)</li>
@@ -526,13 +530,13 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#NameNode啟動
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#NameNode啟動</span>
 start-dfs.sh
 
-#ResourceManager啟動
+<span class="c1">#ResourceManager啟動</span>
 start-yarn.sh
 
-#Historyserver啟動
+<span class="c1">#Historyserver啟動</span>
 mapred --daemon start historyserver
 </code></pre></td></tr></table>
 </div>
@@ -551,13 +555,13 @@ mapred --daemon start historyserver
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#Historyserver停止
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Historyserver停止</span>
 mapred --daemon stop historyserver
 
-#ResourceManager停止
+<span class="c1">#ResourceManager停止</span>
 stop-yarn.sh
 
-#NameNode停止
+<span class="c1">#NameNode停止</span>
 stop-dfs.sh
 </code></pre></td></tr></table>
 </div>

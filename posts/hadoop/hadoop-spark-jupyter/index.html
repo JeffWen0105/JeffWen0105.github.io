@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-spark-jupyter\/"
-        },"genre": "posts","keywords": "Hadoop","wordcount":  957 ,
+        },"genre": "posts","keywords": "Hadoop","wordcount":  1015 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/hadoop\/hadoop-spark-jupyter\/","datePublished": "2021-02-08T00:00:00+00:00","dateModified": "2021-02-08T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -77,8 +77,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hadoop - Spark &#43; Jupyter 應用程式安裝</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hadoop/"><i class="far fa-folder fa-fw"></i>Hadoop</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-08">2021-02-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;957 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-08">2021-02-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1015 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -186,9 +186,14 @@
 wget http://ftp.tc.edu.tw/pub/Apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
 </code></pre></td></tr></table>
 </div>
-</div><ul>
-<li>如檔案過期或是失效，請至<a href="https://spark.apache.org/downloads.html" target="_blank" rel="noopener noreffer">Spark官方網站</a>下載</li>
-</ul>
+</div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如檔案過期或是失效，請至<a href="https://spark.apache.org/downloads.html" target="_blank" rel="noopener noreffer">Spark官方網站</a>下載</strong></div>
+        </div>
+    </div>
 <ol start="2">
 <li>解壓縮</li>
 </ol>
@@ -546,20 +551,67 @@ nano /usr/local/spark/conf/spark-defaults.conf
         title="https://i.imgur.com/seyBcxi.png" /></p>
 <hr>
 <h3 id="7-安裝jupter-系列及pyspark-等套件管理者身份">7. 安裝jupter 系列及pyspark 等套件(<strong>管理者身份</strong>)</h3>
-<pre><code>0. 如 Part 1 略過 Python3 安裝，請先回去執行 ！！
-
-1. 安裝pyspark 套件
-```bash=
-pip3 install pyspark
-```
-
-2. 安裝jupter 系列套件
-
-```bash=
-pip3 install jupyterlab
-```
-</code></pre>
-<hr>
+<div class="details admonition Failure">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>安裝失敗<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>如果沒有安裝 python 3開發工具箱，會導致失敗<br>
+請執行下方步驟:</p>
+<ol>
+<li>安裝python開發工具箱</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt install python3-dev
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>安裝pip</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#取得最新版pip腳本</span>
+wget https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<ol>
+<li>安裝pyspark 套件</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip3 install pyspark
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>安裝jupter 系列套件</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip3 install jupyterlab
+</code></pre></td></tr></table>
+</div>
+</div><hr>
 <h3 id="8-jupyter-系列遠端使用及產生密碼一般使用者身份">8. jupyter 系列遠端使用及產生密碼(<strong>一般使用者身份</strong>)</h3>
 <ol>
 <li>創建jupyter設定檔</li>
@@ -640,7 +692,13 @@ pip3 install jupyterlab
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jupyter notebook  <span class="c1">#jupyter lab</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><img
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Success<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>就可以藉由瀏覽器登入</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://i.imgur.com/2VF72ym.png"
@@ -648,9 +706,6 @@ pip3 install jupyterlab
         data-sizes="auto"
         alt="https://i.imgur.com/2VF72ym.png"
         title="https://i.imgur.com/2VF72ym.png" /></p>
-<ul>
-<li>就可以藉由瀏覽器登入</li>
-</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -659,6 +714,15 @@ pip3 install jupyterlab
         data-sizes="auto"
         alt="https://i.imgur.com/oBMg1F8.jpg"
         title="https://i.imgur.com/oBMg1F8.jpg" /></p>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw"></i>Question<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><em><del>或是用手機登入coding&hellip;瘋掉拉</del></em></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -667,7 +731,9 @@ pip3 install jupyterlab
         data-sizes="auto"
         alt="https://i.imgur.com/pvPGI7l.jpg"
         title="https://i.imgur.com/pvPGI7l.jpg" /></p>
-<p><em><del>或是用手機登入打code&hellip;瘋掉拉</del></em></p></div><iframe
+</div>
+        </div>
+    </div></div><iframe
   class="LikeCoin"
   height="235"
   src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fhadoop%2fhadoop-spark-jupyter%2f"
