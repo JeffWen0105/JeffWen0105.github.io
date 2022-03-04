@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 03 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - YUM 倉庫清單配置</title>
+    <link>https://blog.howhow.tk/posts/linux/linux-yum-repository/</link>
+    <pubDate>Thu, 03 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/linux-yum-repository/</guid>
+    <description><![CDATA[<p>YUM 為高階的套件管理工具，解決軟體套件依賴問題，並且可以批量更新，非常好用的工具。另外可以自行定義倉庫位置，如指定台灣的軟體倉庫比美國軟體倉庫下載速度快的多。</p>]]></description>
+</item><item>
     <title>Linux - YUM 安裝及更新套件</title>
     <link>https://blog.howhow.tk/posts/linux/linux-yum/</link>
     <pubDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -20,6 +27,14 @@
     <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
+</item><item>
+    <title>Linux - User and Group 帳號管理</title>
+    <link>https://blog.howhow.tk/posts/linux/linux-managing-local-user-group/</link>
+    <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/linux-managing-local-user-group/</guid>
+    <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
+<p>Linux 作業系統為多人多工作業方式，故管理帳號將會是一個必修的課程，透過 Linux 指令可以很容易的創建帳號、群組及密碼。</p>]]></description>
 </item><item>
     <title>Linux - 壓縮與打包工具 tar</title>
     <link>https://blog.howhow.tk/posts/linux/linux-compress/</link>
@@ -68,13 +83,5 @@
     <guid>https://blog.howhow.tk/posts/linux/linux-redhat-ptty/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/l3MSZLb.png) -->
 <p>RedHat 8 圖形介面與終端介面切換教學。</p>]]></description>
-</item><item>
-    <title>Linux 常用指令 - ls 檢視檔案與目錄</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-ls/</link>
-    <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-ls/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/4usuAP6.jpg) -->
-<p>LS 是 Linux(Unix Like) 最常使用命令之一，用來檢視檔案與目錄的狀態。</p>]]></description>
 </item></channel>
 </rss>
