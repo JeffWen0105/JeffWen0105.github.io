@@ -1,0 +1,57 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hadoop - Tag - HowHow の WebSite</title>
+        <link>https://blog.howhow.tk/tags/hadoop/</link>
+        <description>Hadoop - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 11 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/hadoop/" rel="self" type="application/rss+xml" /><item>
+    <title>Hadoop - 偽分布式安裝步驟</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-pseudo-mode/</link>
+    <pubDate>Thu, 11 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-pseudo-mode/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - Spark on R 配置</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-spark-on-r/</link>
+    <pubDate>Wed, 10 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-spark-on-r/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - 高可性用配置</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-high-availability/</link>
+    <pubDate>Tue, 09 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-high-availability/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - Spark &#43; Jupyter 應用程式安裝</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-spark-jupyter/</link>
+    <pubDate>Mon, 08 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-spark-jupyter/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - 啟動服務</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-start-server/</link>
+    <pubDate>Sun, 07 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-start-server/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - 安裝及設定</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-install-setup/</link>
+    <pubDate>Sat, 06 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-install-setup/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item><item>
+    <title>Hadoop - 基礎架設步驟</title>
+    <link>https://blog.howhow.tk/posts/hadoop/hadoop-env-infra/</link>
+    <pubDate>Fri, 05 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/hadoop/hadoop-env-infra/</guid>
+    <description><![CDATA[<p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>]]></description>
+</item></channel>
+</rss>
