@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/python/" rel="self" type="application/rss+xml" /><item>
     <title>Python - 函式三劍客 Map, Filter, and Reduce</title>
-    <link>https://blog.howhow.tk/posts/python/python3-function/</link>
+    <link>https://blog.howhow.tk/posts/python/2022/python3-function/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/python/python3-function/</guid>
+    <guid>https://blog.howhow.tk/posts/python/2022/python3-function/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/UvAxLaK.jpg) -->
 <p>Python 的 Map, Filter, Reduce 三劍客函數使用教學.</p>]]></description>
 </item></channel>

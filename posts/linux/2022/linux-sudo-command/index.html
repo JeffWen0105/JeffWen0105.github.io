@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - Sudo 提升權限成為管理者 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - Sudo 提升權限成為管理者" />
+<meta property="og:description" content="
+Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-18T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - Sudo 提升權限成為管理者"/>
+<meta name="twitter:description" content="
+Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-permission-file/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - Sudo 提升權限成為管理者",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-sudo-command\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  313 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-sudo-command\/","datePublished": "2022-01-18T00:00:00+00:00","dateModified": "2022-01-18T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - Sudo 提升權限成為管理者</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-18">2022-01-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;313 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1sudo-設定">1.Sudo 設定</a></li>
+        <li><a href="#2-驗證">2. 驗證</a>
+          <ul>
+            <li><a href="#21-使用普通使用者於一般方式嘗試重新熱載入-nginx-設定">2.1. 使用普通使用者於一般方式嘗試重新熱載入 Nginx 設定</a></li>
+            <li><a href="#22--使用-sudo-暫時提升權限熱載入-nginx-設定">2.2  使用 sudo 暫時提升權限熱載入 Nginx 設定</a></li>
+            <li><a href="#23--使用-sudo-暫時提升權限嘗試停止-nginx-服務">2.3  使用 sudo 暫時提升權限嘗試停止 Nginx 服務</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-結論">3. 結論</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- ![](https://i.imgur.com/vbsNLVT.jpg) -->
+<p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>
+<h1 id="linux---sudo-提升權限成為管理者">Linux - Sudo 提升權限成為管理者</h1>
+<h3 id="1sudo-設定">1.Sudo 設定</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 僅限 root 能操作</span>
+visudo 
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>添加下列配置 ( 以空格區隔欄位 ) 如下圖:
+<ul>
+<li>欄位一 ：  使用者(如指定群組可以加上 %student)</li>
+<li>欄位二 ：  表示在本機電腦任何時都能執行</li>
+<li>欄位三 ：  限定可以提升權限的指令</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/rhg3Qxv.png"
+        data-srcset="https://i.imgur.com/rhg3Qxv.png, https://i.imgur.com/rhg3Qxv.png 1.5x, https://i.imgur.com/rhg3Qxv.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/rhg3Qxv.png"
+        title="https://i.imgur.com/rhg3Qxv.png" /></p>
+<h3 id="2-驗證">2. 驗證</h3>
+<h4 id="21-使用普通使用者於一般方式嘗試重新熱載入-nginx-設定">2.1. 使用普通使用者於一般方式嘗試重新熱載入 Nginx 設定</h4>
+<ul>
+<li>會顯示 Permission denied</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/sz51uR3.png"
+        data-srcset="https://i.imgur.com/sz51uR3.png, https://i.imgur.com/sz51uR3.png 1.5x, https://i.imgur.com/sz51uR3.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/sz51uR3.png"
+        title="https://i.imgur.com/sz51uR3.png" /></p>
+<h4 id="22--使用-sudo-暫時提升權限熱載入-nginx-設定">2.2  使用 sudo 暫時提升權限熱載入 Nginx 設定</h4>
+<ul>
+<li>輸入該使用者的密碼即可重新載入 Nginx 設定</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/lgEEeh0.png"
+        data-srcset="https://i.imgur.com/lgEEeh0.png, https://i.imgur.com/lgEEeh0.png 1.5x, https://i.imgur.com/lgEEeh0.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/lgEEeh0.png"
+        title="https://i.imgur.com/lgEEeh0.png" /></p>
+<h4 id="23--使用-sudo-暫時提升權限嘗試停止-nginx-服務">2.3  使用 sudo 暫時提升權限嘗試停止 Nginx 服務</h4>
+<ul>
+<li>此時系統就會警告，並限制該使者用沒有權限這樣做</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/vSRz2Gq.png"
+        data-srcset="https://i.imgur.com/vSRz2Gq.png, https://i.imgur.com/vSRz2Gq.png 1.5x, https://i.imgur.com/vSRz2Gq.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/vSRz2Gq.png"
+        title="https://i.imgur.com/vSRz2Gq.png" /></p>
+<h3 id="3-結論">3. 結論</h3>
+<p>透過 sudo file 配置，可以很方便的指定使用者去做有限度的管理者操作 。</p></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-sudo-command%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-permission-file/" class="prev" rel="prev" title="Linux - 檔案及目錄權限"><i class="fas fa-angle-left fa-fw"></i>Linux - 檔案及目錄權限</a>
+            <a href="/posts/linux/2022/linux-ssh-basics/" class="next" rel="next" title="Linux - SSH 連線機制及遠程複製">Linux - SSH 連線機制及遠程複製<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

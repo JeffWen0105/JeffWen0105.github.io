@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - SSH 連線機制及遠程複製 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - SSH 連線機制及遠程複製" />
+<meta property="og:description" content="
+SSH 連線機制及遠程複製" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-01-23T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - SSH 連線機制及遠程複製"/>
+<meta name="twitter:description" content="
+SSH 連線機制及遠程複製"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-compress/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - SSH 連線機制及遠程複製",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-ssh-basics\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  285 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-ssh-basics\/","datePublished": "2022-01-23T00:00:00+00:00","dateModified": "2022-01-23T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - SSH 連線機制及遠程複製</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-23">2022-01-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;285 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-ssh-連線基本指令">1. SSH 連線基本指令</a></li>
+        <li><a href="#2-ssh-連線原理">2. SSH 連線原理</a></li>
+        <li><a href="#3-ssh-protocol-協定">3. SSH Protocol 協定</a>
+          <ul>
+            <li><a href="#31-透過-ssh-protocol-協定預設-22-port傳輸">3.1 透過 SSH Protocol 協定(預設 22 port)傳輸:</a></li>
+            <li><a href="#32-使用-rsync-取代-scp">3.2 使用 rsync 取代 scp</a>
+              <ul>
+                <li><a href="#321-rsync指令">3.2.1 rsync指令：</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- ![](https://i.imgur.com/gBt0Xn1.jpg) -->
+<p>SSH 連線機制及遠程複製</p>
+<h3 id="1-ssh-連線基本指令">1. SSH 連線基本指令</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh &lt;username&gt;@&lt;serverIp&gt; <span class="o">[</span>command<span class="o">]</span> 
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>參數:
+<ul>
+<li>-i: 指定登入公鑰位置</li>
+<li>-p: 指定 Port 通訊阜號</li>
+<li>-D: 動態轉發通訊阜號</li>
+<li>-L: 伺服器轉發通訊阜號至本機</li>
+<li>-R: 本機轉發通訊阜號至伺服器</li>
+<li>-O: 壓縮傳輸</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-ssh-連線原理">2. SSH 連線原理</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/kv2NH83.png"
+        data-srcset="https://i.imgur.com/kv2NH83.png, https://i.imgur.com/kv2NH83.png 1.5x, https://i.imgur.com/kv2NH83.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/kv2NH83.png"
+        title="https://i.imgur.com/kv2NH83.png" /></p>
+<h3 id="3-ssh-protocol-協定">3. SSH Protocol 協定</h3>
+<h4 id="31-透過-ssh-protocol-協定預設-22-port傳輸">3.1 透過 SSH Protocol 協定(預設 22 port)傳輸:</h4>
+<ul>
+<li>ssh (遠端登入或是遠端執行指令)</li>
+<li>scp （SSH 加密複製檔案或目錄)</li>
+<li>sftp (SSH SFTP)</li>
+<li>rsync （SSH 加密複製檔案或目錄)</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>scp 缺點： 無法複製原始檔案權限(包含 ACL 及 SELinux)</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h4 id="32-使用-rsync-取代-scp">3.2 使用 rsync 取代 scp</h4>
+<ul>
+<li>用法雷同，另外多幾個權限參數可以使用:
+<ul>
+<li>-a: 一般權限、擁有者、群組、創建時間</li>
+<li>-v: 傳輸時詳細內容</li>
+<li>-H: Hard Link</li>
+<li>-A: ACL</li>
+<li>-X: SElinux</li>
+</ul>
+</li>
+</ul>
+<h5 id="321-rsync指令">3.2.1 rsync指令：</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rsync -avHAX /etc/passwd root@serverb:/tmp/
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>如果檔案較大顯示傳輸時間可以加上 &ndash;progress 參數顯示執行進度</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rsync --progress -avHAX /tmp/Rocky-8.5-x86_64-dvd1.iso root@serverb:/tmp/
+</code></pre></td></tr></table>
+</div>
+</div></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-ssh-basics%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-01-23</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-sudo-command/" class="prev" rel="prev" title="Linux - Sudo 提升權限成為管理者"><i class="fas fa-angle-left fa-fw"></i>Linux - Sudo 提升權限成為管理者</a>
+            <a href="/posts/linux/2022/linux-compress/" class="next" rel="next" title="Linux - 壓縮與打包工具 tar">Linux - 壓縮與打包工具 tar<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

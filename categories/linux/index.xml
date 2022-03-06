@@ -4,84 +4,83 @@
         <link>https://blog.howhow.tk/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 03 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 05 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 打造輕巧 Linux 練習 Lab</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
+    <pubDate>Sat, 05 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
+    <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 4 台巢狀式虛擬式機器 (練習區) 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間 可以透過主控端隨時快速還原 4 台]]></description>
+</item><item>
     <title>Linux - YUM 倉庫清單配置</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-yum-repository/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</link>
     <pubDate>Thu, 03 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-yum-repository/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</guid>
     <description><![CDATA[<p>YUM 為高階的套件管理工具，解決軟體套件依賴問題，並且可以批量更新，非常好用的工具。另外可以自行定義倉庫位置，如指定台灣的軟體倉庫比美國軟體倉庫下載速度快的多。</p>]]></description>
 </item><item>
     <title>Linux - YUM 安裝及更新套件</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-yum/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-yum/</link>
     <pubDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-yum/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum/</guid>
     <description><![CDATA[<p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>]]></description>
 </item><item>
     <title>Linux - RPM 套件管理工具</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-rpm/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</link>
     <pubDate>Tue, 01 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-rpm/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</guid>
     <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
 </item><item>
     <title>Linux - User and Group 帳號管理</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-managing-local-user-group/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</link>
     <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-managing-local-user-group/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</guid>
     <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
 <p>Linux 作業系統為多人多工作業方式，故管理帳號將會是一個必修的課程，透過 Linux 指令可以很容易的創建帳號、群組及密碼。</p>]]></description>
 </item><item>
     <title>Linux - 壓縮與打包工具 tar</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-compress/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-compress/</link>
     <pubDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-compress/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-compress/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/DXDWOPH.png) -->
 <p>Linux tar 壓縮及打包工具使用方式</p>]]></description>
 </item><item>
     <title>Linux - SSH 連線機制及遠程複製</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-ssh-basics/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/</link>
     <pubDate>Sun, 23 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-ssh-basics/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/gBt0Xn1.jpg) -->
 <p>SSH 連線機制及遠程複製</p>]]></description>
 </item><item>
     <title>Linux - Sudo 提升權限成為管理者</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-sudo-command/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/</link>
     <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-sudo-command/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/vbsNLVT.jpg) -->
 <p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>]]></description>
 </item><item>
     <title>Linux - 檔案及目錄權限</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-permission-file/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-permission-file/</link>
     <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-permission-file/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-permission-file/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/6R2S2vO.jpg) -->
 <p>Linux 檔案及權限管理，時常遇見的問題。</p>]]></description>
 </item><item>
     <title>Linux - 設定 SSH Tunneling (Port Forwarding)</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-ssh-tunnel/</link>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-ssh-tunnel/</link>
     <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-ssh-tunnel/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-ssh-tunnel/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/rNQD2xd.jpg) -->
 <p>SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。</p>]]></description>
-</item><item>
-    <title>Linux - RedHat 8 圖形介面與終端介面切換</title>
-    <link>https://blog.howhow.tk/posts/linux/linux-redhat-ptty/</link>
-    <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/linux-redhat-ptty/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/l3MSZLb.png) -->
-<p>RedHat 8 圖形介面與終端介面切換教學。</p>]]></description>
 </item></channel>
 </rss>

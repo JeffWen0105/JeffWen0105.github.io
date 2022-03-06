@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Hadoop - 高可性用配置 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Hadoop - 高可性用配置" />
+<meta property="og:description" content="Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/hadoop/2021/hadoop-high-availability/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-09T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hadoop - 高可性用配置"/>
+<meta name="twitter:description" content="Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-high-availability/" /><link rel="prev" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-spark-jupyter/" /><link rel="next" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-spark-on-r/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hadoop - 高可性用配置",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/hadoop\/2021\/hadoop-high-availability\/"
+        },"genre": "posts","keywords": "Hadoop","wordcount":  2032 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/hadoop\/2021\/hadoop-high-availability\/","datePublished": "2021-02-09T00:00:00+00:00","dateModified": "2021-02-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hadoop - 高可性用配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hadoop/"><i class="far fa-folder fa-fw"></i>Hadoop</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-09">2021-02-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2032 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#機器基本訊息">機器基本訊息:</a></li>
+    <li><a href="#建置步驟---高可用性配置">建置步驟 - 高可用性配置：</a>
+      <ul>
+        <li><a href="#1-新增hdfs-sitexml檔並scp到其他台電腦">1. 新增hdfs-site.xml檔，並SCP到其他台電腦</a></li>
+        <li><a href="#2-更正core-sitexml檔並scp到其他台電腦">2. 更正core-site.xml檔，並SCP到其他台電腦</a></li>
+        <li><a href="#3-三台電腦journalnodes建立journalnode資料夾">3. 三台電腦(Journalnodes)建立journalnode資料夾</a></li>
+        <li><a href="#4-啟動journalnode並jps確認">4. 啟動journalnode，並jps確認</a></li>
+        <li><a href="#5-active-namenode限定">5. active NameNode限定</a></li>
+        <li><a href="#6-啟動第一台namenode">6. 啟動第一台NameNode</a></li>
+        <li><a href="#7-第二台namenode複製metadata">7. 第二台NameNode複製metadata</a></li>
+        <li><a href="#8-啟動第二台namenode">8. 啟動第二台NameNode</a></li>
+        <li><a href="#9-停止全部namenode再啟動">9. 停止全部NameNode再啟動</a></li>
+        <li><a href="#10-激活第一台namenode並檢查狀態">10. 激活第一台NameNode，並檢查狀態</a></li>
+        <li><a href="#11-啟動yarn">11. 啟動Yarn</a></li>
+        <li><a href="#12-啟動job-history-server">12. 啟動Job history server</a></li>
+        <li><a href="#13-切換一下active-namenode">13. 切換一下active Namenode</a></li>
+        <li><a href="#14-跑個pi測試一下新起namenode能不能正常運作">14. 跑個PI測試一下新起Namenode能不能正常運作</a></li>
+        <li><a href="#15-下載zookeeper並安裝三台zookeeper電腦都要管理者身份">15. 下載ZooKeeper並安裝(三台Zookeeper電腦都要)(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#16-複製zoo_samplecfg並編輯zoocfg使用scp到另外兩台worker">16. 複製zoo_sample.cfg並編輯zoo.cfg(使用SCP到另外兩台(worker))</a></li>
+        <li><a href="#17-修改zkenvsh檔使用scp到另外兩台worker">17. 修改zkEnv.sh檔(使用SCP到另外兩台(worker))</a></li>
+        <li><a href="#18-建立存放log資料夾">18. 建立存放LOG資料夾</a></li>
+        <li><a href="#19-修改環境變數">19. 修改環境變數</a></li>
+        <li><a href="#20-啟動zookeeper三台電腦均要啟動">20. 啟動ZooKeeper(三台電腦均要啟動)</a></li>
+        <li><a href="#21-依序停止下列服務">21. 依序停止下列服務</a></li>
+        <li><a href="#22-新增hdfs-sitexml並scp到其他台電腦">22. 新增hdfs-site.xml，並SCP到其他台電腦</a></li>
+        <li><a href="#23-新增core-sitexml並scp到其他台電腦">23. 新增core-site.xml，並SCP到其他台電腦</a></li>
+        <li><a href="#24-namenode限定">24. NameNode限定</a></li>
+        <li><a href="#25-啟動namenodenamenode限定">25. 啟動NameNode(NameNode限定)</a></li>
+        <li><a href="#26-測試namenode故障自動轉移namenode限定">26. 測試NameNode故障自動轉移(NameNode限定)</a></li>
+        <li><a href="#27-新增及刪除yarn-sitexml並scp到其他台電腦">27. 新增及刪除yarn-site.xml，並SCP到其他台電腦</a></li>
+        <li><a href="#28-依序啟動下列服務">28. 依序啟動下列服務</a></li>
+        <li><a href="#29-測試resourcemanager故障自動轉移resourcemanager限定">29. 測試ResourceManager故障自動轉移(Resourcemanager限定)</a></li>
+        <li><a href="#附錄---服務開啟及關閉">附錄 - 服務開啟及關閉</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>
+<!-- ### Hadoop叢集基礎架設 -->
+<h2 id="機器基本訊息">機器基本訊息:</h2>
+<ol>
+<li>準備五台機器 （兩台主節點、三台工作節點)</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>IP</th>
+<th>FQDN</th>
+<th>HOSTNAME</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.30</td>
+<td>test30.example.org</td>
+<td>test30</td>
+<td>Master 節點 (Namenode)</td>
+</tr>
+<tr>
+<td>192.168.1.31</td>
+<td>test31.example.org</td>
+<td>test31</td>
+<td>Master 節點 (ResourceManager)</td>
+</tr>
+<tr>
+<td>192.168.1.32</td>
+<td>test32.example.org</td>
+<td>test32</td>
+<td>Worker 節點</td>
+</tr>
+<tr>
+<td>192.168.1.33</td>
+<td>test33.example.org</td>
+<td>test33</td>
+<td>Worker 節點</td>
+</tr>
+<tr>
+<td>192.168.1.34</td>
+<td>test34.example.org</td>
+<td>test34</td>
+<td>Worker 節點</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p>OS : Ubuntu 18.04</p>
+</li>
+<li>
+<p>資源配置 :</p>
+<ul>
+<li>Cpu : 4 core</li>
+<li>Ram : 8 G</li>
+<li>Disk : 50 G</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="建置步驟---高可用性配置">建置步驟 - 高可用性配置：</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">新增節點功能:<br>
+1. 三台 Worker 機器當作 Journalnodes及ZooKeeper<br>
+2. 原本的 NameNode 機器多新增一個 ResourceManager Stantby<br>
+3. 原本的 ResourceManager 機器多新增一個 NameNode Stantby</div>
+        </div>
+    </div>
+<hr>
+<div class="details admonition Warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i><i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">執行前，請先確認叢集 hdfs 及 yarn 均已停止服務 !!</div>
+        </div>
+    </div>
+<h3 id="1-新增hdfs-sitexml檔並scp到其他台電腦">1. 新增hdfs-site.xml檔，並SCP到其他台電腦</h3>
+<div class="details admonition Example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i><i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>SCP使用範例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">scp /usr/local/hadoop/etc/hadoop/hdfs-site.xml hadoop@test31:/usr/local/hadoop/etc/hadoop
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/GNS3rEL.png"
+        data-srcset="https://i.imgur.com/GNS3rEL.png, https://i.imgur.com/GNS3rEL.png 1.5x, https://i.imgur.com/GNS3rEL.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/GNS3rEL.png"
+        title="https://i.imgur.com/GNS3rEL.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.nameservices<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.namenodes.nncluster<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>nn1,nn2<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:8020<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:9870<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test31.example.org:8020<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test31.example.org:9870<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.shared.edits.dir<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>qjournal://test32.example.org:8485;test33.example.org:8485;test34.example.org:8485/nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.journalnode.edits.dir<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>/home/hadoop/journalnode<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.fencing.methods<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>shell(/bin/true)<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.client.failover.proxy.provider.nncluster<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/aCEx6Q9.png"
+        data-srcset="https://i.imgur.com/aCEx6Q9.png, https://i.imgur.com/aCEx6Q9.png 1.5x, https://i.imgur.com/aCEx6Q9.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/aCEx6Q9.png"
+        title="https://i.imgur.com/aCEx6Q9.png" /></p>
+<h3 id="2-更正core-sitexml檔並scp到其他台電腦">2. 更正core-site.xml檔，並SCP到其他台電腦</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/core-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Azjkjts.png"
+        data-srcset="https://i.imgur.com/Azjkjts.png, https://i.imgur.com/Azjkjts.png 1.5x, https://i.imgur.com/Azjkjts.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Azjkjts.png"
+        title="https://i.imgur.com/Azjkjts.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>hdfs://nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-三台電腦journalnodes建立journalnode資料夾">3. 三台電腦(Journalnodes)建立journalnode資料夾</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/journalnode
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-啟動journalnode並jps確認">4. 啟動journalnode，並jps確認</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start journalnode
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/b1kSI1P.png"
+        data-srcset="https://i.imgur.com/b1kSI1P.png, https://i.imgur.com/b1kSI1P.png 1.5x, https://i.imgur.com/b1kSI1P.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/b1kSI1P.png"
+        title="https://i.imgur.com/b1kSI1P.png" /></p>
+<h3 id="5-active-namenode限定">5. active NameNode限定</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -initializeSharedEdits
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xW5B5gC.png"
+        data-srcset="https://i.imgur.com/xW5B5gC.png, https://i.imgur.com/xW5B5gC.png 1.5x, https://i.imgur.com/xW5B5gC.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xW5B5gC.png"
+        title="https://i.imgur.com/xW5B5gC.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/OXOt7UN.png"
+        data-srcset="https://i.imgur.com/OXOt7UN.png, https://i.imgur.com/OXOt7UN.png 1.5x, https://i.imgur.com/OXOt7UN.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/OXOt7UN.png"
+        title="https://i.imgur.com/OXOt7UN.png" /></p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Success<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>請確認有出現Sucessfully started new epoch 1</strong></div>
+        </div>
+    </div>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><em>如果此叢集是全新未使用過的請先 format !!!!!</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -format
+</code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<h3 id="6-啟動第一台namenode">6. 啟動第一台NameNode</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start namenode
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xdJyQFV.png"
+        data-srcset="https://i.imgur.com/xdJyQFV.png, https://i.imgur.com/xdJyQFV.png 1.5x, https://i.imgur.com/xdJyQFV.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xdJyQFV.png"
+        title="https://i.imgur.com/xdJyQFV.png" /></p>
+<h3 id="7-第二台namenode複製metadata">7. 第二台NameNode複製metadata</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -bootstrapStandby
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/0l6kVnO.png"
+        data-srcset="https://i.imgur.com/0l6kVnO.png, https://i.imgur.com/0l6kVnO.png 1.5x, https://i.imgur.com/0l6kVnO.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/0l6kVnO.png"
+        title="https://i.imgur.com/0l6kVnO.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/O1vrqwg.png"
+        data-srcset="https://i.imgur.com/O1vrqwg.png, https://i.imgur.com/O1vrqwg.png 1.5x, https://i.imgur.com/O1vrqwg.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/O1vrqwg.png"
+        title="https://i.imgur.com/O1vrqwg.png" /></p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Success<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>請確認有出現has been successfully formatted</strong></div>
+        </div>
+    </div>
+<h3 id="8-啟動第二台namenode">8. 啟動第二台NameNode</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start namenode
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/3KeeCTa.png"
+        data-srcset="https://i.imgur.com/3KeeCTa.png, https://i.imgur.com/3KeeCTa.png 1.5x, https://i.imgur.com/3KeeCTa.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/3KeeCTa.png"
+        title="https://i.imgur.com/3KeeCTa.png" /></p>
+<h3 id="9-停止全部namenode再啟動">9. 停止全部NameNode再啟動</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">stop-dfs.sh
+start-dfs.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/MMinzyz.png"
+        data-srcset="https://i.imgur.com/MMinzyz.png, https://i.imgur.com/MMinzyz.png 1.5x, https://i.imgur.com/MMinzyz.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/MMinzyz.png"
+        title="https://i.imgur.com/MMinzyz.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>兩台namenode及三台journal node均會一起停止及啟動</strong></div>
+        </div>
+    </div>
+<h3 id="10-激活第一台namenode並檢查狀態">10. 激活第一台NameNode，並檢查狀態</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs haadmin -transitionToActive nn1
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/v1YsD2J.png"
+        data-srcset="https://i.imgur.com/v1YsD2J.png, https://i.imgur.com/v1YsD2J.png 1.5x, https://i.imgur.com/v1YsD2J.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/v1YsD2J.png"
+        title="https://i.imgur.com/v1YsD2J.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/D4V8QSD.png"
+        data-srcset="https://i.imgur.com/D4V8QSD.png, https://i.imgur.com/D4V8QSD.png 1.5x, https://i.imgur.com/D4V8QSD.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/D4V8QSD.png"
+        title="https://i.imgur.com/D4V8QSD.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/UpHbVKb.png"
+        data-srcset="https://i.imgur.com/UpHbVKb.png, https://i.imgur.com/UpHbVKb.png 1.5x, https://i.imgur.com/UpHbVKb.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/UpHbVKb.png"
+        title="https://i.imgur.com/UpHbVKb.png" /></p>
+<h3 id="11-啟動yarn">11. 啟動Yarn</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-yarn.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xWkBrLl.png"
+        data-srcset="https://i.imgur.com/xWkBrLl.png, https://i.imgur.com/xWkBrLl.png 1.5x, https://i.imgur.com/xWkBrLl.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xWkBrLl.png"
+        title="https://i.imgur.com/xWkBrLl.png" /></p>
+<h3 id="12-啟動job-history-server">12. 啟動Job history server</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mapred --daemon start historyserver
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/TVU2ucE.png"
+        data-srcset="https://i.imgur.com/TVU2ucE.png, https://i.imgur.com/TVU2ucE.png 1.5x, https://i.imgur.com/TVU2ucE.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/TVU2ucE.png"
+        title="https://i.imgur.com/TVU2ucE.png" /></p>
+<h3 id="13-切換一下active-namenode">13. 切換一下active Namenode</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs haadmin -transitionToStandby nn1
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+hdfs haadmin -transitionToActive nn2
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/aJ9SloD.png"
+        data-srcset="https://i.imgur.com/aJ9SloD.png, https://i.imgur.com/aJ9SloD.png 1.5x, https://i.imgur.com/aJ9SloD.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/aJ9SloD.png"
+        title="https://i.imgur.com/aJ9SloD.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/KbRR8DB.png"
+        data-srcset="https://i.imgur.com/KbRR8DB.png, https://i.imgur.com/KbRR8DB.png 1.5x, https://i.imgur.com/KbRR8DB.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/KbRR8DB.png"
+        title="https://i.imgur.com/KbRR8DB.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/wuY18oT.png"
+        data-srcset="https://i.imgur.com/wuY18oT.png, https://i.imgur.com/wuY18oT.png 1.5x, https://i.imgur.com/wuY18oT.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/wuY18oT.png"
+        title="https://i.imgur.com/wuY18oT.png" /></p>
+<h3 id="14-跑個pi測試一下新起namenode能不能正常運作">14. 跑個PI測試一下新起Namenode能不能正常運作</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/nCIQeQS.png"
+        data-srcset="https://i.imgur.com/nCIQeQS.png, https://i.imgur.com/nCIQeQS.png 1.5x, https://i.imgur.com/nCIQeQS.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/nCIQeQS.png"
+        title="https://i.imgur.com/nCIQeQS.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/kS10yNp.png"
+        data-srcset="https://i.imgur.com/kS10yNp.png, https://i.imgur.com/kS10yNp.png 1.5x, https://i.imgur.com/kS10yNp.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/kS10yNp.png"
+        title="https://i.imgur.com/kS10yNp.png" /></p>
+<h3 id="15-下載zookeeper並安裝三台zookeeper電腦都要管理者身份">15. 下載ZooKeeper並安裝(三台Zookeeper電腦都要)(<strong>管理者身份</strong>)</h3>
+<ol>
+<li>下載ZooKeeper</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget http://ftp.tc.edu.tw/pub/Apache/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如果載點失效，請至<a href="https://zookeeper.apache.org/releases.html" target="_blank" rel="noopener noreffer">Apache Zookeeper 官網下載</a></strong></div>
+        </div>
+    </div>
+<ol start="2">
+<li>解壓縮</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tar -xvf apache-zookeeper-3.5.6-bin.tar.gz -C /usr/local
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>更名</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mv /usr/local/apache-zookeeper-3.5.6-bin /usr/local/zookeeper
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>修改擁有者</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chown -R hadoop:hadoop /usr/local/zookeeper
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="16-複製zoo_samplecfg並編輯zoocfg使用scp到另外兩台worker">16. 複製zoo_sample.cfg並編輯zoo.cfg(使用SCP到另外兩台(worker))</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cp /usr/local/zookeeper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg
+nano /usr/local/zookeeper/conf/zoo.cfg
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/8xmNuIt.png"
+        data-srcset="https://i.imgur.com/8xmNuIt.png, https://i.imgur.com/8xmNuIt.png 1.5x, https://i.imgur.com/8xmNuIt.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/8xmNuIt.png"
+        title="https://i.imgur.com/8xmNuIt.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/aOTGRb7.png"
+        data-srcset="https://i.imgur.com/aOTGRb7.png, https://i.imgur.com/aOTGRb7.png 1.5x, https://i.imgur.com/aOTGRb7.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/aOTGRb7.png"
+        title="https://i.imgur.com/aOTGRb7.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">dataDir</span><span class="o">=</span>/usr/local/zookeeper/zoodata <span class="c1">#修改</span>
+admin.serverPort<span class="o">=</span><span class="m">8010</span> <span class="c1">#新增</span>
+server.1<span class="o">=</span>test32.example.org:2888:3888 <span class="c1">#新增</span>
+server.2<span class="o">=</span>test33.example.org:2888:3888 <span class="c1">#新增</span>
+server.3<span class="o">=</span>test34.example.org:2888:3888 <span class="c1">#新增</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="17-修改zkenvsh檔使用scp到另外兩台worker">17. 修改zkEnv.sh檔(使用SCP到另外兩台(worker))</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/zookeeper/bin/zkEnv.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/ZOYfch7.png"
+        data-srcset="https://i.imgur.com/ZOYfch7.png, https://i.imgur.com/ZOYfch7.png 1.5x, https://i.imgur.com/ZOYfch7.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/ZOYfch7.png"
+        title="https://i.imgur.com/ZOYfch7.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#新增</span>
+<span class="nv">ZOO_LOG_DIR</span><span class="o">=</span><span class="s2">&#34;/usr/local/zookeeper/logs&#34;</span>
+<span class="nv">ZOO_LOG4J_PROP</span><span class="o">=</span><span class="s2">&#34;INFO,ROLLINGFILE&#34;</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="18-建立存放log資料夾">18. 建立存放LOG資料夾</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir /usr/local/zookeeper/zoodata
+<span class="nb">echo</span> <span class="s2">&#34;1&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第一台zookeeper做</span>
+<span class="nb">echo</span> <span class="s2">&#34;2&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第二台zookeeper做</span>
+<span class="nb">echo</span> <span class="s2">&#34;3&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第三台zookeeper做</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>myid請務必要與zoo.cfg設定一樣</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/AWlnjAS.png"
+        data-srcset="https://i.imgur.com/AWlnjAS.png, https://i.imgur.com/AWlnjAS.png 1.5x, https://i.imgur.com/AWlnjAS.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/AWlnjAS.png"
+        title="https://i.imgur.com/AWlnjAS.png" /></p>
+<h3 id="19-修改環境變數">19. 修改環境變數</h3>
+<ol>
+<li>編輯.bashrc</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano ~/.bashrc
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>新增環境變數</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">ZOOKEEPER_HOME</span><span class="o">=</span>/usr/local/zookeeper
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ZOOKEEPER_HOME</span>/bin  
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/JfKYvX2.png"
+        data-srcset="https://i.imgur.com/JfKYvX2.png, https://i.imgur.com/JfKYvX2.png 1.5x, https://i.imgur.com/JfKYvX2.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/JfKYvX2.png"
+        title="https://i.imgur.com/JfKYvX2.png" /></p>
+<ol start="3">
+<li>載入環境變數</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> ~/.bashrc <span class="c1"># . ~/.bashrc</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="20-啟動zookeeper三台電腦均要啟動">20. 啟動ZooKeeper(三台電腦均要啟動)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">zkServer.sh start
+zkServer.sh status
+jps
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/8U2BwW6.png"
+        data-srcset="https://i.imgur.com/8U2BwW6.png, https://i.imgur.com/8U2BwW6.png 1.5x, https://i.imgur.com/8U2BwW6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/8U2BwW6.png"
+        title="https://i.imgur.com/8U2BwW6.png" /></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">*只有一台啟動時候，查看狀態會說It is probably not running.代表目前沒有其他zookeeper溝通＊</div>
+        </div>
+    </div>
+<h3 id="21-依序停止下列服務">21. 依序停止下列服務</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#停止Historyserver </span>
+mapred --daemon stop historyserver
+<span class="c1">#停止ResoureManager</span>
+stop-yarn.sh 
+<span class="c1">#停止NameNode</span>
+stop-dfs.sh
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-新增hdfs-sitexml並scp到其他台電腦">22. 新增hdfs-site.xml，並SCP到其他台電腦</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Tpppyzd.png"
+        data-srcset="https://i.imgur.com/Tpppyzd.png, https://i.imgur.com/Tpppyzd.png 1.5x, https://i.imgur.com/Tpppyzd.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Tpppyzd.png"
+        title="https://i.imgur.com/Tpppyzd.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--新增 --&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.automatic-failover.enabled<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23-新增core-sitexml並scp到其他台電腦">23. 新增core-site.xml，並SCP到其他台電腦</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/core-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/RwrXFIk.png"
+        data-srcset="https://i.imgur.com/RwrXFIk.png, https://i.imgur.com/RwrXFIk.png 1.5x, https://i.imgur.com/RwrXFIk.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/RwrXFIk.png"
+        title="https://i.imgur.com/RwrXFIk.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--新增 --&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>ha.zookeeper.quorum<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>master1.example.org:2181,master2.example.org:2181,master3.example.org:2181<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="24-namenode限定">24. NameNode限定</h3>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>Danger<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>只能在啟動 NameNode 上的機器執行 !!</em></div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs zkfc -formatZK
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/c3X1cZa.png"
+        data-srcset="https://i.imgur.com/c3X1cZa.png, https://i.imgur.com/c3X1cZa.png 1.5x, https://i.imgur.com/c3X1cZa.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/c3X1cZa.png"
+        title="https://i.imgur.com/c3X1cZa.png" /></p>
+<div class="details admonition Success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i><i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>請確認出現Successfully created /hadoop-ha/nncluster in ZK字樣</strong></div>
+        </div>
+    </div>
+<h3 id="25-啟動namenodenamenode限定">25. 啟動NameNode(NameNode限定)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-dfs.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/PXk8Lwq.png"
+        data-srcset="https://i.imgur.com/PXk8Lwq.png, https://i.imgur.com/PXk8Lwq.png 1.5x, https://i.imgur.com/PXk8Lwq.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/PXk8Lwq.png"
+        title="https://i.imgur.com/PXk8Lwq.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>系統將會自動啟動DFSZKFailoverController服務</strong></div>
+        </div>
+    </div>
+<h3 id="26-測試namenode故障自動轉移namenode限定">26. 測試NameNode故障自動轉移(NameNode限定)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon stop namenode
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Y6H2Ts4.png"
+        data-srcset="https://i.imgur.com/Y6H2Ts4.png, https://i.imgur.com/Y6H2Ts4.png 1.5x, https://i.imgur.com/Y6H2Ts4.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Y6H2Ts4.png"
+        title="https://i.imgur.com/Y6H2Ts4.png" /></p>
+<h3 id="27-新增及刪除yarn-sitexml並scp到其他台電腦">27. 新增及刪除yarn-site.xml，並SCP到其他台電腦</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/2542fsi.png"
+        data-srcset="https://i.imgur.com/2542fsi.png, https://i.imgur.com/2542fsi.png 1.5x, https://i.imgur.com/2542fsi.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/2542fsi.png"
+        title="https://i.imgur.com/2542fsi.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--刪除property --&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+<span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="c">&lt;!--新增property --&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.enabled<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.cluster-id<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>rmcluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.rm-ids<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>rm1,rm2<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm2<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test30.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test31.example.org:8088<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:8088<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.recovery.enabled<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.store.class<span class="nt">&lt;/name&gt;</span>	         
+  <span class="nt">&lt;value&gt;</span>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.zk-address<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test32.example.org:2181,test33.example.org:2181,test34.example.org:2181<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="28-依序啟動下列服務">28. 依序啟動下列服務</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#啟動ResoureManager</span>
+start-yarn.sh 
+<span class="c1">#啟動Historyserver </span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="29-測試resourcemanager故障自動轉移resourcemanager限定">29. 測試ResourceManager故障自動轉移(Resourcemanager限定)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yarn --daemon stop resourcemanager
+yarn rmadmin -getServiceState rm1
+yarn rmadmin -getServiceState rm2
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/FkLwtmR.png"
+        data-srcset="https://i.imgur.com/FkLwtmR.png, https://i.imgur.com/FkLwtmR.png 1.5x, https://i.imgur.com/FkLwtmR.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/FkLwtmR.png"
+        title="https://i.imgur.com/FkLwtmR.png" /></p>
+<hr>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>如果有修改Spark-defaults.conf運行程式載入Jar檔，請記得修訂</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/spark/conf/spark-defaults.conf
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/JLblhkX.png"
+        data-srcset="https://i.imgur.com/JLblhkX.png, https://i.imgur.com/JLblhkX.png 1.5x, https://i.imgur.com/JLblhkX.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/JLblhkX.png"
+        title="https://i.imgur.com/JLblhkX.png" /></p>
+</div>
+        </div>
+    </div>
+<h3 id="附錄---服務開啟及關閉">附錄 - 服務開啟及關閉</h3>
+<ol>
+<li>Hadoop 服務開啟 （啟用 HA)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#ZooKeeper啟動</span>
+zkServer.sh start
+
+<span class="c1">#NameNode啟動</span>
+start-dfs.sh
+
+<span class="c1">#ResourceManager啟動</span>
+start-yarn.sh
+
+<span class="c1">#Historyserver啟動</span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Hadoop 服務關閉 （啟用 HA)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Historyserver停止</span>
+mapred --daemon stop historyserver
+
+<span class="c1">#ResourceManager停止</span>
+stop-yarn.sh
+
+<span class="c1">#NameNode停止</span>
+stop-dfs.sh
+
+
+<span class="c1">#ZooKeeper停止</span>
+zkServer.sh stop
+</code></pre></td></tr></table>
+</div>
+</div></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fhadoop%2f2021%2fhadoop-high-availability%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hadoop/">Hadoop</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/hadoop/2021/hadoop-spark-jupyter/" class="prev" rel="prev" title="Hadoop - Spark &#43; Jupyter 應用程式安裝"><i class="fas fa-angle-left fa-fw"></i>Hadoop - Spark &#43; Jupyter 應用程式安裝</a>
+            <a href="/posts/hadoop/2021/hadoop-spark-on-r/" class="next" rel="next" title="Hadoop - Spark on R 配置">Hadoop - Spark on R 配置<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

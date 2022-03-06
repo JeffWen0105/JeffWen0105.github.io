@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Hadoop - 偽分布式安裝步驟 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Hadoop - 偽分布式安裝步驟" />
+<meta property="og:description" content="Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/hadoop/2021/hadoop-pseudo-mode/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-11T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hadoop - 偽分布式安裝步驟"/>
+<meta name="twitter:description" content="Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-pseudo-mode/" /><link rel="prev" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-spark-on-r/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/base-network/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hadoop - 偽分布式安裝步驟",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/hadoop\/2021\/hadoop-pseudo-mode\/"
+        },"genre": "posts","keywords": "Hadoop","wordcount":  1430 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/hadoop\/2021\/hadoop-pseudo-mode\/","datePublished": "2021-02-11T00:00:00+00:00","dateModified": "2021-02-11T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hadoop - 偽分布式安裝步驟</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hadoop/"><i class="far fa-folder fa-fw"></i>Hadoop</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-11">2021-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1430 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-基本資訊">0. 基本資訊</a></li>
+    <li><a href="#1-建置步驟---偽分布式安裝">1. 建置步驟 - 偽分布式安裝：</a>
+      <ul>
+        <li><a href="#1-安裝pip管理者身份">1. 安裝pip(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#2-建立hadoop帳號管理者身份">2. 建立hadoop帳號(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#3-安裝openjdk8管理者身份">3. 安裝OpenJDK8(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#4-建立無密碼loginhadoop身份">4. 建立無密碼login(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#5--建立linux-hotsts名單管理者身份">5.  建立Linux hotsts名單(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#6-下載及安裝hadoop管理者身份">6. 下載及安裝hadoop(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#7-設定hadoop使用者環境變數-hadoop身份">7. 設定hadoop使用者環境變數 (<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#8-更改-hadoop運行程式時環境腳本hadoop身份">8. 更改 Hadoop運行程式時環境腳本(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#9-更改-hadoop-core-sitexmlhadoop身份">9. 更改 Hadoop core-site.xml(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#10-更改-hadoop-mapred-sitexmlhadoop身份">10. 更改 Hadoop mapred-site.xml(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#11-更改-hadoop-yarn-sitexmlhadoop身份">11. 更改 Hadoop yarn-site.xml(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#12-更改hadoop-hdfs-sitexmlhadoop身份">12. 更改Hadoop hdfs-site.xml(<strong>Hadoop身份</strong>)</a></li>
+        <li><a href="#13-建立hadoop-worker檔管理者身份">13. 建立Hadoop worker檔(<strong>管理者身份</strong>)</a></li>
+        <li><a href="#14--namenode-formathadoop身份">14.  Namenode format(<strong>hadoop身份</strong>)</a></li>
+        <li><a href="#15-啟動hdfshadoop身份">15. 啟動hdfs(<strong>hadoop身份</strong>)</a></li>
+        <li><a href="#16-啟動yarnhadoop身份">16. 啟動yarn(<strong>hadoop身份</strong>)</a></li>
+        <li><a href="#17-啟動history-serverhadoop身份">17. 啟動History Server(<strong>hadoop身份</strong>)</a></li>
+        <li><a href="#18-檢查啟動的java程式">18. 檢查啟動的Java程式</a></li>
+        <li><a href="#19-跑個pi-測試一下mapreduce-hadoop身份">19. 跑個pi 測試一下mapreduce (<strong>hadoop身份</strong>)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力</p>
+<h2 id="0-基本資訊">0. 基本資訊</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>Hadoop三種模式:</li>
+</ul>
+<ol>
+<li>單機模式(Standalone Mode):
+<ul>
+<li>這種模式下不會於啟動任何背景Java程式，此模式適合開發測試及除錯。</li>
+</ul>
+</li>
+<li>偽分佈式模式(Pseudo-Distributed Mode)
+<ul>
+<li>Hadoop中的背景Java程式均運行於本機節點，可以模擬小規模的叢集。</li>
+</ul>
+</li>
+<li>完全分佈式模式(Fully-Distributed Mode)
+<ul>
+<li>Hadoop中的背景Java程式運行數個主機上。</li>
+</ul>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
+<p>差異表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">屬性</th>
+<th style="text-align:center">偽分佈式模式</th>
+<th style="text-align:center">完全分佈式模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">fs.defaultFS</td>
+<td style="text-align:center">file:///</td>
+<td style="text-align:center">hdfs:///</td>
+</tr>
+<tr>
+<td style="text-align:center">dfs.replication</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">mapreduce .framework.name</td>
+<td style="text-align:center">yarn</td>
+<td style="text-align:center">yarn</td>
+</tr>
+<tr>
+<td style="text-align:center">yarn.resourcemanager.hostname</td>
+<td style="text-align:center">localhost</td>
+<td style="text-align:center">resourcemanager</td>
+</tr>
+<tr>
+<td style="text-align:center">yarn.nodemanager.auxervices</td>
+<td style="text-align:center">mapreduce_shuffle</td>
+<td style="text-align:center">mapreduce_shuffle</td>
+</tr>
+</tbody>
+</table>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>偽分布式相對完全分佈式相對容易且簡單，資源要求也不高</strong></p>
+<p>基本: 2 Cores 、 4G memory</p>
+</div>
+        </div>
+    </div>
+<hr>
+<h2 id="1-建置步驟---偽分布式安裝">1. 建置步驟 - 偽分布式安裝：</h2>
+<h3 id="1-安裝pip管理者身份">1. 安裝pip(<strong>管理者身份</strong>)</h3>
+<ol>
+<li>安裝python開發工具箱</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
+sudo apt install python3-dev
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>安裝pip</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#取得最新版pip腳本</span>
+wget https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="2-建立hadoop帳號管理者身份">2. 建立hadoop帳號(<strong>管理者身份</strong>)</h3>
+<ol>
+<li>hadoop帳號</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo adduser hadoop 
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>檢查是否已經創立</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">grep <span class="s1">&#39;hadoop&#39;</span> /etc/passwd
+grep <span class="s1">&#39;hadoop&#39;</span> /etc/group
+grep <span class="s1">&#39;hadoop&#39;</span> /etc/shadow
+ls -l /home
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-安裝openjdk8管理者身份">3. 安裝OpenJDK8(<strong>管理者身份</strong>)</h3>
+<ol>
+<li>更新倉庫清單</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt update
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>安裝openjdk</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt install openjdk-8-jdk
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>確認jdk及jre版本</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -version
+javac -version
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>建立openjdk環境變數腳本</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /etc/profile.d/jdk.sh
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>編輯openjdk環境變數</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s1">&#39;/usr/lib/jvm/java-8-openjdk-amd64&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/NRulRia.png"
+        data-srcset="https://i.imgur.com/NRulRia.png, https://i.imgur.com/NRulRia.png 1.5x, https://i.imgur.com/NRulRia.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/NRulRia.png"
+        title="https://i.imgur.com/NRulRia.png" /></p>
+<ol start="6">
+<li>重新載入設定檔，並檢查設定是否正確</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> /etc/profile.d/jdk.sh <span class="c1"># . /etc/profile.d/jdk.sh</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-建立無密碼loginhadoop身份">4. 建立無密碼login(<strong>Hadoop身份</strong>)</h3>
+<ol>
+<li>切換hadoop帳號</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">su - hadoop
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>打造ssh公鑰及私鑰</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa 
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>將打造好的公鑰複製一份給hadoop</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-copy-id hadoop@localhost
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>測試一下無密碼登入(不用輸入密碼代表成功了)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh hadoop@localhost
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="5--建立linux-hotsts名單管理者身份">5.  建立Linux hotsts名單(<strong>管理者身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /etc/hosts
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/oZlHEDr.png"
+        data-srcset="https://i.imgur.com/oZlHEDr.png, https://i.imgur.com/oZlHEDr.png 1.5x, https://i.imgur.com/oZlHEDr.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/oZlHEDr.png"
+        title="https://i.imgur.com/oZlHEDr.png" /></p>
+<hr>
+<h3 id="6-下載及安裝hadoop管理者身份">6. 下載及安裝hadoop(<strong>管理者身份</strong>)</h3>
+<ol>
+<li>下載</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span>
+wget http://ftp.tc.edu.tw/pub/Apache/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如果載點失效，請至<a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener noreffer">官網下載~~</a></strong></div>
+        </div>
+    </div>
+<ol start="2">
+<li>解壓縮</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tar -tvf hadoop-3.2.1.tar.gz <span class="c1">#查看一下檔案內容</span>
+tar -xvf hadoop-3.2.1.tar.gz -C /usr/local
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>更名</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mv /usr/local/hadoop-3.2.1 /usr/local/hadoop
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>改變資料夾及檔案擁有者</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chown -R hadoop:hadoop /usr/local/hadoop
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="7-設定hadoop使用者環境變數-hadoop身份">7. 設定hadoop使用者環境變數 (<strong>Hadoop身份</strong>)</h3>
+<ol>
+<li>設定.bashrc</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano ~/.bashrc
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/FdzPaih.png"
+        data-srcset="https://i.imgur.com/FdzPaih.png, https://i.imgur.com/FdzPaih.png 1.5x, https://i.imgur.com/FdzPaih.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/FdzPaih.png"
+        title="https://i.imgur.com/FdzPaih.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Set HADOOP_HOME</span>
+<span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop
+<span class="c1"># Set HADOOP_MAPRED_HOME</span>
+<span class="nb">export</span> <span class="nv">HADOOP_MAPRED_HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">HADOOP_HOME</span><span class="si">}</span> 
+<span class="c1"># Add Hadoop bin and sbin directory to PATH</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$HADOOP_HOME</span>/sbin
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>重新載入設定檔</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> ~/.bashrc  <span class="c1"># . .bashrc</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>查看環境變數
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/o9tQbvl.png"
+        data-srcset="https://i.imgur.com/o9tQbvl.png, https://i.imgur.com/o9tQbvl.png 1.5x, https://i.imgur.com/o9tQbvl.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/o9tQbvl.png"
+        title="https://i.imgur.com/o9tQbvl.png" /></li>
+</ol>
+<hr>
+<h3 id="8-更改-hadoop運行程式時環境腳本hadoop身份">8. 更改 Hadoop運行程式時環境腳本(<strong>Hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/SaJCOJS.png"
+        data-srcset="https://i.imgur.com/SaJCOJS.png, https://i.imgur.com/SaJCOJS.png 1.5x, https://i.imgur.com/SaJCOJS.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/SaJCOJS.png"
+        title="https://i.imgur.com/SaJCOJS.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-8-openjdk-amd64
+<span class="nb">export</span> <span class="nv">HADOOP_HOME</span><span class="o">=</span>/usr/local/hadoop
+<span class="nb">export</span> <span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span>/usr/local/hadoop/etc/hadoop
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="9-更改-hadoop-core-sitexmlhadoop身份">9. 更改 Hadoop core-site.xml(<strong>Hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/core-site.xml 
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/0TdOD3O.png"
+        data-srcset="https://i.imgur.com/0TdOD3O.png, https://i.imgur.com/0TdOD3O.png 1.5x, https://i.imgur.com/0TdOD3O.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/0TdOD3O.png"
+        title="https://i.imgur.com/0TdOD3O.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>hadoop.tmp.dir<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>/home/hadoop/data<span class="nt">&lt;/value&gt;</span>
+   <span class="nt">&lt;description&gt;</span>Temporary Directory.<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>hdfs://bdse.example.org<span class="nt">&lt;/value&gt;</span>
+   <span class="nt">&lt;description&gt;</span>Use HDFS as file storage engine<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>Hadoop 3.2.0版之後有檢查語法指令</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop conftest
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/k8nk5y2.png"
+        data-srcset="https://i.imgur.com/k8nk5y2.png, https://i.imgur.com/k8nk5y2.png 1.5x, https://i.imgur.com/k8nk5y2.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/k8nk5y2.png"
+        title="https://i.imgur.com/k8nk5y2.png" /></p>
+</div>
+        </div>
+    </div>
+<hr>
+<h3 id="10-更改-hadoop-mapred-sitexmlhadoop身份">10. 更改 Hadoop mapred-site.xml(<strong>Hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/mapred-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/fbKcXe0.png"
+        data-srcset="https://i.imgur.com/fbKcXe0.png, https://i.imgur.com/fbKcXe0.png 1.5x, https://i.imgur.com/fbKcXe0.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/fbKcXe0.png"
+        title="https://i.imgur.com/fbKcXe0.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+       <span class="nt">&lt;name&gt;</span>mapreduce.framework.name<span class="nt">&lt;/name&gt;</span>
+       <span class="nt">&lt;value&gt;</span>yarn<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+       <span class="nt">&lt;name&gt;</span>mapreduce.jobhistory.address<span class="nt">&lt;/name&gt;</span>
+       <span class="nt">&lt;value&gt;</span>bdse.example.org:10020<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+       <span class="nt">&lt;name&gt;</span>mapreduce.jobhistory.webapp.address<span class="nt">&lt;/name&gt;</span>
+       <span class="nt">&lt;value&gt;</span>bdse.example.org:19888<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="11-更改-hadoop-yarn-sitexmlhadoop身份">11. 更改 Hadoop yarn-site.xml(<strong>Hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/yarn-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/KWTS3L6.png"
+        data-srcset="https://i.imgur.com/KWTS3L6.png, https://i.imgur.com/KWTS3L6.png 1.5x, https://i.imgur.com/KWTS3L6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/KWTS3L6.png"
+        title="https://i.imgur.com/KWTS3L6.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>mapreduce_shuffle<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>yarn.nodemanager.env-whitelist<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>bdse.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>	
+
+<span class="c">&lt;!-- 最大核心數可以依使用需求修改（預設max=4）
+</span><span class="c">
+</span><span class="c">&lt;property&gt;
+</span><span class="c">   &lt;name&gt;yarn.scheduler.maximum-allocation-vcores&lt;/name&gt;
+</span><span class="c">   &lt;value&gt;2&lt;/value&gt;
+</span><span class="c">&lt;/property&gt;
+</span><span class="c">
+</span><span class="c">--&gt;</span>
+
+<span class="c">&lt;!-- 最大記憶體依使用需求修改（預設max=8192）
+</span><span class="c">
+</span><span class="c">&lt;property&gt;
+</span><span class="c">   &lt;name&gt;yarn.scheduler.maximum-allocation-mb&lt;/name&gt;
+</span><span class="c">   &lt;value&gt;4096&lt;/value&gt;
+</span><span class="c">&lt;/property&gt;
+</span><span class="c">
+</span><span class="c">--&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="12-更改hadoop-hdfs-sitexmlhadoop身份">12. 更改Hadoop hdfs-site.xml(<strong>Hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/oVJnLVh.png"
+        data-srcset="https://i.imgur.com/oVJnLVh.png, https://i.imgur.com/oVJnLVh.png 1.5x, https://i.imgur.com/oVJnLVh.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/oVJnLVh.png"
+        title="https://i.imgur.com/oVJnLVh.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>dfs.permissions.superusergroup<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>hadoop<span class="nt">&lt;/value&gt;</span>
+   <span class="nt">&lt;description&gt;</span>The name of the group of super-users. The value should be a single group name.<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+   <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
+   <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+   <span class="nt">&lt;description&gt;</span>Default block replication. The actual number of replications can be specified when the file is created. The default is used if replication is not specified in create time.<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="13-建立hadoop-worker檔管理者身份">13. 建立Hadoop worker檔(<strong>管理者身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/workers
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/DgAhgdI.png"
+        data-srcset="https://i.imgur.com/DgAhgdI.png, https://i.imgur.com/DgAhgdI.png 1.5x, https://i.imgur.com/DgAhgdI.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/DgAhgdI.png"
+        title="https://i.imgur.com/DgAhgdI.png" /></p>
+<ul>
+<li>校長兼工友的概念</li>
+</ul>
+<hr>
+<h3 id="14--namenode-formathadoop身份">14.  Namenode format(<strong>hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -format 
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="15-啟動hdfshadoop身份">15. 啟動hdfs(<strong>hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-dfs.sh 
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/QFJH83m.png"
+        data-srcset="https://i.imgur.com/QFJH83m.png, https://i.imgur.com/QFJH83m.png 1.5x, https://i.imgur.com/QFJH83m.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/QFJH83m.png"
+        title="https://i.imgur.com/QFJH83m.png" /></p>
+<hr>
+<h3 id="16-啟動yarnhadoop身份">16. 啟動yarn(<strong>hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-yarn.sh 
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/zMkms3i.png"
+        data-srcset="https://i.imgur.com/zMkms3i.png, https://i.imgur.com/zMkms3i.png 1.5x, https://i.imgur.com/zMkms3i.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/zMkms3i.png"
+        title="https://i.imgur.com/zMkms3i.png" /></p>
+<hr>
+<h3 id="17-啟動history-serverhadoop身份">17. 啟動History Server(<strong>hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mapred --daemon start historyserver
+<span class="c1">#mr-jobhistory-daemon.sh start historyserver (deprecated)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/3qOJtzW.png"
+        data-srcset="https://i.imgur.com/3qOJtzW.png, https://i.imgur.com/3qOJtzW.png 1.5x, https://i.imgur.com/3qOJtzW.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/3qOJtzW.png"
+        title="https://i.imgur.com/3qOJtzW.png" /></p>
+<hr>
+<h3 id="18-檢查啟動的java程式">18. 檢查啟動的Java程式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">jps
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/mNEFV3N.png"
+        data-srcset="https://i.imgur.com/mNEFV3N.png, https://i.imgur.com/mNEFV3N.png 1.5x, https://i.imgur.com/mNEFV3N.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/mNEFV3N.png"
+        title="https://i.imgur.com/mNEFV3N.png" /></p>
+<h3 id="19-跑個pi-測試一下mapreduce-hadoop身份">19. 跑個pi 測試一下mapreduce (<strong>hadoop身份</strong>)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/AVmxAeq.png"
+        data-srcset="https://i.imgur.com/AVmxAeq.png, https://i.imgur.com/AVmxAeq.png 1.5x, https://i.imgur.com/AVmxAeq.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/AVmxAeq.png"
+        title="https://i.imgur.com/AVmxAeq.png" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/XgP9SCA.png"
+        data-srcset="https://i.imgur.com/XgP9SCA.png, https://i.imgur.com/XgP9SCA.png 1.5x, https://i.imgur.com/XgP9SCA.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/XgP9SCA.png"
+        title="https://i.imgur.com/XgP9SCA.png" /></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><strong>會自動建立hadoop的目錄</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/U1AlSHk.png"
+        data-srcset="https://i.imgur.com/U1AlSHk.png, https://i.imgur.com/U1AlSHk.png 1.5x, https://i.imgur.com/U1AlSHk.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/U1AlSHk.png"
+        title="https://i.imgur.com/U1AlSHk.png" /></p>
+</div>
+        </div>
+    </div></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fhadoop%2f2021%2fhadoop-pseudo-mode%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hadoop/">Hadoop</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/hadoop/2021/hadoop-spark-on-r/" class="prev" rel="prev" title="Hadoop - Spark on R 配置"><i class="fas fa-angle-left fa-fw"></i>Hadoop - Spark on R 配置</a>
+            <a href="/posts/ccna/2022/base-network/" class="next" rel="next" title="NetWork - 網路基礎介紹">NetWork - 網路基礎介紹<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
