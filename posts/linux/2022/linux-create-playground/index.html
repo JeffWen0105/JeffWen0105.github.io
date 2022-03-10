@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3298 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  3322 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-03-05T00:00:00+00:00","dateModified": "2022-03-05T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -77,7 +77,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 打造輕巧 Linux 練習 Lab</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3298 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3322 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -99,7 +99,7 @@
       <ul>
         <li><a href="#51-bastion-主控機">5.1 Bastion 主控機</a>
           <ul>
-            <li><a href="#511-rhel-vmctl-管理工具介紹">5.1.1 rhel-vmctl 管理工具介紹</a></li>
+            <li><a href="#511-rht-vmctl-管理工具介紹">5.1.1 rht-vmctl 管理工具介紹</a></li>
             <li><a href="#511-啟動虛擬機">5.1.1 啟動虛擬機</a>
               <ul>
                 <li><a href="#5111-啟動全部虛擬機器">5.1.1.1 啟動全部虛擬機器</a></li>
@@ -294,7 +294,7 @@
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><em>預設使用橋接式網路，可以直接從宿主機器 SSH 訪問 bastion 虛擬機。</em></p>
-<p><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便請可以使用複製貼上。</strong></p>
+<p><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上等功能。</strong></p>
 </div>
         </div>
     </div>
@@ -348,7 +348,7 @@
         alt="https://i.imgur.com/JpOCfBk.png"
         title="https://i.imgur.com/JpOCfBk.png" /></p>
 <ol start="9">
-<li>如出現上一步狀態，需切換至 VirtuallBox 資料夾後透過命令列方式啟動巢狀式虛擬化，指令如下</li>
+<li>如出現上一步狀態，需切換至 VirtuallBox 資料夾(<em>VirtuallBox檔案安裝路徑</em>)後透過命令列方式啟動巢狀式虛擬化，指令如下</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -405,13 +405,13 @@
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便請可以使用複製貼上。</strong></div>
+            <div class="admonition-content"><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上功能。</strong></div>
         </div>
     </div>
 <hr>
 <h2 id="5-練習環境操作">5. 練習環境操作</h2>
 <h3 id="51-bastion-主控機">5.1 Bastion 主控機</h3>
-<h4 id="511-rhel-vmctl-管理工具介紹">5.1.1 rhel-vmctl 管理工具介紹</h4>
+<h4 id="511-rht-vmctl-管理工具介紹">5.1.1 rht-vmctl 管理工具介紹</h4>
 <p>Bastion 主控機主要為啟停四台虛擬機或還原四台虛擬機初始設定</p>
 <div class="details admonition danger open">
         <div class="details-summary admonition-title">
@@ -421,7 +421,7 @@
             <div class="admonition-content"><em>Bastion 主控機主要做為跳板機及控制虛擬機功能，裡面很多套件都被移除，請勿在此機器上執行其它操作，該機器無法自動還原 ..</em></div>
         </div>
     </div>
-<p>透過 HowHow 的工具可以快速協助使用者可以簡單操作，使用 student 帳號，並透過 rht-vmctl  腳本進行相關作業</p>
+<p><strong>透過 HowHow 的工具可以快速協助使用者可以簡單操作，使用 student 帳號，並透過 rht-vmctl  腳本進行相關作業</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -968,7 +968,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <p>如要重置該虛擬機，需至 bastion 主控機執行 rht-vmctl reset 指令</p>
 </li>
 <li>
-<p>四台虛擬機只有 workstation 已經配置好 yum 倉庫來源，其餘三台需自行配置，如急需使用可以透過下方指令操作</p>
+<p>四台虛擬機只有 workstation 已經配置好 yum 倉庫來源，其餘三台需自行配置(<em>設計用來練習</em>)，如急需使用可以透過下方指令操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1102,7 +1102,7 @@ ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</s
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><strong>Bastion 那一台虛擬機請勿隨意更改配置，此機器無法透過指令還原，可能會導致整個環境不可用!!</strong></p>
-<p><em>如果不幸發生 Bastion 無法正常啟用，請在 VMware / VirtuallBox 將機器刪除，重新至網路下載乾淨的映象檔再從新安裝匯入。</em></p>
+<p><em>如果不幸發生 Bastion 無法正常啟用，請在 VMware / VirtuallBox 將機器刪除，重新至 Google 雲端硬碟上下載再從新安裝匯入。</em></p>
 </div>
         </div>
     </div>

@@ -35,6 +35,13 @@
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
 </item><item>
+    <title>Linux - Chmod 工具管理檔案/目錄權限</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</link>
+    <pubDate>Thu, 10 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</guid>
+    <description><![CDATA[<p>多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。</p>]]></description>
+</item><item>
     <title>Docker -  CMD 與 ENTRYPOINT 差別</title>
     <link>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</link>
     <pubDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</pubDate>
@@ -73,13 +80,5 @@
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/vbsNLVT.jpg) -->
 <p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>]]></description>
-</item><item>
-    <title>Linux - 檔案及目錄權限</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-permission-file/</link>
-    <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-permission-file/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/6R2S2vO.jpg) -->
-<p>Linux 檔案及權限管理，時常遇見的問題。</p>]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - Chmod 工具管理檔案/目錄權限 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - Chmod 工具管理檔案/目錄權限" />
+<meta property="og:description" content="多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - Chmod 工具管理檔案/目錄權限"/>
+<meta name="twitter:description" content="多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/" /><link rel="prev" href="https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - Chmod 工具管理檔案/目錄權限",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-chmod-permission-tool\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  2357 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-chmod-permission-tool\/","datePublished": "2022-02-10T00:00:00+00:00","dateModified": "2022-02-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - Chmod 工具管理檔案/目錄權限</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-10">2022-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2357 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-chmod-基本用法">1. chmod 基本用法</a>
+      <ul>
+        <li><a href="#11-方式一-參數組合">1.1 方式一 （參數組合）</a></li>
+        <li><a href="#12-方式二-數字表示設定">1.2 方式二 （數字表示設定）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-chmod-進階參數">2. chmod 進階參數</a></li>
+    <li><a href="#3-chmod-特殊權限">3. chmod 特殊權限</a>
+      <ul>
+        <li><a href="#31-特殊權限----suid">3.1 特殊權限 -  suid</a></li>
+        <li><a href="#31-特殊權限----sgid">3.1 特殊權限 -  sgid</a></li>
+        <li><a href="#31-特殊權限----sticky">3.1 特殊權限 -  sticky</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-chmod--r--x-">4. chmod -R + X ？</a></li>
+    <li><a href="#5-umask-權限遮罩">5. umask 權限遮罩</a>
+      <ul>
+        <li><a href="#51-umask-作用及原理">5.1 umask 作用及原理</a></li>
+        <li><a href="#52-永久配置-umask">5.2 永久配置 umask</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-小結">6. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。</p>
+<h2 id="1-chmod-基本用法">1. chmod 基本用法</h2>
+<p>chmod 工具可以針對目錄或是檔案進行設定，其設定權限方式有兩種：</p>
+<ol>
+<li>透過參數組合設定所需的權限 (簡易直覺，參數比較多)</li>
+<li>將所需的權限使用數字表示設定 (進階，熟悉使用後快速)</li>
+</ol>
+<h3 id="11-方式一-參數組合">1.1 方式一 （參數組合）</h3>
+<table>
+<thead>
+<tr>
+<th>第一組參數</th>
+<th>第二組參數</th>
+<th>第三組參數</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u   (User)</td>
+<td>+   (Append)</td>
+<td>x    （執行）</td>
+</tr>
+<tr>
+<td>g   (Group)</td>
+<td>-  (Delete)</td>
+<td>r    （讀取）</td>
+</tr>
+<tr>
+<td>o   (Other)</td>
+<td>=   (Equal)</td>
+<td>w    （寫入）</td>
+</tr>
+<tr>
+<td>a    (ALL)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>例如: test 檔案要讓 User 及 Group 擁有 x （執行）權限:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod u+x,g+x <span class="nb">test</span>
+total <span class="m">4</span>
+-rwxrwxr--. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:12 <span class="nb">test</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>透過上述的排列組合，可以自由搭配來設定檔案或是目錄權限</p>
+<h3 id="12-方式二-數字表示設定">1.2 方式二 （數字表示設定）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">r 代表4 , w 代表 2 , x 代表 1 ，每三個數字為一組相加 
+-rwxrwxrwx 
+ 421421421
+ 
+將上述權限轉成數字就變成 7(4+2+1)7(4+2+1)7(4+2+1) -&gt; 777
+
+-rw-r--r--
+ 420400400
+ 
+將上述權限轉成數字就變成 6(4+2+0)4(4+0+0)4(4+0+0) -&gt; 644
+</code></pre></td></tr></table>
+</div>
+</div><p>例如: test2 檔案所有人都可以執行跟讀取，另限定只有 user 才有寫入權限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod <span class="m">755</span> test2
+total <span class="m">4</span>
+-rwxr-xr-x. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:15 test2
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="2-chmod-進階參數">2. chmod 進階參數</h2>
+<ul>
+<li>v: 顯示詳細執行訊息</li>
+<li>R: 遞迴處理</li>
+</ul>
+<p>有個 main 主目錄，底下有多個子目錄及檔案，要統一進行權限修改，可以透過 chmod 指令一個一個重複執行，不過該作法非常沒有效率，藉由 Recursive(遞迴) 方式快速能夠完成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ tree main/
+main/
+├── aa
+│   ├── inside
+│   │   └── exec.sh
+│   └── other.sh
+└── bb
+    ├── inside
+    │   └── exec.sh
+    └── other.sh
+
+<span class="m">4</span> directories, <span class="m">4</span> files
+</code></pre></td></tr></table>
+</div>
+</div><p>將上述所有的目錄及檔案都改成 755 權限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod -Rv <span class="m">755</span> main/
+mode of <span class="s1">&#39;main/&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="3-chmod-特殊權限">3. chmod 特殊權限</h2>
+<p>passwd 變更密碼這指令只有 root 管理員才能操作，為什麼一般使用者也能透過該指令變更自己的密碼呢?</p>
+<p>這就要提到所謂的特殊權限功能，其權限列表如下:</p>
+<table>
+<thead>
+<tr>
+<th>特殊權限</th>
+<th>檔案效果</th>
+<th>目錄效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u+s (suid)</td>
+<td>該檔案在執行時，執行程式擁有檔案擁有者的權限。</td>
+<td>無</td>
+</tr>
+<tr>
+<td>g+s (sgid)</td>
+<td>該檔案在執行時，執行程式擁有檔案群組的權限。</td>
+<td>所有在此目錄下新創建的目錄會自動繼承主目錄的 group 權限，並且檔案會自動等於主目錄群組的擁有者。</td>
+</tr>
+<tr>
+<td>t+s (sticky)</td>
+<td>無</td>
+<td>在此目錄下只有該檔案的擁有者，才有權限刪除檔案。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="31-特殊權限----suid">3.1 特殊權限 -  suid</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -l /usr/bin/passwd
+-rwsr-xr-x. <span class="m">1</span> root root <span class="m">33544</span> Mar <span class="m">15</span>  <span class="m">2021</span> /usr/bin/passwd
+</code></pre></td></tr></table>
+</div>
+</div><p>上方權限 user 原本是 x 執行權限變成 s ，表示該檔案為 suid ，在執行時候會自動提升權力使程式可以擁有 root 權力，所以才能變更自己的密碼。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>在所有特殊權限規則，因為 x (執行) 被遮蔽，只要是小寫的 s 表示背後擁有 x (執行) 權限 ， 大寫的 s 則沒有(執行) 權限，需注意。</strong></div>
+        </div>
+    </div>
+<h3 id="31-特殊權限----sgid">3.1 特殊權限 -  sgid</h3>
+<p>什麼是檔案繼承主目錄群組的擁有者呢 ? 下方有一個目錄名稱 sgid (user: test , group: tests ) 其 group 原本是 x 執行權限變成 s。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -ld sgid/
+drwxr-sr-x. <span class="m">2</span> <span class="nb">test</span> tests <span class="m">6</span> Feb <span class="m">10</span> 13:45 sgid/
+</code></pre></td></tr></table>
+</div>
+</div><p>在 sgid 底下新增一個檔案 example， 檔案的 group 會從原本的 test 自動改寫成 tests</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -l sgid/example 
+-rw-rw-r--. <span class="m">1</span> <span class="nb">test</span> tests <span class="m">0</span> Feb <span class="m">10</span> 13:49 sgid/example
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="31-特殊權限----sticky">3.1 特殊權限 -  sticky</h3>
+<p>這個用法主要在 /tmp 目錄下，任何人都可以訪問 /tmp 目錄並且創建刪除檔案，假設今天 John 的某支程式在 /tmp 底下輸出一個執行暫存檔 joho_helper.json ， 他的仇人 Amy　剛好也在/tmp目錄下看到一氣之下就把檔案給刪除了；如果沒有特殊權限保護機制，一旦把檔案刪除的話，那 John 的程式可能就會失敗中斷 &hellip; 所以 sticky 就發揮出功能了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -ld /tmp
+drwxrwxrwt. <span class="m">10</span> root root <span class="m">275</span> Feb <span class="m">10</span> 13:49 /tmp
+</code></pre></td></tr></table>
+</div>
+</div><p>上方權限 other 原本是 x 執行權限變成 t ，表示該檔案為 sticky ，雖然任何能都自由進出創建檔案在該目錄下，不過只有該檔案的擁有者才有權限刪除。</p>
+<p>例如: test 使用者 程式建立的檔案 ， test4 使用者就沒有權限執行刪除</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[test4@servera ~]$ ls -l /tmp/test-owner.log 
+-rwxrwxrwx. 1 test test 0 Feb 10 13:59 /tmp/test-owner.log
+[test4@servera ~]$ rm -f /tmp/test-owner.log 
+rm: cannot remove &#39;/tmp/test-owner.log&#39;: Operation not permitted
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>上述例子就算檔案權限是 777 也沒辦法刪除，主是是能否刪除及創建檔案的權限規範並不在檔案上，是規範在目錄的 w (寫入) 權限上， 檔案的 w (寫入) 權限只針對裡面內容增刪而已，這一點要特別注意 !!</strong></div>
+        </div>
+    </div>
+<hr>
+<h2 id="4-chmod--r--x-">4. chmod -R + X ？</h2>
+<p>有時候會看到 chmod 遞迴時搭配 大寫的 X 執行，這是什麼意思？</p>
+<p>在 man 文件裡面的解說:  execute/search only if the file is a directory or already has execute permission for some user (<strong>X</strong>)</p>
+<p>其實簡單講法就是避免執行遞迴時讓全部目錄及檔案在授權 x (執行) 權限時，把一些重要的或是本來就不該變成可以執行權限的檔案通通改成可以執行。</p>
+<p>例如: 在 file 資料夾內，有兩個檔案 a 及 exec ，原本只有 exec 才有執行權限， a 就只是一般檔案， 使用一般的小寫 x 執行 <code>chmod -R +x file</code> ， a 就莫名的變成有執行權限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+x file/
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>改成使用大寫 X 情況就會不一樣了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+X file/
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述就可以看到原本 exec 檔案的 user 就有 x (執行) 權限，所以執行 a + X ，擁有人都可以擁有執行權限，不過 a 檔案預設就是沒有任何執行權限，就算執行 a + X 也不會自動取得執行權限。</p>
+<hr>
+<h2 id="5-umask-權限遮罩">5. umask 權限遮罩</h2>
+<h3 id="51-umask-作用及原理">5.1 umask 作用及原理</h3>
+<p>有沒有想過，為什麼創建檔案後權限會自動產生 644 權限呢？ 目錄會自動產生 755 權限呢？ 其實這與 umask 有很大關係 ~</p>
+<p>在 Linux 系統檔案及目錄預設權限為:</p>
+<table>
+<thead>
+<tr>
+<th>檔案</th>
+<th>目錄</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rw_rw_rw_</td>
+<td>rwxrwxrwx</td>
+</tr>
+</tbody>
+</table>
+<p>預設權限再扣掉使用者的當下 umask 後就會是自動產生的權限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera test<span class="o">]</span><span class="c1"># umask </span>
+<span class="m">0022</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述就可以看到 umask 遮罩會自動扣除 group 及 other 的 w (寫入權限)，所以檔案就自動從原本的 666 ( 扣除 022 ) -&gt; 644 ，目錄從原本的 777 （扣除 022 ） -&gt; 755。</p>
+<h3 id="52-永久配置-umask">5.2 永久配置 umask</h3>
+<p>不過直接執行 umask 只能臨時性變更，登出或是重新開機後又會變回原本的數值，那要如何永久寫入呢?</p>
+<p>對於 root 而言可以配置在 /etc/profile.d/umask.sh 內，並讓所有使用者套用該設定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"># <span class="nx">限制只要是</span> <span class="nx">other</span> <span class="nx">都沒有權限執行</span><span class="err">
+</span><span class="err"></span><span class="nx">umask</span> <span class="m">007</span><span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">*如果一般User不希望使用 root 定好的 umask 值的話，也可以將 umask 寫入自己的 <code>~/.bashrc</code> 或是 <code>~/.bash_profile</code> 內，會覆蓋 root 的 umask，並載入自行設定的</div>
+        </div>
+    </div>
+<hr>
+<h2 id="6-小結">6. 小結</h2>
+<p>權限控管是 Linux 系統中非常重要的一環，好的權限管理才能使系統、資料更安全可用性更高。</p></div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-chmod-permission-tool%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/docker/2022/docker-dockerfile-cmd-entryporint/" class="prev" rel="prev" title="Docker -  CMD 與 ENTRYPOINT 差別"><i class="fas fa-angle-left fa-fw"></i>Docker -  CMD 與 ENTRYPOINT 差別</a>
+            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -35,6 +35,13 @@
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
 </item><item>
+    <title>Linux - Chmod 工具管理檔案/目錄權限</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</link>
+    <pubDate>Thu, 10 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</guid>
+    <description><![CDATA[<p>多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。</p>]]></description>
+</item><item>
     <title>Linux - User and Group 帳號管理</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</link>
     <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
@@ -74,13 +81,5 @@
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-permission-file/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/6R2S2vO.jpg) -->
 <p>Linux 檔案及權限管理，時常遇見的問題。</p>]]></description>
-</item><item>
-    <title>Linux - 設定 SSH Tunneling (Port Forwarding)</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-ssh-tunnel/</link>
-    <pubDate>Tue, 11 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-ssh-tunnel/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/rNQD2xd.jpg) -->
-<p>SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺服器端之間，任何服務阜號均能轉發，可以在防火牆下也能順利通關。</p>]]></description>
 </item></channel>
 </rss>
