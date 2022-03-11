@@ -37,6 +37,20 @@
 <!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
 <p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
 </item><item>
+    <title>Linux - 安全增強式 Linux ( SELinux )</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-selinux/</link>
+    <pubDate>Sat, 12 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-selinux/</guid>
+    <description><![CDATA[<p>安裝好系統後，第一件事情 disable selinux，然後 reboot ，這也是大多是網路上軟體安裝的教學，不過什麼是 SELinux ？ 到底有什麼好處呢 ？ 關掉是為何 ？</p>]]></description>
+</item><item>
+    <title>Linux - ACL 多帳號權限控管</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-acl/</link>
+    <pubDate>Fri, 11 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-acl/</guid>
+    <description><![CDATA[<p>Linux 最早設計時僅能對 user 及 group 對檔案或是目錄進行控管，不過這勢必會有一些問題，如一個群組內有 N 個人都可以訪問 example 檔案，惟群組內 John 要禁止他訪問，除了將他移出群組之外就沒有別的方式了，故 ACL 誕生解決上述問題。</p>]]></description>
+</item><item>
     <title>Linux - Chmod 工具管理檔案/目錄權限</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</link>
     <pubDate>Thu, 10 Feb 2022 00:00:00 &#43;0000</pubDate>
@@ -66,21 +80,5 @@
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-compress/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/DXDWOPH.png) -->
 <p>Linux tar 壓縮及打包工具使用方式</p>]]></description>
-</item><item>
-    <title>Linux - SSH 連線機制及遠程複製</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/</link>
-    <pubDate>Sun, 23 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-ssh-basics/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/gBt0Xn1.jpg) -->
-<p>SSH 連線機制及遠程複製</p>]]></description>
-</item><item>
-    <title>Linux - Sudo 提升權限成為管理者</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/</link>
-    <pubDate>Tue, 18 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-sudo-command/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/vbsNLVT.jpg) -->
-<p>Linux 大多數系統管理工作僅能系統管理者操作，不過如果有特定 User  需要指定服務的操作呢？例如 Nginx 設定檔重新熱載入，不太可能每次都要等 root 來操作，那如何授與特定使用者做操作？？</p>]]></description>
 </item></channel>
 </rss>
