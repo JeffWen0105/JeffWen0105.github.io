@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Ansible - 自動化組態管理工具介紹 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Ansible - 自動化組態管理工具介紹" />
+<meta property="og:description" content="基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible - 自動化組態管理工具介紹"/>
+<meta name="twitter:description" content="基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ansible - 自動化組態管理工具介紹",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-introduce\/"
+        },"genre": "posts","keywords": "Ansible, RHCE","wordcount":  1454 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-introduce\/","datePublished": "2022-03-10T00:00:00+00:00","dateModified": "2022-03-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Ansible - 自動化組態管理工具介紹</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw"></i>Ansible</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-10">2022-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1454 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ansible-簡介">1. Ansible 簡介</a></li>
+    <li><a href="#2-ansible-基本要求">2. Ansible 基本要求</a></li>
+    <li><a href="#3-ansible-安裝">3. Ansible 安裝</a>
+      <ul>
+        <li><a href="#31-rhel-8-系列安裝方式">3.1. RHEL 8 系列安裝方式:</a></li>
+        <li><a href="#32-rhel-7-系列安裝方式">3.2. RHEL 7 系列安裝方式:</a></li>
+        <li><a href="#33-驗證是否安裝">3.3. 驗證是否安裝</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-ansible-必備要素">4. Ansible 必備要素</a>
+      <ul>
+        <li><a href="#41-inventory-配置">4.1. inventory 配置</a></li>
+        <li><a href="#42-ansiblecfg-配置">4.2. ansible.cfg 配置</a></li>
+        <li><a href="#43-playbookyml">4.3 playbook.yml</a></li>
+        <li><a href="#44-範例樹狀圖">4.4 範例樹狀圖</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ansible-執行">5. Ansible 執行</a>
+      <ul>
+        <li><a href="#51-ad-hoc-執行方式">5.1 ad-hoc 執行方式</a></li>
+        <li><a href="#52-play-book-執行方式">5.2 play-book 執行方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上百上千的同樣的環境( Linux、Windows )，或是控制網路設備（路由器、交換器等）。</p>
+<!--  more -->
+<h2 id="1-ansible-簡介">1. Ansible 簡介</h2>
+<p>Ansible 是 Redhat 開源的組態管理工具，可以控制大量機器，並透過 ssh ( Windows 使用 WinRM 協定 ) 執行各項任務，其中最大特點是 Ansible 無須在各受控端安裝 Agent ，所以連網路設定也能進行控制及操作。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/pcHyQPr.png" title="https://i.imgur.com/pcHyQPr.png" data-thumbnail="https://i.imgur.com/pcHyQPr.png" data-sub-html="<h2>Ansible 操作圖例</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/pcHyQPr.png"
+            data-srcset="https://i.imgur.com/pcHyQPr.png, https://i.imgur.com/pcHyQPr.png 1.5x, https://i.imgur.com/pcHyQPr.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/pcHyQPr.png" />
+    </a><figcaption class="image-caption">Ansible 操作圖例</figcaption>
+    </figure></p>
+<hr>
+<h2 id="2-ansible-基本要求">2. Ansible 基本要求</h2>
+<ol>
+<li>Linux 主控端安裝 Ansible</li>
+<li>Linux 被控端需有 python3.5 以上直譯器 or python2.7 以上直譯器 ( Linux 大多數版本都具備 )</li>
+<li>Linux 被控端需要啟動 openssh 服務 ( Linux 大多數版本都具備 )</li>
+</ol>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果被控端為 Windows 作業系統需開啟 WinRM，另外控制端系統只能為 Linux 作業系統</em>。</div>
+        </div>
+    </div>
+<hr>
+<h2 id="3-ansible-安裝">3. Ansible 安裝</h2>
+<p>RHEL 系列包含 Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux、AlmaLinux 等 Redhat 系列都可以使用。</p>
+<h3 id="31-rhel-8-系列安裝方式">3.1. RHEL 8 系列安裝方式:</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install -y ansible
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="32-rhel-7-系列安裝方式">3.2. RHEL 7 系列安裝方式:</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install -y ansible
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>囿於RHEL 8 預設已經有 python 3.6 版本直譯器，建議使用 RHEL 7 也安裝 python 3.5 以上直譯器版本，雖然 python 2.7 版本就可以執行，不過對於社區版模組支援對相對較少。</em></div>
+        </div>
+    </div>
+<h3 id="33-驗證是否安裝">3.3. 驗證是否安裝</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible --version
+ansible 2.9.27
+  config <span class="nv">file</span> <span class="o">=</span> /etc/ansible/ansible.cfg
+  configured module search <span class="nv">path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;/home/student/.ansible/plugins/modules&#39;</span>, <span class="s1">&#39;/usr/share/ansible/plugins/modules&#39;</span><span class="o">]</span>
+  ansible python module <span class="nv">location</span> <span class="o">=</span> /usr/lib/python3.6/site-packages/ansible
+  executable <span class="nv">location</span> <span class="o">=</span> /usr/bin/ansible
+  python <span class="nv">version</span> <span class="o">=</span> 3.6.8 <span class="o">(</span>default, Nov  <span class="m">9</span> 2021, 14:44:26<span class="o">)</span> <span class="o">[</span>GCC 8.5.0 <span class="m">20210514</span> <span class="o">(</span>Red Hat 8.5.0-3<span class="o">)]</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Ubuntu 系列<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>使用 Ubuntu 18.04 以上的版本可以直接使用 apt install ansible安裝</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="4-ansible-必備要素">4. Ansible 必備要素</h2>
+<p>執行 Ansible 有幾件事情需要準備 :</p>
+<ul>
+<li>inventory    (主機清單)</li>
+<li>ansible.cfg  (設定檔)</li>
+<li>playbook.yml  (如何執行)</li>
+</ul>
+<h3 id="41-inventory-配置">4.1. inventory 配置</h3>
+<p>inventroy 為主機清單，用來定義被控端機器的 IP 或 FQDN ，預設寫在 <code>/etc/ansible/hosts </code> ，但是不建議直接修改那個路徑檔案，通常都是一個資料夾表示一個 Project，每一個 Project 都會有自己的主清單 ( 每一次執行的專案電腦都可能會異動，各自獨立)，範例如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[dev]</span>
+<span class="na">servera.lab.example.com</span>
+<span class="k">[test]</span>
+<span class="na">serverb.lab.example.com</span>
+<span class="k">[prod]</span>
+<span class="na">serverc.lab.example.com</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="42-ansiblecfg-配置">4.2. ansible.cfg 配置</h3>
+<p>ansible.cfg 為 Ansible 執行方式，如要採用 SSH 登入角色為何、是否啟用 sudo 、主機清單配置在哪等等，如同 inventory ，每一個 project 獨立一個 ansible.cfg 配置，範例如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
+<span class="na">inventory</span>   <span class="o">=</span> <span class="s">./inventory</span>
+<span class="na">remote_user</span> <span class="o">=</span> <span class="s">devops</span>
+
+<span class="k">[privilege_escalation]</span>
+<span class="na">become</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">become_method</span> <span class="o">=</span> <span class="s">sudo</span>
+<span class="na">become_user</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">become_ask_pass</span> <span class="o">=</span> <span class="s">False</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="43-playbookyml">4.3 playbook.yml</h3>
+<p>playbook 名稱可以自行定義，以 yml 或 yaml 結尾檔案， 定義每一個 Project 任務該如何執行，如 inventory 一樣擺置同一個資料夾內，其範例如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">exmaple</span><span class="w">
+</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print Hello Ansible</span><span class="w">
+</span><span class="w">      </span><span class="nt">debug</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Hello Ansible ~~&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="44-範例樹狀圖">4.4 範例樹狀圖</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation ~]$ tree example/
+example/
+├── ansible.cfg
+├── example-playbook.yaml
+└── inventory
+
+0 directories, 3 files
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Ansible 初入門<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em><strong>目前先做簡單 Ansible 範例介紹，讓大家有個基礎概念，後續會有各章節，依依做詳細說明並說明其欄位用途。</strong></em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="5-ansible-執行">5. Ansible 執行</h2>
+<p>Ansible 執行有兩種，一種是執行單一任務命列模式 ( ad-hoc )，另一種是執行編寫好的 playbook</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>需先配置好 ansible.cfg 及 inventory 並存放在執行的資料夾內，不然會沒有主機可以執行～</em></div>
+        </div>
+    </div>
+<h3 id="51-ad-hoc-執行方式">5.1 ad-hoc 執行方式</h3>
+<p>使用 <code>ansible &lt;主機&gt; -m &lt;執行的模組&gt;</code> ，來進行操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible all -m ping
+serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+serverb <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="52-play-book-執行方式">5.2 play-book 執行方式</h3>
+<p>使用 <code>ansible-play &lt;playbook&gt;</code> ，來進行操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example-playbook.yaml 
+
+PLAY <span class="o">[</span>exmaple<span class="o">]</span> ***************************************************************************************************************************************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera<span class="o">]</span>
+ok: <span class="o">[</span>serverb<span class="o">]</span>
+ok: <span class="o">[</span>serverc<span class="o">]</span>
+
+TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ***************************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+servera                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+serverb                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+serverc                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<ol start="6">
+<li>小結</li>
+</ol>
+<p>Ansible 其實非常容易，只要明白哪些基本操作，後續其實就只是再撰寫 playbook (yaml) ，一步步達成自動化操作。不過 Ansible 是需要有個環境長期練習，不然很難體驗其中的強大。</p>
+<p>可以自行安裝一個 Linux 當主控端安裝多個 Linux 當被控端練習來進行練習，或是使用 HowHow 製作的練習環境，可以快速使用多台機器，也能快速還原機器設定，方便練習時可以反覆操作，使用方式請參閱<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">HowHow 的打造輕巧 Linux 練習 Lab</a>環境吧。</p>
+</div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-introduce%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-03-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ansible/">Ansible</a>,&nbsp;<a href="/tags/rhce/">RHCE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-create-playground/" class="prev" rel="prev" title="Linux - 打造輕巧 Linux 練習 Lab"><i class="fas fa-angle-left fa-fw"></i>Linux - 打造輕巧 Linux 練習 Lab</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

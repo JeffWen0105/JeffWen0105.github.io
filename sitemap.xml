@@ -2,13 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/ansible/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/ansible/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/rhce/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/linux/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/categories/linux/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-03-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</loc><lastmod>2022-03-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-yum/</loc><lastmod>2022-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</loc><lastmod>2022-03-01T00:00:00&#43;00:00</lastmod></url><url>

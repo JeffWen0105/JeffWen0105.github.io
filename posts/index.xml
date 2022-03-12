@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 05 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 自動化組態管理工具介紹</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</link>
+    <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</guid>
+    <description><![CDATA[基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上]]></description>
+</item><item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Sat, 05 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -70,13 +77,5 @@
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</guid>
     <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
 <p>Linux 作業系統為多人多工作業方式，故管理帳號將會是一個必修的課程，透過 Linux 指令可以很容易的創建帳號、群組及密碼。</p>]]></description>
-</item><item>
-    <title>Linux - 壓縮與打包工具 tar</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-compress/</link>
-    <pubDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-compress/</guid>
-    <description><![CDATA[<!-- ![](https://i.imgur.com/DXDWOPH.png) -->
-<p>Linux tar 壓縮及打包工具使用方式</p>]]></description>
 </item></channel>
 </rss>
