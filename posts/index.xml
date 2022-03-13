@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 創建 Ansible inventory 主機清單</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</link>
+    <pubDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</guid>
+    <description><![CDATA[Ansible 中的 Inventory 主機清單是執行 Ansible 的必要元素之一， 藉由該清單可以告訴 Ansible 哪些機器歸它所控制，完成自動化部署工作。 1. inventroy 格式 inventory 格式可以為 Yaml 或是 INI 格式， 對於初]]></description>
+</item><item>
     <title>Ansible - 自動化組態管理工具介紹</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</link>
     <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -69,13 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</guid>
     <description><![CDATA[<p>在 Dockerfile 在最末端會看到 Image 會有 CMD 及 ENTRYPOINT 不同寫法，兩種都是執行容器第一個PID要執行的指令，不過用法到底差別在哪呢？</p>]]></description>
-</item><item>
-    <title>Linux - User and Group 帳號管理</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</link>
-    <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-managing-local-user-group/</guid>
-    <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
-<p>Linux 作業系統為多人多工作業方式，故管理帳號將會是一個必修的課程，透過 Linux 指令可以很容易的創建帳號、群組及密碼。</p>]]></description>
 </item></channel>
 </rss>
