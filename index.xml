@@ -4,9 +4,37 @@
         <link>https://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Ansible - Vault 加密檔案管理</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</link>
+    <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</guid>
+    <description><![CDATA[透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必]]></description>
+</item><item>
+    <title>Ansible - 翻轉你的 Playbook</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</link>
+    <pubDate>Mon, 14 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</guid>
+    <description><![CDATA[Playbook 由多個 task 任務組合起來的一本 yaml 格式文件，告訴 Ansible 依據裡面內容一一執行的方式，也是 Ansible 三大要素的核心之一。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操]]></description>
+</item><item>
+    <title>Ansible - 執行 Ad-Hoc 命令</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</link>
+    <pubDate>Sun, 13 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</guid>
+    <description><![CDATA[Ad Hoc 是一個拉丁文常用短語，意思是指定或是特殊的任務，在 Ansible 中如果指定單一任務執行，可以使用 ad hoc 命令快速完成指定的任務。 練習環境 可以使用 HowHow 的創建]]></description>
+</item><item>
+    <title>Ansible - 管理 Ansible 設定組態檔</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</link>
+    <pubDate>Sat, 12 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</guid>
+    <description><![CDATA[Ansible 在執行時，需要明確定義要使用哪一種角色連線、使用哪一種連線機制、要不要提升root權限、提升權限是否要輸入密碼及 inventory 主機清單擺放位置，在每次]]></description>
+</item><item>
     <title>Ansible - 創建 Ansible inventory 主機清單</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</link>
     <pubDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -20,6 +48,13 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</guid>
     <description><![CDATA[基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上]]></description>
+</item><item>
+    <title>K8s -  容器編排工具介紹</title>
+    <link>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</link>
+    <pubDate>Wed, 09 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</guid>
+    <description><![CDATA[在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及]]></description>
 </item><item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
@@ -41,42 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum/</guid>
     <description><![CDATA[<p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>]]></description>
-</item><item>
-    <title>Linux - RPM 套件管理工具</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</link>
-    <pubDate>Tue, 01 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</guid>
-    <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
-<!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
-<p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
-</item><item>
-    <title>Linux - 安全增強式 Linux ( SELinux )</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-selinux/</link>
-    <pubDate>Sat, 12 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-selinux/</guid>
-    <description><![CDATA[<p>安裝好系統後，第一件事情 disable selinux，然後 reboot ，這也是大多是網路上軟體安裝的教學，不過什麼是 SELinux ？ 到底有什麼好處呢 ？ 關掉是為何 ？</p>]]></description>
-</item><item>
-    <title>Linux - ACL 多帳號權限控管</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-acl/</link>
-    <pubDate>Fri, 11 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-acl/</guid>
-    <description><![CDATA[<p>Linux 最早設計時僅能對 user 及 group 對檔案或是目錄進行控管，不過這勢必會有一些問題，如一個群組內有 N 個人都可以訪問 example 檔案，惟群組內 John 要禁止他訪問，除了將他移出群組之外就沒有別的方式了，故 ACL 誕生解決上述問題。</p>]]></description>
-</item><item>
-    <title>Linux - Chmod 工具管理檔案/目錄權限</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</link>
-    <pubDate>Thu, 10 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/</guid>
-    <description><![CDATA[<p>多人多工環境下工作，檔案或是目錄存取權限是一件很重要的事情，有些目錄為大家共用的，有些檔案限定某一部份的人只能看不能修改，其它人沒有任何權限，可以透過 chmod 這個工具可以方便的設定所要的權限並進行管理。</p>]]></description>
-</item><item>
-    <title>Docker -  CMD 與 ENTRYPOINT 差別</title>
-    <link>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</link>
-    <pubDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</guid>
-    <description><![CDATA[<p>在 Dockerfile 在最末端會看到 Image 會有 CMD 及 ENTRYPOINT 不同寫法，兩種都是執行容器第一個PID要執行的指令，不過用法到底差別在哪呢？</p>]]></description>
 </item></channel>
 </rss>

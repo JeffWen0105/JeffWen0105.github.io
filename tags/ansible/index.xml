@@ -4,7 +4,35 @@
         <link>https://blog.howhow.tk/tags/ansible/</link>
         <description>Ansible - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/ansible/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/ansible/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - Vault 加密檔案管理</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</link>
+    <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</guid>
+    <description><![CDATA[透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必]]></description>
+</item><item>
+    <title>Ansible - 翻轉你的 Playbook</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</link>
+    <pubDate>Mon, 14 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</guid>
+    <description><![CDATA[Playbook 由多個 task 任務組合起來的一本 yaml 格式文件，告訴 Ansible 依據裡面內容一一執行的方式，也是 Ansible 三大要素的核心之一。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操]]></description>
+</item><item>
+    <title>Ansible - 執行 Ad-Hoc 命令</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</link>
+    <pubDate>Sun, 13 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</guid>
+    <description><![CDATA[Ad Hoc 是一個拉丁文常用短語，意思是指定或是特殊的任務，在 Ansible 中如果指定單一任務執行，可以使用 ad hoc 命令快速完成指定的任務。 練習環境 可以使用 HowHow 的創建]]></description>
+</item><item>
+    <title>Ansible - 管理 Ansible 設定組態檔</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</link>
+    <pubDate>Sat, 12 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</guid>
+    <description><![CDATA[Ansible 在執行時，需要明確定義要使用哪一種角色連線、使用哪一種連線機制、要不要提升root權限、提升權限是否要輸入密碼及 inventory 主機清單擺放位置，在每次]]></description>
+</item><item>
     <title>Ansible - 創建 Ansible inventory 主機清單</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</link>
     <pubDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</pubDate>

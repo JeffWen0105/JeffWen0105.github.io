@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Ansible - Vault 加密檔案管理 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Ansible - Vault 加密檔案管理" />
+<meta property="og:description" content="透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-15T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible - Vault 加密檔案管理"/>
+<meta name="twitter:description" content="透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/" /><link rel="prev" href="https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ansible - Vault 加密檔案管理",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-vault-encrypt\/"
+        },"genre": "posts","keywords": "Ansible, RHCE","wordcount":  1365 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-vault-encrypt\/","datePublished": "2022-03-15T00:00:00+00:00","dateModified": "2022-03-15T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Ansible - Vault 加密檔案管理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw"></i>Ansible</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-15">2022-03-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1365 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ansible-vault-介紹">1. Ansible Vault 介紹</a></li>
+    <li><a href="#2創建加密檔案">2.創建加密檔案</a>
+      <ul>
+        <li><a href="#21-創建一個加密的-exampleyml">2.1. 創建一個加密的 example.yml</a></li>
+        <li><a href="#22-創建一個加密的-exampleyml-密碼由檔案內容指定">2.2. 創建一個加密的 example.yml ，密碼由檔案內容指定</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-加密以存在的檔案">3. 加密以存在的檔案</a>
+      <ul>
+        <li><a href="#31-加密-exampleyml">3.1. 加密 example.yml</a></li>
+        <li><a href="#32-加密-exampleyml-密碼由檔案內容指定">3.2. 加密 example.yml， 密碼由檔案內容指定</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-編輯或查閱已經加密的檔案">4. 編輯或查閱已經加密的檔案</a>
+      <ul>
+        <li><a href="#41-查閱已經加密的檔案">4.1 查閱已經加密的檔案</a></li>
+        <li><a href="#42-編輯已經加密的檔案">4.2 編輯已經加密的檔案</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-更新密碼">5. 更新密碼</a></li>
+    <li><a href="#6-執行加密過的-playbook">6. 執行加密過的 playbook</a>
+      <ul>
+        <li><a href="#61-輸入密碼執行-playbook">6.1 輸入密碼執行 Playbook</a></li>
+        <li><a href="#62-指定存放密碼的檔案">6.2 指定存放密碼的檔案</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-lab-練習">7. LAB 練習</a>
+      <ul>
+        <li><a href="#71--lab">7.1  LAB</a></li>
+        <li><a href="#72--lab-解答">7.2  LAB 解答</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-小結">8. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必須輸入加密過後的 playbook.yml 的密碼才能執行或檢視檔案內容。</p>
+<!--  more -->
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 Ansible，<a href="http://localhost:1313/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
+        </div>
+    </div>
+<h2 id="1-ansible-vault-介紹">1. Ansible Vault 介紹</h2>
+<p>ansible-vault 工具，管理加密檔案從創建、加密、解密、查閱、編輯、更新密碼、或是針對某段字串進行加密等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-vault --help
+usage: ansible-vault <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+                     <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
+                     ...
+
+encryption/decryption utility <span class="k">for</span> Ansible data files
+
+positional arguments:
+  <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
+    create              Create new vault encrypted file
+    decrypt             Decrypt vault encrypted file
+    edit                Edit vault encrypted file
+    view                View vault encrypted file
+    encrypt             Encrypt YAML file
+    encrypt_string      Encrypt a string
+    rekey               Re-key a vault encrypted file
+
+optional arguments:
+  --version             show program<span class="err">&#39;</span>s version number, config file location,
+                        configured module search path, module location,
+                        executable location and <span class="nb">exit</span>
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -v, --verbose         verbose mode <span class="o">(</span>-vvv <span class="k">for</span> more, -vvvv to <span class="nb">enable</span>
+                        connection debugging<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>加密使用 AES256 演算法加密，不過如果不是直接輸入密碼，而是透過檔案內容來指定僅使用 128 bits 來加密 ~</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="2創建加密檔案">2.創建加密檔案</h2>
+<p>所創建的加密檔案不限定只能加密 playbook ，任何文件都能創建，並且被加密。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault create &lt;filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="21-創建一個加密的-exampleyml">2.1. 創建一個加密的 example.yml</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create example.yml
+New Vault password: 
+Confirm New Vault password:
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-創建一個加密的-exampleyml-密碼由檔案內容指定">2.2. 創建一個加密的 example.yml ，密碼由檔案內容指定</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
+<span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
+<span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create --vault-password-file my-passwd example.yml
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>使用 ansible-vault create 直接創建加密的 playbook 不會自動載入已經設定好的~/.vimrc 的配置檔 。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="3-加密以存在的檔案">3. 加密以存在的檔案</h2>
+<p>直接加密已經寫好的 playbook 這種方式比較常用，驗證可以正常執行的 playbook 就可以將檔案加密，避免其它人隨意查閱、修改或是執行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault encrypt &lt;filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="31-加密-exampleyml">3.1. 加密 example.yml</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt example.yml 
+New Vault password: 
+Confirm New Vault password: 
+Encryption successful
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="32-加密-exampleyml-密碼由檔案內容指定">3.2. 加密 example.yml， 密碼由檔案內容指定</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
+<span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
+<span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt --vault-password-file my-passwd example.yml
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-編輯或查閱已經加密的檔案">4. 編輯或查閱已經加密的檔案</h2>
+<h3 id="41-查閱已經加密的檔案">4.1 查閱已經加密的檔案</h3>
+<p>檔案已經加密的情況，直接使用 cat 或是任何編輯器，都只會呈現加密亂碼。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault view &lt;filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault view example.yml 
+Vault password:
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="42-編輯已經加密的檔案">4.2 編輯已經加密的檔案</h3>
+<p>想修改已經加密的檔案可以使用 edit 執行修改，預設會使用 vi 編輯器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault edit &lt;filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault edit example.yml 
+Vault password:
+...
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="5-更新密碼">5. 更新密碼</h2>
+<p>如果要更換密碼，可以使用 rekey， 會要求輸入舊密碼及新密碼來更新。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault rekey &lt;filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey example.yml
+Vault password: 
+New Vault password: 
+Confirm New Vault password: 
+Rekey successful
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>請勿必要記得加密的密碼， ansible-vault rekey 沒有舊密碼的情況下是無法進行重置！！</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="6-執行加密過的-playbook">6. 執行加密過的 playbook</h2>
+<p>使用 ansible-playbook 無法直接執行加密過的檔案，可以透過手動輸入密碼，或是指定存有密碼的檔案才可以正常執行。</p>
+<h3 id="61-輸入密碼執行-playbook">6.1 輸入密碼執行 Playbook</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook &lt;filename&gt; --vault-id @prompt
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-id @prompt
+Vault password <span class="o">(</span>default<span class="o">)</span>: 
+...
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>也可以使用舊版本的 &ndash;ask-vault-pass 參數，差異為新式方法可以輸入多個不同的密碼，舊式方式並需確保所有加密的密碼一致。</em></div>
+        </div>
+    </div>
+<h3 id="62-指定存放密碼的檔案">6.2 指定存放密碼的檔案</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook &lt;filename&gt; --vault-password-file &lt;password filename&gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-password-file passwd
+...
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="7-lab-練習">7. LAB 練習</h2>
+<h3 id="71--lab">7.1  LAB</h3>
+<ol>
+<li>下載 Lab 檔案，如果已經下載可以忽略此步驟。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/JeffWen0105/ansible-lab.git
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>使用 data-secret 專案，使用 my-passwd 密碼執行 playbook.yml ，會產生新密碼提示，以新密碼重新變更 playbook.yml (已經配置好 ansible.cfg 及 inventory)。</li>
+</ol>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>Quote<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果使用 HowHow 的 Lab 環境，可以再練習前或是練習後，於 bastion 機器上輸入 <code>rht-vmctl reset &lt;server name&gt;</code> 重置機器，恢復原始環境。</em></div>
+        </div>
+    </div>
+<h3 id="72--lab-解答">7.2  LAB 解答</h3>
+<p><em>參考解答在 playbook-basic/data-secret 資料夾內。</em></p>
+<ol>
+<li>執行 playbook 並使用 my-passwd 解密。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml  --vault-password-file my-passwd
+
+PLAY <span class="o">[</span>Example  Secrets<span class="o">]</span> ******************************************************************************************************************************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span>
+
+TASK <span class="o">[</span>print new password to console<span class="o">]</span> *****************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;New Passwd: ansible&#34;</span>
+<span class="o">}</span>
+
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+servera.lab.example.com    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>使用執行結果的 ansible 更新 playbook 密碼。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey playbook.yml --vault-password-file my-passwd
+New Vault password: ansible
+Confirm New Vault password: ansible
+Rekey successful
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="8-小結">8. 小結</h2>
+<p>加密檔案可以有效防範機敏性資料被第三方查閱或是被修改，可以很好的保護檔案隱私性及安全性。千萬要注意別忘記密碼，除了暴力破解密碼之外，是無法還原被加密的 playbook，只能重新撰寫 playbook。</p>
+</div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-vault-encrypt%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-03-15</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ansible/">Ansible</a>,&nbsp;<a href="/tags/rhce/">RHCE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ansible/2022/ansible-playbook/" class="prev" rel="prev" title="Ansible - 翻轉你的 Playbook"><i class="fas fa-angle-left fa-fw"></i>Ansible - 翻轉你的 Playbook</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

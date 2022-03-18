@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>K8s -  容器編排工具介紹 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="K8s -  容器編排工具介紹" />
+<meta property="og:description" content="在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-09T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="K8s -  容器編排工具介紹"/>
+<meta name="twitter:description" content="在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="next" href="https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "K8s -  容器編排工具介紹",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/kubernetes\/2022\/k8-introduction\/"
+        },"genre": "posts","keywords": "Kubernetes","wordcount":  1412 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/kubernetes\/2022\/k8-introduction\/","datePublished": "2022-03-09T00:00:00+00:00","dateModified": "2022-03-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">K8s -  容器編排工具介紹</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>Kubernetes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-09">2022-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1412 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-k8s-基本介紹">1. K8s 基本介紹</a></li>
+    <li><a href="#2-k8s-主元件架構">2. K8s 主元件架構</a>
+      <ul>
+        <li><a href="#21-k8s-的組件作為生產工廠來比喻">2.1 K8s 的組件作為生產工廠來比喻</a></li>
+        <li><a href="#22-kube-controller-manager">2.2 kube-controller-manager</a></li>
+        <li><a href="#23-kube-apiserver">2.3 kube-apiserver</a></li>
+        <li><a href="#24-etcd">2.4 etcd</a></li>
+        <li><a href="#24-kube-scheduler">2.4 kube-scheduler</a></li>
+        <li><a href="#25-cloud-controller-manager">2.5 cloud-controller-manager</a></li>
+        <li><a href="#26-kubelet">2.6 kubelet</a></li>
+        <li><a href="#27-kube-proxy">2.7 kube-proxy</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-k8s-快速安裝">3. K8s 快速安裝</a>
+      <ul>
+        <li><a href="#31-安裝步驟">3.1 安裝步驟</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及可用性，如果使用量一旦過多，也能快速且彈性的具備可擴展性，以上都可以透過 K8s 來達成目的。</p>
+<h2 id="1-k8s-基本介紹">1. K8s 基本介紹</h2>
+<p>k8s 全名 Kubernetes ，最早由 Google 開發為了大量編排容器所設計的管理工具，後來將原始碼開源貢獻給CNCF基金會( Cloud Native Computing Foundation ）。 CNCF 官網連結<a href="https://www.cncf.io/" target="_blank" rel="noopener noreffer">請點我</a>。CNCF 項目越來越多，各項目列表如下圖( K8 頂級項目也在其中 )。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/PbFWsKu.png" title="https://i.imgur.com/PbFWsKu.png" data-thumbnail="https://i.imgur.com/PbFWsKu.png" data-sub-html="<h2>The landscape from cncf.io</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/PbFWsKu.png"
+            data-srcset="https://i.imgur.com/PbFWsKu.png, https://i.imgur.com/PbFWsKu.png 1.5x, https://i.imgur.com/PbFWsKu.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/PbFWsKu.png" />
+    </a><figcaption class="image-caption">The landscape from cncf.io</figcaption>
+    </figure></p>
+<hr>
+<h2 id="2-k8s-主元件架構">2. K8s 主元件架構</h2>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/QLGDP5J.png" title="https://i.imgur.com/QLGDP5J.png" data-thumbnail="https://i.imgur.com/QLGDP5J.png" data-sub-html="<h2>The components of a Kubernetes cluster from kubernetes.io</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/QLGDP5J.png"
+            data-srcset="https://i.imgur.com/QLGDP5J.png, https://i.imgur.com/QLGDP5J.png 1.5x, https://i.imgur.com/QLGDP5J.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/QLGDP5J.png" />
+    </a><figcaption class="image-caption">The components of a Kubernetes cluster from kubernetes.io</figcaption>
+    </figure></p>
+<h3 id="21-k8s-的組件作為生產工廠來比喻">2.1 K8s 的組件作為生產工廠來比喻</h3>
+<p><strong>一個總部公司加上多個不同區域的生產工廠:</strong></p>
+<p>一、 總公司( Master ):</p>
+<ol>
+<li>kube-controller-manager 總經理室（管理部門）</li>
+<li>kube-apiserver 秘書室 (傳達命令語彙報結果)</li>
+<li>etcd 公司檔案庫 ( K - V 格式 )</li>
+<li>kube-scheduler  調度室 ( 尋找最佳資源及查看不同調度規則 )</li>
+<li>cloud-controller-manager 外事聯絡區 (非必要)</li>
+</ol>
+<p>二、 生產工廠（Worker):</p>
+<ol>
+<li>kubelet 工廠廠長 ( 控制 container)</li>
+<li>kube-proxy 工廠總機 ( 轉接外部請求，轉給正在生產的工廠 )</li>
+</ol>
+<h3 id="22-kube-controller-manager">2.2 kube-controller-manager</h3>
+<p>總經理室 - 主要隨時監測所屬的狀態，復原計畫等，為整個 K8s 運作大腦，並透過 kube-apiserver 部頒命令，除了 kube-apiserver 秘書可以直接對口之外，其餘任何部門均不得直接與總經理室進行溝通。</p>
+<h3 id="23-kube-apiserver">2.3 kube-apiserver</h3>
+<p>秘書室 - 傳達總經理室來的命令，將指命令記錄一份在 ETCD 檔案庫內，並對口總公司各部門及各工廠廠長。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>包含使用者 kubectl 命令控制也是直接傳給 kube-apiserver，並不會直接對kube-controller-manager下達指令</em>。</div>
+        </div>
+    </div>
+<h3 id="24-etcd">2.4 etcd</h3>
+<p>公司檔案庫 - 分布式的 Key Value 儲存的資料庫。</p>
+<h3 id="24-kube-scheduler">2.4 kube-scheduler</h3>
+<p>調度室 - 尋找最佳及最適合生產的工廠(評估目前各機器的 CPU、RAM等各資源)，並告知秘書室由此廠進行生產工作，並可以由使用者設定調度計畫，指定哪些機器執行哪些任務。</p>
+<h3 id="25-cloud-controller-manager">2.5 cloud-controller-manager</h3>
+<p>外事聯絡區 - 這是非必要的組件，主要為如果有混合雲，例如 GKE 等外部資源，可以協調控制。</p>
+<h3 id="26-kubelet">2.6 kubelet</h3>
+<p>工廠廠長 - 啟動、停止、管理生產線 (容器)</p>
+<h3 id="27-kube-proxy">2.7 kube-proxy</h3>
+<p>工廠總機 - 會與其它工廠總機互相溝通，記錄各工廠有哪些生產線的在生產的產品 ，如果有請求來，就將請求轉到對應生產產品的產品線去</p>
+<h2 id="3-k8s-快速安裝">3. K8s 快速安裝</h2>
+<p>K8s 手動安裝很多參數要配置，特別叢集環境難度很高(要求硬體資源也不少)，不過對於一般開發者、或是初學者可以使用 <a href="https://github.com/kubernetes/minikube" target="_blank" rel="noopener noreffer">Minikube</a> 是由 Google 發布的一個輕量級工具，可以快速打造一個 k8s 環境，非常方便喔。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>MiniKube 沒有高可用性功能，只有單一節點，請勿使用於正式生產環境</em>。</div>
+        </div>
+    </div>
+<h3 id="31-安裝步驟">3.1 安裝步驟</h3>
+<ol start="0">
+<li>基本需求</li>
+</ol>
+<ul>
+<li>2 CPUs</li>
+<li>2GB 記憶體</li>
+<li>20GB 硬碟空間</li>
+</ul>
+<ol>
+<li>安裝 Docker</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install -y yum-utils
+sudo yum-config-manager <span class="se">\
+</span><span class="se"></span>    --add-repo <span class="se">\
+</span><span class="se"></span>    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io
+sudo systemctl --now <span class="nb">enable</span> docker
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>Docker 安裝是 Redhat 系列為例，如果是 Ubuntu 或其它系列可以參考 <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener noreffer">Docker 官網安裝手冊</a></em>。</div>
+        </div>
+    </div>
+<ol start="2">
+<li>創建一個使用者</li>
+</ol>
+<p>MiniKube 在安裝時會要求使用非 root 來執行操作，也比較安全，所以這邊創建一個角色為 k8s。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">useradd k8s
+usermod -aG docker k8s
+passwd k8s
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>下載 Minikube</li>
+</ol>
+<p>安裝檔以 x86 的 linux 為例，如果使用的是 arm 架構可以至 <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank" rel="noopener noreffer">MiniKube 官網下載</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>安裝及啟動 Minikube</li>
+</ol>
+<p>使用剛剛創建的 k8s 角色來執行，會自動拉取所需的 image 並且啟動</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">minikube start
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>Docker 的服務請不要關閉喔， Minikube 預設會藉由 Docker 的容器化技術</em>。</div>
+        </div>
+    </div>
+<ol start="5">
+<li>查看啟動後的 k8s</li>
+</ol>
+<p>使用 <code>minikube kubectl get pod -A</code> 即可看到目前所有的 POD (服務)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>k8s@servera ~<span class="o">]</span>$ minikube kubectl get po -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
+kube-system   coredns-64897985d-qszct            1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   etcd-minikube                      1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-apiserver-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
+kube-system   kube-controller-manager-minikube   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-proxy-97bx8                   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-scheduler-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
+kube-system   storage-provisioner                1/1     Running   <span class="m">4</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+</code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>安裝 kubectl ( 可選 )</li>
+</ol>
+<p>kubectl 可以不用安裝，也能直接用 minikube 封裝好的來使用， 不過習慣使用 kubectl 操作的朋友可以直接至 k8s 官網上下載直接安裝使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl -LO <span class="s2">&#34;https://dl.k8s.io/release/</span><span class="k">$(</span>curl -L -s https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl&#34;</span>
+sudo install -o root -g root -m <span class="m">0755</span> kubectl /usr/local/bin/kubectl
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-小結">4. 小結</h2>
+<p>k8s 十分的強大，不過囿於功能很多，要不斷的練習操作才能變的更佳熟悉。</p>
+</div><iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fkubernetes%2f2022%2fk8-introduction%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-03-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-create-playground/" class="prev" rel="prev" title="Linux - 打造輕巧 Linux 練習 Lab"><i class="fas fa-angle-left fa-fw"></i>Linux - 打造輕巧 Linux 練習 Lab</a>
+            <a href="/posts/ansible/2022/ansible-introduce/" class="next" rel="next" title="Ansible - 自動化組態管理工具介紹">Ansible - 自動化組態管理工具介紹<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
