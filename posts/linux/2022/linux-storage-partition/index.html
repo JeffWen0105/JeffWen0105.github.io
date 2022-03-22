@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - 硬碟的分割及掛載 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 硬碟的分割及掛載" />
+<meta property="og:description" content="全新的硬碟沒有做任何處理，對於作業系統是無法使用的，必須修進行硬碟分割及格式化之後才能有效的掛載及使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-14T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - 硬碟的分割及掛載"/>
+<meta name="twitter:description" content="全新的硬碟沒有做任何處理，對於作業系統是無法使用的，必須修進行硬碟分割及格式化之後才能有效的掛載及使用。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="prev" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - 硬碟的分割及掛載",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-partition\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  3591 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-partition\/","datePublished": "2022-02-14T00:00:00+00:00","dateModified": "2022-02-14T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 硬碟的分割及掛載</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3591 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-分割硬碟">1. 分割硬碟</a></li>
+    <li><a href="#2-parted-管理分割硬碟工具">2. Parted 管理分割硬碟工具</a>
+      <ul>
+        <li><a href="#21-parted-交談式操作">2.1 Parted 交談式操作</a>
+          <ul>
+            <li><a href="#211-建立分表格式">2.1.1 建立分表格式</a></li>
+            <li><a href="#212-分割槽的類型">2.1.2 分割槽的類型</a></li>
+            <li><a href="#213-分割槽的切割起點與終點">2.1.3 分割槽的切割起點與終點</a></li>
+            <li><a href="#214-查看分割完後的硬碟狀態">2.1.4 查看分割完後的硬碟狀態</a></li>
+            <li><a href="#215-小技巧-help-查詢使用方式">2.1.5 小技巧 Help 查詢使用方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-parted-指令式操作">2.2 Parted 指令式操作</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-創建檔案系統">3. 創建檔案系統</a>
+      <ul>
+        <li><a href="#31-創建-xfs-檔案系統">3.1 創建 xfs 檔案系統</a></li>
+        <li><a href="#32-創建-ext4-檔案系統">3.2 創建 ext4 檔案系統</a></li>
+        <li><a href="#33-創建-swap-檔案系統">3.3 創建 swap 檔案系統</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-掛載硬碟">4. 掛載硬碟</a>
+      <ul>
+        <li><a href="#41-mount-手動掛載">4.1 mount 手動掛載</a></li>
+        <li><a href="#42-開機自動掛載">4.2 開機自動掛載</a></li>
+        <li><a href="#43-掛載硬碟使用-uuid-好處在哪">4.3 掛載硬碟使用 UUID 好處在哪?</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-lab-練習">5. LAB 練習</a>
+      <ul>
+        <li><a href="#51--lab">5.1  LAB</a></li>
+        <li><a href="#52--lab-解答">5.2  LAB 解答</a>
+          <ul>
+            <li><a href="#521-掛載-swap">5.2.1. 掛載 swap</a></li>
+            <li><a href="#522-掛載-xfs">5.2.2. 掛載 /xfs</a></li>
+            <li><a href="#523-掛載-ext4">5.2.3. 掛載 /ext4</a></li>
+            <li><a href="#524-reboot-重新開機">5.2.4. reboot 重新開機</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#6-小結">6. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>全新的硬碟沒有做任何處理，對於作業系統是無法使用的，必須修進行硬碟分割及格式化之後才能有效的掛載及使用。</p>
+<h2 id="1-分割硬碟">1. 分割硬碟</h2>
+<p>分割硬碟並不是物理上的分割，而是透過程式在磁區上標記要如何做分割，透過分割硬碟可以有效管理空間及創建 SWAP 分區以減緩記憶體空間不足的問題。</p>
+<p>分割的格式區分兩種:</p>
+<ol>
+<li>MBR : 傳統的分割格式，最多只能分割四個分割槽，並且無法使用超過 2 TiB 以上硬碟</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/dhPNUMm.png" title="https://i.imgur.com/dhPNUMm.png" data-thumbnail="https://i.imgur.com/dhPNUMm.png" data-sub-html="<h2>From access.redhat.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/dhPNUMm.png"
+            data-srcset="https://i.imgur.com/dhPNUMm.png, https://i.imgur.com/dhPNUMm.png 1.5x, https://i.imgur.com/dhPNUMm.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/dhPNUMm.png" />
+    </a><figcaption class="image-caption">From access.redhat.com</figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>雖然 MBR 只能切四個分割槽 ( Primary )，不過能可以擇一個使用 Extented 類型，一個延伸的 Extented 可以再分割多個 Logical 分割槽 ( Linux 作業系統最多支援 15 個 )</em> 。</div>
+        </div>
+    </div>
+<ol start="2">
+<li>GPT : 新式分割格式，不限分割槽 ( Windows 最多只能使用 128) ，可以使用超過 2 Tib 以上硬碟</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/Z5oHmz0.png" title="https://i.imgur.com/Z5oHmz0.png" data-thumbnail="https://i.imgur.com/Z5oHmz0.png" data-sub-html="<h2>From access.redhat.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/Z5oHmz0.png"
+            data-srcset="https://i.imgur.com/Z5oHmz0.png, https://i.imgur.com/Z5oHmz0.png 1.5x, https://i.imgur.com/Z5oHmz0.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/Z5oHmz0.png" />
+    </a><figcaption class="image-caption">From access.redhat.com</figcaption>
+    </figure></p>
+<h2 id="2-parted-管理分割硬碟工具">2. Parted 管理分割硬碟工具</h2>
+<p>傳統使用的硬碟分割工具為 fdisk 及 gdisk ，一個專門分割 MBR 格式、另一個專門分割 GPT 格式，使用 Parted 這工具都可以使用，並且有交談式及指令式兩種方式可以使用，非常的方便好用。</p>
+<p>執行前可以透過 lsblk 檢查目前有哪些硬碟設備</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk </span>
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0                      11:0    <span class="m">1</span> 1024M  <span class="m">0</span> rom  
+vda                     252:0    <span class="m">0</span>   10G  <span class="m">0</span> disk 
+├─vda1                  252:1    <span class="m">0</span>    1G  <span class="m">0</span> part /boot
+└─vda2                  252:2    <span class="m">0</span>    9G  <span class="m">0</span> part 
+  ├─rl_workstation-root 253:0    <span class="m">0</span>    8G  <span class="m">0</span> lvm  /
+  └─rl_workstation-swap 253:1    <span class="m">0</span>    1G  <span class="m">0</span> lvm  <span class="o">[</span>SWAP<span class="o">]</span>
+vdb                     252:16   <span class="m">0</span>  200M  <span class="m">0</span> disk 
+vdc                     252:32   <span class="m">0</span>  300M  <span class="m">0</span> disk 
+vdd                     252:48   <span class="m">0</span>  500M  <span class="m">0</span> disk 
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>Danger<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>使用 parted 工具要注意所選的硬碟設備，如因疏失選擇已經有資料的設備或分區，會導致原本的檔案及資料遺失。</strong></div>
+        </div>
+    </div>
+<h3 id="21-parted-交談式操作">2.1 Parted 交談式操作</h3>
+<p>以 vdb 硬碟操作，並從上述 lsblk 可以看出該硬碟總計有 200M 空間可以使用，並使用 MBR 格式分出一個分割表並使用全部空間。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted /dev/vdb</span>
+GNU Parted 3.2
+Using /dev/vdb
+Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+<span class="o">(</span>parted<span class="o">)</span> mklabel                                                          
+New disk label type? msdos                                                
+<span class="o">(</span>parted<span class="o">)</span> mkpart 
+Partition type?  primary/extended? primary                                
+File system type?  <span class="o">[</span>ext2<span class="o">]</span>? xfs                                            
+Start? 2048s                                                              
+End? 100%
+<span class="o">(</span>parted<span class="o">)</span> print                                                            
+Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+Disk /dev/vdb: 210MB
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End    Size   Type     File system  Flags
+ <span class="m">1</span>      1049kB  210MB  209MB  primary  xfs          lba
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>步驟分解：</strong></p>
+<h4 id="211-建立分表格式">2.1.1 建立分表格式</h4>
+<p>使用 mklable 可以選擇 MBR 格式或是 GPT，如果使用 MBR 的格式輸入 msdos ， GPT 則輸入 gpt。</p>
+<h4 id="212-分割槽的類型">2.1.2 分割槽的類型</h4>
+<p>此選項只有選擇 MBR 格式才需要填寫，如使用 gpt 僅只要輸入該分割槽註解的名稱即可， MBR 會有兩種類型 primary 及 extended 可以選擇。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>輸入後類型後，會詢問檔案系統種類，這個任意選擇一個即可( ext4、 xfs 都行)，並不會真的使用該檔案系統種類進行格式化。</em></div>
+        </div>
+    </div>
+<h4 id="213-分割槽的切割起點與終點">2.1.3 分割槽的切割起點與終點</h4>
+<p>起點與終點可以輸入數值 + 單位或是以百分比表示。</p>
+<p><em>單位可以選擇以下:</em></p>
+<ol>
+<li>s : sector 硬碟儲存的最小容量單位</li>
+<li>B : byte</li>
+<li>MiB 、 GiB、 TiB ( 可以整除 2 )</li>
+<li>MB 、 GB 、 TB ( 可以整除 10 )</li>
+</ol>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>起始點以 2048s 開始是一個安全界限的開始，如未能配置好開始的分區導致無法有效對齊，會出現警告，一般都建議從 2048s 為基本起點。</em></div>
+        </div>
+    </div>
+<h4 id="214-查看分割完後的硬碟狀態">2.1.4 查看分割完後的硬碟狀態</h4>
+<p>使用 print 可以列出目前選擇裝置的分割表格式有分割哪幾個槽，切割大小等各詳細訊息。</p>
+<h4 id="215-小技巧-help-查詢使用方式">2.1.5 小技巧 Help 查詢使用方式</h4>
+<p>上述步驟的指令要全部記起來，不是很容易的一件事情，不過透過交談式可以清楚知道哪些類型可以使用，只要知道分割硬碟有哪些步驟都可以透過 help 查詢。</p>
+<ol>
+<li>查看有哪些功能可以使用</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span>
+  align-check TYPE N                        check partition N <span class="k">for</span> TYPE<span class="o">(</span>min<span class="p">|</span>opt<span class="o">)</span> alignment
+  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           print general help, or <span class="nb">help</span> on COMMAND
+  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
+  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
+  name NUMBER NAME                         name partition NUMBER as NAME
+  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>NUMBER<span class="o">]</span>     display the partition table, available devices, free space, all found partitions, or a particular partition
+...
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>查看分割表格式有哪些可以選</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mktable                                                     
+  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
+
+	LABEL-TYPE is one of: atari, aix, amiga, bsd, dvh, gpt, mac, msdos, pc98, sun, loop                                        
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>查看檔案系統格式化有哪些種類</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mkpart                                                     
+  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
+
+	PART-TYPE is one of: primary, logical, extended
+        FS-TYPE is one of: btrfs, nilfs2, ext4, ext3, ext2, fat32, fat16, hfsx, hfs+, hfs, jfs, swsusp, linux-swap<span class="o">(</span>v1<span class="o">)</span>, linux-swap<span class="o">(</span>v0<span class="o">)</span>, ntfs, reiserfs, hp-ufs, sun-ufs, xfs, apfs2, apfs1, asfs, amufs5, amufs4,
+        amufs3, amufs2, amufs1, amufs0, amufs, affs7, affs6, affs5, affs4, affs3, affs2, affs1, affs0, linux-swap, linux-swap<span class="o">(</span>new<span class="o">)</span>, linux-swap<span class="o">(</span>old<span class="o">)</span>
+        START and END are disk locations, such as 4GB or 10%.  Negative values count from the end of the disk.  For example, -1s specifies exactly the last sector.   
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-parted-指令式操作">2.2 Parted 指令式操作</h3>
+<p>指令式操作就是把交談式會做的步驟一氣呵成的輸入，在 shell script 腳本是很常見來使用的方式，選擇 vdc 設備並以 GPT 格式為分割，並切割出約末 150 Mib 空間。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc  mklabel gpt mkpart gpt-example ext4 2048s 150Mib print</span>
+Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+Disk /dev/vdc: 315MB
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End    Size   File system  Name         Flags
+ <span class="m">1</span>      1049kB  157MB  156MB  ext4         gpt-example
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-創建檔案系統">3. 創建檔案系統</h2>
+<p>執行完分割後，是無法直接掛載使用的，並需創建檔案系統後才能進行掛載，檔案系統大多為:
+ext 系列、 xfs 及 linux-swap ，其中儲存檔案最常用 xfs 及 ext4 這兩個檔案系統。linux-swap 顧名思義就是給 swap 交換分區使用的。</p>
+<h3 id="31-創建-xfs-檔案系統">3.1 創建 xfs 檔案系統</h3>
+<p>使用 mkfs.xfs 可以將已經分割好的設備裝置進行格式化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkfs.xfs  &lt; device &gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdb1 </span>
+meta-data<span class="o">=</span>/dev/vdb1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">12736</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>50944, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+Discarding blocks...Done.
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="32-創建-ext4-檔案系統">3.2 創建 ext4 檔案系統</h3>
+<p>使用 mkfs.ext4 可以將已經分割好的設備裝置進行格式化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4  &lt; device &gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdc1</span>
+mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+Discarding device blocks: <span class="k">done</span>                            
+Creating filesystem with <span class="m">152576</span> 1k blocks and <span class="m">38152</span> inodes
+Filesystem UUID: 8c67e55f-03e5-44fe-9587-aae5753b2db5
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, <span class="m">73729</span>
+
+Allocating group tables: <span class="k">done</span>                            
+Writing inode tables: <span class="k">done</span>                            
+Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+Writing superblocks and filesystem accounting information: <span class="k">done</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="33-創建-swap-檔案系統">3.3 創建 swap 檔案系統</h3>
+<p>使用 mkswap 可以將已經分割好的設備裝置進行格式化。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkswap  &lt; device &gt;
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc2</span>
+Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">49</span> MiB <span class="o">(</span><span class="m">51376128</span> bytes<span class="o">)</span>
+no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821-b73b-99a1ef64d020
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw"></i>SWAP 空間大小建議值<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>RAM</th>
+<th>SWAP 空間</th>
+<th>SWAP空間 (啟用休眠模式)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 G 或以下</td>
+<td>2 倍的 RAM</td>
+<td>3 倍的 RAM</td>
+</tr>
+<tr>
+<td>2G - 8G</td>
+<td>與 RAM 同樣</td>
+<td>2 倍的 RAM</td>
+</tr>
+<tr>
+<td>8G - 64G</td>
+<td>最少 4 G</td>
+<td>1.5 倍的 RAM</td>
+</tr>
+<tr>
+<td>64G 以上</td>
+<td>最少 4 G</td>
+<td>不建議啟用用休眠</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h2 id="4-掛載硬碟">4. 掛載硬碟</h2>
+<p>將硬碟分割及格式化後就可以將其掛載到指定目錄上使用，掛載方式很容易使用 mount 及可達成，不過 mount 只是暫時性的，當系統重機開機後又必須手動進行掛載，好在有 /etc/fstab 方便的助手可以讓我們記錄，並會再開機過程中自動進行掛載。</p>
+<h3 id="41-mount-手動掛載">4.1 mount 手動掛載</h3>
+<p>使用 mount 選擇分割好的設備並掛載到指定的目錄，即可使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mount  &lt; device &gt;  &lt; mount dir &gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>創建一個目錄 /xfs ，並將以 xfs 格式化的分割槽掛載 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir  -v /xfs</span>
+mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount /dev/vdb1 /xfs/</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs/</span>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdb1       194M   12M  183M   6% /xfs
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>swap掛載<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>掛載 swap 分區使用 swapon &lt; device &gt; 即可，可以 free 查看掛載的 swap。</em></div>
+        </div>
+    </div>
+<h3 id="42-開機自動掛載">4.2 開機自動掛載</h3>
+<p>使用手動 mount 掛載雖然快速 ，不過每次開機都要重複執行 mount ，只要將內容寫至 /etc/fstab 就可以讓系統自動處理。</p>
+<p>/etc/fstab 欄位說明:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1                                              #2      #3      #4              #5      #6</span>
+<span class="nv">UUID</span><span class="o">=</span>59196483-d800-4fa3-8c10-72513c9f93ab       /boot   xfs     defaults        <span class="m">0</span>       <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>欄位一 : 硬碟設備或是 UUID</li>
+<li>欄位二 : 掛載的目錄</li>
+<li>欄位三 : 檔案系統種類</li>
+<li>欄位四 : 掛載參數 ( deafults 預設使用 rw, suid, dev, exec, auto, nouser, async 幾個參數)</li>
+<li>欄位五 : 是否啟用 dump 備份 ， 0 為關閉</li>
+<li>欄位六 : 是否開機執行 fsceck ， 0 為關閉</li>
+</ol>
+<p>創建一個目錄 /ext4 ，並將以 ext4 格式化的分割槽寫入 /etc/fstab 內，並讓其自動掛載生效。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
+mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOF</span>
+/dev/vdc1    /ext4    ext4    defaults    <span class="m">0</span>    <span class="m">0</span>
+EOF
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdc1       141M  1.6M  129M   2% /ext4
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>swap掛載<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>寫入 /etc/fstab 將欄位二及欄位三更改 swap ，其餘方式與一般設備寫法一致。</em></div>
+        </div>
+    </div>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>Danger<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>請於編輯完使用 mount -a 掛載並檢查，如果 /etc/fstab 欄位遺漏或是寫錯會導致系統無法開機，需特別注意!!!</strong></div>
+        </div>
+    </div>
+<h3 id="43-掛載硬碟使用-uuid-好處在哪">4.3 掛載硬碟使用 UUID 好處在哪?</h3>
+<p>上述看到掛載硬碟可以直接使用設備號碼也可以使用設備的 UUID 進行掛載，那時麼時候需要用UUID掛載呢?</p>
+<p>建議所有的實體硬碟，務必要使用 UUID 掛載，因為電腦機器在識別是以第幾顆硬碟來當作號碼，如果今天第一個插槽及最後一個插槽都有掛上硬碟，對於電腦而言該設備號碼為 a 及 b ，不過再添加一個硬碟在第一個位置，對電腦而言新的設備號碼會被取代為 b ，這樣就會導致系統開機出現問題。</p>
+<p>查看設備 UUID 方式很容易，使用 lsblk 加參數就可以看到。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk -fp</span>
+NAME                                FSTYPE      LABEL UUID                                   MOUNTPOINT
+/dev/sr0                                                                                     
+/dev/vda                                                                                     
+├─/dev/vda1                         xfs               59196483-d800-4fa3-8c10-72513c9f93ab   /boot
+└─/dev/vda2                         LVM2_member       6YQy3s-SGvB-u8Tt-t3hT-fdZr-xHd7-eKmZpl 
+  ├─/dev/mapper/rl_workstation-root xfs               e77f3419-e69b-4a2a-8677-43165f90a6e5   /
+  └─/dev/mapper/rl_workstation-swap swap              589264ff-b23a-437d-8e5e-e45f9d5ebdf5   <span class="o">[</span>SWAP<span class="o">]</span>
+/dev/vdb                                                                                     
+└─/dev/vdb1                         xfs               c7ba49dd-8c65-4f54-ac7c-13bec9970493   /xfs
+/dev/vdc                                                                                     
+├─/dev/vdc1                         ext4              97d8b42f-bbd4-48e6-9da9-bed24e0193af   /ext4
+└─/dev/vdc2                         swap              1dc93a43-a0a4-4821-b73b-99a1ef64d020   
+/dev/vdd           
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5-lab-練習">5. LAB 練習</h2>
+<h3 id="51--lab">5.1  LAB</h3>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="http://localhost:1313/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
+        </div>
+    </div>
+<p>使用 serverc 環境來練習，使用 /dev/vdc 創建一個 SWAP 分區為 200 Mib 大小；使用 /dev/vdd 分割一個 150 Mib 大小的 xfs 掛載至 xfs 目錄，另外再分割一個 200 Mib 大小的 ext3 掛載 ext3 目錄， 上述內容均要能再開機後自動掛載。</p>
+<h3 id="52--lab-解答">5.2  LAB 解答</h3>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>所創建分區大小很難與題目要求百分百一致，正負 10% 以內都是合理範圍。</em></div>
+        </div>
+    </div>
+<h4 id="521-掛載-swap">5.2.1. 掛載 swap</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 掛載前檢查</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
+              total        used        free      shared  buff/cache   available
+Mem:        <span class="m">1508408</span>      <span class="m">167488</span>     <span class="m">1085724</span>        <span class="m">8760</span>      <span class="m">255196</span>     <span class="m">1188524</span>
+Swap:       <span class="m">1048572</span>           <span class="m">0</span>     <span class="m">1048572</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc mklabel msdos mkpart primary linux-swap 2048s 201Mib </span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc1</span>
+Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">200</span> MiB <span class="o">(</span><span class="m">209711104</span> bytes<span class="o">)</span>
+no label, <span class="nv">UUID</span><span class="o">=</span>d5c11287-33bc-432d-9d4c-c3c6777f1256
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+&gt; /dev/vdc1 swap swap defaults <span class="m">0</span> <span class="m">0</span>
+&gt; EOL
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># swapon /dev/vdc1</span>
+<span class="c1"># 掛載後增加 swap 分區</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
+              total        used        free      shared  buff/cache   available
+Mem:        <span class="m">1508408</span>      <span class="m">167912</span>     <span class="m">1085320</span>        <span class="m">8760</span>      <span class="m">255176</span>     <span class="m">1188100</span>
+Swap:       <span class="m">1253368</span>           <span class="m">0</span>     <span class="m">1253368</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="522-掛載-xfs">5.2.2. 掛載 /xfs</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd mklabel msdos mkpart primary xfs 2048s 151Mib </span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdd1</span>
+meta-data<span class="o">=</span>/dev/vdd1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">9600</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>38400, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+Discarding blocks...Done.
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /xfs</span>
+mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+&gt; /dev/vdd1 /xfs xfs defaults <span class="m">0</span> <span class="m">0</span>
+&gt; EOL
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs</span>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdd1       145M  8.8M  136M   7% /xfs
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="523-掛載-ext4">5.2.3. 掛載 /ext4</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd  mkpart primary ext4 152Mib 352Mib </span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdd2</span>
+mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+Discarding device blocks: <span class="k">done</span>                            
+Creating filesystem with <span class="m">204800</span> 1k blocks and <span class="m">51200</span> inodes
+Filesystem UUID: 023a65b7-c2de-45db-852e-53059e5e57f5
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, <span class="m">73729</span>
+
+Allocating group tables: <span class="k">done</span>                            
+Writing inode tables: <span class="k">done</span>                            
+Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+Writing superblocks and filesystem accounting information: <span class="k">done</span> 
+
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
+mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+&gt; /dev/vdd2 /ext4 ext4 defaults <span class="m">0</span> <span class="m">0</span>
+&gt; EOL
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdd2       190M  1.6M  175M   1% /ext4
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="524-reboot-重新開機">5.2.4. reboot 重新開機</h4>
+<p>確保重新開機後，所有目錄都正常掛載。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果無法正常開機，表示 /etc/fstab 中有錯誤，可以至 bastion 機器執行 rht-vmctl reset serverc 重置 serverc 回初始設定。</em></div>
+        </div>
+    </div>
+<h2 id="6-小結">6. 小結</h2>
+<p>操作硬碟分割、格式化及掛載是 Linux 的基本功，熟悉方式就是不斷的練習才是不二法門，透過練習才能掌握這個必備的技術。</p></div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-storage-partition%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/nginx/2022/nginx-introduction/" class="prev" rel="prev" title="Nginx - 反向代理的代名詞"><i class="fas fa-angle-left fa-fw"></i>Nginx - 反向代理的代名詞</a>
+            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

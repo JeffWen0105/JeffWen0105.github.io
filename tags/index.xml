@@ -12,13 +12,6 @@
     <guid>https://blog.howhow.tk/tags/ansible/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>RHCE</title>
-    <link>https://blog.howhow.tk/tags/rhce/</link>
-    <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/tags/rhce/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>Kubernetes</title>
     <link>https://blog.howhow.tk/tags/kubernetes/</link>
     <pubDate>Wed, 09 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -73,6 +66,13 @@
     <pubDate>Thu, 06 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/tags/network/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Hadoop</title>
+    <link>https://blog.howhow.tk/tags/hadoop/</link>
+    <pubDate>Thu, 11 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/tags/hadoop/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

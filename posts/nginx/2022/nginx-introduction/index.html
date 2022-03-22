@@ -18,7 +18,7 @@
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/nginx\/2022\/nginx-introduction\/"
-        },"genre": "posts","keywords": "Nginx","wordcount":  1140 ,
+        },"genre": "posts","keywords": "Nginx","wordcount":  1153 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/nginx\/2022\/nginx-introduction\/","datePublished": "2022-02-14T00:00:00+00:00","dateModified": "2022-02-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -77,7 +77,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Nginx - 反向代理的代名詞</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1140 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1153 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -113,7 +113,7 @@
             alt="https://i.imgur.com/q8yPOmj.png" />
     </a><figcaption class="image-caption">From umbrella.cisco.com</figcaption>
     </figure></p>
-<p>再說明反向代理( <strong>Reverse Proxy</strong> )前，先瞭解正向代理 ( <strong>Forward Proxy</strong> ) 兩者差異:</p>
+<p>反向代理( <strong>Reverse Proxy</strong> ) 與 正向代理 ( <strong>Forward Proxy</strong> ) 兩者差異:</p>
 <ol>
 <li>正向代理 : 使用者發送至伺服器 (唯一)請求前，透過代理伺服器代為發送，可以有效隱藏使用者電腦訊息，再由代理伺服器回傳回應給使用者。</li>
 <li>反向代理 : 伺服器有多部機器，使用者發送請求給代理伺服器，由代理伺服器去轉送，並回傳給使用者，可以有效平衡使用者請求流量</li>
@@ -136,7 +136,7 @@
 <p>進入 Nginx 官網， 官網連結<a href="https://nginx.org/en/linux_packages.html#RHEL-CentOS" target="_blank" rel="noopener noreffer">請點我</a></p>
 </li>
 <li>
-<p>並複製 Nginx 穩定版倉庫地址</p>
+<p>選擇 Nginx 穩定版倉庫地址</p>
 </li>
 </ol>
 <div class="highlight"><div class="chroma">
@@ -160,14 +160,30 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
-<li>創建新的倉庫清單 /etc/yum.repos.d/nginx.repo ， 並將 Nginx 穩定版倉庫地址貼上</li>
+<li>創建新的倉庫清單 /etc/yum.repos.d/nginx.repo ， 並將 Nginx 貼上穩定版倉庫地址</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vim  /etc/yum.repos.d/nginx.repo
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cat  &gt;&gt; /etc/yum.repos.d/nginx.repo  <span class="s">&lt;&lt; EOF
+</span><span class="s">[nginx-stable]
+</span><span class="s">name=nginx stable repo
+</span><span class="s">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+</span><span class="s">gpgcheck=1
+</span><span class="s">enabled=1
+</span><span class="s">gpgkey=https://nginx.org/keys/nginx_signing.key
+</span><span class="s">module_hotfixes=true
+</span><span class="s">EOF</span>
 </code></pre></td></tr></table>
 </div>
 </div><ol start="4">
@@ -445,7 +461,7 @@ Commercial support is available at
     </div>
 
     <div class="post-nav"><a href="/posts/linux/2022/linux-selinux/" class="prev" rel="prev" title="Linux - 安全增強式 Linux ( SELinux )"><i class="fas fa-angle-left fa-fw"></i>Linux - 安全增強式 Linux ( SELinux )</a>
-            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/linux/2022/linux-storage-partition/" class="next" rel="next" title="Linux - 硬碟的分割及掛載">Linux - 硬碟的分割及掛載<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
