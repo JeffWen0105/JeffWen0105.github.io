@@ -18,7 +18,7 @@
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="prev" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="prev" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -169,6 +169,7 @@
             alt="https://i.imgur.com/Z5oHmz0.png" />
     </a><figcaption class="image-caption">From access.redhat.com</figcaption>
     </figure></p>
+<hr>
 <h2 id="2-parted-管理分割硬碟工具">2. Parted 管理分割硬碟工具</h2>
 <p>傳統使用的硬碟分割工具為 fdisk 及 gdisk ，一個專門分割 MBR 格式、另一個專門分割 GPT 格式，使用 Parted 這工具都可以使用，並且有交談式及指令式兩種方式可以使用，非常的方便好用。</p>
 <p>執行前可以透過 lsblk 檢查目前有哪些硬碟設備</p>
@@ -383,7 +384,8 @@ Number  Start   End    Size   File system  Name         Flags
  <span class="m">1</span>      1049kB  157MB  156MB  ext4         gpt-example
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3-創建檔案系統">3. 創建檔案系統</h2>
+</div><hr>
+<h2 id="3-創建檔案系統">3. 創建檔案系統</h2>
 <p>執行完分割後，是無法直接掛載使用的，並需創建檔案系統後才能進行掛載，檔案系統大多為:
 ext 系列、 xfs 及 linux-swap ，其中儲存檔案最常用 xfs 及 ext4 這兩個檔案系統。linux-swap 顧名思義就是給 swap 交換分區使用的。</p>
 <h3 id="31-創建-xfs-檔案系統">3.1 創建 xfs 檔案系統</h3>
@@ -527,6 +529,7 @@ no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821
 </div>
         </div>
     </div>
+<hr>
 <h2 id="4-掛載硬碟">4. 掛載硬碟</h2>
 <p>將硬碟分割及格式化後就可以將其掛載到指定目錄上使用，掛載方式很容易使用 mount 及可達成，不過 mount 只是暫時性的，當系統重機開機後又必須手動進行掛載，好在有 /etc/fstab 方便的助手可以讓我們記錄，並會再開機過程中自動進行掛載。</p>
 <h3 id="41-mount-手動掛載">4.1 mount 手動掛載</h3>
@@ -666,14 +669,15 @@ NAME                                FSTYPE      LABEL UUID                      
 /dev/vdd           
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="5-lab-練習">5. LAB 練習</h2>
+</div><hr>
+<h2 id="5-lab-練習">5. LAB 練習</h2>
 <h3 id="51--lab">5.1  LAB</h3>
 <div class="details admonition success open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="http://localhost:1313/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
         </div>
     </div>
 <p>使用 serverc 環境來練習，使用 /dev/vdc 創建一個 SWAP 分區為 200 Mib 大小；使用 /dev/vdd 分割一個 150 Mib 大小的 xfs 掛載至 xfs 目錄，另外再分割一個 200 Mib 大小的 ext3 掛載 ext3 目錄， 上述內容均要能再開機後自動掛載。</p>
@@ -843,6 +847,7 @@ Filesystem      Size  Used Avail Use% Mounted on
             <div class="admonition-content"><em>如果無法正常開機，表示 /etc/fstab 中有錯誤，可以至 bastion 機器執行 rht-vmctl reset serverc 重置 serverc 回初始設定。</em></div>
         </div>
     </div>
+<hr>
 <h2 id="6-小結">6. 小結</h2>
 <p>操作硬碟分割、格式化及掛載是 Linux 的基本功，熟悉方式就是不斷的練習才是不二法門，透過練習才能掌握這個必備的技術。</p></div><br>
 
@@ -889,7 +894,7 @@ Filesystem      Size  Used Avail Use% Mounted on
     </div>
 
     <div class="post-nav"><a href="/posts/nginx/2022/nginx-introduction/" class="prev" rel="prev" title="Nginx - 反向代理的代名詞"><i class="fas fa-angle-left fa-fw"></i>Nginx - 反向代理的代名詞</a>
-            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/linux/2022/linux-storage-lvm/" class="next" rel="next" title="Linux - 邏輯卷冊管理 LVM">Linux - 邏輯卷冊管理 LVM<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
