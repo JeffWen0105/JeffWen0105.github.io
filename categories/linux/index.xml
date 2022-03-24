@@ -40,7 +40,7 @@
     <pubDate>Tue, 15 Feb 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/</guid>
-    <description><![CDATA[<p>LVM ( Logical Volume Management ) 這管理工具可以更容易且有效的管理硬碟空間，可以任意組合多顆硬碟成為一個分割槽，也能任意的擴充放大透過 LVM 掛載的目錄及分割槽。</p>]]></description>
+    <description><![CDATA[<p>LVM ( Logical Volume Management ) 這管理工具可以更容易且有效的管理硬碟空間，可以任意組合多顆硬碟成為一個分割槽，也能任意的擴充放大透過 LVM 掛載的目錄及分割槽 。</p>]]></description>
 </item><item>
     <title>Linux - 硬碟的分割及掛載</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/</link>
