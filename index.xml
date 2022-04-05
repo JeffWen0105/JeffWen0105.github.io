@@ -56,25 +56,25 @@
     <guid>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</guid>
     <description><![CDATA[在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及]]></description>
 </item><item>
+    <title>Linux - 容器管理工具 - Podman</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</link>
+    <pubDate>Tue, 08 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</guid>
+    <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。</p>]]></description>
+</item><item>
+    <title>Linux - 網路檔案系統 - NFS</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</link>
+    <pubDate>Mon, 07 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</guid>
+    <description><![CDATA[<p>NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。</p>]]></description>
+</item><item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Sat, 05 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 4 台巢狀式虛擬式機器 (練習區) 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間 可以透過主控端隨時快速還原 4 台]]></description>
-</item><item>
-    <title>Linux - YUM 倉庫清單配置</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</link>
-    <pubDate>Thu, 03 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</guid>
-    <description><![CDATA[<p>YUM 為高階的套件管理工具，解決軟體套件依賴問題，並且可以批量更新，非常好用的工具。另外可以自行定義倉庫位置，如指定台灣的軟體倉庫比美國軟體倉庫下載速度快的多。</p>]]></description>
-</item><item>
-    <title>Linux - YUM 安裝及更新套件</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-yum/</link>
-    <pubDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum/</guid>
-    <description><![CDATA[<p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>]]></description>
 </item></channel>
 </rss>

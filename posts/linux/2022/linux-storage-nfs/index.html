@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - 網路檔案系統 - NFS - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 網路檔案系統 - NFS" />
+<meta property="og:description" content="NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-07T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - 網路檔案系統 - NFS"/>
+<meta name="twitter:description" content="NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - 網路檔案系統 - NFS",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-nfs\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  1247 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-nfs\/","datePublished": "2022-03-07T00:00:00+00:00","dateModified": "2022-03-07T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 網路檔案系統 - NFS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-07">2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1247 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-nfs-伺服器">1. NFS 伺服器</a>
+      <ul>
+        <li><a href="#11-安裝-nfs-套件">1.1. 安裝 NFS 套件</a></li>
+        <li><a href="#12-創建分享目錄及檔案">1.2. 創建分享目錄及檔案</a></li>
+        <li><a href="#13-編輯設定檔重啟-nfs-伺服器及開放防火牆">1.3. 編輯設定檔、重啟 nfs 伺服器及開放防火牆</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-client-端">2. Client 端</a>
+      <ul>
+        <li><a href="#21-使用-monut-測試能否掛載">2.1. 使用 monut 測試能否掛載</a></li>
+        <li><a href="#22-fstab-開機自動掛載">2.2. fstab 開機自動掛載</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-autofs">3. AutoFS</a>
+      <ul>
+        <li><a href="#311-安裝-autofs">3.1.1 安裝 autofs</a></li>
+        <li><a href="#312-不同掛載目錄模式">3.1.2 不同掛載目錄模式</a></li>
+        <li><a href="#313-nfs-伺服器分享目錄">3.1.3 NFS 伺服器分享目錄</a></li>
+        <li><a href="#314-direct-map-模式">3.1.4 Direct MAP 模式</a>
+          <ul>
+            <li><a href="#3141-創建-auto-fs-對應檔">3.1.4.1. 創建 auto fs 對應檔</a></li>
+            <li><a href="#3142-創建-direct-掛載設定檔">3.1.4.2. 創建 Direct 掛載設定檔</a></li>
+            <li><a href="#3143-重啟-autofs並查看目錄是否自動掛載">3.1.4.3. 重啟 autofs，並查看目錄是否自動掛載</a></li>
+          </ul>
+        </li>
+        <li><a href="#315-indirect-map-模式">3.1.5 Indirect MAP 模式</a>
+          <ul>
+            <li><a href="#3151-創建-auto-fs-對應檔">3.1.5.1. 創建 auto fs 對應檔</a></li>
+            <li><a href="#3152-創建-indirect-掛載設定檔">3.1.5.2. 創建 Indirect 掛載設定檔</a></li>
+            <li><a href="#3153-重啟-autofs並查看目錄是否自動掛載">3.1.5.3. 重啟 autofs，並查看目錄是否自動掛載</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。</p>
+<h2 id="1-nfs-伺服器">1. NFS 伺服器</h2>
+<p>RHEL 8 系列後預設使用 NTF 4 及支援 NTF 3 版本， NTF 4 最大改變就是取消 RPC 傳送隨機存取 port ( Udp )，改用指定的 2049 Tcp port。</p>
+<h3 id="11-安裝-nfs-套件">1.1. 安裝 NFS 套件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum nfs-utils
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># yum install nfs-utils</span>
+Dependencies resolved.
+<span class="o">=============================================================================================================================================================================================</span>
+ Package                                            Architecture                            Version                                            Repository                               <span class="nv">Size</span>
+<span class="o">=============================================================================================================================================================================================</span>
+Installing:
+ nfs-utils                                          x86_64                                  1:2.3.3-46.el8                                     BaseOS                                  <span class="m">499</span> k
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="12-創建分享目錄及檔案">1.2. 創建分享目錄及檔案</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /share</span>
+mkdir: created directory <span class="s1">&#39;/share&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># echo &#34;serverc nfs&#34; &gt; /share/README.txt</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13-編輯設定檔重啟-nfs-伺服器及開放防火牆">1.3. 編輯設定檔、重啟 nfs 伺服器及開放防火牆</h3>
+<p>伺服器分享檔案很容易，只要選擇要分享的目錄並寫入 /etc/export 即可，另可以進階設定哪些IP或是網段及哪些存取權限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 創建分享目錄的設定 </span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/exports.d/share.exports &lt;&lt; EOL</span>
+&gt; /share    *<span class="o">(</span>rw,sync<span class="o">)</span>
+&gt; EOL
+<span class="c1"># 重啟 nfs 服務</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># systemctl restart nfs-server.service</span>
+<span class="c1"># 開放防火牆 nfs 服務</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># firewall-cmd --add-service=nfs --permanent </span>
+success           
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># firewall-cmd --reload </span>
+success
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>/etc/export.d/<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>share.exports 可取任意名稱，必須以 .exports 檔名結尾</strong></div>
+        </div>
+    </div>
+<h2 id="2-client-端">2. Client 端</h2>
+<p>Client 也需要安裝 nfs-utils套件，但是不用啟動 nfs-server 服務。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum nfs-utils
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="21-使用-monut-測試能否掛載">2.1. 使用 monut 測試能否掛載</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mount -t nfs serverc:/share /mnt</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df -h /mnt</span>
+Filesystem      Size  Used Avail Use% Mounted on
+serverc:/share  8.0G  1.9G  6.2G  23% /mnt
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat /mnt/README.txt </span>
+serverc nfs
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw"></i>umount<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>測試完可以藉由 umount 移除掛載。</em></div>
+        </div>
+    </div>
+<h3 id="22-fstab-開機自動掛載">2.2. fstab 開機自動掛載</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mkdir -v /share</span>
+mkdir: created directory <span class="s1">&#39;/share&#39;</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+&gt; serverc:/share  /share nfs defaults <span class="m">0</span> <span class="m">0</span>
+&gt; EOL
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mount -a</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat /share/README.txt </span>
+serverc nfs
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df -h /share/</span>
+Filesystem      Size  Used Avail Use% Mounted on
+serverc:/share  8.0G  1.9G  6.2G  23% /share
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-autofs">3. AutoFS</h2>
+<p>autofs 是在 Client 端一個常駐在背景的程式，會自動掛載設定好的 nfs ，跟 monut 最大差別為只有在連線時候才會掛載，當連線結束後一段時候沒有連線請求，將會斷開連線，可以有效釋放 TCP 連線建立交握的頻寬。</p>
+<h3 id="311-安裝-autofs">3.1.1 安裝 autofs</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum install autofs
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install autofs</span>
+Dependencies resolved.
+<span class="o">=============================================================================================================================================================================================</span>
+ Package                                    Architecture                               Version                                              Repository                                  <span class="nv">Size</span>
+<span class="o">=============================================================================================================================================================================================</span>
+Installing:
+ autofs                                     x86_64                                     1:5.1.4-74.el8                                       BaseOS                                     <span class="m">705</span> k
+
+...
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="312-不同掛載目錄模式">3.1.2 不同掛載目錄模式</h3>
+<p>autofs 有兩種模式：</p>
+<ol>
+<li>Direct Map -&gt; 指定絕對路徑目錄</li>
+<li>Indirect Map -&gt; 指定一個目錄裡包含多的目錄</li>
+</ol>
+<p>如果 NFS 分享的目錄中有 5 個子目錄，如果全部子目錄都要分開不同資料夾掛載的話，在第一種模式必須定義 5 個設定，另外在第二種模式，僅需定義一個設定。</p>
+<h3 id="313-nfs-伺服器分享目錄">3.1.3 NFS 伺服器分享目錄</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# tree -F /shares
+/shares
+├── direct/
+│   └── extrernal/
+│       └── README.txt
+└── indirect/
+    ├── central/
+    │   └── README.txt
+    ├── east/
+    │   └── README.txt
+    └── west/
+        └── README.txt
+
+6 directories, 4 files
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Prepare<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>要分享的目錄必須要寫在 /etc/export 內並重啟 nfs 才能存取。</em></div>
+        </div>
+    </div>
+<h3 id="314-direct-map-模式">3.1.4 Direct MAP 模式</h3>
+<h4 id="3141-創建-auto-fs-對應檔">3.1.4.1. 創建 auto fs 對應檔</h4>
+<p>以 .autofs 結尾</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# cat &gt;&gt; /etc/auto.master.d/direct.autofs &lt;&lt; EOL
+&gt; /-  /etc/auto.direct
+&gt; EOL
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="3142-創建-direct-掛載設定檔">3.1.4.2. 創建 Direct 掛載設定檔</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# cat &gt;&gt; /etc/auto.direct &lt;&lt; EOL
+&gt; /external    -rw,sync,fstype=nfs4    serverc:/shares/direct/extrernal
+&gt; EOL
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>/external 目錄不用使用 mkdir 創建， autofs 會自行建立。</strong></div>
+        </div>
+    </div>
+<h4 id="3143-重啟-autofs並查看目錄是否自動掛載">3.1.4.3. 重啟 autofs，並查看目錄是否自動掛載</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# systemctl restart autofs
+[root@servera ~]# df -h /external/
+Filesystem                        Size  Used Avail Use% Mounted on
+serverc:/shares/direct/extrernal  8.0G  1.9G  6.2G  23% /external
+[root@servera ~]# ls /external/
+README.txt
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Notice<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>autofs 預設沒有使用目錄過 5 分鐘後會自動移除掛載，如果要縮短或是延長時間，可以編輯 /etc/autofs.conf 內的 dismount_interval ，更改後重啟 autofs。</em></div>
+        </div>
+    </div>
+<h3 id="315-indirect-map-模式">3.1.5 Indirect MAP 模式</h3>
+<h4 id="3151-創建-auto-fs-對應檔">3.1.5.1. 創建 auto fs 對應檔</h4>
+<p>以 .autofs 結尾</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# cat &gt;&gt; /etc/auto.master.d/indirect.autofs &lt;&lt; EOL
+&gt; /internal  /etc/indirect.autofs
+&gt; EOL
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="3152-創建-indirect-掛載設定檔">3.1.5.2. 創建 Indirect 掛載設定檔</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# cat &gt;&gt; /etc/indirect.autofs &lt;&lt; EOL
+&gt; *    -rw,sync,fstype=nfs4    serverc:/shares/indirect/&amp;
+&gt; EOL
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>使用 Indirect 使用 * 表示所有的子目錄，並在遠端分享目錄後加上 &amp; 表達。</strong></div>
+        </div>
+    </div>
+<h4 id="3153-重啟-autofs並查看目錄是否自動掛載">3.1.5.3. 重啟 autofs，並查看目錄是否自動掛載</h4>
+<p>只有用到該目錄才會掛載，所以必須要知道 server 端有分享出哪一些目錄</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl restart autofs</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /internal/</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df -h /internal/west</span>
+Filesystem                     Size  Used Avail Use% Mounted on
+serverc:/shares/indirect/west  8.0G  1.9G  6.2G  23% /internal/west
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /internal/</span>
+west
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df -h /internal/east</span>
+Filesystem                     Size  Used Avail Use% Mounted on
+serverc:/shares/indirect/east  8.0G  1.9G  6.2G  23% /internal/east
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /internal/</span>
+east  west
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-小結">4. 小結</h2>
+<p>NFS 十分方便好用，搭配 autofs ，實用度更上一層樓。</p></div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-storage-nfs%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-03-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-create-playground/" class="prev" rel="prev" title="Linux - 打造輕巧 Linux 練習 Lab"><i class="fas fa-angle-left fa-fw"></i>Linux - 打造輕巧 Linux 練習 Lab</a>
+            <a href="/posts/linux/2022/linux-containers-podman/" class="next" rel="next" title="Linux - 容器管理工具 - Podman">Linux - 容器管理工具 - Podman<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
