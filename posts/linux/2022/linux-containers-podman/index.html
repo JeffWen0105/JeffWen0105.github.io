@@ -120,6 +120,7 @@
 <li>性能 - 共用同一個 OS ，僅需要一個 OS 資源的消耗。</li>
 </ol>
 </blockquote>
+<hr>
 <h2 id="2-docker-vs-podman">2. Docker Vs Podman</h2>
 <p>市場上較為熱門且熟悉的容器管理工具是 Docker ，然而 Podman 與 Docker 最大的差異是，不需要像是 Docker 中的 daemon 背景常駐程式( 圖一 )，而是直接使用 OCI 直接執行核心的 continer ( 圖二 )，不會有 daemon 異常停止導致所有容器一併關閉的問題，另外 Podman 執行容器是 rootless ，不需要具備 root 權限也能執行。</p>
 <p><figure><a class="lightgallery" href="https://i.imgur.com/Lx3Gh64.png" title="https://i.imgur.com/Lx3Gh64.png" data-thumbnail="https://i.imgur.com/Lx3Gh64.png" data-sub-html="<h2>https://developers.redhat.com/   - (圖一)</h2>">
@@ -150,6 +151,7 @@
             <div class="admonition-content"><em>RHEL 8 一般安裝就會預設使用 podman ，如果是最小安裝可以直接 <code>yum install podman</code> 進行安裝。</em></div>
         </div>
     </div>
+<hr>
 <h2 id="3-podman-用法">3. Podman 用法</h2>
 <p>Podman 用法與 Docker 幾乎一模一樣，只要把 Docker 更換成 Podman 就可以使用。</p>
 <h3 id="31-啟動容器">3.1 啟動容器</h3>
@@ -510,8 +512,10 @@ Commercial support is available at
 &lt;/html&gt;
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="4-docker-轉換-podman-小技巧">4. Docker 轉換 Podman 小技巧</h2>
+</div><hr>
+<h2 id="4-docker-轉換-podman-小技巧">4. Docker 轉換 Podman 小技巧</h2>
 <p>如果 Docker 習慣已久不好改過來，可以直接安裝 podman-docker 套件( <code>yum install podman-docker</code> )，可以繼續使用 docker 指令，不過 cli 背後是執行 podman。</p>
+<hr>
 <h2 id="5-小結">5. 小結</h2>
 <p>Podman 使用上越來越多人使用，在不需要擁有 root 權限也能執行容器在安全性上面優勢遠遠勝過 Docker 。</p></div><br>
 

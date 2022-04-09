@@ -208,6 +208,7 @@ success
             <div class="admonition-content"><strong>share.exports 可取任意名稱，必須以 .exports 檔名結尾</strong></div>
         </div>
     </div>
+<hr>
 <h2 id="2-client-端">2. Client 端</h2>
 <p>Client 也需要安裝 nfs-utils套件，但是不用啟動 nfs-server 服務。</p>
 <div class="highlight"><div class="chroma">
@@ -274,7 +275,8 @@ Filesystem      Size  Used Avail Use% Mounted on
 serverc:/share  8.0G  1.9G  6.2G  23% /share
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="3-autofs">3. AutoFS</h2>
+</div><hr>
+<h2 id="3-autofs">3. AutoFS</h2>
 <p>autofs 是在 Client 端一個常駐在背景的程式，會自動掛載設定好的 nfs ，跟 monut 最大差別為只有在連線時候才會掛載，當連線結束後一段時候沒有連線請求，將會斷開連線，可以有效釋放 TCP 連線建立交握的頻寬。</p>
 <h3 id="311-安裝-autofs">3.1.1 安裝 autofs</h3>
 <div class="highlight"><div class="chroma">
@@ -490,7 +492,8 @@ serverc:/shares/indirect/east  8.0G  1.9G  6.2G  23% /internal/east
 east  west
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="4-小結">4. 小結</h2>
+</div><hr>
+<h2 id="4-小結">4. 小結</h2>
 <p>NFS 十分方便好用，搭配 autofs ，實用度更上一層樓。</p></div><br>
 
 <br>
