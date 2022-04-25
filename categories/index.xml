@@ -4,7 +4,21 @@
         <link>https://blog.howhow.tk/categories/</link>
         <description>Categories - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Terraform</title>
+    <link>https://blog.howhow.tk/categories/terraform/</link>
+    <pubDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/categories/terraform/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Windows</title>
+    <link>https://blog.howhow.tk/categories/windows/</link>
+    <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/categories/windows/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Ansible</title>
     <link>https://blog.howhow.tk/categories/ansible/</link>
     <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>

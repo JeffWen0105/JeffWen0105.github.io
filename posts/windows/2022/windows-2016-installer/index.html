@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows - Win Server 2016 伺服器安裝及設定 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Windows - Win Server 2016 伺服器安裝及設定" />
+<meta property="og:description" content="Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-11T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows - Win Server 2016 伺服器安裝及設定"/>
+<meta name="twitter:description" content="Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/" /><link rel="prev" href="https://blog.howhow.tk/posts/ansible/2022/ansible-variables/" /><link rel="next" href="https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows - Win Server 2016 伺服器安裝及設定",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/windows\/2022\/windows-2016-installer\/"
+        },"genre": "posts","keywords": "Windows","wordcount":  994 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/windows\/2022\/windows-2016-installer\/","datePublished": "2022-04-11T00:00:00+00:00","dateModified": "2022-04-11T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows - Win Server 2016 伺服器安裝及設定</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/windows/"><i class="far fa-folder fa-fw"></i>Windows</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-11">2022-04-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;994 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-windows-2016-介紹">1. Windows 2016 介紹</a></li>
+    <li><a href="#2-使用-vmware-安裝-windows-2016-server">2. 使用 VMware 安裝 Windows 2016 Server</a></li>
+    <li><a href="#3--windows-2016-server-基本設定">3.  Windows 2016 Server 基本設定</a>
+      <ul>
+        <li><a href="#31-編輯電腦名稱">3.1. 編輯電腦名稱</a></li>
+        <li><a href="#32-設定靜態-ip">3.2. 設定靜態 IP</a></li>
+        <li><a href="#33-設定-administrator-密碼並且開機使用">3.3. 設定 Administrator 密碼並且開機使用</a></li>
+        <li><a href="#34-防火牆開放-icmp-協定">3.4. 防火牆開放 ICMP 協定</a></li>
+      </ul>
+    </li>
+    <li><a href="#4--小結">4.  小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的上手的系統。</p>
+<!-- more -->
+<h2 id="1-windows-2016-介紹">1. Windows 2016 介紹</h2>
+<p>Windows Server 2016 為新一代的雲端作業平台，有簡易上手的的GUI，使 IT 管理人員容易管理，且微軟官方有提供 Windows Server 2016 評估版 ( 180 天 )，官方網站下載 ISO 評估版連結<a href="https://www.microsoft.com/zh-tw/evalcenter/evaluate-windows-server-2016/" target="_blank" rel="noopener noreffer">請點我</a>。</p>
+<h2 id="2-使用-vmware-安裝-windows-2016-server">2. 使用 VMware 安裝 Windows 2016 Server</h2>
+<p>囿於只是評估練習 Win 2016 ， 不需要特別找一台實體機器來安裝，可以透過 VMware 虛擬化系列來安裝(此 Lab 使用 VMware Workstation Player )</p>
+<ol>
+<li>VMware 選擇創建新的虛擬機器。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/RyvbkH6.png"
+        data-srcset="https://i.imgur.com/RyvbkH6.png, https://i.imgur.com/RyvbkH6.png 1.5x, https://i.imgur.com/RyvbkH6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/RyvbkH6.png"
+        title="https://i.imgur.com/RyvbkH6.png" /></p>
+<ol start="2">
+<li>選擇下載的 Windows Server 2016 ISO 檔案</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/TVzEQ0b.png"
+        data-srcset="https://i.imgur.com/TVzEQ0b.png, https://i.imgur.com/TVzEQ0b.png 1.5x, https://i.imgur.com/TVzEQ0b.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/TVzEQ0b.png"
+        title="https://i.imgur.com/TVzEQ0b.png" /></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>VMware 會自動偵測光碟片，如出現 Win Server 2016 被偵測到就可以使用簡易安裝模式。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>選擇 Standard 版本安裝，並創建 student 使用者。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/5Ys0Vwk.png"
+        data-srcset="https://i.imgur.com/5Ys0Vwk.png, https://i.imgur.com/5Ys0Vwk.png 1.5x, https://i.imgur.com/5Ys0Vwk.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/5Ys0Vwk.png"
+        title="https://i.imgur.com/5Ys0Vwk.png" /></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><blockquote>
+<p>Windows 2016 版本系列差異：</p>
+<ul>
+<li>Datacenter ： 完整旗艦版，可以執行高度虛擬化，另有超融合架構，且虛擬機器授權數量無上限。</li>
+<li>Standard : 標準版，僅提供 2 台虛擬機器授權。</li>
+<li>Core : 不具備圖形化介面，只能透過遠端伺服器管理員來管理。</li>
+</ul>
+</blockquote>
+</div>
+        </div>
+    </div>
+<ol start="4">
+<li>產品金鑰提示，點擊 Yes 使用評估版。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/SzVMllr.png"
+        data-srcset="https://i.imgur.com/SzVMllr.png, https://i.imgur.com/SzVMllr.png 1.5x, https://i.imgur.com/SzVMllr.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/SzVMllr.png"
+        title="https://i.imgur.com/SzVMllr.png" /></p>
+<ol start="5">
+<li>設定虛擬機名稱及存放路徑，依個人喜好決定。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Y7gDqNn.png"
+        data-srcset="https://i.imgur.com/Y7gDqNn.png, https://i.imgur.com/Y7gDqNn.png 1.5x, https://i.imgur.com/Y7gDqNn.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Y7gDqNn.png"
+        title="https://i.imgur.com/Y7gDqNn.png" /></p>
+<ol start="6">
+<li>虛擬硬碟空間使用預設 60 Gib ，並選擇單一檔案存放。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/uysw084.png"
+        data-srcset="https://i.imgur.com/uysw084.png, https://i.imgur.com/uysw084.png 1.5x, https://i.imgur.com/uysw084.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/uysw084.png"
+        title="https://i.imgur.com/uysw084.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>TIP<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>單一檔案存放好處讀寫效能較高，預設 VMware 使用分割多的檔案存放。</em></div>
+        </div>
+    </div>
+<ol start="7">
+<li>選擇客制化硬體。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/K3aBe0W.png"
+        data-srcset="https://i.imgur.com/K3aBe0W.png, https://i.imgur.com/K3aBe0W.png 1.5x, https://i.imgur.com/K3aBe0W.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/K3aBe0W.png"
+        title="https://i.imgur.com/K3aBe0W.png" /></p>
+<ol start="8">
+<li>移除掉無用的介面卡</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/10kihy5.png"
+        data-srcset="https://i.imgur.com/10kihy5.png, https://i.imgur.com/10kihy5.png 1.5x, https://i.imgur.com/10kihy5.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/10kihy5.png"
+        title="https://i.imgur.com/10kihy5.png" /></p>
+<ol start="9">
+<li>點擊 Finish 會開始自動進行安裝</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/lNA42UR.png"
+        data-srcset="https://i.imgur.com/lNA42UR.png, https://i.imgur.com/lNA42UR.png 1.5x, https://i.imgur.com/lNA42UR.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/lNA42UR.png"
+        title="https://i.imgur.com/lNA42UR.png" /></p>
+<ol start="10">
+<li>Windows 安裝完，VMware 會自動安裝相關套件，使虛擬化更方便使用。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/3RV2l84.png"
+        data-srcset="https://i.imgur.com/3RV2l84.png, https://i.imgur.com/3RV2l84.png 1.5x, https://i.imgur.com/3RV2l84.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/3RV2l84.png"
+        title="https://i.imgur.com/3RV2l84.png" /></p>
+<h2 id="3--windows-2016-server-基本設定">3.  Windows 2016 Server 基本設定</h2>
+<p>Windows 2016 Sever 安裝十分容易，接下來設定一些常用配置。</p>
+<h3 id="31-編輯電腦名稱">3.1. 編輯電腦名稱</h3>
+<ol>
+<li>伺服器管理員面板 -&gt; 本機伺服器 -&gt; 電腦名稱 ( WIN-xxxx ) -&gt; 系統內容的變更 -&gt; 編輯電腦名稱  -&gt; 確定。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/29334Mz.png"
+        data-srcset="https://i.imgur.com/29334Mz.png, https://i.imgur.com/29334Mz.png 1.5x, https://i.imgur.com/29334Mz.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/29334Mz.png"
+        title="https://i.imgur.com/29334Mz.png" /></p>
+<ol start="2">
+<li>變更完電腦名稱，系統會要求重新啟動才會生效。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/oI0m54L.png"
+        data-srcset="https://i.imgur.com/oI0m54L.png, https://i.imgur.com/oI0m54L.png 1.5x, https://i.imgur.com/oI0m54L.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/oI0m54L.png"
+        title="https://i.imgur.com/oI0m54L.png" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/ndpznjR.png"
+        data-srcset="https://i.imgur.com/ndpznjR.png, https://i.imgur.com/ndpznjR.png 1.5x, https://i.imgur.com/ndpznjR.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/ndpznjR.png"
+        title="https://i.imgur.com/ndpznjR.png" /></p>
+<h3 id="32-設定靜態-ip">3.2. 設定靜態 IP</h3>
+<p>Windows Server 通常都會使用靜態 IP ，使得管理及維護方便。</p>
+<ol>
+<li>伺服器管理員面板 -&gt; 本機伺服器 -&gt; Eth0 -&gt; 右鍵內容 -&gt; 選擇 IPv4 -&gt; 點擊內容。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/SHQpm6t.png"
+        data-srcset="https://i.imgur.com/SHQpm6t.png, https://i.imgur.com/SHQpm6t.png 1.5x, https://i.imgur.com/SHQpm6t.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/SHQpm6t.png"
+        title="https://i.imgur.com/SHQpm6t.png" /></p>
+<ol start="2">
+<li>編輯 IP 組態及 DNS。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/8rSKKXQ.png"
+        data-srcset="https://i.imgur.com/8rSKKXQ.png, https://i.imgur.com/8rSKKXQ.png 1.5x, https://i.imgur.com/8rSKKXQ.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/8rSKKXQ.png"
+        title="https://i.imgur.com/8rSKKXQ.png" /></p>
+<h3 id="33-設定-administrator-密碼並且開機使用">3.3. 設定 Administrator 密碼並且開機使用</h3>
+<p>Windows 預設會啟用一般 User 並且使用無密碼登入，不過該方式對於 Server 風險較大，故設定管理員密碼，並且要求一定鑰輸入密碼才能登入相對安全。</p>
+<ol>
+<li>左下角 Windows 圖示點擊右鍵 -&gt; 命令提示字元 ( 系統管理員 ) 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xuOOQZw.png"
+        data-srcset="https://i.imgur.com/xuOOQZw.png, https://i.imgur.com/xuOOQZw.png 1.5x, https://i.imgur.com/xuOOQZw.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xuOOQZw.png"
+        title="https://i.imgur.com/xuOOQZw.png" /></p>
+<ol start="2">
+<li>選擇是允許 App 變更裝置。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/B83HDDh.png"
+        data-srcset="https://i.imgur.com/B83HDDh.png, https://i.imgur.com/B83HDDh.png 1.5x, https://i.imgur.com/B83HDDh.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/B83HDDh.png"
+        title="https://i.imgur.com/B83HDDh.png" /></p>
+<ol start="3">
+<li>設定 admininstrator 密碼 ( 可自定義，範例使用 P@ssw0rd )。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">net user administrator P@ssw0rd
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/2RoWEfA.png"
+        data-srcset="https://i.imgur.com/2RoWEfA.png, https://i.imgur.com/2RoWEfA.png 1.5x, https://i.imgur.com/2RoWEfA.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/2RoWEfA.png"
+        title="https://i.imgur.com/2RoWEfA.png" /></p>
+<ol start="4">
+<li>開啟電腦登入必須使用帳號及密碼。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/JkdZYVi.png"
+        data-srcset="https://i.imgur.com/JkdZYVi.png, https://i.imgur.com/JkdZYVi.png 1.5x, https://i.imgur.com/JkdZYVi.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/JkdZYVi.png"
+        title="https://i.imgur.com/JkdZYVi.png" /></p>
+<ol start="5">
+<li>登出 student 帳號選擇 Administrator 就會需要輸入密碼。</li>
+</ol>
+<p><em>也可以將 student 停用或是也設定密碼，提高安全性。</em></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/N3AOzI5.png"
+        data-srcset="https://i.imgur.com/N3AOzI5.png, https://i.imgur.com/N3AOzI5.png 1.5x, https://i.imgur.com/N3AOzI5.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/N3AOzI5.png"
+        title="https://i.imgur.com/N3AOzI5.png" /></p>
+<h3 id="34-防火牆開放-icmp-協定">3.4. 防火牆開放 ICMP 協定</h3>
+<ol>
+<li>同上開啟命令提示字元 ( 系統管理員 )，並輸入下方指令。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">netsh advfirewall firewall add rule name=&#34;ICMP&#34; protocol=icmpv4:8,any dir=in action=allow
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/MT6F5q3.png"
+        data-srcset="https://i.imgur.com/MT6F5q3.png, https://i.imgur.com/MT6F5q3.png 1.5x, https://i.imgur.com/MT6F5q3.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/MT6F5q3.png"
+        title="https://i.imgur.com/MT6F5q3.png" /></p>
+<ol start="2">
+<li>使用任一同網段機器 Ping Win Server 2016 ，將可以看見封包回應。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/4EwdclH.png"
+        data-srcset="https://i.imgur.com/4EwdclH.png, https://i.imgur.com/4EwdclH.png 1.5x, https://i.imgur.com/4EwdclH.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/4EwdclH.png"
+        title="https://i.imgur.com/4EwdclH.png" /></p>
+<h2 id="4--小結">4.  小結</h2>
+<p>Windows Server 在金融證券業使用率有一定的市場，除了 Linux 技巧必須要掌握， 基礎的 Windows 也要稍微瞭解。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fwindows%2f2022%2fwindows-2016-installer%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-04-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows/">Windows</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ansible/2022/ansible-variables/" class="prev" rel="prev" title="Ansible - 變數管理及應用"><i class="fas fa-angle-left fa-fw"></i>Ansible - 變數管理及應用</a>
+            <a href="/posts/terraform/2022/terraform-introduce/" class="next" rel="next" title="Terraform  - 基礎架構即程式碼 (IaC) 入門">Terraform  - 基礎架構即程式碼 (IaC) 入門<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -4,9 +4,23 @@
         <link>https://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Terraform  - 基礎架構即程式碼 (IaC) 入門</title>
+    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</link>
+    <pubDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</guid>
+    <description><![CDATA[近年來 Devops 逐漸成為科技業的新寵兒， 其中 Devops 很火熱的工具之一就是 Terraform 。 在介紹 Terraform 之前， 先來看一下什麼是 Iac ( Infrastructure as Code ) 基礎架構即程式碼，IaC 可讓開發的人]]></description>
+</item><item>
+    <title>Windows - Win Server 2016 伺服器安裝及設定</title>
+    <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</link>
+    <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</guid>
+    <description><![CDATA[Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的]]></description>
+</item><item>
     <title>Ansible - 變數管理及應用</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
     <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>
@@ -62,19 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</guid>
     <description><![CDATA[RHEL 預設使用 NetworkManager 工具管理網路組態及網路連線，Server 伺服器可以藉由 nmcli 指令或是 nmtui 交談式文字介面來操作。 1. NetworkManager 介紹 舊版本使用 network-scripts 配置管理網路( /etc/sysconfig/network-scripts/ )，]]></description>
-</item><item>
-    <title>K8s -  容器編排工具介紹</title>
-    <link>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</link>
-    <pubDate>Wed, 09 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</guid>
-    <description><![CDATA[在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及]]></description>
-</item><item>
-    <title>Linux - 容器管理工具 - Podman</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</link>
-    <pubDate>Tue, 08 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</guid>
-    <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。</p>]]></description>
 </item></channel>
 </rss>

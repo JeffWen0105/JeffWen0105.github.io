@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Terraform - Tag - HowHow の WebSite</title>
+        <link>https://blog.howhow.tk/tags/terraform/</link>
+        <description>Terraform - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/terraform/" rel="self" type="application/rss+xml" /><item>
+    <title>Terraform  - 基礎架構即程式碼 (IaC) 入門</title>
+    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</link>
+    <pubDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</guid>
+    <description><![CDATA[近年來 Devops 逐漸成為科技業的新寵兒， 其中 Devops 很火熱的工具之一就是 Terraform 。 在介紹 Terraform 之前， 先來看一下什麼是 Iac ( Infrastructure as Code ) 基礎架構即程式碼，IaC 可讓開發的人]]></description>
+</item></channel>
+</rss>

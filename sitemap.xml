@@ -2,13 +2,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/terraform/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/terraform/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/windows/</loc><lastmod>2022-04-11T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/windows/</loc><lastmod>2022-04-11T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</loc><lastmod>2022-04-11T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/ansible/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/categories/ansible/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-04-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</loc><lastmod>2022-03-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</loc><lastmod>2022-03-14T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</loc><lastmod>2022-03-13T00:00:00&#43;00:00</lastmod></url><url>
