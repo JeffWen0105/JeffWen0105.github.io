@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 變數管理及應用</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
+    <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</guid>
+    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，在大量環境下可以透過變數方式，如同寫程式一般可以更靈活且彈性的進行部署及維護。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
+</item><item>
     <title>Ansible - Vault 加密檔案管理</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</link>
     <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</guid>
     <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。</p>]]></description>
-</item><item>
-    <title>Linux - 網路檔案系統 - NFS</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</link>
-    <pubDate>Mon, 07 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</guid>
-    <description><![CDATA[<p>NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。</p>]]></description>
 </item></channel>
 </rss>
