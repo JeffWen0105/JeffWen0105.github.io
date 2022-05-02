@@ -6,19 +6,19 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Linux - 打造輕巧 Linux 練習 Lab - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 打造輕巧 Linux 練習 Lab" />
-<meta property="og:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 4 台巢狀式虛擬式機器 (練習區) 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間 可以透過主控端隨時快速還原 4 台" />
+<meta property="og:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-05T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-05-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-01T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 打造輕巧 Linux 練習 Lab"/>
-<meta name="twitter:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 4 台巢狀式虛擬式機器 (練習區) 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間 可以透過主控端隨時快速還原 4 台"/>
+<meta name="twitter:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還"/>
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="prev" href="https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,8 +27,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3322 ,
-        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-03-05T00:00:00+00:00","dateModified": "2022-03-05T00:00:00+00:00","publisher": {
+        },"genre": "posts","keywords": "Linux","wordcount":  3195 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-05-01T00:00:00+00:00","dateModified": "2022-05-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
                 "@type": "Person",
@@ -77,7 +77,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 打造輕巧 Linux 練習 Lab</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-05">2022-03-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3322 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3195 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -114,7 +114,7 @@
             <li><a href="#513-停止虛擬機">5.1.3 停止虛擬機</a>
               <ul>
                 <li><a href="#5131-停止全部虛擬機器">5.1.3.1 停止全部虛擬機器</a></li>
-                <li><a href="#5132-啟動指定虛擬機器">5.1.3.2 啟動指定虛擬機器</a></li>
+                <li><a href="#5132-關閉指定虛擬機器">5.1.3.2 關閉指定虛擬機器</a></li>
               </ul>
             </li>
             <li><a href="#514-重置虛擬機">5.1.4 重置虛擬機</a>
@@ -148,18 +148,18 @@
         alt="https://i.imgur.com/HcDyg3x.png"
         title="https://i.imgur.com/HcDyg3x.png" /></p>
 <ol>
-<li>主控端虛擬化 bastion Server</li>
-<li>4 台巢狀式虛擬式機器 (練習區)</li>
-<li>所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間</li>
-<li>可以透過主控端隨時快速還原 4 台虛擬式機器 (練習區) 為初始設定</li>
-<li>非常羽量化 (所有加起來機器空間僅使用硬碟 9G)</li>
-<li>已經配置好 Ansible 環境可以直接使用</li>
+<li>主控端虛擬化 bastion Server 。</li>
+<li>4 台巢狀式虛擬式機器 (練習區)。</li>
+<li>所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。</li>
+<li>可以透過主控端隨時快速還原 4 台虛擬式機器 (練習區) 為初始設定。</li>
+<li>非常羽量化 (佔用較低的硬碟空間 )。</li>
+<li>已經配置好 Ansible 環境可以直接使用。</li>
 </ol>
 <hr>
 <h2 id="2-環境需求">2. 環境需求</h2>
 <ol>
 <li>
-<p>需具備 VMware player 16.x (含)以上 或 VirtualBox 虛擬軟體 (建議使用 VMware)</p>
+<p>需具備 VMware player 16.x (含)以上 或 VirtualBox 虛擬軟體 (建議使用 VMware)。</p>
 </li>
 <li>
 <p>建議執行所需資源(含以上):</p>
@@ -181,7 +181,7 @@
 </table>
 </li>
 <li>
-<p>極限最小執行資源(效能極差且可能導致虛擬機停機):</p>
+<p>極限最小執行資源(效能較差):</p>
 <table>
 <thead>
 <tr>
@@ -205,14 +205,14 @@
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><em>執行速度會依據各電腦 CPU 時脈不同及硬碟 IO 速度有差別</em></div>
+            <div class="admonition-content"><em>執行速度會依據各電腦 CPU 時脈不同及硬碟 IO 速度有差別。</em></div>
         </div>
     </div>
 <h2 id="3-練習環境下載點">3. 練習環境下載點</h2>
 <ul>
 <li>載點為 Google Drive ，下載連結<a href="https://supr.link/pXheY" target="_blank" rel="noopener noreffer">請點我</a></li>
 </ul>
-<p>檔案壓縮後約 6.95 GB</p>
+<p>檔案壓縮後約 12 GB</p>
 <div class="details admonition success open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-check-circle fa-fw"></i>Success<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -223,19 +223,20 @@
 </div>
         </div>
     </div>
-<p>Google Drive 下載圖例</p>
+<p>Google Drive 下載圖例。</p>
+<!-- ![](https://i.imgur.com/89skpIR.png) -->
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/89skpIR.png"
-        data-srcset="https://i.imgur.com/89skpIR.png, https://i.imgur.com/89skpIR.png 1.5x, https://i.imgur.com/89skpIR.png 2x"
+        data-src="https://i.imgur.com/axVVjAz.png"
+        data-srcset="https://i.imgur.com/axVVjAz.png, https://i.imgur.com/axVVjAz.png 1.5x, https://i.imgur.com/axVVjAz.png 2x"
         data-sizes="auto"
-        alt="https://i.imgur.com/89skpIR.png"
-        title="https://i.imgur.com/89skpIR.png" /></p>
+        alt="https://i.imgur.com/axVVjAz.png"
+        title="https://i.imgur.com/axVVjAz.png" /></p>
 <h2 id="4-環境安裝方式">4. 環境安裝方式</h2>
 <h3 id="41-vmware-安裝方式">4.1 VMware 安裝方式</h3>
 <ol>
-<li>開啟 VMware 並選擇開啟虛擬機器</li>
+<li>開啟 VMware 並選擇開啟虛擬機器 。</li>
 </ol>
 <p><img
         class="lazyload"
@@ -247,13 +248,13 @@
         title="https://i.imgur.com/hgMTnb9.png" /></p>
 <ol start="2">
 <li>
-<p>選擇下載後解壓縮的 howhow8-mini-base.vmx 檔</p>
+<p>選擇下載後解壓縮資料夾內的 rocky8-cl1.vmdk 檔 。</p>
 </li>
 <li>
-<p>點擊編輯編輯該虛擬機器</p>
+<p>點擊編輯編輯該虛擬機器。</p>
 </li>
 <li>
-<p>確保下圖紅框（巢狀式虛擬化功能有開啟），另可以依實際狀況調整 CPU 或是 Memory</p>
+<p>確保下圖紅框（巢狀式虛擬化功能有開啟），另可以依實際狀況調整 CPU 或是 Memory 。</p>
 </li>
 </ol>
 <p><img
@@ -266,10 +267,10 @@
         title="https://i.imgur.com/kR5XUHw.png" /></p>
 <ol start="5">
 <li>
-<p>儲存後即可開啟機器</p>
+<p>儲存後即可開啟機器 。</p>
 </li>
 <li>
-<p>開啟後請選擇 &ldquo;I Copied It&rdquo; ， VMware 將會自動產生新的 Mac Address</p>
+<p>開啟後請選擇 &ldquo;I Copied It&rdquo; ， VMware 將會自動產生新的 Mac Address 。</p>
 </li>
 </ol>
 <p><img
@@ -280,21 +281,32 @@
         data-sizes="auto"
         alt="https://i.imgur.com/2mybIob.png"
         title="https://i.imgur.com/2mybIob.png" /></p>
+<!-- 7. 機器開啟後，登入帳號及密碼使用 ```ip addr show``` 查看你的電腦所分配的到浮動IP (此為 Bastion 控制機器IP)
+    -    帳號 : student
+    -    密碼 : student -->
 <ol start="7">
-<li>機器開啟後，登入帳號及密碼使用 <code>ip addr show</code> 查看你的電腦所分配的到浮動IP (此為 Bastion 控制機器IP)
+<li>機器開啟後，虛擬機畫面會提示連線的 IP 及帳號密碼訊息。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/5XHVPzz.png"
+        data-srcset="https://i.imgur.com/5XHVPzz.png, https://i.imgur.com/5XHVPzz.png 1.5x, https://i.imgur.com/5XHVPzz.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/5XHVPzz.png"
+        title="https://i.imgur.com/5XHVPzz.png" /></p>
 <ul>
 <li>帳號 : student</li>
 <li>密碼 : student</li>
 </ul>
-</li>
-</ol>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><p><em>預設使用橋接式網路，可以直接從宿主機器 SSH 訪問 bastion 虛擬機。</em></p>
+            <div class="admonition-content"><p><em>預設使用 NAT 網路，VMware 可以直接從宿主機器 SSH 訪問 bastion 虛擬機，如要使用其它機器訪問請修改為 Bridged 橋接模式。</em></p>
 <p><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上等功能。</strong></p>
+<p><em>Windows 10 新版本使用者可以直接使用 CMD 中 ssh 功能。</em></p>
 </div>
         </div>
     </div>
@@ -302,16 +314,16 @@
 <h3 id="41-virtuallbox-安裝方式">4.1 VirtuallBox 安裝方式</h3>
 <ol>
 <li>
-<p>開啟 VirtuallBox 並點擊新增</p>
+<p>開啟 VirtuallBox 並點擊新增。</p>
 <ul>
-<li>名稱 : howhow8-mini-base</li>
-<li>機器資料夾 : 預設或是可以自訂定義</li>
-<li>類型 ： Linux</li>
-<li>版本 ： Red Hat (64-bit)</li>
+<li>名稱 : howhow8-mini-base 。</li>
+<li>機器資料夾 : 預設或是可以自訂定義 。</li>
+<li>類型 ： Linux 。</li>
+<li>版本 ： Red Hat (64-bit) 。</li>
 </ul>
 </li>
 <li>
-<p>選擇使用現有虛擬硬碟檔案</p>
+<p>選擇使用現有虛擬硬碟檔案。</p>
 </li>
 </ol>
 <p><img
@@ -324,19 +336,19 @@
         title="https://i.imgur.com/jW6MxOu.png" /></p>
 <ol start="3">
 <li>
-<p>點擊加入虛擬硬碟檔案</p>
+<p>點擊加入虛擬硬碟檔案。</p>
 </li>
 <li>
-<p>選取練習環境下載解壓縮後的 howhow8-mini-base.vmdk</p>
+<p>選取練習環境下載解壓縮後的 rocky8-cl1.vmdk。</p>
 </li>
 <li>
-<p>選取上一步加入的硬碟</p>
+<p>選取上一步加入的硬碟。</p>
 </li>
 <li>
-<p>建立後請勿開機，請先點擊設定選項</p>
+<p>建立後請勿開機，請先點擊設定選項。</p>
 </li>
 <li>
-<p>查看 系統-處理器下方紅框 &ldquo;啟用 Nested VT-x/AMD-v&rdquo; 選項是否呈現不可點選狀態</p>
+<p>查看 系統-處理器下方紅框 &ldquo;啟用 Nested VT-x/AMD-v&rdquo; 選項是否呈現不可點選狀態。</p>
 </li>
 </ol>
 <p><img
@@ -348,7 +360,7 @@
         alt="https://i.imgur.com/JpOCfBk.png"
         title="https://i.imgur.com/JpOCfBk.png" /></p>
 <ol start="9">
-<li>如出現上一步狀態，需切換至 VirtuallBox 資料夾(<em>VirtuallBox檔案安裝路徑</em>)後透過命令列方式啟動巢狀式虛擬化，指令如下</li>
+<li>如出現上一步狀態，需切換至 VirtuallBox 資料夾(<em>VirtuallBox檔案安裝路徑</em>)後透過命令列方式啟動巢狀式虛擬化，指令如下 :</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -359,7 +371,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><ol start="10">
-<li>輸入完上一步指令後即可點選啟用巢狀式虛擬，並依需求調整 CPU 及 Memory</li>
+<li>輸入完上一步指令後即可點選啟用巢狀式虛擬，並依需求調整 CPU 及 Memory。</li>
 </ol>
 <p><img
         class="lazyload"
@@ -370,7 +382,7 @@
         alt="https://i.imgur.com/AMAO9ah.png"
         title="https://i.imgur.com/AMAO9ah.png" /></p>
 <ol start="11">
-<li>修改虛擬機網路介面卡，將介面卡1 NAT 改為橋接介面卡</li>
+<li>修改虛擬機網路介面卡，將介面卡1 NAT 改為橋接介面卡 。</li>
 </ol>
 <p><img
         class="lazyload"
@@ -385,21 +397,30 @@
             <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><em>一定要使用橋接式網路，這樣才可直接從宿主機器 SSH 訪問 bastion 虛擬機</em></div>
+            <div class="admonition-content"><em>VirtuallBox 與 VMware 不同，一定要使用橋接式網路，這樣才可直接從宿主機器 SSH 訪問 bastion 虛擬機。</em></div>
         </div>
     </div>
 <ol start="12">
-<li>
-<p>儲存後即可開啟機器</p>
-</li>
-<li>
-<p>機器開啟後，登入帳號及密碼使用 <code>ip addr show</code> 查看你的電腦所分配的到浮動IP (此為 Bastion 控制機器IP)</p>
+<li>儲存後即可開啟機器。</li>
+</ol>
+<!-- 13. 機器開啟後，登入帳號及密碼使用 ```ip addr show``` 查看你的電腦所分配的到浮動IP (此為 Bastion 控制機器IP)
+    -    帳號 : student
+    -    密碼 : student -->
+<ol start="13">
+<li>機器開啟後，虛擬機畫面會提示連線的 IP 及帳號密碼訊息。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/5XHVPzz.png"
+        data-srcset="https://i.imgur.com/5XHVPzz.png, https://i.imgur.com/5XHVPzz.png 1.5x, https://i.imgur.com/5XHVPzz.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/5XHVPzz.png"
+        title="https://i.imgur.com/5XHVPzz.png" /></p>
 <ul>
 <li>帳號 : student</li>
 <li>密碼 : student</li>
 </ul>
-</li>
-</ol>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -412,7 +433,7 @@
 <h2 id="5-練習環境操作">5. 練習環境操作</h2>
 <h3 id="51-bastion-主控機">5.1 Bastion 主控機</h3>
 <h4 id="511-rht-vmctl-管理工具介紹">5.1.1 rht-vmctl 管理工具介紹</h4>
-<p>Bastion 主控機主要為啟停四台虛擬機或還原四台虛擬機初始設定</p>
+<p>Bastion 主控機主要為啟停四台虛擬機或還原四台虛擬機初始設定。</p>
 <div class="details admonition danger open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-skull-crossbones fa-fw"></i>Danger<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -421,7 +442,9 @@
             <div class="admonition-content"><em>Bastion 主控機主要做為跳板機及控制虛擬機功能，裡面很多套件都被移除，請勿在此機器上執行其它操作，該機器無法自動還原 ..</em></div>
         </div>
     </div>
-<p><strong>透過 HowHow 的工具可以快速協助使用者可以簡單操作，使用 student 帳號，並透過 rht-vmctl  腳本進行相關作業</strong></p>
+<blockquote>
+<p>透過 HowHow 的工具可以快速協助使用者可以簡單操作，以 student 帳號，並透過 rht-vmctl  腳本進行相關作業，可以使用 &lt;TAB&gt; 鍵自動補齊。</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -441,29 +464,31 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl 
-
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@basesion ~<span class="o">]</span><span class="c1"># rht-vmctl </span>
 This utility manages  supplied VMs on the <span class="nb">local</span> hypervisor.
-
 Usage: rht-vmctl VMCMD VMNAME 
-
   where VMCMD is one of:
     start      - start up VMNAME
     status     - get all status
+    poweroff   - poweroff VMNAME
     stop       - <span class="k">if</span> running, force stop VMNAME
     reset      - force poweroff, <span class="k">return</span> to saved or original state, start VMNAME
     display    - show VMNAME vnc information
+    version    - show program<span class="err">&#39;</span>s version number
     VMNAME of <span class="s2">&#34;all&#34;</span> processes all VMs available in the workstation、server<span class="o">[</span>a-c<span class="o">]</span>
 	
     powered by HowHowWen
+    Read More from HowHowWen <span class="o">(</span>https://how64bit.com<span class="o">)</span> WebSite ~
 </code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>start     - 啟動虛擬機 ( VMname / all )</li>
 <li>status    - 查看虛擬機狀態 ( VMname / all )</li>
-<li>stop      - 停止虛擬機 ( VMname / all )</li>
-<li>reset     - 還原虛擬機至初始狀態 ( VMname / all )</li>
+<li>poweroff  - 停止虛擬機 ( VMname / all )</li>
+<li>stop      - 強制關閉虛擬機 ( VMname / all )</li>
+<li>reset     - 還原虛擬機至初始狀態 ( VMname / all / worker )</li>
 <li>display   - 顯示虛擬機 VNC 連線方式及訊息 ( VMname )</li>
+<li>version   - 顯示該程式版本</li>
 </ul>
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
@@ -477,7 +502,7 @@ Usage: rht-vmctl VMCMD VMNAME
 <h4 id="511-啟動虛擬機">5.1.1 啟動虛擬機</h4>
 <h5 id="5111-啟動全部虛擬機器">5.1.1.1 啟動全部虛擬機器</h5>
 <ol>
-<li>透過工具開啟全部機器</li>
+<li>透過工具開啟全部機器。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -500,9 +525,10 @@ Usage: rht-vmctl VMCMD VMNAME
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl start all
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl start all
  Id   Name          State
 -----------------------------
  <span class="m">1</span>    workstation   running
@@ -510,38 +536,43 @@ Usage: rht-vmctl VMCMD VMNAME
  <span class="m">3</span>    serverb       running
  <span class="m">4</span>    serverc       running
 
-<span class="o">[</span>INFO<span class="o">]</span>: 請先嘗試 ping workstation 直到機器完全開機 .. 
-<span class="o">[</span>INFO<span class="o">]</span>: 開機完畢後請使用 ssh student@workstation 登入機器並開始練習 LAB  
-<span class="o">[</span>INFO<span class="o">]</span>: /home/student/example 目錄下有範例主機及範例 Ansbile Playbook ~~ 
+<span class="o">[</span>INFO<span class="o">]</span>: String All machines.. Please Wait.. 
+<span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping workstation, <span class="k">until</span>  the machines is turned on 
+<span class="o">[</span>INFO<span class="o">]</span>: After booting, please use ssh student@workstation to log in to the machine and start practicing LAB  
+<span class="o">[</span>INFO<span class="o">]</span>: You can find out Example PlayBook on /home/student/example 
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
-<li>持續 ping 直到 workstation 機器開機</li>
+<li>持續 ping 直到 workstation 機器開機。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ ping workstation
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ ping workstation
 PING workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-From bastion.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> Destination Host Unreachable
-From bastion.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> Destination Host Unreachable
-From bastion.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> Destination Host Unreachable
-<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.385 ms
-<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.374 ms
+From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> Destination Host Unreachable
+From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> Destination Host Unreachable
+From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> Destination Host Unreachable
+From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> Destination Host Unreachable
+From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> Destination Host Unreachable
+<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">2276</span> ms
+<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">8</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">1252</span> ms
 ...
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
-<li>登入 workstation 機器</li>
+<li>登入 workstation 機器。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -565,7 +596,7 @@ From bastion.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <s
     </div>
 <h5 id="5112-啟動指定虛擬機器">5.1.1.2 啟動指定虛擬機器</h5>
 <ol>
-<li>透過工具開啟指定機器</li>
+<li>透過工具開啟指定機器。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -576,7 +607,7 @@ From bastion.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <s
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
-<li>持續 ping 直到 servera 機器開機</li>
+<li>持續 ping 直到 servera 機器開機。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -595,7 +626,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
-<li>登入 servera 機器</li>
+<li>登入 servera 機器。</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -613,14 +644,14 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <h4 id="512-查看虛擬機狀態">5.1.2 查看虛擬機狀態</h4>
 <h5 id="5121-查看全部虛擬機器">5.1.2.1 查看全部虛擬機器</h5>
 <ul>
-<li>透過工具查看全部機器</li>
+<li>透過工具查看全部機器。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rhel-vmctl status all
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl status all
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -634,27 +665,27 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl status all
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl status all
  Id   Name          State
 -----------------------------
  <span class="m">1</span>    workstation   running
- <span class="m">2</span>    serverb       running
- <span class="m">3</span>    serverc       running
- <span class="m">4</span>    servera       running
+ <span class="m">2</span>    servera       running
+ <span class="m">3</span>    serverb       running
+ <span class="m">4</span>    serverc       running
 </code></pre></td></tr></table>
 </div>
 </div><hr>
 <h4 id="513-停止虛擬機">5.1.3 停止虛擬機</h4>
 <h5 id="5131-停止全部虛擬機器">5.1.3.1 停止全部虛擬機器</h5>
 <ul>
-<li>透過工具停止全部機器</li>
+<li>透過工具停止全部機器。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl stop all
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl poweroff all
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -665,28 +696,34 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl stop all
-<span class="o">[</span>INFO<span class="o">]</span>: 正常停止 workstation ... 請耐心等待 
-<span class="o">[</span>INFO<span class="o">]</span>: 正常停止 servera ... 請耐心等待 
-<span class="o">[</span>INFO<span class="o">]</span>: 正常停止 serverb ... 請耐心等待 
-<span class="o">[</span>INFO<span class="o">]</span>: 正常停止 serverc ... 請耐心等待 
-<span class="o">[</span>INFO<span class="o">]</span>: 請再次檢查所有機器是否均停止 ... 
-...
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff all
+<span class="o">[</span>INFO<span class="o">]</span>: Stoping workstation ... Please Wait 
+<span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
+<span class="o">[</span>INFO<span class="o">]</span>: Stoping serverb ... Please Wait 
+<span class="o">[</span>INFO<span class="o">]</span>: Stoping serverc ... Please Wait 
+<span class="o">[</span>INFO<span class="o">]</span>: Please double check that all machines are stopped
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="5132-啟動指定虛擬機器">5.1.3.2 啟動指定虛擬機器</h5>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>rht-vmctl stop  all ， 可以強制關閉所有虛擬機器電源。</em></div>
+        </div>
+    </div>
+<h5 id="5132-關閉指定虛擬機器">5.1.3.2 關閉指定虛擬機器</h5>
 <ul>
-<li>透過工具停止指定機器</li>
+<li>透過工具關閉指定機器。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rhel-vmctl stop servera
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl poweroff servera
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -695,15 +732,23 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl stop servera
-<span class="o">[</span>INFO<span class="o">]</span>: 正常停止 servera ... 請耐心等待 
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff servera
+<span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
 </code></pre></td></tr></table>
 </div>
-</div><hr>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>rht-vmctl stop  servera ， 可以強制關閉 servera 虛擬機器電源。</em></div>
+        </div>
+    </div>
+<hr>
 <h4 id="514-重置虛擬機">5.1.4 重置虛擬機</h4>
 <h5 id="5141-重置全部虛擬機器">5.1.4.1 重置全部虛擬機器</h5>
 <ul>
-<li>透過工具重置全部機器</li>
+<li>透過工具重置全部機器。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -727,28 +772,28 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@bastion ~]$ rht-vmctl reset all
-[INFO]: workstation 重置完畢... 
-[INFO]: workstation 重新開機中... 請耐心等待 
-[INFO]: servera 重置完畢... 
-[INFO]: servera 重新開機中... 請耐心等待 
-[INFO]: serverb 重置完畢... 
-[INFO]: serverb 重新開機中... 請耐心等待 
-[INFO]: serverc 重置完畢... 
-[INFO]: serverc 重新開機中... 請耐心等待 
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset all
+<span class="o">[</span>INFO<span class="o">]</span>: workstation Reset complete... 
+<span class="o">[</span>INFO<span class="o">]</span>: workstation Rebooting... 
+<span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
+<span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
+<span class="o">[</span>INFO<span class="o">]</span>: serverb Reset complete... 
+<span class="o">[</span>INFO<span class="o">]</span>: serverb Rebooting... 
+<span class="o">[</span>INFO<span class="o">]</span>: serverc Reset complete... 
+<span class="o">[</span>INFO<span class="o">]</span>: serverc Rebooting... 
 ...
 </code></pre></td></tr></table>
 </div>
 </div><h5 id="5142-重置指定虛擬機器">5.1.4.2 重置指定虛擬機器</h5>
 <ul>
-<li>透過工具重置指定機器</li>
+<li>透過工具重置指定機器。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rhel-vmctl reset servera
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl reset servera
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -756,24 +801,36 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl reset servera
-<span class="o">[</span>INFO<span class="o">]</span>: servera 重置完畢... 
-<span class="o">[</span>INFO<span class="o">]</span>: servera 重新開機中... 請耐心等待
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset servera
+<span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
+<span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
+<span class="o">[</span>INFO<span class="o">]</span>: servera String .. Please Wait.. 
+<span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping servera, <span class="k">until</span>  the machines is turned on 
 </code></pre></td></tr></table>
 </div>
-</div><hr>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>指令 rht-vmctl reset worker， 只會重置 servera-c 三台機器，使得 workstation 機器不會被重置。</em></div>
+        </div>
+    </div>
+<hr>
 <h4 id="515-顯示虛擬機-vnc-連線方式及訊息">5.1.5 顯示虛擬機 VNC 連線方式及訊息</h4>
 <ol start="0">
 <li>
-<p>需求</p>
+<p>需求 :</p>
 <ul>
 <li>使用 VNC Viewer Client 端軟體並安裝，載點<a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener noreffer">請點我</a></li>
 </ul>
 </li>
 <li>
-<p>透過工具顯示指定機器</p>
+<p>透過工具顯示指定機器。</p>
 </li>
 </ol>
 <div class="highlight"><div class="chroma">
@@ -790,16 +847,16 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ rht-vmctl display servera
-<span class="o">[</span>INFO<span class="o">]</span>:  servera VNC 此次連線地址: &lt;Your Bastion IP&gt;:5902
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl display servera
+<span class="o">[</span>INFO<span class="o">]</span>:  servera  of VNC connection address: 192.168.23.136:5902
 </code></pre></td></tr></table>
 </div>
 </div><ol start="2">
-<li>開啟 VNC Viewer Client ， 並工具提示的連線地址進行連接</li>
+<li>開啟 VNC Viewer Client ， 並工具提示的連線地址進行連接。</li>
 </ol>
 <ul>
 <li>
-<p>輸入連線地址後即可操作機器</p>
+<p>輸入連線地址後即可操作機器。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -810,7 +867,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
         title="https://i.imgur.com/qxeFADE.png" /></p>
 </li>
 <li>
-<p>也可以透過 VNC 進行 reboot重新開機，並請查看開機進度或是至 GRUB 設定</p>
+<p>也可以透過 VNC 進行 reboot重新開機，並請查看開機進度或是至 GRUB 設定。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -842,10 +899,10 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <h4 id="516-建立代理查看虛擬機網路服務">5.1.6 建立代理，查看虛擬機網路服務</h4>
 <ul>
 <li>
-<p>囿於 4台虛擬機是透過 NAT 網路方式連線，本身宿主機的瀏覽器是無法直接訪問的，必須要透過建立代理方式</p>
+<p>囿於 4台虛擬機是透過 NAT 網路方式連線，本身宿主機的瀏覽器是無法直接訪問的，必須要透過建立代理方式。</p>
 </li>
 <li>
-<p>假設 Servera 啟動 httpd 服務在 80 port，且防火牆已經開放規則或是停用，如下圖</p>
+<p>假設 Servera 啟動 httpd 服務在 80 port，且防火牆已經開放規則或是停用，如下圖。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -856,7 +913,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
         title="https://i.imgur.com/GADJCnG.png" /></p>
 </li>
 <li>
-<p>使用瀏覽器嘗試訪問 servera ip (172.25.250.10) ，是無法正常顯示</p>
+<p>使用瀏覽器嘗試訪問 servera ip (172.25.250.10) ，是無法正常顯示。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -870,7 +927,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <h5 id="5161-建立代理步驟">5.1.6.1 建立代理步驟:</h5>
 <ol>
 <li>
-<p>選擇任意可以支援 ssh 工具 （ 以GitBash為例 ）建立 ssh 動態傳輸隧道</p>
+<p>選擇任意可以支援 ssh 工具 （ 以GitBash為例 ）建立 ssh 動態傳輸隧道。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -902,7 +959,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
     </div>
 <ol start="2">
 <li>
-<p>選擇任意瀏覽器配置 Proxy （ 以 Firefox 為例 ），並保存使生效</p>
+<p>選擇任意瀏覽器配置 Proxy （ 以 Firefox 為例 ），並保存使生效。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -913,7 +970,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
         title="https://i.imgur.com/aQP1fzK.png" /></p>
 </li>
 <li>
-<p>重新嘗試訪問 servera ip (172.25.250.10)，即可順利顯示</p>
+<p>重新嘗試訪問 servera ip (172.25.250.10)，即可順利顯示。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -935,7 +992,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <h3 id="52-登入-4-台練習虛擬機">5.2 登入 4 台練習虛擬機</h3>
 <ol>
 <li>
-<p>登入 bastion 主控機後，並完成其內部虛擬機開機，即可使用 ssh 登入</p>
+<p>登入 bastion 主控機後，並完成其內部虛擬機開機，即可使用 ssh 登入。</p>
 <ol>
 <li>
 <p>一般使用者</p>
@@ -964,77 +1021,54 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
         </div>
     </div>
 <ol start="2">
-<li>
-<p>如要重置該虛擬機，需至 bastion 主控機執行 rht-vmctl reset 指令</p>
-</li>
-<li>
-<p>四台虛擬機只有 workstation 已經配置好 yum 倉庫來源，其餘三台需自行配置(<em>設計用來練習</em>)，如急需使用可以透過下方指令操作</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<p>執行範例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum repolist all</span>
-No repositories available
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/</span>
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum repolist all</span>
-repo id                                                        repo name                                                      status
-AppStream                                                      AppStream                                                      enabled
-BaseOS                                                         BaseOS                                                         enabled
-</code></pre></td></tr></table>
-</div>
-</div></li>
+<li>如要重置該虛擬機，需至 bastion 主控機執行 rht-vmctl reset 指令。</li>
 </ol>
-<hr>
-<ol start="4">
-<li>
-<p>如果要練習硬碟分割槽建立、格式化及 LVM ，可以透過 serverc ，已經掛載額外三顆硬碟 如下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk </span>
-NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sr0                      11:0    <span class="m">1</span> 1024M  <span class="m">0</span> rom  
-vda                     252:0    <span class="m">0</span>   10G  <span class="m">0</span> disk 
-├─vda1                  252:1    <span class="m">0</span>    1G  <span class="m">0</span> part /boot
-└─vda2                  252:2    <span class="m">0</span>    9G  <span class="m">0</span> part 
-  ├─rl_workstation-root 253:0    <span class="m">0</span>    8G  <span class="m">0</span> lvm  /
-  └─rl_workstation-swap 253:1    <span class="m">0</span>    1G  <span class="m">0</span> lvm  <span class="o">[</span>SWAP<span class="o">]</span>
-vdb                     252:16   <span class="m">0</span>  200M  <span class="m">0</span> disk 
-vdc                     252:32   <span class="m">0</span>  300M  <span class="m">0</span> disk 
-vdd                     252:48   <span class="m">0</span>  500M  <span class="m">0</span> disk 
-</code></pre></td></tr></table>
-</div>
-</div></li>
-</ol>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>指令 rht-vmctl reset worker， 只會重置 servera-c 三台機器，使得 workstation 機器不會被重置。</em></div>
+        </div>
+    </div>
+<!-- 3. 四台虛擬機只有 workstation 已經配置好 yum 倉庫來源，其餘三台需自行配置(*設計用來練習*)，如急需使用可以透過下方指令操作
+
+    ```
+    sudo cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/
+    ```
+
+    ---
+
+    執行範例：
+
+    ```shell
+    [root@servera ~]# yum repolist all
+    No repositories available
+    [root@servera ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/
+    [root@servera ~]# yum repolist all
+    repo id                                                        repo name                                                      status
+    AppStream                                                      AppStream                                                      enabled
+    BaseOS                                                         BaseOS                                                         enabled
+    ```
+
+---
+    
+4. 如果要練習硬碟分割槽建立、格式化及 LVM ，可以透過 serverc ，已經掛載額外三顆硬碟 如下
+
+    ```shell
+    [root@serverc ~]# lsblk 
+    NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sr0                      11:0    1 1024M  0 rom  
+    vda                     252:0    0   10G  0 disk 
+    ├─vda1                  252:1    0    1G  0 part /boot
+    └─vda2                  252:2    0    9G  0 part 
+      ├─rl_workstation-root 253:0    0    8G  0 lvm  /
+      └─rl_workstation-swap 253:1    0    1G  0 lvm  [SWAP]
+    vdb                     252:16   0  200M  0 disk 
+    vdc                     252:32   0  300M  0 disk 
+    vdd                     252:48   0  500M  0 disk 
+    ```
+
 <div class="details admonition question open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-question-circle fa-fw"></i>Question<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -1042,11 +1076,11 @@ vdd                     252:48   <span class="m">0</span>  500M  <span class="m"
         <div class="details-content">
             <div class="admonition-content"><em>額外掛載的硬碟空間都很小，主要設計用來切割 Partition、 LVM 等練習喔 ～～</em></div>
         </div>
-    </div>
+    </div> -->
 <hr>
 <ul>
 <li>
-<p>Ansible 練習環境已經打造好了，透過 workstation 當作控制端，即可測試 Ansible 功能 如下圖</p>
+<p>Ansible 練習環境已經打造好了，透過 workstation 當作控制端，即可測試 Ansible 功能 :</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1066,19 +1100,19 @@ vdd                     252:48   <span class="m">0</span>  500M  <span class="m"
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example-playbook.yaml 
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yaml 
 
-PLAY <span class="o">[</span>exmaple<span class="o">]</span> **********************************************************************************************************************
+PLAY <span class="o">[</span>Example<span class="o">]</span> ********************************************************************************************************************************************
 
-TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> **********************************************************************************************************
-ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ********************************************************************************************************************************
+ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
 <span class="o">}</span>
-ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+ok: <span class="o">[</span>serverb.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
 <span class="o">}</span>
-ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
 <span class="o">}</span>
 ...
 </code></pre></td></tr></table>
@@ -1134,7 +1168,7 @@ ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</s
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-03-05</span>
+                <span>Updated on 2022-05-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1153,8 +1187,7 @@ ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</s
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-yum-repository/" class="prev" rel="prev" title="Linux - YUM 倉庫清單配置"><i class="fas fa-angle-left fa-fw"></i>Linux - YUM 倉庫清單配置</a>
-            <a href="/posts/linux/2022/linux-storage-nfs/" class="next" rel="next" title="Linux - 網路檔案系統 - NFS">Linux - 網路檔案系統 - NFS<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/terraform/2022/terraform-introduce/" class="prev" rel="prev" title="Terraform  - 基礎架構即程式碼 (IaC) 入門"><i class="fas fa-angle-left fa-fw"></i>Terraform  - 基礎架構即程式碼 (IaC) 入門</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
