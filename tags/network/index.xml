@@ -4,7 +4,21 @@
         <link>https://blog.howhow.tk/tags/network/</link>
         <description>NetWork - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/network/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 02 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/network/" rel="self" type="application/rss+xml" /><item>
+    <title>Cisco - 網路設備組態設定</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
+    <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</guid>
+    <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
+</item><item>
+    <title>Cisco - 網路設備指令操作入門</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/command-line/</link>
+    <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/command-line/</guid>
+    <description><![CDATA[title: &ldquo;Cisco - 網路設備指令操作入門&rdquo; date: 2022-05-01 draft: false tags: [&ldquo;Network&rdquo;] categories: [&ldquo;Cisco&rdquo;] Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關]]></description>
+</item><item>
     <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</link>
     <pubDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</pubDate>

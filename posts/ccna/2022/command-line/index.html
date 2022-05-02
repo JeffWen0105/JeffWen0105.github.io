@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - 網路設備指令操作入門 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - 網路設備指令操作入門" />
+<meta property="og:description" content="title: &ldquo;Cisco - 網路設備指令操作入門&rdquo; date: 2022-05-01 draft: false tags: [&ldquo;Network&rdquo;] categories: [&ldquo;Cisco&rdquo;] Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/command-line/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-01T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - 網路設備指令操作入門"/>
+<meta name="twitter:description" content="title: &ldquo;Cisco - 網路設備指令操作入門&rdquo; date: 2022-05-01 draft: false tags: [&ldquo;Network&rdquo;] categories: [&ldquo;Cisco&rdquo;] Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/command-line/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/connect_to_device/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - 網路設備指令操作入門",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/command-line\/"
+        },"genre": "posts","keywords": "Network","wordcount":  862 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/command-line\/","datePublished": "2022-05-01T00:00:00+00:00","dateModified": "2022-05-01T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - 網路設備指令操作入門</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;862 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#categories-cisco">title: &ldquo;Cisco - 網路設備指令操作入門&rdquo;
+date: 2022-05-01
+draft: false
+tags: [&ldquo;Network&rdquo;]
+categories: [&ldquo;Cisco&rdquo;]</a></li>
+    <li><a href="#1-操作模式種類">1. 操作模式種類</a>
+      <ul>
+        <li><a href="#111-一般使用者模式">1.1.1 一般使用者模式</a></li>
+        <li><a href="#112-管理者模式">1.1.2 管理者模式</a></li>
+        <li><a href="#113-管理員全域設定模式">1.1.3 管理員全域設定模式</a></li>
+        <li><a href="#113-管理員設備設定模式">1.1.3 管理員設備設定模式</a></li>
+        <li><a href="#114-脫離目前模式">1.1.4 脫離目前模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-指令求助">2. 指令求助</a></li>
+    <li><a href="#3-將設定檔永久儲存">3. 將設定檔永久儲存</a></li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><hr>
+<h2 id="categories-cisco">title: &ldquo;Cisco - 網路設備指令操作入門&rdquo;
+date: 2022-05-01
+draft: false
+tags: [&ldquo;Network&rdquo;]
+categories: [&ldquo;Cisco&rdquo;]</h2>
+<blockquote>
+<p><em>Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關指令操作。</em></p>
+</blockquote>
+<!-- more -->
+<h2 id="1-操作模式種類">1. 操作模式種類</h2>
+<p>操作模式有分為不同總類，只有在管理員狀況下才能執行多數的操作，大略可以區分為四種 :</p>
+<ol>
+<li>一般使用者模式</li>
+<li>管理員模式</li>
+<li>管理員全域設定模式</li>
+<li>管理員設備設定模式</li>
+</ol>
+<h3 id="111-一般使用者模式">1.1.1 一般使用者模式</h3>
+<p>一開始登入時候預設就是一般使用者模式，在這個模式下幾乎什麼事情都無法做，算是第一道把關的，以 設備名稱 加上 &gt; 符號來表示目前為一般使用者模式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">switch001&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="112-管理者模式">1.1.2 管理者模式</h3>
+<p>在管理者模式下就可以查看 IP 、 網路介面等各種功能，在使用者模式下輸入 <code>enable</code> 後切換成管理員模式，並以設備名稱 加上 # 符號來表示目前為管理員模式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">switch001&gt;enable 
+switch001#
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>縮寫指令為 <code>en</code> 。</em></div>
+        </div>
+    </div>
+<h3 id="113-管理員全域設定模式">1.1.3 管理員全域設定模式</h3>
+<p>如果要設定切換成管理員密碼或是設定密碼顯示亂碼等功能， 在管理員模式下輸入 <code>configure terminal</code> ，即可進入全域管理模式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">switch001#enable 
+switch001#configure terminal 
+Enter configuration commands, one per line.  End with CNTL/Z.
+switch001<span class="o">(</span>config<span class="o">)</span><span class="c1">#</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>縮寫指令為 <code>conf t</code> 。</em></div>
+        </div>
+    </div>
+<h3 id="113-管理員設備設定模式">1.1.3 管理員設備設定模式</h3>
+<p>設定指定端口可以使用該模式，例如要修改 console port 設備，在管理員全域設定模式下輸入 <code>line console 0</code> ，即可設定 console 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">switch001#enable 
+switch001#configure terminal 
+Enter configuration commands, one per line.  End with CNTL/Z.
+switch001<span class="o">(</span>config<span class="o">)</span><span class="c1">#line console 0</span>
+switch001<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="114-脫離目前模式">1.1.4 脫離目前模式</h3>
+<p>透過輸入 <code>exit</code> 即可脫離目前的模式到上一層，也可以輸入 ctrl + z 快速切換至管理者模式。</p>
+<hr>
+<h2 id="2-指令求助">2. 指令求助</h2>
+<p>在一開始操作時或是相關指令少用會不知到該如何下手，可以透過輸入 <code>?</code> 來提示有哪些指令可以操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">switch001#?
+Exec commands:
+  clear       Reset functions
+  clock       Manage the system clock
+  configure   Enter configuration mode
+  connect     Open a terminal connection
+  copy        Copy from one file to another
+  debug       Debugging functions <span class="o">(</span>see also <span class="s1">&#39;undebug&#39;</span><span class="o">)</span>
+  delete      Delete a file
+  dir         List files on a filesystem
+  disable     Turn off privileged commands
+  disconnect  Disconnect an existing network connection
+  <span class="nb">enable</span>      Turn on privileged commands
+  erase       Erase a filesystem
+  <span class="nb">exit</span>        Exit from the EXEC
+  <span class="nb">logout</span>      Exit from the EXEC
+  more        Display the contents of a file
+  no          Disable debugging informations
+  ping        Send <span class="nb">echo</span> messages
+  reload      Halt and perform a cold restart
+  resume      Resume an active network connection
+  setup       Run the SETUP <span class="nb">command</span> facility
+  show        Show running system information
+ --More-- 
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>當出現 More 可以透過空白鍵往下捲動，來查看更多訊息。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="3-將設定檔永久儲存">3. 將設定檔永久儲存</h2>
+<p>在設備上的操作都是暫時存放在記憶體內，一旦電源關閉重新啟動後又恢復原本設定，必須要透過指令 <code>copy running-config startup-config</code>  將已經配置好的設定寫入 Flash 記憶卡內。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">switch001#copy running-config startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-小結">4. 小結</h2>
+<p>指令多操作幾次就能越來越熟悉，對於管理人員而言掌握基礎指令是很重要。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcommand-line%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">NetWork</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2022/linux-create-playground/" class="prev" rel="prev" title="Linux - 打造輕巧 Linux 練習 Lab"><i class="fas fa-angle-left fa-fw"></i>Linux - 打造輕巧 Linux 練習 Lab</a>
+            <a href="/posts/ccna/2022/connect_to_device/" class="next" rel="next" title="Cisco - 網路設備組態設定">Cisco - 網路設備組態設定<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - 網路設備組態設定 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - 網路設備組態設定" />
+<meta property="og:description" content="在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/connect_to_device/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-02T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - 網路設備組態設定"/>
+<meta name="twitter:description" content="在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/connect_to_device/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/command-line/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - 網路設備組態設定",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/connect_to_device\/"
+        },"genre": "posts","keywords": "Network","wordcount":  1324 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/connect_to_device\/","datePublished": "2022-05-02T00:00:00+00:00","dateModified": "2022-05-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - 網路設備組態設定</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-02">2022-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1324 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-switch-交換器介紹">1. Switch 交換器介紹</a></li>
+    <li><a href="#2-設定-switch-交換器組態">2. 設定 switch 交換器組態</a>
+      <ul>
+        <li><a href="#21-設定交換器的方法">2.1. 設定交換器的方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-console-port-設定交換器">3. Console Port 設定交換器</a>
+      <ul>
+        <li><a href="#31-建立連線">3.1. 建立連線</a></li>
+        <li><a href="#32-pc-1-打開-terminal">3.2. PC 1 打開 Terminal</a></li>
+        <li><a href="#33-設定-console-登入密碼">3.3. 設定 console 登入密碼</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-telnet-連線登入">4. telnet 連線登入</a>
+      <ul>
+        <li><a href="#411-vlan-賦予-ip">4.1.1 VLAN 賦予 IP</a></li>
+        <li><a href="#412-開啟-telnet-功能">4.1.2 開啟 telnet 功能</a></li>
+        <li><a href="#413-至任一台-pc-連線測試">4.1.3 至任一台 PC 連線測試</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ssh-連線登入">5. ssh 連線登入</a>
+      <ul>
+        <li><a href="#411-vlan-賦予-ip-1">4.1.1 VLAN 賦予 IP</a></li>
+        <li><a href="#412-開啟-ssh-功能">4.1.2 開啟 ssh 功能</a></li>
+        <li><a href="#413-至任一台-pc-連線測試-1">4.1.3 至任一台 PC 連線測試</a></li>
+      </ul>
+    </li>
+    <li><a href="#小結">小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><em>在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。</em></p>
+</blockquote>
+<!-- more -->
+<h2 id="1-switch-交換器介紹">1. Switch 交換器介紹</h2>
+<p>Switch 交換器是 OSI 架構中的第二層 ( 鍊路層 )，與傳統的 HUB 集線器最大的不同在於，交換器會學習網路 ( LAN 中)，並檢查訊框內對應的地址( MAC address )，才會發送，避免大量的封包傳遞時佔用頻寬。</p>
+<h2 id="2-設定-switch-交換器組態">2. 設定 switch 交換器組態</h2>
+<h3 id="21-設定交換器的方法">2.1. 設定交換器的方法</h3>
+<p>三種方式可以設定交換器 :</p>
+<ol>
+<li>使用 Console Port 透過電腦連一條線至交換器</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/dJF1kA5.png" title="https://i.imgur.com/dJF1kA5.png" data-thumbnail="https://i.imgur.com/dJF1kA5.png" data-sub-html="<h2>From www.cisco.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/dJF1kA5.png"
+            data-srcset="https://i.imgur.com/dJF1kA5.png, https://i.imgur.com/dJF1kA5.png 1.5x, https://i.imgur.com/dJF1kA5.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/dJF1kA5.png" />
+    </a><figcaption class="image-caption">From www.cisco.com</figcaption>
+    </figure></p>
+<ol start="2">
+<li>使用 telnet 登入</li>
+<li>使用 ssh 登入</li>
+</ol>
+<p><em>在 Packet Tracer 模擬環境下可以直接點擊交換器在 CLI 內設定。</em></p>
+<blockquote>
+<p>囿於網路設備需要成本且佔用一定空間，故使用 Packet Tracer 工具來模擬，如何下載及使用請參考 HowHow 的 &ldquo;<a href="https://how64bit.com/posts/ccna/2022/packet-tracer-introduccion/" target="_blank" rel="noopener noreffer">Cisco - Packet Tracer 工具下載及使用簡述</a>&rdquo; 文章。</p>
+</blockquote>
+<h2 id="3-console-port-設定交換器">3. Console Port 設定交換器</h2>
+<h3 id="31-建立連線">3.1. 建立連線</h3>
+<ol>
+<li>在 Packet Tracer 上建立一條 console 線並將線從交換器的 console port 連接到 PC 1 的 RS232 上。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/g5vr6UD.png"
+        data-srcset="https://i.imgur.com/g5vr6UD.png, https://i.imgur.com/g5vr6UD.png 1.5x, https://i.imgur.com/g5vr6UD.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/g5vr6UD.png"
+        title="https://i.imgur.com/g5vr6UD.png" /></p>
+<h3 id="32-pc-1-打開-terminal">3.2. PC 1 打開 Terminal</h3>
+<ol>
+<li>點擊 PC 1 -&gt; Desktop -&gt; Terminal -&gt; 使用預設值設定點擊 OK</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/3pvadOu.png"
+        data-srcset="https://i.imgur.com/3pvadOu.png, https://i.imgur.com/3pvadOu.png 1.5x, https://i.imgur.com/3pvadOu.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/3pvadOu.png"
+        title="https://i.imgur.com/3pvadOu.png" /></p>
+<ol start="2">
+<li>進入終端機畫面</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/7WWy0W6.png"
+        data-srcset="https://i.imgur.com/7WWy0W6.png, https://i.imgur.com/7WWy0W6.png 1.5x, https://i.imgur.com/7WWy0W6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/7WWy0W6.png"
+        title="https://i.imgur.com/7WWy0W6.png" /></p>
+<h3 id="33-設定-console-登入密碼">3.3. 設定 console 登入密碼</h3>
+<blockquote>
+<p><em>基礎指令操作，請參考 HowHow 的 <a href="https://how64bit.com/posts/ccna/2022/command-line/" target="_blank" rel="noopener noreffer">Cisco - 網路設備指令操作入門</a> 文章來學習。</em></p>
+</blockquote>
+<ol>
+<li>設定 console 登入密碼為 cicso</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
+s1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+<span class="c1"># 使用 console 設備</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line console 0</span>
+<span class="c1"># 指定 console 密碼為 cicso</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
+<span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>重新開啟 CLI 驗證是否生效</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">User Access Verification
+
+Password: 
+
+s1&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-telnet-連線登入">4. telnet 連線登入</h2>
+<blockquote>
+<p><em>基礎指令操作，請參考 HowHow 的 <a href="https://how64bit.com/posts/ccna/2022/command-line/" target="_blank" rel="noopener noreffer">Cisco - 網路設備指令操作入門</a> 文章來學習。</em></p>
+</blockquote>
+<p>telnet 登入比使用 console 特地拉一條線來的方便，不過 telnet 使用 IP 來連接 Switch 機換器 ，但是 Switch 本身是沒有 IP 的，所以我們透過 VLAN 創建一個 IP 給交換器使用 ( 必須是與連線的 PC 同一網段才行 )。</p>
+<h3 id="411-vlan-賦予-ip">4.1.1 VLAN 賦予 IP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
+s1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+<span class="c1"># 使用 vlan 設備</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
+<span class="c1"># 賦予 IP 及子網路遮罩</span>
+s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
+<span class="c1"># 使設定生效</span>
+s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="412-開啟-telnet-功能">4.1.2 開啟 telnet 功能</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
+s1#conf t
+<span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
+<span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
+<span class="c1"># 密碼設定為 cicso</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
+<span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login </span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="413-至任一台-pc-連線測試">4.1.3 至任一台 PC 連線測試</h3>
+<p>找一台同網段的 PC ，使用 telnet 測試登入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\&gt;telnet 192.168.50.100
+Trying 192.168.50.100 ...Open
+
+
+User Access Verification
+
+Password: 
+s1&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5-ssh-連線登入">5. ssh 連線登入</h2>
+<blockquote>
+<p><em>基礎指令操作，請參考 HowHow 的 <a href="https://how64bit.com/posts/ccna/2022/command-line/" target="_blank" rel="noopener noreffer">Cisco - 網路設備指令操作入門</a> 文章來學習。</em></p>
+</blockquote>
+<p>telnet 登入有個缺點就是透過明碼傳輸，如果在 LAN 中有惡意人事使用擷取封包就能知曉密碼等設定，風險很高，另外一個比較安全機制就是透過 SSH 來登入。</p>
+<h3 id="411-vlan-賦予-ip-1">4.1.1 VLAN 賦予 IP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
+s1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+<span class="c1"># 使用 vlan 設備</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
+<span class="c1"># 賦予 IP 及子網路遮罩</span>
+s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
+<span class="c1"># 使設定生效</span>
+s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="412-開啟-ssh-功能">4.1.2 開啟 ssh 功能</h3>
+<p><strong>六個必要條件:</strong></p>
+<ol>
+<li>設定名稱</li>
+<li>設定網域名稱</li>
+<li>產生一對公私鑰</li>
+<li>設定登入使用者帳號及密碼</li>
+<li>設定SSH登入使用本地帳號及密碼</li>
+<li>設定連線使用 ssh</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
+s1#conf t
+<span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
+<span class="c1"># 設定此交換器名稱為 s1</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#hostname s1</span>
+<span class="c1"># 設定網域名稱為 cicso.example</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#ip domain-name cicso.example</span>
+<span class="c1"># 產生一對公私鑰</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#crypto key generate rsa general-keys modulus 1042</span>
+The name <span class="k">for</span> the keys will be: s1.cicso.example
+
+% The key modulus size is <span class="m">1042</span> bits
+% Generating <span class="m">1042</span> bit RSA keys, keys will be non-exportable...<span class="o">[</span>OK<span class="o">]</span>
+*Mar <span class="m">1</span> 5:34:28.566: %SSH-5-ENABLED: SSH 1.99 has been enabled
+<span class="c1"># 設定登入使用者為 howhow 密碼為 cicso</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#username howhow password cicso</span>
+<span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
+s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
+<span class="c1"># 登入帳號及密碼使用 local 資料 ( 剛設定的使用者 howhow 密碼 cicso )</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login local </span>
+<span class="c1"># 僅能使用 ssh 連線</span>
+s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#transport input ssh</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="413-至任一台-pc-連線測試-1">4.1.3 至任一台 PC 連線測試</h3>
+<p>找一台同網段的 PC ，使用 ssh 測試登入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\&gt;ssh -l howhow 192.168.50.100
+
+Password: 
+
+
+s1&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="小結">小結</h2>
+<p>無論是 Switch 交換器或是路由器只要是思科的網路設備都可以用上述方法來組態設備網路，也是必須掌握的技巧。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fconnect_to_device%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">NetWork</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/command-line/" class="prev" rel="prev" title="Cisco - 網路設備指令操作入門"><i class="fas fa-angle-left fa-fw"></i>Cisco - 網路設備指令操作入門</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -4,9 +4,23 @@
         <link>https://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 May 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 02 May 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cisco - 網路設備組態設定</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
+    <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</guid>
+    <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
+</item><item>
+    <title>Cisco - 網路設備指令操作入門</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/command-line/</link>
+    <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/command-line/</guid>
+    <description><![CDATA[title: &ldquo;Cisco - 網路設備指令操作入門&rdquo; date: 2022-05-01 draft: false tags: [&ldquo;Network&rdquo;] categories: [&ldquo;Cisco&rdquo;] Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關]]></description>
+</item><item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
@@ -62,19 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</guid>
     <description><![CDATA[Ad Hoc 是一個拉丁文常用短語，意思是指定或是特殊的任務，在 Ansible 中如果指定單一任務執行，可以使用 ad hoc 命令快速完成指定的任務。 練習環境 可以使用 HowHow 的創建]]></description>
-</item><item>
-    <title>Ansible - 管理 Ansible 設定組態檔</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</link>
-    <pubDate>Sat, 12 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</guid>
-    <description><![CDATA[Ansible 在執行時，需要明確定義要使用哪一種角色連線、使用哪一種連線機制、要不要提升root權限、提升權限是否要輸入密碼及 inventory 主機清單擺放位置，在每次]]></description>
-</item><item>
-    <title>Ansible - 創建 Ansible inventory 主機清單</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</link>
-    <pubDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</guid>
-    <description><![CDATA[Ansible 中的 Inventory 主機清單是執行 Ansible 的必要元素之一， 藉由該清單可以告訴 Ansible 哪些機器歸它所控制，完成自動化部署工作。 1. inventroy 格式 inventory 格式可以為 Yaml 或是 INI 格式， 對於初]]></description>
 </item></channel>
 </rss>
