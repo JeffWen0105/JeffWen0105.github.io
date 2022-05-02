@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Cisco - Category - HowHow の WebSite</title>
+        <link>https://blog.howhow.tk/categories/cisco/</link>
+        <description>Cisco - Category - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/cisco/" rel="self" type="application/rss+xml" /><item>
+    <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</link>
+    <pubDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</guid>
+    <description><![CDATA[Packet Tracer是由 Cisco 設計的跨平台工具，可以讓使用者已指令介面來模組設定思科路由器和交換機，另外還有模擬封包一個一個傳遞時的流程，對於初學者學]]></description>
+</item></channel>
+</rss>

@@ -21,6 +21,13 @@
     <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</guid>
     <description><![CDATA[近年來 Devops 逐漸成為科技業的新寵兒， 其中 Devops 很火熱的工具之一就是 Terraform 。 在介紹 Terraform 之前， 先來看一下什麼是 Iac ( Infrastructure as Code ) 基礎架構即程式碼，IaC 可讓開發的人]]></description>
 </item><item>
+    <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</link>
+    <pubDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</guid>
+    <description><![CDATA[Packet Tracer是由 Cisco 設計的跨平台工具，可以讓使用者已指令介面來模組設定思科路由器和交換機，另外還有模擬封包一個一個傳遞時的流程，對於初學者學]]></description>
+</item><item>
     <title>Windows - Win Server 2016 伺服器安裝及設定</title>
     <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</link>
     <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
@@ -69,12 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</guid>
     <description><![CDATA[Ansible 中的 Inventory 主機清單是執行 Ansible 的必要元素之一， 藉由該清單可以告訴 Ansible 哪些機器歸它所控制，完成自動化部署工作。 1. inventroy 格式 inventory 格式可以為 Yaml 或是 INI 格式， 對於初]]></description>
-</item><item>
-    <title>Ansible - 自動化組態管理工具介紹</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</link>
-    <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</guid>
-    <description><![CDATA[基礎架構程式 IAC（ infrastructure-as-code ），可以將原本需要人為部署環境，改由程式來自動化操作，然而 Ansible 這個工具誕生，就是專門實現自動化組態管理，可以大量部署出上]]></description>
 </item></channel>
 </rss>
