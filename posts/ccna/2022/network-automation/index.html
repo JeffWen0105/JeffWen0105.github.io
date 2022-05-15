@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - Network Automation With Ansible - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - Network Automation With Ansible" />
+<meta property="og:description" content="Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/network-automation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-15T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - Network Automation With Ansible"/>
+<meta name="twitter:description" content="Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/network-automation/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/connect_to_device/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - Network Automation With Ansible",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/network-automation\/"
+        },"genre": "posts","keywords": "Network, Ansible","wordcount":  1391 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/network-automation\/","datePublished": "2022-05-15T00:00:00+00:00","dateModified": "2022-05-15T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - Network Automation With Ansible</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-15">2022-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1391 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-network-automation-類型">1. Network Automation 類型</a></li>
+    <li><a href="#2-啟用-ansible-的先決條件">2. 啟用 Ansible 的先決條件</a></li>
+    <li><a href="#3-lab-測試環境">3. Lab 測試環境</a>
+      <ul>
+        <li><a href="#31-撰寫-ansiblecfg">3.1. 撰寫 Ansible.cfg</a></li>
+        <li><a href="#32-設定-inventory">3.2. 設定 Inventory</a></li>
+        <li><a href="#31-測試連線">3.1. 測試連線</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-ansible-使用範例">4. Ansible 使用範例</a>
+      <ul>
+        <li><a href="#41-查看-r1-及-r2-介面設定">4.1. 查看 R1 及 R2 介面設定</a></li>
+        <li><a href="#42-撰寫-playbook">4.2. 撰寫 Playbook</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-掌握更多的-ansible-控制-ios-模組用法">5. 掌握更多的 Ansible 控制 IOS 模組用法</a></li>
+    <li><a href="#6-小結">6. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自動化設定，並且藉由管控腳本版本，達到查閱歷史設定，俾利統一所有設定的組態設定。</p>
+<!-- more -->
+<h2 id="1-network-automation-類型">1. Network Automation 類型</h2>
+<ol>
+<li>Python：
+透過寫程式 SSH 至 IOS 執行控制，彈性高，需要額外開發人力。</li>
+<li>Chef：
+在設備上啟動 Agent ，由 Master 控制 Agent 執行。</li>
+<li>Ansible：
+與 Python 同樣使用 SSH ，在 Python 上再封裝一層，藉由 Yaml 執行官方寫好的模組直接執行。</li>
+</ol>
+<hr>
+<h2 id="2-啟用-ansible-的先決條件">2. 啟用 Ansible 的先決條件</h2>
+<ol>
+<li>
+<p>設備均需設定好 IP 及 SSH 連線功能：</p>
+<ul>
+<li>Set Hostname</li>
+<li>Set Domain-name</li>
+<li>Enable password</li>
+<li>Create Loing User and Passowrd</li>
+<li>Generate a general purpose RSA key pair</li>
+<li>Line vty loing and transport via ssh</li>
+</ul>
+</li>
+<li>
+<p>Linux 安裝 Ansible 套件：
+<code>yum install ansible / apt install ansible</code></p>
+<blockquote>
+<p>不同 Linux 倉庫內的 Ansible 版本皆不同，有些不一定會在預設倉庫
+也可以使用 Python 的 pip 直接安裝， <code>pip install ansible</code></p>
+</blockquote>
+</li>
+<li>
+<p>Ansible 安裝 netcommon 相依網路管理套件。
+<code>ansible-galaxy collection install ansible.netcommon</code></p>
+</li>
+<li>
+<p>測試 Linux 可以 SSH 至所有要管理的 Cisco 設備。
+<code>ssh &lt;username&gt;@&lt;cisco ip&gt;</code></p>
+</li>
+</ol>
+<hr>
+<h2 id="3-lab-測試環境">3. Lab 測試環境</h2>
+<p>使用 <a href="https://www.eve-ng.net/" target="_blank" rel="noopener noreffer">Eve-ng</a> 來模擬網路設備，並藉由 Ansible 自動化設定網路設備，測試拓樸圖如下 :</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/R1m8ZZt.png"
+        data-srcset="https://i.imgur.com/R1m8ZZt.png, https://i.imgur.com/R1m8ZZt.png 1.5x, https://i.imgur.com/R1m8ZZt.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/R1m8ZZt.png"
+        title="https://i.imgur.com/R1m8ZZt.png" /></p>
+<blockquote>
+<p>由左上 Workstation Linux 機器控制右方的 LAB-R1 及 LAB-R2 兩顆路由器( IP 及 SSH 已經設定完成 )</p>
+</blockquote>
+<h3 id="31-撰寫-ansiblecfg">3.1. 撰寫 Ansible.cfg</h3>
+<p>Ansible 起手第一個步驟就是設定其組態檔，囿於是網路設備比原本控制 Linux 機器或 Windows 機器來的單純與多，Ansible.cfg 內容不需要特別定義，只需要設定 inventory 位置及連線 TimeOut(預設執行 30s timeout，太短可以延長) 及可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[defaults]
+inventory = ./inventory
+
+[persistent_connection]
+connect_timeout = 40
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Getting Started with Ansible<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果想學習更多關於 Ansible 內容及其使用方式可以參考 <a href="https://how64bit.com/categories/ansible/" target="_blank" rel="noopener noreffer">HowHow 的 Ansible </a>系列文章。</em></div>
+        </div>
+    </div>
+<h3 id="32-設定-inventory">3.2. 設定 Inventory</h3>
+<p>inventory 設定就會比較多，與 Linux 機器不太一樣，大多數的參數都寫在這(當然也可以寫在 group_vars 、 host_vars 及 playbook 內)，囿於全部都控制網路設備就寫在同一個清單內。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[all:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=ios
+ansible_become_method=enable
+ansible_become_password=eve
+ansible_become=yes
+ansible_user=admin
+ansible_password=eve
+
+[lab]
+lab-R1 ansible_host=10.1.1.1
+lab-R2 ansible_host=10.1.1.2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="31-測試連線">3.1. 測試連線</h3>
+<p>使用 Ansible ad-hoc 指令指定使用 ping 模式驗證控制端主機是否與 R1 及 R2 互通。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation cisco]$ ansible lab -m ping
+lab-R2 | SUCCESS =&gt; {
+    &#34;ansible_facts&#34;: {
+        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+    },
+    &#34;changed&#34;: false,
+    &#34;ping&#34;: &#34;pong&#34;
+}
+lab-R1 | SUCCESS =&gt; {
+    &#34;ansible_facts&#34;: {
+        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+    },
+    &#34;changed&#34;: false,
+    &#34;ping&#34;: &#34;pong&#34;
+}
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-ansible-使用範例">4. Ansible 使用範例</h2>
+<h3 id="41-查看-r1-及-r2-介面設定">4.1. 查看 R1 及 R2 介面設定</h3>
+<p>使用 ios_command 模組查看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation cisco]$ ansible lab -m ios_command -a &#34;commands=&#39;sh ip int br&#39;&#34;
+lab-R2 | SUCCESS =&gt; {
+    &#34;ansible_facts&#34;: {
+        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+    },
+    &#34;changed&#34;: false,
+    &#34;stdout&#34;: [
+        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.50    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.2        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+    ],
+    &#34;stdout_lines&#34;: [
+        [
+            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
+            &#34;Ethernet0/0                192.168.1.50    YES NVRAM  up                    up      &#34;,
+            &#34;Ethernet0/1                10.1.1.2        YES NVRAM  up                    up      &#34;,
+            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
+            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+        ]
+    ]
+}
+lab-R1 | SUCCESS =&gt; {
+    &#34;ansible_facts&#34;: {
+        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+    },
+    &#34;changed&#34;: false,
+    &#34;stdout&#34;: [
+        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.60    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.1        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+    ],
+    &#34;stdout_lines&#34;: [
+        [
+            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
+            &#34;Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      &#34;,
+            &#34;Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      &#34;,
+            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
+            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+        ]
+    ]
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="42-撰寫-playbook">4.2. 撰寫 Playbook</h3>
+<p>設定 Banner 訊息及創建四個 Loopback 介面：</p>
+<ol>
+<li>撰寫basic_setting.yml</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name : Gemeral Config
+  hosts: lab
+  tasks:
+    - name: Add Banner..
+      ios_banner:
+        banner: motd
+        text: |
+          Hello Cisco Route
+          Maked by Asible...
+        state: present
+ 
+    - name: Add loopback
+      ios_interface:
+        name: &#34;Loopback{{item}}&#34;
+        state: present
+      loop:
+        - 77
+        - 78
+        - 79
+        - 80
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>執行 playbook</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="p">[</span><span class="n">student</span><span class="o">@</span><span class="n">workstation</span><span class="w"> </span><span class="n">cisco</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span><span class="w"> </span><span class="n">basic_setting</span><span class="p">.</span><span class="n">yml</span><span class="w"> 
+</span><span class="w"></span><span class="p">[</span><span class="n">DEPRECATION</span><span class="w"> </span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">ios_interface</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">kept</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">backwards</span><span class="w"> </span><span class="n">compatibility</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">discouraged</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">module</span><span class="w"> 
+</span><span class="w"></span><span class="n">documentation</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="k">explain</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">rationale</span><span class="p">..</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">future</span><span class="w"> 
+</span><span class="w"></span><span class="k">release</span><span class="p">.</span><span class="w"> </span><span class="n">Deprecation</span><span class="w"> </span><span class="n">warnings</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">disabled</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">setting</span><span class="w"> </span><span class="n">deprecation_warnings</span><span class="o">=</span><span class="no">False</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ansible</span><span class="p">.</span><span class="n">cfg</span><span class="p">.</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="p">[</span><span class="n">Gemeral</span><span class="w"> </span><span class="n">Config</span><span class="p">]</span><span class="w"> </span><span class="o">*****************************************************************************************</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="n">Gathering</span><span class="w"> </span><span class="n">Facts</span><span class="p">]</span><span class="w"> </span><span class="o">****************************************************************************************</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">`</span><span class="n">gather_subset</span><span class="o">`</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">`</span><span class="n">min</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">`!</span><span class="n">config</span><span class="o">`</span><span class="w"> </span><span class="n">v2</span><span class="p">.</span><span class="mi">11</span><span class="w"> </span><span class="n">onwards</span><span class="w">
+</span><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">Banner</span><span class="p">..]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">loopback</span><span class="p">]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="n">RECAP</span><span class="w"> </span><span class="o">****************************************************************************************************</span><span class="w">
+</span><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
+</span><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>至 lab-R1 路由器上查看會顯示 motd 訊息及新增的網路介面</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@workstation cisco]# ssh admin@10.1.1.1
+Password: 
+
+Hello Cisco Route
+Maked by Asible...
+
+lab-r1&gt;en
+Password: 
+lab-r1#sh ip int br
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      
+Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      
+Ethernet0/2                unassigned      YES NVRAM  administratively down down    
+Ethernet0/3                unassigned      YES NVRAM  administratively down down    
+Loopback77                 unassigned      YES unset  up                    up      
+Loopback78                 unassigned      YES unset  up                    up      
+Loopback79                 unassigned      YES unset  up                    up      
+Loopback80                 unassigned      YES unset  up                    up 
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="5-掌握更多的-ansible-控制-ios-模組用法">5. 掌握更多的 Ansible 控制 IOS 模組用法</h2>
+<p>在 Ansible 官方有專門的 Cisco.Ios 用法說明並且附上 Example 用法範例，透過這些模組可以很方便的管理往設備，<a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/index.html" target="_blank" rel="noopener noreffer">官網手冊請點我</a>。</p>
+<p><em>例如設定 ACL 規則：</em></p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/Aq2p3oq.png" title="https://i.imgur.com/Aq2p3oq.png" data-thumbnail="https://i.imgur.com/Aq2p3oq.png" data-sub-html="<h2>From docs.ansible.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/Aq2p3oq.png"
+            data-srcset="https://i.imgur.com/Aq2p3oq.png, https://i.imgur.com/Aq2p3oq.png 1.5x, https://i.imgur.com/Aq2p3oq.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/Aq2p3oq.png" />
+    </a><figcaption class="image-caption">From docs.ansible.com</figcaption>
+    </figure></p>
+<h2 id="6-小結">6. 小結</h2>
+<p>Cisco 逐漸增加自動化的佔比在認證考試中，無論是 CCNA 及 CCNP 都佔有相當大的份量，也代表自動化這個趨勢勢不可檔，未來必須要掌握的技能之一。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fnetwork-automation%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-15</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">NetWork</a>,&nbsp;<a href="/tags/ansible/">Ansible</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/connect_to_device/" class="prev" rel="prev" title="Cisco - 網路設備組態設定"><i class="fas fa-angle-left fa-fw"></i>Cisco - 網路設備組態設定</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

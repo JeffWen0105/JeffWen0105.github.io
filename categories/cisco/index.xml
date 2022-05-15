@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/categories/cisco/</link>
         <description>Cisco - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 02 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/cisco/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 15 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/cisco/" rel="self" type="application/rss+xml" /><item>
+    <title>Cisco - Network Automation With Ansible</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/network-automation/</link>
+    <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/network-automation/</guid>
+    <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
+</item><item>
     <title>Cisco - 網路設備組態設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
     <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
