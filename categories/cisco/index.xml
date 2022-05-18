@@ -24,7 +24,7 @@
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/command-line/</guid>
-    <description><![CDATA[title: &ldquo;Cisco - 網路設備指令操作入門&rdquo; date: 2022-05-01 draft: false tags: [&ldquo;Network&rdquo;] categories: [&ldquo;Cisco&rdquo;] Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關]]></description>
+    <description><![CDATA[Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關指令操作。 1. 操作模式種類 操作模式有分為不同總類，只有在管]]></description>
 </item><item>
     <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</link>
