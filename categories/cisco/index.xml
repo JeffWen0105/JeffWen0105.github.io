@@ -12,6 +12,13 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
+    <title>Cisco - IP Route 路由設定</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</link>
+    <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</guid>
+    <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
+</item><item>
     <title>Cisco - 網路設備組態設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
     <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>

@@ -14,6 +14,13 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
+    <title>Cisco - IP Route 路由設定</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</link>
+    <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</guid>
+    <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
+</item><item>
     <title>Cisco - 網路設備組態設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
     <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
@@ -69,12 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</guid>
     <description><![CDATA[透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必]]></description>
-</item><item>
-    <title>Ansible - 翻轉你的 Playbook</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</link>
-    <pubDate>Mon, 14 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</guid>
-    <description><![CDATA[Playbook 由多個 task 任務組合起來的一本 yaml 格式文件，告訴 Ansible 依據裡面內容一一執行的方式，也是 Ansible 三大要素的核心之一。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操]]></description>
 </item></channel>
 </rss>
