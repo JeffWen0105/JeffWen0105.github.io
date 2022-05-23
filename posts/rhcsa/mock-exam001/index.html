@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>RHCSA - 模擬考 - 設定網路組態 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="RHCSA - 模擬考 - 設定網路組態" />
-<meta property="og:description" content="題目 : 設定 ServerA 網路組態: 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0" />
+<meta property="og:description" content="題目 設定 ServerA 網路組態 : 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0 Default" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2000-01-01T00:00:00+00:00" />
@@ -14,11 +14,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHCSA - 模擬考 - 設定網路組態"/>
-<meta name="twitter:description" content="題目 : 設定 ServerA 網路組態: 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0"/>
+<meta name="twitter:description" content="題目 設定 ServerA 網路組態 : 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0 Default"/>
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><link rel="next" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-env-infra/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam003/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam002/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam001\/"
-        },"genre": "posts","wordcount":  229 ,
+        },"genre": "posts","wordcount":  257 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam001\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
@@ -44,7 +44,7 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                 </a>
             </div>
@@ -60,7 +60,7 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -77,7 +77,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">RHCSA - 模擬考 - 設定網路組態</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;229 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;257 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -88,15 +88,15 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#題目-">題目 :</a></li>
-        <li><a href="#參考作法-">參考作法 ：</a></li>
-        <li><a href="#參考解答-">參考解答 ：</a></li>
+        <li><a href="#題目">題目</a></li>
+        <li><a href="#參考作法">參考作法</a></li>
+        <li><a href="#參考解答">參考解答</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="題目-">題目 :</h3>
-<p><strong>設定 ServerA 網路組態:</strong></p>
+            </div><div class="content" id="content"><h3 id="題目">題目</h3>
+<p><strong>設定 ServerA 網路組態 :</strong></p>
 <blockquote>
 <ul>
 <li><i class="far fa-square fa-fw"></i> 主機名稱：<code>servera.rhcsa.com</code></li>
@@ -119,16 +119,27 @@
         </div>
     </div>
 <hr>
-<h3 id="參考作法-">參考作法 ：</h3>
+<h3 id="參考作法">參考作法</h3>
 <ol>
 <li>使用 nmcli 工具設定 。</li>
 <li>使用 nmtui 工具設定 (圖形化介面較簡單)。</li>
 <li>man 相關手冊 -&gt; NetworkManager。</li>
 </ol>
 <hr>
-<h3 id="參考解答-">參考解答 ：</h3>
-<p>Coming Soon..</p>
-</div><br>
+<h3 id="參考解答">參考解答</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># hostnamectl set-hostname servera.rhcsa.com</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli con add con-name lab ifname enp1s0 ipv4.addresses 172.25.250.100/24 ipv4.gateway 172.25.250.1 ipv4.dns 172.25.250.1 connection.autoconnect yes type ethernet</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli connection up lab</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><br>
 
 <br>
 <blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
@@ -172,8 +183,8 @@
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/posts/hadoop/2021/hadoop-env-infra/" class="next" rel="next" title="Hadoop - 基礎架設步驟">Hadoop - 基礎架設步驟<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/rhcsa/mock-exam003/" class="prev" rel="prev" title="RHCSA - 模擬考 - 調整 SELinux 策略"><i class="fas fa-angle-left fa-fw"></i>RHCSA - 模擬考 - 調整 SELinux 策略</a>
+            <a href="/posts/rhcsa/mock-exam002/" class="next" rel="next" title="RHCSA - 模擬考 - 設定 YUM 倉庫清單">RHCSA - 模擬考 - 設定 YUM 倉庫清單<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
