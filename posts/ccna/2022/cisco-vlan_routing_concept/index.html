@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - VLAN Routing 路由簡介 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - VLAN Routing 路由簡介" />
+<meta property="og:description" content="在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-19T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - VLAN Routing 路由簡介"/>
+<meta name="twitter:description" content="在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - VLAN Routing 路由簡介",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_routing_concept\/"
+        },"genre": "posts","keywords": "Network, Cisco","wordcount":  362 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_routing_concept\/","datePublished": "2022-05-19T00:00:00+00:00","dateModified": "2022-05-19T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - VLAN Routing 路由簡介</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-19">2022-05-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;362 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-vlan-路由方式">1. VLAN 路由方式</a>
+      <ul>
+        <li><a href="#11-legacy-inter-vlan-routing">1.1. Legacy Inter VLAN routing</a></li>
+        <li><a href="#12-router-on-a-stick">1.2. Router on a Stick</a></li>
+        <li><a href="#13-layer-3-switch">1.3. Layer 3 Switch</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-router-on-a-stick-設定簡述">2. Router on a Stick 設定簡述</a></li>
+    <li><a href="#3-layer-3-switch-設定簡述">3. Layer 3 Switch 設定簡述</a></li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。</p>
+<!-- more -->
+<h2 id="1-vlan-路由方式">1. VLAN 路由方式</h2>
+<ol>
+<li>Legacy Inter VLAN routing</li>
+<li>Router on a Stick</li>
+<li>Layer 3 Switch</li>
+</ol>
+<h3 id="11-legacy-inter-vlan-routing">1.1. Legacy Inter VLAN routing</h3>
+<p>傳統的方式，囿於需要額外佔用兩個 Router 的實體 port ，僅適合迷你形網路。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Wk3YqBb.png"
+        data-srcset="https://i.imgur.com/Wk3YqBb.png, https://i.imgur.com/Wk3YqBb.png 1.5x, https://i.imgur.com/Wk3YqBb.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Wk3YqBb.png"
+        title="https://i.imgur.com/Wk3YqBb.png" /></p>
+<div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>所有的傳輸都是透過 Access mode，並沒有使用 Trunk Mode。</em></div>
+        </div>
+    </div>
+<h3 id="12-router-on-a-stick">1.2. Router on a Stick</h3>
+<p>透過一個 Router 中分成多個虛擬子介面來達成邏輯介面，並透過此方式取代 Legacy Inter VLAN routing 。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/J3NsE5v.png"
+        data-srcset="https://i.imgur.com/J3NsE5v.png, https://i.imgur.com/J3NsE5v.png 1.5x, https://i.imgur.com/J3NsE5v.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/J3NsE5v.png"
+        title="https://i.imgur.com/J3NsE5v.png" /></p>
+<h3 id="13-layer-3-switch">1.3. Layer 3 Switch</h3>
+<p>透過 L3 Switch 是最容易的方式，不需藉由 Router 也能達成。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Cn5e2n5.png"
+        data-srcset="https://i.imgur.com/Cn5e2n5.png, https://i.imgur.com/Cn5e2n5.png 1.5x, https://i.imgur.com/Cn5e2n5.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Cn5e2n5.png"
+        title="https://i.imgur.com/Cn5e2n5.png" /></p>
+<hr>
+<h2 id="2-router-on-a-stick-設定簡述">2. Router on a Stick 設定簡述</h2>
+<p>Router 開啟子介面，將每一個 VLAN 切成一個個虛擬介面並賦予 IP 及開啟 802.1Q。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+  int g0/0.10
+    encapsulation dot1Q <span class="m">10</span>
+    ip address 192.168.10.1 255.255.255.0
+  int g0/0.30
+    encapsulation dot1Q <span class="m">30</span>
+    ip address 192.168.20.1 255.255.255.0
+  int g0/0
+    no shut
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="3-layer-3-switch-設定簡述">3. Layer 3 Switch 設定簡述</h2>
+<p>L3 Switch 很單純僅在 Vlan 上賦予IP，最後開啟 Routing 就會自動產生路由。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int Vlan10
+ ip address 192.168.10.254 255.255.255.0
+ no shut
+int Vlan20
+ ip address 192.168.20.254 255.255.255.0 
+ no shut
+ip routing
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-小結">4. 小結</h2>
+<p>一般中型網路大多數使用 Router on a Stick 方式，不過預算充足可以直接考慮 L3 Switch ，設定管理相對容易。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-vlan_routing_concept%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-19</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">Network</a>,&nbsp;<a href="/tags/cisco/">Cisco</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/cisco-vlan_concept/" class="prev" rel="prev" title="Cisco - VLAN 虛擬 LAN 網路"><i class="fas fa-angle-left fa-fw"></i>Cisco - VLAN 虛擬 LAN 網路</a>
+            <a href="/posts/ccna/2022/cisco-vlan_route_on_stick/" class="next" rel="next" title="Cisco - VLAN - Router on a Stick">Cisco - VLAN - Router on a Stick<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

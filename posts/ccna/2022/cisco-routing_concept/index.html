@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - IP Route 路由設定 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - IP Route 路由設定" />
+<meta property="og:description" content="路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - IP Route 路由設定"/>
+<meta name="twitter:description" content="路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - IP Route 路由設定",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-routing_concept\/"
+        },"genre": "posts","keywords": "Network, Cisco","wordcount":  1248 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-routing_concept\/","datePublished": "2022-05-05T00:00:00+00:00","dateModified": "2022-05-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - IP Route 路由設定</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-05">2022-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1248 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-路由表">1. 路由表</a>
+      <ul>
+        <li><a href="#11-直接連接網路">1.1. 直接連接網路</a></li>
+        <li><a href="#12-遠端網路">1.2. 遠端網路</a></li>
+        <li><a href="#13-default-route">1.3. Default route</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-cisco-設定路由">2. Cisco 設定路由</a>
+      <ul>
+        <li><a href="#21-直接連接網路設定">2.1. 直接連接網路設定</a></li>
+        <li><a href="#22-遠端網路">2.2. 遠端網路</a></li>
+        <li><a href="#23-default-route">2.3. Default route</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-packet-tracer-實作--1435-basic-router-configuration-review">3. Packet Tracer 實作 – 14.3.5 Basic Router Configuration Review</a>
+      <ul>
+        <li><a href="#31-目標-">3.1. 目標 ：</a></li>
+        <li><a href="#32-步驟-">3.2. 步驟 ：</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。</p>
+<!-- more -->
+<h1 id="cisco---ip-route-路由設定">Cisco - IP Route 路由設定</h1>
+<p>在網路中每一個網段都是獨立無法互相透過訊框( Mac Address )溝通，電腦確認網段的方是就是透過子網路遮罩來判斷，當前的封包是不是所於同一個網段，如果不是將會轉送給路由處理，例如 192.168.50.1/24 與 192.168.60.1/24 兩個就屬於不同網段，如果彼此需要交換封包，就要透過路由來轉送。</p>
+<hr>
+<h2 id="1-路由表">1. 路由表</h2>
+<p>透過路由器轉送封包前提是要有路由表，然而路由器並不會像是交換器一樣會全自動學習網路，部份路由需要手動設定。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/wFuVPs4.png"
+        data-srcset="https://i.imgur.com/wFuVPs4.png, https://i.imgur.com/wFuVPs4.png 1.5x, https://i.imgur.com/wFuVPs4.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/wFuVPs4.png"
+        title="https://i.imgur.com/wFuVPs4.png" /></p>
+<h3 id="11-直接連接網路">1.1. 直接連接網路</h3>
+<p>只要將再連接網路介面上設定 IP ，並且啟動該網路介面，路由器就會把該介面網路自動寫入路由表內。</p>
+<h3 id="12-遠端網路">1.2. 遠端網路</h3>
+<p>非直接連結網路，跨一個或多個路由器，需要手動加入靜態路由或是透過動態路由協定查成( RIP，OSPF 等協定)。</p>
+<h3 id="13-default-route">1.3. Default route</h3>
+<p>上述網路如果都匹配不到，可以透過 Default route 發出去，例如連至網際網路不可能把所有網路都寫在路由表，所以會有專門對外的 Default route (0.0.0.0) 。</p>
+<hr>
+<h2 id="2-cisco-設定路由">2. Cisco 設定路由</h2>
+<h3 id="21-直接連接網路設定">2.1. 直接連接網路設定</h3>
+<p>直接連接網路很單純，只要定義好每一個介面的 IP 跟 Net Mask 即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+int g0/0/0
+    ip address 192.168.50.1 255.255.255.0
+int g0/1/0
+    ip address 192.168.40.1 255.255.255.0
+int g0/0/1
+    ip address 192.168.30.1 255.255.255.0
+int s0/0/0
+    ip address 192.168.10.1 255.255.255.252
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>透過上述設定就可以將 192.168.30.0/24 、 192.168.40.0/24 、 192.168.50.0/24 三個不同網段的主機設備互相發送封包通連，例如 192.168.30.10 主機設備要發送給 192.168.40.20 的主機設備，會先檢查發送的封包是不是屬於同網段，只要不是 192.168.30.10 會自動發給 192.168.30.1 的路由器請他轉送。</p>
+</blockquote>
+<h3 id="22-遠端網路">2.2. 遠端網路</h3>
+<p>遠端網路就必須透過手動設定靜態路由來達成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+ip route 10.10.0.0 255.255.0.0 192.168.10.2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="23-default-route">2.3. Default route</h3>
+<p>將所有未知的網路均發送給 Default route。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+ip route 0.0.0.0 0.0.0.0 192.168.10.2
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="3-packet-tracer-實作--1435-basic-router-configuration-review">3. Packet Tracer 實作 – 14.3.5 Basic Router Configuration Review</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/mvtP2rI.png"
+        data-srcset="https://i.imgur.com/mvtP2rI.png, https://i.imgur.com/mvtP2rI.png 1.5x, https://i.imgur.com/mvtP2rI.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/mvtP2rI.png"
+        title="https://i.imgur.com/mvtP2rI.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/8jARYRK.png"
+        data-srcset="https://i.imgur.com/8jARYRK.png, https://i.imgur.com/8jARYRK.png 1.5x, https://i.imgur.com/8jARYRK.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/8jARYRK.png"
+        title="https://i.imgur.com/8jARYRK.png" /></p>
+<ul>
+<li>Download 此 LAB PKA 檔案<a href="https://itexamanswers.net/download/14-3-5-packet-tracer-basic-router-configuration-review-pka?wpdmdl=39214&amp;refresh=6280a018cf5851652596760&amp;ind=0&amp;filename=14.3.5%20Packet%20Tracer%20-%20Basic%20Router%20Configuration%20Review.pka" target="_blank" rel="noopener noreffer">請點我</a>，資源來至 itexamanswers.net 網站。</li>
+</ul>
+<h3 id="31-目標-">3.1. 目標 ：</h3>
+<ol>
+<li>設定機器所有的 IPv4 (IPv6 設定方式類似不在此 LAB 實驗中) 。</li>
+<li>將 R1 的 Default Route 設定為 R2 。</li>
+<li>R2 設定靜態路由學習 R1 後面的網路 。</li>
+<li>R2 設定往 Internet 網路路由。</li>
+</ol>
+<h3 id="32-步驟-">3.2. 步驟 ：</h3>
+<ol>
+<li>設定所有 PC 的 IPv4 配置( 按圖施工 )。</li>
+</ol>
+<p>以 PC 3 為例 :</p>
+<blockquote>
+<ol>
+<li>IPv4 : 10.0.4.10</li>
+<li>Mask : 24 -&gt; 255.255.255.0</li>
+<li>Default Gateway : 10.0.4.1</li>
+</ol>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/7JL1Fqe.png"
+        data-srcset="https://i.imgur.com/7JL1Fqe.png, https://i.imgur.com/7JL1Fqe.png 1.5x, https://i.imgur.com/7JL1Fqe.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/7JL1Fqe.png"
+        title="https://i.imgur.com/7JL1Fqe.png" /></p>
+<ol start="2">
+<li>設定所有路由器網路介面的 IPv4 配置( 按圖施工 )。</li>
+</ol>
+<p>以 R1 為例 :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+int g0/0/0
+    ip address 10.0.1.1 255.255.255.0
+    no shut
+int g0/0/1
+    ip address 10.0.2.1 255.255.255.0
+    no shut
+int s0/1/1
+    ip address 10.0.3.1 255.255.255.0
+    no shut
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>上述設定完在各至路由器後方的 LAN 均能互相傳遞 ICMP 封包，不過囿於沒有靜態路由或是 Default route 左右雙方並不知道怎麼傳遞封包，只能下上傳遞。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>R1 設定 Default route。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+ip route 0.0.0.0 0.0.0.0 10.0.3.2
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Simulation 看更多<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>此時已經可以在 PC1 發送 ICMP 封包至 PC3 ，只是因為尚未配置 R2 路由並不知道封包該怎麼回來，可以透過 simulation 模式查看 ICMP 封包流向。</em></div>
+        </div>
+    </div>
+<ol start="4">
+<li>R2 設定往 R1 靜態路由</li>
+</ol>
+<p>囿於往 R1 有兩個 LAN，所以必須要設定兩個靜態路由。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+ip route 10.0.1.0 255.255.255.0 10.0.3.1
+ip route 10.0.2.0 255.255.255.0 10.0.3.1
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>ICMP 封包正常傳遞<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>上述設定完所有 PC 都可以互相傳遞 ICMP 封包。</em></div>
+        </div>
+    </div>
+<ol start="4">
+<li>R2 設定往 Internet Default Route。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+ip route 0.0.0.0 0.0.0.0 209.165.200.226
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>R1 收到未知的網際網路封包會轉給 R2 ，由 R2 的 Default Route 轉出給 Internet。</em></div>
+        </div>
+    </div>
+<ol start="5">
+<li>驗證每一台主機設備均能發送 ICMP 至網際網路。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/awPqCXa.png"
+        data-srcset="https://i.imgur.com/awPqCXa.png, https://i.imgur.com/awPqCXa.png 1.5x, https://i.imgur.com/awPqCXa.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/awPqCXa.png"
+        title="https://i.imgur.com/awPqCXa.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>網際網路怎麼知道如何回傳?<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>囿於這是 LAB 環境，已經單純且簡化步驟，設定好從所有 LAN 的網段回傳至 R2 路由，在真實情況下必須要在 R2 啟動 PNAT 才能發送至外部網路且有封包回傳。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="4-小結">4. 小結</h2>
+<p>掌握如何設定路由是非常重要的課題，多佳練習才能熟悉排查問題及設定網路。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-routing_concept%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">Network</a>,&nbsp;<a href="/tags/cisco/">Cisco</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/cisco-connect_to_device/" class="prev" rel="prev" title="Cisco - 網路設備組態設定"><i class="fas fa-angle-left fa-fw"></i>Cisco - 網路設備組態設定</a>
+            <a href="/posts/ccna/2022/cisco-network-automation/" class="next" rel="next" title="Cisco - Network Automation With Ansible">Cisco - Network Automation With Ansible<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

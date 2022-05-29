@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Cisco - VLAN 虛擬 LAN 網路 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - VLAN 虛擬 LAN 網路" />
+<meta property="og:description" content="VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-18T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cisco - VLAN 虛擬 LAN 網路"/>
+<meta name="twitter:description" content="VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cisco - VLAN 虛擬 LAN 網路",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_concept\/"
+        },"genre": "posts","keywords": "Network, Cisco","wordcount":  845 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_concept\/","datePublished": "2022-05-18T00:00:00+00:00","dateModified": "2022-05-18T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - VLAN 虛擬 LAN 網路</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;845 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-vlan-原理">1. Vlan 原理</a></li>
+    <li><a href="#2-cisco-設定-vlan">2. Cisco 設定 Vlan</a>
+      <ul>
+        <li><a href="#21-interface-設定-vlan-access-mode">2.1. InterFace 設定 Vlan (Access Mode)</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-trunk-mode">2.2. Trunk Mode</a></li>
+    <li><a href="#3-packet-tracer-實作--vlan-configuration">3. Packet Tracer 實作 – VLAN Configuration</a>
+      <ul>
+        <li><a href="#31-目標">3.1. 目標：</a></li>
+        <li><a href="#32-步驟-">3.2. 步驟 ：</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。</p>
+<!-- more -->
+<h2 id="1-vlan-原理">1. Vlan 原理</h2>
+<p>一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同一個實體 LAN 傳輸封包就很困難，不過藉由 Vlan 技術就可以跨越不同的實體的網段，讓原本實體的網段做虛擬的切割，降低不必要的訊框佔用頻寬，也能保障機敏資料存取限制。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/m0QsFq5.png" title="https://i.imgur.com/m0QsFq5.png" data-thumbnail="https://i.imgur.com/m0QsFq5.png" data-sub-html="<h2>From www.cisco.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/m0QsFq5.png"
+            data-srcset="https://i.imgur.com/m0QsFq5.png, https://i.imgur.com/m0QsFq5.png 1.5x, https://i.imgur.com/m0QsFq5.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/m0QsFq5.png" />
+    </a><figcaption class="image-caption">From www.cisco.com</figcaption>
+    </figure></p>
+<p>Vlan 透過交換機上不同的 interface 介面貼上不同的 Vlan 標籤(Access Mode)，就能讓訊框在指定的標籤內網路流動。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/QoxLKfv.png" title="https://i.imgur.com/QoxLKfv.png" data-thumbnail="https://i.imgur.com/QoxLKfv.png" data-sub-html="<h2>From paacnet.net</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/QoxLKfv.png"
+            data-srcset="https://i.imgur.com/QoxLKfv.png, https://i.imgur.com/QoxLKfv.png 1.5x, https://i.imgur.com/QoxLKfv.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/QoxLKfv.png" />
+    </a><figcaption class="image-caption">From paacnet.net</figcaption>
+    </figure></p>
+<hr>
+<hr>
+<h2 id="2-cisco-設定-vlan">2. Cisco 設定 Vlan</h2>
+<h3 id="21-interface-設定-vlan-access-mode">2.1. InterFace 設定 Vlan (Access Mode)</h3>
+<p>在介面上針對端口設定貼上哪一種 Vlan 標籤。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+vlan name vlan10
+vlan name vlan20
+vlan name vlan30
+int g0/1/0
+    switchport access mode
+    access vlan10
+int g0/1/1
+    switchport access mode
+    access vlan20
+int g1/1/1
+    switchport access mode
+    access vlan30
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="22-trunk-mode">2.2. Trunk Mode</h2>
+<p>VLan 如果要跨越不同的 Switch 就必須使用 Trunk Mode ，在一條路上帶上不同的 VLAN 標籤與對方的 Switch 交換機做傳遞。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/KsTXyqV.png"
+        data-srcset="https://i.imgur.com/KsTXyqV.png, https://i.imgur.com/KsTXyqV.png 1.5x, https://i.imgur.com/KsTXyqV.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/KsTXyqV.png"
+        title="https://i.imgur.com/KsTXyqV.png" /></p>
+<blockquote>
+<p>在 Switch 介面上設定，兩台交換機都必須開啟 Trunk Mode 才行。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int g0/0/0
+    switchport trunk mode
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="3-packet-tracer-實作--vlan-configuration">3. Packet Tracer 實作 – VLAN Configuration</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xgj6zCb.png"
+        data-srcset="https://i.imgur.com/xgj6zCb.png, https://i.imgur.com/xgj6zCb.png 1.5x, https://i.imgur.com/xgj6zCb.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xgj6zCb.png"
+        title="https://i.imgur.com/xgj6zCb.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/0JFRml6.png"
+        data-srcset="https://i.imgur.com/0JFRml6.png, https://i.imgur.com/0JFRml6.png 1.5x, https://i.imgur.com/0JFRml6.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/0JFRml6.png"
+        title="https://i.imgur.com/0JFRml6.png" /></p>
+<ul>
+<li>Download 此 LAB PKA 檔案<a href="https://itexamanswers.net/download/3-3-12-packet-tracer-vlan-configuration-pka?wpdmdl=38966&amp;refresh=628d8117e85011653440791&amp;ind=0&amp;filename=3.3.12%20Packet%20Tracer%20-%20VLAN%20Configuration.pka" target="_blank" rel="noopener noreffer">請點我</a>，資源來至 itexamanswers.net 網站。</li>
+</ul>
+<h3 id="31-目標">3.1. 目標：</h3>
+<ol>
+<li>創建 Vlan 。</li>
+<li>介面端口綁定 Vlan 標籤。</li>
+</ol>
+<h3 id="32-步驟-">3.2. 步驟 ：</h3>
+<ol>
+<li>S1 創建 Vlan :
+<ul>
+<li>VLAN 10  : Staff</li>
+<li>VLAN 20  : Student</li>
+<li>VLAN 30  : Guest</li>
+<li>VLAN 99  : Management</li>
+<li>VLAN 150 : VOICE</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+vlan <span class="m">10</span>
+    name Staff
+vlan <span class="m">20</span>
+    name Students
+vlan <span class="m">30</span>
+    name Guest
+vlan <span class="m">99</span>
+    name Management
+vlan <span class="m">150</span>
+    name VOICE
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>
+<p>S1 與 S3 同上一步驟創建一樣名稱的 Vlan 。</p>
+</li>
+<li>
+<p>S2 所有的介面端口綁定 Vlan 標籤</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int f0/11
+    switchport mode access
+    switchport access vlan <span class="m">10</span>
+int f0/18
+    switchport mode access
+    switchport access vlan <span class="m">20</span>
+int f0/16
+    switchport mode access
+    switchport access vlan <span class="m">30</span>    
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>S3 所有的介面端口綁定 Vlan 標籤，並且啟用 VOICE Vlan 在 f 0/11 介面上</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int f0/11
+    switchport mode access
+    switchport access vlan <span class="m">10</span>
+    mls qos trust cos
+    switchport voice vlan <span class="m">150</span>
+int f0/18
+    switchport mode access
+    switchport access vlan <span class="m">20</span>
+int f0/16
+    switchport mode access
+    switchport access vlan <span class="m">30</span>    
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>設定  Trunk Mode</li>
+</ol>
+<p>S2 g0/1 介面啟動 Trunk Mode</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+switchport mode trunk
+</code></pre></td></tr></table>
+</div>
+</div><p>S1 g0/1 及 g0/2 介面啟動 Trunk Mode</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+switchport mode trunk
+</code></pre></td></tr></table>
+</div>
+</div><p>S3  g0/2 介面啟動 Trunk Mode</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
+switchport mode trunk
+</code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>設定完後所有相同的 VLAN 都可以互相發送 ICMP 封包</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># PC 1</span>
+C:<span class="se">\&gt;</span>ping 172.17.10.24
+
+Pinging 172.17.10.24 with <span class="m">32</span> bytes of data:
+
+Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+
+Ping statistics <span class="k">for</span> 172.17.10.24:
+    Packets: <span class="nv">Sent</span> <span class="o">=</span> 4, <span class="nv">Received</span> <span class="o">=</span> 4, <span class="nv">Lost</span> <span class="o">=</span> <span class="m">0</span> <span class="o">(</span>0% loss<span class="o">)</span>,
+Approximate round trip <span class="nb">times</span> in milli-seconds:
+    <span class="nv">Minimum</span> <span class="o">=</span> 0ms, <span class="nv">Maximum</span> <span class="o">=</span> 0ms, <span class="nv">Average</span> <span class="o">=</span> 0ms
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>不過此時暫時無法跨越 VLAN ，如果需要跨越 VLAN 需要 Router 或是 L3-Switch 才能轉送路由。</p>
+</blockquote>
+<hr>
+<h2 id="4-小結">4. 小結</h2>
+<p>無論是 Switch 交換器或是路由器只要是思科的網路設備都可以用上述方法來組態設備網路，也是必須掌握的技巧。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-vlan_concept%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">Network</a>,&nbsp;<a href="/tags/cisco/">Cisco</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/cisco-network-automation/" class="prev" rel="prev" title="Cisco - Network Automation With Ansible"><i class="fas fa-angle-left fa-fw"></i>Cisco - Network Automation With Ansible</a>
+            <a href="/posts/ccna/2022/cisco-vlan_routing_concept/" class="next" rel="next" title="Cisco - VLAN Routing 路由簡介">Cisco - VLAN Routing 路由簡介<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

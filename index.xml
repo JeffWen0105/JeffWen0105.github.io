@@ -4,77 +4,77 @@
         <link>https://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 19 May 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 May 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>NetWork - 申請 SSL 憑證 ( Free 無料 )</title>
+    <link>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</link>
+    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</guid>
+    <description><![CDATA[1. SSL 介紹 傳輸層安全性協定（英語：Transport Layer Security，縮寫：TLS) 安全通訊協定（英語：Secure Sockets Layer，縮寫：SS]]></description>
+</item><item>
+    <title>NetWork - 註冊自己的 Domain ( Free 無料 )</title>
+    <link>https://blog.howhow.tk/posts/network/2022/register_free_domain/</link>
+    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/network/2022/register_free_domain/</guid>
+    <description><![CDATA[1. Freenom 介紹 Freenom 是世界上第一家提供免費網域的註冊商，目前有提供.tk .ml .ga .cf 的免費域名。 2. 註冊方式 登入 Freenom 網站。 輸入自己喜歡的網域名稱並查看目前有哪些]]></description>
+</item><item>
+    <title>Cisco - VLAN - Layer 3 Switch</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</link>
+    <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</guid>
+    <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由 ( 使用 L3 Switch 取代一般的路由器 )協助轉發至對應的 VLAN 內。 先前介紹的三種路由方式，路由速度最快設定步驟容易的方式]]></description>
+</item><item>
+    <title>Cisco - VLAN - Router on a Stick</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</link>
+    <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</guid>
+    <description><![CDATA[Router on a Stick 在中型網路較常使用的 VLAN 路由解決方案，價格實惠且能達成 VLAN 路由目標。 先前介紹的三種路由方式，其中 CP 較高的就是透過此方式，因為架構多一個路]]></description>
+</item><item>
     <title>Cisco - VLAN Routing 路由簡介</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</link>
     <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
 </item><item>
     <title>Cisco - VLAN 虛擬 LAN 網路</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</link>
     <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</guid>
     <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
 </item><item>
     <title>Cisco - Network Automation With Ansible</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/network-automation/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/network-automation/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
     <title>Cisco - IP Route 路由設定</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</link>
     <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</guid>
     <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
 </item><item>
     <title>Cisco - 網路設備組態設定</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</link>
     <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</guid>
     <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
 </item><item>
     <title>Cisco - 網路設備指令操作入門</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/command-line/</link>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</link>
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/command-line/</guid>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</guid>
     <description><![CDATA[Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關指令操作。 1. 操作模式種類 操作模式有分為不同總類，只有在管]]></description>
-</item><item>
-    <title>Linux - 打造輕巧 Linux 練習 Lab</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
-    <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
-    <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
-</item><item>
-    <title>Terraform  - 基礎架構即程式碼 (IaC) 入門</title>
-    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</link>
-    <pubDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</guid>
-    <description><![CDATA[近年來 Devops 逐漸成為科技業的新寵兒， 其中 Devops 很火熱的工具之一就是 Terraform 。 在介紹 Terraform 之前， 先來看一下什麼是 Iac ( Infrastructure as Code ) 基礎架構即程式碼，IaC 可讓開發的人]]></description>
-</item><item>
-    <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</link>
-    <pubDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/packet-tracer-introduccion/</guid>
-    <description><![CDATA[Packet Tracer是由 Cisco 設計的跨平台工具，可以讓使用者已指令介面來模組設定思科路由器和交換機，另外還有模擬封包一個一個傳遞時的流程，對於初學者學]]></description>
-</item><item>
-    <title>Windows - Win Server 2016 伺服器安裝及設定</title>
-    <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</link>
-    <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</guid>
-    <description><![CDATA[Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的]]></description>
 </item></channel>
 </rss>

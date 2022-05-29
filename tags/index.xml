@@ -4,12 +4,19 @@
         <link>https://blog.howhow.tk/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 19 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>NetWork</title>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Network</title>
     <link>https://blog.howhow.tk/tags/network/</link>
-    <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/tags/network/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Cisco</title>
+    <link>https://blog.howhow.tk/tags/cisco/</link>
+    <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/tags/cisco/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Ansible</title>
@@ -66,13 +73,6 @@
     <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/tags/redhat/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Python</title>
-    <link>https://blog.howhow.tk/tags/python/</link>
-    <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/tags/python/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
