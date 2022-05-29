@@ -4,9 +4,23 @@
         <link>https://blog.howhow.tk/</link>
         <description>HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 15 May 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 19 May 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cisco - VLAN Routing 路由簡介</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</link>
+    <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</guid>
+    <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
+</item><item>
+    <title>Cisco - VLAN 虛擬 LAN 網路</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</link>
+    <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</guid>
+    <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
+</item><item>
     <title>Cisco - Network Automation With Ansible</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
@@ -62,19 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</guid>
     <description><![CDATA[Windows Server 2016 是 Windows 10 的服器版本，並具備多樣功能，例如 AD、 IIS、 Hyper-V、 DNS 、路由等， 比起 Linux 作業系統安裝及設定相對容易，作為練習評估是很好的]]></description>
-</item><item>
-    <title>Ansible - 變數管理及應用</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
-    <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</guid>
-    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，在大量環境下可以透過變數方式，如同寫程式一般可以更靈活且彈性的進行部署及維護。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
-</item><item>
-    <title>Ansible - Vault 加密檔案管理</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</link>
-    <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</guid>
-    <description><![CDATA[透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必]]></description>
 </item></channel>
 </rss>

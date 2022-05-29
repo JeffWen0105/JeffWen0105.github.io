@@ -2,14 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/cisco/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/network/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</loc><lastmod>2022-05-18T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/ansible/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/categories/cisco/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/network-automation/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/network/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/routing_concept/</loc><lastmod>2022-05-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/connect_to_device/</loc><lastmod>2022-05-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/command-line/</loc><lastmod>2022-05-01T00:00:00&#43;00:00</lastmod></url><url>

@@ -4,7 +4,21 @@
         <link>https://blog.howhow.tk/categories/cisco/</link>
         <description>Cisco - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 15 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/cisco/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 19 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/cisco/" rel="self" type="application/rss+xml" /><item>
+    <title>Cisco - VLAN Routing 路由簡介</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</link>
+    <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_routing_concept/</guid>
+    <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
+</item><item>
+    <title>Cisco - VLAN 虛擬 LAN 網路</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</link>
+    <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/vlan_concept/</guid>
+    <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
+</item><item>
     <title>Cisco - Network Automation With Ansible</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
