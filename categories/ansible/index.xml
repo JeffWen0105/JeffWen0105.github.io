@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/categories/ansible/</link>
         <description>Ansible - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/ansible/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 06 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/ansible/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 流程控制</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
+    <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</guid>
+    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習]]></description>
+</item><item>
     <title>Ansible - 變數管理及應用</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
     <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>

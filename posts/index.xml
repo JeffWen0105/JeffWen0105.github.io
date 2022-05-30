@@ -54,6 +54,13 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
+    <title>Ansible - 流程控制</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
+    <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</guid>
+    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習]]></description>
+</item><item>
     <title>Cisco - IP Route 路由設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</link>
     <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</guid>
     <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
-</item><item>
-    <title>Cisco - 網路設備指令操作入門</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</link>
-    <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</guid>
-    <description><![CDATA[Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關指令操作。 1. 操作模式種類 操作模式有分為不同總類，只有在管]]></description>
 </item></channel>
 </rss>

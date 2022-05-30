@@ -12,6 +12,13 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
+    <title>Ansible - 流程控制</title>
+    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
+    <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</guid>
+    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習]]></description>
+</item><item>
     <title>Ansible - 變數管理及應用</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
     <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>

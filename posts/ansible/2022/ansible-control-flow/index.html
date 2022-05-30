@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Ansible - 流程控制 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Ansible - 流程控制" />
+<meta property="og:description" content="透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-06T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible - 流程控制"/>
+<meta name="twitter:description" content="透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ansible - 流程控制",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-control-flow\/"
+        },"genre": "posts","keywords": "Ansible","wordcount":  468 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-control-flow\/","datePublished": "2022-05-06T00:00:00+00:00","dateModified": "2022-05-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Ansible - 流程控制</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw"></i>Ansible</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;468 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-迴圈-loop">1. 迴圈 Loop</a>
+      <ul>
+        <li><a href="#11-簡易的迴圈">1.1. 簡易的迴圈</a></li>
+        <li><a href="#12-字典陣列迴圈">1.2. 字典陣列迴圈</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-條件判斷式">2. 條件判斷式</a>
+      <ul>
+        <li><a href="#21-簡易的條件判斷">2.1. 簡易的條件判斷</a></li>
+        <li><a href="#22-條件判斷列表">2.2. 條件判斷列表</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-小結">3. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。</p>
+<!--  more -->
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 Ansible，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="1-迴圈-loop">1. 迴圈 Loop</h2>
+<p>Loop 迴圈減少 PlayBook 重複內容。</p>
+<h3 id="11-簡易的迴圈">1.1. 簡易的迴圈</h3>
+<p>使用 loop 關鍵字定義迴圈，並使用 item 當作變數， Playbook 範例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name: Start Service
+  service:
+    name: &#34;{{ item }}&#34;
+    state: start
+  loop:
+    - httpd
+    - mysql
+    - firewalld
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="12-字典陣列迴圈">1.2. 字典陣列迴圈</h3>
+<p>當一個迴圈有多個變數可以透字典方式來協助， Playbook 範例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name: Create Users
+  user:
+    name: &#34;{{ item.name }}&#34;
+    state: present
+    groups: &#34;{{ item.groups }}&#34;
+  loop:
+    - name: bob
+      groups: wheel
+    - name: john
+      groups: root
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="2-條件判斷式">2. 條件判斷式</h2>
+<p>透過條件斷式可以執行更進階操作。</p>
+<h3 id="21-簡易的條件判斷">2.1. 簡易的條件判斷</h3>
+<p>使用 when 關鍵字來定義條件式的判斷開始。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Test</span> <span class="nx">The</span> <span class="nx">Var</span> <span class="nx">is</span> <span class="nx">Defined</span> <span class="nx">Example</span>
+  <span class="nx">hosts</span><span class="p">:</span> <span class="nx">all</span>
+  <span class="nx">vars</span><span class="p">:</span>
+    <span class="nx">my_service</span><span class="p">:</span> <span class="nx">httpd</span>
+  
+  <span class="nx">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span> <span class="kn">package</span> <span class="nx">is</span> <span class="nx">installed</span>
+      <span class="nx">yum</span><span class="p">:</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span>
+        <span class="nx">state</span><span class="p">:</span> <span class="nx">present</span>
+      <span class="nx">when</span><span class="p">:</span> <span class="nx">my_service</span> <span class="nx">is</span> <span class="nx">defined</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-條件判斷列表">2.2. 條件判斷列表</h3>
+<table>
+<thead>
+<tr>
+<th>選項</th>
+<th>範例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等於(字串)</td>
+<td>ansible_facts[&lsquo;machine&rsquo;] == &lsquo;x86_64&rsquo;</td>
+</tr>
+<tr>
+<td>等於(數值)</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] == 512</td>
+</tr>
+<tr>
+<td>大於</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] &gt; 512</td>
+</tr>
+<tr>
+<td>小於</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] &lt; 128</td>
+</tr>
+<tr>
+<td>大於等於</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] &gt;= 512</td>
+</tr>
+<tr>
+<td>小於等於</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] &lt;= 128</td>
+</tr>
+<tr>
+<td>不等於</td>
+<td>ansible_facts[&lsquo;max_memory&rsquo;] != 512</td>
+</tr>
+<tr>
+<td>變數存在</td>
+<td>ansible_facts[&lsquo;machine&rsquo;]  is defined</td>
+</tr>
+<tr>
+<td>變數不存在</td>
+<td>ansible_facts[&lsquo;machine&rsquo;]  is  not defined</td>
+</tr>
+<tr>
+<td>布林值為1</td>
+<td>ansible_facts[&lsquo;hostname&rsquo;]</td>
+</tr>
+<tr>
+<td>布林值為0</td>
+<td>not ansible_facts[&lsquo;hostname&rsquo;]</td>
+</tr>
+<tr>
+<td>條件有在陣列中</td>
+<td>ansible_facts[&lsquo;hostname&rsquo;] in abc</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-小結">3. 小結</h2>
+<p>程式控制流程與寫程式類似的邏輯，盡可能使用最簡短的方式達成想要的目的。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-control-flow%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ansible/">Ansible</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/cisco-routing_concept/" class="prev" rel="prev" title="Cisco - IP Route 路由設定"><i class="fas fa-angle-left fa-fw"></i>Cisco - IP Route 路由設定</a>
+            <a href="/posts/ccna/2022/cisco-network-automation/" class="next" rel="next" title="Cisco - Network Automation With Ansible">Cisco - Network Automation With Ansible<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

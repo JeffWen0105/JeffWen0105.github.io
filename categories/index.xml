@@ -19,6 +19,13 @@
     <guid>https://blog.howhow.tk/categories/cisco/</guid>
     <description><![CDATA[]]></description>
 </item><item>
+    <title>Ansible</title>
+    <link>https://blog.howhow.tk/categories/ansible/</link>
+    <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/categories/ansible/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Linux</title>
     <link>https://blog.howhow.tk/categories/linux/</link>
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
@@ -38,13 +45,6 @@
     <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/categories/windows/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Ansible</title>
-    <link>https://blog.howhow.tk/categories/ansible/</link>
-    <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/categories/ansible/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Kubernetes</title>
