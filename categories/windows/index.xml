@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/categories/windows/</link>
         <description>Windows - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/windows/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 08 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/windows/" rel="self" type="application/rss+xml" /><item>
+    <title>Windows - 安裝及啟用 AD 網域服務</title>
+    <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</link>
+    <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</guid>
+    <description><![CDATA[1. AD 簡介 Active Directory 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定]]></description>
+</item><item>
     <title>Windows - Win Server 2016 伺服器安裝及設定</title>
     <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-installer/</link>
     <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>

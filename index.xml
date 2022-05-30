@@ -56,6 +56,13 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
+    <title>Windows - 安裝及啟用 AD 網域服務</title>
+    <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</link>
+    <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</guid>
+    <description><![CDATA[1. AD 簡介 Active Directory 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定]]></description>
+</item><item>
     <title>Ansible - 流程控制</title>
     <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
     <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
@@ -69,12 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</guid>
     <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
-</item><item>
-    <title>Cisco - 網路設備組態設定</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</link>
-    <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</guid>
-    <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
 </item></channel>
 </rss>

@@ -26,6 +26,13 @@
     <guid>https://blog.howhow.tk/tags/ansible/</guid>
     <description><![CDATA[]]></description>
 </item><item>
+    <title>AD</title>
+    <link>https://blog.howhow.tk/tags/ad/</link>
+    <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/tags/ad/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Linux</title>
     <link>https://blog.howhow.tk/tags/linux/</link>
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/tags/docker/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Redhat</title>
-    <link>https://blog.howhow.tk/tags/redhat/</link>
-    <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/tags/redhat/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

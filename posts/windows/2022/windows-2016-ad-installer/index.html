@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows - 安裝及啟用 AD 網域服務 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Windows - 安裝及啟用 AD 網域服務" />
+<meta property="og:description" content="1. AD 簡介 Active Directory 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-08T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows - 安裝及啟用 AD 網域服務"/>
+<meta name="twitter:description" content="1. AD 簡介 Active Directory 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/" /><link rel="prev" href="https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows - 安裝及啟用 AD 網域服務",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/windows\/2022\/windows-2016-ad-installer\/"
+        },"genre": "posts","keywords": "AD","wordcount":  672 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/windows\/2022\/windows-2016-ad-installer\/","datePublished": "2022-05-08T00:00:00+00:00","dateModified": "2022-05-08T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows - 安裝及啟用 AD 網域服務</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/windows/"><i class="far fa-folder fa-fw"></i>Windows</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-08">2022-05-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;672 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-ad-簡介">1. AD 簡介</a></li>
+    <li><a href="#2-安裝-ad">2. 安裝 AD</a></li>
+    <li><a href="#3--小結">3.  小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-ad-簡介">1. AD 簡介</h2>
+<p><strong>Active Directory</strong> 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定檔、組織單元、樹系等等，只要是在Active Directory結構定義檔（schema）中定義的物件，就可以儲存在Active Directory資料檔中，並利用Active Directory Service Interface來存取。</p>
+<hr>
+<h2 id="2-安裝-ad">2. 安裝 AD</h2>
+<blockquote>
+<p>先決條件 ： 安裝 Windows Server ，此 Lab 使用 Windows Server 2016 標準版。</p>
+</blockquote>
+<ol>
+<li>伺服器管理員頁面點擊新增腳色及功能。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/fkFh6rc.png"
+        data-srcset="https://i.imgur.com/fkFh6rc.png, https://i.imgur.com/fkFh6rc.png 1.5x, https://i.imgur.com/fkFh6rc.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/fkFh6rc.png"
+        title="https://i.imgur.com/fkFh6rc.png" /></p>
+<ol start="2">
+<li>新增腳色及功能精靈引導。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/nAQrUGO.png"
+        data-srcset="https://i.imgur.com/nAQrUGO.png, https://i.imgur.com/nAQrUGO.png 1.5x, https://i.imgur.com/nAQrUGO.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/nAQrUGO.png"
+        title="https://i.imgur.com/nAQrUGO.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>務必確認在基礎配置時有設定管理員密碼並且設定IPv4 。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>伺服器選取項目使用本機ad2016。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/defwOLy.png"
+        data-srcset="https://i.imgur.com/defwOLy.png, https://i.imgur.com/defwOLy.png 1.5x, https://i.imgur.com/defwOLy.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/defwOLy.png"
+        title="https://i.imgur.com/defwOLy.png" /></p>
+<ol start="4">
+<li>腳色選擇Active Directory 網域服務，並點擊新增功能。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/xyUNBeT.png"
+        data-srcset="https://i.imgur.com/xyUNBeT.png, https://i.imgur.com/xyUNBeT.png 1.5x, https://i.imgur.com/xyUNBeT.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/xyUNBeT.png"
+        title="https://i.imgur.com/xyUNBeT.png" /></p>
+<ol start="5">
+<li>功能使用預設功能，並點擊下一步。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/Z3Q7kBj.png"
+        data-srcset="https://i.imgur.com/Z3Q7kBj.png, https://i.imgur.com/Z3Q7kBj.png 1.5x, https://i.imgur.com/Z3Q7kBj.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/Z3Q7kBj.png"
+        title="https://i.imgur.com/Z3Q7kBj.png" /></p>
+<ol start="6">
+<li>AD 網域服務勾選 &ldquo;必要時自動重新啟動目的地伺服器&rdquo; ，按下 &ldquo;是&rdquo; 同意，並點擊安裝。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/QyPXc5A.png"
+        data-srcset="https://i.imgur.com/QyPXc5A.png, https://i.imgur.com/QyPXc5A.png 1.5x, https://i.imgur.com/QyPXc5A.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/QyPXc5A.png"
+        title="https://i.imgur.com/QyPXc5A.png" /></p>
+<ol start="7">
+<li>安裝完成後，點擊 &ldquo;將此伺服器升級為網域控制站&rdquo; 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/vAPS5OC.png"
+        data-srcset="https://i.imgur.com/vAPS5OC.png, https://i.imgur.com/vAPS5OC.png 1.5x, https://i.imgur.com/vAPS5OC.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/vAPS5OC.png"
+        title="https://i.imgur.com/vAPS5OC.png" /></p>
+<ol start="8">
+<li>在設定精靈部屬作業新增樹系，並輸入根網域名稱為: vmlab01.local 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/NcUm31F.png"
+        data-srcset="https://i.imgur.com/NcUm31F.png, https://i.imgur.com/NcUm31F.png 1.5x, https://i.imgur.com/NcUm31F.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/NcUm31F.png"
+        title="https://i.imgur.com/NcUm31F.png" /></p>
+<ol start="9">
+<li>網域控制站必須勾選DNS 伺服器及AD設定還原密碼( P@ssw0rd ) 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/gUvhLIa.png"
+        data-srcset="https://i.imgur.com/gUvhLIa.png, https://i.imgur.com/gUvhLIa.png 1.5x, https://i.imgur.com/gUvhLIa.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/gUvhLIa.png"
+        title="https://i.imgur.com/gUvhLIa.png" /></p>
+<ol start="10">
+<li>DNS 選項不使用委派直接點擊下一步。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/QSuh3TB.png"
+        data-srcset="https://i.imgur.com/QSuh3TB.png, https://i.imgur.com/QSuh3TB.png 1.5x, https://i.imgur.com/QSuh3TB.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/QSuh3TB.png"
+        title="https://i.imgur.com/QSuh3TB.png" /></p>
+<ol start="11">
+<li>NetBIOS 網域名稱設定為: VMLAB01 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/z0E6wFu.png"
+        data-srcset="https://i.imgur.com/z0E6wFu.png, https://i.imgur.com/z0E6wFu.png 1.5x, https://i.imgur.com/z0E6wFu.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/z0E6wFu.png"
+        title="https://i.imgur.com/z0E6wFu.png" /></p>
+<ol start="12">
+<li>資料庫及Log 等路徑使用預設值。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/HcEMAZk.png"
+        data-srcset="https://i.imgur.com/HcEMAZk.png, https://i.imgur.com/HcEMAZk.png 1.5x, https://i.imgur.com/HcEMAZk.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/HcEMAZk.png"
+        title="https://i.imgur.com/HcEMAZk.png" /></p>
+<ol start="13">
+<li>檢閱選項再次檢查內容有無需要修改。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/7JWdqsb.png"
+        data-srcset="https://i.imgur.com/7JWdqsb.png, https://i.imgur.com/7JWdqsb.png 1.5x, https://i.imgur.com/7JWdqsb.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/7JWdqsb.png"
+        title="https://i.imgur.com/7JWdqsb.png" /></p>
+<ol start="14">
+<li>下一步自動執行先決條件檢查，如出現通過即可點擊安裝，安裝完畢後機器會自動重新開機。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/DuH7gZZ.png"
+        data-srcset="https://i.imgur.com/DuH7gZZ.png, https://i.imgur.com/DuH7gZZ.png 1.5x, https://i.imgur.com/DuH7gZZ.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/DuH7gZZ.png"
+        title="https://i.imgur.com/DuH7gZZ.png" /></p>
+<ol start="15">
+<li>重新開機後帳號使用網域管理員帳號 : VMLAB01\administrator 來登入，密碼為P@ssw0rd ，可以順利登入表示AD 已完成安裝及設定。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/1T9LuHR.png"
+        data-srcset="https://i.imgur.com/1T9LuHR.png, https://i.imgur.com/1T9LuHR.png 1.5x, https://i.imgur.com/1T9LuHR.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/1T9LuHR.png"
+        title="https://i.imgur.com/1T9LuHR.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>administrator 為本機管理員，加上網域 &ldquo;vmlab01\administrator&rdquo; 為網域管理員。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="3--小結">3.  小結</h2>
+<p>Windows AD 在圖形化下安裝十分容易，僅需點擊幾步驟就可以輕鬆完成。</p>
+</div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fwindows%2f2022%2fwindows-2016-ad-installer%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ad/">AD</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ansible/2022/ansible-control-flow/" class="prev" rel="prev" title="Ansible - 流程控制"><i class="fas fa-angle-left fa-fw"></i>Ansible - 流程控制</a>
+            <a href="/posts/ccna/2022/cisco-network-automation/" class="next" rel="next" title="Cisco - Network Automation With Ansible">Cisco - Network Automation With Ansible<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
