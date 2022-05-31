@@ -4,13 +4,27 @@
         <link>https://blog.howhow.tk/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 31 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
-    <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
+    <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
+</item><item>
+    <title>Linux - Iptables Filter 表規則管理</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</link>
+    <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</guid>
+    <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
+</item><item>
+    <title>Linux - Firewalld 動態防火牆管理器</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-firewalld/</link>
+    <pubDate>Wed, 16 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-firewalld/</guid>
+    <description><![CDATA[<p>從 RHEL 8 開始 <strong>firewalld</strong> 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。</p>]]></description>
 </item><item>
     <title>Linux - 網路管理工具 - NetworkManager</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</link>
@@ -62,19 +76,5 @@
     <author>Author</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/</guid>
     <description><![CDATA[<p>建立一個雲端空間共同存放影片是的很好的地方，不過有 100 個每個人都存一部內容一模一樣佔 10GB 空間影片，就必須騰出 1TB 來存放，十分浪費，故 VDO ( Virtual Data Optimizer )目的就是重複檔案僅存一次，重複的內容使用捷徑方式儲存就可以大大的降低空間浪費。</p>]]></description>
-</item><item>
-    <title>Linux - 邏輯卷冊管理 LVM</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/</link>
-    <pubDate>Tue, 15 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/</guid>
-    <description><![CDATA[<p>LVM ( Logical Volume Management ) 這管理工具可以更容易且有效的管理硬碟空間，可以任意組合多顆硬碟成為一個分割槽，也能任意的擴充放大透過 LVM 掛載的目錄及分割槽 。</p>]]></description>
-</item><item>
-    <title>Linux - 硬碟的分割及掛載</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/</link>
-    <pubDate>Mon, 14 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/</guid>
-    <description><![CDATA[<p>全新的硬碟沒有做任何處理，對於作業系統是無法使用的，必須修進行硬碟分割及格式化之後才能有效的掛載及使用。</p>]]></description>
 </item></channel>
 </rss>

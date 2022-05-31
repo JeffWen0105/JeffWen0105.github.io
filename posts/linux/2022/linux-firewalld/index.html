@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - Firewalld 動態防火牆管理器 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - Firewalld 動態防火牆管理器" />
+<meta property="og:description" content="從 RHEL 8 開始 firewalld 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-firewalld/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-16T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - Firewalld 動態防火牆管理器"/>
+<meta name="twitter:description" content="從 RHEL 8 開始 firewalld 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-firewalld/" /><link rel="prev" href="https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/" /><link rel="next" href="https://blog.howhow.tk/posts/ansible/2022/ansible-variables/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - Firewalld 動態防火牆管理器",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-firewalld\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  677 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-firewalld\/","datePublished": "2022-03-16T00:00:00+00:00","dateModified": "2022-03-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - Firewalld 動態防火牆管理器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-16">2022-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;677 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-firewalld-簡介">1. Firewalld 簡介</a></li>
+    <li><a href="#2-管理-firewalld-程序">2. 管理 Firewalld 程序</a>
+      <ul>
+        <li><a href="#21-啟動-firewalld">2.1. 啟動 Firewalld</a></li>
+        <li><a href="#22-停止-firewalld">2.2. 停止 Firewalld</a></li>
+        <li><a href="#23-附錄---改用-iptables">2.3. 附錄 - 改用 iptables</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-檢查防火牆清單">3. 檢查防火牆清單</a></li>
+    <li><a href="#4-開放及停用阜號-服務">4. 開放及停用阜號 （服務）</a>
+      <ul>
+        <li><a href="#411-開放阜號或服務">4.1.1 開放阜號或服務</a></li>
+        <li><a href="#412-停用阜號或服務">4.1.2 停用阜號或服務</a></li>
+        <li><a href="#413-將防火牆規則寫入硬碟內">4.1.3 將防火牆規則寫入硬碟內</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-gui-方式管理">5. GUI 方式管理</a></li>
+    <li><a href="#6-小結">6. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>從 RHEL 8 開始 <strong>firewalld</strong> 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。</p>
+<h2 id="1-firewalld-簡介">1. Firewalld 簡介</h2>
+<p>Firewalld 與 iptables 工具同一個時間只能存在一個，如果要使用 Firewadll 可以透過 systemctl 開啟 ( RHEL 系列預設就是啟動 ) 。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/K7M9DNL.png" title="https://i.imgur.com/K7M9DNL.png" data-thumbnail="https://i.imgur.com/K7M9DNL.png" data-sub-html="<h2>From access.redhat.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/K7M9DNL.png"
+            data-srcset="https://i.imgur.com/K7M9DNL.png, https://i.imgur.com/K7M9DNL.png 1.5x, https://i.imgur.com/K7M9DNL.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/K7M9DNL.png" />
+    </a><figcaption class="image-caption">From access.redhat.com</figcaption>
+    </figure></p>
+<h2 id="2-管理-firewalld-程序">2. 管理 Firewalld 程序</h2>
+<h3 id="21-啟動-firewalld">2.1. 啟動 Firewalld</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# systemctl start firewalld.service
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="22-停止-firewalld">2.2. 停止 Firewalld</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# systemctl stop firewalld.service
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>停用防火牆<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果要永久停用防火牆，可以執行 <code>systemctl disable firewalld.service --now</code>將會永久停用防火牆。</em></div>
+        </div>
+    </div>
+<h3 id="23-附錄---改用-iptables">2.3. 附錄 - 改用 iptables</h3>
+<p>不少習慣使用 iptables 工具的管理者，如果要繼續使用可以停用及 mask firewalld，及安裝iptables-services 服務 (<code>yum install iptables-services -y</code>) 。</p>
+<h2 id="3-檢查防火牆清單">3. 檢查防火牆清單</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp1s0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: no
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules:
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>預設 TCP cockpit dhcpv6-client ssh 及 ICMP 協定都會開放存取。</p>
+</blockquote>
+<h2 id="4-開放及停用阜號-服務">4. 開放及停用阜號 （服務）</h2>
+<h3 id="411-開放阜號或服務">4.1.1 開放阜號或服務</h3>
+<ol>
+<li>以 協議 + 阜號方式開放</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --add-port=80/tcp
+success
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>以規定成俗的服務名稱開放</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --add-service=http
+success
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="412-停用阜號或服務">4.1.2 停用阜號或服務</h3>
+<ol>
+<li>以 協議 + 阜號方式停用</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --remove-port=80/tcp
+success
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>以規定成俗的服務名稱開放</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --remove-service=http
+success
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="413-將防火牆規則寫入硬碟內">4.1.3 將防火牆規則寫入硬碟內</h3>
+<p>上述所有的規則設定都僅為修改記憶體內的防火牆規則，一旦機器重新開機後就會失效，可以透過寫入硬碟方式，讓每次重新開機都能載入正確的防火牆規則。</p>
+<p><strong>開放 http 服務存取，並且永久生效</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Reload<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果加上 permanent 參數，會將規則寫入硬碟，重新開機後才會生效 ( 未修改記憶體 )，不過可以透過 reload 方式將存放在硬碟的規則載入記憶體就不需重新開機。</em></div>
+        </div>
+    </div>
+<h2 id="5-gui-方式管理">5. GUI 方式管理</h2>
+<p>在桌面版可以透過 GUI 介面操作</p>
+<ol>
+<li>安裝圖形化介面</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yum install firewall-config -y
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>圖形化介面範例</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.imgur.com/lkP5GVv.png"
+        data-srcset="https://i.imgur.com/lkP5GVv.png, https://i.imgur.com/lkP5GVv.png 1.5x, https://i.imgur.com/lkP5GVv.png 2x"
+        data-sizes="auto"
+        alt="https://i.imgur.com/lkP5GVv.png"
+        title="https://i.imgur.com/lkP5GVv.png" /></p>
+<h2 id="6-小結">6. 小結</h2>
+<p>Firewalld 這工具單純用來管理開放或停用阜號是非常的容易且快速，不過要做出較為進階操作還是必須熟悉 iptable 工具會更佳合適。</p></div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-firewalld%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-03-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ansible/2022/ansible-vault-encrypt/" class="prev" rel="prev" title="Ansible - Vault 加密檔案管理"><i class="fas fa-angle-left fa-fw"></i>Ansible - Vault 加密檔案管理</a>
+            <a href="/posts/ansible/2022/ansible-variables/" class="next" rel="next" title="Ansible - 變數管理及應用">Ansible - 變數管理及應用<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

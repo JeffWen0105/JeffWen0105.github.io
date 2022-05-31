@@ -4,7 +4,14 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 31 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 打造輕巧 Linux 練習 Lab</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
+    <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
+    <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
+</item><item>
     <title>NetWork - 申請 SSL 憑證 ( Free 無料 )</title>
     <link>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</link>
     <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
@@ -54,25 +61,18 @@
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item><item>
-    <title>Windows - 安裝及啟用 AD 網域服務</title>
-    <link>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</link>
-    <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
+    <title>Linux - Iptables Filter 表規則管理</title>
+    <link>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</link>
+    <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/</guid>
-    <description><![CDATA[1. AD 簡介 Active Directory 是Windows Server中，負責集中式目錄管理服務，其中主要概念為物件，物件可以是使用者、群組、電腦、網域控制站、郵件、設定]]></description>
+    <guid>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</guid>
+    <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
 </item><item>
-    <title>Ansible - 流程控制</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
-    <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
+    <title>Cisco - Access Control List</title>
+    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</link>
+    <pubDate>Mon, 09 May 2022 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</guid>
-    <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習]]></description>
-</item><item>
-    <title>Cisco - IP Route 路由設定</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</link>
-    <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</guid>
-    <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
+    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</guid>
+    <description><![CDATA[Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進]]></description>
 </item></channel>
 </rss>

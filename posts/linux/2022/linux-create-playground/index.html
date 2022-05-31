@@ -9,8 +9,8 @@
 <meta property="og:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-01T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-05-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-31T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 打造輕巧 Linux 練習 Lab"/>
@@ -18,7 +18,7 @@
 <meta name="application-name" content="HowHow の WebSite">
 <meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="prev" href="https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><link rel="prev" href="https://blog.howhow.tk/posts/network/2022/register_free_ssl/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,8 +27,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3195 ,
-        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-05-01T00:00:00+00:00","dateModified": "2022-05-01T00:00:00+00:00","publisher": {
+        },"genre": "posts","keywords": "Linux","wordcount":  3447 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-05-31T00:00:00+00:00","dateModified": "2022-05-31T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "HowHow"},"author": {
                 "@type": "Person",
@@ -77,7 +77,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 打造輕巧 Linux 練習 Lab</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3195 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-31">2022-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3447 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -129,6 +129,7 @@
                 <li><a href="#5161-建立代理步驟">5.1.6.1 建立代理步驟:</a></li>
               </ul>
             </li>
+            <li><a href="#517-手動新增靜態路由">5.1.7 手動新增靜態路由</a></li>
           </ul>
         </li>
         <li><a href="#52-登入-4-台練習虛擬機">5.2 登入 4 台練習虛擬機</a></li>
@@ -236,25 +237,11 @@
 <h2 id="4-環境安裝方式">4. 環境安裝方式</h2>
 <h3 id="41-vmware-安裝方式">4.1 VMware 安裝方式</h3>
 <ol>
-<li>開啟 VMware 並選擇開啟虛擬機器 。</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/hgMTnb9.png"
-        data-srcset="https://i.imgur.com/hgMTnb9.png, https://i.imgur.com/hgMTnb9.png 1.5x, https://i.imgur.com/hgMTnb9.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/hgMTnb9.png"
-        title="https://i.imgur.com/hgMTnb9.png" /></p>
-<ol start="2">
 <li>
-<p>選擇下載後解壓縮資料夾內的 rocky8-cl1.vmdk 檔 。</p>
+<p>解壓縮後雙擊 howhow-bastion.ovf 檔案並使用 VMware 開啟，匯入機器名稱及路徑可以自行定義。</p>
 </li>
 <li>
-<p>點擊編輯編輯該虛擬機器。</p>
-</li>
-<li>
-<p>確保下圖紅框（巢狀式虛擬化功能有開啟），另可以依實際狀況調整 CPU 或是 Memory 。</p>
+<p>編輯虛擬機並確保下圖紅框（巢狀式虛擬化功能有開啟），另可以依實際狀況調整 CPU 或是 Memory</p>
 </li>
 </ol>
 <p><img
@@ -265,27 +252,13 @@
         data-sizes="auto"
         alt="https://i.imgur.com/kR5XUHw.png"
         title="https://i.imgur.com/kR5XUHw.png" /></p>
-<ol start="5">
+<ol start="3">
 <li>
-<p>儲存後即可開啟機器 。</p>
+<p>儲存後即可開啟機器</p>
 </li>
 <li>
-<p>開啟後請選擇 &ldquo;I Copied It&rdquo; ， VMware 將會自動產生新的 Mac Address 。</p>
+<p>機器開啟後，虛擬機畫面會提示連線的 IP 及帳號密碼訊息。</p>
 </li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://i.imgur.com/2mybIob.png"
-        data-srcset="https://i.imgur.com/2mybIob.png, https://i.imgur.com/2mybIob.png 1.5x, https://i.imgur.com/2mybIob.png 2x"
-        data-sizes="auto"
-        alt="https://i.imgur.com/2mybIob.png"
-        title="https://i.imgur.com/2mybIob.png" /></p>
-<!-- 7. 機器開啟後，登入帳號及密碼使用 ```ip addr show``` 查看你的電腦所分配的到浮動IP (此為 Bastion 控制機器IP)
-    -    帳號 : student
-    -    密碼 : student -->
-<ol start="7">
-<li>機器開啟後，虛擬機畫面會提示連線的 IP 及帳號密碼訊息。</li>
 </ol>
 <p><img
         class="lazyload"
@@ -304,9 +277,9 @@
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><p><em>預設使用 NAT 網路，VMware 可以直接從宿主機器 SSH 訪問 bastion 虛擬機，如要使用其它機器訪問請修改為 Bridged 橋接模式。</em></p>
-<p><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上等功能。</strong></p>
-<p><em>Windows 10 新版本使用者可以直接使用 CMD 中 ssh 功能。</em></p>
+            <div class="admonition-content"><p><em>1. 預設使用 NAT 網路，VMware 可以直接從宿主機器 SSH 訪問 bastion 虛擬機，如要使用其它機器訪問請修改為 Bridged 橋接模式。</em></p>
+<p><strong>2. 建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上等功能。</strong></p>
+<p><em>3. Windows 10 新版本使用者可以直接使用 CMD 中 ssh 功能。</em></p>
 </div>
         </div>
     </div>
@@ -339,7 +312,7 @@
 <p>點擊加入虛擬硬碟檔案。</p>
 </li>
 <li>
-<p>選取練習環境下載解壓縮後的 rocky8-cl1.vmdk。</p>
+<p>選取練習環境下載解壓縮後的 rhowhow-bastion-disk1.vmdk 。</p>
 </li>
 <li>
 <p>選取上一步加入的硬碟。</p>
@@ -426,7 +399,9 @@
             <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><strong>建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上功能。</strong></div>
+            <div class="admonition-content"><p><strong>1. 建議登入 Bastion 使用任何可以支援 SSH 連線工具 (Putty 、 GitBash 、 Terminal、Xshell ) 等登入練習，比較方便使用複製貼上功能。</strong></p>
+<p><em>2. Windows 10 新版本使用者可以直接使用 CMD 中 ssh 功能。</em></p>
+</div>
         </div>
     </div>
 <hr>
@@ -616,6 +591,7 @@ From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ ping servera
@@ -623,6 +599,7 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.765 ms
 <span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.480 ms
 <span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.446 ms
+...
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -989,6 +966,49 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
             <div class="admonition-content"><em>建議使用 Firefox 為瀏覽工具，設定方式相對容易。</em></div>
         </div>
     </div>
+<hr>
+<h4 id="517-手動新增靜態路由">5.1.7 手動新增靜態路由</h4>
+<p>如果想除了瀏覽器之外也能直接存取虛擬機器，可以透過此方式，直接將手動新增路由表。</p>
+<blockquote>
+<p>此操作需要宿主機器的 Root/Administrator 權限並會修改靜態路由表，請自行判斷並斟酌使用。</p>
+</blockquote>
+<ol>
+<li>在宿主機器內新增 172.25.250.0/24 網路路由，並將其流量導入虛擬機器內。</li>
+</ol>
+<p><em>EX. Windows  CMD 為例</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 172.25.250.0/24 MASK 255.255.255.0  &lt;Your Bastion IP&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>至 Bastion 機器內清除 iptable 禁止轉發至其它網路規則。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">iptables -D LIBVIRT_FWO 2
+iptables -D LIBVIRT_FWI 2
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>預設規則為 2，執行前使用 <code>iptables -nL  --line-numbers</code> 指令確保 ID 為 2。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>上述步驟完成，可以直接在宿主機器瀏覽器或是任意設備存取 172.28.250.0/24 網段資源。</li>
+</ol>
+<hr>
 <h3 id="52-登入-4-台練習虛擬機">5.2 登入 4 台練習虛擬機</h3>
 <ol>
 <li>
@@ -1129,20 +1149,20 @@ ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <spa
     </div>
 <hr>
 <h2 id="6-使用練習環境小技巧">6. 使用練習環境小技巧</h2>
-<p>如果因練習不小心誤刪重要檔案，或是機器當機無法啟動的話，直接執行 <code>rht-vm reset all</code> ，重置所有機器或是指定單台機器，可以快速恢復初始的練習環境喔。</p>
+<p>如果因練習不小心誤刪重要檔案，或是機器當機無法啟動的話，直接執行 <code>rht-vmctl reset all</code> ，重置所有機器或是指定單台機器，可以快速恢復初始的練習環境喔。</p>
 <div class="details admonition danger open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-skull-crossbones fa-fw"></i>Danger<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><strong>Bastion 那一台虛擬機請勿隨意更改配置，此機器無法透過指令還原，可能會導致整個環境不可用!!</strong></p>
-<p><em>如果不幸發生 Bastion 無法正常啟用，請在 VMware / VirtuallBox 將機器刪除，重新至 Google 雲端硬碟上下載再從新安裝匯入。</em></p>
+<p><em>如果不幸發生 Bastion 無法正常啟用，請在 VMware / VirtuallBox 將機器刪除，重新再將原始機器匯入。</em></p>
 </div>
         </div>
     </div>
 <hr>
 <h2 id="7-小結">7. 小結</h2>
-<p>後續 HowHow 會持續更新 Linux 練習及 Ansible 練習題目，讓大家可以使用這個環境來進行練習。</p>
+<p>透過 Bastion 機器的 rht-vmctl 腳本能有效控制 KVM 虛擬機器。透過此 Lab 環境可以很快速達成多台機器練習，也不用擔心練習操作誤刪檔案或是操作不當導致機器失效，並且能在每一次 Lab 實驗還原最初的機器狀態，避免影響下一次實驗操作。</p>
 </div><br>
 
 <br>
@@ -1168,7 +1188,7 @@ ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <spa
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-05-01</span>
+                <span>Updated on 2022-05-31</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1187,8 +1207,7 @@ ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <spa
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/terraform/2022/terraform-introduce/" class="prev" rel="prev" title="Terraform  - 基礎架構即程式碼 (IaC) 入門"><i class="fas fa-angle-left fa-fw"></i>Terraform  - 基礎架構即程式碼 (IaC) 入門</a>
-            <a href="/posts/ccna/2022/cisco-command-line/" class="next" rel="next" title="Cisco - 網路設備指令操作入門">Cisco - 網路設備指令操作入門<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/network/2022/register_free_ssl/" class="prev" rel="prev" title="NetWork - 申請 SSL 憑證 ( Free 無料 )"><i class="fas fa-angle-left fa-fw"></i>NetWork - 申請 SSL 憑證 ( Free 無料 )</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

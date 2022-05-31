@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux - Iptables Filter 表規則管理 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - Iptables Filter 表規則管理" />
+<meta property="og:description" content="iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - Iptables Filter 表規則管理"/>
+<meta name="twitter:description" content="iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。"/>
+<meta name="application-name" content="HowHow の WebSite">
+<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/" /><link rel="prev" href="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" /><link rel="next" href="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - Iptables Filter 表規則管理",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-iptables-filter\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  1497 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-iptables-filter\/","datePublished": "2022-05-10T00:00:00+00:00","dateModified": "2022-05-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "HowHow"},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - Iptables Filter 表規則管理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-10">2022-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1497 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-iptables-簡介">1. Iptables 簡介</a>
+      <ul>
+        <li><a href="#11-iptables-表架構">1.1. Iptables 表架構</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-查看-iptables-設定--filter-表">2. 查看 iptables 設定 ( Filter 表)</a>
+      <ul>
+        <li><a href="#211-只查看-input-chain-規則">2.1.1 只查看 INPUT chain 規則</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-設定預設政策">3. 設定預設政策</a></li>
+    <li><a href="#4-開放-17225250024-網段可以使用-ssh-服務">4. 開放 172.25.250.0/24 網段可以使用 SSH 服務</a></li>
+    <li><a href="#5-開放本機-localhost-能訪問自己全部服務">5. 開放本機 Localhost 能訪問自己全部服務</a></li>
+    <li><a href="#6-開放任一網路能訪問-http-服務">6. 開放任一網路能訪問 http 服務</a></li>
+    <li><a href="#7-開放-1722525011-主機能發送-icmp-封包">7. 開放 172.25.250.11 主機能發送 ICMP 封包</a></li>
+    <li><a href="#8-保存機制">8. 保存機制</a>
+      <ul>
+        <li><a href="#81-使用-iptables-service-服務">8.1. 使用 iptables service 服務</a></li>
+        <li><a href="#82-撰寫一個-shell-script-並託管給-systemd-開機自動啟動">8.2. 撰寫一個 shell script ，並託管給 systemd 開機自動啟動</a>
+          <ul>
+            <li><a href="#821-撰寫-shell-script並賦予僅-root-擁有權限">8.2.1. 撰寫 Shell Script，並賦予僅 root 擁有權限。</a></li>
+            <li><a href="#822-撰寫-system-service-單元並交由-systemd-託管">8.2.2. 撰寫 system service 單元，並交由 systemd 託管。</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#9-小結">9. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>
+<h2 id="1-iptables-簡介">1. Iptables 簡介</h2>
+<p>iptables 是 Linux 很早的防火牆介面管理工具 ( 控制核心 netfilter )，目前僅能控制 IPv4 ，如果要控制 IPv6 需使用 ip6tables ，另外 RHEL 8 還有一種簡易的防火牆管理工具 firewalld ，不過同時間只能有一種存在，如果要使用 iptables 需要停用 firewalld (<code>systemctl disable firewalld --now</code>)。</p>
+<p><figure><a class="lightgallery" href="https://i.imgur.com/K7M9DNL.png" title="https://i.imgur.com/K7M9DNL.png" data-thumbnail="https://i.imgur.com/K7M9DNL.png" data-sub-html="<h2>From access.redhat.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://i.imgur.com/K7M9DNL.png"
+            data-srcset="https://i.imgur.com/K7M9DNL.png, https://i.imgur.com/K7M9DNL.png 1.5x, https://i.imgur.com/K7M9DNL.png 2x"
+            data-sizes="auto"
+            alt="https://i.imgur.com/K7M9DNL.png" />
+    </a><figcaption class="image-caption">From access.redhat.com</figcaption>
+    </figure></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>三種管理工具<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>RHEL 8 的防火牆管理工具:</p>
+<ol>
+<li><code>firewalld</code>:  <code>firewalld</code> 工具用於簡單且容易的防火牆規則管理。</li>
+<li><code>nftables</code>: 使用 <code>nftables</code> 最新的管理工具，除了防火牆之外能夠操作更複雜的網路管理。</li>
+<li><code>iptables</code>:  RHEL 的 iptables API 使用的是 <code>nf_tables</code> ，此 API 為較新版的功能，也能將 iptables 規則轉換成 nftables。</li>
+</ol>
+</div>
+        </div>
+    </div>
+<h3 id="11-iptables-表架構">1.1. Iptables 表架構</h3>
+<p>Iptables 總共有四張表：</p>
+<ol>
+<li>filter - 封包過濾也是所謂的 Netfilter 核心的防火牆功能。</li>
+<li>nat - NAT (Network Address Translation) 。</li>
+<li>mangle - 破壞表可以修改封包內容。</li>
+<li>raw - 加速封包穿越防火牆。</li>
+</ol>
+<hr>
+<h2 id="2-查看-iptables-設定--filter-表">2. 查看 iptables 設定 ( Filter 表)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -t filter -L 
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+   
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="211-只查看-input-chain-規則">2.1.1 只查看 INPUT chain 規則</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -L INPUT
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Default Table<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>預設 table 就是查看 filter ， <code>-t filter</code> 參數可以省略。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="3-設定預設政策">3. 設定預設政策</h2>
+<p>預設 iptable 任何一個 chain 都是 ACCEPT ，對於 INPUT 來說不是一件很好的規則，對於 INPUT chain 都會改成 DROP 拒絕所有的封包進入後，再針對需求開放。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables  -P INPUT DROP
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>練習 iptables 一定要避免遠端操控機器，避免操作不當導致 SSH 連線斷線，如果要遠端操作務必先開放 tcp/22 連線規則後再修改預設政策。</strong></div>
+        </div>
+    </div>
+<hr>
+<h2 id="4-開放-17225250024-網段可以使用-ssh-服務">4. 開放 172.25.250.0/24 網段可以使用 SSH 服務</h2>
+<blockquote>
+<p>參數簡述：</p>
+<ol>
+<li>-A : 指定 Filter 的 Chain (INPUT 、 OUTPUT、 FORWARD)增加規則。</li>
+<li>-s : 來源地址或網段。</li>
+<li>-d : 目的地址或網段。</li>
+<li>-p : 協定 ( TCP、 UDP 、ICMP 等) 。</li>
+<li>--dport : 目的地址的阜號 。</li>
+<li>-j : 條件匹配後的動作 ( ACCEPT 、 DROP 、 LOG) 。</li>
+</ol>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
+[root@servera ~]# iptables -nL INPUT
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>加速 List 顯示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如果沒有加上 <code>-n</code>參數系統會自動作 DNS 名稱解析，會使得列表一旦多時顯示速度很慢，加上 <code>-n</code> 參數強迫只顯示 IP 而不顯示解析的名稱。</em></div>
+        </div>
+    </div>
+<hr>
+<h2 id="5-開放本機-localhost-能訪問自己全部服務">5. 開放本機 Localhost 能訪問自己全部服務</h2>
+<p>iptables 強大到連自己的 loopback 介面都可以封鎖，如果要做 loopback 測試必須要開放 localhost。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT  -s 127.0.0.1 -j ACCEPT
+[root@servera ~]# iptables -nL 
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22     
+ACCEPT     all  --  127.0.0.1            0.0.0.0/0    
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="6-開放任一網路能訪問-http-服務">6. 開放任一網路能訪問 http 服務</h2>
+<p>這就是最常使用的開 port ，當架設好一個 Web 服務希望所有來源端都能訪問的方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+[root@servera ~]# iptables -nL INPUT
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80     
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="7-開放-1722525011-主機能發送-icmp-封包">7. 開放 172.25.250.11 主機能發送 ICMP 封包</h2>
+<p>如果要限定固定主機能使用 ping 到本機，可以用限定IP方式來管理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
+[root@servera ~]# iptables -nL INPUT
+Chain INPUT (policy DROP)
+target     prot opt source               destination         
+ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80
+ACCEPT     icmp --  172.25.250.11        0.0.0.0/0           
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="8-保存機制">8. 保存機制</h2>
+<p>上述所有的規則都是設定在記憶體內的，一旦開機就全部失效。</p>
+<h3 id="81-使用-iptables-service-服務">8.1. 使用 iptables service 服務</h3>
+<p>透過 iptables-save 直接保存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">iptables-save
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw"></i>缺點<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>透過 iptables-save 可以很方便直接保存在資料庫，缺點是如果規則很大量，一旦重複內容的主機異動要修改就很麻煩，需要手動一個一個修訂，如果撰寫成腳本就能使用變數改一行即可。</em></div>
+        </div>
+    </div>
+<h3 id="82-撰寫一個-shell-script-並託管給-systemd-開機自動啟動">8.2. 撰寫一個 shell script ，並託管給 systemd 開機自動啟動</h3>
+<h4 id="821-撰寫-shell-script並賦予僅-root-擁有權限">8.2.1. 撰寫 Shell Script，並賦予僅 root 擁有權限。</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat &gt;&gt; /usr/sbin/my-iptables <span class="s">&lt;&lt; EOF
+</span><span class="s">#!/bin/bash
+</span><span class="s">
+</span><span class="s"># Delete ALL of rule
+</span><span class="s">iptables -F
+</span><span class="s">
+</span><span class="s">iptables -P INPUT DROP
+</span><span class="s">iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
+</span><span class="s">iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+</span><span class="s">iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+</span><span class="s">iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
+</span><span class="s">EOF</span>
+
+chmod <span class="m">700</span> /usr/sbin/my-iptables
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="822-撰寫-system-service-單元並交由-systemd-託管">8.2.2. 撰寫 system service 單元，並交由 systemd 託管。</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cat &gt;&gt; /lib/systemd/system/my-iptable.service &lt;&lt; EOF
+[Unit]
+Description=iptables-rule
+
+[Service]
+ExecStart=/usr/sbin/my-iptables
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload 
+systemctl enable my-iptable.service
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="9-小結">9. 小結</h2>
+<p>iptables 工具十分強大，目前僅介紹最基本的 filter 表最基礎功能，另外曾經學習過 Cisco 網路設備的  ACL 會發現其使用方式與 iptable 十分相似，等於會了 iptables 規則設定 ACL 規則就很容易，反之亦然。</p>
+<p><strong>允許所有來源 192.168.50.0/24 網段封包可以存取指定主機 10.10.10.10 的 tcp/80 服務。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># Iptables
+iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
+# ACL 
+access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</code></pre></td></tr></table>
+</div>
+</div></div><br>
+
+<br>
+<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
+  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
+</blockquote>
+
+<iframe
+  class="LikeCoin"
+  height="235"
+  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-iptables-filter%2f"
+  width="100%"
+  frameborder="0"
+></iframe>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P7XL29C3NC');
+</script><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ccna/2022/cisco-acl_concept/" class="prev" rel="prev" title="Cisco - Access Control List"><i class="fas fa-angle-left fa-fw"></i>Cisco - Access Control List</a>
+            <a href="/posts/ccna/2022/cisco-network-automation/" class="next" rel="next" title="Cisco - Network Automation With Ansible">Cisco - Network Automation With Ansible<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
