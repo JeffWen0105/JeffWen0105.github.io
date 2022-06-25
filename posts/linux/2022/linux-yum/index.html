@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - YUM 安裝及更新套件 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - YUM 安裝及更新套件" />
+        <title>Linux - YUM 安裝及更新套件 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - YUM 安裝及更新套件" />
 <meta property="og:description" content="RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-yum/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-02T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - YUM 安裝及更新套件"/>
 <meta name="twitter:description" content="RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-yum/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-yum/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-yum\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1810 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1809 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-yum\/","datePublished": "2022-03-02T00:00:00+00:00","dateModified": "2022-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - YUM 安裝及更新套件</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1810 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 4 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - YUM 安裝及更新套件</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-02">2022-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1809 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -116,10 +100,10 @@
             </div><div class="content" id="content"><p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">YUM 本身並無取代 RPM ，另外 YUM 經過優化改良後以改為 DNF ，不過還是可以使用 YUM 指令(透過軟連結指向 DNF)，詳細 RedHat YUM 訊息, 官方文件<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/packaging-software_packaging-and-distributing-software" target="_blank" rel="noopener noreffer">請點我</a>.</div>
+            <div class="admonition-content">YUM 本身並無取代 RPM ，另外 YUM 經過優化改良後以改為 DNF ，不過還是可以使用 YUM 指令(透過軟連結指向 DNF)，詳細 RedHat YUM 訊息, 官方文件<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/packaging-software_packaging-and-distributing-software" target="_blank" rel="noopener noreffer ">請點我</a>.</div>
         </div>
     </div>
 <h2 id="yum-使用方式">YUM 使用方式</h2>
@@ -131,13 +115,13 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum search <span class="o">[</span>keyword<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum search <span class="o">[</span>keyword<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>此搜尋套件並非查詢機器已經安裝過的套件，而是查看所有列在此機器的倉庫清單有哪些符合關鍵字的套件。</em></p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">YUM 倉庫清單存放於 /etc/yum.repo.d/ 內，並以 .repo 結尾</div>
@@ -153,13 +137,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum search zsh</span>
-Last metadata expiration check: 2:34:12 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-<span class="o">=====================================================</span> Name Exactly Matched: <span class="nv">zsh</span> <span class="o">=====================================================</span>
-zsh.x86_64 : Powerful interactive <span class="nv">shell</span>
-<span class="o">====================================================</span> Name <span class="p">&amp;</span> Summary Matched: <span class="nv">zsh</span> <span class="o">====================================================</span>
-zsh-html.noarch : Zsh shell manual in html format
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum search zsh</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 2:34:12 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================</span> Name Exactly Matched: <span class="nv">zsh</span> <span class="o">=====================================================</span>
+</span></span><span class="line"><span class="cl">zsh.x86_64 : Powerful interactive <span class="nv">shell</span>
+</span></span><span class="line"><span class="cl"><span class="o">====================================================</span> Name <span class="p">&amp;</span> Summary Matched: <span class="nv">zsh</span> <span class="o">====================================================</span>
+</span></span><span class="line"><span class="cl">zsh-html.noarch : Zsh shell manual in html format
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="2-yum-套件清單">2. YUM 套件清單</h3>
@@ -168,8 +152,8 @@ zsh-html.noarch : Zsh shell manual in html format
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum list <span class="o">[</span>option<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum list <span class="o">[</span>option<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看所有倉庫清單，另可以添加 &ndash;installed 選擇已經安裝過的套件並做篩選</p>
 <div class="highlight"><div class="chroma">
@@ -179,10 +163,10 @@ zsh-html.noarch : Zsh shell manual in html format
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum list --installed | grep firewalld</span>
-firewalld.noarch                     0.9.3-7.el8                             @anaconda  
-firewalld-filesystem.noarch          0.9.3-7.el8                             @anaconda 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum list --installed | grep firewalld</span>
+</span></span><span class="line"><span class="cl">firewalld.noarch                     0.9.3-7.el8                             @anaconda  
+</span></span><span class="line"><span class="cl">firewalld-filesystem.noarch          0.9.3-7.el8                             @anaconda 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="3-yum-套件詳細訊息">3. YUM 套件詳細訊息</h3>
@@ -191,8 +175,8 @@ firewalld-filesystem.noarch          0.9.3-7.el8                             @an
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum info <span class="o">[</span>package<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum info <span class="o">[</span>package<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -214,23 +198,23 @@ firewalld-filesystem.noarch          0.9.3-7.el8                             @an
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum info firewalld</span>
-Last metadata expiration check: 2:39:42 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-Installed Packages
-Name         : firewalld
-Version      : 0.9.3
-Release      : 7.el8
-Architecture : noarch
-Size         : 2.0 M
-Source       : firewalld-0.9.3-7.el8.src.rpm
-Repository   : @System
-From repo    : anaconda
-Summary      : A firewall daemon with D-Bus interface providing a dynamic firewall
-URL          : http://www.firewalld.org
-License      : GPLv2+
-Description  : firewalld is a firewall service daemon that provides a dynamic customizable
-             : firewall with a D-Bus interface.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum info firewalld</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 2:39:42 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">Installed Packages
+</span></span><span class="line"><span class="cl">Name         : firewalld
+</span></span><span class="line"><span class="cl">Version      : 0.9.3
+</span></span><span class="line"><span class="cl">Release      : 7.el8
+</span></span><span class="line"><span class="cl">Architecture : noarch
+</span></span><span class="line"><span class="cl">Size         : 2.0 M
+</span></span><span class="line"><span class="cl">Source       : firewalld-0.9.3-7.el8.src.rpm
+</span></span><span class="line"><span class="cl">Repository   : @System
+</span></span><span class="line"><span class="cl">From repo    : anaconda
+</span></span><span class="line"><span class="cl">Summary      : A firewall daemon with D-Bus interface providing a dynamic firewall
+</span></span><span class="line"><span class="cl">URL          : http://www.firewalld.org
+</span></span><span class="line"><span class="cl">License      : GPLv2+
+</span></span><span class="line"><span class="cl">Description  : firewalld is a firewall service daemon that provides a dynamic customizable
+</span></span><span class="line"><span class="cl">             : firewall with a D-Bus interface.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="4-yum-查看路徑檔案套件為何">4. YUM 查看路徑檔案套件為何</h3>
@@ -239,8 +223,8 @@ Description  : firewalld is a firewall service daemon that provides a dynamic cu
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum provides <span class="o">[</span>path<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum provides <span class="o">[</span>path<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>與 rpm -qf 功能一樣，可以反向查詢</p>
 <div class="highlight"><div class="chroma">
@@ -253,13 +237,13 @@ Description  : firewalld is a firewall service daemon that provides a dynamic cu
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum provides /var/www/html</span>
-Last metadata expiration check: 2:50:01 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-httpd-filesystem-2.4.37-41.module+el8.5.0+695+1fa8055e.noarch : The basic directory layout <span class="k">for</span> the Apache HTTP server
-Repo        : RH294_App
-Matched from:
-Filename    : /var/www/html
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum provides /var/www/html</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 2:50:01 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">httpd-filesystem-2.4.37-41.module+el8.5.0+695+1fa8055e.noarch : The basic directory layout <span class="k">for</span> the Apache HTTP server
+</span></span><span class="line"><span class="cl">Repo        : RH294_App
+</span></span><span class="line"><span class="cl">Matched from:
+</span></span><span class="line"><span class="cl">Filename    : /var/www/html
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="5-yum-安裝套件">5. YUM 安裝套件</h3>
@@ -268,8 +252,8 @@ Filename    : /var/www/html
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum install <span class="o">[</span>package<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install <span class="o">[</span>package<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>yum 在安裝套件時都會提示，此次安裝有多少個相依性套件，大小為多少，是否要同意繼續，如已經熟悉並瞭解此套件，可以於<strong>每次安裝套件時加上 -y 參數，就不會詢問直接進行安裝</strong>。</p>
 <div class="highlight"><div class="chroma">
@@ -291,22 +275,22 @@ Filename    : /var/www/html
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum install php</span>
-Last metadata expiration check: 2:54:58 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-Dependencies resolved.
-<span class="o">=====================================================================================================================================</span>
- Package                       Architecture       Version                                               Repository              <span class="nv">Size</span>
-<span class="o">=====================================================================================================================================</span>
-Installing:
- php                           x86_64             7.2.24-1.module+el8.4.0+413+c9202dda                  RH294_App              1.5 M
-Installing dependencies:
- apr                           x86_64             1.6.3-12.el8                                          RH294_App              <span class="m">128</span> k
- apr-util                      x86_64             1.6.1-6.el8.1                                         RH294_App              <span class="m">104</span> k
- httpd                         x86_64             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App              1.4 M
- httpd-filesystem              noarch             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App               <span class="m">39</span> k
- httpd-tools                   x86_64             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App              <span class="m">106</span> k
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum install php</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 2:54:58 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">Dependencies resolved.
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl"> Package                       Architecture       Version                                               Repository              <span class="nv">Size</span>
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl">Installing:
+</span></span><span class="line"><span class="cl"> php                           x86_64             7.2.24-1.module+el8.4.0+413+c9202dda                  RH294_App              1.5 M
+</span></span><span class="line"><span class="cl">Installing dependencies:
+</span></span><span class="line"><span class="cl"> apr                           x86_64             1.6.3-12.el8                                          RH294_App              <span class="m">128</span> k
+</span></span><span class="line"><span class="cl"> apr-util                      x86_64             1.6.1-6.el8.1                                         RH294_App              <span class="m">104</span> k
+</span></span><span class="line"><span class="cl"> httpd                         x86_64             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App              1.4 M
+</span></span><span class="line"><span class="cl"> httpd-filesystem              noarch             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App               <span class="m">39</span> k
+</span></span><span class="line"><span class="cl"> httpd-tools                   x86_64             2.4.37-43.module+el8.5.0+727+743c5577.1               RH294_App              <span class="m">106</span> k
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="6-yum-套件更新">6. YUM 套件更新</h3>
@@ -315,13 +299,13 @@ Installing dependencies:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum update
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum update
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>更新套件會檢查本地所安裝的套件與倉庫清單內所有套件是否有新版本，如有新版本將會移除舊版本安裝新的；惟核心在更新後並不會移除舊的核心，更新完並會在開機選項可以查看新安裝的核心版本，以供使用者選擇</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p>如果只要單獨更新核心可以使用</p>
@@ -330,8 +314,8 @@ Installing dependencies:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum update kernel
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum update kernel
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -353,20 +337,20 @@ Installing dependencies:
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum update</span>
-Last metadata expiration check: 3:12:17 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-Dependencies resolved.
-<span class="o">=====================================================================================================================================</span>
- Package                                  Architecture         Version                                Repository                <span class="nv">Size</span>
-<span class="o">=====================================================================================================================================</span>
-Installing:
- kernel                                   x86_64               4.18.0-348.12.2.el8_5                  RH294_Base               7.0 M
-Upgrading:
- cryptsetup-libs                          x86_64               2.3.3-4.el8_5.1                        RH294_Base               <span class="m">473</span> k
- cyrus-sasl-lib                           x86_64               2.1.27-6.el8_5                         RH294_Base               <span class="m">122</span> k
- dnf-plugins-core                         noarch               4.0.21-4.el8_5                         RH294_Base                <span class="m">69</span> k
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum update</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 3:12:17 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">Dependencies resolved.
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl"> Package                                  Architecture         Version                                Repository                <span class="nv">Size</span>
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl">Installing:
+</span></span><span class="line"><span class="cl"> kernel                                   x86_64               4.18.0-348.12.2.el8_5                  RH294_Base               7.0 M
+</span></span><span class="line"><span class="cl">Upgrading:
+</span></span><span class="line"><span class="cl"> cryptsetup-libs                          x86_64               2.3.3-4.el8_5.1                        RH294_Base               <span class="m">473</span> k
+</span></span><span class="line"><span class="cl"> cyrus-sasl-lib                           x86_64               2.1.27-6.el8_5                         RH294_Base               <span class="m">122</span> k
+</span></span><span class="line"><span class="cl"> dnf-plugins-core                         noarch               4.0.21-4.el8_5                         RH294_Base                <span class="m">69</span> k
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="7-yum-移除套件">7. YUM 移除套件</h3>
@@ -375,8 +359,8 @@ Upgrading:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum remove <span class="o">[</span>package<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum remove <span class="o">[</span>package<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -394,19 +378,19 @@ Upgrading:
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum remove zsh</span>
-Dependencies resolved.
-<span class="o">=====================================================================================================================================</span>
- Package                  Architecture                Version                                 Repository                        <span class="nv">Size</span>
-<span class="o">=====================================================================================================================================</span>
-Removing:
- zsh                      x86_64                      5.5.1-6.el8_1.2                         @RH294_Base                      6.9 M
-
-Transaction <span class="nv">Summary</span>
-<span class="o">=====================================================================================================================================</span>
-Remove  <span class="m">1</span> Package
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum remove zsh</span>
+</span></span><span class="line"><span class="cl">Dependencies resolved.
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl"> Package                  Architecture                Version                                 Repository                        <span class="nv">Size</span>
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl">Removing:
+</span></span><span class="line"><span class="cl"> zsh                      x86_64                      5.5.1-6.el8_1.2                         @RH294_Base                      6.9 M
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Transaction <span class="nv">Summary</span>
+</span></span><span class="line"><span class="cl"><span class="o">=====================================================================================================================================</span>
+</span></span><span class="line"><span class="cl">Remove  <span class="m">1</span> Package
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="8-yum-group-套件列表">8. YUM Group 套件列表</h3>
@@ -415,8 +399,8 @@ Remove  <span class="m">1</span> Package
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum group list
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum group list
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>YUM 套件安裝固然方便，不過如果想要的功能需要很多套件組合而成呢？一個一個安裝不是好方式，故就有群組概念，將常使用的功能加以整理，把所有相關套件（含依賴性套件）一口氣全部安裝方式。</p>
 <div class="highlight"><div class="chroma">
@@ -446,34 +430,34 @@ Remove  <span class="m">1</span> Package
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum group list</span>
-Last metadata expiration check: 3:21:45 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-Available Environment Groups:
-   Server with GUI
-   Server
-   Workstation
-   Virtualization Host
-   Custom Operating System
-Installed Environment Groups:
-   Minimal Install
-Available Groups:
-   Container Management
-   .NET Core Development
-   RPM Development Tools
-   Development Tools
-   Graphical Administration Tools
-   Headless Management
-   Legacy UNIX Compatibility
-   Network Servers
-   Scientific Support
-   Security Tools
-   Smart Card Support
-   System Tools
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum group list</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 3:21:45 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">Available Environment Groups:
+</span></span><span class="line"><span class="cl">   Server with GUI
+</span></span><span class="line"><span class="cl">   Server
+</span></span><span class="line"><span class="cl">   Workstation
+</span></span><span class="line"><span class="cl">   Virtualization Host
+</span></span><span class="line"><span class="cl">   Custom Operating System
+</span></span><span class="line"><span class="cl">Installed Environment Groups:
+</span></span><span class="line"><span class="cl">   Minimal Install
+</span></span><span class="line"><span class="cl">Available Groups:
+</span></span><span class="line"><span class="cl">   Container Management
+</span></span><span class="line"><span class="cl">   .NET Core Development
+</span></span><span class="line"><span class="cl">   RPM Development Tools
+</span></span><span class="line"><span class="cl">   Development Tools
+</span></span><span class="line"><span class="cl">   Graphical Administration Tools
+</span></span><span class="line"><span class="cl">   Headless Management
+</span></span><span class="line"><span class="cl">   Legacy UNIX Compatibility
+</span></span><span class="line"><span class="cl">   Network Servers
+</span></span><span class="line"><span class="cl">   Scientific Support
+</span></span><span class="line"><span class="cl">   Security Tools
+</span></span><span class="line"><span class="cl">   Smart Card Support
+</span></span><span class="line"><span class="cl">   System Tools
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p>其安裝方式與一般雷同，例如</p>
@@ -482,8 +466,8 @@ Available Groups:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum group install <span class="s2">&#34;Server with GUI&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum group install <span class="s2">&#34;Server with GUI&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -495,8 +479,8 @@ Available Groups:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum module list
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum module list
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>這個方式為 RHEL 8 系列之後的新方式，主要在於傳統的倉庫清單被拆成 BaseOS 及 AppStream 兩個倉庫，此作法可以讓快速迭代的應用程式可以選擇版本</p>
 <div class="highlight"><div class="chroma">
@@ -513,17 +497,17 @@ Available Groups:
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum module list  postgresql</span>
-Last metadata expiration check: 3:46:46 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:08:59 PM CST.
-rh294 AppStream
-Name                     Stream                  Profiles                            Summary                                         
-postgresql               9.6                     client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
-postgresql               <span class="m">10</span> <span class="o">[</span>d<span class="o">][</span>e<span class="o">]</span>               client, server <span class="o">[</span>d<span class="o">]</span> <span class="o">[</span>i<span class="o">]</span>              PostgreSQL server and client module             
-postgresql               <span class="m">12</span>                      client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
-postgresql               <span class="m">13</span>                      client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
-
-Hint: <span class="o">[</span>d<span class="o">]</span>efault, <span class="o">[</span>e<span class="o">]</span>nabled, <span class="o">[</span>x<span class="o">]</span>disabled, <span class="o">[</span>i<span class="o">]</span>nstalled
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum module list  postgresql</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 3:46:46 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:08:59 PM CST.
+</span></span><span class="line"><span class="cl">rh294 AppStream
+</span></span><span class="line"><span class="cl">Name                     Stream                  Profiles                            Summary                                         
+</span></span><span class="line"><span class="cl">postgresql               9.6                     client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">10</span> <span class="o">[</span>d<span class="o">][</span>e<span class="o">]</span>               client, server <span class="o">[</span>d<span class="o">]</span> <span class="o">[</span>i<span class="o">]</span>              PostgreSQL server and client module             
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">12</span>                      client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">13</span>                      client, server <span class="o">[</span>d<span class="o">]</span>                  PostgreSQL server and client module             
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hint: <span class="o">[</span>d<span class="o">]</span>efault, <span class="o">[</span>e<span class="o">]</span>nabled, <span class="o">[</span>x<span class="o">]</span>disabled, <span class="o">[</span>i<span class="o">]</span>nstalled
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>d : 表示預設會進行安裝版本</em>  <br>
 <em>i : 表示已經安裝的版本</em> <br>
@@ -542,15 +526,15 @@ Hint: <span class="o">[</span>d<span class="o">]</span>efault, <span class="o">[
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 先移除套件</span>
-yum module remove postgresql
-
-<span class="c1"># 取消 10 版本限制</span>
-yum module reset postgresql
-
-<span class="c1"># 改安裝 9.6 版本</span>
-yum module install postgresql:9.6
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 先移除套件</span>
+</span></span><span class="line"><span class="cl">yum module remove postgresql
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 取消 10 版本限制</span>
+</span></span><span class="line"><span class="cl">yum module reset postgresql
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 改安裝 9.6 版本</span>
+</span></span><span class="line"><span class="cl">yum module install postgresql:9.6
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述步驟執行完後再次查看 postgresql 套件模組</p>
 <div class="highlight"><div class="chroma">
@@ -565,15 +549,15 @@ yum module install postgresql:9.6
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yum module list  postgresql
-Last metadata expiration check: 3:45:01 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
-rh294 AppStream
-Name                     Stream                Profiles                             Summary                                          
-postgresql               9.6 <span class="o">[</span>e<span class="o">]</span>               client, server <span class="o">[</span>d<span class="o">]</span> <span class="o">[</span>i<span class="o">]</span>               PostgreSQL server and client module              
-postgresql               <span class="m">10</span> <span class="o">[</span>d<span class="o">]</span>                client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module              
-postgresql               <span class="m">12</span>                    client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module              
-postgresql               <span class="m">13</span>                    client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum module list  postgresql
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 3:45:01 ago on Wed <span class="m">02</span> Mar <span class="m">2022</span> 07:12:59 PM CST.
+</span></span><span class="line"><span class="cl">rh294 AppStream
+</span></span><span class="line"><span class="cl">Name                     Stream                Profiles                             Summary                                          
+</span></span><span class="line"><span class="cl">postgresql               9.6 <span class="o">[</span>e<span class="o">]</span>               client, server <span class="o">[</span>d<span class="o">]</span> <span class="o">[</span>i<span class="o">]</span>               PostgreSQL server and client module              
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">10</span> <span class="o">[</span>d<span class="o">]</span>                client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module              
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">12</span>                    client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module              
+</span></span><span class="line"><span class="cl">postgresql               <span class="m">13</span>                    client, server <span class="o">[</span>d<span class="o">]</span>                   PostgreSQL server and client module  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="10-yum-history-套件歷史紀錄">10. YUM history 套件歷史紀錄</h3>
@@ -582,8 +566,8 @@ postgresql               <span class="m">13</span>                    client, se
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum <span class="nb">history</span> <span class="o">[</span>options<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum <span class="nb">history</span> <span class="o">[</span>options<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看安裝或移除記錄，並且可以使用 undo 指定 ID 回上一步驟</p>
 <div class="highlight"><div class="chroma">
@@ -597,14 +581,14 @@ postgresql               <span class="m">13</span>                    client, se
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum history </span>
-ID     <span class="p">|</span> Command line                                                                   <span class="p">|</span> Date and <span class="nb">time</span>    <span class="p">|</span> Action<span class="o">(</span>s<span class="o">)</span>      <span class="p">|</span> Altered
--------------------------------------------------------------------------------------------------------------------------------------
-    <span class="m">17</span> <span class="p">|</span> install httpd php                                                              <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Install        <span class="p">|</span>   <span class="m">15</span>   
-    <span class="m">16</span> <span class="p">|</span> remove zsh                                                                     <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Removed        <span class="p">|</span>    <span class="m">1</span>   
-    <span class="m">15</span> <span class="p">|</span> module remove postgresql                                                       <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Removed        <span class="p">|</span>    <span class="m">1</span>   
-    <span class="m">14</span> <span class="p">|</span> module install postgresql                                                      <span class="p">|</span> 2022-03-02 22:59 <span class="p">|</span> I, U           <span class="p">|</span>    <span class="m">2</span> EE
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum history </span>
+</span></span><span class="line"><span class="cl">ID     <span class="p">|</span> Command line                                                                   <span class="p">|</span> Date and <span class="nb">time</span>    <span class="p">|</span> Action<span class="o">(</span>s<span class="o">)</span>      <span class="p">|</span> Altered
+</span></span><span class="line"><span class="cl">-------------------------------------------------------------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">    <span class="m">17</span> <span class="p">|</span> install httpd php                                                              <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Install        <span class="p">|</span>   <span class="m">15</span>   
+</span></span><span class="line"><span class="cl">    <span class="m">16</span> <span class="p">|</span> remove zsh                                                                     <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Removed        <span class="p">|</span>    <span class="m">1</span>   
+</span></span><span class="line"><span class="cl">    <span class="m">15</span> <span class="p">|</span> module remove postgresql                                                       <span class="p">|</span> 2022-03-02 23:08 <span class="p">|</span> Removed        <span class="p">|</span>    <span class="m">1</span>   
+</span></span><span class="line"><span class="cl">    <span class="m">14</span> <span class="p">|</span> module install postgresql                                                      <span class="p">|</span> 2022-03-02 22:59 <span class="p">|</span> I, U           <span class="p">|</span>    <span class="m">2</span> EE
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -626,29 +610,27 @@ ID     <span class="p">|</span> Command line                                    
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum history info 17</span>
-Transaction ID : <span class="m">17</span>
-Begin <span class="nb">time</span>     : Wed <span class="m">02</span> Mar <span class="m">2022</span> 11:08:50 PM CST
-Begin rpmdb    : 411:91b538447070dcfdd1846b0dcd7de68609cd9b5a
-End <span class="nb">time</span>       : Wed <span class="m">02</span> Mar <span class="m">2022</span> 11:08:53 PM CST <span class="o">(</span><span class="m">3</span> seconds<span class="o">)</span>
-End rpmdb      : 426:b58bc73689caa304fb3a31c72e92d9f2dde3f862
-User           : root &lt;root&gt;
-Return-Code    : Success
-Releasever     : <span class="m">8</span>
-Command Line   : install httpd php
-Comment        : 
-Packages Altered:
-    Install apr-1.6.3-12.el8.x86_64                                         @RH294_App
-    Install apr-util-1.6.1-6.el8.1.x86_64                                   @RH294_App
-    Install apr-util-bdb-1.6.1-6.el8.1.x86_64                               @RH294_App
-    Install apr-util-openssl-1.6.1-6.el8.1.x86_64                           @RH294_App
-    Install httpd-2.4.37-43.module+el8.5.0+727+743c5577.1.x86_64            @RH294_App
-...
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum history info 17</span>
+</span></span><span class="line"><span class="cl">Transaction ID : <span class="m">17</span>
+</span></span><span class="line"><span class="cl">Begin <span class="nb">time</span>     : Wed <span class="m">02</span> Mar <span class="m">2022</span> 11:08:50 PM CST
+</span></span><span class="line"><span class="cl">Begin rpmdb    : 411:91b538447070dcfdd1846b0dcd7de68609cd9b5a
+</span></span><span class="line"><span class="cl">End <span class="nb">time</span>       : Wed <span class="m">02</span> Mar <span class="m">2022</span> 11:08:53 PM CST <span class="o">(</span><span class="m">3</span> seconds<span class="o">)</span>
+</span></span><span class="line"><span class="cl">End rpmdb      : 426:b58bc73689caa304fb3a31c72e92d9f2dde3f862
+</span></span><span class="line"><span class="cl">User           : root &lt;root&gt;
+</span></span><span class="line"><span class="cl">Return-Code    : Success
+</span></span><span class="line"><span class="cl">Releasever     : <span class="m">8</span>
+</span></span><span class="line"><span class="cl">Command Line   : install httpd php
+</span></span><span class="line"><span class="cl">Comment        : 
+</span></span><span class="line"><span class="cl">Packages Altered:
+</span></span><span class="line"><span class="cl">    Install apr-1.6.3-12.el8.x86_64                                         @RH294_App
+</span></span><span class="line"><span class="cl">    Install apr-util-1.6.1-6.el8.1.x86_64                                   @RH294_App
+</span></span><span class="line"><span class="cl">    Install apr-util-bdb-1.6.1-6.el8.1.x86_64                               @RH294_App
+</span></span><span class="line"><span class="cl">    Install apr-util-openssl-1.6.1-6.el8.1.x86_64                           @RH294_App
+</span></span><span class="line"><span class="cl">    Install httpd-2.4.37-43.module+el8.5.0+727+743c5577.1.x86_64            @RH294_App
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="yum-小結">YUM 小結</h2>
@@ -659,69 +641,46 @@ Packages Altered:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># ls -l $(which yum)</span>
-lrwxrwxrwx. <span class="m">1</span> root root <span class="m">5</span> Nov  <span class="m">9</span> 22:43 /usr/bin/yum -&gt; dnf-3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># ls -l $(which yum)</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">5</span> Nov  <span class="m">9</span> 22:43 /usr/bin/yum -&gt; dnf-3
+</span></span></code></pre></td></tr></table>
 </div>
-</div></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-yum%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-03-02</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-yum/" data-title="Linux - YUM 安裝及更新套件" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-yum/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-yum/" data-title="Linux - YUM 安裝及更新套件"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-yum/" data-title="Linux - YUM 安裝及更新套件"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-yum/" data-title="Linux - YUM 安裝及更新套件"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-rpm/" class="prev" rel="prev" title="Linux - RPM 套件管理工具"><i class="fas fa-angle-left fa-fw"></i>Linux - RPM 套件管理工具</a>
-            <a href="/posts/linux/2022/linux-yum-repository/" class="next" rel="next" title="Linux - YUM 倉庫清單配置">Linux - YUM 倉庫清單配置<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-rpm/" class="prev" rel="prev" title="Linux - RPM 套件管理工具"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RPM 套件管理工具</a>
+            <a href="/posts/linux/2022/linux-yum-repository/" class="next" rel="next" title="Linux - YUM 倉庫清單配置">Linux - YUM 倉庫清單配置<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - 邏輯卷冊管理 LVM - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 邏輯卷冊管理 LVM" />
+        <title>Linux - 邏輯卷冊管理 LVM - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - 邏輯卷冊管理 LVM" />
 <meta property="og:description" content="LVM ( Logical Volume Management ) 這管理工具可以更容易且有效的管理硬碟空間，可以任意組合多顆硬碟成為一個分割槽，也能任意的擴充放大透過 LVM 掛載的目錄及分割槽 。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-15T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 邏輯卷冊管理 LVM"/>
 <meta name="twitter:description" content="LVM ( Logical Volume Management ) 這管理工具可以更容易且有效的管理硬碟空間，可以任意組合多顆硬碟成為一個分割槽，也能任意的擴充放大透過 LVM 掛載的目錄及分割槽 。"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-lvm\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  2462 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  2452 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-lvm\/","datePublished": "2022-02-15T00:00:00+00:00","dateModified": "2022-02-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 邏輯卷冊管理 LVM</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-15">2022-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2462 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 5 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 邏輯卷冊管理 LVM</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-15">2022-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2452 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -190,30 +174,28 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
-</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]#  parted -s /dev/vdb  mklabel msdos mkpart  primary  2048s 100%  set 1 lvm on  print 
-Model: Virtio Block Device (virtblk)
-Disk /dev/vdb: 210MB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags: 
-
-Number  Start   End    Size   Type     File system  Flags
- 1      1049kB  210MB  209MB  primary               lvm, lba
- 
- [root@serverc ~]#  parted -s /dev/vdc  mklabel msdos mkpart  primary  2048s 100%  set 1 lvm on  print
-Model: Virtio Block Device (virtblk)
-Disk /dev/vdc: 315MB
-Sector size (logical/physical): 512B/512B
-Partition Table: msdos
-Disk Flags: 
-
-Number  Start   End    Size   Type     File system  Flags
- 1      1049kB  315MB  314MB  primary               lvm, lba
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]#  parted -s /dev/vdb  mklabel msdos mkpart  primary  2048s 100%  set 1 lvm on  print 
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device (virtblk)
+</span></span><span class="line"><span class="cl">Disk /dev/vdb: 210MB
+</span></span><span class="line"><span class="cl">Sector size (logical/physical): 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: msdos
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End    Size   Type     File system  Flags
+</span></span><span class="line"><span class="cl"> 1      1049kB  210MB  209MB  primary               lvm, lba
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> [root@serverc ~]#  parted -s /dev/vdc  mklabel msdos mkpart  primary  2048s 100%  set 1 lvm on  print
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device (virtblk)
+</span></span><span class="line"><span class="cl">Disk /dev/vdc: 315MB
+</span></span><span class="line"><span class="cl">Sector size (logical/physical): 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: msdos
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End    Size   Type     File system  Flags
+</span></span><span class="line"><span class="cl"> 1      1049kB  315MB  314MB  primary               lvm, lba
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>創建 pv</li>
@@ -224,8 +206,8 @@ Number  Start   End    Size   Type     File system  Flags
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pvcreate &lt;devices&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pvcreate &lt;devices&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -234,10 +216,10 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# pvcreate  /dev/vdb1 /dev/vdc1
-  Physical volume &#34;/dev/vdb1&#34; successfully created.
-  Physical volume &#34;/dev/vdc1&#34; successfully created.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# pvcreate  /dev/vdb1 /dev/vdc1
+</span></span><span class="line"><span class="cl">  Physical volume &#34;/dev/vdb1&#34; successfully created.
+</span></span><span class="line"><span class="cl">  Physical volume &#34;/dev/vdc1&#34; successfully created.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-創建-vg">2.2 創建 vg</h3>
 <p>使用 vgcreate 工具創建 vg</p>
@@ -246,8 +228,8 @@ Number  Start   End    Size   Type     File system  Flags
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">vgcreate &lt;vg-name&gt; &lt;pv-devices&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vgcreate &lt;vg-name&gt; &lt;pv-devices&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -255,13 +237,13 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate vg0 /dev/vdc1 /dev/vdb1 </span>
-  Volume group <span class="s2">&#34;vg0&#34;</span> successfully created
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate vg0 /dev/vdc1 /dev/vdb1 </span>
+</span></span><span class="line"><span class="cl">  Volume group <span class="s2">&#34;vg0&#34;</span> successfully created
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><em>vg 在創建時預設使用 4 MiB 為一個 PE size，如果要指定 PE Size 可以加上 -s 參數並指定 PE size</em></p>
@@ -285,8 +267,8 @@ Number  Start   End    Size   Type     File system  Flags
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">lvcreate -n &lt;lv-name&gt; -L &lt;size&gt; &lt;vg-name&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lvcreate -n &lt;lv-name&gt; -L &lt;size&gt; &lt;vg-name&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -295,10 +277,10 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n lv0 -L 250Mib vg0</span>
-  Rounding up size to full physical extent 252.00 MiB
-  Logical volume <span class="s2">&#34;lv0&#34;</span> created.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n lv0 -L 250Mib vg0</span>
+</span></span><span class="line"><span class="cl">  Rounding up size to full physical extent 252.00 MiB
+</span></span><span class="line"><span class="cl">  Logical volume <span class="s2">&#34;lv0&#34;</span> created.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="24-lv-格式化檔案系統並掛載">2.4 lv 格式化檔案系統並掛載</h3>
 <p>創建好的 lv 就可以像一般的分割槽直接使用 mkfs 來指定所要的檔案系統</p>
@@ -322,29 +304,27 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vg0/lv0 </span>
-meta-data<span class="o">=</span>/dev/vg0/lv0           <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">16128</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>64512, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-Discarding blocks...Done.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /lv0</span>
-mkdir: created directory <span class="s1">&#39;/lv0&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount /dev/vg0/lv0 /lv0/</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0/</span>
-Filesystem           Size  Used Avail Use% Mounted on
-/dev/mapper/vg0-lv0  247M   15M  233M   6% /lv0
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vg0/lv0 </span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/vg0/lv0           <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">16128</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>64512, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">Discarding blocks...Done.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /lv0</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/lv0&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount /dev/vg0/lv0 /lv0/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0/</span>
+</span></span><span class="line"><span class="cl">Filesystem           Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/vg0-lv0  247M   15M  233M   6% /lv0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-移除-lvm">3. 移除 LVM</h2>
@@ -358,8 +338,8 @@ Filesystem           Size  Used Avail Use% Mounted on
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># umount /lv0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># umount /lv0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>使用 lvremove 工具移除 lv</li>
@@ -371,10 +351,10 @@ Filesystem           Size  Used Avail Use% Mounted on
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvremove /dev/vg0/lv0 </span>
-Do you really want to remove active logical volume vg0/lv0? <span class="o">[</span>y/n<span class="o">]</span>: y
-  Logical volume <span class="s2">&#34;lv0&#34;</span> successfully removed.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvremove /dev/vg0/lv0 </span>
+</span></span><span class="line"><span class="cl">Do you really want to remove active logical volume vg0/lv0? <span class="o">[</span>y/n<span class="o">]</span>: y
+</span></span><span class="line"><span class="cl">  Logical volume <span class="s2">&#34;lv0&#34;</span> successfully removed.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-移除-vg">3.2 移除 vg</h3>
 <p>使用 vgremove 工具移除 vg</p>
@@ -384,9 +364,9 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgremove vg0 </span>
-  Volume group <span class="s2">&#34;vg0&#34;</span> successfully removed
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgremove vg0 </span>
+</span></span><span class="line"><span class="cl">  Volume group <span class="s2">&#34;vg0&#34;</span> successfully removed
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="33-移除-pv">3.3 移除 pv</h3>
 <p>使用 pvremove 工具移除 pv</p>
@@ -397,10 +377,10 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvremove /dev/vdb1 /dev/vdc1 </span>
-  Labels on physical volume <span class="s2">&#34;/dev/vdb1&#34;</span> successfully wiped.
-  Labels on physical volume <span class="s2">&#34;/dev/vdc1&#34;</span> successfully wiped.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvremove /dev/vdb1 /dev/vdc1 </span>
+</span></span><span class="line"><span class="cl">  Labels on physical volume <span class="s2">&#34;/dev/vdb1&#34;</span> successfully wiped.
+</span></span><span class="line"><span class="cl">  Labels on physical volume <span class="s2">&#34;/dev/vdc1&#34;</span> successfully wiped.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-查看已經創建的-lvm">4. 查看已經創建的 LVM</h2>
@@ -425,22 +405,22 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvcreate  /dev/vdb1 </span>
-  Physical volume <span class="s2">&#34;/dev/vdb1&#34;</span> successfully created.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvdisplay /dev/vdb1 </span>
-  <span class="s2">&#34;/dev/vdb1&#34;</span> is a new physical volume of <span class="s2">&#34;199.00 MiB&#34;</span>
-  --- NEW Physical volume ---
-  PV Name               /dev/vdb1     
-  VG Name               
-  PV Size               199.00 MiB    
-  Allocatable           NO 
-  PE Size               <span class="m">0</span>   
-  Total PE              <span class="m">0</span>
-  Free PE               <span class="m">0</span>
-  Allocated PE          <span class="m">0</span>
-  PV UUID               Yp887I-KTUb-HBs4-TXmU-2xZZ-t1TW-ziqE3V
-  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvcreate  /dev/vdb1 </span>
+</span></span><span class="line"><span class="cl">  Physical volume <span class="s2">&#34;/dev/vdb1&#34;</span> successfully created.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvdisplay /dev/vdb1 </span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;/dev/vdb1&#34;</span> is a new physical volume of <span class="s2">&#34;199.00 MiB&#34;</span>
+</span></span><span class="line"><span class="cl">  --- NEW Physical volume ---
+</span></span><span class="line"><span class="cl">  PV Name               /dev/vdb1     
+</span></span><span class="line"><span class="cl">  VG Name               
+</span></span><span class="line"><span class="cl">  PV Size               199.00 MiB    
+</span></span><span class="line"><span class="cl">  Allocatable           NO 
+</span></span><span class="line"><span class="cl">  PE Size               <span class="m">0</span>   
+</span></span><span class="line"><span class="cl">  Total PE              <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Free PE               <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Allocated PE          <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  PV UUID               Yp887I-KTUb-HBs4-TXmU-2xZZ-t1TW-ziqE3V
+</span></span><span class="line"><span class="cl">  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="42-查看-vg-詳細資訊">4.2 查看 vg 詳細資訊</h3>
 <p>使用 vgdisplay 工具可以查看創建的 vg 詳細資訊</p>
@@ -472,31 +452,31 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate vg0 /dev/vdb1</span>
-  Volume group <span class="s2">&#34;vg0&#34;</span> successfully created
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay vg0</span>
-  --- Volume group ---
-  VG Name               vg0
-  System ID             
-  Format                lvm2
-  Metadata Areas        <span class="m">1</span>
-  Metadata Sequence No  <span class="m">1</span>
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                <span class="m">0</span>
-  Cur LV                <span class="m">0</span>
-  Open LV               <span class="m">0</span>
-  Max PV                <span class="m">0</span>
-  Cur PV                <span class="m">1</span>
-  Act PV                <span class="m">1</span>
-  VG Size               196.00 MiB
-  PE Size               4.00 MiB
-  Total PE              <span class="m">49</span>
-  Alloc PE / Size       <span class="m">0</span> / <span class="m">0</span>   
-  Free  PE / Size       <span class="m">49</span> / 196.00 MiB
-  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
-   
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate vg0 /dev/vdb1</span>
+</span></span><span class="line"><span class="cl">  Volume group <span class="s2">&#34;vg0&#34;</span> successfully created
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay vg0</span>
+</span></span><span class="line"><span class="cl">  --- Volume group ---
+</span></span><span class="line"><span class="cl">  VG Name               vg0
+</span></span><span class="line"><span class="cl">  System ID             
+</span></span><span class="line"><span class="cl">  Format                lvm2
+</span></span><span class="line"><span class="cl">  Metadata Areas        <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Metadata Sequence No  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  VG Access             read/write
+</span></span><span class="line"><span class="cl">  VG Status             resizable
+</span></span><span class="line"><span class="cl">  MAX LV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur LV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Open LV               <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Max PV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Act PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  VG Size               196.00 MiB
+</span></span><span class="line"><span class="cl">  PE Size               4.00 MiB
+</span></span><span class="line"><span class="cl">  Total PE              <span class="m">49</span>
+</span></span><span class="line"><span class="cl">  Alloc PE / Size       <span class="m">0</span> / <span class="m">0</span>   
+</span></span><span class="line"><span class="cl">  Free  PE / Size       <span class="m">49</span> / 196.00 MiB
+</span></span><span class="line"><span class="cl">  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
+</span></span><span class="line"><span class="cl">   
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="43-查看-lv-詳細資訊">4.3 查看 lv 詳細資訊</h3>
 <p>使用 lvdisplay 工具可以查看創建的 lv 詳細資訊</p>
@@ -522,31 +502,29 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n lv0 -L 150Mib vg0</span>
-  Rounding up size to full physical extent 152.00 MiB
-  Logical volume <span class="s2">&#34;lv0&#34;</span> created.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvdisplay /dev/vg0/lv0 </span>
-  --- Logical volume ---
-  LV Path                /dev/vg0/lv0
-  LV Name                lv0
-  VG Name                vg0
-  LV UUID                XJ0WoQ-o7em-m16x-DMdU-OfNf-9oj9-XnQNQb
-  LV Write Access        read/write
-  LV Creation host, <span class="nb">time</span> serverc, 2022-03-22 22:01:10 +0800
-  LV Status              available
-  <span class="c1"># open                 0</span>
-  LV Size                152.00 MiB
-  Current LE             <span class="m">38</span>
-  Segments               <span class="m">1</span>
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently <span class="nb">set</span> to     <span class="m">8192</span>
-  Block device           253:2
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n lv0 -L 150Mib vg0</span>
+</span></span><span class="line"><span class="cl">  Rounding up size to full physical extent 152.00 MiB
+</span></span><span class="line"><span class="cl">  Logical volume <span class="s2">&#34;lv0&#34;</span> created.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvdisplay /dev/vg0/lv0 </span>
+</span></span><span class="line"><span class="cl">  --- Logical volume ---
+</span></span><span class="line"><span class="cl">  LV Path                /dev/vg0/lv0
+</span></span><span class="line"><span class="cl">  LV Name                lv0
+</span></span><span class="line"><span class="cl">  VG Name                vg0
+</span></span><span class="line"><span class="cl">  LV UUID                XJ0WoQ-o7em-m16x-DMdU-OfNf-9oj9-XnQNQb
+</span></span><span class="line"><span class="cl">  LV Write Access        read/write
+</span></span><span class="line"><span class="cl">  LV Creation host, <span class="nb">time</span> serverc, 2022-03-22 22:01:10 +0800
+</span></span><span class="line"><span class="cl">  LV Status              available
+</span></span><span class="line"><span class="cl">  <span class="c1"># open                 0</span>
+</span></span><span class="line"><span class="cl">  LV Size                152.00 MiB
+</span></span><span class="line"><span class="cl">  Current LE             <span class="m">38</span>
+</span></span><span class="line"><span class="cl">  Segments               <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Allocation             inherit
+</span></span><span class="line"><span class="cl">  Read ahead sectors     auto
+</span></span><span class="line"><span class="cl">  - currently <span class="nb">set</span> to     <span class="m">8192</span>
+</span></span><span class="line"><span class="cl">  Block device           253:2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-擴展-lv-空間及-xfs-檔案系統">5 擴展 lv 空間及 xfs 檔案系統</h2>
@@ -558,10 +536,10 @@ Do you really want to remove active logical volume vg0/lv0? <span class="o">[</s
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# lsblk  -ap /dev/vg0/lv0
-NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-/dev/mapper/vg0-lv0 253:2    0  152M  0 lvm  /lv0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# lsblk  -ap /dev/vg0/lv0
+</span></span><span class="line"><span class="cl">NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span><span class="line"><span class="cl">/dev/mapper/vg0-lv0 253:2    0  152M  0 lvm  /lv0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="51-查看-vg-目前還有多少空間可以分出來">5.1. 查看 vg 目前還有多少空間可以分出來</h3>
 <div class="highlight"><div class="chroma">
@@ -587,32 +565,30 @@ NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
-</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay vg0</span>
-  --- Volume group ---
-  VG Name               vg0
-  System ID             
-  Format                lvm2
-  Metadata Areas        <span class="m">1</span>
-  Metadata Sequence No  <span class="m">2</span>
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                <span class="m">0</span>
-  Cur LV                <span class="m">1</span>
-  Open LV               <span class="m">1</span>
-  Max PV                <span class="m">0</span>
-  Cur PV                <span class="m">1</span>
-  Act PV                <span class="m">1</span>
-  VG Size               196.00 MiB
-  PE Size               4.00 MiB
-  Total PE              <span class="m">49</span>
-  Alloc PE / Size       <span class="m">38</span> / 152.00 MiB
-  Free  PE / Size       <span class="m">11</span> / 44.00 MiB
-  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay vg0</span>
+</span></span><span class="line"><span class="cl">  --- Volume group ---
+</span></span><span class="line"><span class="cl">  VG Name               vg0
+</span></span><span class="line"><span class="cl">  System ID             
+</span></span><span class="line"><span class="cl">  Format                lvm2
+</span></span><span class="line"><span class="cl">  Metadata Areas        <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Metadata Sequence No  <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  VG Access             read/write
+</span></span><span class="line"><span class="cl">  VG Status             resizable
+</span></span><span class="line"><span class="cl">  MAX LV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur LV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Open LV               <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Max PV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Act PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  VG Size               196.00 MiB
+</span></span><span class="line"><span class="cl">  PE Size               4.00 MiB
+</span></span><span class="line"><span class="cl">  Total PE              <span class="m">49</span>
+</span></span><span class="line"><span class="cl">  Alloc PE / Size       <span class="m">38</span> / 152.00 MiB
+</span></span><span class="line"><span class="cl">  Free  PE / Size       <span class="m">11</span> / 44.00 MiB
+</span></span><span class="line"><span class="cl">  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="52-囿於-vg-free-空間只剩下-44-mib-再添加-pv-至-vg-內">5.2. 囿於 VG Free 空間只剩下 44 MiB ，再添加 PV 至 VG 內</h3>
 <div class="highlight"><div class="chroma">
@@ -642,36 +618,34 @@ NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# pvcreate /dev/vdc1 
-  Physical volume &#34;/dev/vdc1&#34; successfully created.
-[root@serverc ~]# vgextend vg0 /dev/vdc1
-  Volume group &#34;vg0&#34; successfully extended
-[root@serverc ~]# vgdisplay vg0
-  --- Volume group ---
-  VG Name               vg0
-  System ID             
-  Format                lvm2
-  Metadata Areas        2
-  Metadata Sequence No  3
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                0
-  Cur LV                1
-  Open LV               1
-  Max PV                0
-  Cur PV                2
-  Act PV                2
-  VG Size               492.00 MiB
-  PE Size               4.00 MiB
-  Total PE              123
-  Alloc PE / Size       38 / 152.00 MiB
-  Free  PE / Size       85 / 340.00 MiB
-  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# pvcreate /dev/vdc1 
+</span></span><span class="line"><span class="cl">  Physical volume &#34;/dev/vdc1&#34; successfully created.
+</span></span><span class="line"><span class="cl">[root@serverc ~]# vgextend vg0 /dev/vdc1
+</span></span><span class="line"><span class="cl">  Volume group &#34;vg0&#34; successfully extended
+</span></span><span class="line"><span class="cl">[root@serverc ~]# vgdisplay vg0
+</span></span><span class="line"><span class="cl">  --- Volume group ---
+</span></span><span class="line"><span class="cl">  VG Name               vg0
+</span></span><span class="line"><span class="cl">  System ID             
+</span></span><span class="line"><span class="cl">  Format                lvm2
+</span></span><span class="line"><span class="cl">  Metadata Areas        2
+</span></span><span class="line"><span class="cl">  Metadata Sequence No  3
+</span></span><span class="line"><span class="cl">  VG Access             read/write
+</span></span><span class="line"><span class="cl">  VG Status             resizable
+</span></span><span class="line"><span class="cl">  MAX LV                0
+</span></span><span class="line"><span class="cl">  Cur LV                1
+</span></span><span class="line"><span class="cl">  Open LV               1
+</span></span><span class="line"><span class="cl">  Max PV                0
+</span></span><span class="line"><span class="cl">  Cur PV                2
+</span></span><span class="line"><span class="cl">  Act PV                2
+</span></span><span class="line"><span class="cl">  VG Size               492.00 MiB
+</span></span><span class="line"><span class="cl">  PE Size               4.00 MiB
+</span></span><span class="line"><span class="cl">  Total PE              123
+</span></span><span class="line"><span class="cl">  Alloc PE / Size       38 / 152.00 MiB
+</span></span><span class="line"><span class="cl">  Free  PE / Size       85 / 340.00 MiB
+</span></span><span class="line"><span class="cl">  VG UUID               UT3zNx-B2MV-JMgu-REpC-3IA6-ApjM-6S1Ayg
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="53-lv-擴展至-400-mib-需增加-250-mib">5.3. lv 擴展至 400 Mib 需增加 250 Mib</h3>
 <div class="highlight"><div class="chroma">
@@ -699,28 +673,28 @@ NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvextend -L +250Mib /dev/vg0/lv0 </span>
-  Rounding size to boundary between physical extents: 252.00 MiB.
-  Size of logical volume vg0/lv0 changed from 152.00 MiB <span class="o">(</span><span class="m">38</span> extents<span class="o">)</span> to 404.00 MiB <span class="o">(</span><span class="m">101</span> extents<span class="o">)</span>.
-  Logical volume vg0/lv0 successfully resized.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvdisplay /dev/vg0/lv0 </span>
-  --- Logical volume ---
-  LV Path                /dev/vg0/lv0
-  LV Name                lv0
-  VG Name                vg0
-  LV UUID                XJ0WoQ-o7em-m16x-DMdU-OfNf-9oj9-XnQNQb
-  LV Write Access        read/write
-  LV Creation host, <span class="nb">time</span> serverc, 2022-02-15 22:01:10 +0800
-  LV Status              available
-  <span class="c1"># open                 1</span>
-  LV Size                404.00 MiB
-  Current LE             <span class="m">101</span>
-  Segments               <span class="m">2</span>
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently <span class="nb">set</span> to     <span class="m">8192</span>
-  Block device           253:2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvextend -L +250Mib /dev/vg0/lv0 </span>
+</span></span><span class="line"><span class="cl">  Rounding size to boundary between physical extents: 252.00 MiB.
+</span></span><span class="line"><span class="cl">  Size of logical volume vg0/lv0 changed from 152.00 MiB <span class="o">(</span><span class="m">38</span> extents<span class="o">)</span> to 404.00 MiB <span class="o">(</span><span class="m">101</span> extents<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">  Logical volume vg0/lv0 successfully resized.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvdisplay /dev/vg0/lv0 </span>
+</span></span><span class="line"><span class="cl">  --- Logical volume ---
+</span></span><span class="line"><span class="cl">  LV Path                /dev/vg0/lv0
+</span></span><span class="line"><span class="cl">  LV Name                lv0
+</span></span><span class="line"><span class="cl">  VG Name                vg0
+</span></span><span class="line"><span class="cl">  LV UUID                XJ0WoQ-o7em-m16x-DMdU-OfNf-9oj9-XnQNQb
+</span></span><span class="line"><span class="cl">  LV Write Access        read/write
+</span></span><span class="line"><span class="cl">  LV Creation host, <span class="nb">time</span> serverc, 2022-02-15 22:01:10 +0800
+</span></span><span class="line"><span class="cl">  LV Status              available
+</span></span><span class="line"><span class="cl">  <span class="c1"># open                 1</span>
+</span></span><span class="line"><span class="cl">  LV Size                404.00 MiB
+</span></span><span class="line"><span class="cl">  Current LE             <span class="m">101</span>
+</span></span><span class="line"><span class="cl">  Segments               <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  Allocation             inherit
+</span></span><span class="line"><span class="cl">  Read ahead sectors     auto
+</span></span><span class="line"><span class="cl">  - currently <span class="nb">set</span> to     <span class="m">8192</span>
+</span></span><span class="line"><span class="cl">  Block device           253:2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="54-使用-xfs_growfs-擴展-xfs-檔案系統">5.4. 使用 xfs_growfs 擴展 xfs 檔案系統</h3>
 <div class="highlight"><div class="chroma">
@@ -745,29 +719,29 @@ NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0</span>
-Filesystem           Size  Used Avail Use% Mounted on
-/dev/mapper/vg0-lv0  147M  8.9M  138M   7% /lv0
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># xfs_growfs /lv0/</span>
-meta-data<span class="o">=</span>/dev/mapper/vg0-lv0    <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">9728</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>38912, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-data blocks changed from <span class="m">38912</span> to <span class="m">103424</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0</span>
-Filesystem           Size  Used Avail Use% Mounted on
-/dev/mapper/vg0-lv0  399M   12M  388M   3% /lv0
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0</span>
+</span></span><span class="line"><span class="cl">Filesystem           Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/vg0-lv0  147M  8.9M  138M   7% /lv0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># xfs_growfs /lv0/</span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/mapper/vg0-lv0    <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">9728</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>38912, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">data blocks changed from <span class="m">38912</span> to <span class="m">103424</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /lv0</span>
+</span></span><span class="line"><span class="cl">Filesystem           Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/vg0-lv0  399M   12M  388M   3% /lv0
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>LVM 是可以縮容的，不過無法使用在 XFS 檔案系統上，可以再 ext 系列，先將掛載目錄 umount ，再使用 lvreduce 就可以減少 lv 空間，最後使用 resize2fs 將 ext 系列檔案系統改變大小掛載即可。</em></div>
@@ -778,10 +752,10 @@ Filesystem           Size  Used Avail Use% Mounted on
 <h3 id="61--lab">6.1  LAB</h3>
 <div class="details admonition success open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></div>
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer ">使用方式請參閱 HowHow 網站</a>。</em></div>
         </div>
     </div>
 <p>lv 名為 <code>qa</code> ， vg 屬於 <code>qagroup</code> ，另 lv 空間為 225 MiB ，vg <code>qagroup</code> 的 PE size 應為   <code>8 MiB</code> ，並使用 <code>ext3</code> 檔案格式掛載至 /ext3 ，另確保開機後自動掛載。</p>
@@ -803,19 +777,19 @@ Filesystem           Size  Used Avail Use% Mounted on
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart primary ext3 2048s 251Mib set 1 lvm on print</span>
-Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
-Disk /dev/vdd: 524MB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
-Partition Table: msdos
-Disk Flags: 
-
-Number  Start   End    Size   Type     File system  Flags
- <span class="m">1</span>      1049kB  263MB  262MB  primary  ext3         lvm, lba
-
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvcreate /dev/vdd1 </span>
-  Physical volume <span class="s2">&#34;/dev/vdd1&#34;</span> successfully created.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart primary ext3 2048s 251Mib set 1 lvm on print</span>
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/vdd: 524MB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: msdos
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End    Size   Type     File system  Flags
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>      1049kB  263MB  262MB  primary  ext3         lvm, lba
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># pvcreate /dev/vdd1 </span>
+</span></span><span class="line"><span class="cl">  Physical volume <span class="s2">&#34;/dev/vdd1&#34;</span> successfully created.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="622-創建-vg-名為-qagroup-且-pe-size-等於-8-mib">6.2.2 創建 vg 名為 qagroup 且 PE size 等於 8 Mib</h4>
 <div class="highlight"><div class="chroma">
@@ -843,34 +817,32 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
-</span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate -s 8MiB qagroup /dev/vdd1</span>
-  Volume group <span class="s2">&#34;qagroup&#34;</span> successfully created
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay qagroup </span>
-  --- Volume group ---
-  VG Name               qagroup
-  System ID             
-  Format                lvm2
-  Metadata Areas        <span class="m">1</span>
-  Metadata Sequence No  <span class="m">1</span>
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                <span class="m">0</span>
-  Cur LV                <span class="m">0</span>
-  Open LV               <span class="m">0</span>
-  Max PV                <span class="m">0</span>
-  Cur PV                <span class="m">1</span>
-  Act PV                <span class="m">1</span>
-  VG Size               248.00 MiB
-  PE Size               8.00 MiB
-  Total PE              <span class="m">31</span>
-  Alloc PE / Size       <span class="m">0</span> / <span class="m">0</span>   
-  Free  PE / Size       <span class="m">31</span> / 248.00 MiB
-  VG UUID               rLY7hW-LnNR-RIUx-dEZP-HzRW-SeSD-PfSbmg
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgcreate -s 8MiB qagroup /dev/vdd1</span>
+</span></span><span class="line"><span class="cl">  Volume group <span class="s2">&#34;qagroup&#34;</span> successfully created
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vgdisplay qagroup </span>
+</span></span><span class="line"><span class="cl">  --- Volume group ---
+</span></span><span class="line"><span class="cl">  VG Name               qagroup
+</span></span><span class="line"><span class="cl">  System ID             
+</span></span><span class="line"><span class="cl">  Format                lvm2
+</span></span><span class="line"><span class="cl">  Metadata Areas        <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Metadata Sequence No  <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  VG Access             read/write
+</span></span><span class="line"><span class="cl">  VG Status             resizable
+</span></span><span class="line"><span class="cl">  MAX LV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur LV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Open LV               <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Max PV                <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  Cur PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  Act PV                <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  VG Size               248.00 MiB
+</span></span><span class="line"><span class="cl">  PE Size               8.00 MiB
+</span></span><span class="line"><span class="cl">  Total PE              <span class="m">31</span>
+</span></span><span class="line"><span class="cl">  Alloc PE / Size       <span class="m">0</span> / <span class="m">0</span>   
+</span></span><span class="line"><span class="cl">  Free  PE / Size       <span class="m">31</span> / 248.00 MiB
+</span></span><span class="line"><span class="cl">  VG UUID               rLY7hW-LnNR-RIUx-dEZP-HzRW-SeSD-PfSbmg
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="623-創建-lv-名為-qa--size-為-225-mib-並以-ext3-格式掛至-ext3">6.2.3 創建 lv 名為 qa ， size 為 225 MiB ，並以 ext3 格式掛至 /ext3</h4>
 <div class="highlight"><div class="chroma">
@@ -902,38 +874,38 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n qa -L 225MiB qagroup </span>
-  Rounding up size to full physical extent 232.00 MiB
-  Logical volume <span class="s2">&#34;qa&#34;</span> created.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext3 /dev/qagroup/qa </span>
-mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
-Discarding device blocks: <span class="k">done</span>                            
-Creating filesystem with <span class="m">237568</span> 1k blocks and <span class="m">59392</span> inodes
-Filesystem UUID: ff4948a5-415b-4566-988d-904a5c6d2335
-Superblock backups stored on blocks: 
-	8193, 24577, 40961, 57345, 73729, 204801, <span class="m">221185</span>
-
-Allocating group tables: <span class="k">done</span>                            
-Writing inode tables: <span class="k">done</span>                            
-Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
-Writing superblocks and filesystem accounting information: <span class="k">done</span> 
-
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext3</span>
-mkdir: created directory <span class="s1">&#39;/ext3&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-&gt; /dev/qagroup/qa  /ext3  ext3  defaults  <span class="m">0</span>  <span class="m">0</span>
-&gt; EOL
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext3/</span>
-Filesystem              Size  Used Avail Use% Mounted on
-/dev/mapper/qagroup-qa  221M  2.1M  208M   1% /ext3
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lvcreate -n qa -L 225MiB qagroup </span>
+</span></span><span class="line"><span class="cl">  Rounding up size to full physical extent 232.00 MiB
+</span></span><span class="line"><span class="cl">  Logical volume <span class="s2">&#34;qa&#34;</span> created.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext3 /dev/qagroup/qa </span>
+</span></span><span class="line"><span class="cl">mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Discarding device blocks: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating filesystem with <span class="m">237568</span> 1k blocks and <span class="m">59392</span> inodes
+</span></span><span class="line"><span class="cl">Filesystem UUID: ff4948a5-415b-4566-988d-904a5c6d2335
+</span></span><span class="line"><span class="cl">Superblock backups stored on blocks: 
+</span></span><span class="line"><span class="cl">	8193, 24577, 40961, 57345, 73729, 204801, <span class="m">221185</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Allocating group tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Writing inode tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Writing superblocks and filesystem accounting information: <span class="k">done</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext3</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/ext3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+</span></span><span class="line"><span class="cl">&gt; /dev/qagroup/qa  /ext3  ext3  defaults  <span class="m">0</span>  <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext3/</span>
+</span></span><span class="line"><span class="cl">Filesystem              Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/qagroup-qa  221M  2.1M  208M   1% /ext3
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="624-reboot-重新開機">6.2.4. reboot 重新開機</h4>
 <p>確保重新開機後，所有目錄都正常掛載。</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果無法正常開機，表示 /etc/fstab 中有錯誤，可以至 bastion 機器執行 rht-vmctl reset serverc 重置 serverc 回初始設定。</em></div>
@@ -941,65 +913,42 @@ Filesystem              Size  Used Avail Use% Mounted on
     </div>
 <hr>
 <h2 id="7-小結">7. 小結</h2>
-<p>LVM 比原生的分割槽來的彈性且好用，使用的指令也不多大多數都是重複的，聚焦在 pv、 vg 、 lv 這三個項目，並配合 create 、 display 、 remove 就可以組合出 LVM 。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-storage-lvm%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>LVM 比原生的分割槽來的彈性且好用，使用的指令也不多大多數都是重複的，聚焦在 pv、 vg 、 lv 這三個項目，並配合 create 、 display 、 remove 就可以組合出 LVM 。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-02-15</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" data-title="Linux - 邏輯卷冊管理 LVM" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" data-title="Linux - 邏輯卷冊管理 LVM"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" data-title="Linux - 邏輯卷冊管理 LVM"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" data-title="Linux - 邏輯卷冊管理 LVM"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-partition/" class="prev" rel="prev" title="Linux - 硬碟的分割及掛載"><i class="fas fa-angle-left fa-fw"></i>Linux - 硬碟的分割及掛載</a>
-            <a href="/posts/linux/2022/linux-storage-vdo/" class="next" rel="next" title="Linux - 虛擬資料優化系統 - VDO">Linux - 虛擬資料優化系統 - VDO<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-partition/" class="prev" rel="prev" title="Linux - 硬碟的分割及掛載"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 硬碟的分割及掛載</a>
+            <a href="/posts/linux/2022/linux-storage-vdo/" class="next" rel="next" title="Linux - 虛擬資料優化系統 - VDO">Linux - 虛擬資料優化系統 - VDO<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

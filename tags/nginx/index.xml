@@ -8,8 +8,9 @@
     <title>Nginx - 反向代理的代名詞</title>
     <link>https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/</link>
     <pubDate>Mon, 14 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/</guid>
     <description><![CDATA[Nginx 為全世界 Web 伺服器龍頭寶座，除了網頁伺服器之外，另外可以實現反向代理、負載平衡器和HTTP 快取各功能，並且輕量快速為著名。 1. Nginx 簡介 Nginx 的發音是]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

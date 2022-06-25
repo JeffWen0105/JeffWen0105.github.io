@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - ACL 多帳號權限控管 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - ACL 多帳號權限控管" />
+        <title>Linux - ACL 多帳號權限控管 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - ACL 多帳號權限控管" />
 <meta property="og:description" content="Linux 最早設計時僅能對 user 及 group 對檔案或是目錄進行控管，不過這勢必會有一些問題，如一個群組內有 N 個人都可以訪問 example 檔案，惟群組內 John 要禁止他訪問，除了將他移出群組之外就沒有別的方式了，故 ACL 誕生解決上述問題。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-acl/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-11T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-11T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - ACL 多帳號權限控管"/>
 <meta name="twitter:description" content="Linux 最早設計時僅能對 user 及 group 對檔案或是目錄進行控管，不過這勢必會有一些問題，如一個群組內有 N 個人都可以訪問 example 檔案，惟群組內 John 要禁止他訪問，除了將他移出群組之外就沒有別的方式了，故 ACL 誕生解決上述問題。"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-acl/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-acl/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-chmod-permission-tool/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,13 +31,13 @@
         },"genre": "posts","keywords": "Linux","wordcount":  1027 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-acl\/","datePublished": "2022-02-11T00:00:00+00:00","dateModified": "2022-02-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - ACL 多帳號權限控管</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-11">2022-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1027 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - ACL 多帳號權限控管</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-11">2022-02-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1027 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -143,8 +127,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="sr">/dev/</span><span class="nx">vdb1</span>       /<span class="nx">mnt</span>    <span class="nx">ext4</span>    <span class="nx">defailts</span><span class="p">,</span><span class="nx">acl</span>    <span class="m">0</span> <span class="m">0</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="sr">/dev/</span><span class="nx">vdb1</span>       /<span class="nx">mnt</span>    <span class="nx">ext4</span>    <span class="nx">defailts</span><span class="p">,</span><span class="nx">acl</span>    <span class="m">0</span> <span class="m">0</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="13-哪些檔案目錄已經使用-acl-權限控管">1.3 哪些檔案/目錄已經使用 ACL 權限控管？</h3>
 <p>在檔案權限最後面顯示為 <code>+</code> 表示使用 ACL 權限管理，而一般的權限管理檔案後面顯示為 <code>.</code></p>
@@ -156,11 +140,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -l</span>
-total <span class="m">4</span>
--rwxr--r--+ <span class="m">1</span> root root    <span class="m">0</span> Feb <span class="m">11</span> 09:59 acl-example
--rw-------. <span class="m">1</span> root root <span class="m">1331</span> Feb <span class="m">10</span> 12:53 anaconda-ks.cfg
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -l</span>
+</span></span><span class="line"><span class="cl">total <span class="m">4</span>
+</span></span><span class="line"><span class="cl">-rwxr--r--+ <span class="m">1</span> root root    <span class="m">0</span> Feb <span class="m">11</span> 09:59 acl-example
+</span></span><span class="line"><span class="cl">-rw-------. <span class="m">1</span> root root <span class="m">1331</span> Feb <span class="m">10</span> 12:53 anaconda-ks.cfg
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="2-acl-基本用法">2. ACL 基本用法</h2>
@@ -170,8 +154,8 @@ total <span class="m">4</span>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">getfacl &lt;file&gt;/&lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">getfacl &lt;file&gt;/&lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -187,17 +171,17 @@ total <span class="m">4</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getfacl acl-example </span>
-<span class="c1"># file: acl-example</span>
-<span class="c1"># owner: root</span>
-<span class="c1"># group: root</span>
-user::rwx
-user:test1:---
-group::r--
-group:tests:r--
-mask::r--
-other::r--
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getfacl acl-example </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># file: acl-example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># owner: root</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># group: root</span>
+</span></span><span class="line"><span class="cl">user::rwx
+</span></span><span class="line"><span class="cl">user:test1:---
+</span></span><span class="line"><span class="cl">group::r--
+</span></span><span class="line"><span class="cl">group:tests:r--
+</span></span><span class="line"><span class="cl">mask::r--
+</span></span><span class="line"><span class="cl">other::r--
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-修改檔案目錄權限">2.2 修改檔案/目錄權限</h3>
 <table>
@@ -236,12 +220,12 @@ other::r--
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setfacl -Rm   <span class="nv">$arg1</span>:<span class="nv">$arg2</span>:<span class="nv">$arg3</span> &lt;file&gt;/&lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setfacl -Rm   <span class="nv">$arg1</span>:<span class="nv">$arg2</span>:<span class="nv">$arg3</span> &lt;file&gt;/&lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><strong>-R 與 chmod 功能一樣，表示遞迴，將該目錄下所有檔案目錄統一配置權限</strong></div>
@@ -269,24 +253,24 @@ other::r--
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 設定 other 沒有任何權限</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -m  o::- example</span>
-<span class="c1"># 設定 test1 帳號有 rw 權限</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -m u:test1:rw example</span>
-<span class="c1"># 設定 tests 群組有 r 權限</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -mv g:tests:r example</span>
-<span class="c1"># 查看 acl</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># getfacl example </span>
-<span class="c1"># file: example</span>
-<span class="c1"># owner: root</span>
-<span class="c1"># group: root</span>
-user::rw-
-user:test1:rw-
-group::r--
-group:tests:r--
-mask::rw-
-other::---
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 設定 other 沒有任何權限</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -m  o::- example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定 test1 帳號有 rw 權限</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -m u:test1:rw example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定 tests 群組有 r 權限</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -mv g:tests:r example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看 acl</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># getfacl example </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># file: example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># owner: root</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># group: root</span>
+</span></span><span class="line"><span class="cl">user::rw-
+</span></span><span class="line"><span class="cl">user:test1:rw-
+</span></span><span class="line"><span class="cl">group::r--
+</span></span><span class="line"><span class="cl">group:tests:r--
+</span></span><span class="line"><span class="cl">mask::rw-
+</span></span><span class="line"><span class="cl">other::---
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="23-修改目錄預設權限-default">2.3 修改目錄預設權限 (Default)</h3>
 <p>此功能可以限定在該目錄底下所創建的檔案預設帳號歸屬哪一個權限</p>
@@ -326,8 +310,8 @@ other::---
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setfacl -m   d:<span class="nv">$arg1</span>:<span class="nv">$arg2</span>:<span class="nv">$arg3</span> &lt;file&gt;/&lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setfacl -m   d:<span class="nv">$arg1</span>:<span class="nv">$arg2</span>:<span class="nv">$arg3</span> &lt;file&gt;/&lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>舉例 : file 目錄 user、group 均為 root ， test3 使用者是沒有任何權限、tests 群組創建的檔案都有 rwx 權限，另外 other 擁有 rwx 權限。</p>
 <div class="highlight"><div class="chroma">
@@ -349,22 +333,22 @@ other::---
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -Rm d:u:test3:- file/</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -Rm d:g:tests:rwx file/</span>
-<span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># getfacl file/</span>
-<span class="c1"># file: file/</span>
-<span class="c1"># owner: root</span>
-<span class="c1"># group: root</span>
-user::rwx
-group::r-x
-other::rwx
-default:user::rwx
-default:user:test3:---
-default:group::r-x
-default:group:tests:rwx
-default:mask ::rwx
-default:other::r-x
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -Rm d:u:test3:- file/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># setfacl -Rm d:g:tests:rwx file/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera tmp<span class="o">]</span><span class="c1"># getfacl file/</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># file: file/</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># owner: root</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># group: root</span>
+</span></span><span class="line"><span class="cl">user::rwx
+</span></span><span class="line"><span class="cl">group::r-x
+</span></span><span class="line"><span class="cl">other::rwx
+</span></span><span class="line"><span class="cl">default:user::rwx
+</span></span><span class="line"><span class="cl">default:user:test3:---
+</span></span><span class="line"><span class="cl">default:group::r-x
+</span></span><span class="line"><span class="cl">default:group:tests:rwx
+</span></span><span class="line"><span class="cl">default:mask ::rwx
+</span></span><span class="line"><span class="cl">default:other::r-x
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>切換至 test3 使用並嘗試創建檔案，是會自動被禁止的</p>
 <div class="highlight"><div class="chroma">
@@ -374,17 +358,17 @@ default:other::r-x
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test3@servera ~<span class="o">]</span>$ <span class="nb">cd</span> /tmp/test
-<span class="o">[</span>test3@servera test<span class="o">]</span>$ touch test3-file
-touch: cannot touch <span class="s1">&#39;test3-file&#39;</span>: Permission denied
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test3@servera ~<span class="o">]</span>$ <span class="nb">cd</span> /tmp/test
+</span></span><span class="line"><span class="cl"><span class="o">[</span>test3@servera test<span class="o">]</span>$ touch test3-file
+</span></span><span class="line"><span class="cl">touch: cannot touch <span class="s1">&#39;test3-file&#39;</span>: Permission denied
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><strong>-R 參數需注意與 chmod 工具一樣，如果希望某些不應該提升為 x (執行） 權限檔案，可以使用 大寫的 X，僅會提升本來就有  x (執行） 權限，詳細<a href="https://how64bit.com/posts/linux/2022/linux-chmod-permission-tool/#4-chmod--r--x-" target="_blank" rel="noopener noreffer">請參考 chmod 這篇文章</a></strong> 。</div>
+            <div class="admonition-content"><strong>-R 參數需注意與 chmod 工具一樣，如果希望某些不應該提升為 x (執行） 權限檔案，可以使用 大寫的 X，僅會提升本來就有  x (執行） 權限，詳細<a href="https://how64bit.com/posts/linux/2022/linux-chmod-permission-tool/#4-chmod--r--x-" target="_blank" rel="noopener noreffer ">請參考 chmod 這篇文章</a></strong> 。</div>
         </div>
     </div>
 <hr>
@@ -417,8 +401,8 @@ touch: cannot touch <span class="s1">&#39;test3-file&#39;</span>: Permission den
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setfacl -x <span class="nv">$arg1</span>:<span class="nv">$arg2</span> &lt;file&gt;/&lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setfacl -x <span class="nv">$arg1</span>:<span class="nv">$arg2</span> &lt;file&gt;/&lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-移除-defult-acl">3.2 移除 Defult ACL</h3>
 <div class="highlight"><div class="chroma">
@@ -426,8 +410,8 @@ touch: cannot touch <span class="s1">&#39;test3-file&#39;</span>: Permission den
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setfacl -k  &lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setfacl -k  &lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="33-移除全部-acl">3.3 移除全部 ACL</h3>
 <div class="highlight"><div class="chroma">
@@ -435,69 +419,46 @@ touch: cannot touch <span class="s1">&#39;test3-file&#39;</span>: Permission den
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setfacl -b  &lt;file&gt;/&lt;dir&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setfacl -b  &lt;file&gt;/&lt;dir&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4-小結">4. 小結</h2>
-<p>ACL 不一定會用到，不過只要熟悉 ACL 操作方式，對於多個角色要進行管理可是非常的方便。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-acl%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>ACL 不一定會用到，不過只要熟悉 ACL 操作方式，對於多個角色要進行管理可是非常的方便。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-02-11</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-acl/" data-title="Linux - ACL 多帳號權限控管" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-acl/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-acl/" data-title="Linux - ACL 多帳號權限控管"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-acl/" data-title="Linux - ACL 多帳號權限控管"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-acl/" data-title="Linux - ACL 多帳號權限控管"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-chmod-permission-tool/" class="prev" rel="prev" title="Linux - Chmod 工具管理檔案/目錄權限"><i class="fas fa-angle-left fa-fw"></i>Linux - Chmod 工具管理檔案/目錄權限</a>
-            <a href="/posts/linux/2022/linux-selinux/" class="next" rel="next" title="Linux - 安全增強式 Linux ( SELinux )">Linux - 安全增強式 Linux ( SELinux )<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-chmod-permission-tool/" class="prev" rel="prev" title="Linux - Chmod 工具管理檔案/目錄權限"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - Chmod 工具管理檔案/目錄權限</a>
+            <a href="/posts/linux/2022/linux-selinux/" class="next" rel="next" title="Linux - 安全增強式 Linux ( SELinux )">Linux - 安全增強式 Linux ( SELinux )<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

@@ -8,64 +8,73 @@
     <title>Cisco - VLAN - Layer 3 Switch</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</link>
     <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由 ( 使用 L3 Switch 取代一般的路由器 )協助轉發至對應的 VLAN 內。 先前介紹的三種路由方式，路由速度最快設定步驟容易的方式]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN - Router on a Stick</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</link>
     <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</guid>
     <description><![CDATA[Router on a Stick 在中型網路較常使用的 VLAN 路由解決方案，價格實惠且能達成 VLAN 路由目標。 先前介紹的三種路由方式，其中 CP 較高的就是透過此方式，因為架構多一個路]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN Routing 路由簡介</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</link>
     <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN 虛擬 LAN 網路</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</link>
     <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</guid>
     <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - Network Automation With Ansible</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - IP Route 路由設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</link>
     <pubDate>Thu, 05 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</guid>
     <description><![CDATA[路由器在網路中是最重要的設備，決定在不同的 LAN 中的下一站封包據點要怎麼發送，並且有效阻不同 LAN 中廣播不會互相影響以佔用頻寬。 Cisco - IP Route 路由設定 在網]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - 網路設備組態設定</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</link>
     <pubDate>Mon, 02 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</guid>
     <description><![CDATA[在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - 網路設備指令操作入門</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</link>
     <pubDate>Sun, 01 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</guid>
     <description><![CDATA[Cisco 設備在設定上有一定的方式，來設定網路組態或是密碼，如果要控制這些設備必須要掌握相關指令操作。 1. 操作模式種類 操作模式有分為不同總類，只有在管]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - Packet Tracer 工具下載及使用簡述</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-packet-tracer-introduccion/</link>
     <pubDate>Tue, 12 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-packet-tracer-introduccion/</guid>
     <description><![CDATA[Packet Tracer是由 Cisco 設計的跨平台工具，可以讓使用者已指令介面來模組設定思科路由器和交換機，另外還有模擬封包一個一個傳遞時的流程，對於初學者學]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

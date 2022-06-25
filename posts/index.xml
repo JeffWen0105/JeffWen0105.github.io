@@ -8,71 +8,81 @@
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
-</item><item>
+</item>
+<item>
     <title>NetWork - 申請 SSL 憑證 ( Free 無料 )</title>
     <link>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</link>
     <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</guid>
     <description><![CDATA[1. SSL 介紹 傳輸層安全性協定（英語：Transport Layer Security，縮寫：TLS) 安全通訊協定（英語：Secure Sockets Layer，縮寫：SS]]></description>
-</item><item>
+</item>
+<item>
     <title>NetWork - 註冊自己的 Domain ( Free 無料 )</title>
     <link>https://blog.howhow.tk/posts/network/2022/register_free_domain/</link>
     <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/network/2022/register_free_domain/</guid>
     <description><![CDATA[1. Freenom 介紹 Freenom 是世界上第一家提供免費網域的註冊商，目前有提供.tk .ml .ga .cf 的免費域名。 2. 註冊方式 登入 Freenom 網站。 輸入自己喜歡的網域名稱並查看目前有哪些]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN - Layer 3 Switch</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</link>
     <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由 ( 使用 L3 Switch 取代一般的路由器 )協助轉發至對應的 VLAN 內。 先前介紹的三種路由方式，路由速度最快設定步驟容易的方式]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN - Router on a Stick</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</link>
     <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</guid>
     <description><![CDATA[Router on a Stick 在中型網路較常使用的 VLAN 路由解決方案，價格實惠且能達成 VLAN 路由目標。 先前介紹的三種路由方式，其中 CP 較高的就是透過此方式，因為架構多一個路]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN Routing 路由簡介</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</link>
     <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - VLAN 虛擬 LAN 網路</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</link>
     <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</guid>
     <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - Network Automation With Ansible</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
-</item><item>
+</item>
+<item>
     <title>Linux - Iptables Filter 表規則管理</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</link>
     <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</guid>
     <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
-</item><item>
+</item>
+<item>
     <title>Cisco - Access Control List</title>
     <link>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</link>
     <pubDate>Mon, 09 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</guid>
     <description><![CDATA[Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

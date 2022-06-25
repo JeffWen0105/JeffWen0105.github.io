@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Cisco - Access Control List - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Cisco - Access Control List" />
+        <title>Cisco - Access Control List - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Cisco - Access Control List" />
 <meta property="og:description" content="Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-09T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - Access Control List"/>
 <meta name="twitter:description" content="Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" /><link rel="prev" href="https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" /><link rel="prev" href="https://blog.howhow.tk/posts/windows/2022/windows-2016-ad-installer/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -30,13 +31,13 @@
         },"genre": "posts","keywords": "Network","wordcount":  1811 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-acl_concept\/","datePublished": "2022-05-09T00:00:00+00:00","dateModified": "2022-05-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Cisco - Access Control List</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw"></i>Cisco</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-09">2022-05-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1811 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 4 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cisco - Access Control List</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cisco</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-09">2022-05-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1811 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -123,11 +107,11 @@
 <p>在網路架構中所有的封包流向都是沒有進或是出的概念，以路由器為例，封包只管目的地地址要轉發至哪一個網路介面，而並不在乎來源地址，不過透過 ACL (Access Control List) 存取控制清單可以針對來源位置進行篩選分類並加以進行操作。</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Cisco 官方解釋<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Cisco 官方解釋<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><em>Cisco provides basic traffic filtering capabilities with access control lists (also referred to as access lists). Access lists can be configured for all routed network protocols (IP, AppleTalk, and so on) to filter the packets of those protocols as the packets pass through a router.</em></p>
-<p><strong>From Cisco <a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/12-4t/sec-data-acl-12-4t-book/sec-acl-ov-gdl.html" target="_blank" rel="noopener noreffer">DOC</a>。</strong></p>
+<p><strong>From Cisco <a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/12-4t/sec-data-acl-12-4t-book/sec-acl-ov-gdl.html" target="_blank" rel="noopener noreffer ">DOC</a>。</strong></p>
 </div>
         </div>
     </div>
@@ -175,7 +159,7 @@
 </table>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Access-list ID 演進<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Access-list ID 演進<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>最早設計 Access-list ID 無論是標準型或是延伸型只有開放 100組，囿於 ACL 功能非常強大，僅 100 組對於中大型企業來說實在不敷使用，故又開放一組新的範圍(並非每一個網路設備都支援)供管理者使用。</em></div>
@@ -187,8 +171,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">access-list &lt;sequence-number&gt; { permit | deny } 來源地址或來源網段
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">access-list &lt;sequence-number&gt; { permit | deny } 來源地址或來源網段
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>sequence-number -&gt; 0-99, 1300-1999</em></p>
 <p><strong>允許所有來源 192.168.50.0/24 網段封包放行。</strong></p>
@@ -198,13 +182,13 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 1 permit 192.168.50.0 0.0.0.255
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 1 permit 192.168.50.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Wildcard Mask<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Wildcard Mask<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">ACL 判斷網段或是主機是透過 萬用遮罩方式來計算，簡單計算方式就是將原本子網路遮罩二進位作反向( 0-&gt;1, 1-&gt;0 )得出的答案及為 Wildcard Mask。</div>
@@ -216,8 +200,8 @@ access-list 1 permit 192.168.50.0 0.0.0.255
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">access-list &lt;sequence-number&gt; { permit | deny }  { tcp | upd | icmp }  來源地址或來源網段 目的地址或目的網段  [{ eq port | range min-port max-port }]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">access-list &lt;sequence-number&gt; { permit | deny }  { tcp | upd | icmp }  來源地址或來源網段 目的地址或目的網段  [{ eq port | range min-port max-port }]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>sequence-number -&gt; 100-199, 2000-2699</em></p>
 <p><strong>允許所有來源 192.168.50.0/24 網段封包可以存取 10.10.10.10 指定主機的 tcp/80 服務。</strong></p>
@@ -227,9 +211,9 @@ access-list 1 permit 192.168.50.0 0.0.0.255
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="313-命名型-acl-語法">3.1.3 命名型 ACL 語法</h2>
 <p>除上述使用 ID 來區分標準或是延伸型的 ACL 之外，在新版本引入透過賦予名子方式來定義 ACL，定義完後會自動進入 ACL 的子命令模式設定條件。</p>
@@ -238,8 +222,8 @@ access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ip access-list { standard | extended }  &lt;ACL_Name&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip access-list { standard | extended }  &lt;ACL_Name&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>標準型命名方式 - 允許所有來源 192.168.50.0/24 網段封包放行。</strong></p>
 <div class="highlight"><div class="chroma">
@@ -249,10 +233,10 @@ access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">R1#conf t
-R1(config)#ip access-list standard example_acl1
-R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R1#conf t
+</span></span><span class="line"><span class="cl">R1(config)#ip access-list standard example_acl1
+</span></span><span class="line"><span class="cl">R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>延伸型命名方式 - 允許所有來源 192.168.50.0/24 網段封包可以存取 10.10.10.10 指定主機的 tcp/80 服務。</strong></p>
 <div class="highlight"><div class="chroma">
@@ -262,10 +246,10 @@ R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">R1#conf t
-R1(config)#ip access-list extended example_acl2
-R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R1#conf t
+</span></span><span class="line"><span class="cl">R1(config)#ip access-list extended example_acl2
+</span></span><span class="line"><span class="cl">R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-啟用-acl">4 啟用 ACL</h2>
@@ -281,16 +265,16 @@ R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 1 deny 192.168.50.0 0.0.0.255
-access-list 1 permit any
-int g0/0/0
-    ip access-group 1 in
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 1 deny 192.168.50.0 0.0.0.255
+</span></span><span class="line"><span class="cl">access-list 1 permit any
+</span></span><span class="line"><span class="cl">int g0/0/0
+</span></span><span class="line"><span class="cl">    ip access-group 1 in
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>最少需要一個 permit<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>最少需要一個 permit<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">上述提到每一個 ACL 程式都有一個隱藏的 deny any 的條件，如果設定的條件列表中沒有任何一行是 permit 就毫無意義，預設最基本就是 deny any 拒絕所有封包規則。</div>
@@ -306,15 +290,15 @@ int g0/0/0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-int g0/0/1
-    ip access-group 101 out
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span><span class="line"><span class="cl">int g0/0/1
+</span></span><span class="line"><span class="cl">    ip access-group 101 out
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>命名型 ACL 啟用<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>命名型 ACL 啟用<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content">如果是命名型 ACL 僅需將 ID 更改成 ACL 名稱即可。</div>
@@ -339,7 +323,7 @@ int g0/0/1
         alt="https://i.imgur.com/EfYJQ1J.png"
         title="https://i.imgur.com/EfYJQ1J.png" /></p>
 <ul>
-<li>Download 此 LAB PKA 檔案<a href="https://itexamanswers.net/download/5-4-13-packet-tracer-configure-extended-ipv4-acls-scenario-2-pka?wpdmdl=55918&amp;refresh=6295a0686bd0f1653973096&amp;ind=0&amp;filename=1600260149wpdm_5.4.13%20Packet%20Tracer%20-%20Configure%20Extended%20IPv4%20ACLs%20-%20Scenario%202.pka" target="_blank" rel="noopener noreffer">請點我</a>，資源來至 itexamanswers.net 網站。</li>
+<li>Download 此 LAB PKA 檔案<a href="https://itexamanswers.net/download/5-4-13-packet-tracer-configure-extended-ipv4-acls-scenario-2-pka?wpdmdl=55918&amp;refresh=6295a0686bd0f1653973096&amp;ind=0&amp;filename=1600260149wpdm_5.4.13%20Packet%20Tracer%20-%20Configure%20Extended%20IPv4%20ACLs%20-%20Scenario%202.pka" target="_blank" rel="noopener noreffer ">請點我</a>，資源來至 itexamanswers.net 網站。</li>
 </ul>
 <h3 id="51-目標">5.1. 目標：</h3>
 <ol>
@@ -371,18 +355,18 @@ int g0/0/1
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-ip access-list extended ACL-LAB
- deny tcp host 172.31.1.101 host 64.101.255.254 eq 80
- deny tcp host 172.31.1.101 host 64.101.255.254 eq 443
- deny tcp host 172.31.1.101 host 64.103.255.254 eq 80
- deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
- deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
- deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
- deny icmp host 172.31.1.103 host 64.101.255.254
- deny icmp host 172.31.1.103 host 64.103.255.254
- permit ip any any
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">ip access-list extended ACL-LAB
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.101.255.254 eq 80
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.101.255.254 eq 443
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.103.255.254 eq 80
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
+</span></span><span class="line"><span class="cl"> deny icmp host 172.31.1.103 host 64.101.255.254
+</span></span><span class="line"><span class="cl"> deny icmp host 172.31.1.103 host 64.103.255.254
+</span></span><span class="line"><span class="cl"> permit ip any any
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>啟用 ACL</li>
@@ -393,13 +377,13 @@ ip access-list extended ACL-LAB
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">int g0/0
- ip access-group ACL-LAB in
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">int g0/0
+</span></span><span class="line"><span class="cl"> ip access-group ACL-LAB in
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>檢查攔截封包次數<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>檢查攔截封包次數<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><em>透過 <code>show ip access-lists</code> 指令可以看出有多少封包被攔截。</em></p>
@@ -418,18 +402,18 @@ ip access-list extended ACL-LAB
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">show ip access-lists
-Extended IP access list ACL-LAB
-10 deny tcp host 172.31.1.101 host 64.101.255.254 eq www (12 match(es))
-20 deny tcp host 172.31.1.101 host 64.101.255.254 eq 443 (12 match(es))
-30 deny tcp host 172.31.1.101 host 64.103.255.254 eq www
-40 deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
-50 deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
-60 deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
-70 deny icmp host 172.31.1.103 host 64.101.255.254
-80 deny icmp host 172.31.1.103 host 64.103.255.254
-90 permit ip any any
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">show ip access-lists
+</span></span><span class="line"><span class="cl">Extended IP access list ACL-LAB
+</span></span><span class="line"><span class="cl">10 deny tcp host 172.31.1.101 host 64.101.255.254 eq www (12 match(es))
+</span></span><span class="line"><span class="cl">20 deny tcp host 172.31.1.101 host 64.101.255.254 eq 443 (12 match(es))
+</span></span><span class="line"><span class="cl">30 deny tcp host 172.31.1.101 host 64.103.255.254 eq www
+</span></span><span class="line"><span class="cl">40 deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
+</span></span><span class="line"><span class="cl">50 deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
+</span></span><span class="line"><span class="cl">60 deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
+</span></span><span class="line"><span class="cl">70 deny icmp host 172.31.1.103 host 64.101.255.254
+</span></span><span class="line"><span class="cl">80 deny icmp host 172.31.1.103 host 64.103.255.254
+</span></span><span class="line"><span class="cl">90 permit ip any any
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -446,71 +430,48 @@ Extended IP access list ACL-LAB
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ACL 
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-# Iptables
-iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ACL 
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span><span class="line"><span class="cl"># Iptables
+</span></span><span class="line"><span class="cl">iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
+</span></span></code></pre></td></tr></table>
 </div>
-</div></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-acl_concept%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-05-09</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" data-title="Cisco - Access Control List" data-hashtags="Network"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" data-hashtag="Network"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" data-title="Cisco - Access Control List"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" data-title="Cisco - Access Control List"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" data-title="Cisco - Access Control List"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">Network</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/network/">Network</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/windows/2022/windows-2016-ad-installer/" class="prev" rel="prev" title="Windows - 安裝及啟用 AD 網域服務"><i class="fas fa-angle-left fa-fw"></i>Windows - 安裝及啟用 AD 網域服務</a>
-            <a href="/posts/linux/2022/linux-iptables-filter/" class="next" rel="next" title="Linux - Iptables Filter 表規則管理">Linux - Iptables Filter 表規則管理<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/windows/2022/windows-2016-ad-installer/" class="prev" rel="prev" title="Windows - 安裝及啟用 AD 網域服務"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Windows - 安裝及啟用 AD 網域服務</a>
+            <a href="/posts/linux/2022/linux-iptables-filter/" class="next" rel="next" title="Linux - Iptables Filter 表規則管理">Linux - Iptables Filter 表規則管理<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

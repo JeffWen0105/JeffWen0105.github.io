@@ -8,8 +8,9 @@
     <title>K8s -  容器編排工具介紹</title>
     <link>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</link>
     <pubDate>Wed, 09 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</guid>
     <description><![CDATA[在現今軟體程式快速迭帶的時代就需要一個 &ldquo;可靠、可擴展的分散式管理系統&rdquo;，無論是軟體更新、系統維護都需要高度的穩定性及]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

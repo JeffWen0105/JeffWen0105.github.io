@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - 虛擬資料優化系統 - VDO - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 虛擬資料優化系統 - VDO" />
+        <title>Linux - 虛擬資料優化系統 - VDO - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - 虛擬資料優化系統 - VDO" />
 <meta property="og:description" content="建立一個雲端空間共同存放影片是的很好的地方，不過有 100 個每個人都存一部內容一模一樣佔 10GB 空間影片，就必須騰出 1TB 來存放，十分浪費，故 VDO ( Virtual Data Optimizer )目的就是重複檔案僅存一次，重複的內容使用捷徑方式儲存就可以大大的降低空間浪費。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-16T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 虛擬資料優化系統 - VDO"/>
 <meta name="twitter:description" content="建立一個雲端空間共同存放影片是的很好的地方，不過有 100 個每個人都存一部內容一模一樣佔 10GB 空間影片，就必須騰出 1TB 來存放，十分浪費，故 VDO ( Virtual Data Optimizer )目的就是重複檔案僅存一次，重複的內容使用捷徑方式儲存就可以大大的降低空間浪費。"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-lvm/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-rpm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-vdo\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1648 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1646 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-vdo\/","datePublished": "2022-02-16T00:00:00+00:00","dateModified": "2022-02-16T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 虛擬資料優化系統 - VDO</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-16">2022-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1648 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 4 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 虛擬資料優化系統 - VDO</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-16">2022-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1646 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -159,18 +143,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# yum install vdo
-Dependencies resolved.
-==================================================================================================================================================================================================================
- Package                                               Architecture                                  Version                                                  Repository                                     Size
-==================================================================================================================================================================================================================
-Installing:
- vdo                                                   x86_64                                        6.2.5.74-14.el8                                          BaseOS                                        661 k
-Installing dependencies:
- kmod-kvdo                                             x86_64                                        6.2.5.72-81.el8                                          BaseOS                                        339 k
- python3-pyyaml                                        x86_64                                        3.12-12.el8                                              BaseOS                                        192 k
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# yum install vdo
+</span></span><span class="line"><span class="cl">Dependencies resolved.
+</span></span><span class="line"><span class="cl">==================================================================================================================================================================================================================
+</span></span><span class="line"><span class="cl"> Package                                               Architecture                                  Version                                                  Repository                                     Size
+</span></span><span class="line"><span class="cl">==================================================================================================================================================================================================================
+</span></span><span class="line"><span class="cl">Installing:
+</span></span><span class="line"><span class="cl"> vdo                                                   x86_64                                        6.2.5.74-14.el8                                          BaseOS                                        661 k
+</span></span><span class="line"><span class="cl">Installing dependencies:
+</span></span><span class="line"><span class="cl"> kmod-kvdo                                             x86_64                                        6.2.5.72-81.el8                                          BaseOS                                        339 k
+</span></span><span class="line"><span class="cl"> python3-pyyaml                                        x86_64                                        3.12-12.el8                                              BaseOS                                        192 k
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-vdo-創建以掛載">3. VDO 創建以掛載</h2>
@@ -189,16 +173,16 @@ Installing dependencies:
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100% print</span>
-Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
-Disk /dev/vdd: 10.7GB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
-Partition Table: msdos
-Disk Flags: 
-
-Number  Start   End     Size    Type     File system  Flags
- <span class="m">1</span>      1049kB  10.7GB  10.7GB  primary  xfs          lba
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100% print</span>
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/vdd: 10.7GB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: msdos
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End     Size    Type     File system  Flags
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>      1049kB  10.7GB  10.7GB  primary  xfs          lba
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-創建-vdo">3.2. 創建 VDO</h3>
 <div class="highlight"><div class="chroma">
@@ -213,19 +197,19 @@ Number  Start   End     Size    Type     File system  Flags
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdo1 --device=/dev/vdd1 --vdoLogicalSize=10T</span>
-Creating VDO vdo1
-      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
-      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
-      If a larger maximum size might be needed, use bigger slabs.
-Starting VDO vdo1
-Starting compression on VDO vdo1
-VDO instance <span class="m">1</span> volume is ready at /dev/mapper/vdo1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdo1 --device=/dev/vdd1 --vdoLogicalSize=10T</span>
+</span></span><span class="line"><span class="cl">Creating VDO vdo1
+</span></span><span class="line"><span class="cl">      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
+</span></span><span class="line"><span class="cl">      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
+</span></span><span class="line"><span class="cl">      If a larger maximum size might be needed, use bigger slabs.
+</span></span><span class="line"><span class="cl">Starting VDO vdo1
+</span></span><span class="line"><span class="cl">Starting compression on VDO vdo1
+</span></span><span class="line"><span class="cl">VDO instance <span class="m">1</span> volume is ready at /dev/mapper/vdo1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>創建的 VDO SIZE 可以比硬碟空間來的大是沒有問題，VDO 透過軟體虛擬出來的，如空間不足多加幾個硬碟即可。</em></div>
@@ -247,18 +231,18 @@ VDO instance <span class="m">1</span> volume is ready at /dev/mapper/vdo1
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdo1 </span>
-meta-data<span class="o">=</span>/dev/mapper/vdo1       <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>10, <span class="nv">agsize</span><span class="o">=</span><span class="m">268435455</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>2684354550, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">5</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>521728, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdo1 </span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/mapper/vdo1       <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>10, <span class="nv">agsize</span><span class="o">=</span><span class="m">268435455</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>2684354550, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">5</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>521728, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="34-創建目錄並使用-vdo-掛載">3.4. 創建目錄並使用 VDO 掛載</h3>
 <div class="highlight"><div class="chroma">
@@ -271,13 +255,13 @@ meta-data<span class="o">=</span>/dev/mapper/vdo1       <span class="nv">isize</
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# mkdir -v /vdo
-mkdir: created directory &#39;/vdo&#39;
-[root@serverc ~]# mount /dev/mapper/vdo1 /vdo
-[root@serverc ~]# df -h /vdo
-Filesystem        Size  Used Avail Use% Mounted on
-/dev/mapper/vdo1   10T   72G   10T   1% /vdo
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# mkdir -v /vdo
+</span></span><span class="line"><span class="cl">mkdir: created directory &#39;/vdo&#39;
+</span></span><span class="line"><span class="cl">[root@serverc ~]# mount /dev/mapper/vdo1 /vdo
+</span></span><span class="line"><span class="cl">[root@serverc ~]# df -h /vdo
+</span></span><span class="line"><span class="cl">Filesystem        Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/vdo1   10T   72G   10T   1% /vdo
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="35-開機自動掛載">3.5. 開機自動掛載</h3>
 <p>囿於 VDO 服務是由 systemd 託管，不過再開機過程中先 mount 硬碟最後才會啟動 systemd ，在沒有 VDO 服務時，系統會認定找不到該硬碟導致無法開機進入救援模式，所以必須加上特定參數，使得 VDO 等服務啟動後再執行 mount。</p>
@@ -288,14 +272,14 @@ Filesystem        Size  Used Avail Use% Mounted on
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# cat &gt;&gt; /etc/fstab &lt;&lt; EOL
-&gt; /dev/mapper/vdo0 /vdo xfs defaults,x-systemd.requires=vdo.service 0 0
-&gt; EOL
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# cat &gt;&gt; /etc/fstab &lt;&lt; EOL
+</span></span><span class="line"><span class="cl">&gt; /dev/mapper/vdo0 /vdo xfs defaults,x-systemd.requires=vdo.service 0 0
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition danger open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-skull-crossbones fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-skull-crossbones fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><strong>一定要加上 x-systemd.requires=vdo.service 參數，不然會導致開機不起來..</strong></div>
@@ -311,14 +295,14 @@ Filesystem        Size  Used Avail Use% Mounted on
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# vdostats --human-readable 
-Device                    Size      Used Available Use% Space saving%
-/dev/mapper/vdo1         10.0G      4.0G      6.0G  40%           99%
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable 
+</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
+</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.0G      6.0G  40%           99%
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>就算沒有任何檔案， VDO 預設會保留 3 - 4G的空間做為緩衝。</em></div>
@@ -334,12 +318,12 @@ Device                    Size      Used Available Use% Space saving%
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# ls -lh /usr/lib/locale/locale-archive
--rw-r--r--. 1 root root 208M Feb 16 12:49 /usr/lib/locale/locale-archive
-[root@serverc ~]# vdostats --human-readable
-Device                    Size      Used Available Use% Space saving%
-/dev/mapper/vdo1         10.0G      4.1G      5.9G  40%           96%
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# ls -lh /usr/lib/locale/locale-archive
+</span></span><span class="line"><span class="cl">-rw-r--r--. 1 root root 208M Feb 16 12:49 /usr/lib/locale/locale-archive
+</span></span><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable
+</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
+</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.1G      5.9G  40%           96%
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="43-使用回圈多複製30個上述檔案並查看-vdo-狀態">4.3. 使用回圈多複製30個上述檔案，並查看 VDO 狀態</h3>
 <p>使用迴圈複製相同檔案多次，實際上只佔用一次檔案的空間，可以看出 saving% 比上一步驟增加了 4% ，不過 Used 還是維持 4.1 G。</p>
@@ -351,21 +335,21 @@ Device                    Size      Used Available Use% Space saving%
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# for i in {1..30} ; do cp /usr/lib/locale/locale-archive /vdo/test${i}; done
-[root@serverc ~]# vdostats --human-readable
-Device                    Size      Used Available Use% Space saving%
-/dev/mapper/vdo1         10.0G      4.1G      5.9G  41%           98%
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# for i in {1..30} ; do cp /usr/lib/locale/locale-archive /vdo/test${i}; done
+</span></span><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable
+</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
+</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.1G      5.9G  41%           98%
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-lab-練習">5. LAB 練習</h2>
 <h3 id="51--lab">5.1.  LAB</h3>
 <div class="details admonition success open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-check-circle fa-fw"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content"><p><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer">使用方式請參閱 HowHow 網站</a>。</em></p>
+            <div class="admonition-content"><p><em>可以使用 HowHow 的創建 Lab 練習環境，操作錯誤導致系統失敗可以直接重置還原，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer ">使用方式請參閱 HowHow 網站</a>。</em></p>
 <blockquote>
 <p>囿於 HowHow 預設掛載硬碟較小，請在 bastion 機器下載 initVDO.sh 腳本後會自動擴展 serverc VDD的硬碟大小，執行方式如下：</p>
 </blockquote>
@@ -385,19 +369,19 @@ Device                    Size      Used Available Use% Space saving%
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@bastion tmp]# curl  https://how64bit.com/RHCSA/script/initVDO.sh -O initVOD.sh
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   944    0   944    0     0   2551      0 --:--:-- --:--:-- --:--:--  2551
-[root@bastion tmp]# sh initVDO.sh
-...
-
-# Serverc 預設沒有 yum.repo，手動複製 倉庫清單
-[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/.
-# 安裝 VDO
-[root@serverc ~]# yum install vdo
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@bastion tmp]# curl  https://how64bit.com/RHCSA/script/initVDO.sh -O initVOD.sh
+</span></span><span class="line"><span class="cl">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span></span><span class="line"><span class="cl">                                 Dload  Upload   Total   Spent    Left  Speed
+</span></span><span class="line"><span class="cl">100   944    0   944    0     0   2551      0 --:--:-- --:--:-- --:--:--  2551
+</span></span><span class="line"><span class="cl">[root@bastion tmp]# sh initVDO.sh
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Serverc 預設沒有 yum.repo，手動複製 倉庫清單
+</span></span><span class="line"><span class="cl">[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/.
+</span></span><span class="line"><span class="cl"># 安裝 VDO
+</span></span><span class="line"><span class="cl">[root@serverc ~]# yum install vdo
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -405,16 +389,16 @@ Device                    Size      Used Available Use% Space saving%
 <blockquote>
 <p>LAB 如下要求，創建新的 <code>VDO</code> ：</p>
 <ul>
-<li><i class="far fa-square fa-fw"></i> 使用一個未分割的硬碟</li>
-<li><i class="far fa-square fa-fw"></i> VDO名稱為 <code>vdough</code></li>
-<li><i class="far fa-square fa-fw"></i> 大小為 <code>50G</code></li>
-<li><i class="far fa-square fa-fw"></i> 使用 <code>xfs</code> 檔案系統格式化</li>
-<li><i class="far fa-square fa-fw"></i> 開機後自動掛載到 <code>/vbread</code> 目錄下</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 使用一個未分割的硬碟</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> VDO名稱為 <code>vdough</code></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 大小為 <code>50G</code></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 使用 <code>xfs</code> 檔案系統格式化</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 開機後自動掛載到 <code>/vbread</code> 目錄下</li>
 </ul>
 </blockquote>
 <div class="details admonition example open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ol fa-fw"></i>還原初始設定<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-list-ol fa-fw" aria-hidden="true"></i>還原初始設定<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>LAB練習完畢後，可以至 bastion 機器執行 rht-vmctl reset serverc 重置 serverc 將硬碟回初始設定。</em></div>
@@ -429,10 +413,10 @@ Device                    Size      Used Available Use% Space saving%
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 使用 HowHow 的 LAB 需先配置倉庫清單
-[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/. &amp;&amp; yum install -y vdo
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 使用 HowHow 的 LAB 需先配置倉庫清單
+</span></span><span class="line"><span class="cl">[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/. &amp;&amp; yum install -y vdo
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="522-分割硬碟並創建-vdo">5.2.2. 分割硬碟並創建 VDO</h3>
 <div class="highlight"><div class="chroma">
@@ -448,16 +432,16 @@ Device                    Size      Used Available Use% Space saving%
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100%</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdough --device=/dev/vdd1 --vdoLogicalSize=50G</span>
-Creating VDO vdough
-      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
-      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
-      If a larger maximum size might be needed, use bigger slabs.
-Starting VDO vdough
-Starting compression on VDO vdough
-VDO instance <span class="m">0</span> volume is ready at /dev/mapper/vdough
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100%</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdough --device=/dev/vdd1 --vdoLogicalSize=50G</span>
+</span></span><span class="line"><span class="cl">Creating VDO vdough
+</span></span><span class="line"><span class="cl">      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
+</span></span><span class="line"><span class="cl">      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
+</span></span><span class="line"><span class="cl">      If a larger maximum size might be needed, use bigger slabs.
+</span></span><span class="line"><span class="cl">Starting VDO vdough
+</span></span><span class="line"><span class="cl">Starting compression on VDO vdough
+</span></span><span class="line"><span class="cl">VDO instance <span class="m">0</span> volume is ready at /dev/mapper/vdough
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="523-使用-xfs-檔案系統格式化">5.2.3. 使用 XFS 檔案系統格式化</h3>
 <div class="highlight"><div class="chroma">
@@ -475,18 +459,18 @@ VDO instance <span class="m">0</span> volume is ready at /dev/mapper/vdough
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdough </span>
-meta-data<span class="o">=</span>/dev/mapper/vdough     <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">3276800</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>13107200, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>6400, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdough </span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/mapper/vdough     <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">3276800</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>13107200, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>6400, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="524-設定開機自動掛載至-vbread-目錄">5.2.4. 設定開機自動掛載至 /vbread 目錄</h3>
 <div class="highlight"><div class="chroma">
@@ -502,87 +486,64 @@ meta-data<span class="o">=</span>/dev/mapper/vdough     <span class="nv">isize</
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /vbread</span>
-mkdir: created directory <span class="s1">&#39;/vbread&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-&gt; /dev/mapper/vdough /vbread xfs defaults,x-systemd.requires<span class="o">=</span>vdo.service <span class="m">0</span> <span class="m">0</span>
-&gt; EOL
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /vbread/</span>
-Filesystem          Size  Used Avail Use% Mounted on
-/dev/mapper/vdough   50G  390M   50G   1% /vbread
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /vbread</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/vbread&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+</span></span><span class="line"><span class="cl">&gt; /dev/mapper/vdough /vbread xfs defaults,x-systemd.requires<span class="o">=</span>vdo.service <span class="m">0</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /vbread/</span>
+</span></span><span class="line"><span class="cl">Filesystem          Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/vdough   50G  390M   50G   1% /vbread
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="525-reboot-重新開機">5.2.5. reboot 重新開機</h3>
 <p>確保重新開機後，所有目錄都正常掛載。</p>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果無法正常開機，表示 /etc/fstab 中有錯誤，可以至 bastion 機器執行 rht-vmctl reset serverc 重置 serverc 回初始設定，並再次執行 initVDO.sh 擴展硬碟空間 。</em></div>
         </div>
     </div>
 <h2 id="6-小結">6. 小結</h2>
-<p>VDO 是架設共享雲端空間非常好用的利器，如果有要打造公司內部分享可以使用此軟體，大大的降低儲存成本。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-storage-vdo%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>VDO 是架設共享雲端空間非常好用的利器，如果有要打造公司內部分享可以使用此軟體，大大的降低儲存成本。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-02-16</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" data-title="Linux - 虛擬資料優化系統 - VDO" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" data-title="Linux - 虛擬資料優化系統 - VDO"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" data-title="Linux - 虛擬資料優化系統 - VDO"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/" data-title="Linux - 虛擬資料優化系統 - VDO"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-lvm/" class="prev" rel="prev" title="Linux - 邏輯卷冊管理 LVM"><i class="fas fa-angle-left fa-fw"></i>Linux - 邏輯卷冊管理 LVM</a>
-            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-lvm/" class="prev" rel="prev" title="Linux - 邏輯卷冊管理 LVM"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 邏輯卷冊管理 LVM</a>
+            <a href="/posts/linux/2022/linux-rpm/" class="next" rel="next" title="Linux - RPM 套件管理工具">Linux - RPM 套件管理工具<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

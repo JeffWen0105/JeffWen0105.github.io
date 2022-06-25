@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Nginx - 反向代理的代名詞 - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Nginx - 反向代理的代名詞" />
+        <title>Nginx - 反向代理的代名詞 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Nginx - 反向代理的代名詞" />
 <meta property="og:description" content="Nginx 為全世界 Web 伺服器龍頭寶座，除了網頁伺服器之外，另外可以實現反向代理、負載平衡器和HTTP 快取各功能，並且輕量快速為著名。 1. Nginx 簡介 Nginx 的發音是" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-14T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx - 反向代理的代名詞"/>
 <meta name="twitter:description" content="Nginx 為全世界 Web 伺服器龍頭寶座，除了網頁伺服器之外，另外可以實現反向代理、負載平衡器和HTTP 快取各功能，並且輕量快速為著名。 1. Nginx 簡介 Nginx 的發音是"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="next" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/nginx\/2022\/nginx-introduction\/"
-        },"genre": "posts","keywords": "Nginx","wordcount":  1153 ,
+        },"genre": "posts","keywords": "Nginx","wordcount":  1157 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/nginx\/2022\/nginx-introduction\/","datePublished": "2022-02-14T00:00:00+00:00","dateModified": "2022-02-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Nginx - 反向代理的代名詞</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1153 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 3 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Nginx - 反向代理的代名詞</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Nginx</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1157 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -143,7 +127,7 @@
 <p>RHEL 8 系列包含 ( Redhat、 CentOS、 Oracle Linux 、 Rocky Linux 等)</p>
 <ol>
 <li>
-<p>進入 Nginx 官網， 官網連結<a href="https://nginx.org/en/linux_packages.html#RHEL-CentOS" target="_blank" rel="noopener noreffer">請點我</a></p>
+<p>進入 Nginx 官網， 官網連結<a href="https://nginx.org/en/linux_packages.html#RHEL-CentOS" target="_blank" rel="noopener noreffer ">請點我</a></p>
 </li>
 <li>
 <p>選擇 Nginx 穩定版倉庫地址</p>
@@ -160,14 +144,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim">[<span class="nx">nginx</span><span class="p">-</span><span class="nx">stable</span>]<span class="err">
-</span><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">nginx</span> <span class="nx">stable</span> <span class="nx">repo</span><span class="err">
-</span><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">nginx</span>.<span class="nx">org</span><span class="sr">/packages/</span><span class="nx">centos</span><span class="sr">/$releasever/</span>$<span class="nx">basearch</span>/<span class="err">
-</span><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">https</span>:<span class="sr">//</span><span class="nx">nginx</span>.<span class="nx">org</span><span class="sr">/keys/</span><span class="nx">nginx_signing</span>.<span class="nx">key</span><span class="err">
-</span><span class="err"></span><span class="nx">module_hotfixes</span><span class="p">=</span><span class="nx">true</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl">[<span class="nx">nginx</span><span class="p">-</span><span class="nx">stable</span>]<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">nginx</span> <span class="nx">stable</span> <span class="nx">repo</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">nginx</span>.<span class="nx">org</span><span class="sr">/packages/</span><span class="nx">centos</span><span class="sr">/$releasever/</span>$<span class="nx">basearch</span>/<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">https</span>:<span class="sr">//</span><span class="nx">nginx</span>.<span class="nx">org</span><span class="sr">/keys/</span><span class="nx">nginx_signing</span>.<span class="nx">key</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">module_hotfixes</span><span class="p">=</span><span class="nx">true</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>創建新的倉庫清單 /etc/yum.repos.d/nginx.repo ， 並將 Nginx 貼上穩定版倉庫地址</li>
@@ -185,16 +169,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">cat  &gt;&gt; /etc/yum.repos.d/nginx.repo  <span class="s">&lt;&lt; EOF
-</span><span class="s">[nginx-stable]
-</span><span class="s">name=nginx stable repo
-</span><span class="s">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
-</span><span class="s">gpgcheck=1
-</span><span class="s">enabled=1
-</span><span class="s">gpgkey=https://nginx.org/keys/nginx_signing.key
-</span><span class="s">module_hotfixes=true
-</span><span class="s">EOF</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat  &gt;&gt; /etc/yum.repos.d/nginx.repo  <span class="s">&lt;&lt; EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">[nginx-stable]
+</span></span></span><span class="line"><span class="cl"><span class="s">name=nginx stable repo
+</span></span></span><span class="line"><span class="cl"><span class="s">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+</span></span></span><span class="line"><span class="cl"><span class="s">gpgcheck=1
+</span></span></span><span class="line"><span class="cl"><span class="s">enabled=1
+</span></span></span><span class="line"><span class="cl"><span class="s">gpgkey=https://nginx.org/keys/nginx_signing.key
+</span></span></span><span class="line"><span class="cl"><span class="s">module_hotfixes=true
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>安裝 nginx 套件</li>
@@ -213,17 +197,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install nginx</span>
-nginx stable repo                                                                                                                                                                  <span class="m">25</span> kB/s <span class="p">|</span>  <span class="m">36</span> kB     00:01    
-Dependencies resolved.
-<span class="o">==================================================================================================================================================================================================================</span>
- Package                                      Architecture                                  Version                                                     Repository                                           <span class="nv">Size</span>
-<span class="o">==================================================================================================================================================================================================================</span>
-Installing:
- nginx                                        x86_64                                        1:1.20.2-1.el8.ngx                                          nginx-stable                                        <span class="m">820</span> k
-
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install nginx</span>
+</span></span><span class="line"><span class="cl">nginx stable repo                                                                                                                                                                  <span class="m">25</span> kB/s <span class="p">|</span>  <span class="m">36</span> kB     00:01    
+</span></span><span class="line"><span class="cl">Dependencies resolved.
+</span></span><span class="line"><span class="cl"><span class="o">==================================================================================================================================================================================================================</span>
+</span></span><span class="line"><span class="cl"> Package                                      Architecture                                  Version                                                     Repository                                           <span class="nv">Size</span>
+</span></span><span class="line"><span class="cl"><span class="o">==================================================================================================================================================================================================================</span>
+</span></span><span class="line"><span class="cl">Installing:
+</span></span><span class="line"><span class="cl"> nginx                                        x86_64                                        1:1.20.2-1.el8.ngx                                          nginx-stable                                        <span class="m">820</span> k
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>上啟動 Nginx 並且託管由 systemd 開機自動拉起</li>
@@ -233,8 +217,8 @@ Installing:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemctl <span class="nb">enable</span> nginx --now
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> nginx --now
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>檢查服務是否可以存取</li>
@@ -269,33 +253,33 @@ Installing:
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# curl 127.0.0.1
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a href=&#34;http://nginx.com/&#34;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# curl 127.0.0.1
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    body {
+</span></span><span class="line"><span class="cl">        width: 35em;
+</span></span><span class="line"><span class="cl">        margin: 0 auto;
+</span></span><span class="line"><span class="cl">        font-family: Tahoma, Verdana, Arial, sans-serif;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a href=&#34;http://nginx.com/&#34;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-以-ubuntu-安裝為例-">3.2 以 Ubuntu 安裝為例 :</h3>
 <ol>
@@ -307,9 +291,9 @@ Commercial support is available at
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">apt update
-apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">apt update
+</span></span><span class="line"><span class="cl">apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>匯入 gpgkey</li>
@@ -320,9 +304,9 @@ apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl https://nginx.org/keys/nginx_signing.key <span class="p">|</span> gpg --dearmor <span class="se">\
-</span><span class="se"></span>    <span class="p">|</span>  tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl https://nginx.org/keys/nginx_signing.key <span class="p">|</span> gpg --dearmor <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="p">|</span>  tee /usr/share/keyrings/nginx-archive-keyring.gpg &gt;/dev/null
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>加入 Nginx 倉庫清單</li>
@@ -334,10 +318,10 @@ apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
-</span><span class="s2">http://nginx.org/packages/ubuntu `lsb_release -cs` nginx&#34;</span> <span class="se">\
-</span><span class="se"></span>    <span class="p">|</span> tee /etc/apt/sources.list.d/nginx.list
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+</span></span></span><span class="line"><span class="cl"><span class="s2">http://nginx.org/packages/ubuntu `lsb_release -cs` nginx&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="p">|</span> tee /etc/apt/sources.list.d/nginx.list
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>安裝 Nginx 套件</li>
@@ -348,9 +332,9 @@ apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
-sudo apt install nginx
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install nginx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>上啟動 Nginx 並且託管由 systemd 開機自動拉起</li>
@@ -360,8 +344,8 @@ sudo apt install nginx
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">systemctl enable nginx --now
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">systemctl enable nginx --now
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>檢查服務是否可以存取</li>
@@ -396,95 +380,72 @@ sudo apt install nginx
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# curl 127.0.0.1
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a href=&#34;http://nginx.com/&#34;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# curl 127.0.0.1
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    body {
+</span></span><span class="line"><span class="cl">        width: 35em;
+</span></span><span class="line"><span class="cl">        margin: 0 auto;
+</span></span><span class="line"><span class="cl">        font-family: Tahoma, Verdana, Arial, sans-serif;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a href=&#34;http://nginx.org/&#34;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a href=&#34;http://nginx.com/&#34;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4-小結">4. 小結</h2>
 <p>Nginx 是個十分強大且好用的工具，熟悉其使用與掌握很重要。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fnginx%2f2022%2fnginx-introduction%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-02-14</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" data-title="Nginx - 反向代理的代名詞" data-hashtags="Nginx"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" data-hashtag="Nginx"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" data-title="Nginx - 反向代理的代名詞"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" data-title="Nginx - 反向代理的代名詞"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" data-title="Nginx - 反向代理的代名詞"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">Nginx</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/nginx/">Nginx</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-selinux/" class="prev" rel="prev" title="Linux - 安全增強式 Linux ( SELinux )"><i class="fas fa-angle-left fa-fw"></i>Linux - 安全增強式 Linux ( SELinux )</a>
-            <a href="/posts/linux/2022/linux-storage-partition/" class="next" rel="next" title="Linux - 硬碟的分割及掛載">Linux - 硬碟的分割及掛載<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-selinux/" class="prev" rel="prev" title="Linux - 安全增強式 Linux ( SELinux )"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 安全增強式 Linux ( SELinux )</a>
+            <a href="/posts/linux/2022/linux-storage-partition/" class="next" rel="next" title="Linux - 硬碟的分割及掛載">Linux - 硬碟的分割及掛載<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

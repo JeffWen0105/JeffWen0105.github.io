@@ -4,7 +4,6 @@ Disallow: /images/
 Disallow: /js/
 Disallow: /css/
 
-
 User-agent: MJ12bot
 Disallow: /
 

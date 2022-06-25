@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - 容器管理工具 - Podman - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 容器管理工具 - Podman" />
+        <title>Linux - 容器管理工具 - Podman - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - 容器管理工具 - Podman" />
 <meta property="og:description" content="輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-08T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 容器管理工具 - Podman"/>
 <meta name="twitter:description" content="輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/" /><link rel="next" href="https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/" /><link rel="next" href="https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-containers-podman\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1526 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1511 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-containers-podman\/","datePublished": "2022-03-08T00:00:00+00:00","dateModified": "2022-03-08T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 容器管理工具 - Podman</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1526 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 4 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 容器管理工具 - Podman</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1511 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -155,7 +139,7 @@
     </figure></p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>預設環境<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>預設環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>RHEL 8 一般安裝就會預設使用 podman ，如果是最小安裝可以直接 <code>yum install podman</code> 進行安裝。</em></div>
@@ -171,8 +155,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">podman run <span class="o">[</span>options<span class="o">]</span> &lt;image name&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman run <span class="o">[</span>options<span class="o">]</span> &lt;image name&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -193,28 +177,26 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name my-nginx nginx
-✔ docker.io/library/nginx:latest
-Trying to pull docker.io/library/nginx:latest...
-Getting image <span class="nb">source</span> signatures
-Copying blob 2215908dc0a2 <span class="k">done</span>  
-Copying blob 08c3cb2073f1 <span class="k">done</span>  
-Copying blob c4ffe9532b5f <span class="k">done</span>  
-Copying blob 18f38162c0ce <span class="k">done</span>  
-Copying blob c229119241af <span class="k">done</span>  
-Copying blob 10e2168f148a <span class="k">done</span>  
-Copying config 12766a6745 <span class="k">done</span>  
-Writing manifest to image destination
-Storing signatures
-a2ca71137977c101ec989e4c490467b0b4a2672d80ca542563759f03956e130b
-<span class="o">[</span>student@servera ~<span class="o">]</span>$ podman ps
-CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS       NAMES
-a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class="m">11</span> seconds ago  Up <span class="m">10</span> seconds ago              my-nginx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name my-nginx nginx
+</span></span><span class="line"><span class="cl">✔ docker.io/library/nginx:latest
+</span></span><span class="line"><span class="cl">Trying to pull docker.io/library/nginx:latest...
+</span></span><span class="line"><span class="cl">Getting image <span class="nb">source</span> signatures
+</span></span><span class="line"><span class="cl">Copying blob 2215908dc0a2 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 08c3cb2073f1 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob c4ffe9532b5f <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 18f38162c0ce <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob c229119241af <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 10e2168f148a <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying config 12766a6745 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Writing manifest to image destination
+</span></span><span class="line"><span class="cl">Storing signatures
+</span></span><span class="line"><span class="cl">a2ca71137977c101ec989e4c490467b0b4a2672d80ca542563759f03956e130b
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman ps
+</span></span><span class="line"><span class="cl">CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS       NAMES
+</span></span><span class="line"><span class="cl">a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class="m">11</span> seconds ago  Up <span class="m">10</span> seconds ago              my-nginx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>常用的參數:</p>
 <ol>
@@ -230,8 +212,8 @@ a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class=
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">podman <span class="nb">exec</span>  <span class="o">[</span>options<span class="o">]</span> &lt;container name&gt; &lt;command&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman <span class="nb">exec</span>  <span class="o">[</span>options<span class="o">]</span> &lt;container name&gt; &lt;command&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>常用的參數:</p>
 <ol>
@@ -283,45 +265,45 @@ a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class=
 </span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name restart-nginx -p 8080:80 nginx
-✔ docker.io/library/nginx:latest
-Trying to pull docker.io/library/nginx:latest...
-Getting image <span class="nb">source</span> signatures
-Copying blob 18f38162c0ce <span class="k">done</span>  
-Copying blob c4ffe9532b5f <span class="k">done</span>  
-Copying blob 08c3cb2073f1 <span class="k">done</span>  
-Copying blob 10e2168f148a <span class="k">done</span>  
-Copying blob 2215908dc0a2 <span class="k">done</span>  
-Copying blob c229119241af <span class="k">done</span>  
-Copying config 12766a6745 <span class="k">done</span>  
-Writing manifest to image destination
-Storing signatures
-0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
-<span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name restart-nginx -p 8080:80 nginx
+</span></span><span class="line"><span class="cl">✔ docker.io/library/nginx:latest
+</span></span><span class="line"><span class="cl">Trying to pull docker.io/library/nginx:latest...
+</span></span><span class="line"><span class="cl">Getting image <span class="nb">source</span> signatures
+</span></span><span class="line"><span class="cl">Copying blob 18f38162c0ce <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob c4ffe9532b5f <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 08c3cb2073f1 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 10e2168f148a <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob 2215908dc0a2 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying blob c229119241af <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Copying config 12766a6745 <span class="k">done</span>  
+</span></span><span class="line"><span class="cl">Writing manifest to image destination
+</span></span><span class="line"><span class="cl">Storing signatures
+</span></span><span class="line"><span class="cl">0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="332-產生-user-的-systemd-目錄">3.3.2 產生 User 的 systemd 目錄</h4>
 <div class="highlight"><div class="chroma">
@@ -333,16 +315,16 @@ Commercial support is available at
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ mkdir -pv ~/.config/systemd/user/
-mkdir: created directory <span class="s1">&#39;/home/student/.config&#39;</span>
-mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd&#39;</span>
-mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd/user/&#39;</span>
-<span class="o">[</span>student@servera ~<span class="o">]</span>$ <span class="nb">cd</span> ~/.config/systemd/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ mkdir -pv ~/.config/systemd/user/
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config&#39;</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd&#39;</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd/user/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ <span class="nb">cd</span> ~/.config/systemd/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>systemd<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>systemd<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>可以參考 man systemd.unit 內容說明，介紹 user systemd 目錄的位置。</em></div>
@@ -357,11 +339,11 @@ mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd/use
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman generate systemd --name restart-nginx  --new -f
-/home/student/.config/systemd/user/container-restart-nginx.service
-<span class="o">[</span>student@servera user<span class="o">]</span>$ ls
-container-restart-nginx.service
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman generate systemd --name restart-nginx  --new -f
+</span></span><span class="line"><span class="cl">/home/student/.config/systemd/user/container-restart-nginx.service
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ ls
+</span></span><span class="line"><span class="cl">container-restart-nginx.service
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="334-podman-停止及刪除容器">3.3.4 Podman 停止及刪除容器</h4>
 <div class="highlight"><div class="chroma">
@@ -374,13 +356,13 @@ container-restart-nginx.service
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman stop restart-nginx
-restart-nginx
-<span class="o">[</span>student@servera user<span class="o">]</span>$ podman rm restart-nginx
-0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
-<span class="o">[</span>student@servera user<span class="o">]</span>$ podman ps
-CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman stop restart-nginx
+</span></span><span class="line"><span class="cl">restart-nginx
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman rm restart-nginx
+</span></span><span class="line"><span class="cl">0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman ps
+</span></span><span class="line"><span class="cl">CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="335-改用-systemd-啟動容器">3.3.5 改用 systemd 啟動容器</h4>
 <div class="highlight"><div class="chroma">
@@ -415,35 +397,35 @@ CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ systemctl --user <span class="nb">enable</span> container-restart-nginx.service --now
-Created symlink /home/student/.config/systemd/user/multi-user.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
-Unit /home/student/.config/systemd/user/container-restart-nginx.service is added as a dependency to a non-existent unit multi-user.target.
-Created symlink /home/student/.config/systemd/user/default.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
-<span class="o">[</span>student@servera user<span class="o">]</span>$ curl 127.0.0.1:8080
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ systemctl --user <span class="nb">enable</span> container-restart-nginx.service --now
+</span></span><span class="line"><span class="cl">Created symlink /home/student/.config/systemd/user/multi-user.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
+</span></span><span class="line"><span class="cl">Unit /home/student/.config/systemd/user/container-restart-nginx.service is added as a dependency to a non-existent unit multi-user.target.
+</span></span><span class="line"><span class="cl">Created symlink /home/student/.config/systemd/user/default.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ curl 127.0.0.1:8080
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="336-使用者不需登入也會啟動服務">3.3.6 使用者不需登入也會啟動服務</h4>
 <p>除了 root 之外的服務，都必須要使用者 login 後 systemd 才會自動拉起該 user 的服務，不過可以透過 enable-linger 不需要登入也可以啟動服務。</p>
@@ -454,14 +436,14 @@ Commercial support is available at
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl enable-linger 
-<span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl show-user  student <span class="p">|</span> grep Linger
-<span class="nv">Linger</span><span class="o">=</span>yes
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl enable-linger 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl show-user  student <span class="p">|</span> grep Linger
+</span></span><span class="line"><span class="cl"><span class="nv">Linger</span><span class="o">=</span>yes
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>loginctl<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>loginctl<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>可以參考 man loginctl 內容說明，介紹 enable-linger 內容。</em></div>
@@ -496,96 +478,73 @@ Commercial support is available at
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-&lt;style&gt;
-html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.&lt;/p&gt;
-
-&lt;p&gt;For online documentation and support please refer to
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-Commercial support is available at
-&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-docker-轉換-podman-小技巧">4. Docker 轉換 Podman 小技巧</h2>
 <p>如果 Docker 習慣已久不好改過來，可以直接安裝 podman-docker 套件( <code>yum install podman-docker</code> )，可以繼續使用 docker 指令，不過 cli 背後是執行 podman。</p>
 <hr>
 <h2 id="5-小結">5. 小結</h2>
-<p>Podman 使用上越來越多人使用，在不需要擁有 root 權限也能執行容器在安全性上面優勢遠遠勝過 Docker 。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-containers-podman%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>Podman 使用上越來越多人使用，在不需要擁有 root 權限也能執行容器在安全性上面優勢遠遠勝過 Docker 。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-03-08</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" data-title="Linux - 容器管理工具 - Podman" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" data-title="Linux - 容器管理工具 - Podman"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" data-title="Linux - 容器管理工具 - Podman"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/" data-title="Linux - 容器管理工具 - Podman"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-nfs/" class="prev" rel="prev" title="Linux - 網路檔案系統 - NFS"><i class="fas fa-angle-left fa-fw"></i>Linux - 網路檔案系統 - NFS</a>
-            <a href="/posts/kubernetes/2022/k8-introduction/" class="next" rel="next" title="K8s -  容器編排工具介紹">K8s -  容器編排工具介紹<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-storage-nfs/" class="prev" rel="prev" title="Linux - 網路檔案系統 - NFS"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 網路檔案系統 - NFS</a>
+            <a href="/posts/kubernetes/2022/k8-introduction/" class="next" rel="next" title="K8s -  容器編排工具介紹">K8s -  容器編排工具介紹<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

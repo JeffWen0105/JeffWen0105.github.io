@@ -4,21 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux - 安全增強式 Linux ( SELinux ) - HowHow の WebSite</title><meta name="Description" content=""><meta property="og:title" content="Linux - 安全增強式 Linux ( SELinux )" />
+        <title>Linux - 安全增強式 Linux ( SELinux ) - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - 安全增強式 Linux ( SELinux )" />
 <meta property="og:description" content="安裝好系統後，第一件事情 disable selinux，然後 reboot ，這也是大多是網路上軟體安裝的教學，不過什麼是 SELinux ？ 到底有什麼好處呢 ？ 關掉是為何 ？" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-12T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 安全增強式 Linux ( SELinux )"/>
 <meta name="twitter:description" content="安裝好系統後，第一件事情 disable selinux，然後 reboot ，這也是大多是網路上軟體安裝的教學，不過什麼是 SELinux ？ 到底有什麼好處呢 ？ 關掉是為何 ？"/>
-<meta name="application-name" content="HowHow の WebSite">
-<meta name="apple-mobile-web-app-title" content="HowHow の WebSite"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-acl/" /><link rel="next" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" /><link rel="prev" href="https://blog.howhow.tk/posts/linux/2022/linux-acl/" /><link rel="next" href="https://blog.howhow.tk/posts/nginx/2022/nginx-introduction/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -27,16 +28,16 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-selinux\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3462 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  3473 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-selinux\/","datePublished": "2022-02-12T00:00:00+00:00","dateModified": "2022-02-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "HowHow"},"author": {
+            "name": ""},"author": {
                 "@type": "Person",
                 "name": "HowHow"
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -44,18 +45,8 @@
             <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a  class="menu-item" href="/categories/"
-                    
-                    > Categories </a><a  class="menu-item" href="/"
-                    
-                    > Home </a><a  class="menu-item" href="/tags/"
-                    
-                    > Tags </a><a  class="menu-item" href="/about/"
-                    
-                    > About </a><a  class="menu-item" href="https://how64bit.com/redhat/"
-                     rel="noopener noreffer" target="_blank"
-                    > RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -70,29 +61,22 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux - 安全增強式 Linux ( SELinux )</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-12">2022-02-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3462 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;預計閱讀 7 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 安全增強式 Linux ( SELinux )</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-12">2022-02-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3473 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -155,7 +139,7 @@
             </div><div class="content" id="content"><p>安裝好系統後，第一件事情 disable selinux，然後 reboot ，這也是大多是網路上軟體安裝的教學，不過什麼是 SELinux ？ 到底有什麼好處呢 ？ 關掉是為何 ？</p>
 <h2 id="1--selinux-介紹">1.  SELinux 介紹</h2>
 <p>SELinux 是一個Linux核心的安全模組，最早是由美國國家安全局（NSA）開發的專案，後續由 Redhat 編譯至 Linux 核心內， 所有的 RHEL 系列 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux、AlmaLinux 等) 均內建此功能。</p>
-<p>SELinux 主要就是在每一個程序畫一個小圈圈，並對程序及檔案貼上 Type （類似一種標籤概念) ，只有符合該 Type 才能存取，就算是 root 啟動的程序也不能隨便存取，限制程序管控在最小權限範圍內，如下圖 Redhat <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/using_selinux/index" target="_blank" rel="noopener noreffer">官方對比 Apache 及 MariaDB 限制</a> 。</p>
+<p>SELinux 主要就是在每一個程序畫一個小圈圈，並對程序及檔案貼上 Type （類似一種標籤概念) ，只有符合該 Type 才能存取，就算是 root 啟動的程序也不能隨便存取，限制程序管控在最小權限範圍內，如下圖 Redhat <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/using_selinux/index" target="_blank" rel="noopener noreffer ">官方對比 Apache 及 MariaDB 限制</a> 。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -181,9 +165,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
-Enforcing
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
+</span></span><span class="line"><span class="cl">Enforcing
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-工作模式切換">2.2 工作模式切換</h3>
 <div class="highlight"><div class="chroma">
@@ -191,8 +175,8 @@ Enforcing
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">setenforce &lt; <span class="m">0</span> <span class="p">|</span> <span class="m">1</span> &gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">setenforce &lt; <span class="m">0</span> <span class="p">|</span> <span class="m">1</span> &gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="221-permissive-模式">2.2.1 Permissive 模式</h4>
 <div class="highlight"><div class="chroma">
@@ -202,10 +186,10 @@ Enforcing
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># setenforce 0</span>
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
-Permissive
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># setenforce 0</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
+</span></span><span class="line"><span class="cl">Permissive
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="222-enforcing-模式">2.2.2 Enforcing 模式</h4>
 <div class="highlight"><div class="chroma">
@@ -215,10 +199,10 @@ Permissive
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># setenforce 1</span>
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
-Enforcing
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># setenforce 1</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># getenforce </span>
+</span></span><span class="line"><span class="cl">Enforcing
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="223-disabled-模式">2.2.3 disabled 模式</h4>
 <p>停用 SELinux 並需修改 <code>/etc/selinux/config</code> ，將模式改為 disabled ，並重新開機才會生效</p>
@@ -229,10 +213,10 @@ Enforcing
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">...
-<span class="nv">SELINUX</span><span class="o">=</span>disabled
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"><span class="nv">SELINUX</span><span class="o">=</span>disabled
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-selinux-權限查看">3. SELinux 權限查看</h2>
@@ -246,12 +230,12 @@ Enforcing
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera html]# ls -lZ
-total 4
--rw-r--r--. 1 root root unconfined_u:object_r:httpd_sys_content_t:s0 14 Feb 12 14:51 index.html
-[root@servera html]# ls -lZd /var/www/html/
-drwxr-xr-x. 2 root root system_u:object_r:httpd_sys_content_t:s0 24 Feb 12 14:51 /var/www/html/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera html]# ls -lZ
+</span></span><span class="line"><span class="cl">total 4
+</span></span><span class="line"><span class="cl">-rw-r--r--. 1 root root unconfined_u:object_r:httpd_sys_content_t:s0 14 Feb 12 14:51 index.html
+</span></span><span class="line"><span class="cl">[root@servera html]# ls -lZd /var/www/html/
+</span></span><span class="line"><span class="cl">drwxr-xr-x. 2 root root system_u:object_r:httpd_sys_content_t:s0 24 Feb 12 14:51 /var/www/html/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-selinux-權限限制">4. SELinux 權限限制</h2>
@@ -285,7 +269,7 @@ drwxr-xr-x. 2 root root system_u:object_r:httpd_sys_content_t:s0 24 Feb 12 14:51
 </ul>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>rsyslog 及 setroubleshoot-server 兩個套件可以很方便的把 SELinux 攔截記錄在 audit.log 中的檔案，轉譯比較容易閱讀的 log</em>。</div>
@@ -309,21 +293,21 @@ drwxr-xr-x. 2 root root system_u:object_r:httpd_sys_content_t:s0 24 Feb 12 14:51
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 安裝 httpd</span>
-yum install -y httpd
-<span class="c1"># 啟動 httpd 服務</span>
-systemctl start httpd
-<span class="c1"># 複製 /etc/shadow 至 /var/www/html/ 目錄</span>
-cp -a /etc/shadow /var/www/html/
-<span class="c1"># 賦予權限</span>
-chmod <span class="m">777</span> /var/www/html/shadow
-<span class="c1"># 確認 rsyslog 啟動</span>
-systemctl status rsyslog.service
-<span class="c1"># 確認已經安裝 setroubleshoot-server 套件</span>
-rpm -q setroubleshoot-server
-<span class="c1"># 防火牆開放 http 服務</span>
-firewall-cmd --add-service<span class="o">=</span>http
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安裝 httpd</span>
+</span></span><span class="line"><span class="cl">yum install -y httpd
+</span></span><span class="line"><span class="cl"><span class="c1"># 啟動 httpd 服務</span>
+</span></span><span class="line"><span class="cl">systemctl start httpd
+</span></span><span class="line"><span class="cl"><span class="c1"># 複製 /etc/shadow 至 /var/www/html/ 目錄</span>
+</span></span><span class="line"><span class="cl">cp -a /etc/shadow /var/www/html/
+</span></span><span class="line"><span class="cl"><span class="c1"># 賦予權限</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> /var/www/html/shadow
+</span></span><span class="line"><span class="cl"><span class="c1"># 確認 rsyslog 啟動</span>
+</span></span><span class="line"><span class="cl">systemctl status rsyslog.service
+</span></span><span class="line"><span class="cl"><span class="c1"># 確認已經安裝 setroubleshoot-server 套件</span>
+</span></span><span class="line"><span class="cl">rpm -q setroubleshoot-server
+</span></span><span class="line"><span class="cl"><span class="c1"># 防火牆開放 http 服務</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --add-service<span class="o">=</span>http
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="42-驗證-selinux">4.2 驗證 SELinux</h3>
 <ol>
@@ -337,11 +321,11 @@ firewall-cmd --add-service<span class="o">=</span>http
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
-total <span class="m">8</span>
--rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
--rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:shadow_t:s0                <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
+</span></span><span class="line"><span class="cl">total <span class="m">8</span>
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
+</span></span><span class="line"><span class="cl">-rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:shadow_t:s0                <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li><code>curl 127.0.0.1</code> 確認 http 的 index.html 是可以正常訪問後，嘗試查看 shadow 檔案，會顯示 403 被系統拒絕。</li>
@@ -358,15 +342,15 @@ total <span class="m">8</span>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># curl 127.0.0.1/shadow</span>
-&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
-&lt;html&gt;&lt;head&gt;
-&lt;title&gt;403 Forbidden&lt;/title&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Forbidden&lt;/h1&gt;
-&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># curl 127.0.0.1/shadow</span>
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;403 Forbidden&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Forbidden&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>查看 /var/log/messages ，最新的 log 會看到一段 <code>SELinux is preventing /usr/sbin/httpd ...</code> ，表示 SELinux 已經成功阻擋該檔案被讀取</li>
@@ -379,15 +363,15 @@ total <span class="m">8</span>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># tail /var/log/messages </span>
-...
-Feb <span class="m">12</span> 17:03:48 servera setroubleshoot<span class="o">[</span>3706<span class="o">]</span>: SELinux is preventing /usr/sbin/httpd from getattr access on the file /var/www/html/shadow. For <span class="nb">complete</span> SELinux messages run: sealert -l 5bf90ec7-0c4c-4484-bdf2-a6926a49c814
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># tail /var/log/messages </span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">Feb <span class="m">12</span> 17:03:48 servera setroubleshoot<span class="o">[</span>3706<span class="o">]</span>: SELinux is preventing /usr/sbin/httpd from getattr access on the file /var/www/html/shadow. For <span class="nb">complete</span> SELinux messages run: sealert -l 5bf90ec7-0c4c-4484-bdf2-a6926a49c814
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>SELinux 是非常強大，就算權限是 777 也因 type 規則不合法被拒絕，此方案也可以防止因系統管理員人為疏忽開較大權限或是使用到不規範檔案，被 SELiunx 攔截擋住漏洞</em> 。</div>
@@ -411,20 +395,20 @@ Feb <span class="m">12</span> 17:03:48 servera setroubleshoot<span class="o">[</
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
-total <span class="m">8</span>
--rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
--rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:shadow_t:s0                <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># chcon  -t httpd_sys_content_t /var/www/html/shadow </span>
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
-total <span class="m">8</span>
--rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
--rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:httpd_sys_content_t:s0     <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
+</span></span><span class="line"><span class="cl">total <span class="m">8</span>
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
+</span></span><span class="line"><span class="cl">-rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:shadow_t:s0                <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># chcon  -t httpd_sys_content_t /var/www/html/shadow </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls -lZ /var/www/html/</span>
+</span></span><span class="line"><span class="cl">total <span class="m">8</span>
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0   <span class="m">14</span> Feb <span class="m">12</span> 14:51 index.html
+</span></span><span class="line"><span class="cl">-rwxrwxrwx. <span class="m">1</span> root root system_u:object_r:httpd_sys_content_t:s0     <span class="m">1970</span> Feb <span class="m">12</span> 14:49 shadow
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>chcon 工具修改的是存放在 RAM 的 SELinux ，修改完後可以直接嘗試訪問 <code>curl 127.0.0.1/shadow</code> ，不過缺點就是只要重新開機後，RAM 的資料會被消除會重新載入在 DB 設定的標籤</em> 。</div>
@@ -439,10 +423,10 @@ total <span class="m">8</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># semanage fcontext -l | grep /var/www</span>
-/var/www<span class="o">(</span>/.*<span class="o">)</span>?                                     all files          system_u:object_r:httpd_sys_content_t:s0 
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># semanage fcontext -l | grep /var/www</span>
+</span></span><span class="line"><span class="cl">/var/www<span class="o">(</span>/.*<span class="o">)</span>?                                     all files          system_u:object_r:httpd_sys_content_t:s0 
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="54-修改-selinux-db-規則">5.4 修改 SELinux DB 規則</h3>
 <p>上述說到 chcon 工具修改的是存放在 RAM 的 SELinux 的規則， 如果今天 httpd 讀取的目錄是並非預設 /custom 每次重新開機就要重新執行一次，不過我們可以手動寫入規則， 讓 /custom 目錄合法化</p>
@@ -474,13 +458,13 @@ total <span class="m">8</span>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 創建 /tmp/example 目錄</span>
-mkdir -p /custom
-<span class="c1"># 創建一個 index.html 頁面</span>
-<span class="nb">echo</span> <span class="s2">&#34;example&#34;</span> &gt; /custom/index.html
-<span class="c1"># 賦予 777 權限</span>
-chmod -R <span class="m">777</span> /custom
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 創建 /tmp/example 目錄</span>
+</span></span><span class="line"><span class="cl">mkdir -p /custom
+</span></span><span class="line"><span class="cl"><span class="c1"># 創建一個 index.html 頁面</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;example&#34;</span> &gt; /custom/index.html
+</span></span><span class="line"><span class="cl"><span class="c1"># 賦予 777 權限</span>
+</span></span><span class="line"><span class="cl">chmod -R <span class="m">777</span> /custom
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>編輯 /etc/httpd/conf/httpd.conf</p>
 <div class="highlight"><div class="chroma">
@@ -495,15 +479,15 @@ chmod -R <span class="m">777</span> /custom
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"># <span class="nx">將原本的</span> <span class="sr">/var/</span><span class="nx">www</span><span class="sr">/html 改成 /</span><span class="nx">custom</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span><span class="nx">DocumentRoot</span> <span class="s2">&#34;/custom&#34;</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span><span class="p">&lt;</span><span class="nx">Directory</span> <span class="s2">&#34;/custom&#34;</span><span class="p">&gt;</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span># <span class="nx">註解最下方</span> <span class="nx">IncludeOptional</span> <span class="nx">conf</span>.<span class="nx">d</span>/*.<span class="nx">con</span><span class="err">
-</span><span class="err"></span># <span class="nx">IncludeOptional</span> <span class="nx">conf</span>.<span class="nx">d</span>/*.<span class="nx">con</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"># <span class="nx">將原本的</span> <span class="sr">/var/</span><span class="nx">www</span><span class="sr">/html 改成 /</span><span class="nx">custom</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">DocumentRoot</span> <span class="s2">&#34;/custom&#34;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="p">&lt;</span><span class="nx">Directory</span> <span class="s2">&#34;/custom&#34;</span><span class="p">&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span># <span class="nx">註解最下方</span> <span class="nx">IncludeOptional</span> <span class="nx">conf</span>.<span class="nx">d</span>/*.<span class="nx">con</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span># <span class="nx">IncludeOptional</span> <span class="nx">conf</span>.<span class="nx">d</span>/*.<span class="nx">con</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -511,9 +495,9 @@ chmod -R <span class="m">777</span> /custom
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 重啟 httpd</span>
-systemctl restart httpd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重啟 httpd</span>
+</span></span><span class="line"><span class="cl">systemctl restart httpd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="542-驗證-selinux">5.4.2 驗證 SELinux</h4>
 <p>至瀏覽器查看或是使用 <code>curl 127.0.0.1</code> ，會出現 403 禁止，被 SELinux 認定為不合法規則</p>
@@ -532,22 +516,22 @@ systemctl restart httpd
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># curl 127.0.0.1</span>
-&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
-&lt;html&gt;&lt;head&gt;
-&lt;title&gt;403 Forbidden&lt;/title&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Forbidden&lt;/h1&gt;
-&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-<span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># ls -lZ /custom/</span>
-total <span class="m">4</span>
--rwxrwxrwx. <span class="m">1</span> root root unconfined_u:object_r:default_t:s0 <span class="m">8</span> Feb <span class="m">12</span> 19:10 index.html
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># curl 127.0.0.1</span>
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;403 Forbidden&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Forbidden&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;&lt;/html&gt;
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># ls -lZ /custom/</span>
+</span></span><span class="line"><span class="cl">total <span class="m">4</span>
+</span></span><span class="line"><span class="cl">-rwxrwxrwx. <span class="m">1</span> root root unconfined_u:object_r:default_t:s0 <span class="m">8</span> Feb <span class="m">12</span> 19:10 index.html
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果不確定 httpd 配置是否正確，可以先使用 <code>setenforce 0</code> 將 SELinux 僅使用警告不攔截規則，確保不是 httpd 配置錯才顯示 403 沒有權限</em> 。</div>
@@ -562,13 +546,13 @@ total <span class="m">4</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 寫入規則至 DB</span>
-<span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># semanage fcontext -a -t httpd_sys_content_t  &#39;/custom/(.*)?&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 寫入規則至 DB</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># semanage fcontext -a -t httpd_sys_content_t  &#39;/custom/(.*)?&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>最後面的 &lsquo;/custom/(.</em>)?&rsquo; 這是正規化表示法，表示任何在 /custom 底下的任意目錄都符合* 。</div>
@@ -581,9 +565,9 @@ total <span class="m">4</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># semanage fcontext -l | grep /custom</span>
-/custom/<span class="o">(</span>.*<span class="o">)</span>?                                      all files          system_u:object_r:httpd_sys_content_t:s0 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># semanage fcontext -l | grep /custom</span>
+</span></span><span class="line"><span class="cl">/custom/<span class="o">(</span>.*<span class="o">)</span>?                                      all files          system_u:object_r:httpd_sys_content_t:s0 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="545-將新規則覆蓋至-custom">5.4.5 將新規則覆蓋至 /custom</h4>
 <p>透過 restorecon 工具可以將存放在 DB 的規則倒出來，並驗證 <code>curl 127.0.0.1</code> 可以正常顯示</p>
@@ -599,15 +583,15 @@ total <span class="m">4</span>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 將新規則覆蓋至 /custom 底下全部目錄及檔案上</span>
-<span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># restorecon -Rv /custom</span>
-Relabeled /custom/index.html from unconfined_u:object_r:default_t:s0 to unconfined_u:object_r:httpd_sys_content_t:s0
-<span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># ls -lZ /custom/</span>
-total <span class="m">4</span>
--rwxrwxrwx. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0 <span class="m">8</span> Feb <span class="m">11</span> 19:10 index.html
-<span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># curl 127.0.0.1</span>
-example
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 將新規則覆蓋至 /custom 底下全部目錄及檔案上</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># restorecon -Rv /custom</span>
+</span></span><span class="line"><span class="cl">Relabeled /custom/index.html from unconfined_u:object_r:default_t:s0 to unconfined_u:object_r:httpd_sys_content_t:s0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># ls -lZ /custom/</span>
+</span></span><span class="line"><span class="cl">total <span class="m">4</span>
+</span></span><span class="line"><span class="cl">-rwxrwxrwx. <span class="m">1</span> root root unconfined_u:object_r:httpd_sys_content_t:s0 <span class="m">8</span> Feb <span class="m">11</span> 19:10 index.html
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera custom<span class="o">]</span><span class="c1"># curl 127.0.0.1</span>
+</span></span><span class="line"><span class="cl">example
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="6-selinux---boolean-權限規則">6. SELinux - boolean 權限規則</h2>
@@ -619,9 +603,9 @@ example
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera test]# getsebool -a | grep  httpd_enable_homedirs
-httpd_enable_homedirs --&gt; off
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera test]# getsebool -a | grep  httpd_enable_homedirs
+</span></span><span class="line"><span class="cl">httpd_enable_homedirs --&gt; off
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="61-測試準備">6.1 測試準備</h3>
 <ul>
@@ -668,15 +652,15 @@ httpd_enable_homedirs --&gt; off
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 安裝 httpd 並啟動</span>
-sudo systemctl start httpd
-<span class="c1"># 使用 student 帳號 (一般 user) 創建 /home/student/public_html 目錄</span>
-mkdir -p ~/public_html
-<span class="c1"># 賦予權限</span>
-chmod <span class="m">711</span> ~
-<span class="c1"># 創建一個 index.html 頁面</span>
-<span class="nb">echo</span> <span class="s2">&#34;This is student home&#34;</span> &gt; /home/student/public_html/index.html
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安裝 httpd 並啟動</span>
+</span></span><span class="line"><span class="cl">sudo systemctl start httpd
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 student 帳號 (一般 user) 創建 /home/student/public_html 目錄</span>
+</span></span><span class="line"><span class="cl">mkdir -p ~/public_html
+</span></span><span class="line"><span class="cl"><span class="c1"># 賦予權限</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">711</span> ~
+</span></span><span class="line"><span class="cl"><span class="c1"># 創建一個 index.html 頁面</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;This is student home&#34;</span> &gt; /home/student/public_html/index.html
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 root 編輯 httpd 的 /etc/httpd/conf.d/userdir.conf 設定</p>
 <div class="highlight"><div class="chroma">
@@ -689,13 +673,13 @@ chmod <span class="m">711</span> ~
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"># <span class="nx">將</span> <span class="nx">UserDir</span> <span class="nx">disabled</span> <span class="nx">註解</span>， <span class="nx">下方的</span> <span class="nx">UserDir</span> <span class="nx">public_html</span> <span class="nx">開啟</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span># <span class="nx">UserDir</span> <span class="nx">disabled</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span><span class="nx">UserDir</span> <span class="nx">public_html</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"># <span class="nx">將</span> <span class="nx">UserDir</span> <span class="nx">disabled</span> <span class="nx">註解</span>， <span class="nx">下方的</span> <span class="nx">UserDir</span> <span class="nx">public_html</span> <span class="nx">開啟</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span># <span class="nx">UserDir</span> <span class="nx">disabled</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">UserDir</span> <span class="nx">public_html</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -703,13 +687,13 @@ chmod <span class="m">711</span> ~
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 重啟 httpd</span>
-systemctl restart httpd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重啟 httpd</span>
+</span></span><span class="line"><span class="cl">systemctl restart httpd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><strong>如果在前一次實驗有把 /etc/httpd/conf/httpd.conf 最下方的 IncludeOptional conf.d/*.conf 註解起來的話，記得要把他打開!!</strong> 。</div>
@@ -729,19 +713,19 @@ systemctl restart httpd
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1/~student/index.html
-&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
-&lt;html&gt;&lt;head&gt;
-&lt;title&gt;403 Forbidden&lt;/title&gt;
-&lt;/head&gt;&lt;body&gt;
-&lt;h1&gt;Forbidden&lt;/h1&gt;
-&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1/~student/index.html
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;403 Forbidden&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Forbidden&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;You don<span class="err">&#39;</span>t have permission to access this resource.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果不確定 httpd 配置是否正確，可以先使用 <code>setenforce 0</code> 將 SELinux 僅使用警告不攔截規則，確保不是 httpd 配置錯才顯示 403 沒有權限</em> 。</div>
@@ -758,16 +742,16 @@ systemctl restart httpd
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# setsebool -P httpd_enable_homedirs on
-[root@servera ~]# getsebool -a  | grep httpd_enable_homedirs
-httpd_enable_homedirs --&gt; on
-[root@servera ~]# curl 127.0.0.1/~student/index.html
-This is student home
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# setsebool -P httpd_enable_homedirs on
+</span></span><span class="line"><span class="cl">[root@servera ~]# getsebool -a  | grep httpd_enable_homedirs
+</span></span><span class="line"><span class="cl">httpd_enable_homedirs --&gt; on
+</span></span><span class="line"><span class="cl">[root@servera ~]# curl 127.0.0.1/~student/index.html
+</span></span><span class="line"><span class="cl">This is student home
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果只有<code>setsebool httpd_enable_homedirs on</code>，僅修改 RAM 規則，開機就會失效，需要加上 -P 參數才會寫入DB並永久生效</em> 。</div>
@@ -783,9 +767,9 @@ This is student home
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# semanage port -l | grep http_port_t 
-http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# semanage port -l | grep http_port_t 
+</span></span><span class="line"><span class="cl">http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="71-測試準備">7.1 測試準備</h3>
 <ul>
@@ -811,9 +795,9 @@ http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 安裝 httpd 並啟動</span>
-sudo systemctl start httpd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安裝 httpd 並啟動</span>
+</span></span><span class="line"><span class="cl">sudo systemctl start httpd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>編輯 httpd 的 /etc/httpd/conf/httpd.conf 設定</p>
 <div class="highlight"><div class="chroma">
@@ -824,11 +808,11 @@ sudo systemctl start httpd
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"># <span class="nx">將</span> <span class="nx">Listen</span> <span class="m">80</span> <span class="nx">改成</span> <span class="m">82</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span><span class="err"></span><span class="nx">Listen</span> <span class="m">82</span><span class="err">
-</span><span class="err"></span>...<span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"># <span class="nx">將</span> <span class="nx">Listen</span> <span class="m">80</span> <span class="nx">改成</span> <span class="m">82</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">Listen</span> <span class="m">82</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>...<span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -836,13 +820,13 @@ sudo systemctl start httpd
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 重啟 httpd</span>
-systemctl restart httpd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重啟 httpd</span>
+</span></span><span class="line"><span class="cl">systemctl restart httpd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>重啟httpd會出現錯誤訊息是正常的，因為 SELinux 會禁止非法 port 啟動</em> 。</div>
@@ -850,7 +834,7 @@ systemctl restart httpd
     </div>
 <div class="details admonition tip open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>如果不確定 httpd 配置是否正確，可以先使用 <code>setenforce 0</code> 將 SELinux 僅使用警告不攔截規則，確保不是 httpd 配置錯誤才顯示啟動錯誤</em> 。</div>
@@ -866,11 +850,11 @@ systemctl restart httpd
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# semanage port -a -t http_port_t -p tcp 82
-[root@servera ~]# systemctl restart httpd
-[root@servera ~]# curl 127.0.0.1:82
-example
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# semanage port -a -t http_port_t -p tcp 82
+</span></span><span class="line"><span class="cl">[root@servera ~]# systemctl restart httpd
+</span></span><span class="line"><span class="cl">[root@servera ~]# curl 127.0.0.1:82
+</span></span><span class="line"><span class="cl">example
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="8-如何判斷是哪一個-selinux-出錯">8. 如何判斷是哪一個 SELinux 出錯？</h2>
@@ -878,7 +862,7 @@ example
 這時我們就可以透過 /var/log/message 訊息快速產生建議方式作處理。</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><p><strong>必須開啟的設定</strong></p>
@@ -912,18 +896,18 @@ example
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl restart httpd</span>
-Job <span class="k">for</span> httpd.service failed because the control process exited with error code.
-See <span class="s2">&#34;systemctl status httpd.service&#34;</span> and <span class="s2">&#34;journalctl -xe&#34;</span> <span class="k">for</span> details.
-<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># tail /var/log/messages </span>
-...
-Feb <span class="m">12</span> 21:08:57 servera setroubleshoot<span class="o">[</span>5819<span class="o">]</span>: SELinux is preventing /usr/sbin/httpd from name_bind access on the tcp_socket port 82. For <span class="nb">complete</span> SELinux messages run: sealert -l e58f3dd4-a39e-4c37-b34c-054239a266e8
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl restart httpd</span>
+</span></span><span class="line"><span class="cl">Job <span class="k">for</span> httpd.service failed because the control process exited with error code.
+</span></span><span class="line"><span class="cl">See <span class="s2">&#34;systemctl status httpd.service&#34;</span> and <span class="s2">&#34;journalctl -xe&#34;</span> <span class="k">for</span> details.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># tail /var/log/messages </span>
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">Feb <span class="m">12</span> 21:08:57 servera setroubleshoot<span class="o">[</span>5819<span class="o">]</span>: SELinux is preventing /usr/sbin/httpd from name_bind access on the tcp_socket port 82. For <span class="nb">complete</span> SELinux messages run: sealert -l e58f3dd4-a39e-4c37-b34c-054239a266e8
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Warning<i class="details-icon fas fa-angle-right fa-fw"></i>
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><em>sealert -l <id>，後面的 id 是隨機的，大家的都不一樣，以 log 為顯示為準</em>。</div>
@@ -947,80 +931,57 @@ Feb <span class="m">12</span> 21:08:57 servera setroubleshoot<span class="o">[</
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># sealert -l e58f3dd4-a39e-4c37-b34c-054239a266e8</span>
-SELinux is preventing /usr/sbin/httpd from name_bind access on the tcp_socket port 82.
-
-*****  Plugin bind_ports <span class="o">(</span>99.5 confidence<span class="o">)</span> suggests   ************************
-
-If you want to allow /usr/sbin/httpd to <span class="nb">bind</span> to network port <span class="m">82</span>
-Then you need to modify the port type.
-Do
-<span class="c1"># semanage port -a -t PORT_TYPE -p tcp 82</span>
-    where PORT_TYPE is one of the following: http_cache_port_t, http_port_t, jboss_management_port_t, jboss_messaging_port_t, ntop_port_t, puppet_port_t.
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># sealert -l e58f3dd4-a39e-4c37-b34c-054239a266e8</span>
+</span></span><span class="line"><span class="cl">SELinux is preventing /usr/sbin/httpd from name_bind access on the tcp_socket port 82.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*****  Plugin bind_ports <span class="o">(</span>99.5 confidence<span class="o">)</span> suggests   ************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">If you want to allow /usr/sbin/httpd to <span class="nb">bind</span> to network port <span class="m">82</span>
+</span></span><span class="line"><span class="cl">Then you need to modify the port type.
+</span></span><span class="line"><span class="cl">Do
+</span></span><span class="line"><span class="cl"><span class="c1"># semanage port -a -t PORT_TYPE -p tcp 82</span>
+</span></span><span class="line"><span class="cl">    where PORT_TYPE is one of the following: http_cache_port_t, http_port_t, jboss_management_port_t, jboss_messaging_port_t, ntop_port_t, puppet_port_t.
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>從上述就能看出 SELinux 會提示解決方式， <code>semanage port -a -t PORT_TYPE -p tcp 82</code>，就可以很容易定位到是哪一個規則錯誤，要如何進行修改</p>
 <h2 id="8-小結">8. 小結</h2>
-<p>SELinux 可以 Linux 系統變成真正的高規格安全性的作業系統，雖然比較複雜也比較麻煩，但是如果伺服器是放在 DMZ 要供 Public 外部網路使用的話，就一定要開啟 SELinux ，等同啟動軍用規格電腦一樣安全。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height="235"
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-selinux%2f"
-  width="100%"
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>SELinux 可以 Linux 系統變成真正的高規格安全性的作業系統，雖然比較複雜也比較麻煩，但是如果伺服器是放在 DMZ 要供 Public 外部網路使用的話，就一定要開啟 SELinux ，等同啟動軍用規格電腦一樣安全。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2022-02-12</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" data-title="Linux - 安全增強式 Linux ( SELinux )" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" data-title="Linux - 安全增強式 Linux ( SELinux )"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" data-title="Linux - 安全增強式 Linux ( SELinux )"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2022/linux-selinux/" data-title="Linux - 安全增強式 Linux ( SELinux )"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2022/linux-acl/" class="prev" rel="prev" title="Linux - ACL 多帳號權限控管"><i class="fas fa-angle-left fa-fw"></i>Linux - ACL 多帳號權限控管</a>
-            <a href="/posts/nginx/2022/nginx-introduction/" class="next" rel="next" title="Nginx - 反向代理的代名詞">Nginx - 反向代理的代名詞<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux/2022/linux-acl/" class="prev" rel="prev" title="Linux - ACL 多帳號權限控管"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - ACL 多帳號權限控管</a>
+            <a href="/posts/nginx/2022/nginx-introduction/" class="next" rel="next" title="Nginx - 反向代理的代名詞">Nginx - 反向代理的代名詞<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line"></div>
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
         </div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
