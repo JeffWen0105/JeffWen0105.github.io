@@ -4,32 +4,32 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>RHCSA - 模擬考 - 設定網路組態 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCSA - 模擬考 - 設定網路組態" />
-<meta property="og:description" content="題目 設定 ServerA 網路組態 : 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0 Default" />
+        <title>RHCE - 模擬考 - Ad-Hoc 操作 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCE - 模擬考 - Ad-Hoc 操作" />
+<meta property="og:description" content="題目 在 Workstation 控制主機 /home/student/ansible/ 創建一個名稱為 adhoc.sh 的 shell 腳本，並可以執行 Ansible ad-hoc 指令，其要求如下: BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/rhce/mock-exam002/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2000-01-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2000-01-01T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RHCSA - 模擬考 - 設定網路組態"/>
-<meta name="twitter:description" content="題目 設定 ServerA 網路組態 : 主機名稱：servera.rhcsa.com IP 地址：172.25.250.100 子網路遮罩：255.255.255.0 Default"/>
+<meta name="twitter:title" content="RHCE - 模擬考 - Ad-Hoc 操作"/>
+<meta name="twitter:description" content="題目 在 Workstation 控制主機 /home/student/ansible/ 創建一個名稱為 adhoc.sh 的 shell 腳本，並可以執行 Ansible ad-hoc 指令，其要求如下: BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam003/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam009/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhce/mock-exam002/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhce/mock-exam001/" /><link rel="next" href="https://blog.howhow.tk/posts/hadoop/2021/hadoop-env-infra/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "RHCSA - 模擬考 - 設定網路組態",
+        "headline": "RHCE - 模擬考 - Ad-Hoc 操作",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam001\/"
-        },"genre": "posts","wordcount":  257 ,
-        "url": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam001\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
+            "@id": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam002\/"
+        },"genre": "posts","wordcount":  199 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam002\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -69,9 +69,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCSA - 模擬考 - 設定網路組態</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCE - 模擬考 - Ad-Hoc 操作</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;257 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;199 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -90,14 +90,21 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h3 id="題目">題目</h3>
-<p><strong>設定 ServerA 網路組態 :</strong></p>
+<p><strong>在 Workstation 控制主機 /home/student/ansible/ 創建一個名稱為 adhoc.sh 的 shell 腳本，並可以執行 Ansible ad-hoc 指令，其要求如下:</strong></p>
 <blockquote>
 <ul>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 主機名稱：<code>servera.rhcsa.com</code></li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> IP 地址：<code>172.25.250.100</code></li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 子網路遮罩：<code>255.255.255.0</code></li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> Default Gateway：<code>172.25.250.1</code></li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> DNS：<code>172.25.250.1</code></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/</a></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS 名稱 : BaseOS</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS 描述 : ex200-baseos</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> GPGKey : <a href="http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/</a></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream 名稱 : AppStream</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream 描述 : ex200-appstream</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> GPGKey : <a href="http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial</a></li>
 </ul>
 </blockquote>
 <div class="details admonition tip open">
@@ -106,19 +113,16 @@
         </div>
         <div class="details-content">
             <div class="admonition-content"><ul>
-<li>使用  <strong>VNC Viewer</strong> 連線操作，避免網路組態生效導致 SSH 斷線。</li>
-<li>驗證完畢後至 Basation 主機上執行 rht-vmctl reset servera，重置 servera 機器，避免影響後續 LAB 操作。</li>
+<li>考試期間是可以查閱 Ansible DOC 文件。</li>
+<li>Ansible 大多數內容都是上下關連，一個步驟沒有做出會影響其它 LAB 。</li>
 </ul>
 </div>
         </div>
     </div>
 <hr>
 <h3 id="參考作法">參考作法</h3>
-<ol>
-<li>使用 nmcli 工具設定 。</li>
-<li>使用 nmtui 工具設定 (圖形化介面較簡單)。</li>
-<li>man 相關手冊 -&gt; NetworkManager。</li>
-</ol>
+<p><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_repository_module.html#ansible-collections-ansible-builtin-yum-repository-module" target="_blank" rel="noopener noreffer ">Ansible - DOC</a>。</p>
+<p>ansible-doc 相關手冊 -&gt; yum_repository。</p>
 <hr>
 <h3 id="參考解答">參考解答</h3>
 <div class="highlight"><div class="chroma">
@@ -126,11 +130,19 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># hostnamectl set-hostname servera.rhcsa.com</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli con add con-name lab ifname enp1s0 ipv4.addresses 172.25.250.100/24 ipv4.gateway 172.25.250.1 ipv4.dns 172.25.250.1 connection.autoconnect yes type ethernet</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli connection up lab</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ cat &gt;&gt; adhoc.sh  <span class="s">&lt;&lt; EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">&gt; #!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="s">&gt; ansible all -m yum_repository -a &#34;name=BaseOS description=&#39;ex200-baseos&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="s">&gt; ansible all -m yum_repository -a &#34;name=AppStream description=&#39;ex200-appstream&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">&gt; EOF</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ chmod +x adhoc.sh 
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -142,7 +154,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" data-title="RHCSA - 模擬考 - 設定網路組態"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam001/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" data-title="RHCSA - 模擬考 - 設定網路組態"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" data-title="RHCSA - 模擬考 - 設定網路組態"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" data-title="RHCSA - 模擬考 - 設定網路組態"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/rhce/mock-exam002/" data-title="RHCE - 模擬考 - Ad-Hoc 操作"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/rhce/mock-exam002/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/rhce/mock-exam002/" data-title="RHCE - 模擬考 - Ad-Hoc 操作"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/rhce/mock-exam002/" data-title="RHCE - 模擬考 - Ad-Hoc 操作"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/rhce/mock-exam002/" data-title="RHCE - 模擬考 - Ad-Hoc 操作"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -154,8 +166,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/rhcsa/mock-exam003/" class="prev" rel="prev" title="RHCSA - 模擬考 - 調整 SELinux 策略"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 調整 SELinux 策略</a>
-            <a href="/posts/rhcsa/mock-exam009/" class="next" rel="next" title="RHCSA - 模擬考 - 設定檔案權限">RHCSA - 模擬考 - 設定檔案權限<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/rhce/mock-exam001/" class="prev" rel="prev" title="RHCE - 模擬考 - Ansible 基本設定"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCE - 模擬考 - Ansible 基本設定</a>
+            <a href="/posts/hadoop/2021/hadoop-env-infra/" class="next" rel="next" title="Hadoop - 基礎架設步驟">Hadoop - 基礎架設步驟<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

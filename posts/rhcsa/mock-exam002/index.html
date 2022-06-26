@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>RHCSA - 模擬考 - 設定 YUM 倉庫清單 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCSA - 模擬考 - 設定 YUM 倉庫清單" />
-<meta property="og:description" content="題目 設定 ServerA : BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial 提示 操作前刪除所有的倉庫清單 rm -f /etc/yum.repos.d/* 。 配置完使用 yum install zsh ，顯示是" />
+<meta property="og:description" content="題目 設定 ServerA : BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial 提示 操作前刪除所有的倉庫清單 rm -f /etc/yum.repos.d/* 。 配置完使用 yum install zsh ，顯示是" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/rhcsa/mock-exam002/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2000-01-01T00:00:00+00:00" />
@@ -13,11 +13,11 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHCSA - 模擬考 - 設定 YUM 倉庫清單"/>
-<meta name="twitter:description" content="題目 設定 ServerA : BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial 提示 操作前刪除所有的倉庫清單 rm -f /etc/yum.repos.d/* 。 配置完使用 yum install zsh ，顯示是"/>
+<meta name="twitter:description" content="題目 設定 ServerA : BaseOS URL : http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/ BaseOS 名稱 : BaseOS BaseOS 描述 : ex200-baseos GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial AppStream URL : http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/ AppStream 名稱 : AppStream AppStream 描述 : ex200-appstream GPGKey : http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial 提示 操作前刪除所有的倉庫清單 rm -f /etc/yum.repos.d/* 。 配置完使用 yum install zsh ，顯示是"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam002/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam007/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam002/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam009/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam007/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -93,7 +93,7 @@
 <p><strong>設定 ServerA :</strong></p>
 <blockquote>
 <ul>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/</a></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/</a></li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS 名稱 : BaseOS</li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> BaseOS 描述 : ex200-baseos</li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> GPGKey : <a href="http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial</a></li>
@@ -101,7 +101,7 @@
 </blockquote>
 <blockquote>
 <ul>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/</a></li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream URL : <a href="http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/</a></li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream 名稱 : AppStream</li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> AppStream 描述 : ex200-appstream</li>
 <li><i class="far fa-square fa-fw" aria-hidden="true"></i> GPGKey : <a href="http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial" target="_blank" rel="noopener noreffer ">http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial</a></li>
@@ -163,7 +163,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/rhcsa/mock-exam001/" class="prev" rel="prev" title="RHCSA - 模擬考 - 設定網路組態"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 設定網路組態</a>
+    <div class="post-nav"><a href="/posts/rhcsa/mock-exam009/" class="prev" rel="prev" title="RHCSA - 模擬考 - 設定檔案權限"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 設定檔案權限</a>
             <a href="/posts/rhcsa/mock-exam007/" class="next" rel="next" title="RHCSA - 模擬考 - 設定 NTP">RHCSA - 模擬考 - 設定 NTP<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
