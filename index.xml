@@ -7,19 +7,19 @@
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集</title>
-    <link>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</link>
-    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
-    <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
-</item>
-<item>
     <title>GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集</title>
     <link>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</guid>
+    <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
+</item>
+<item>
+    <title>AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集</title>
+    <link>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</link>
+    <pubDate>Sat, 02 Jul 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
 </item>
 <item>

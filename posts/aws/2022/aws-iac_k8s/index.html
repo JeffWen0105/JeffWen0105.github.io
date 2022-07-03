@@ -8,8 +8,8 @@
 <meta property="og:description" content="手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform &#43; Ansible Iac 最佳組合" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-07-03T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:published_time" content="2022-07-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-02T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集"/>
@@ -17,7 +17,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/" /><link rel="prev" href="https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/" /><link rel="prev" href="https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/" /><link rel="next" href="https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -29,7 +29,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/aws\/2022\/aws-iac_k8s\/"
         },"genre": "posts","keywords": "AWS, Terraform, Ansible, Kubernetes","wordcount":  810 ,
-        "url": "https:\/\/blog.howhow.tk\/posts\/aws\/2022\/aws-iac_k8s\/","datePublished": "2022-07-03T00:00:00+00:00","dateModified": "2022-07-03T00:00:00+00:00","publisher": {
+        "url": "https:\/\/blog.howhow.tk\/posts\/aws\/2022\/aws-iac_k8s\/","datePublished": "2022-07-02T00:00:00+00:00","dateModified": "2022-07-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">AWS - Terraform & Ansible 在 AWS 上自動部署 K8S 叢集</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/aws/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>AWS</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-03">2022-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;810 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-02">2022-07-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;810 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -344,7 +344,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-07-03</span>
+                <span>Updated on 2022-07-02</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
@@ -361,7 +361,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/gcp/2022/gcp-iac_k8s/" class="prev" rel="prev" title="GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GCP - Terraform & Ansible 在 GCP 上自動部署 K8S 叢集</a></div>
+    <div class="post-nav"><a href="/posts/terraform/2022/terraform-create_gce_instance/" class="prev" rel="prev" title="Terraform  - 在 Cloud Shell 上創建 GEC 機器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Terraform  - 在 Cloud Shell 上創建 GEC 機器</a>
+            <a href="/posts/gcp/2022/gcp-iac_k8s/" class="next" rel="next" title="GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集">GCP - Terraform & Ansible 在 GCP 上自動部署 K8S 叢集<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
