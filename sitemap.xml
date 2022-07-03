@@ -2,13 +2,22 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/ansible/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/aws/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/aws/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/kubernetes/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/tags/terraform/</loc><lastmod>2022-07-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/categories/terraform/</loc><lastmod>2022-06-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</loc><lastmod>2022-06-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/linux/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/categories/linux/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/posts/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/</loc><lastmod>2022-05-31T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/network/</loc><lastmod>2022-05-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/categories/network/</loc><lastmod>2022-05-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</loc><lastmod>2022-05-29T00:00:00&#43;00:00</lastmod></url><url>
@@ -19,7 +28,6 @@
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</loc><lastmod>2022-05-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</loc><lastmod>2022-05-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</loc><lastmod>2022-05-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/ansible/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</loc><lastmod>2022-05-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</loc><lastmod>2022-05-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</loc><lastmod>2022-05-09T00:00:00&#43;00:00</lastmod></url><url>
@@ -31,8 +39,6 @@
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-routing_concept/</loc><lastmod>2022-05-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/</loc><lastmod>2022-05-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-command-line/</loc><lastmod>2022-05-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/terraform/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/categories/terraform/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</loc><lastmod>2022-04-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/ccna/2022/cisco-packet-tracer-introduccion/</loc><lastmod>2022-04-12T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/tags/windows/</loc><lastmod>2022-04-11T00:00:00&#43;00:00</lastmod></url><url>
@@ -47,7 +53,6 @@
             <loc>https://blog.howhow.tk/posts/ansible/2022/ansible-introduce/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</loc><lastmod>2022-03-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</loc><lastmod>2022-03-09T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.howhow.tk/tags/kubernetes/</loc><lastmod>2022-03-09T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/categories/kubernetes/</loc><lastmod>2022-03-09T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</loc><lastmod>2022-03-08T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</loc><lastmod>2022-03-07T00:00:00&#43;00:00</lastmod></url><url>

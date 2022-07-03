@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/categories/terraform/</link>
         <description>Terraform - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/terraform/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 01 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/terraform/" rel="self" type="application/rss+xml" /><item>
+    <title>Terraform  - 在 Cloud Shell 上創建 GEC 機器</title>
+    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</link>
+    <pubDate>Wed, 01 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</guid>
+    <description><![CDATA[在 Google 的 Cloud Shell 上使用 Terraform 可以安全且快速的創建 GCE 機器，而不需要另外使用 credentials。 Terraform Terraform 是由 HashiCorp 建立的開放原始碼「基礎架構即程式碼」工具。 宣]]></description>
+</item>
+<item>
     <title>Terraform  - 基礎架構即程式碼 (IaC) 入門</title>
     <link>https://blog.howhow.tk/posts/terraform/2022/terraform-introduce/</link>
     <pubDate>Fri, 15 Apr 2022 00:00:00 &#43;0000</pubDate>

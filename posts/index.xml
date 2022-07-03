@@ -4,7 +4,31 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 31 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集</title>
+    <link>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</link>
+    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
+    <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
+</item>
+<item>
+    <title>GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集</title>
+    <link>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</link>
+    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</guid>
+    <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
+</item>
+<item>
+    <title>Terraform  - 在 Cloud Shell 上創建 GEC 機器</title>
+    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</link>
+    <pubDate>Wed, 01 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</guid>
+    <description><![CDATA[在 Google 的 Cloud Shell 上使用 Terraform 可以安全且快速的創建 GCE 機器，而不需要另外使用 credentials。 Terraform Terraform 是由 HashiCorp 建立的開放原始碼「基礎架構即程式碼」工具。 宣]]></description>
+</item>
+<item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
@@ -59,30 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</guid>
     <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
-</item>
-<item>
-    <title>Cisco - Network Automation With Ansible</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</link>
-    <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
-    <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
-</item>
-<item>
-    <title>Linux - Iptables Filter 表規則管理</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</link>
-    <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</guid>
-    <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
-</item>
-<item>
-    <title>Cisco - Access Control List</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</link>
-    <pubDate>Mon, 09 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/</guid>
-    <description><![CDATA[Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進]]></description>
 </item>
 </channel>
 </rss>
