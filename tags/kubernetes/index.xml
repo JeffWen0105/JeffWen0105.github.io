@@ -21,6 +21,14 @@
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
 </item>
 <item>
+    <title>K8s -  Pod 最小單位執行環境</title>
+    <link>https://blog.howhow.tk/posts/kubernetes/2022/k8s-pod/</link>
+    <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/kubernetes/2022/k8s-pod/</guid>
+    <description><![CDATA[Pod 概念與 Docker 容器很類似，K8s 中最小單位就是一個 Pod ，而不是說 Container ，雖然很接近不過還是有一些不同之處。 1. Pod 基礎 使用 Docker 時候每一個服務會啟動一個 Continer ， K8s]]></description>
+</item>
+<item>
     <title>K8s -  容器編排工具介紹</title>
     <link>https://blog.howhow.tk/posts/kubernetes/2022/k8-introduction/</link>
     <pubDate>Wed, 09 Mar 2022 00:00:00 &#43;0000</pubDate>

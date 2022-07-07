@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>RHCE - 模擬考 - Ansible 基本設定 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCE - 模擬考 - Ansible 基本設定" />
-<meta property="og:description" content="題目 在 Workstation 控制主機上設定如下 : 創建靜態 inventory 主機清單 : /home/student/ansible/inventory 創建 Ansible 設定檔 : /home/student/ansible/ansible.cfg Ansible 設定檔指定主機清單路徑 ： /home/student/ansible/inventory Ansible 設定檔指定Role路徑 ： /home/student/ansible/role 被控端使用者為 : devops" />
+<meta property="og:description" content="練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 Ansible，使用方式請參閱 HowHow 網站。 題目 在 Workstation 控制主機上設定如下 : 創建靜態 inventory 主機清單 :" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.howhow.tk/posts/rhce/mock-exam001/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2000-01-01T00:00:00+00:00" />
@@ -13,7 +13,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RHCE - 模擬考 - Ansible 基本設定"/>
-<meta name="twitter:description" content="題目 在 Workstation 控制主機上設定如下 : 創建靜態 inventory 主機清單 : /home/student/ansible/inventory 創建 Ansible 設定檔 : /home/student/ansible/ansible.cfg Ansible 設定檔指定主機清單路徑 ： /home/student/ansible/inventory Ansible 設定檔指定Role路徑 ： /home/student/ansible/role 被控端使用者為 : devops"/>
+<meta name="twitter:description" content="練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 Ansible，使用方式請參閱 HowHow 網站。 題目 在 Workstation 控制主機上設定如下 : 創建靜態 inventory 主機清單 :"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam001\/"
-        },"genre": "posts","wordcount":  283 ,
+        },"genre": "posts","wordcount":  329 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam001\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCE - 模擬考 - Ansible 基本設定</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;283 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;329 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -89,7 +89,15 @@
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="題目">題目</h3>
+            </div><div class="content" id="content"><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 Ansible，<a href="https://how64bit.com/posts/linux/2022/linux-create-playground/" target="_blank" rel="noopener noreffer ">使用方式請參閱 HowHow 網站</a>。</em></div>
+        </div>
+    </div>
+<h3 id="題目">題目</h3>
 <p><strong>在 Workstation 控制主機上設定如下 :</strong></p>
 <blockquote>
 <ul>
