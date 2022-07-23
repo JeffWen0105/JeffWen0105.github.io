@@ -156,17 +156,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vlan <span class="m">10</span>
-</span></span><span class="line"><span class="cl">vlan <span class="m">30</span>
-</span></span><span class="line"><span class="cl">intf0/11
-</span></span><span class="line"><span class="cl">    switchport mode access
-</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">10</span>
-</span></span><span class="line"><span class="cl">int f0/6
-</span></span><span class="line"><span class="cl">    switchport mode access
-</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">30</span>
-</span></span><span class="line"><span class="cl">int g0/1
-</span></span><span class="line"><span class="cl">    switchport mode trunk
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vlan <span class="m">10</span>
+vlan <span class="m">30</span>
+intf0/11
+    switchport mode access
+    switchport access vlan <span class="m">10</span>
+int f0/6
+    switchport mode access
+    switchport access vlan <span class="m">30</span>
+int g0/1
+    switchport mode trunk
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>Router 設定虛擬子介面。</li>
@@ -184,16 +184,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
-</span></span><span class="line"><span class="cl">int g0/0.10
-</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">10</span>
-</span></span><span class="line"><span class="cl">    ip address 172.17.10.1 255.255.255.0
-</span></span><span class="line"><span class="cl">int g0/0.30
-</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">30</span>
-</span></span><span class="line"><span class="cl">    ip address 172.17.30.1 255.255.255.0
-</span></span><span class="line"><span class="cl">int g0/0
-</span></span><span class="line"><span class="cl">no shut
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int g0/0.10
+    encapsulation dot1Q <span class="m">10</span>
+    ip address 172.17.10.1 255.255.255.0
+int g0/0.30
+    encapsulation dot1Q <span class="m">30</span>
+    ip address 172.17.30.1 255.255.255.0
+int g0/0
+no shut
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="3-小結">3. 小結</h3>

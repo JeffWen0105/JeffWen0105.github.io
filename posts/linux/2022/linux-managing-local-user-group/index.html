@@ -113,8 +113,8 @@ Linux 作業系統為多人多工作業方式，故管理帳號將會是一個�
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">useradd <span class="o">[</span>opstions<span class="o">]</span> name
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">useradd <span class="o">[</span>opstions<span class="o">]</span> name
+</code></pre></td></tr></table>
 </div>
 </div><p>創建一個為 test 的 USER 並使用 id 查看該角色 UID</p>
 <div class="highlight"><div class="chroma">
@@ -124,10 +124,10 @@ Linux 作業系統為多人多工作業方式，故管理帳號將會是一個�
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# useradd test
-</span></span><span class="line"><span class="cl">[root@serverc ~]# id test
-</span></span><span class="line"><span class="cl">uid=1010(test) gid=1010(test) groups=1010(test)
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# useradd test
+[root@serverc ~]# id test
+uid=1010(test) gid=1010(test) groups=1010(test)
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="12-進階參數">1.2 進階參數</h3>
 <ol>
@@ -159,13 +159,13 @@ UID 1000+ : 一般使用者帳號</div>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">[root@serverc ~]# passwd test
-</span></span><span class="line"><span class="cl">Changing password for user test.
-</span></span><span class="line"><span class="cl">New password: 
-</span></span><span class="line"><span class="cl">BAD PASSWORD: The password is shorter than 8 characters
-</span></span><span class="line"><span class="cl">Retype new password: 
-</span></span><span class="line"><span class="cl">passwd: all authentication tokens updated successfully.
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@serverc ~]# passwd test
+Changing password for user test.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
@@ -183,8 +183,8 @@ UID 1000+ : 一般使用者帳號</div>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">groupadd <span class="o">[</span>opstions<span class="o">]</span> name
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">groupadd <span class="o">[</span>opstions<span class="o">]</span> name
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="32-進階參數">3.2 進階參數</h3>
 <ol>
@@ -208,8 +208,8 @@ UID 1000+ : 一般使用者群組</div>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usermod <span class="o">[</span>options<span class="o">]</span> name
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">usermod <span class="o">[</span>options<span class="o">]</span> name
+</code></pre></td></tr></table>
 </div>
 </div><p>不讓 test 使用者登入終端機</p>
 <div class="highlight"><div class="chroma">
@@ -220,11 +220,11 @@ UID 1000+ : 一般使用者群組</div>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># usermod -s /sbin/nologin test</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># su - test</span>
-</span></span><span class="line"><span class="cl">Last login:  
-</span></span><span class="line"><span class="cl">This account is currently not available.
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># usermod -s /sbin/nologin test</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># su - test</span>
+Last login:  
+This account is currently not available.
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="42-進階參數">4.2 進階參數</h3>
 <ol>

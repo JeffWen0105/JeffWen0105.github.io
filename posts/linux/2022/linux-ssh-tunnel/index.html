@@ -144,8 +144,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -L <span class="o">[</span>LOCAL_IP:<span class="o">]</span>LOCAL_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L <span class="o">[</span>LOCAL_IP:<span class="o">]</span>LOCAL_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="12-使用情境">1.2 使用情境</h4>
 <p>目標伺服器 （Server） 防火牆只有開放 SSH 22 阜號其餘均關閉，想要訪問該目標 8088 服務。</p>
@@ -172,8 +172,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -L 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -203,8 +203,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="22-使用情境">2.2 使用情境</h4>
 <p>伺服器( server ) 防火牆只有開放 SSH 22 阜號其餘均關閉，伺服器( server )反相要訪問 Client 啟動的 8088 服務。</p>
@@ -231,8 +231,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -279,8 +279,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="32-使用情境">3.2 使用情境</h4>
 <p>在 SSH Server 上啟動一個 SOCKS 代理伺服器，簡單的來說就是讓 Sever 變成自己的代理伺服器，可以來瀏覽網頁隱藏自己的真實IP以及跳板至其他國家 （VPN的概念）</p>
@@ -293,8 +293,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -D 127.0.0.1:9453 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -D 127.0.0.1:9453 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>修改瀏覽器 Proxy socks (以 Firefox 為例)</li>

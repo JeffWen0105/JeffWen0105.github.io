@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/terraform\/2022\/terraform-introduce\/"
-        },"genre": "posts","keywords": "Terraform","wordcount":  929 ,
+        },"genre": "posts","keywords": "Terraform","wordcount":  926 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/terraform\/2022\/terraform-introduce\/","datePublished": "2022-04-15T00:00:00+00:00","dateModified": "2022-04-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Terraform  - 基礎架構即程式碼 (IaC) 入門</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/terraform/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Terraform</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-15">2022-04-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;929 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-15">2022-04-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;926 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -127,15 +127,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># wget -q https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># unzip terraform_1.1.9_linux_amd64.zip </span>
-</span></span><span class="line"><span class="cl">Archive:  terraform_1.1.9_linux_amd64.zip
-</span></span><span class="line"><span class="cl">  inflating: terraform               
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># mv terraform /usr/local/bin</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># terraform --version</span>
-</span></span><span class="line"><span class="cl">Terraform v1.1.9
-</span></span><span class="line"><span class="cl">on linux_amd64
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># wget -q https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip</span>
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># unzip terraform_1.1.9_linux_amd64.zip </span>
+Archive:  terraform_1.1.9_linux_amd64.zip
+  inflating: terraform               
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># mv terraform /usr/local/bin</span>
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># terraform --version</span>
+Terraform v1.1.9
+on linux_amd64
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="12-套件管理工具安裝--rhel-系列為例-">1.2. 套件管理工具安裝 ( RHEL 系列為例 )</h3>
 <div class="highlight"><div class="chroma">
@@ -150,15 +150,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum install -y yum-utils</span>
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum install -y terraform</span>
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># terraform --version</span>
-</span></span><span class="line"><span class="cl">Terraform v1.1.9
-</span></span><span class="line"><span class="cl">on linux_amd64
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum install -y yum-utils</span>
+...
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo</span>
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># yum install -y terraform</span>
+...
+<span class="o">[</span>root@workstation ~<span class="o">]</span><span class="c1"># terraform --version</span>
+Terraform v1.1.9
+on linux_amd64
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="2-terraform-basics">2. Terraform Basics</h2>
 <p>Terraform 透過不同的 Providers 所提供 API 來達成基礎架構為程式碼的功能，使用 <a href="https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file" target="_blank" rel="noopener noreffer ">Hashicorp 官方提供的 local_file</a> 建立檔案當作範例 :</p>
@@ -172,12 +172,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="p">[</span><span class="l">root@workstation terraform-exmaple]# cat example.tf </span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">resource &#34;local_file&#34; &#34;example&#34; {</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">filename = &#34;/tmp/example.txt&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">content  = &#34;Created by Terraform\n&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>}<span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="p">[</span><span class="l">root@workstation terraform-exmaple]# cat example.tf </span><span class="w">
+</span><span class="w"></span><span class="l">resource &#34;local_file&#34; &#34;example&#34; {</span><span class="w">
+</span><span class="w">    </span><span class="l">filename = &#34;/tmp/example.txt&#34;</span><span class="w">
+</span><span class="w">    </span><span class="l">content  = &#34;Created by Terraform\n&#34;</span><span class="w">
+</span><span class="w"></span>}<span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-terraform-初始化">2.2. Terraform 初始化</h3>
 <p>使用 <code>terraform init</code> 會至網路下載所依賴的 Providers。</p>
@@ -199,21 +199,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform init</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Initializing the backend...
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Initializing provider plugins...
-</span></span><span class="line"><span class="cl">- Finding latest version of hashicorp/local...
-</span></span><span class="line"><span class="cl">- Installing hashicorp/local v2.2.2...
-</span></span><span class="line"><span class="cl">- Installed hashicorp/local v2.2.2 <span class="o">(</span>signed by HashiCorp<span class="o">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Terraform has been successfully initialized!
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform init</span>
+
+Initializing the backend...
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/local...
+- Installing hashicorp/local v2.2.2...
+- Installed hashicorp/local v2.2.2 <span class="o">(</span>signed by HashiCorp<span class="o">)</span>
+
+...
+
+Terraform has been successfully initialized!
+
+...
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="23-terraform-產生計畫">2.3. Terraform 產生計畫</h3>
 <p>使用 <code>terraform paln</code> 會看到此次 IaC 有哪些內容異動。</p>
@@ -243,29 +243,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform plan</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
-</span></span><span class="line"><span class="cl">with the following symbols:
-</span></span><span class="line"><span class="cl">  + create
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Terraform will perform the following actions:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1"># local_file.example will be created</span>
-</span></span><span class="line"><span class="cl">  + resource <span class="s2">&#34;local_file&#34;</span> <span class="s2">&#34;example&#34;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">content</span>              <span class="o">=</span> <span class="s">&lt;&lt;-EOT
-</span></span></span><span class="line"><span class="cl"><span class="s">            Created by Terraform 
-</span></span></span><span class="line"><span class="cl"><span class="s">        EOT</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">directory_permission</span> <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">file_permission</span>      <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">filename</span>             <span class="o">=</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">id</span>                   <span class="o">=</span> <span class="o">(</span>known after apply<span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Plan: <span class="m">1</span> to add, <span class="m">0</span> to change, <span class="m">0</span> to destroy.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform plan</span>
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  <span class="c1"># local_file.example will be created</span>
+  + resource <span class="s2">&#34;local_file&#34;</span> <span class="s2">&#34;example&#34;</span> <span class="o">{</span>
+      + <span class="nv">content</span>              <span class="o">=</span> <span class="s">&lt;&lt;-EOT
+</span><span class="s">            Created by Terraform 
+</span><span class="s">        EOT</span>
+      + <span class="nv">directory_permission</span> <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
+      + <span class="nv">file_permission</span>      <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
+      + <span class="nv">filename</span>             <span class="o">=</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
+      + <span class="nv">id</span>                   <span class="o">=</span> <span class="o">(</span>known after apply<span class="o">)</span>
+    <span class="o">}</span>
+
+Plan: <span class="m">1</span> to add, <span class="m">0</span> to change, <span class="m">0</span> to destroy.
+
+...
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="24-terraform-執行計畫">2.4 Terraform 執行計畫</h3>
 <p>使用 <code>terraform apply</code>  ， 會執行計畫，並會依造內容自動執行要求( 不需告訴 Terraform 執行方式，僅需告訴他要的結果 )。</p>
@@ -304,38 +304,38 @@
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform apply</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
-</span></span><span class="line"><span class="cl">with the following symbols:
-</span></span><span class="line"><span class="cl">  + create
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Terraform will perform the following actions:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1"># local_file.example will be created</span>
-</span></span><span class="line"><span class="cl">  + resource <span class="s2">&#34;local_file&#34;</span> <span class="s2">&#34;example&#34;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">content</span>              <span class="o">=</span> <span class="s">&lt;&lt;-EOT
-</span></span></span><span class="line"><span class="cl"><span class="s">            Created by Terraform 
-</span></span></span><span class="line"><span class="cl"><span class="s">        EOT</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">directory_permission</span> <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">file_permission</span>      <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">filename</span>             <span class="o">=</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
-</span></span><span class="line"><span class="cl">      + <span class="nv">id</span>                   <span class="o">=</span> <span class="o">(</span>known after apply<span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Plan: <span class="m">1</span> to add, <span class="m">0</span> to change, <span class="m">0</span> to destroy.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Do you want to perform these actions?
-</span></span><span class="line"><span class="cl">  Terraform will perform the actions described above.
-</span></span><span class="line"><span class="cl">  Only <span class="s1">&#39;yes&#39;</span> will be accepted to approve.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  Enter a value: yes
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">local_file.example: Creating...
-</span></span><span class="line"><span class="cl">local_file.example: Creation <span class="nb">complete</span> after 0s <span class="o">[</span><span class="nv">id</span><span class="o">=</span>ea874a7a3b87f4aa75c34c599a75a561909fad5d<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Apply complete! Resources: <span class="m">1</span> added, <span class="m">0</span> changed, <span class="m">0</span> destroyed
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># terraform apply</span>
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  <span class="c1"># local_file.example will be created</span>
+  + resource <span class="s2">&#34;local_file&#34;</span> <span class="s2">&#34;example&#34;</span> <span class="o">{</span>
+      + <span class="nv">content</span>              <span class="o">=</span> <span class="s">&lt;&lt;-EOT
+</span><span class="s">            Created by Terraform 
+</span><span class="s">        EOT</span>
+      + <span class="nv">directory_permission</span> <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
+      + <span class="nv">file_permission</span>      <span class="o">=</span> <span class="s2">&#34;0777&#34;</span>
+      + <span class="nv">filename</span>             <span class="o">=</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
+      + <span class="nv">id</span>                   <span class="o">=</span> <span class="o">(</span>known after apply<span class="o">)</span>
+    <span class="o">}</span>
+
+Plan: <span class="m">1</span> to add, <span class="m">0</span> to change, <span class="m">0</span> to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only <span class="s1">&#39;yes&#39;</span> will be accepted to approve.
+
+  Enter a value: yes
+
+local_file.example: Creating...
+local_file.example: Creation <span class="nb">complete</span> after 0s <span class="o">[</span><span class="nv">id</span><span class="o">=</span>ea874a7a3b87f4aa75c34c599a75a561909fad5d<span class="o">]</span>
+
+Apply complete! Resources: <span class="m">1</span> added, <span class="m">0</span> changed, <span class="m">0</span> destroyed
+</code></pre></td></tr></table>
 </div>
 </div><p>查看創建的檔案 :</p>
 <div class="highlight"><div class="chroma">
@@ -344,9 +344,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># cat /tmp/example.txt </span>
-</span></span><span class="line"><span class="cl">Created by Terraform
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@workstation terraform-exmaple<span class="o">]</span><span class="c1"># cat /tmp/example.txt </span>
+Created by Terraform
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-小結">3. 小結</h2>

@@ -227,8 +227,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/cloud/cloud.cfg
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/cloud/cloud.cfg
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -246,8 +246,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hostnamectl set-hostname &lt;HOSTNAME&gt; <span class="c1"># HOSTNAME自行設定</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname &lt;HOSTNAME&gt; <span class="c1"># HOSTNAME自行設定</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -265,8 +265,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/netplan/50-cloud-init.yaml
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/netplan/50-cloud-init.yaml
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -284,8 +284,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo netplan apply
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo netplan apply
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -303,8 +303,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reboot
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">reboot
+</code></pre></td></tr></table>
 </div>
 </div><p>8.( 上述步驟， 有多少台機器就重複做幾次&hellip;)</p>
 <ul>
@@ -325,8 +325,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs namenode -format <span class="c1">#只有Namenode那一台</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -format <span class="c1">#只有Namenode那一台</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -343,8 +343,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start-dfs.sh <span class="c1">#只有Namenode那一台</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-dfs.sh <span class="c1">#只有Namenode那一台</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -378,8 +378,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start-yarn.sh <span class="c1">#只有Resourcemanager那一台</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-yarn.sh <span class="c1">#只有Resourcemanager那一台</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -414,9 +414,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mapred --daemon start historyserver <span class="c1">#只有History Server那一台</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#mr-jobhistory-daemon.sh start historyserver (deprecated)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mapred --daemon start historyserver <span class="c1">#只有History Server那一台</span>
+<span class="c1">#mr-jobhistory-daemon.sh start historyserver (deprecated)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -441,8 +441,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -525,15 +525,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#NameNode啟動</span>
-</span></span><span class="line"><span class="cl">start-dfs.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#ResourceManager啟動</span>
-</span></span><span class="line"><span class="cl">start-yarn.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#Historyserver啟動</span>
-</span></span><span class="line"><span class="cl">mapred --daemon start historyserver
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#NameNode啟動</span>
+start-dfs.sh
+
+<span class="c1">#ResourceManager啟動</span>
+start-yarn.sh
+
+<span class="c1">#Historyserver啟動</span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>Hadoop 服務開啟 （未啟用 HA)</li>
@@ -550,15 +550,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Historyserver停止</span>
-</span></span><span class="line"><span class="cl">mapred --daemon stop historyserver
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#ResourceManager停止</span>
-</span></span><span class="line"><span class="cl">stop-yarn.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#NameNode停止</span>
-</span></span><span class="line"><span class="cl">stop-dfs.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Historyserver停止</span>
+mapred --daemon stop historyserver
+
+<span class="c1">#ResourceManager停止</span>
+stop-yarn.sh
+
+<span class="c1">#NameNode停止</span>
+stop-dfs.sh
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

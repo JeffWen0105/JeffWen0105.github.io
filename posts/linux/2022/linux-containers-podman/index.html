@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-containers-podman\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1511 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1526 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-containers-podman\/","datePublished": "2022-03-08T00:00:00+00:00","dateModified": "2022-03-08T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 容器管理工具 - Podman</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1511 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1526 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -155,8 +155,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman run <span class="o">[</span>options<span class="o">]</span> &lt;image name&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">podman run <span class="o">[</span>options<span class="o">]</span> &lt;image name&gt;
+</code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -177,26 +177,28 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name my-nginx nginx
-</span></span><span class="line"><span class="cl">✔ docker.io/library/nginx:latest
-</span></span><span class="line"><span class="cl">Trying to pull docker.io/library/nginx:latest...
-</span></span><span class="line"><span class="cl">Getting image <span class="nb">source</span> signatures
-</span></span><span class="line"><span class="cl">Copying blob 2215908dc0a2 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 08c3cb2073f1 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob c4ffe9532b5f <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 18f38162c0ce <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob c229119241af <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 10e2168f148a <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying config 12766a6745 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Writing manifest to image destination
-</span></span><span class="line"><span class="cl">Storing signatures
-</span></span><span class="line"><span class="cl">a2ca71137977c101ec989e4c490467b0b4a2672d80ca542563759f03956e130b
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman ps
-</span></span><span class="line"><span class="cl">CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS       NAMES
-</span></span><span class="line"><span class="cl">a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class="m">11</span> seconds ago  Up <span class="m">10</span> seconds ago              my-nginx
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name my-nginx nginx
+✔ docker.io/library/nginx:latest
+Trying to pull docker.io/library/nginx:latest...
+Getting image <span class="nb">source</span> signatures
+Copying blob 2215908dc0a2 <span class="k">done</span>  
+Copying blob 08c3cb2073f1 <span class="k">done</span>  
+Copying blob c4ffe9532b5f <span class="k">done</span>  
+Copying blob 18f38162c0ce <span class="k">done</span>  
+Copying blob c229119241af <span class="k">done</span>  
+Copying blob 10e2168f148a <span class="k">done</span>  
+Copying config 12766a6745 <span class="k">done</span>  
+Writing manifest to image destination
+Storing signatures
+a2ca71137977c101ec989e4c490467b0b4a2672d80ca542563759f03956e130b
+<span class="o">[</span>student@servera ~<span class="o">]</span>$ podman ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS       NAMES
+a2ca71137977  docker.io/library/nginx:latest  nginx -g daemon o...  <span class="m">11</span> seconds ago  Up <span class="m">10</span> seconds ago              my-nginx
+
+</code></pre></td></tr></table>
 </div>
 </div><p>常用的參數:</p>
 <ol>
@@ -212,8 +214,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">podman <span class="nb">exec</span>  <span class="o">[</span>options<span class="o">]</span> &lt;container name&gt; &lt;command&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">podman <span class="nb">exec</span>  <span class="o">[</span>options<span class="o">]</span> &lt;container name&gt; &lt;command&gt;
+</code></pre></td></tr></table>
 </div>
 </div><p>常用的參數:</p>
 <ol>
@@ -265,45 +267,45 @@
 </span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name restart-nginx -p 8080:80 nginx
-</span></span><span class="line"><span class="cl">✔ docker.io/library/nginx:latest
-</span></span><span class="line"><span class="cl">Trying to pull docker.io/library/nginx:latest...
-</span></span><span class="line"><span class="cl">Getting image <span class="nb">source</span> signatures
-</span></span><span class="line"><span class="cl">Copying blob 18f38162c0ce <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob c4ffe9532b5f <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 08c3cb2073f1 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 10e2168f148a <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob 2215908dc0a2 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying blob c229119241af <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Copying config 12766a6745 <span class="k">done</span>  
-</span></span><span class="line"><span class="cl">Writing manifest to image destination
-</span></span><span class="line"><span class="cl">Storing signatures
-</span></span><span class="line"><span class="cl">0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
-</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
-</span></span><span class="line"><span class="cl">&lt;html&gt;
-</span></span><span class="line"><span class="cl">&lt;head&gt;
-</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-</span></span><span class="line"><span class="cl">&lt;style&gt;
-</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">&lt;/style&gt;
-</span></span><span class="line"><span class="cl">&lt;/head&gt;
-</span></span><span class="line"><span class="cl">&lt;body&gt;
-</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-</span></span><span class="line"><span class="cl">Commercial support is available at
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-</span></span><span class="line"><span class="cl">&lt;/body&gt;
-</span></span><span class="line"><span class="cl">&lt;/html&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ podman run -d --name restart-nginx -p 8080:80 nginx
+✔ docker.io/library/nginx:latest
+Trying to pull docker.io/library/nginx:latest...
+Getting image <span class="nb">source</span> signatures
+Copying blob 18f38162c0ce <span class="k">done</span>  
+Copying blob c4ffe9532b5f <span class="k">done</span>  
+Copying blob 08c3cb2073f1 <span class="k">done</span>  
+Copying blob 10e2168f148a <span class="k">done</span>  
+Copying blob 2215908dc0a2 <span class="k">done</span>  
+Copying blob c229119241af <span class="k">done</span>  
+Copying config 12766a6745 <span class="k">done</span>  
+Writing manifest to image destination
+Storing signatures
+0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
+<span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="332-產生-user-的-systemd-目錄">3.3.2 產生 User 的 systemd 目錄</h4>
 <div class="highlight"><div class="chroma">
@@ -315,12 +317,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ mkdir -pv ~/.config/systemd/user/
-</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config&#39;</span>
-</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd&#39;</span>
-</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd/user/&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ <span class="nb">cd</span> ~/.config/systemd/
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ mkdir -pv ~/.config/systemd/user/
+mkdir: created directory <span class="s1">&#39;/home/student/.config&#39;</span>
+mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd&#39;</span>
+mkdir: created directory <span class="s1">&#39;/home/student/.config/systemd/user/&#39;</span>
+<span class="o">[</span>student@servera ~<span class="o">]</span>$ <span class="nb">cd</span> ~/.config/systemd/
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -339,11 +341,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman generate systemd --name restart-nginx  --new -f
-</span></span><span class="line"><span class="cl">/home/student/.config/systemd/user/container-restart-nginx.service
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ ls
-</span></span><span class="line"><span class="cl">container-restart-nginx.service
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman generate systemd --name restart-nginx  --new -f
+/home/student/.config/systemd/user/container-restart-nginx.service
+<span class="o">[</span>student@servera user<span class="o">]</span>$ ls
+container-restart-nginx.service
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="334-podman-停止及刪除容器">3.3.4 Podman 停止及刪除容器</h4>
 <div class="highlight"><div class="chroma">
@@ -356,13 +358,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman stop restart-nginx
-</span></span><span class="line"><span class="cl">restart-nginx
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman rm restart-nginx
-</span></span><span class="line"><span class="cl">0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman ps
-</span></span><span class="line"><span class="cl">CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ podman stop restart-nginx
+restart-nginx
+<span class="o">[</span>student@servera user<span class="o">]</span>$ podman rm restart-nginx
+0f08d4f8e218a76ec4f4e68eb5bf04df518ee685825e6b49017f12ef718f4b7a
+<span class="o">[</span>student@servera user<span class="o">]</span>$ podman ps
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="335-改用-systemd-啟動容器">3.3.5 改用 systemd 啟動容器</h4>
 <div class="highlight"><div class="chroma">
@@ -397,35 +399,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ systemctl --user <span class="nb">enable</span> container-restart-nginx.service --now
-</span></span><span class="line"><span class="cl">Created symlink /home/student/.config/systemd/user/multi-user.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
-</span></span><span class="line"><span class="cl">Unit /home/student/.config/systemd/user/container-restart-nginx.service is added as a dependency to a non-existent unit multi-user.target.
-</span></span><span class="line"><span class="cl">Created symlink /home/student/.config/systemd/user/default.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ curl 127.0.0.1:8080
-</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
-</span></span><span class="line"><span class="cl">&lt;html&gt;
-</span></span><span class="line"><span class="cl">&lt;head&gt;
-</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-</span></span><span class="line"><span class="cl">&lt;style&gt;
-</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">&lt;/style&gt;
-</span></span><span class="line"><span class="cl">&lt;/head&gt;
-</span></span><span class="line"><span class="cl">&lt;body&gt;
-</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-</span></span><span class="line"><span class="cl">Commercial support is available at
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-</span></span><span class="line"><span class="cl">&lt;/body&gt;
-</span></span><span class="line"><span class="cl">&lt;/html&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ systemctl --user <span class="nb">enable</span> container-restart-nginx.service --now
+Created symlink /home/student/.config/systemd/user/multi-user.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
+Unit /home/student/.config/systemd/user/container-restart-nginx.service is added as a dependency to a non-existent unit multi-user.target.
+Created symlink /home/student/.config/systemd/user/default.target.wants/container-restart-nginx.service → /home/student/.config/systemd/user/container-restart-nginx.service.
+<span class="o">[</span>student@servera user<span class="o">]</span>$ curl 127.0.0.1:8080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="336-使用者不需登入也會啟動服務">3.3.6 使用者不需登入也會啟動服務</h4>
 <p>除了 root 之外的服務，都必須要使用者 login 後 systemd 才會自動拉起該 user 的服務，不過可以透過 enable-linger 不需要登入也可以啟動服務。</p>
@@ -436,10 +438,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl enable-linger 
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl show-user  student <span class="p">|</span> grep Linger
-</span></span><span class="line"><span class="cl"><span class="nv">Linger</span><span class="o">=</span>yes
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl enable-linger 
+<span class="o">[</span>student@servera user<span class="o">]</span>$ loginctl show-user  student <span class="p">|</span> grep Linger
+<span class="nv">Linger</span><span class="o">=</span>yes
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -478,31 +480,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
-</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
-</span></span><span class="line"><span class="cl">&lt;html&gt;
-</span></span><span class="line"><span class="cl">&lt;head&gt;
-</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-</span></span><span class="line"><span class="cl">&lt;style&gt;
-</span></span><span class="line"><span class="cl">html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
-</span></span><span class="line"><span class="cl">font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
-</span></span><span class="line"><span class="cl">&lt;/style&gt;
-</span></span><span class="line"><span class="cl">&lt;/head&gt;
-</span></span><span class="line"><span class="cl">&lt;body&gt;
-</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
-</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
-</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
-</span></span><span class="line"><span class="cl">Commercial support is available at
-</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
-</span></span><span class="line"><span class="cl">&lt;/body&gt;
-</span></span><span class="line"><span class="cl">&lt;/html&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@servera ~<span class="o">]</span>$ curl 127.0.0.1:8080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+html <span class="o">{</span> color-scheme: light dark<span class="p">;</span> <span class="o">}</span>
+body <span class="o">{</span> width: 35em<span class="p">;</span> margin: <span class="m">0</span> auto<span class="p">;</span>
+font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span> <span class="o">}</span>
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-docker-轉換-podman-小技巧">4. Docker 轉換 Podman 小技巧</h2>

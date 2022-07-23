@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/gcp\/2022\/gcp-iac_k8s\/"
-        },"genre": "posts","keywords": "GCP, Terraform, Ansible, Kubernetes","wordcount":  853 ,
+        },"genre": "posts","keywords": "GCP, Terraform, Ansible, Kubernetes","wordcount":  873 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/gcp\/2022\/gcp-iac_k8s\/","datePublished": "2022-07-03T00:00:00+00:00","dateModified": "2022-07-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GCP - Terraform & Ansible 在 GCP 上自動部署 K8S 叢集</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/gcp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>GCP</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-03">2022-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;853 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-03">2022-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;873 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -149,8 +149,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm -it jeffwen0105/iac-gce-k8s bash
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --rm -it jeffwen0105/iac-gce-k8s bash
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>使用 vi 編輯 credentials ，將 GCP 具備創建 VPC 及 GCE 的 credentials 貼上。</li>
@@ -171,19 +171,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;service_account&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;project_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;project_id&gt;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;private_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;private_key_id&gt;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;private_key&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;private_key&gt;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;client_email&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_email&gt;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;client_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_id&gt;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;auth_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://accounts.google.com/o/oauth2/auth&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://oauth2.googleapis.com/token&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;auth_provider_x509_cert_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://www.googleapis.com/oauth2/v1/certs&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;client_x509_cert_url&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_x509_cert_url&gt;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;service_account&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;project_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;project_id&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;private_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;private_key_id&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;private_key&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;private_key&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;client_email&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_email&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;client_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_id&gt;&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;auth_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://accounts.google.com/o/oauth2/auth&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;token_uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://oauth2.googleapis.com/token&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;auth_provider_x509_cert_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://www.googleapis.com/oauth2/v1/certs&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;client_x509_cert_url&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;client_x509_cert_url&gt;&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>使用 vi 編輯 Project ，將專案修改專案 Project id。</li>
@@ -202,8 +202,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash run.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">bash run.sh
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -216,8 +216,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash destroy.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">bash destroy.sh
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -266,22 +266,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@hoshos iac-gce-k8s]# tree -F .
-</span></span><span class="line"><span class="cl">.
-</span></span><span class="line"><span class="cl">├── ansible.cfg
-</span></span><span class="line"><span class="cl">├── credentials
-</span></span><span class="line"><span class="cl">├── destroy.sh*
-</span></span><span class="line"><span class="cl">├── inventory.tf
-</span></span><span class="line"><span class="cl">├── main.tf
-</span></span><span class="line"><span class="cl">├── playbook.yml
-</span></span><span class="line"><span class="cl">├── project
-</span></span><span class="line"><span class="cl">├── run.sh*
-</span></span><span class="line"><span class="cl">├── templates/
-</span></span><span class="line"><span class="cl">│   └── hosts.tpl
-</span></span><span class="line"><span class="cl">└── variables.tf
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">1 directory, 10 files
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@hoshos iac-gce-k8s]# tree -F .
+.
+├── ansible.cfg
+├── credentials
+├── destroy.sh*
+├── inventory.tf
+├── main.tf
+├── playbook.yml
+├── project
+├── run.sh*
+├── templates/
+│   └── hosts.tpl
+└── variables.tf
+
+1 directory, 10 files
+</code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ol>
@@ -326,18 +326,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">variable</span> <span class="s2">&#34;hostname&#34;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="err">type=set(string)</span>
-</span></span><span class="line"><span class="cl">  <span class="err">default</span> <span class="err">=</span> <span class="err">[</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;master&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;node1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;node2&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;node3&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;node4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;node5&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="err">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">variable</span> <span class="s2">&#34;hostname&#34;</span> <span class="p">{</span>
+  <span class="err">type=set(string)</span>
+  <span class="err">default</span> <span class="err">=</span> <span class="err">[</span>
+    <span class="nt">&#34;master&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;node1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;node2&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;node3&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;node4&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;node5&#34;</span>
+  <span class="err">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-小結">4. 小結</h2>

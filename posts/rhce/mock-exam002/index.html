@@ -144,14 +144,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ cat &gt;&gt; adhoc.sh  <span class="s">&lt;&lt; EOF
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; #!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; ansible all -m yum_repository -a &#34;name=BaseOS description=&#39;ex200-baseos&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; ansible all -m yum_repository -a &#34;name=AppStream description=&#39;ex200-appstream&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; EOF</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ chmod +x adhoc.sh 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ cat &gt;&gt; adhoc.sh  <span class="s">&lt;&lt; EOF
+</span><span class="s">&gt; #!/bin/bash
+</span><span class="s">&gt; ansible all -m yum_repository -a &#34;name=BaseOS description=&#39;ex200-baseos&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/BaseOS/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
+</span><span class="s">&gt; 
+</span><span class="s">&gt; ansible all -m yum_repository -a &#34;name=AppStream description=&#39;ex200-appstream&#39; baseurl=&#39;http://mirror01.idc.hinet.net/rockylinux/8.6/AppStream/x86_64/os/&#39; gpgcheck=yes gpgkey=&#39;http://mirror01.idc.hinet.net/rockylinux/RPM-GPG-KEY-rockyofficial&#39; enabled=yes&#34;
+</span><span class="s">&gt; EOF</span>
+<span class="o">[</span>student@workstation ansible<span class="o">]</span>$ chmod +x adhoc.sh 
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

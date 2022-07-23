@@ -122,15 +122,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- name: Start Service
-</span></span><span class="line"><span class="cl">  service:
-</span></span><span class="line"><span class="cl">    name: &#34;{{ item }}&#34;
-</span></span><span class="line"><span class="cl">    state: start
-</span></span><span class="line"><span class="cl">  loop:
-</span></span><span class="line"><span class="cl">    - httpd
-</span></span><span class="line"><span class="cl">    - mysql
-</span></span><span class="line"><span class="cl">    - firewalld
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name: Start Service
+  service:
+    name: &#34;{{ item }}&#34;
+    state: start
+  loop:
+    - httpd
+    - mysql
+    - firewalld
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="12-字典陣列迴圈">1.2. 字典陣列迴圈</h3>
 <p>當一個迴圈有多個變數可以透字典方式來協助， Playbook 範例：</p>
@@ -148,17 +148,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- name: Create Users
-</span></span><span class="line"><span class="cl">  user:
-</span></span><span class="line"><span class="cl">    name: &#34;{{ item.name }}&#34;
-</span></span><span class="line"><span class="cl">    state: present
-</span></span><span class="line"><span class="cl">    groups: &#34;{{ item.groups }}&#34;
-</span></span><span class="line"><span class="cl">  loop:
-</span></span><span class="line"><span class="cl">    - name: bob
-</span></span><span class="line"><span class="cl">      groups: wheel
-</span></span><span class="line"><span class="cl">    - name: john
-</span></span><span class="line"><span class="cl">      groups: root
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name: Create Users
+  user:
+    name: &#34;{{ item.name }}&#34;
+    state: present
+    groups: &#34;{{ item.groups }}&#34;
+  loop:
+    - name: bob
+      groups: wheel
+    - name: john
+      groups: root
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="2-條件判斷式">2. 條件判斷式</h2>
@@ -180,18 +180,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Test</span> <span class="nx">The</span> <span class="nx">Var</span> <span class="nx">is</span> <span class="nx">Defined</span> <span class="nx">Example</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">hosts</span><span class="p">:</span> <span class="nx">all</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">vars</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">my_service</span><span class="p">:</span> <span class="nx">httpd</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="nx">tasks</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span> <span class="kn">package</span> <span class="nx">is</span> <span class="nx">installed</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">yum</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">state</span><span class="p">:</span> <span class="nx">present</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">when</span><span class="p">:</span> <span class="nx">my_service</span> <span class="nx">is</span> <span class="nx">defined</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">Test</span> <span class="nx">The</span> <span class="nx">Var</span> <span class="nx">is</span> <span class="nx">Defined</span> <span class="nx">Example</span>
+  <span class="nx">hosts</span><span class="p">:</span> <span class="nx">all</span>
+  <span class="nx">vars</span><span class="p">:</span>
+    <span class="nx">my_service</span><span class="p">:</span> <span class="nx">httpd</span>
+  
+  <span class="nx">tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span> <span class="kn">package</span> <span class="nx">is</span> <span class="nx">installed</span>
+      <span class="nx">yum</span><span class="p">:</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="s">&#34;{{ my_service }}&#34;</span>
+        <span class="nx">state</span><span class="p">:</span> <span class="nx">present</span>
+      <span class="nx">when</span><span class="p">:</span> <span class="nx">my_service</span> <span class="nx">is</span> <span class="nx">defined</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="22-條件判斷列表">2.2. 條件判斷列表</h3>
 <table>

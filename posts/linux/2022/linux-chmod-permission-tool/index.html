@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-chmod-permission-tool\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  2353 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  2357 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-chmod-permission-tool\/","datePublished": "2022-02-10T00:00:00+00:00","dateModified": "2022-02-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - Chmod 工具管理檔案/目錄權限</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-10">2022-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2353 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-10">2022-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2357 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -151,10 +151,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod u+x,g+x <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">total <span class="m">4</span>
-</span></span><span class="line"><span class="cl">-rwxrwxr--. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:12 <span class="nb">test</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod u+x,g+x <span class="nb">test</span>
+total <span class="m">4</span>
+-rwxrwxr--. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:12 <span class="nb">test</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>透過上述的排列組合，可以自由搭配來設定檔案或是目錄權限</p>
 <h3 id="12-方式二-數字表示設定">1.2 方式二 （數字表示設定）</h3>
@@ -172,17 +172,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">r 代表4 , w 代表 2 , x 代表 1 ，每三個數字為一組相加 
-</span></span><span class="line"><span class="cl">-rwxrwxrwx 
-</span></span><span class="line"><span class="cl"> 421421421
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl">將上述權限轉成數字就變成 7(4+2+1)7(4+2+1)7(4+2+1) -&gt; 777
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">-rw-r--r--
-</span></span><span class="line"><span class="cl"> 420400400
-</span></span><span class="line"><span class="cl"> 
-</span></span><span class="line"><span class="cl">將上述權限轉成數字就變成 6(4+2+0)4(4+0+0)4(4+0+0) -&gt; 644
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">r 代表4 , w 代表 2 , x 代表 1 ，每三個數字為一組相加 
+-rwxrwxrwx 
+ 421421421
+ 
+將上述權限轉成數字就變成 7(4+2+1)7(4+2+1)7(4+2+1) -&gt; 777
+
+-rw-r--r--
+ 420400400
+ 
+將上述權限轉成數字就變成 6(4+2+0)4(4+0+0)4(4+0+0) -&gt; 644
+</code></pre></td></tr></table>
 </div>
 </div><p>例如: test2 檔案所有人都可以執行跟讀取，另限定只有 user 才有寫入權限</p>
 <div class="highlight"><div class="chroma">
@@ -192,10 +192,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod <span class="m">755</span> test2
-</span></span><span class="line"><span class="cl">total <span class="m">4</span>
-</span></span><span class="line"><span class="cl">-rwxr-xr-x. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:15 test2
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod <span class="m">755</span> test2
+total <span class="m">4</span>
+-rwxr-xr-x. <span class="m">1</span> <span class="nb">test</span> <span class="nb">test</span>  <span class="m">0</span> Feb <span class="m">10</span> 12:15 test2
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="2-chmod-進階參數">2. chmod 進階參數</h2>
@@ -220,19 +220,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ tree main/
-</span></span><span class="line"><span class="cl">main/
-</span></span><span class="line"><span class="cl">├── aa
-</span></span><span class="line"><span class="cl">│   ├── inside
-</span></span><span class="line"><span class="cl">│   │   └── exec.sh
-</span></span><span class="line"><span class="cl">│   └── other.sh
-</span></span><span class="line"><span class="cl">└── bb
-</span></span><span class="line"><span class="cl">    ├── inside
-</span></span><span class="line"><span class="cl">    │   └── exec.sh
-</span></span><span class="line"><span class="cl">    └── other.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="m">4</span> directories, <span class="m">4</span> files
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ tree main/
+main/
+├── aa
+│   ├── inside
+│   │   └── exec.sh
+│   └── other.sh
+└── bb
+    ├── inside
+    │   └── exec.sh
+    └── other.sh
+
+<span class="m">4</span> directories, <span class="m">4</span> files
+</code></pre></td></tr></table>
 </div>
 </div><p>將上述所有的目錄及檔案都改成 755 權限</p>
 <div class="highlight"><div class="chroma">
@@ -249,17 +249,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod -Rv <span class="m">755</span> main/
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/aa&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/aa/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/aa/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/aa/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/bb&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/bb/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/bb/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span><span class="line"><span class="cl">mode of <span class="s1">&#39;main/bb/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ chmod -Rv <span class="m">755</span> main/
+mode of <span class="s1">&#39;main/&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/aa/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/inside&#39;</span> changed from <span class="m">0775</span> <span class="o">(</span>rwxrwxr-x<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/inside/exec.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+mode of <span class="s1">&#39;main/bb/other.sh&#39;</span> changed from <span class="m">0664</span> <span class="o">(</span>rw-rw-r--<span class="o">)</span> to <span class="m">0755</span> <span class="o">(</span>rwxr-xr-x<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-chmod-特殊權限">3. chmod 特殊權限</h2>
@@ -298,9 +298,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -l /usr/bin/passwd
-</span></span><span class="line"><span class="cl">-rwsr-xr-x. <span class="m">1</span> root root <span class="m">33544</span> Mar <span class="m">15</span>  <span class="m">2021</span> /usr/bin/passwd
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -l /usr/bin/passwd
+-rwsr-xr-x. <span class="m">1</span> root root <span class="m">33544</span> Mar <span class="m">15</span>  <span class="m">2021</span> /usr/bin/passwd
+</code></pre></td></tr></table>
 </div>
 </div><p>上方權限 user 原本是 x 執行權限變成 s ，表示該檔案為 suid ，在執行時候會自動提升權力使程式可以擁有 root 權力，所以才能變更自己的密碼。</p>
 <div class="details admonition note open">
@@ -319,9 +319,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -ld sgid/
-</span></span><span class="line"><span class="cl">drwxr-sr-x. <span class="m">2</span> <span class="nb">test</span> tests <span class="m">6</span> Feb <span class="m">10</span> 13:45 sgid/
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -ld sgid/
+drwxr-sr-x. <span class="m">2</span> <span class="nb">test</span> tests <span class="m">6</span> Feb <span class="m">10</span> 13:45 sgid/
+</code></pre></td></tr></table>
 </div>
 </div><p>在 sgid 底下新增一個檔案 example， 檔案的 group 會從原本的 test 自動改寫成 tests</p>
 <div class="highlight"><div class="chroma">
@@ -330,9 +330,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -l sgid/example 
-</span></span><span class="line"><span class="cl">-rw-rw-r--. <span class="m">1</span> <span class="nb">test</span> tests <span class="m">0</span> Feb <span class="m">10</span> 13:49 sgid/example
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera playgroud<span class="o">]</span>$ ls -l sgid/example 
+-rw-rw-r--. <span class="m">1</span> <span class="nb">test</span> tests <span class="m">0</span> Feb <span class="m">10</span> 13:49 sgid/example
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="31-特殊權限----sticky">3.1 特殊權限 -  sticky</h3>
 <p>這個用法主要在 /tmp 目錄下，任何人都可以訪問 /tmp 目錄並且創建刪除檔案，假設今天 John 的某支程式在 /tmp 底下輸出一個執行暫存檔 joho_helper.json ， 他的仇人 Amy　剛好也在/tmp目錄下看到一氣之下就把檔案給刪除了；如果沒有特殊權限保護機制，一旦把檔案刪除的話，那 John 的程式可能就會失敗中斷 &hellip; 所以 sticky 就發揮出功能了</p>
@@ -342,9 +342,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -ld /tmp
-</span></span><span class="line"><span class="cl">drwxrwxrwt. <span class="m">10</span> root root <span class="m">275</span> Feb <span class="m">10</span> 13:49 /tmp
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test@servera ~<span class="o">]</span>$ ls -ld /tmp
+drwxrwxrwt. <span class="m">10</span> root root <span class="m">275</span> Feb <span class="m">10</span> 13:49 /tmp
+</code></pre></td></tr></table>
 </div>
 </div><p>上方權限 other 原本是 x 執行權限變成 t ，表示該檔案為 sticky ，雖然任何能都自由進出創建檔案在該目錄下，不過只有該檔案的擁有者才有權限刪除。</p>
 <p>例如: test 使用者 程式建立的檔案 ， test4 使用者就沒有權限執行刪除</p>
@@ -356,11 +356,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[test4@servera ~]$ ls -l /tmp/test-owner.log 
-</span></span><span class="line"><span class="cl">-rwxrwxrwx. 1 test test 0 Feb 10 13:59 /tmp/test-owner.log
-</span></span><span class="line"><span class="cl">[test4@servera ~]$ rm -f /tmp/test-owner.log 
-</span></span><span class="line"><span class="cl">rm: cannot remove &#39;/tmp/test-owner.log&#39;: Operation not permitted
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[test4@servera ~]$ ls -l /tmp/test-owner.log 
+-rwxrwxrwx. 1 test test 0 Feb 10 13:59 /tmp/test-owner.log
+[test4@servera ~]$ rm -f /tmp/test-owner.log 
+rm: cannot remove &#39;/tmp/test-owner.log&#39;: Operation not permitted
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -389,16 +389,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
-</span></span><span class="line"><span class="cl">total <span class="m">0</span>
-</span></span><span class="line"><span class="cl">-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
-</span></span><span class="line"><span class="cl">-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+x file/
-</span></span><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
-</span></span><span class="line"><span class="cl">total <span class="m">0</span>
-</span></span><span class="line"><span class="cl">-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
-</span></span><span class="line"><span class="cl">-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+x file/
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>改成使用大寫 X 情況就會不一樣了</p>
 <div class="highlight"><div class="chroma">
@@ -414,16 +414,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
-</span></span><span class="line"><span class="cl">total <span class="m">0</span>
-</span></span><span class="line"><span class="cl">-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
-</span></span><span class="line"><span class="cl">-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+X file/
-</span></span><span class="line"><span class="cl"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
-</span></span><span class="line"><span class="cl">total <span class="m">0</span>
-</span></span><span class="line"><span class="cl">-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
-</span></span><span class="line"><span class="cl">-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ chmod -R a+X file/
+<span class="o">[</span>test4@servera ~<span class="o">]</span>$ ls -l file/
+total <span class="m">0</span>
+-rw-rw-r--. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 a
+-rwxrwxr-x. <span class="m">1</span> test4 test4 <span class="m">0</span> Feb <span class="m">10</span> 14:13 <span class="nb">exec</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>上述就可以看到原本 exec 檔案的 user 就有 x (執行) 權限，所以執行 a + X ，擁有人都可以擁有執行權限，不過 a 檔案預設就是沒有任何執行權限，就算執行 a + X 也不會自動取得執行權限。</p>
 <hr>
@@ -452,9 +452,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera test<span class="o">]</span><span class="c1"># umask </span>
-</span></span><span class="line"><span class="cl"><span class="m">0022</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera test<span class="o">]</span><span class="c1"># umask </span>
+<span class="m">0022</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>上述就可以看到 umask 遮罩會自動扣除 group 及 other 的 w (寫入權限)，所以檔案就自動從原本的 666 ( 扣除 022 ) -&gt; 644 ，目錄從原本的 777 （扣除 022 ） -&gt; 755。</p>
 <h3 id="52-永久配置-umask">5.2 永久配置 umask</h3>
@@ -466,9 +466,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"># <span class="nx">限制只要是</span> <span class="nx">other</span> <span class="nx">都沒有權限執行</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">umask</span> <span class="m">007</span><span class="err">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"># <span class="nx">限制只要是</span> <span class="nx">other</span> <span class="nx">都沒有權限執行</span><span class="err">
+</span><span class="err"></span><span class="nx">umask</span> <span class="m">007</span><span class="err">
+</span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">

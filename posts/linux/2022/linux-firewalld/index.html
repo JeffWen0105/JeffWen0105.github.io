@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-firewalld\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  675 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  677 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-firewalld\/","datePublished": "2022-03-16T00:00:00+00:00","dateModified": "2022-03-16T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - Firewalld 動態防火牆管理器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-16">2022-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;675 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-16">2022-03-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;677 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -120,8 +120,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# systemctl start firewalld.service
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# systemctl start firewalld.service
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="22-停止-firewalld">2.2. 停止 Firewalld</h3>
 <div class="highlight"><div class="chroma">
@@ -129,8 +129,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# systemctl stop firewalld.service
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# systemctl stop firewalld.service
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
@@ -162,22 +162,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# firewall-cmd --list-all
-</span></span><span class="line"><span class="cl">public (active)
-</span></span><span class="line"><span class="cl">  target: default
-</span></span><span class="line"><span class="cl">  icmp-block-inversion: no
-</span></span><span class="line"><span class="cl">  interfaces: enp1s0
-</span></span><span class="line"><span class="cl">  sources: 
-</span></span><span class="line"><span class="cl">  services: cockpit dhcpv6-client ssh
-</span></span><span class="line"><span class="cl">  ports: 
-</span></span><span class="line"><span class="cl">  protocols: 
-</span></span><span class="line"><span class="cl">  forward: no
-</span></span><span class="line"><span class="cl">  masquerade: no
-</span></span><span class="line"><span class="cl">  forward-ports: 
-</span></span><span class="line"><span class="cl">  source-ports: 
-</span></span><span class="line"><span class="cl">  icmp-blocks: 
-</span></span><span class="line"><span class="cl">  rich rules:
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --list-all
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp1s0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: no
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules:
+</code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>預設 TCP cockpit dhcpv6-client ssh 及 ICMP 協定都會開放存取。</p>
@@ -193,9 +193,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# firewall-cmd --add-port=80/tcp
-</span></span><span class="line"><span class="cl">success
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --add-port=80/tcp
+success
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>以規定成俗的服務名稱開放</li>
@@ -206,9 +206,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# firewall-cmd --add-service=http
-</span></span><span class="line"><span class="cl">success
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --add-service=http
+success
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="412-停用阜號或服務">4.1.2 停用阜號或服務</h3>
 <ol>
@@ -220,9 +220,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# firewall-cmd --remove-port=80/tcp
-</span></span><span class="line"><span class="cl">success
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --remove-port=80/tcp
+success
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>以規定成俗的服務名稱開放</li>
@@ -233,9 +233,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# firewall-cmd --remove-service=http
-</span></span><span class="line"><span class="cl">success
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# firewall-cmd --remove-service=http
+success
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="413-將防火牆規則寫入硬碟內">4.1.3 將防火牆規則寫入硬碟內</h3>
 <p>上述所有的規則設定都僅為修改記憶體內的防火牆規則，一旦機器重新開機後就會失效，可以透過寫入硬碟方式，讓每次重新開機都能載入正確的防火牆規則。</p>
@@ -246,9 +246,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">firewall-cmd --add-service=http --permanent
-</span></span><span class="line"><span class="cl">firewall-cmd --reload
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -268,8 +268,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yum install firewall-config -y
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yum install firewall-config -y
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>圖形化介面範例</li>

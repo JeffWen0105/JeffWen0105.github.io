@@ -212,8 +212,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">scp /usr/local/hadoop/etc/hadoop/hdfs-site.xml hadoop@test31:/usr/local/hadoop/etc/hadoop
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">scp /usr/local/hadoop/etc/hadoop/hdfs-site.xml hadoop@test31:/usr/local/hadoop/etc/hadoop
+</code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -223,8 +223,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -278,47 +278,47 @@
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.nameservices<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>nncluster<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.ha.namenodes.nncluster<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>nn1,nn2<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>test30.example.org:8020<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>test30.example.org:9870<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>test31.example.org:8020<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>test31.example.org:9870<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.namenode.shared.edits.dir<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;value&gt;</span>qjournal://test32.example.org:8485;test33.example.org:8485;test34.example.org:8485/nncluster<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.journalnode.edits.dir<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>/home/hadoop/journalnode<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.ha.fencing.methods<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>shell(/bin/true)<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.client.failover.proxy.provider.nncluster<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.nameservices<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.namenodes.nncluster<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>nn1,nn2<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:8020<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn1<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:9870<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.rpc-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test31.example.org:8020<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.http-address.nncluster.nn2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test31.example.org:9870<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.namenode.shared.edits.dir<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>qjournal://test32.example.org:8485;test33.example.org:8485;test34.example.org:8485/nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.journalnode.edits.dir<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>/home/hadoop/journalnode<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.fencing.methods<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>shell(/bin/true)<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.client.failover.proxy.provider.nncluster<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -334,8 +334,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/hadoop/etc/hadoop/core-site.xml
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/core-site.xml
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -353,11 +353,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&lt;value&gt;</span>hdfs://nncluster<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.defaultFS<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>hdfs://nncluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="3-三台電腦journalnodes建立journalnode資料夾">3. 三台電腦(Journalnodes)建立journalnode資料夾</h3>
 <div class="highlight"><div class="chroma">
@@ -365,8 +365,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ~/journalnode
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/journalnode
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="4-啟動journalnode並jps確認">4. 啟動journalnode，並jps確認</h3>
 <div class="highlight"><div class="chroma">
@@ -374,8 +374,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs --daemon start journalnode
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start journalnode
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -391,8 +391,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs namenode -initializeSharedEdits
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -initializeSharedEdits
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -429,8 +429,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs namenode -format
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -format
+</code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -441,8 +441,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs --daemon start namenode
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start namenode
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -458,8 +458,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs namenode -bootstrapStandby
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs namenode -bootstrapStandby
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -491,8 +491,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs --daemon start namenode
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon start namenode
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -509,9 +509,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">stop-dfs.sh
-</span></span><span class="line"><span class="cl">start-dfs.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">stop-dfs.sh
+start-dfs.sh
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -537,10 +537,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs haadmin -transitionToActive nn1
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn1
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn2
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs haadmin -transitionToActive nn1
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -572,8 +572,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start-yarn.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-yarn.sh
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -589,8 +589,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mapred --daemon start historyserver
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mapred --daemon start historyserver
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -610,12 +610,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs haadmin -transitionToStandby nn1
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn1
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn2
-</span></span><span class="line"><span class="cl">hdfs haadmin -transitionToActive nn2
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn2
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs haadmin -transitionToStandby nn1
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+hdfs haadmin -transitionToActive nn2
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -647,8 +647,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar pi <span class="m">30</span> <span class="m">100</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -675,8 +675,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget http://ftp.tc.edu.tw/pub/Apache/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget http://ftp.tc.edu.tw/pub/Apache/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition info open">
         <div class="details-summary admonition-title">
@@ -694,8 +694,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xvf apache-zookeeper-3.5.6-bin.tar.gz -C /usr/local
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tar -xvf apache-zookeeper-3.5.6-bin.tar.gz -C /usr/local
+</code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>更名</li>
@@ -705,8 +705,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv /usr/local/apache-zookeeper-3.5.6-bin /usr/local/zookeeper
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mv /usr/local/apache-zookeeper-3.5.6-bin /usr/local/zookeeper
+</code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>修改擁有者</li>
@@ -716,8 +716,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chown -R hadoop:hadoop /usr/local/zookeeper
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">chown -R hadoop:hadoop /usr/local/zookeeper
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="16-複製zoo_samplecfg並編輯zoocfg使用scp到另外兩台worker">16. 複製zoo_sample.cfg並編輯zoo.cfg(使用SCP到另外兩台(worker))</h3>
 <div class="highlight"><div class="chroma">
@@ -726,9 +726,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp /usr/local/zookeeper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg
-</span></span><span class="line"><span class="cl">nano /usr/local/zookeeper/conf/zoo.cfg
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cp /usr/local/zookeeper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg
+nano /usr/local/zookeeper/conf/zoo.cfg
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -755,12 +755,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">dataDir</span><span class="o">=</span>/usr/local/zookeeper/zoodata <span class="c1">#修改</span>
-</span></span><span class="line"><span class="cl">admin.serverPort<span class="o">=</span><span class="m">8010</span> <span class="c1">#新增</span>
-</span></span><span class="line"><span class="cl">server.1<span class="o">=</span>test32.example.org:2888:3888 <span class="c1">#新增</span>
-</span></span><span class="line"><span class="cl">server.2<span class="o">=</span>test33.example.org:2888:3888 <span class="c1">#新增</span>
-</span></span><span class="line"><span class="cl">server.3<span class="o">=</span>test34.example.org:2888:3888 <span class="c1">#新增</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">dataDir</span><span class="o">=</span>/usr/local/zookeeper/zoodata <span class="c1">#修改</span>
+admin.serverPort<span class="o">=</span><span class="m">8010</span> <span class="c1">#新增</span>
+server.1<span class="o">=</span>test32.example.org:2888:3888 <span class="c1">#新增</span>
+server.2<span class="o">=</span>test33.example.org:2888:3888 <span class="c1">#新增</span>
+server.3<span class="o">=</span>test34.example.org:2888:3888 <span class="c1">#新增</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="17-修改zkenvsh檔使用scp到另外兩台worker">17. 修改zkEnv.sh檔(使用SCP到另外兩台(worker))</h3>
 <div class="highlight"><div class="chroma">
@@ -768,8 +768,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/zookeeper/bin/zkEnv.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/zookeeper/bin/zkEnv.sh
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -786,10 +786,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#新增</span>
-</span></span><span class="line"><span class="cl"><span class="nv">ZOO_LOG_DIR</span><span class="o">=</span><span class="s2">&#34;/usr/local/zookeeper/logs&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">ZOO_LOG4J_PROP</span><span class="o">=</span><span class="s2">&#34;INFO,ROLLINGFILE&#34;</span>  
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#新增</span>
+<span class="nv">ZOO_LOG_DIR</span><span class="o">=</span><span class="s2">&#34;/usr/local/zookeeper/logs&#34;</span>
+<span class="nv">ZOO_LOG4J_PROP</span><span class="o">=</span><span class="s2">&#34;INFO,ROLLINGFILE&#34;</span>  
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="18-建立存放log資料夾">18. 建立存放LOG資料夾</h3>
 <div class="highlight"><div class="chroma">
@@ -800,11 +800,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir /usr/local/zookeeper/zoodata
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;1&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第一台zookeeper做</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;2&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第二台zookeeper做</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;3&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第三台zookeeper做</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkdir /usr/local/zookeeper/zoodata
+<span class="nb">echo</span> <span class="s2">&#34;1&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第一台zookeeper做</span>
+<span class="nb">echo</span> <span class="s2">&#34;2&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第二台zookeeper做</span>
+<span class="nb">echo</span> <span class="s2">&#34;3&#34;</span> &gt; /usr/local/zookeeper/zoodata/myid <span class="c1">#第三台zookeeper做</span>
+</code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>myid請務必要與zoo.cfg設定一樣</li>
@@ -826,8 +826,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano ~/.bashrc
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano ~/.bashrc
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>新增環境變數</li>
@@ -838,9 +838,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ZOOKEEPER_HOME</span><span class="o">=</span>/usr/local/zookeeper
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ZOOKEEPER_HOME</span>/bin  
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">ZOOKEEPER_HOME</span><span class="o">=</span>/usr/local/zookeeper
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ZOOKEEPER_HOME</span>/bin  
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -858,8 +858,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> ~/.bashrc <span class="c1"># . ~/.bashrc</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> ~/.bashrc <span class="c1"># . ~/.bashrc</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="20-啟動zookeeper三台電腦均要啟動">20. 啟動ZooKeeper(三台電腦均要啟動)</h3>
 <div class="highlight"><div class="chroma">
@@ -869,10 +869,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">zkServer.sh start
-</span></span><span class="line"><span class="cl">zkServer.sh status
-</span></span><span class="line"><span class="cl">jps
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">zkServer.sh start
+zkServer.sh status
+jps
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -901,13 +901,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#停止Historyserver </span>
-</span></span><span class="line"><span class="cl">mapred --daemon stop historyserver
-</span></span><span class="line"><span class="cl"><span class="c1">#停止ResoureManager</span>
-</span></span><span class="line"><span class="cl">stop-yarn.sh 
-</span></span><span class="line"><span class="cl"><span class="c1">#停止NameNode</span>
-</span></span><span class="line"><span class="cl">stop-dfs.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#停止Historyserver </span>
+mapred --daemon stop historyserver
+<span class="c1">#停止ResoureManager</span>
+stop-yarn.sh 
+<span class="c1">#停止NameNode</span>
+stop-dfs.sh
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="22-新增hdfs-sitexml並scp到其他台電腦">22. 新增hdfs-site.xml，並SCP到其他台電腦</h3>
 <div class="highlight"><div class="chroma">
@@ -915,8 +915,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -935,12 +935,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--新增 --&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>dfs.ha.automatic-failover.enabled<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--新增 --&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>dfs.ha.automatic-failover.enabled<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="23-新增core-sitexml並scp到其他台電腦">23. 新增core-site.xml，並SCP到其他台電腦</h3>
 <div class="highlight"><div class="chroma">
@@ -948,8 +948,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/hadoop/etc/hadoop/core-site.xml
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/hadoop/etc/hadoop/core-site.xml
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -968,12 +968,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--新增 --&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>ha.zookeeper.quorum<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>master1.example.org:2181,master2.example.org:2181,master3.example.org:2181<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--新增 --&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>ha.zookeeper.quorum<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>master1.example.org:2181,master2.example.org:2181,master3.example.org:2181<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="24-namenode限定">24. NameNode限定</h3>
 <div class="details admonition danger open">
@@ -989,8 +989,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs zkfc -formatZK
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs zkfc -formatZK
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -1014,8 +1014,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start-dfs.sh
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">start-dfs.sh
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -1041,10 +1041,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hdfs --daemon stop namenode
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn1
-</span></span><span class="line"><span class="cl">hdfs haadmin -getServiceState nn2
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hdfs --daemon stop namenode
+hdfs haadmin -getServiceState nn1
+hdfs haadmin -getServiceState nn2
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -1116,56 +1116,56 @@
 </span><span class="lnt">49
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--刪除property --&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">&lt;!--新增property --&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.enabled<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.cluster-id<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>rmcluster<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.rm-ids<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>rm1,rm2<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm1<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm2<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>test30.example.org<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm1<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>test31.example.org:8088<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm2<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&lt;value&gt;</span>test30.example.org:8088<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.recovery.enabled<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.store.class<span class="nt">&lt;/name&gt;</span>	         
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;property&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.zk-address<span class="nt">&lt;/name&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&lt;value&gt;</span>test32.example.org:2181,test33.example.org:2181,test34.example.org:2181<span class="nt">&lt;/value&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="nt">&lt;/property&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--刪除property --&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+<span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+
+<span class="c">&lt;!--新增property --&gt;</span>
+
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.enabled<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.cluster-id<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>rmcluster<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.ha.rm-ids<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>rm1,rm2<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test31.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.hostname.rm2<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test30.example.org<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test31.example.org:8088<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+ <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.webapp.address.rm2<span class="nt">&lt;/name&gt;</span>
+ <span class="nt">&lt;value&gt;</span>test30.example.org:8088<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.recovery.enabled<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.store.class<span class="nt">&lt;/name&gt;</span>	         
+  <span class="nt">&lt;value&gt;</span>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+  <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.zk-address<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;value&gt;</span>test32.example.org:2181,test33.example.org:2181,test34.example.org:2181<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="28-依序啟動下列服務">28. 依序啟動下列服務</h3>
 <div class="highlight"><div class="chroma">
@@ -1176,11 +1176,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#啟動ResoureManager</span>
-</span></span><span class="line"><span class="cl">start-yarn.sh 
-</span></span><span class="line"><span class="cl"><span class="c1">#啟動Historyserver </span>
-</span></span><span class="line"><span class="cl">mapred --daemon start historyserver
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#啟動ResoureManager</span>
+start-yarn.sh 
+<span class="c1">#啟動Historyserver </span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="29-測試resourcemanager故障自動轉移resourcemanager限定">29. 測試ResourceManager故障自動轉移(Resourcemanager限定)</h3>
 <div class="highlight"><div class="chroma">
@@ -1190,10 +1190,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yarn --daemon stop resourcemanager
-</span></span><span class="line"><span class="cl">yarn rmadmin -getServiceState rm1
-</span></span><span class="line"><span class="cl">yarn rmadmin -getServiceState rm2
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yarn --daemon stop resourcemanager
+yarn rmadmin -getServiceState rm1
+yarn rmadmin -getServiceState rm2
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -1215,8 +1215,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /usr/local/spark/conf/spark-defaults.conf
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /usr/local/spark/conf/spark-defaults.conf
+</code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -1248,18 +1248,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#ZooKeeper啟動</span>
-</span></span><span class="line"><span class="cl">zkServer.sh start
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#NameNode啟動</span>
-</span></span><span class="line"><span class="cl">start-dfs.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#ResourceManager啟動</span>
-</span></span><span class="line"><span class="cl">start-yarn.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#Historyserver啟動</span>
-</span></span><span class="line"><span class="cl">mapred --daemon start historyserver
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#ZooKeeper啟動</span>
+zkServer.sh start
+
+<span class="c1">#NameNode啟動</span>
+start-dfs.sh
+
+<span class="c1">#ResourceManager啟動</span>
+start-yarn.sh
+
+<span class="c1">#Historyserver啟動</span>
+mapred --daemon start historyserver
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>Hadoop 服務關閉 （啟用 HA)</li>
@@ -1280,19 +1280,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Historyserver停止</span>
-</span></span><span class="line"><span class="cl">mapred --daemon stop historyserver
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#ResourceManager停止</span>
-</span></span><span class="line"><span class="cl">stop-yarn.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#NameNode停止</span>
-</span></span><span class="line"><span class="cl">stop-dfs.sh
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#ZooKeeper停止</span>
-</span></span><span class="line"><span class="cl">zkServer.sh stop
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#Historyserver停止</span>
+mapred --daemon stop historyserver
+
+<span class="c1">#ResourceManager停止</span>
+stop-yarn.sh
+
+<span class="c1">#NameNode停止</span>
+stop-dfs.sh
+
+
+<span class="c1">#ZooKeeper停止</span>
+zkServer.sh stop
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

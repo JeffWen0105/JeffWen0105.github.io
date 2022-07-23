@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-vdo\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1646 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1648 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-vdo\/","datePublished": "2022-02-16T00:00:00+00:00","dateModified": "2022-02-16T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 虛擬資料優化系統 - VDO</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-16">2022-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1646 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-16">2022-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1648 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -143,18 +143,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# yum install vdo
-</span></span><span class="line"><span class="cl">Dependencies resolved.
-</span></span><span class="line"><span class="cl">==================================================================================================================================================================================================================
-</span></span><span class="line"><span class="cl"> Package                                               Architecture                                  Version                                                  Repository                                     Size
-</span></span><span class="line"><span class="cl">==================================================================================================================================================================================================================
-</span></span><span class="line"><span class="cl">Installing:
-</span></span><span class="line"><span class="cl"> vdo                                                   x86_64                                        6.2.5.74-14.el8                                          BaseOS                                        661 k
-</span></span><span class="line"><span class="cl">Installing dependencies:
-</span></span><span class="line"><span class="cl"> kmod-kvdo                                             x86_64                                        6.2.5.72-81.el8                                          BaseOS                                        339 k
-</span></span><span class="line"><span class="cl"> python3-pyyaml                                        x86_64                                        3.12-12.el8                                              BaseOS                                        192 k
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# yum install vdo
+Dependencies resolved.
+==================================================================================================================================================================================================================
+ Package                                               Architecture                                  Version                                                  Repository                                     Size
+==================================================================================================================================================================================================================
+Installing:
+ vdo                                                   x86_64                                        6.2.5.74-14.el8                                          BaseOS                                        661 k
+Installing dependencies:
+ kmod-kvdo                                             x86_64                                        6.2.5.72-81.el8                                          BaseOS                                        339 k
+ python3-pyyaml                                        x86_64                                        3.12-12.el8                                              BaseOS                                        192 k
+...
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-vdo-創建以掛載">3. VDO 創建以掛載</h2>
@@ -173,16 +173,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100% print</span>
-</span></span><span class="line"><span class="cl">Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
-</span></span><span class="line"><span class="cl">Disk /dev/vdd: 10.7GB
-</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
-</span></span><span class="line"><span class="cl">Partition Table: msdos
-</span></span><span class="line"><span class="cl">Disk Flags: 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Number  Start   End     Size    Type     File system  Flags
-</span></span><span class="line"><span class="cl"> <span class="m">1</span>      1049kB  10.7GB  10.7GB  primary  xfs          lba
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100% print</span>
+Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+Disk /dev/vdd: 10.7GB
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+Partition Table: msdos
+Disk Flags: 
+
+Number  Start   End     Size    Type     File system  Flags
+ <span class="m">1</span>      1049kB  10.7GB  10.7GB  primary  xfs          lba
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="32-創建-vdo">3.2. 創建 VDO</h3>
 <div class="highlight"><div class="chroma">
@@ -197,15 +197,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdo1 --device=/dev/vdd1 --vdoLogicalSize=10T</span>
-</span></span><span class="line"><span class="cl">Creating VDO vdo1
-</span></span><span class="line"><span class="cl">      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
-</span></span><span class="line"><span class="cl">      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
-</span></span><span class="line"><span class="cl">      If a larger maximum size might be needed, use bigger slabs.
-</span></span><span class="line"><span class="cl">Starting VDO vdo1
-</span></span><span class="line"><span class="cl">Starting compression on VDO vdo1
-</span></span><span class="line"><span class="cl">VDO instance <span class="m">1</span> volume is ready at /dev/mapper/vdo1
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdo1 --device=/dev/vdd1 --vdoLogicalSize=10T</span>
+Creating VDO vdo1
+      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
+      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
+      If a larger maximum size might be needed, use bigger slabs.
+Starting VDO vdo1
+Starting compression on VDO vdo1
+VDO instance <span class="m">1</span> volume is ready at /dev/mapper/vdo1
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -231,18 +231,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdo1 </span>
-</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/mapper/vdo1       <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>10, <span class="nv">agsize</span><span class="o">=</span><span class="m">268435455</span> <span class="nv">blks</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>2684354550, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">5</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>521728, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdo1 </span>
+meta-data<span class="o">=</span>/dev/mapper/vdo1       <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>10, <span class="nv">agsize</span><span class="o">=</span><span class="m">268435455</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>2684354550, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">5</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>521728, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="34-創建目錄並使用-vdo-掛載">3.4. 創建目錄並使用 VDO 掛載</h3>
 <div class="highlight"><div class="chroma">
@@ -255,13 +255,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# mkdir -v /vdo
-</span></span><span class="line"><span class="cl">mkdir: created directory &#39;/vdo&#39;
-</span></span><span class="line"><span class="cl">[root@serverc ~]# mount /dev/mapper/vdo1 /vdo
-</span></span><span class="line"><span class="cl">[root@serverc ~]# df -h /vdo
-</span></span><span class="line"><span class="cl">Filesystem        Size  Used Avail Use% Mounted on
-</span></span><span class="line"><span class="cl">/dev/mapper/vdo1   10T   72G   10T   1% /vdo
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# mkdir -v /vdo
+mkdir: created directory &#39;/vdo&#39;
+[root@serverc ~]# mount /dev/mapper/vdo1 /vdo
+[root@serverc ~]# df -h /vdo
+Filesystem        Size  Used Avail Use% Mounted on
+/dev/mapper/vdo1   10T   72G   10T   1% /vdo
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="35-開機自動掛載">3.5. 開機自動掛載</h3>
 <p>囿於 VDO 服務是由 systemd 託管，不過再開機過程中先 mount 硬碟最後才會啟動 systemd ，在沒有 VDO 服務時，系統會認定找不到該硬碟導致無法開機進入救援模式，所以必須加上特定參數，使得 VDO 等服務啟動後再執行 mount。</p>
@@ -272,10 +272,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# cat &gt;&gt; /etc/fstab &lt;&lt; EOL
-</span></span><span class="line"><span class="cl">&gt; /dev/mapper/vdo0 /vdo xfs defaults,x-systemd.requires=vdo.service 0 0
-</span></span><span class="line"><span class="cl">&gt; EOL
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# cat &gt;&gt; /etc/fstab &lt;&lt; EOL
+&gt; /dev/mapper/vdo0 /vdo xfs defaults,x-systemd.requires=vdo.service 0 0
+&gt; EOL
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition danger open">
         <div class="details-summary admonition-title">
@@ -295,10 +295,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable 
-</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
-</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.0G      6.0G  40%           99%
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# vdostats --human-readable 
+Device                    Size      Used Available Use% Space saving%
+/dev/mapper/vdo1         10.0G      4.0G      6.0G  40%           99%
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
@@ -318,12 +318,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# ls -lh /usr/lib/locale/locale-archive
-</span></span><span class="line"><span class="cl">-rw-r--r--. 1 root root 208M Feb 16 12:49 /usr/lib/locale/locale-archive
-</span></span><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable
-</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
-</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.1G      5.9G  40%           96%
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# ls -lh /usr/lib/locale/locale-archive
+-rw-r--r--. 1 root root 208M Feb 16 12:49 /usr/lib/locale/locale-archive
+[root@serverc ~]# vdostats --human-readable
+Device                    Size      Used Available Use% Space saving%
+/dev/mapper/vdo1         10.0G      4.1G      5.9G  40%           96%
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="43-使用回圈多複製30個上述檔案並查看-vdo-狀態">4.3. 使用回圈多複製30個上述檔案，並查看 VDO 狀態</h3>
 <p>使用迴圈複製相同檔案多次，實際上只佔用一次檔案的空間，可以看出 saving% 比上一步驟增加了 4% ，不過 Used 還是維持 4.1 G。</p>
@@ -335,11 +335,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverc ~]# for i in {1..30} ; do cp /usr/lib/locale/locale-archive /vdo/test${i}; done
-</span></span><span class="line"><span class="cl">[root@serverc ~]# vdostats --human-readable
-</span></span><span class="line"><span class="cl">Device                    Size      Used Available Use% Space saving%
-</span></span><span class="line"><span class="cl">/dev/mapper/vdo1         10.0G      4.1G      5.9G  41%           98%
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@serverc ~]# for i in {1..30} ; do cp /usr/lib/locale/locale-archive /vdo/test${i}; done
+[root@serverc ~]# vdostats --human-readable
+Device                    Size      Used Available Use% Space saving%
+/dev/mapper/vdo1         10.0G      4.1G      5.9G  41%           98%
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-lab-練習">5. LAB 練習</h2>
@@ -369,19 +369,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@bastion tmp]# curl  https://how64bit.com/RHCSA/script/initVDO.sh -O initVOD.sh
-</span></span><span class="line"><span class="cl">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-</span></span><span class="line"><span class="cl">                                 Dload  Upload   Total   Spent    Left  Speed
-</span></span><span class="line"><span class="cl">100   944    0   944    0     0   2551      0 --:--:-- --:--:-- --:--:--  2551
-</span></span><span class="line"><span class="cl">[root@bastion tmp]# sh initVDO.sh
-</span></span><span class="line"><span class="cl">...
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># Serverc 預設沒有 yum.repo，手動複製 倉庫清單
-</span></span><span class="line"><span class="cl">[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/.
-</span></span><span class="line"><span class="cl"># 安裝 VDO
-</span></span><span class="line"><span class="cl">[root@serverc ~]# yum install vdo
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@bastion tmp]# curl  https://how64bit.com/RHCSA/script/initVDO.sh -O initVOD.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   944    0   944    0     0   2551      0 --:--:-- --:--:-- --:--:--  2551
+[root@bastion tmp]# sh initVDO.sh
+...
+
+# Serverc 預設沒有 yum.repo，手動複製 倉庫清單
+[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/.
+# 安裝 VDO
+[root@serverc ~]# yum install vdo
+...
+</code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -413,10 +413,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 使用 HowHow 的 LAB 需先配置倉庫清單
-</span></span><span class="line"><span class="cl">[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/. &amp;&amp; yum install -y vdo
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 使用 HowHow 的 LAB 需先配置倉庫清單
+[root@serverc ~]# cp /etc/yum.repos.d/back_repo/rhel8.repo /etc/yum.repos.d/. &amp;&amp; yum install -y vdo
+...
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="522-分割硬碟並創建-vdo">5.2.2. 分割硬碟並創建 VDO</h3>
 <div class="highlight"><div class="chroma">
@@ -432,16 +432,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100%</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdough --device=/dev/vdd1 --vdoLogicalSize=50G</span>
-</span></span><span class="line"><span class="cl">Creating VDO vdough
-</span></span><span class="line"><span class="cl">      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
-</span></span><span class="line"><span class="cl">      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
-</span></span><span class="line"><span class="cl">      If a larger maximum size might be needed, use bigger slabs.
-</span></span><span class="line"><span class="cl">Starting VDO vdough
-</span></span><span class="line"><span class="cl">Starting compression on VDO vdough
-</span></span><span class="line"><span class="cl">VDO instance <span class="m">0</span> volume is ready at /dev/mapper/vdough
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdd mklabel msdos mkpart  primary xfs 2048s 100%</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># vdo create --name=vdough --device=/dev/vdd1 --vdoLogicalSize=50G</span>
+Creating VDO vdough
+      The VDO volume can address <span class="m">6</span> GB in <span class="m">3</span> data slabs, each <span class="m">2</span> GB.
+      It can grow to address at most <span class="m">16</span> TB of physical storage in <span class="m">8192</span> slabs.
+      If a larger maximum size might be needed, use bigger slabs.
+Starting VDO vdough
+Starting compression on VDO vdough
+VDO instance <span class="m">0</span> volume is ready at /dev/mapper/vdough
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="523-使用-xfs-檔案系統格式化">5.2.3. 使用 XFS 檔案系統格式化</h3>
 <div class="highlight"><div class="chroma">
@@ -459,18 +459,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdough </span>
-</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/mapper/vdough     <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">3276800</span> <span class="nv">blks</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>13107200, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>6400, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs -K /dev/mapper/vdough </span>
+meta-data<span class="o">=</span>/dev/mapper/vdough     <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">3276800</span> <span class="nv">blks</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>13107200, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>6400, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">4096</span>  <span class="nv">sunit</span><span class="o">=</span><span class="m">1</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="524-設定開機自動掛載至-vbread-目錄">5.2.4. 設定開機自動掛載至 /vbread 目錄</h3>
 <div class="highlight"><div class="chroma">
@@ -486,16 +486,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /vbread</span>
-</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/vbread&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-</span></span><span class="line"><span class="cl">&gt; /dev/mapper/vdough /vbread xfs defaults,x-systemd.requires<span class="o">=</span>vdo.service <span class="m">0</span> <span class="m">0</span>
-</span></span><span class="line"><span class="cl">&gt; EOL
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /vbread/</span>
-</span></span><span class="line"><span class="cl">Filesystem          Size  Used Avail Use% Mounted on
-</span></span><span class="line"><span class="cl">/dev/mapper/vdough   50G  390M   50G   1% /vbread
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /vbread</span>
+mkdir: created directory <span class="s1">&#39;/vbread&#39;</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+&gt; /dev/mapper/vdough /vbread xfs defaults,x-systemd.requires<span class="o">=</span>vdo.service <span class="m">0</span> <span class="m">0</span>
+&gt; EOL
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /vbread/</span>
+Filesystem          Size  Used Avail Use% Mounted on
+/dev/mapper/vdough   50G  390M   50G   1% /vbread
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="525-reboot-重新開機">5.2.5. reboot 重新開機</h3>
 <p>確保重新開機後，所有目錄都正常掛載。</p>

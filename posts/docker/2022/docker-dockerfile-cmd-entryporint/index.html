@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/docker\/2022\/docker-dockerfile-cmd-entryporint\/"
-        },"genre": "posts","keywords": "Docker","wordcount":  1825 ,
+        },"genre": "posts","keywords": "Docker","wordcount":  1823 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/docker\/2022\/docker-dockerfile-cmd-entryporint\/","datePublished": "2022-02-03T00:00:00+00:00","dateModified": "2022-02-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker -  CMD 與 ENTRYPOINT 差別</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/docker/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Docker</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-03">2022-02-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1825 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-03">2022-02-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1823 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -195,12 +195,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 要求容器再啟動時執行 sleep 指令，並等待 10 秒後停止</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">,</span> <span class="s2">&#34;10&#34;</span><span class="p">]</span><span class="err">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 要求容器再啟動時執行 sleep 指令，並等待 10 秒後停止</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">,</span> <span class="s2">&#34;10&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>創建好上述的 dockerfile後，使用 docker build 方式產生 image 並命名為 myubuntu01。</p>
 <div class="highlight"><div class="chroma">
@@ -219,19 +219,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker build -t myubuntu01 .
-</span></span><span class="line"><span class="cl">Sending build context to Docker daemon  2.048kB
-</span></span><span class="line"><span class="cl">Step 1/3 : FROM ubuntu
-</span></span><span class="line"><span class="cl"> ---&gt; 54c9d81cbb44
-</span></span><span class="line"><span class="cl">Step 2/3 : MAINTAINER howhow
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; afaf5998f491
-</span></span><span class="line"><span class="cl">Step 3/3 : CMD [&#34;sleep&#34;,&#34;10&#34;]
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; e92456c1bb6a
-</span></span><span class="line"><span class="cl">Successfully built e92456c1bb6a
-</span></span><span class="line"><span class="cl">Successfully tagged myubuntu01:latest
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">root@howhow:~/docker-playground# docker build -t myubuntu01 .
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM ubuntu
+ ---&gt; 54c9d81cbb44
+Step 2/3 : MAINTAINER howhow
+ ---&gt; Using cache
+ ---&gt; afaf5998f491
+Step 3/3 : CMD [&#34;sleep&#34;,&#34;10&#34;]
+ ---&gt; Using cache
+ ---&gt; e92456c1bb6a
+Successfully built e92456c1bb6a
+Successfully tagged myubuntu01:latest
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="12-執行容器">1.2 執行容器</h3>
 <p>執行 docker run -d myubuntu01 後持續觀察 docker ps ，查看 10 秒後容器自動停止。</p>
@@ -244,12 +244,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu01
-</span></span><span class="line"><span class="cl">c37015540cbf2a9b9e3a60d44415306b0df2fd6c43497bcd367c1877be994b6f
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
-</span></span><span class="line"><span class="cl">c37015540cbf   myubuntu01   &#34;sleep 10&#34;   2 seconds ago   Up 1 second             exciting_sinoussi
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">root@howhow:~/docker-playground# docker run -d myubuntu01
+c37015540cbf2a9b9e3a60d44415306b0df2fd6c43497bcd367c1877be994b6f
+root@howhow:~/docker-playground# docker ps
+CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
+c37015540cbf   myubuntu01   &#34;sleep 10&#34;   2 seconds ago   Up 1 second             exciting_sinoussi
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="13-執行容器並調整執行時間">1.3 執行容器並調整執行時間</h3>
 <p>接下來如果要調整執行時間的話，並需傳入兩個參數 <code>docker run -d myubuntu01 sleep  30</code>，告訴容器還是使用 sleep 指令，這次時長不使用預設的 10 秒改為 30 秒。</p>
@@ -262,12 +262,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu01 sleep  30
-</span></span><span class="line"><span class="cl">0465d8ab11f884e7d460400175afe8964aa00aec316b5168f621be58f79b8847
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
-</span></span><span class="line"><span class="cl">0465d8ab11f8   myubuntu01   &#34;sleep 30&#34;   3 seconds ago   Up 1 second             optimistic_shockley
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">root@howhow:~/docker-playground# docker run -d myubuntu01 sleep  30
+0465d8ab11f884e7d460400175afe8964aa00aec316b5168f621be58f79b8847
+root@howhow:~/docker-playground# docker ps
+CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
+0465d8ab11f8   myubuntu01   &#34;sleep 30&#34;   3 seconds ago   Up 1 second             optimistic_shockley
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>不過上述的這種作法很不直覺，每次都要加上兩個參數，此時就可以改用 ENTRYPOINT 方式來處理。</strong></p>
 <hr>
@@ -283,12 +283,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># 要求容器再啟動時執行 sleep 指令，並等待 10 秒後停止</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">]</span><span class="err">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="c"># 要求容器再啟動時執行 sleep 指令，並等待 10 秒後停止</span><span class="err">
+</span><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>創建好上述的 dockerfile後，使用 docker build 方式產生 image 並命名為 myubuntu02。</p>
 <div class="highlight"><div class="chroma">
@@ -308,20 +308,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground# clear
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker build -t myubuntu02 .
-</span></span><span class="line"><span class="cl">Sending build context to Docker daemon  2.048kB
-</span></span><span class="line"><span class="cl">Step 1/3 : FROM ubuntu
-</span></span><span class="line"><span class="cl"> ---&gt; 54c9d81cbb44
-</span></span><span class="line"><span class="cl">Step 2/3 : MAINTAINER howhow
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; afaf5998f491
-</span></span><span class="line"><span class="cl">Step 3/3 : ENTRYPOINT <span class="o">[</span><span class="s2">&#34;sleep&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; f15dabcc5875
-</span></span><span class="line"><span class="cl">Successfully built f15dabcc5875
-</span></span><span class="line"><span class="cl">Successfully tagged myubuntu02:latest
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground# clear
+root@howhow:~/docker-playground# docker build -t myubuntu02 .
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM ubuntu
+ ---&gt; 54c9d81cbb44
+Step 2/3 : MAINTAINER howhow
+ ---&gt; Using cache
+ ---&gt; afaf5998f491
+Step 3/3 : ENTRYPOINT <span class="o">[</span><span class="s2">&#34;sleep&#34;</span><span class="o">]</span>
+ ---&gt; Using cache
+ ---&gt; f15dabcc5875
+Successfully built f15dabcc5875
+Successfully tagged myubuntu02:latest
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="22-執行容器">2.2 執行容器</h3>
 <h4 id="221-傳入參數-10">2.2.1 傳入參數 10</h4>
@@ -335,12 +335,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu02 <span class="m">10</span>
-</span></span><span class="line"><span class="cl">67f6f7e1de7b971ea18c843e9d3851d05d2c144b739ff6634d52b4d5a32e114d
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
-</span></span><span class="line"><span class="cl">67f6f7e1de7b   myubuntu02   <span class="s2">&#34;sleep 10&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             competent_sanderson
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground# docker run -d myubuntu02 <span class="m">10</span>
+67f6f7e1de7b971ea18c843e9d3851d05d2c144b739ff6634d52b4d5a32e114d
+root@howhow:~/docker-playground# docker ps
+CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
+67f6f7e1de7b   myubuntu02   <span class="s2">&#34;sleep 10&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             competent_sanderson
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>上述執行結果將會與 CMD 出現一樣的效果</strong>，此時可以任意調整想要停止的時間</p>
 <h4 id="222-不傳入參數">2.2.2 不傳入參數</h4>
@@ -354,12 +354,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu02 
-</span></span><span class="line"><span class="cl">a88b6618050fa9abc2c319dee74464a148f5e6f756eece7d51afd3fa2259fc1f
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker logs a88b6618050fa9abc2c319dee74464a148f5e6f756eece7d51afd3fa2259fc1f
-</span></span><span class="line"><span class="cl">sleep: missing operand
-</span></span><span class="line"><span class="cl">Try <span class="s1">&#39;sleep --help&#39;</span> <span class="k">for</span> more information.
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground# docker run -d myubuntu02 
+a88b6618050fa9abc2c319dee74464a148f5e6f756eece7d51afd3fa2259fc1f
+root@howhow:~/docker-playground# docker logs a88b6618050fa9abc2c319dee74464a148f5e6f756eece7d51afd3fa2259fc1f
+sleep: missing operand
+Try <span class="s1">&#39;sleep --help&#39;</span> <span class="k">for</span> more information.
+</code></pre></td></tr></table>
 </div>
 </div><p>那如果希望不傳參數可以使用預設值讓容器不會執行失敗的方式呢？那就可以把 ENTRYPOINT 結合 CMD 兩種方式結合使用</p>
 <hr>
@@ -375,12 +375,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">]</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;10&#34;</span><span class="p">]</span><span class="err">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> ubuntu</span><span class="err">
+</span><span class="err"></span><span class="k">MAINTAINER</span><span class="s"> howhow</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">]</span><span class="err">
+</span><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;10&#34;</span><span class="p">]</span><span class="err">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>創建好上述的 dockerfile後，使用 docker build 方式產生 image 並命名為 myubuntu03。</p>
 <div class="highlight"><div class="chroma">
@@ -402,22 +402,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground#  docker build -t myubuntu03 .
-</span></span><span class="line"><span class="cl">Sending build context to Docker daemon  2.048kB
-</span></span><span class="line"><span class="cl">Step 1/4 : FROM ubuntu
-</span></span><span class="line"><span class="cl"> ---&gt; 54c9d81cbb44
-</span></span><span class="line"><span class="cl">Step 2/4 : MAINTAINER howhow
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; afaf5998f491
-</span></span><span class="line"><span class="cl">Step 3/4 : ENTRYPOINT <span class="o">[</span><span class="s2">&#34;sleep&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; f15dabcc5875
-</span></span><span class="line"><span class="cl">Step 4/4 : CMD <span class="o">[</span><span class="s2">&#34;10&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"> ---&gt; Using cache
-</span></span><span class="line"><span class="cl"> ---&gt; ab93d0318b02
-</span></span><span class="line"><span class="cl">Successfully built ab93d0318b02
-</span></span><span class="line"><span class="cl">Successfully tagged myubuntu03:latest
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground#  docker build -t myubuntu03 .
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM ubuntu
+ ---&gt; 54c9d81cbb44
+Step 2/4 : MAINTAINER howhow
+ ---&gt; Using cache
+ ---&gt; afaf5998f491
+Step 3/4 : ENTRYPOINT <span class="o">[</span><span class="s2">&#34;sleep&#34;</span><span class="o">]</span>
+ ---&gt; Using cache
+ ---&gt; f15dabcc5875
+Step 4/4 : CMD <span class="o">[</span><span class="s2">&#34;10&#34;</span><span class="o">]</span>
+ ---&gt; Using cache
+ ---&gt; ab93d0318b02
+Successfully built ab93d0318b02
+Successfully tagged myubuntu03:latest
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="32-執行容器">3.2 執行容器</h3>
 <h4 id="321-不傳入參數">3.2.1 不傳入參數</h4>
@@ -431,12 +431,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu03 
-</span></span><span class="line"><span class="cl">4419a2d78e505ed0fd261e31b1b35648e50296c3ab092d50136994d74e456609
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
-</span></span><span class="line"><span class="cl">4419a2d78e50   myubuntu03   <span class="s2">&#34;sleep 10&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             youthful_albattani
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground# docker run -d myubuntu03 
+4419a2d78e505ed0fd261e31b1b35648e50296c3ab092d50136994d74e456609
+root@howhow:~/docker-playground# docker ps
+CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS        PORTS     NAMES
+4419a2d78e50   myubuntu03   <span class="s2">&#34;sleep 10&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             youthful_albattani
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>現在不傳入任何參數就會使用預設 10 秒，如果傳參數就使用使用者指定</strong> ，此方式是不是彈性非常多了呢？</p>
 <h4 id="322-傳入參數-30">3.2.2 傳入參數 30</h4>
@@ -450,12 +450,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~/docker-playground# docker run -d myubuntu03 <span class="m">30</span>
-</span></span><span class="line"><span class="cl">6f1d6f7d7fe72b2e75d777cc41cbd054891ac3934048588107c527e1ece7c4a9
-</span></span><span class="line"><span class="cl">root@howhow:~/docker-playground# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS         PORTS     NAMES
-</span></span><span class="line"><span class="cl">6f1d6f7d7fe7   myubuntu03   <span class="s2">&#34;sleep 30&#34;</span>   <span class="m">3</span> seconds ago   Up <span class="m">2</span> seconds             compassionate_kirch
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~/docker-playground# docker run -d myubuntu03 <span class="m">30</span>
+6f1d6f7d7fe72b2e75d777cc41cbd054891ac3934048588107c527e1ece7c4a9
+root@howhow:~/docker-playground# docker ps
+CONTAINER ID   IMAGE        COMMAND      CREATED         STATUS         PORTS     NAMES
+6f1d6f7d7fe7   myubuntu03   <span class="s2">&#34;sleep 30&#34;</span>   <span class="m">3</span> seconds ago   Up <span class="m">2</span> seconds             compassionate_kirch
+</code></pre></td></tr></table>
 </div>
 </div><h4 id="323-使用其他指令當參數">3.2.3 使用其他指令當參數</h4>
 <p>如果想使用其它指令 ，但是 ENTRYPOINT 已經設定為 sleep， 可以傳送 &ndash;entrypoint 改變指令</p>
@@ -468,12 +468,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@howhow:~# docker run -d --entrypoint tail  myubuntu03  -f /dev/null
-</span></span><span class="line"><span class="cl">d9a4897abb53ca11c19af1b2693636fcd4327058827328bd85b4782bfd222e31
-</span></span><span class="line"><span class="cl">root@howhow:~# docker ps
-</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE        COMMAND               CREATED         STATUS        PORTS     NAMES
-</span></span><span class="line"><span class="cl">d9a4897abb53   myubuntu03   <span class="s2">&#34;tail -f /dev/null&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             eager_colden
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@howhow:~# docker run -d --entrypoint tail  myubuntu03  -f /dev/null
+d9a4897abb53ca11c19af1b2693636fcd4327058827328bd85b4782bfd222e31
+root@howhow:~# docker ps
+CONTAINER ID   IMAGE        COMMAND               CREATED         STATUS        PORTS     NAMES
+d9a4897abb53   myubuntu03   <span class="s2">&#34;tail -f /dev/null&#34;</span>   <span class="m">2</span> seconds ago   Up <span class="m">1</span> second             eager_colden
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="小結">小結</h2>

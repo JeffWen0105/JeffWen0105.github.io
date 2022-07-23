@@ -154,16 +154,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
-</span></span><span class="line"><span class="cl">  int g0/0.10
-</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">10</span>
-</span></span><span class="line"><span class="cl">    ip address 192.168.10.1 255.255.255.0
-</span></span><span class="line"><span class="cl">  int g0/0.30
-</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">30</span>
-</span></span><span class="line"><span class="cl">    ip address 192.168.20.1 255.255.255.0
-</span></span><span class="line"><span class="cl">  int g0/0
-</span></span><span class="line"><span class="cl">    no shut
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+  int g0/0.10
+    encapsulation dot1Q <span class="m">10</span>
+    ip address 192.168.10.1 255.255.255.0
+  int g0/0.30
+    encapsulation dot1Q <span class="m">30</span>
+    ip address 192.168.20.1 255.255.255.0
+  int g0/0
+    no shut
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-layer-3-switch-設定簡述">3. Layer 3 Switch 設定簡述</h2>
@@ -180,15 +180,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
-</span></span><span class="line"><span class="cl">int Vlan10
-</span></span><span class="line"><span class="cl"> ip address 192.168.10.254 255.255.255.0
-</span></span><span class="line"><span class="cl"> no shut
-</span></span><span class="line"><span class="cl">int Vlan20
-</span></span><span class="line"><span class="cl"> ip address 192.168.20.254 255.255.255.0 
-</span></span><span class="line"><span class="cl"> no shut
-</span></span><span class="line"><span class="cl">ip routing
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
+int Vlan10
+ ip address 192.168.10.254 255.255.255.0
+ no shut
+int Vlan20
+ ip address 192.168.20.254 255.255.255.0 
+ no shut
+ip routing
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-小結">4. 小結</h2>

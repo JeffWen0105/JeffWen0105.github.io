@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam001\/"
-        },"genre": "posts","wordcount":  329 ,
+        },"genre": "posts","wordcount":  330 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/rhce\/mock-exam001\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCE - 模擬考 - Ansible 基本設定</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;329 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;330 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -160,37 +160,39 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ cat &gt;&gt; inventory <span class="s">&lt;&lt; EOF
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [dev]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; servera
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [test]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; serverb
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [balancers]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; serverb
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [prod]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; serverc
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; 
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [webservers:children]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; prod
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; EOF</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ <span class="nb">echo</span> &gt;&gt; ansible.cfg <span class="s">&lt;&lt; EOF
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [defaults]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; inventory = /home/student/ansible/inventory
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; remote_user = devops
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; roles_path = /home/student/ansible/roles
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; [privilege_escalation]
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; become=True
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; become_method=sudo
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; become_user=root
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; become_ask_pass=False
-</span></span></span><span class="line"><span class="cl"><span class="s">&gt; EOF</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ansible<span class="o">]</span>$ cat &gt;&gt; inventory <span class="s">&lt;&lt; EOF
+</span><span class="s">&gt; [dev]
+</span><span class="s">&gt; servera
+</span><span class="s">&gt; 
+</span><span class="s">&gt; [test]
+</span><span class="s">&gt; serverb
+</span><span class="s">&gt; 
+</span><span class="s">&gt; [balancers]
+</span><span class="s">&gt; serverb
+</span><span class="s">&gt; 
+</span><span class="s">&gt; [prod]
+</span><span class="s">&gt; serverc
+</span><span class="s">&gt; 
+</span><span class="s">&gt; [webservers:children]
+</span><span class="s">&gt; prod
+</span><span class="s">&gt; EOF</span>
+
+<span class="o">[</span>student@workstation ansible<span class="o">]</span>$ <span class="nb">echo</span> &gt;&gt; ansible.cfg <span class="s">&lt;&lt; EOF
+</span><span class="s">&gt; [defaults]
+</span><span class="s">&gt; inventory = /home/student/ansible/inventory
+</span><span class="s">&gt; remote_user = devops
+</span><span class="s">&gt; roles_path = /home/student/ansible/roles
+</span><span class="s">&gt; [privilege_escalation]
+</span><span class="s">&gt; become=True
+</span><span class="s">&gt; become_method=sudo
+</span><span class="s">&gt; become_user=root
+</span><span class="s">&gt; become_ask_pass=False
+</span><span class="s">&gt; EOF</span>
+
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

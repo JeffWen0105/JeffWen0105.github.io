@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-introduce\/"
-        },"genre": "posts","keywords": "Ansible","wordcount":  1459 ,
+        },"genre": "posts","keywords": "Ansible","wordcount":  1454 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-introduce\/","datePublished": "2022-03-10T00:00:00+00:00","dateModified": "2022-03-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ansible - 自動化組態管理工具介紹</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Ansible</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-10">2022-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1459 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-10">2022-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1454 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -144,9 +144,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-</span></span><span class="line"><span class="cl">dnf install -y ansible
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install -y ansible
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="32-rhel-7-系列安裝方式">3.2. RHEL 7 系列安裝方式:</h3>
 <div class="highlight"><div class="chroma">
@@ -155,9 +155,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-</span></span><span class="line"><span class="cl">yum install -y ansible
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install -y ansible
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -179,14 +179,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible --version
-</span></span><span class="line"><span class="cl">ansible 2.9.27
-</span></span><span class="line"><span class="cl">  config <span class="nv">file</span> <span class="o">=</span> /etc/ansible/ansible.cfg
-</span></span><span class="line"><span class="cl">  configured module search <span class="nv">path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;/home/student/.ansible/plugins/modules&#39;</span>, <span class="s1">&#39;/usr/share/ansible/plugins/modules&#39;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl">  ansible python module <span class="nv">location</span> <span class="o">=</span> /usr/lib/python3.6/site-packages/ansible
-</span></span><span class="line"><span class="cl">  executable <span class="nv">location</span> <span class="o">=</span> /usr/bin/ansible
-</span></span><span class="line"><span class="cl">  python <span class="nv">version</span> <span class="o">=</span> 3.6.8 <span class="o">(</span>default, Nov  <span class="m">9</span> 2021, 14:44:26<span class="o">)</span> <span class="o">[</span>GCC 8.5.0 <span class="m">20210514</span> <span class="o">(</span>Red Hat 8.5.0-3<span class="o">)]</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible --version
+ansible 2.9.27
+  config <span class="nv">file</span> <span class="o">=</span> /etc/ansible/ansible.cfg
+  configured module search <span class="nv">path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;/home/student/.ansible/plugins/modules&#39;</span>, <span class="s1">&#39;/usr/share/ansible/plugins/modules&#39;</span><span class="o">]</span>
+  ansible python module <span class="nv">location</span> <span class="o">=</span> /usr/lib/python3.6/site-packages/ansible
+  executable <span class="nv">location</span> <span class="o">=</span> /usr/bin/ansible
+  python <span class="nv">version</span> <span class="o">=</span> 3.6.8 <span class="o">(</span>default, Nov  <span class="m">9</span> 2021, 14:44:26<span class="o">)</span> <span class="o">[</span>GCC 8.5.0 <span class="m">20210514</span> <span class="o">(</span>Red Hat 8.5.0-3<span class="o">)]</span>
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition info open">
         <div class="details-summary admonition-title">
@@ -216,13 +216,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[dev]</span>
-</span></span><span class="line"><span class="cl"><span class="na">servera.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="k">[test]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverb.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="k">[prod]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverc.lab.example.com</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[dev]</span>
+<span class="na">servera.lab.example.com</span>
+<span class="k">[test]</span>
+<span class="na">serverb.lab.example.com</span>
+<span class="k">[prod]</span>
+<span class="na">serverc.lab.example.com</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="42-ansiblecfg-配置">4.2. ansible.cfg 配置</h3>
 <p>ansible.cfg 為 Ansible 執行方式，如要採用 SSH 登入角色為何、是否啟用 sudo 、主機清單配置在哪等等，如同 inventory ，每一個 project 獨立一個 ansible.cfg 配置，範例如下:</p>
@@ -239,16 +239,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[defaults]</span>
-</span></span><span class="line"><span class="cl"><span class="na">inventory</span>   <span class="o">=</span> <span class="s">./inventory</span>
-</span></span><span class="line"><span class="cl"><span class="na">remote_user</span> <span class="o">=</span> <span class="s">devops</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[privilege_escalation]</span>
-</span></span><span class="line"><span class="cl"><span class="na">become</span> <span class="o">=</span> <span class="s">True</span>
-</span></span><span class="line"><span class="cl"><span class="na">become_method</span> <span class="o">=</span> <span class="s">sudo</span>
-</span></span><span class="line"><span class="cl"><span class="na">become_user</span> <span class="o">=</span> <span class="s">root</span>
-</span></span><span class="line"><span class="cl"><span class="na">become_ask_pass</span> <span class="o">=</span> <span class="s">False</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
+<span class="na">inventory</span>   <span class="o">=</span> <span class="s">./inventory</span>
+<span class="na">remote_user</span> <span class="o">=</span> <span class="s">devops</span>
+
+<span class="k">[privilege_escalation]</span>
+<span class="na">become</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">become_method</span> <span class="o">=</span> <span class="s">sudo</span>
+<span class="na">become_user</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">become_ask_pass</span> <span class="o">=</span> <span class="s">False</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="43-playbookyml">4.3 playbook.yml</h3>
 <p>playbook 名稱可以自行定義，以 yml 或 yaml 結尾檔案， 定義每一個 Project 任務該如何執行，如 inventory 一樣擺置同一個資料夾內，其範例如下:</p>
@@ -263,14 +263,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">exmaple</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print Hello Ansible</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">debug</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Hello Ansible ~~&#34;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">exmaple</span><span class="w">
+</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
+</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print Hello Ansible</span><span class="w">
+</span><span class="w">      </span><span class="nt">debug</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Hello Ansible ~~&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="44-範例樹狀圖">4.4 範例樹狀圖</h3>
 <div class="highlight"><div class="chroma">
@@ -284,14 +284,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@workstation ~]$ tree example/
-</span></span><span class="line"><span class="cl">example/
-</span></span><span class="line"><span class="cl">├── ansible.cfg
-</span></span><span class="line"><span class="cl">├── example-playbook.yaml
-</span></span><span class="line"><span class="cl">└── inventory
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">0 directories, 3 files
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation ~]$ tree example/
+example/
+├── ansible.cfg
+├── example-playbook.yaml
+└── inventory
+
+0 directories, 3 files
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition success open">
         <div class="details-summary admonition-title">
@@ -340,29 +340,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible all -m ping
-</span></span><span class="line"><span class="cl">serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">serverb <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible all -m ping
+serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+serverb <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+    <span class="o">}</span>,
+    <span class="s2">&#34;changed&#34;</span>: false,
+    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="52-play-book-執行方式">5.2 play-book 執行方式</h3>
 <p>使用 <code>ansible-play &lt;playbook&gt;</code> ，來進行操作</p>
@@ -394,31 +394,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example-playbook.yaml 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>exmaple<span class="o">]</span> ***************************************************************************************************************************************************************************************************
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera<span class="o">]</span>
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span>
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverc<span class="o">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ***************************************************************************************************************************************************************************************
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PLAY RECAP *******************************************************************************************************************************************************************************************************
-</span></span><span class="line"><span class="cl">servera                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-</span></span><span class="line"><span class="cl">serverb                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-</span></span><span class="line"><span class="cl">serverc                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example-playbook.yaml 
+
+PLAY <span class="o">[</span>exmaple<span class="o">]</span> ***************************************************************************************************************************************************************************************************
+
+TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera<span class="o">]</span>
+ok: <span class="o">[</span>serverb<span class="o">]</span>
+ok: <span class="o">[</span>serverc<span class="o">]</span>
+
+TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ***************************************************************************************************************************************************************************************
+ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible ~~&#34;</span>
+<span class="o">}</span>
+
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+servera                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+serverb                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+serverc                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <ol start="6">

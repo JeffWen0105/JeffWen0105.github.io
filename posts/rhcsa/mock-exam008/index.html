@@ -157,35 +157,35 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ServerB 設定</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl enable --now nfs-server.service</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># mkdir -p /shares</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/exports &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /shares *<span class="o">(</span>rw,sync<span class="o">)</span>
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl restart nfs-server.service</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --add-service=nfs --permanent</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># showmount -e 127.0.0.1</span>
-</span></span><span class="line"><span class="cl">Export list <span class="k">for</span> 127.0.0.1:
-</span></span><span class="line"><span class="cl">/shares *
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># ServerA 設定</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils autofs</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/auto.master.d/lab.autofs &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /- /etc/my-autofs.conf
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/my-autofs.conf &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /nfs-lab -fstype<span class="o">=</span>nfs4,rw,sync  serverb:/shares
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now autofs</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /nfs-lab/</span>
-</span></span><span class="line"><span class="cl">RHEL-LAB
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df  /nfs-lab/</span>
-</span></span><span class="line"><span class="cl">Filesystem      1K-blocks    Used Available Use% Mounted on
-</span></span><span class="line"><span class="cl">serverb:/shares  <span class="m">10265600</span> <span class="m">2107392</span>   <span class="m">8158208</span>  21% /nfs-lab
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># ServerB 設定</span>
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils</span>
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl enable --now nfs-server.service</span>
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># mkdir -p /shares</span>
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/exports &lt;&lt; EOF</span>
+&gt; /shares *<span class="o">(</span>rw,sync<span class="o">)</span>
+&gt; EOF
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl restart nfs-server.service</span>
+<span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --add-service=nfs --permanent</span>
+<span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
+<span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># showmount -e 127.0.0.1</span>
+Export list <span class="k">for</span> 127.0.0.1:
+/shares *
+
+<span class="c1"># ServerA 設定</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils autofs</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/auto.master.d/lab.autofs &lt;&lt; EOF</span>
+&gt; /- /etc/my-autofs.conf
+&gt; EOF
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/my-autofs.conf &lt;&lt; EOF</span>
+&gt; /nfs-lab -fstype<span class="o">=</span>nfs4,rw,sync  serverb:/shares
+&gt; EOF
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now autofs</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /nfs-lab/</span>
+RHEL-LAB
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df  /nfs-lab/</span>
+Filesystem      1K-blocks    Used Available Use% Mounted on
+serverb:/shares  <span class="m">10265600</span> <span class="m">2107392</span>   <span class="m">8158208</span>  21% /nfs-lab
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

@@ -131,14 +131,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install -y httpd</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># sed -i &#34;s/Listen 80/Listen 82/g&#34;  /etc/httpd/conf/httpd.conf</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cp -a /etc/shadow /var/www/html</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># semanage port -t http_port_t -a  -p tcp 82</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --add-port=82/tcp --permanent</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now httpd</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install -y httpd</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># sed -i &#34;s/Listen 80/Listen 82/g&#34;  /etc/httpd/conf/httpd.conf</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cp -a /etc/shadow /var/www/html</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># semanage port -t http_port_t -a  -p tcp 82</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --add-port=82/tcp --permanent</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
+<span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now httpd</span>
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-inventory\/"
-        },"genre": "posts","keywords": "Ansible","wordcount":  825 ,
+        },"genre": "posts","keywords": "Ansible","wordcount":  799 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-inventory\/","datePublished": "2022-03-11T00:00:00+00:00","dateModified": "2022-03-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ansible - 創建 Ansible inventory 主機清單</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Ansible</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-11">2022-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;825 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-11">2022-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;799 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -119,25 +119,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">localhost    </span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[dev]    </span>
-</span></span><span class="line"><span class="cl"><span class="na">servera.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverb.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">servere.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[prod]    </span>
-</span></span><span class="line"><span class="cl"><span class="na">serverc.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[test]</span>
-</span></span><span class="line"><span class="cl"><span class="na">servere.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverf.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">192.168.0.1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[webservers:children]  </span>
-</span></span><span class="line"><span class="cl"><span class="na">dev</span>
-</span></span><span class="line"><span class="cl"><span class="na">prod</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="na">localhost    </span>
+
+<span class="na">[dev]    </span>
+<span class="na">servera.lab.exampel.com</span>
+<span class="na">serverb.lab.exampel.com</span>
+<span class="na">servere.lab.example.com</span>
+
+<span class="na">[prod]    </span>
+<span class="na">serverc.lab.exampel.com</span>
+
+<span class="k">[test]</span>
+<span class="na">servere.lab.example.com</span>
+<span class="na">serverf.lab.example.com</span>
+<span class="na">192.168.0.1</span>
+
+<span class="na">[webservers:children]  </span>
+<span class="na">dev</span>
+<span class="na">prod</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>Yaml 格式範例</p>
 <div class="highlight"><div class="chroma">
@@ -164,27 +164,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">all</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">children</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">test</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">server.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">serverf.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="m">192.168.0.1</span><span class="p">:</span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ungrouped</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">localhost</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">webservers</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">children</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">dev</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">servera.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">serverb.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">servere.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">prod</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">serverc.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">all</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">children</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">test</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">server.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">        </span><span class="nt">serverf.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">        </span><span class="m">192.168.0.1</span><span class="p">:</span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">ungrouped</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">localhost</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="nt">webservers</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">children</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">dev</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">servera.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">            </span><span class="nt">serverb.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">            </span><span class="nt">servere.lab.example.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">        </span><span class="nt">prod</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">hosts</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">serverc.lab.exampel.com</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -224,25 +224,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">localhost    # 1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[dev]    # 2</span>
-</span></span><span class="line"><span class="cl"><span class="na">servera.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverb.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">servere.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[prod]    </span>
-</span></span><span class="line"><span class="cl"><span class="na">serverc.lab.exampel.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[test]</span>
-</span></span><span class="line"><span class="cl"><span class="na">servere.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverf.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">192.168.0.1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="na">[webservers:children]  # 3</span>
-</span></span><span class="line"><span class="cl"><span class="na">dev</span>
-</span></span><span class="line"><span class="cl"><span class="na">prod</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="na">localhost    # 1</span>
+
+<span class="na">[dev]    # 2</span>
+<span class="na">servera.lab.exampel.com</span>
+<span class="na">serverb.lab.exampel.com</span>
+<span class="na">servere.lab.example.com</span>
+
+<span class="na">[prod]    </span>
+<span class="na">serverc.lab.exampel.com</span>
+
+<span class="k">[test]</span>
+<span class="na">servere.lab.example.com</span>
+<span class="na">serverf.lab.example.com</span>
+<span class="na">192.168.0.1</span>
+
+<span class="na">[webservers:children]  # 3</span>
+<span class="na">dev</span>
+<span class="na">prod</span>
+</code></pre></td></tr></table>
 </div>
 </div><ol>
 <li>localhost 未加入任何群組所以是 ungrouped</li>
@@ -266,8 +266,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible &lt;group&gt; -i &lt;inventory file&gt; --list-hosts
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible &lt;group&gt; -i &lt;inventory file&gt; --list-hosts
+</code></pre></td></tr></table>
 </div>
 </div><p>檢查 inventory 內的所有群組</p>
 <div class="highlight"><div class="chroma">
@@ -282,15 +282,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible all -i inventory --list-hosts
-</span></span><span class="line"><span class="cl">  hosts <span class="o">(</span>6<span class="o">)</span>:
-</span></span><span class="line"><span class="cl">    localhost
-</span></span><span class="line"><span class="cl">    serverf.lab.example.com
-</span></span><span class="line"><span class="cl">    servere.lab.example.com
-</span></span><span class="line"><span class="cl">    servera.lab.exampel.com
-</span></span><span class="line"><span class="cl">    serverb.lab.exampel.com
-</span></span><span class="line"><span class="cl">    serverc.lab.exampel.com
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible all -i inventory --list-hosts
+  hosts <span class="o">(</span>6<span class="o">)</span>:
+    localhost
+    serverf.lab.example.com
+    servere.lab.example.com
+    servera.lab.exampel.com
+    serverb.lab.exampel.com
+    serverc.lab.exampel.com
+</code></pre></td></tr></table>
 </div>
 </div><p>也可以針對群組來檢查</p>
 <div class="highlight"><div class="chroma">
@@ -302,12 +302,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible dev -i inventory --list-hosts
-</span></span><span class="line"><span class="cl">  hosts <span class="o">(</span>3<span class="o">)</span>:
-</span></span><span class="line"><span class="cl">    servera.lab.exampel.com
-</span></span><span class="line"><span class="cl">    serverb.lab.exampel.com
-</span></span><span class="line"><span class="cl">    servere.lab.example.com
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible dev -i inventory --list-hosts
+  hosts <span class="o">(</span>3<span class="o">)</span>:
+    servera.lab.exampel.com
+    serverb.lab.exampel.com
+    servere.lab.example.com
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-lab-練習">4. LAB 練習</h2>
@@ -384,33 +384,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[webservers]</span>
-</span></span><span class="line"><span class="cl"><span class="na">server[a:d].lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[Taipei]</span>
-</span></span><span class="line"><span class="cl"><span class="na">servera.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverb.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[Kaohsiung]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverc.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[Taichung]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverd.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[development]</span>
-</span></span><span class="line"><span class="cl"><span class="na">servera.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[testing]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverb.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[production]</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverc.lab.example.com</span>
-</span></span><span class="line"><span class="cl"><span class="na">serverd.lab.example.com</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">[BU:children]</span>
-</span></span><span class="line"><span class="cl"><span class="na">Taipei</span>
-</span></span><span class="line"><span class="cl"><span class="na">Taichung</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[webservers]</span>
+<span class="na">server[a:d].lab.example.com</span>
+
+<span class="k">[Taipei]</span>
+<span class="na">servera.lab.example.com</span>
+<span class="na">serverb.lab.example.com</span>
+
+<span class="k">[Kaohsiung]</span>
+<span class="na">serverc.lab.example.com</span>
+
+<span class="k">[Taichung]</span>
+<span class="na">serverd.lab.example.com</span>
+
+<span class="k">[development]</span>
+<span class="na">servera.lab.example.com</span>
+
+<span class="k">[testing]</span>
+<span class="na">serverb.lab.example.com</span>
+
+<span class="k">[production]</span>
+<span class="na">serverc.lab.example.com</span>
+<span class="na">serverd.lab.example.com</span>
+
+<span class="k">[BU:children]</span>
+<span class="na">Taipei</span>
+<span class="na">Taichung</span>
+</code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>production 群組計有兩台</li>
@@ -423,11 +423,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible production -i inventory --list-hosts
-</span></span><span class="line"><span class="cl">  hosts <span class="o">(</span>2<span class="o">)</span>:
-</span></span><span class="line"><span class="cl">    serverc.lab.example.com
-</span></span><span class="line"><span class="cl">    serverd.lab.example.com
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible production -i inventory --list-hosts
+  hosts <span class="o">(</span>2<span class="o">)</span>:
+    serverc.lab.example.com
+    serverd.lab.example.com
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-小結">5. 小結</h2>

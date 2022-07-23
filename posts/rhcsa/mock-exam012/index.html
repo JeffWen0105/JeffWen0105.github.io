@@ -133,13 +133,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mount -o remount,rw /sysroot
-</span></span><span class="line"><span class="cl">chroot /sysroot
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;redhat&#39;</span> <span class="p">|</span> passwd --stdin root
-</span></span><span class="line"><span class="cl">touch /.autorelabel
-</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
-</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mount -o remount,rw /sysroot
+chroot /sysroot
+<span class="nb">echo</span> <span class="s1">&#39;redhat&#39;</span> <span class="p">|</span> passwd --stdin root
+touch /.autorelabel
+<span class="nb">exit</span>
+<span class="nb">exit</span>
+</code></pre></td></tr></table>
 </div>
 </div></div><br>
 

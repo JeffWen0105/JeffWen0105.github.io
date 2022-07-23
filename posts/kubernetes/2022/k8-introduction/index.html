@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/kubernetes\/2022\/k8-introduction\/"
-        },"genre": "posts","keywords": "Kubernetes","wordcount":  1400 ,
+        },"genre": "posts","keywords": "Kubernetes","wordcount":  1412 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/kubernetes\/2022\/k8-introduction\/","datePublished": "2022-03-09T00:00:00+00:00","dateModified": "2022-03-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +71,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">K8s -  容器編排工具介紹</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Kubernetes</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-09">2022-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1400 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-09">2022-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1412 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -195,13 +195,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install -y yum-utils
-</span></span><span class="line"><span class="cl">sudo yum-config-manager <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --add-repo <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    https://download.docker.com/linux/centos/docker-ce.repo
-</span></span><span class="line"><span class="cl">sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io
-</span></span><span class="line"><span class="cl">sudo systemctl --now <span class="nb">enable</span> docker
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install -y yum-utils
+sudo yum-config-manager <span class="se">\
+</span><span class="se"></span>    --add-repo <span class="se">\
+</span><span class="se"></span>    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io
+sudo systemctl --now <span class="nb">enable</span> docker
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -222,10 +222,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">useradd k8s
-</span></span><span class="line"><span class="cl">usermod -aG docker k8s
-</span></span><span class="line"><span class="cl">passwd k8s
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">useradd k8s
+usermod -aG docker k8s
+passwd k8s
+</code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>下載 Minikube</li>
@@ -237,9 +237,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-</span></span><span class="line"><span class="cl">sudo install minikube-linux-amd64 /usr/local/bin/minikube
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+</code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>安裝及啟動 Minikube</li>
@@ -250,8 +250,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">minikube start
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">minikube start
+</code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -278,16 +278,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>k8s@servera ~<span class="o">]</span>$ minikube kubectl get po -A
-</span></span><span class="line"><span class="cl">NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
-</span></span><span class="line"><span class="cl">kube-system   coredns-64897985d-qszct            1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   etcd-minikube                      1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   kube-apiserver-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   kube-controller-manager-minikube   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   kube-proxy-97bx8                   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   kube-scheduler-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
-</span></span><span class="line"><span class="cl">kube-system   storage-provisioner                1/1     Running   <span class="m">4</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>k8s@servera ~<span class="o">]</span>$ minikube kubectl get po -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS      AGE
+kube-system   coredns-64897985d-qszct            1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   etcd-minikube                      1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-apiserver-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
+kube-system   kube-controller-manager-minikube   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-proxy-97bx8                   1/1     Running   <span class="m">2</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+kube-system   kube-scheduler-minikube            1/1     Running   <span class="m">2</span> <span class="o">(</span>5m ago<span class="o">)</span>   5m
+kube-system   storage-provisioner                1/1     Running   <span class="m">4</span> <span class="o">(</span>4m ago<span class="o">)</span>   5m
+</code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>安裝 kubectl ( 可選 )</li>
@@ -299,9 +299,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">curl -LO <span class="s2">&#34;https://dl.k8s.io/release/</span><span class="k">$(</span>curl -L -s https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl&#34;</span>
-</span></span><span class="line"><span class="cl">sudo install -o root -g root -m <span class="m">0755</span> kubectl /usr/local/bin/kubectl
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">curl -LO <span class="s2">&#34;https://dl.k8s.io/release/</span><span class="k">$(</span>curl -L -s https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl&#34;</span>
+sudo install -o root -g root -m <span class="m">0755</span> kubectl /usr/local/bin/kubectl
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-小結">4. 小結</h2>
