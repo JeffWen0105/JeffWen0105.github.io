@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-18T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - VLAN 虛擬 LAN 網路"/>
 <meta name="twitter:description" content="VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_concept\/"
-        },"genre": "posts","keywords": "Network, Cisco","wordcount":  845 ,
+        },"genre": "posts","keywords": "Network, Cisco","wordcount":  841 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-vlan_concept\/","datePublished": "2022-05-18T00:00:00+00:00","dateModified": "2022-05-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cisco - VLAN 虛擬 LAN 網路</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cisco</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;845 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;841 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -143,20 +142,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-vlan name vlan10
-vlan name vlan20
-vlan name vlan30
-int g0/1/0
-    switchport access mode
-    access vlan10
-int g0/1/1
-    switchport access mode
-    access vlan20
-int g1/1/1
-    switchport access mode
-    access vlan30
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">vlan name vlan10
+</span></span><span class="line"><span class="cl">vlan name vlan20
+</span></span><span class="line"><span class="cl">vlan name vlan30
+</span></span><span class="line"><span class="cl">int g0/1/0
+</span></span><span class="line"><span class="cl">    switchport access mode
+</span></span><span class="line"><span class="cl">    access vlan10
+</span></span><span class="line"><span class="cl">int g0/1/1
+</span></span><span class="line"><span class="cl">    switchport access mode
+</span></span><span class="line"><span class="cl">    access vlan20
+</span></span><span class="line"><span class="cl">int g1/1/1
+</span></span><span class="line"><span class="cl">    switchport access mode
+</span></span><span class="line"><span class="cl">    access vlan30
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="22-trunk-mode">2.2. Trunk Mode</h2>
 <p>VLan 如果要跨越不同的 Switch 就必須使用 Trunk Mode ，在一條路上帶上不同的 VLAN 標籤與對方的 Switch 交換機做傳遞。</p>
@@ -178,10 +177,10 @@ int g1/1/1
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-int g0/0/0
-    switchport trunk mode
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">int g0/0/0
+</span></span><span class="line"><span class="cl">    switchport trunk mode
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-packet-tracer-實作--vlan-configuration">3. Packet Tracer 實作 – VLAN Configuration</h2>
@@ -236,18 +235,18 @@ int g0/0/0
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-vlan <span class="m">10</span>
-    name Staff
-vlan <span class="m">20</span>
-    name Students
-vlan <span class="m">30</span>
-    name Guest
-vlan <span class="m">99</span>
-    name Management
-vlan <span class="m">150</span>
-    name VOICE
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">vlan <span class="m">10</span>
+</span></span><span class="line"><span class="cl">    name Staff
+</span></span><span class="line"><span class="cl">vlan <span class="m">20</span>
+</span></span><span class="line"><span class="cl">    name Students
+</span></span><span class="line"><span class="cl">vlan <span class="m">30</span>
+</span></span><span class="line"><span class="cl">    name Guest
+</span></span><span class="line"><span class="cl">vlan <span class="m">99</span>
+</span></span><span class="line"><span class="cl">    name Management
+</span></span><span class="line"><span class="cl">vlan <span class="m">150</span>
+</span></span><span class="line"><span class="cl">    name VOICE
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>
@@ -271,17 +270,17 @@ vlan <span class="m">150</span>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-int f0/11
-    switchport mode access
-    switchport access vlan <span class="m">10</span>
-int f0/18
-    switchport mode access
-    switchport access vlan <span class="m">20</span>
-int f0/16
-    switchport mode access
-    switchport access vlan <span class="m">30</span>    
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">int f0/11
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">10</span>
+</span></span><span class="line"><span class="cl">int f0/18
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">20</span>
+</span></span><span class="line"><span class="cl">int f0/16
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">30</span>    
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>S3 所有的介面端口綁定 Vlan 標籤，並且啟用 VOICE Vlan 在 f 0/11 介面上</li>
@@ -302,19 +301,19 @@ int f0/16
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-int f0/11
-    switchport mode access
-    switchport access vlan <span class="m">10</span>
-    mls qos trust cos
-    switchport voice vlan <span class="m">150</span>
-int f0/18
-    switchport mode access
-    switchport access vlan <span class="m">20</span>
-int f0/16
-    switchport mode access
-    switchport access vlan <span class="m">30</span>    
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">int f0/11
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">10</span>
+</span></span><span class="line"><span class="cl">    mls qos trust cos
+</span></span><span class="line"><span class="cl">    switchport voice vlan <span class="m">150</span>
+</span></span><span class="line"><span class="cl">int f0/18
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">20</span>
+</span></span><span class="line"><span class="cl">int f0/16
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">30</span>    
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>設定  Trunk Mode</li>
@@ -326,9 +325,9 @@ int f0/16
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-switchport mode trunk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">switchport mode trunk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>S1 g0/1 及 g0/2 介面啟動 Trunk Mode</p>
 <div class="highlight"><div class="chroma">
@@ -337,9 +336,9 @@ switchport mode trunk
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-switchport mode trunk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">switchport mode trunk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>S3  g0/2 介面啟動 Trunk Mode</p>
 <div class="highlight"><div class="chroma">
@@ -348,9 +347,9 @@ switchport mode trunk
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-switchport mode trunk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">switchport mode trunk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="6">
 <li>設定完後所有相同的 VLAN 都可以互相發送 ICMP 封包</li>
@@ -373,21 +372,21 @@ switchport mode trunk
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># PC 1</span>
-C:<span class="se">\&gt;</span>ping 172.17.10.24
-
-Pinging 172.17.10.24 with <span class="m">32</span> bytes of data:
-
-Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
-Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
-Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
-Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
-
-Ping statistics <span class="k">for</span> 172.17.10.24:
-    Packets: <span class="nv">Sent</span> <span class="o">=</span> 4, <span class="nv">Received</span> <span class="o">=</span> 4, <span class="nv">Lost</span> <span class="o">=</span> <span class="m">0</span> <span class="o">(</span>0% loss<span class="o">)</span>,
-Approximate round trip <span class="nb">times</span> in milli-seconds:
-    <span class="nv">Minimum</span> <span class="o">=</span> 0ms, <span class="nv">Maximum</span> <span class="o">=</span> 0ms, <span class="nv">Average</span> <span class="o">=</span> 0ms
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># PC 1</span>
+</span></span><span class="line"><span class="cl">C:<span class="se">\&gt;</span>ping 172.17.10.24
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Pinging 172.17.10.24 with <span class="m">32</span> bytes of data:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+</span></span><span class="line"><span class="cl">Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+</span></span><span class="line"><span class="cl">Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+</span></span><span class="line"><span class="cl">Reply from 172.17.10.24: <span class="nv">bytes</span><span class="o">=</span><span class="m">32</span> time&lt;1ms <span class="nv">TTL</span><span class="o">=</span><span class="m">128</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Ping statistics <span class="k">for</span> 172.17.10.24:
+</span></span><span class="line"><span class="cl">    Packets: <span class="nv">Sent</span> <span class="o">=</span> 4, <span class="nv">Received</span> <span class="o">=</span> 4, <span class="nv">Lost</span> <span class="o">=</span> <span class="m">0</span> <span class="o">(</span>0% loss<span class="o">)</span>,
+</span></span><span class="line"><span class="cl">Approximate round trip <span class="nb">times</span> in milli-seconds:
+</span></span><span class="line"><span class="cl">    <span class="nv">Minimum</span> <span class="o">=</span> 0ms, <span class="nv">Maximum</span> <span class="o">=</span> 0ms, <span class="nv">Average</span> <span class="o">=</span> 0ms
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>不過此時暫時無法跨越 VLAN ，如果需要跨越 VLAN 需要 Router 或是 L3-Switch 才能轉送路由。</p>
@@ -395,28 +394,7 @@ Approximate round trip <span class="nb">times</span> in milli-seconds:
 <hr>
 <h2 id="4-小結">4. 小結</h2>
 <p>無論是 Switch 交換器或是路由器只要是思科的網路設備都可以用上述方法來組態設備網路，也是必須掌握的技巧。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-vlan_concept%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

@@ -11,7 +11,6 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-ssh-tunnel/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-01-11T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 設定 SSH Tunneling (Port Forwarding)"/>
 <meta name="twitter:description" content="
@@ -144,8 +143,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L <span class="o">[</span>LOCAL_IP:<span class="o">]</span>LOCAL_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -L <span class="o">[</span>LOCAL_IP:<span class="o">]</span>LOCAL_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="12-使用情境">1.2 使用情境</h4>
 <p>目標伺服器 （Server） 防火牆只有開放 SSH 22 阜號其餘均關閉，想要訪問該目標 8088 服務。</p>
@@ -172,8 +171,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -L 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -L 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -203,8 +202,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="22-使用情境">2.2 使用情境</h4>
 <p>伺服器( server ) 防火牆只有開放 SSH 22 阜號其餘均關閉，伺服器( server )反相要訪問 Client 啟動的 8088 服務。</p>
@@ -231,8 +230,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R 9453:127.0.0.1:8088 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -279,8 +278,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -R <span class="o">[</span>REMOTE:<span class="o">]</span>REMOTE_PORT:DESTINATION:DESTINATION_PORT <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="32-使用情境">3.2 使用情境</h4>
 <p>在 SSH Server 上啟動一個 SOCKS 代理伺服器，簡單的來說就是讓 Sever 變成自己的代理伺服器，可以來瀏覽網頁隱藏自己的真實IP以及跳板至其他國家 （VPN的概念）</p>
@@ -293,8 +292,8 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -D 127.0.0.1:9453 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -D 127.0.0.1:9453 <span class="o">[</span>USER<span class="o">]</span>@SSH_SERVER
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>修改瀏覽器 Proxy socks (以 Firefox 為例)</li>
@@ -337,28 +336,7 @@ SSH Tunneling (Port Forwarding) 是創建一個加密的隧道在客戶端與伺
 <li>
 <p>透過上述的教學，是不是就能感受的 SSH Tunneling 特別的強大好用，容易操作又能有效的達成目的，還不快點來試試康 ~~~~</p>
 </li>
-</ul></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-ssh-tunnel%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

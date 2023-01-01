@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-connect_to_device/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-02T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - 網路設備組態設定"/>
 <meta name="twitter:description" content="在 Cicso 網路設備該用什麼方式去設定呢？ 像是 switch 交換器及路由器等，在大型公司網路大多數都使用該網路設備，所以掌握設定方式就很重要。 1. Switch 交換器介紹 Switch 交"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-connect_to_device\/"
-        },"genre": "posts","keywords": "Network, Cisco","wordcount":  1324 ,
+        },"genre": "posts","keywords": "Network, Cisco","wordcount":  1322 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-connect_to_device\/","datePublished": "2022-05-02T00:00:00+00:00","dateModified": "2022-05-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cisco - 網路設備組態設定</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cisco</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-02">2022-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1324 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-02">2022-05-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1322 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -196,16 +195,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
-s1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-<span class="c1"># 使用 console 設備</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line console 0</span>
-<span class="c1"># 指定 console 密碼為 cicso</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
-<span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">s1&gt;en
+</span></span><span class="line"><span class="cl">s1#conf t
+</span></span><span class="line"><span class="cl">Enter configuration commands, one per line.  End with CNTL/Z.
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 console 設備</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line console 0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定 console 密碼為 cicso</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>重新開啟 CLI 驗證是否生效</li>
@@ -219,12 +218,12 @@ s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#l
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">User Access Verification
-
-Password: 
-
-s1&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">User Access Verification
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">s1&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4-telnet-連線登入">4. telnet 連線登入</h2>
 <blockquote>
@@ -245,16 +244,16 @@ s1&gt;
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
-s1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-<span class="c1"># 使用 vlan 設備</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
-<span class="c1"># 賦予 IP 及子網路遮罩</span>
-s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
-<span class="c1"># 使設定生效</span>
-s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">s1&gt;en
+</span></span><span class="line"><span class="cl">s1#conf t
+</span></span><span class="line"><span class="cl">Enter configuration commands, one per line.  End with CNTL/Z.
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 vlan 設備</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 賦予 IP 及子網路遮罩</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使設定生效</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="412-開啟-telnet-功能">4.1.2 開啟 telnet 功能</h3>
 <div class="highlight"><div class="chroma">
@@ -271,17 +270,17 @@ s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no 
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
-s1#conf t
-<span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
-<span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
-<span class="c1"># 密碼設定為 cicso</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
-<span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login </span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">s1&gt;en
+</span></span><span class="line"><span class="cl">s1#conf t
+</span></span><span class="line"><span class="cl"><span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 密碼設定為 cicso</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#password cicso</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 輸入 login 要求要輸入密碼才能登入</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login </span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="413-至任一台-pc-連線測試">4.1.3 至任一台 PC 連線測試</h3>
 <p>找一台同網段的 PC ，使用 telnet 測試登入</p>
@@ -297,15 +296,15 @@ s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#l
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\&gt;telnet 192.168.50.100
-Trying 192.168.50.100 ...Open
-
-
-User Access Verification
-
-Password: 
-s1&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">C:\&gt;telnet 192.168.50.100
+</span></span><span class="line"><span class="cl">Trying 192.168.50.100 ...Open
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">User Access Verification
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">s1&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="5-ssh-連線登入">5. ssh 連線登入</h2>
 <blockquote>
@@ -326,16 +325,16 @@ s1&gt;
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
-s1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-<span class="c1"># 使用 vlan 設備</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
-<span class="c1"># 賦予 IP 及子網路遮罩</span>
-s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
-<span class="c1"># 使設定生效</span>
-s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">s1&gt;en
+</span></span><span class="line"><span class="cl">s1#conf t
+</span></span><span class="line"><span class="cl">Enter configuration commands, one per line.  End with CNTL/Z.
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 vlan 設備</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#int vlan 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 賦予 IP 及子網路遮罩</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#ip addr 192.168.50.100 255.255.255.0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使設定生效</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no shutdown </span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="412-開啟-ssh-功能">4.1.2 開啟 ssh 功能</h3>
 <p><strong>六個必要條件:</strong></p>
@@ -374,30 +373,30 @@ s1<span class="o">(</span>config-if<span class="o">)</span><span class="c1">#no 
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">s1&gt;en
-s1#conf t
-<span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
-<span class="c1"># 設定此交換器名稱為 s1</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#hostname s1</span>
-<span class="c1"># 設定網域名稱為 cicso.example</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#ip domain-name cicso.example</span>
-<span class="c1"># 產生一對公私鑰</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#crypto key generate rsa general-keys modulus 1042</span>
-The name <span class="k">for</span> the keys will be: s1.cicso.example
-
-% The key modulus size is <span class="m">1042</span> bits
-% Generating <span class="m">1042</span> bit RSA keys, keys will be non-exportable...<span class="o">[</span>OK<span class="o">]</span>
-*Mar <span class="m">1</span> 5:34:28.566: %SSH-5-ENABLED: SSH 1.99 has been enabled
-<span class="c1"># 設定登入使用者為 howhow 密碼為 cicso</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#username howhow password cicso</span>
-<span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
-s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
-<span class="c1"># 登入帳號及密碼使用 local 資料 ( 剛設定的使用者 howhow 密碼 cicso )</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login local </span>
-<span class="c1"># 僅能使用 ssh 連線</span>
-s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#transport input ssh</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">s1&gt;en
+</span></span><span class="line"><span class="cl">s1#conf t
+</span></span><span class="line"><span class="cl"><span class="c1"># 此設定為讓進入全域必須使用密碼才能進入</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#enable password cicso</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定此交換器名稱為 s1</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#hostname s1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定網域名稱為 cicso.example</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#ip domain-name cicso.example</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 產生一對公私鑰</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#crypto key generate rsa general-keys modulus 1042</span>
+</span></span><span class="line"><span class="cl">The name <span class="k">for</span> the keys will be: s1.cicso.example
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% The key modulus size is <span class="m">1042</span> bits
+</span></span><span class="line"><span class="cl">% Generating <span class="m">1042</span> bit RSA keys, keys will be non-exportable...<span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">*Mar <span class="m">1</span> 5:34:28.566: %SSH-5-ENABLED: SSH 1.99 has been enabled
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定登入使用者為 howhow 密碼為 cicso</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#username howhow password cicso</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用 vty 虛擬終端設備( 設定全部 0 至 14 個設備)</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config<span class="o">)</span><span class="c1">#line vty 0 14</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 登入帳號及密碼使用 local 資料 ( 剛設定的使用者 howhow 密碼 cicso )</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#login local </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 僅能使用 ssh 連線</span>
+</span></span><span class="line"><span class="cl">s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#transport input ssh</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="413-至任一台-pc-連線測試-1">4.1.3 至任一台 PC 連線測試</h3>
 <p>找一台同網段的 PC ，使用 ssh 測試登入</p>
@@ -411,38 +410,17 @@ s1<span class="o">(</span>config-line<span class="o">)</span><span class="c1">#t
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">C:\&gt;ssh -l howhow 192.168.50.100
-
-Password: 
-
-
-s1&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">C:\&gt;ssh -l howhow 192.168.50.100
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">s1&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="小結">小結</h2>
 <p>無論是 Switch 交換器或是路由器只要是思科的網路設備都可以用上述方法來組態設備網路，也是必須掌握的技巧。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-connect_to_device%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

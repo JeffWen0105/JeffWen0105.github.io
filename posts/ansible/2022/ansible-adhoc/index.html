@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-13T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-03-13T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible - 執行 Ad-Hoc 命令"/>
 <meta name="twitter:description" content="Ad Hoc 是一個拉丁文常用短語，意思是指定或是特殊的任務，在 Ansible 中如果指定單一任務執行，可以使用 ad hoc 命令快速完成指定的任務。 練習環境 可以使用 HowHow 的創建"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-adhoc\/"
-        },"genre": "posts","keywords": "Ansible","wordcount":  1200 ,
+        },"genre": "posts","keywords": "Ansible","wordcount":  1201 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-adhoc\/","datePublished": "2022-03-13T00:00:00+00:00","dateModified": "2022-03-13T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ansible - 執行 Ad-Hoc 命令</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Ansible</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-13">2022-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1200 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-13">2022-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1201 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -128,8 +127,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible &lt;host group&gt; -m &lt;module&gt; -a &lt;module args&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible &lt;host group&gt; -m &lt;module&gt; -a &lt;module args&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>-host group : 表示要執行哪台機器或是群組( inventory 清單內 )<br>
 -m : 指定的 ansbile 模組<br>
@@ -162,29 +161,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible all -m ping
-serverb <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;changed&#34;</span>: false,
-    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-<span class="o">}</span>
-serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;changed&#34;</span>: false,
-    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-<span class="o">}</span>
-servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
-    <span class="o">}</span>,
-    <span class="s2">&#34;changed&#34;</span>: false,
-    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible all -m ping
+</span></span><span class="line"><span class="cl">serverb <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;discovered_interpreter_python&#34;</span>: <span class="s2">&#34;/usr/libexec/platform-python&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;changed&#34;</span>: false,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ping&#34;</span>: <span class="s2">&#34;pong&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
@@ -211,15 +210,15 @@ servera <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o"
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-doc -l
-a10_server                                                    Manage A10 Networks AX/SoftAX/Thunder/vThunder devices<span class="s1">&#39; server object                                                                          
-</span><span class="s1">a10_server_axapi3                                             Manage A10 Networks AX/SoftAX/Thunder/vThunder devices                                                                                         
-</span><span class="s1">a10_service_group                                             Manage A10 Networks AX/SoftAX/Thunder/vThunder devices&#39;</span> service groups                                                                         
-a10_virtual_server                                            Manage A10 Networks AX/SoftAX/Thunder/vThunder devices<span class="err">&#39;</span> virtual servers                                                                        
-aci_aaa_user                                                  Manage AAA users <span class="o">(</span>aaa:User<span class="o">)</span>                                                                                                                    
-aci_aaa_user_certificate                                      Manage AAA user certificates <span class="o">(</span>aaa:UserCert<span class="o">)</span>
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-doc -l
+</span></span><span class="line"><span class="cl">a10_server                                                    Manage A10 Networks AX/SoftAX/Thunder/vThunder devices<span class="s1">&#39; server object                                                                          
+</span></span></span><span class="line"><span class="cl"><span class="s1">a10_server_axapi3                                             Manage A10 Networks AX/SoftAX/Thunder/vThunder devices                                                                                         
+</span></span></span><span class="line"><span class="cl"><span class="s1">a10_service_group                                             Manage A10 Networks AX/SoftAX/Thunder/vThunder devices&#39;</span> service groups                                                                         
+</span></span><span class="line"><span class="cl">a10_virtual_server                                            Manage A10 Networks AX/SoftAX/Thunder/vThunder devices<span class="err">&#39;</span> virtual servers                                                                        
+</span></span><span class="line"><span class="cl">aci_aaa_user                                                  Manage AAA users <span class="o">(</span>aaa:User<span class="o">)</span>                                                                                                                    
+</span></span><span class="line"><span class="cl">aci_aaa_user_certificate                                      Manage AAA user certificates <span class="o">(</span>aaa:UserCert<span class="o">)</span>
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="21-ansible-doc-查看-ping-模組">2.1 ansible-doc 查看 ping 模組</h3>
 <p>使用 ansible-doc 加上模組名稱，查看模組詳細使用方式，試者查詢 ping 模組內容。</p>
@@ -243,23 +242,23 @@ aci_aaa_user_certificate                                      Manage AAA user ce
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-doc ping
-&gt; PING    <span class="o">(</span>/usr/lib/python3.6/site-packages/ansible/modules/system/ping.py<span class="o">)</span>
-
-        A trivial <span class="nb">test</span> module, this module always returns <span class="sb">`</span>pong<span class="s1">&#39; on successful contact. It does not make sense in playbooks, but it is useful from `/usr/bin/ansible&#39;</span> to
-        verify the ability to login and that a usable Python is configured. This is NOT ICMP ping, this is just a trivial <span class="nb">test</span> module that requires Python on the
-        remote-node. For Windows targets, use the <span class="o">[</span>win_ping<span class="o">]</span> module instead. For Network targets, use the <span class="o">[</span>net_ping<span class="o">]</span> module instead.
-
-  * This module is maintained by The Ansible Core Team
-OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
-
-- data
-        Data to <span class="k">return</span> <span class="k">for</span> the <span class="sb">`</span>ping<span class="s1">&#39; return value.
-</span><span class="s1">        If this parameter is set to `crash&#39;</span>, the module will cause an exception.
-        <span class="o">[</span>Default: pong<span class="o">]</span>
-        type: str
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-doc ping
+</span></span><span class="line"><span class="cl">&gt; PING    <span class="o">(</span>/usr/lib/python3.6/site-packages/ansible/modules/system/ping.py<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        A trivial <span class="nb">test</span> module, this module always returns <span class="sb">`</span>pong<span class="s1">&#39; on successful contact. It does not make sense in playbooks, but it is useful from `/usr/bin/ansible&#39;</span> to
+</span></span><span class="line"><span class="cl">        verify the ability to login and that a usable Python is configured. This is NOT ICMP ping, this is just a trivial <span class="nb">test</span> module that requires Python on the
+</span></span><span class="line"><span class="cl">        remote-node. For Windows targets, use the <span class="o">[</span>win_ping<span class="o">]</span> module instead. For Network targets, use the <span class="o">[</span>net_ping<span class="o">]</span> module instead.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  * This module is maintained by The Ansible Core Team
+</span></span><span class="line"><span class="cl">OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">- data
+</span></span><span class="line"><span class="cl">        Data to <span class="k">return</span> <span class="k">for</span> the <span class="sb">`</span>ping<span class="s1">&#39; return value.
+</span></span></span><span class="line"><span class="cl"><span class="s1">        If this parameter is set to `crash&#39;</span>, the module will cause an exception.
+</span></span><span class="line"><span class="cl">        <span class="o">[</span>Default: pong<span class="o">]</span>
+</span></span><span class="line"><span class="cl">        type: str
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-模組摘要">3. 模組摘要</h2>
@@ -306,8 +305,8 @@ OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/JeffWen0105/ansible-lab.git
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/JeffWen0105/ansible-lab.git
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>使用 deploy-adhoc 專案，以 Ad-Hoc 執行 yum_repository 模組，在所有機器增加兩個倉庫來源，並以寫入 ad-hoc.sh，以腳本方式執行。</li>
@@ -326,16 +325,16 @@ OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="m">1</span>. <span class="nx">BaseOS</span>:<span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">name</span>: <span class="nx">BaseOS</span><span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">description</span>: <span class="nx">BaseOS</span><span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">baseurl</span>: <span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/BaseOS/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="m">2</span>. <span class="nx">AppStream</span>:<span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">name</span>: <span class="nx">AppStream</span><span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">description</span>: <span class="nx">AppStream</span><span class="err">
-</span><span class="err"></span>    <span class="p">-</span> <span class="nx">baseurl</span>: <span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/AppStream/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="m">1</span>. <span class="nx">BaseOS</span>:<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">name</span>: <span class="nx">BaseOS</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">description</span>: <span class="nx">BaseOS</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">baseurl</span>: <span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/BaseOS/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="m">2</span>. <span class="nx">AppStream</span>:<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">name</span>: <span class="nx">AppStream</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">description</span>: <span class="nx">AppStream</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="p">-</span> <span class="nx">baseurl</span>: <span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/AppStream/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>yum_repository 模組範例 :</p>
 <div class="highlight"><div class="chroma">
@@ -347,12 +346,12 @@ OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="p">-</span> <span class="nx">name</span>: <span class="nx">Add</span> <span class="nx">repository</span><span class="err">
-</span><span class="err"></span>  <span class="nx">yum_repository</span>:<span class="err">
-</span><span class="err"></span>    <span class="nx">name</span>: <span class="nx">epel</span><span class="err">
-</span><span class="err"></span>    <span class="nx">description</span>: <span class="nx">EPEL</span> <span class="nx">YUM</span> <span class="nx">repo</span><span class="err">
-</span><span class="err"></span>    <span class="nx">baseurl</span>: <span class="nx">https</span>:<span class="sr">//</span><span class="nx">download</span>.<span class="nx">fedoraproject</span>.<span class="nx">org</span><span class="sr">/pub/</span><span class="nx">epel</span><span class="sr">/$releasever/</span>$<span class="nx">basearch</span>/<span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="p">-</span> <span class="nx">name</span>: <span class="nx">Add</span> <span class="nx">repository</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>  <span class="nx">yum_repository</span>:<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nx">name</span>: <span class="nx">epel</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nx">description</span>: <span class="nx">EPEL</span> <span class="nx">YUM</span> <span class="nx">repo</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>    <span class="nx">baseurl</span>: <span class="nx">https</span>:<span class="sr">//</span><span class="nx">download</span>.<span class="nx">fedoraproject</span>.<span class="nx">org</span><span class="sr">/pub/</span><span class="nx">epel</span><span class="sr">/$releasever/</span>$<span class="nx">basearch</span>/<span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>- name: add BaseOS repo
   yum_repository:
@@ -374,9 +373,9 @@ OPTIONS <span class="o">(=</span> is mandatory<span class="o">)</span>:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">touch ad-hoc.yml
-chmod +x ad-hoc.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch ad-hoc.yml
+</span></span><span class="line"><span class="cl">chmod +x ad-hoc.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -389,14 +388,14 @@ chmod +x ad-hoc.yml
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-<span class="c1"># add BaseOS repo</span>
-ansible all -m yum_repository -a <span class="s2">&#34;name=BaseOS description=BaseOS baseurl=http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/&#34;</span>
-
-<span class="c1"># add AppStream repo</span>
-ansible all -m yum_repository -a <span class="s2">&#34;name=AppStream description=AppStream baseurl=http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/&#34;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># add BaseOS repo</span>
+</span></span><span class="line"><span class="cl">ansible all -m yum_repository -a <span class="s2">&#34;name=BaseOS description=BaseOS baseurl=http://mirror01.idc.hinet.net/rockylinux/8.5/BaseOS/x86_64/os/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># add AppStream repo</span>
+</span></span><span class="line"><span class="cl">ansible all -m yum_repository -a <span class="s2">&#34;name=AppStream description=AppStream baseurl=http://mirror01.idc.hinet.net/rockylinux/8.5/AppStream/x86_64/os/&#34;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition quote open">
         <div class="details-summary admonition-title">
@@ -409,28 +408,7 @@ ansible all -m yum_repository -a <span class="s2">&#34;name=AppStream descriptio
 <hr>
 <h2 id="5-小結">5. 小結</h2>
 <p>善用 ansible-doc 可以很快速的查閱模組的使用，並透過 ad-hoc 命令執行單一任務驗證。建議多開個終端機一個專門查閱 ansible-doc ，可以幫助使用者快速查閱及使用。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-adhoc%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

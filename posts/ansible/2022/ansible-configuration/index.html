@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-03-12T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible - 管理 Ansible 設定組態檔"/>
 <meta name="twitter:description" content="Ansible 在執行時，需要明確定義要使用哪一種角色連線、使用哪一種連線機制、要不要提升root權限、提升權限是否要輸入密碼及 inventory 主機清單擺放位置，在每次"/>
@@ -128,17 +127,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
-<span class="na">inventory</span>   <span class="o">=</span> <span class="s">./inventory</span>
-<span class="na">remote_user</span> <span class="o">=</span> <span class="s">devops</span>
-<span class="na">ask_pass</span>    <span class="o">=</span> <span class="s">True</span>
-
-<span class="k">[privilege_escalation]</span>
-<span class="na">become</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">become_method</span> <span class="o">=</span> <span class="s">sudo</span>
-<span class="na">become_user</span> <span class="o">=</span> <span class="s">root</span>
-<span class="na">become_ask_pass</span> <span class="o">=</span> <span class="s">True</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[defaults]</span>
+</span></span><span class="line"><span class="cl"><span class="na">inventory</span>   <span class="o">=</span> <span class="s">./inventory</span>
+</span></span><span class="line"><span class="cl"><span class="na">remote_user</span> <span class="o">=</span> <span class="s">devops</span>
+</span></span><span class="line"><span class="cl"><span class="na">ask_pass</span>    <span class="o">=</span> <span class="s">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[privilege_escalation]</span>
+</span></span><span class="line"><span class="cl"><span class="na">become</span> <span class="o">=</span> <span class="s">True</span>
+</span></span><span class="line"><span class="cl"><span class="na">become_method</span> <span class="o">=</span> <span class="s">sudo</span>
+</span></span><span class="line"><span class="cl"><span class="na">become_user</span> <span class="o">=</span> <span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">become_ask_pass</span> <span class="o">=</span> <span class="s">True</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>內容說明</p>
 <p>defaults 群組:</p>
@@ -175,9 +174,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[ssh_connection]</span>
-<span class="na">ssh_args</span> <span class="o">=</span> <span class="s">-C -o ControlMaster=auto -o ControlPersist=60s</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[ssh_connection]</span>
+</span></span><span class="line"><span class="cl"><span class="na">ssh_args</span> <span class="o">=</span> <span class="s">-C -o ControlMaster=auto -o ControlPersist=60s</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-啟動-pipelining">3.2 啟動 Pipelining</h3>
 <p>啟動 Pippelining 可以稍微降低 SSH 連線，此功能預設是關閉的，所有機器的 sudofile 需停用 requiretty 功能才可以使用 。</p>
@@ -188,9 +187,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[ssh_connection]</span>
-<span class="na">pipelining</span> <span class="o">=</span> <span class="s">True</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[ssh_connection]</span>
+</span></span><span class="line"><span class="cl"><span class="na">pipelining</span> <span class="o">=</span> <span class="s">True</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-啟動延伸-callback-插件監控資源消耗">3.2 啟動延伸 callback 插件監控資源消耗</h3>
 <p>如果想知道每一次執行 task 所消耗的 Memory 、 CPU 、 使用 pid等，可以透過啟用插件來查看。</p>
@@ -220,29 +219,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">CGROUP PERF RECAP ************************************************************************************************************************************************************************************************
-Memory Execution Maximum: 66.40MB
-cpu Execution Maximum: 74.71%
-pids Execution Maximum: 9.00
-
-memory:
-Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 65.17MB
-add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 53.81MB
-add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 48.24MB
-install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 59.11MB
-
-cpu:
-Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 74.71%
-add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 58.02%
-add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 34.42%
-install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 67.90%
-
-pids:
-Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 8.00
-add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 9.00
-add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 9.00
-install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 9.00
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">CGROUP PERF RECAP ************************************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">Memory Execution Maximum: 66.40MB
+</span></span><span class="line"><span class="cl">cpu Execution Maximum: 74.71%
+</span></span><span class="line"><span class="cl">pids Execution Maximum: 9.00
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">memory:
+</span></span><span class="line"><span class="cl">Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 65.17MB
+</span></span><span class="line"><span class="cl">add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 53.81MB
+</span></span><span class="line"><span class="cl">add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 48.24MB
+</span></span><span class="line"><span class="cl">install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 59.11MB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cpu:
+</span></span><span class="line"><span class="cl">Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 74.71%
+</span></span><span class="line"><span class="cl">add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 58.02%
+</span></span><span class="line"><span class="cl">add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 34.42%
+</span></span><span class="line"><span class="cl">install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 67.90%
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pids:
+</span></span><span class="line"><span class="cl">Gathering Facts <span class="o">(</span>5254002a-3564-920f-c96f-000000000010<span class="o">)</span>: 8.00
+</span></span><span class="line"><span class="cl">add baseos repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000a<span class="o">)</span>: 9.00
+</span></span><span class="line"><span class="cl">add appstream repo <span class="o">(</span>5254002a-3564-920f-c96f-00000000000b<span class="o">)</span>: 9.00
+</span></span><span class="line"><span class="cl">install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3564-920f-c96f-00000000000c<span class="o">)</span>: 9.00
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol>
 <li>編輯 ansible.cfg 並添加下方設定</li>
@@ -256,12 +255,12 @@ install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[defaults]</span>
-<span class="na">callback_whitelist</span> <span class="o">=</span> <span class="s">time, profile_tasks, cgroup_pefr_recap</span>
-
-<span class="k">[callback_cgroup_perf_recap]</span>
-<span class="na">control_group</span><span class="o">=</span><span class="s">ansible_profile</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[defaults]</span>
+</span></span><span class="line"><span class="cl"><span class="na">callback_whitelist</span> <span class="o">=</span> <span class="s">time, profile_tasks, cgroup_pefr_recap</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">[callback_cgroup_perf_recap]</span>
+</span></span><span class="line"><span class="cl"><span class="na">control_group</span><span class="o">=</span><span class="s">ansible_profile</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>創建 cgroup</li>
@@ -271,8 +270,8 @@ install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ sudo cgcreate -a student:student -t student:student -g cpuacct,memory,pids:ansible_profile
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ sudo cgcreate -a student:student -t student:student -g cpuacct,memory,pids:ansible_profile
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>執行 ansible 並配置 cgexe 使用</li>
@@ -286,12 +285,12 @@ install http <span class="p">&amp;</span> php <span class="o">(</span>5254002a-3
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ cgexec -g cpuacct,memory,pids:ansible_profile ansible-playbook example-playbook.yaml 
-
-PLAY <span class="o">[</span>exmaple<span class="o">]</span> ***************************************************************************************************************************************************************************************************
-
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ cgexec -g cpuacct,memory,pids:ansible_profile ansible-playbook example-playbook.yaml 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>exmaple<span class="o">]</span> ***************************************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -304,28 +303,7 @@ PLAY <span class="o">[</span>exmaple<span class="o">]</span> *******************
 <hr>
 <h2 id="4-小結">4. 小結</h2>
 <p>Ansible 組態檔是必要元素之一，可以用的參數非常多，非常不好記憶，其實只要用常用的設定檔參數配置好就行( 只有幾個參數需要記憶就行 )，多數的參數都使用 Ansible 預設即可。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-configuration%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

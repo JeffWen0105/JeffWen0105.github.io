@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/hadoop/2021/hadoop-env-infra/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-02-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-02-05T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hadoop - 基礎架設步驟"/>
 <meta name="twitter:description" content="Hadoop 為 Apache 基金會的開源頂級專案，為軟體框架做為分散式儲存及運算，無論是增減加機器都能處理，另具備高可用性、數據副本等能力"/>
@@ -176,9 +175,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ip addr show
-lsof -nPi
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr show
+</span></span><span class="line"><span class="cl">lsof -nPi
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -196,8 +195,8 @@ lsof -nPi
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /etc/default/grub
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /etc/default/grub
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -215,8 +214,8 @@ lsof -nPi
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">update-grub <span class="c1"># update-grub2 </span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">update-grub <span class="c1"># update-grub2 </span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -234,8 +233,8 @@ lsof -nPi
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">reboot
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reboot
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>檢查一下IPv6是否已經停用了</li>
@@ -246,9 +245,9 @@ lsof -nPi
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ip addr show
-lsof -nPi
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr show
+</span></span><span class="line"><span class="cl">lsof -nPi
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="2-安裝pip管理者身份----如不使用-jupyter-可跳過此步驟">2. 安裝pip(<strong>管理者身份</strong>) &lt;&ndash; 如不使用 Jupyter 可跳過此步驟</h3>
@@ -261,9 +260,9 @@ lsof -nPi
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
-sudo apt install python3-dev
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install python3-dev
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>安裝pip</li>
@@ -275,10 +274,10 @@ sudo apt install python3-dev
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#取得最新版pip腳本</span>
-wget https://bootstrap.pypa.io/get-pip.py
-python3 get-pip.py
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#取得最新版pip腳本</span>
+</span></span><span class="line"><span class="cl">wget https://bootstrap.pypa.io/get-pip.py
+</span></span><span class="line"><span class="cl">python3 get-pip.py
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="3-建立hadoop帳號管理者身份">3. 建立hadoop帳號(<strong>管理者身份</strong>)</h3>
@@ -288,8 +287,8 @@ python3 get-pip.py
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo adduser hadoop 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo adduser hadoop 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>檢查是否已經創立</li>
@@ -302,11 +301,11 @@ python3 get-pip.py
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">grep <span class="s1">&#39;hadoop&#39;</span> /etc/passwd
-grep <span class="s1">&#39;hadoop&#39;</span> /etc/group
-grep <span class="s1">&#39;hadoop&#39;</span> /etc/shadow
-ls -l /home
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep <span class="s1">&#39;hadoop&#39;</span> /etc/passwd
+</span></span><span class="line"><span class="cl">grep <span class="s1">&#39;hadoop&#39;</span> /etc/group
+</span></span><span class="line"><span class="cl">grep <span class="s1">&#39;hadoop&#39;</span> /etc/shadow
+</span></span><span class="line"><span class="cl">ls -l /home
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -325,8 +324,8 @@ ls -l /home
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt update
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt update
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>安裝openjdk</li>
@@ -336,8 +335,8 @@ ls -l /home
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">apt install openjdk-8-jdk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt install openjdk-8-jdk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>確認jdk及jre版本</li>
@@ -348,9 +347,9 @@ ls -l /home
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -version
-javac -version
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -version
+</span></span><span class="line"><span class="cl">javac -version
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -368,8 +367,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /etc/profile.d/jdk.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /etc/profile.d/jdk.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>編輯openjdk環境變數</li>
@@ -379,8 +378,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s1">&#39;/usr/lib/jvm/java-8-openjdk-amd64&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s1">&#39;/usr/lib/jvm/java-8-openjdk-amd64&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -398,8 +397,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">source</span> /etc/profile.d/jdk.sh  <span class="c1"># . /etc/profile.d/jdk.sh</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> /etc/profile.d/jdk.sh  <span class="c1"># . /etc/profile.d/jdk.sh</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -418,8 +417,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">su - hadoop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su - hadoop
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>打造ssh公鑰及私鑰</li>
@@ -429,8 +428,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -t rsa 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -456,8 +455,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh-copy-id hadoop@localhost
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-copy-id hadoop@localhost
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -475,8 +474,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh hadoop@localhost
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh hadoop@localhost
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="6--建立linux-hotsts名單管理者身份">6.  建立Linux hotsts名單(<strong>管理者身份</strong>)</h3>
@@ -485,8 +484,8 @@ javac -version
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nano /etc/hosts
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /etc/hosts
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -504,28 +503,7 @@ javac -version
         <div class="details-content">
             <div class="admonition-content">如上述步驟都完成，可以下一步驟<a href="https://how64bit.com/posts/hadoop/2021/hadoop-install-setup/" target="_blank" rel="noopener noreffer ">Hadoop - 安裝及設定</a></div>
         </div>
-    </div></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fhadoop%2f2021%2fhadoop-env-infra%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+    </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

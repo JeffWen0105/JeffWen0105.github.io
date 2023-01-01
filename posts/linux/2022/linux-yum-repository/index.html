@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-03-03T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - YUM 倉庫清單配置"/>
 <meta name="twitter:description" content="YUM 為高階的套件管理工具，解決軟體套件依賴問題，並且可以批量更新，非常好用的工具。另外可以自行定義倉庫位置，如指定台灣的軟體倉庫比美國軟體倉庫下載速度快的多。"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-yum-repository\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  593 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  604 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-yum-repository\/","datePublished": "2022-03-03T00:00:00+00:00","dateModified": "2022-03-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - YUM 倉庫清單配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;593 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-03">2022-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;604 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -102,9 +101,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># yum repolist all</span>
-No repositories available
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># yum repolist all</span>
+</span></span><span class="line"><span class="cl">No repositories available
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>由上述可以看出該機器目前並沒有可以使用的倉庫清單</em></p>
 <h2 id="2-配置-yum-倉庫清單">2. 配置 YUM 倉庫清單</h2>
@@ -140,20 +139,20 @@ No repositories available
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim">[<span class="nx">BaseOS</span>]<span class="err">
-</span><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">BaseOS</span><span class="err">
-</span><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/BaseOS/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
-</span><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="nx">RPM</span><span class="p">-</span><span class="nx">GPG</span><span class="p">-</span><span class="nx">KEY</span><span class="p">-</span><span class="nx">rockyofficial</span><span class="err">
-</span><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span>[<span class="nx">AppStream</span>]<span class="err">
-</span><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">AppStream</span><span class="err">
-</span><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/AppStream/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
-</span><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="nx">RPM</span><span class="p">-</span><span class="nx">GPG</span><span class="p">-</span><span class="nx">KEY</span><span class="p">-</span><span class="nx">rockyofficial</span><span class="err">
-</span><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl">[<span class="nx">BaseOS</span>]<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">BaseOS</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/BaseOS/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="nx">RPM</span><span class="p">-</span><span class="nx">GPG</span><span class="p">-</span><span class="nx">KEY</span><span class="p">-</span><span class="nx">rockyofficial</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span>[<span class="nx">AppStream</span>]<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">name</span><span class="p">=</span><span class="nx">AppStream</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">baseurl</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="m">8</span>.<span class="m">5</span><span class="sr">/AppStream/</span><span class="nx">x86_64</span><span class="sr">/os/</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgcheck</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">gpgkey</span><span class="p">=</span><span class="nx">http</span>:<span class="sr">//</span><span class="nx">mirror01</span>.<span class="nx">idc</span>.<span class="nx">hinet</span>.<span class="nx">net</span><span class="sr">/rockylinux/</span><span class="nx">RPM</span><span class="p">-</span><span class="nx">GPG</span><span class="p">-</span><span class="nx">KEY</span><span class="p">-</span><span class="nx">rockyofficial</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">enabled</span><span class="p">=</span><span class="m">1</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>中括號 ：倉庫清單名稱</li>
@@ -184,35 +183,14 @@ No repositories available
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@serverc yum.repos.d]# yum repolist all
-repo id                                                        repo name                                                      status
-AppStream                                                      AppStream                                                      enabled
-BaseOS                                                         BaseOS                                                         enabled
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">[root@serverc yum.repos.d]# yum repolist all
+</span></span><span class="line"><span class="cl">repo id                                                        repo name                                                      status
+</span></span><span class="line"><span class="cl">AppStream                                                      AppStream                                                      enabled
+</span></span><span class="line"><span class="cl">BaseOS                                                         BaseOS                                                         enabled
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="3-小結">3. 小結</h2>
-<p>配置倉庫清單是很重要的一件事情，選倉庫選的好可以加速下載套件並安裝，對於暫時不需要用的倉庫清單也可以設定為 <code>enabled=0</code> ，非常彈性且靈活好用。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-yum-repository%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>配置倉庫清單是很重要的一件事情，選倉庫選的好可以加速下載套件並安裝，對於暫時不需要用的倉庫清單也可以設定為 <code>enabled=0</code> ，非常彈性且靈活好用。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

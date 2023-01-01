@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-03-15T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible - Vault 加密檔案管理"/>
 <meta name="twitter:description" content="透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必"/>
@@ -155,31 +154,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-vault --help
-usage: ansible-vault <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
-                     <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
-                     ...
-
-encryption/decryption utility <span class="k">for</span> Ansible data files
-
-positional arguments:
-  <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
-    create              Create new vault encrypted file
-    decrypt             Decrypt vault encrypted file
-    edit                Edit vault encrypted file
-    view                View vault encrypted file
-    encrypt             Encrypt YAML file
-    encrypt_string      Encrypt a string
-    rekey               Re-key a vault encrypted file
-
-optional arguments:
-  --version             show program<span class="err">&#39;</span>s version number, config file location,
-                        configured module search path, module location,
-                        executable location and <span class="nb">exit</span>
-  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
-  -v, --verbose         verbose mode <span class="o">(</span>-vvv <span class="k">for</span> more, -vvvv to <span class="nb">enable</span>
-                        connection debugging<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation ~<span class="o">]</span>$ ansible-vault --help
+</span></span><span class="line"><span class="cl">usage: ansible-vault <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+</span></span><span class="line"><span class="cl">                     <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
+</span></span><span class="line"><span class="cl">                     ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">encryption/decryption utility <span class="k">for</span> Ansible data files
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">positional arguments:
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>create,decrypt,edit,view,encrypt,encrypt_string,rekey<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    create              Create new vault encrypted file
+</span></span><span class="line"><span class="cl">    decrypt             Decrypt vault encrypted file
+</span></span><span class="line"><span class="cl">    edit                Edit vault encrypted file
+</span></span><span class="line"><span class="cl">    view                View vault encrypted file
+</span></span><span class="line"><span class="cl">    encrypt             Encrypt YAML file
+</span></span><span class="line"><span class="cl">    encrypt_string      Encrypt a string
+</span></span><span class="line"><span class="cl">    rekey               Re-key a vault encrypted file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">optional arguments:
+</span></span><span class="line"><span class="cl">  --version             show program<span class="err">&#39;</span>s version number, config file location,
+</span></span><span class="line"><span class="cl">                        configured module search path, module location,
+</span></span><span class="line"><span class="cl">                        executable location and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">  -v, --verbose         verbose mode <span class="o">(</span>-vvv <span class="k">for</span> more, -vvvv to <span class="nb">enable</span>
+</span></span><span class="line"><span class="cl">                        connection debugging<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -197,8 +196,8 @@ optional arguments:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault create &lt;filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-vault create &lt;filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="21-創建一個加密的-exampleyml">2.1. 創建一個加密的 example.yml</h3>
 <div class="highlight"><div class="chroma">
@@ -209,11 +208,11 @@ optional arguments:
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create example.yml
-New Vault password: 
-Confirm New Vault password:
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create example.yml
+</span></span><span class="line"><span class="cl">New Vault password: 
+</span></span><span class="line"><span class="cl">Confirm New Vault password:
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-創建一個加密的-exampleyml-密碼由檔案內容指定">2.2. 創建一個加密的 example.yml ，密碼由檔案內容指定</h3>
 <div class="highlight"><div class="chroma">
@@ -223,10 +222,10 @@ Confirm New Vault password:
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
-<span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
-<span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create --vault-password-file my-passwd example.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault create --vault-password-file my-passwd example.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">
@@ -244,8 +243,8 @@ Confirm New Vault password:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault encrypt &lt;filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-vault encrypt &lt;filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="31-加密-exampleyml">3.1. 加密 example.yml</h3>
 <div class="highlight"><div class="chroma">
@@ -256,11 +255,11 @@ Confirm New Vault password:
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt example.yml 
-New Vault password: 
-Confirm New Vault password: 
-Encryption successful
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt example.yml 
+</span></span><span class="line"><span class="cl">New Vault password: 
+</span></span><span class="line"><span class="cl">Confirm New Vault password: 
+</span></span><span class="line"><span class="cl">Encryption successful
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-加密-exampleyml-密碼由檔案內容指定">3.2. 加密 example.yml， 密碼由檔案內容指定</h3>
 <div class="highlight"><div class="chroma">
@@ -270,10 +269,10 @@ Encryption successful
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
-<span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
-<span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt --vault-password-file my-passwd example.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ <span class="nb">echo</span> <span class="s2">&#34;redhat&#34;</span> &gt; my-passwd
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ chmod <span class="m">0600</span> my-passwd
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault encrypt --vault-password-file my-passwd example.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-編輯或查閱已經加密的檔案">4. 編輯或查閱已經加密的檔案</h2>
@@ -284,8 +283,8 @@ Encryption successful
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault view &lt;filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-vault view &lt;filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -294,10 +293,10 @@ Encryption successful
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault view example.yml 
-Vault password:
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault view example.yml 
+</span></span><span class="line"><span class="cl">Vault password:
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="42-編輯已經加密的檔案">4.2 編輯已經加密的檔案</h3>
 <p>想修改已經加密的檔案可以使用 edit 執行修改，預設會使用 vi 編輯器。</p>
@@ -306,8 +305,8 @@ Vault password:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault edit &lt;filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-vault edit &lt;filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -316,10 +315,10 @@ Vault password:
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault edit example.yml 
-Vault password:
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault edit example.yml 
+</span></span><span class="line"><span class="cl">Vault password:
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-更新密碼">5. 更新密碼</h2>
@@ -329,8 +328,8 @@ Vault password:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-vault rekey &lt;filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-vault rekey &lt;filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -341,12 +340,12 @@ Vault password:
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey example.yml
-Vault password: 
-New Vault password: 
-Confirm New Vault password: 
-Rekey successful
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey example.yml
+</span></span><span class="line"><span class="cl">Vault password: 
+</span></span><span class="line"><span class="cl">New Vault password: 
+</span></span><span class="line"><span class="cl">Confirm New Vault password: 
+</span></span><span class="line"><span class="cl">Rekey successful
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -365,8 +364,8 @@ Rekey successful
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook &lt;filename&gt; --vault-id @prompt
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook &lt;filename&gt; --vault-id @prompt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -375,10 +374,10 @@ Rekey successful
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-id @prompt
-Vault password <span class="o">(</span>default<span class="o">)</span>: 
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-id @prompt
+</span></span><span class="line"><span class="cl">Vault password <span class="o">(</span>default<span class="o">)</span>: 
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -394,8 +393,8 @@ Vault password <span class="o">(</span>default<span class="o">)</span>:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ansible-playbook &lt;filename&gt; --vault-password-file &lt;password filename&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook &lt;filename&gt; --vault-password-file &lt;password filename&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -403,9 +402,9 @@ Vault password <span class="o">(</span>default<span class="o">)</span>:
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-password-file passwd
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml --vault-password-file passwd
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="7-lab-練習">7. LAB 練習</h2>
@@ -418,8 +417,8 @@ Vault password <span class="o">(</span>default<span class="o">)</span>:
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/JeffWen0105/ansible-lab.git
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/JeffWen0105/ansible-lab.git
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>使用 data-secret 專案，使用 my-passwd 密碼執行 playbook.yml ，會產生新密碼提示，以新密碼重新變更 playbook.yml (已經配置好 ansible.cfg 及 inventory)。</li>
@@ -455,21 +454,21 @@ Vault password <span class="o">(</span>default<span class="o">)</span>:
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml  --vault-password-file my-passwd
-
-PLAY <span class="o">[</span>Example  Secrets<span class="o">]</span> ******************************************************************************************************************************************************************************************
-
-TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
-ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span>
-
-TASK <span class="o">[</span>print new password to console<span class="o">]</span> *****************************************************************************************************************************************************************************
-ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;New Passwd: ansible&#34;</span>
-<span class="o">}</span>
-
-PLAY RECAP *******************************************************************************************************************************************************************************************************
-servera.lab.example.com    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yml  --vault-password-file my-passwd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>Example  Secrets<span class="o">]</span> ******************************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *******************************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>print new password to console<span class="o">]</span> *****************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;New Passwd: ansible&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY RECAP *******************************************************************************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">servera.lab.example.com    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>使用執行結果的 ansible 更新 playbook 密碼。</li>
@@ -482,37 +481,16 @@ servera.lab.example.com    : <span class="nv">ok</span><span class="o">=</span><
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey playbook.yml --vault-password-file my-passwd
-New Vault password: ansible
-Confirm New Vault password: ansible
-Rekey successful
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-vault rekey playbook.yml --vault-password-file my-passwd
+</span></span><span class="line"><span class="cl">New Vault password: ansible
+</span></span><span class="line"><span class="cl">Confirm New Vault password: ansible
+</span></span><span class="line"><span class="cl">Rekey successful
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="8-小結">8. 小結</h2>
 <p>加密檔案可以有效防範機敏性資料被第三方查閱或是被修改，可以很好的保護檔案隱私性及安全性。千萬要注意別忘記密碼，除了暴力破解密碼之外，是無法還原被加密的 playbook，只能重新撰寫 playbook。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-vault-encrypt%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

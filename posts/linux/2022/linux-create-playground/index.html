@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-create-playground/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-31T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-31T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 打造輕巧 Linux 練習 Lab"/>
 <meta name="twitter:description" content="1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3447 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  3407 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-create-playground\/","datePublished": "2022-05-31T00:00:00+00:00","dateModified": "2022-05-31T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 打造輕巧 Linux 練習 Lab</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-31">2022-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3447 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-31">2022-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3407 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -334,8 +333,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">.\VBoxManage.exe modifyvm  <span class="s2">&#34;howhow8-mini-base&#34;</span>  --nested-hw-virt on
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">.\VBoxManage.exe modifyvm  <span class="s2">&#34;howhow8-mini-base&#34;</span>  --nested-hw-virt on
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="10">
 <li>輸入完上一步指令後即可點選啟用巢狀式虛擬，並依需求調整 CPU 及 Memory。</li>
@@ -433,22 +432,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@basesion ~<span class="o">]</span><span class="c1"># rht-vmctl </span>
-This utility manages  supplied VMs on the <span class="nb">local</span> hypervisor.
-Usage: rht-vmctl VMCMD VMNAME 
-  where VMCMD is one of:
-    start      - start up VMNAME
-    status     - get all status
-    poweroff   - poweroff VMNAME
-    stop       - <span class="k">if</span> running, force stop VMNAME
-    reset      - force poweroff, <span class="k">return</span> to saved or original state, start VMNAME
-    display    - show VMNAME vnc information
-    version    - show program<span class="err">&#39;</span>s version number
-    VMNAME of <span class="s2">&#34;all&#34;</span> processes all VMs available in the workstation、server<span class="o">[</span>a-c<span class="o">]</span>
-	
-    powered by HowHowWen
-    Read More from HowHowWen <span class="o">(</span>https://how64bit.com<span class="o">)</span> WebSite ~
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@basesion ~<span class="o">]</span><span class="c1"># rht-vmctl </span>
+</span></span><span class="line"><span class="cl">This utility manages  supplied VMs on the <span class="nb">local</span> hypervisor.
+</span></span><span class="line"><span class="cl">Usage: rht-vmctl VMCMD VMNAME 
+</span></span><span class="line"><span class="cl">  where VMCMD is one of:
+</span></span><span class="line"><span class="cl">    start      - start up VMNAME
+</span></span><span class="line"><span class="cl">    status     - get all status
+</span></span><span class="line"><span class="cl">    poweroff   - poweroff VMNAME
+</span></span><span class="line"><span class="cl">    stop       - <span class="k">if</span> running, force stop VMNAME
+</span></span><span class="line"><span class="cl">    reset      - force poweroff, <span class="k">return</span> to saved or original state, start VMNAME
+</span></span><span class="line"><span class="cl">    display    - show VMNAME vnc information
+</span></span><span class="line"><span class="cl">    version    - show program<span class="err">&#39;</span>s version number
+</span></span><span class="line"><span class="cl">    VMNAME of <span class="s2">&#34;all&#34;</span> processes all VMs available in the workstation、server<span class="o">[</span>a-c<span class="o">]</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">    powered by HowHowWen
+</span></span><span class="line"><span class="cl">    Read More from HowHowWen <span class="o">(</span>https://how64bit.com<span class="o">)</span> WebSite ~
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>start     - 啟動虛擬機 ( VMname / all )</li>
@@ -478,8 +477,8 @@ Usage: rht-vmctl VMCMD VMNAME
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl start all
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl start all
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -497,19 +496,19 @@ Usage: rht-vmctl VMCMD VMNAME
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl start all
- Id   Name          State
------------------------------
- <span class="m">1</span>    workstation   running
- <span class="m">2</span>    servera       running
- <span class="m">3</span>    serverb       running
- <span class="m">4</span>    serverc       running
-
-<span class="o">[</span>INFO<span class="o">]</span>: String All machines.. Please Wait.. 
-<span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping workstation, <span class="k">until</span>  the machines is turned on 
-<span class="o">[</span>INFO<span class="o">]</span>: After booting, please use ssh student@workstation to log in to the machine and start practicing LAB  
-<span class="o">[</span>INFO<span class="o">]</span>: You can find out Example PlayBook on /home/student/example 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl start all
+</span></span><span class="line"><span class="cl"> Id   Name          State
+</span></span><span class="line"><span class="cl">-----------------------------
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>    workstation   running
+</span></span><span class="line"><span class="cl"> <span class="m">2</span>    servera       running
+</span></span><span class="line"><span class="cl"> <span class="m">3</span>    serverb       running
+</span></span><span class="line"><span class="cl"> <span class="m">4</span>    serverc       running
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: String All machines.. Please Wait.. 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping workstation, <span class="k">until</span>  the machines is turned on 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: After booting, please use ssh student@workstation to log in to the machine and start practicing LAB  
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: You can find out Example PlayBook on /home/student/example 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>持續 ping 直到 workstation 機器開機。</li>
@@ -528,17 +527,17 @@ Usage: rht-vmctl VMCMD VMNAME
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ ping workstation
-PING workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> Destination Host Unreachable
-From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> Destination Host Unreachable
-From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> Destination Host Unreachable
-From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> Destination Host Unreachable
-From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> Destination Host Unreachable
-<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">2276</span> ms
-<span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">8</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">1252</span> ms
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ ping workstation
+</span></span><span class="line"><span class="cl">PING workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+</span></span><span class="line"><span class="cl">From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o">)</span> <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> Destination Host Unreachable
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">2276</span> ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from workstation.lab.example.com <span class="o">(</span>172.25.250.9<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">8</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">1252</span> ms
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>登入 workstation 機器。</li>
@@ -548,8 +547,8 @@ From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh student@workstation
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh student@workstation
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>帳號： student</li>
@@ -572,8 +571,8 @@ From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl start servera
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl start servera
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>持續 ping 直到 servera 機器開機。</li>
@@ -588,13 +587,13 @@ From basesion.lab.example.com <span class="o">(</span>172.25.250.1<span class="o
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ ping servera
-PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-<span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.765 ms
-<span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.480 ms
-<span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.446 ms
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@bastion ~<span class="o">]</span>$ ping servera
+</span></span><span class="line"><span class="cl">PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">5</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.765 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">6</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.480 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">7</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.446 ms
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>登入 servera 機器。</li>
@@ -604,8 +603,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh student@servera
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh student@servera
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>帳號： student</li>
@@ -622,8 +621,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl status all
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl status all
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -636,14 +635,14 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl status all
- Id   Name          State
------------------------------
- <span class="m">1</span>    workstation   running
- <span class="m">2</span>    servera       running
- <span class="m">3</span>    serverb       running
- <span class="m">4</span>    serverc       running
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl status all
+</span></span><span class="line"><span class="cl"> Id   Name          State
+</span></span><span class="line"><span class="cl">-----------------------------
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>    workstation   running
+</span></span><span class="line"><span class="cl"> <span class="m">2</span>    servera       running
+</span></span><span class="line"><span class="cl"> <span class="m">3</span>    serverb       running
+</span></span><span class="line"><span class="cl"> <span class="m">4</span>    serverc       running
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h4 id="513-停止虛擬機">5.1.3 停止虛擬機</h4>
@@ -656,8 +655,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl poweroff all
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl poweroff all
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -669,13 +668,13 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff all
-<span class="o">[</span>INFO<span class="o">]</span>: Stoping workstation ... Please Wait 
-<span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
-<span class="o">[</span>INFO<span class="o">]</span>: Stoping serverb ... Please Wait 
-<span class="o">[</span>INFO<span class="o">]</span>: Stoping serverc ... Please Wait 
-<span class="o">[</span>INFO<span class="o">]</span>: Please double check that all machines are stopped
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff all
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Stoping workstation ... Please Wait 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Stoping serverb ... Please Wait 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Stoping serverc ... Please Wait 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Please double check that all machines are stopped
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -694,8 +693,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl poweroff servera
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl poweroff servera
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -703,9 +702,9 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff servera
-<span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl poweroff servera
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Stoping servera ... Please Wait 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -726,8 +725,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl reset all
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl reset all
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -743,17 +742,17 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset all
-<span class="o">[</span>INFO<span class="o">]</span>: workstation Reset complete... 
-<span class="o">[</span>INFO<span class="o">]</span>: workstation Rebooting... 
-<span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
-<span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
-<span class="o">[</span>INFO<span class="o">]</span>: serverb Reset complete... 
-<span class="o">[</span>INFO<span class="o">]</span>: serverb Rebooting... 
-<span class="o">[</span>INFO<span class="o">]</span>: serverc Reset complete... 
-<span class="o">[</span>INFO<span class="o">]</span>: serverc Rebooting... 
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset all
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: workstation Reset complete... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: workstation Rebooting... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: serverb Reset complete... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: serverb Rebooting... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: serverc Reset complete... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: serverc Rebooting... 
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="5142-重置指定虛擬機器">5.1.4.2 重置指定虛擬機器</h5>
 <ul>
@@ -764,8 +763,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl reset servera
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl reset servera
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -776,12 +775,12 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset servera
-<span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
-<span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
-<span class="o">[</span>INFO<span class="o">]</span>: servera String .. Please Wait.. 
-<span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping servera, <span class="k">until</span>  the machines is turned on 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl reset servera
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: servera Reset complete... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: servera Rebooting... 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: servera String .. Please Wait.. 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>: Try to use Ping servera, <span class="k">until</span>  the machines is turned on 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -809,8 +808,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">rht-vmctl display servera
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rht-vmctl display servera
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -818,9 +817,9 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl display servera
-<span class="o">[</span>INFO<span class="o">]</span>:  servera  of VNC connection address: 192.168.23.136:5902
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@basesion ~<span class="o">]</span>$ rht-vmctl display servera
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span>:  servera  of VNC connection address: 192.168.23.136:5902
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>開啟 VNC Viewer Client ， 並工具提示的連線地址進行連接。</li>
@@ -904,8 +903,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -vND 127.0.0.1:9453 root@&lt;Your Bastion IP&gt; 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -vND 127.0.0.1:9453 root@&lt;Your Bastion IP&gt; 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -975,8 +974,8 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">route add 172.25.250.0/24 MASK 255.255.255.0  &lt;Your Bastion IP&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">route add 172.25.250.0/24 MASK 255.255.255.0  &lt;Your Bastion IP&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>至 Bastion 機器內清除 iptable 禁止轉發至其它網路規則。</li>
@@ -987,9 +986,9 @@ PING servera.lab.example.com <span class="o">(</span>172.25.250.10<span class="o
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">iptables -D LIBVIRT_FWO 2
-iptables -D LIBVIRT_FWI 2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iptables -D LIBVIRT_FWO 2
+</span></span><span class="line"><span class="cl">iptables -D LIBVIRT_FWI 2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -1114,22 +1113,22 @@ iptables -D LIBVIRT_FWI 2
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yaml 
-
-PLAY <span class="o">[</span>Example<span class="o">]</span> ********************************************************************************************************************************************
-
-TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ********************************************************************************************************************************
-ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
-<span class="o">}</span>
-ok: <span class="o">[</span>serverb.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
-<span class="o">}</span>
-ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
-<span class="o">}</span>
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook playbook.yaml 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>Example<span class="o">]</span> ********************************************************************************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Print Hello Ansible<span class="o">]</span> ********************************************************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;Hello Ansible!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -1157,28 +1156,7 @@ ok: <span class="o">[</span>serverc.lab.example.com<span class="o">]</span> <spa
 <hr>
 <h2 id="7-小結">7. 小結</h2>
 <p>透過 Bastion 機器的 rht-vmctl 腳本能有效控制 KVM 虛擬機器。透過此 Lab 環境可以很快速達成多台機器練習，也不用擔心練習操作誤刪檔案或是操作不當導致機器失效，並且能在每一次 Lab 實驗還原最初的機器狀態，避免影響下一次實驗操作。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-create-playground%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-20T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - VLAN - Router on a Stick"/>
 <meta name="twitter:description" content="Router on a Stick 在中型網路較常使用的 VLAN 路由解決方案，價格實惠且能達成 VLAN 路由目標。 先前介紹的三種路由方式，其中 CP 較高的就是透過此方式，因為架構多一個路"/>
@@ -156,17 +155,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vlan <span class="m">10</span>
-vlan <span class="m">30</span>
-intf0/11
-    switchport mode access
-    switchport access vlan <span class="m">10</span>
-int f0/6
-    switchport mode access
-    switchport access vlan <span class="m">30</span>
-int g0/1
-    switchport mode trunk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vlan <span class="m">10</span>
+</span></span><span class="line"><span class="cl">vlan <span class="m">30</span>
+</span></span><span class="line"><span class="cl">intf0/11
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">10</span>
+</span></span><span class="line"><span class="cl">int f0/6
+</span></span><span class="line"><span class="cl">    switchport mode access
+</span></span><span class="line"><span class="cl">    switchport access vlan <span class="m">30</span>
+</span></span><span class="line"><span class="cl">int g0/1
+</span></span><span class="line"><span class="cl">    switchport mode trunk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>Router 設定虛擬子介面。</li>
@@ -184,42 +183,21 @@ int g0/1
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">conf t
-int g0/0.10
-    encapsulation dot1Q <span class="m">10</span>
-    ip address 172.17.10.1 255.255.255.0
-int g0/0.30
-    encapsulation dot1Q <span class="m">30</span>
-    ip address 172.17.30.1 255.255.255.0
-int g0/0
-no shut
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">int g0/0.10
+</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">10</span>
+</span></span><span class="line"><span class="cl">    ip address 172.17.10.1 255.255.255.0
+</span></span><span class="line"><span class="cl">int g0/0.30
+</span></span><span class="line"><span class="cl">    encapsulation dot1Q <span class="m">30</span>
+</span></span><span class="line"><span class="cl">    ip address 172.17.30.1 255.255.255.0
+</span></span><span class="line"><span class="cl">int g0/0
+</span></span><span class="line"><span class="cl">no shut
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="3-小結">3. 小結</h3>
 <p>透過上述步驟，就能使得不同的 Vlan 互相溝通傳送封包，是十分好用的方式。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-vlan_route_on_stick%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

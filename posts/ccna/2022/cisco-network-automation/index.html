@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-15T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - Network Automation With Ansible"/>
 <meta name="twitter:description" content="Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-network-automation\/"
-        },"genre": "posts","keywords": "Network, Ansible, Cisco","wordcount":  1391 ,
+        },"genre": "posts","keywords": "Network, Ansible, Cisco","wordcount":  1535 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ccna\/2022\/cisco-network-automation\/","datePublished": "2022-05-15T00:00:00+00:00","dateModified": "2022-05-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,8 +70,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cisco - Network Automation With Ansible</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cisco/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cisco</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-15">2022-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1391 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-15">2022-05-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1535 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -166,12 +165,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[defaults]
-inventory = ./inventory
-
-[persistent_connection]
-connect_timeout = 40
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[defaults]
+</span></span><span class="line"><span class="cl">inventory = ./inventory
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[persistent_connection]
+</span></span><span class="line"><span class="cl">connect_timeout = 40
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -199,19 +198,19 @@ connect_timeout = 40
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[all:vars]
-ansible_connection=ansible.netcommon.network_cli
-ansible_network_os=ios
-ansible_become_method=enable
-ansible_become_password=eve
-ansible_become=yes
-ansible_user=admin
-ansible_password=eve
-
-[lab]
-lab-R1 ansible_host=10.1.1.1
-lab-R2 ansible_host=10.1.1.2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[all:vars]
+</span></span><span class="line"><span class="cl">ansible_connection=ansible.netcommon.network_cli
+</span></span><span class="line"><span class="cl">ansible_network_os=ios
+</span></span><span class="line"><span class="cl">ansible_become_method=enable
+</span></span><span class="line"><span class="cl">ansible_become_password=eve
+</span></span><span class="line"><span class="cl">ansible_become=yes
+</span></span><span class="line"><span class="cl">ansible_user=admin
+</span></span><span class="line"><span class="cl">ansible_password=eve
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[lab]
+</span></span><span class="line"><span class="cl">lab-R1 ansible_host=10.1.1.1
+</span></span><span class="line"><span class="cl">lab-R2 ansible_host=10.1.1.2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="31-測試連線">3.1. 測試連線</h3>
 <p>使用 Ansible ad-hoc 指令指定使用 ping 模式驗證控制端主機是否與 R1 及 R2 互通。</p>
@@ -234,22 +233,22 @@ lab-R2 ansible_host=10.1.1.2
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation cisco]$ ansible lab -m ping
-lab-R2 | SUCCESS =&gt; {
-    &#34;ansible_facts&#34;: {
-        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
-    },
-    &#34;changed&#34;: false,
-    &#34;ping&#34;: &#34;pong&#34;
-}
-lab-R1 | SUCCESS =&gt; {
-    &#34;ansible_facts&#34;: {
-        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
-    },
-    &#34;changed&#34;: false,
-    &#34;ping&#34;: &#34;pong&#34;
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@workstation cisco]$ ansible lab -m ping
+</span></span><span class="line"><span class="cl">lab-R2 | SUCCESS =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;ansible_facts&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;changed&#34;: false,
+</span></span><span class="line"><span class="cl">    &#34;ping&#34;: &#34;pong&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">lab-R1 | SUCCESS =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;ansible_facts&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;changed&#34;: false,
+</span></span><span class="line"><span class="cl">    &#34;ping&#34;: &#34;pong&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-ansible-使用範例">4. Ansible 使用範例</h2>
@@ -296,44 +295,44 @@ lab-R1 | SUCCESS =&gt; {
 </span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation cisco]$ ansible lab -m ios_command -a &#34;commands=&#39;sh ip int br&#39;&#34;
-lab-R2 | SUCCESS =&gt; {
-    &#34;ansible_facts&#34;: {
-        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
-    },
-    &#34;changed&#34;: false,
-    &#34;stdout&#34;: [
-        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.50    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.2        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
-    ],
-    &#34;stdout_lines&#34;: [
-        [
-            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
-            &#34;Ethernet0/0                192.168.1.50    YES NVRAM  up                    up      &#34;,
-            &#34;Ethernet0/1                10.1.1.2        YES NVRAM  up                    up      &#34;,
-            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
-            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
-        ]
-    ]
-}
-lab-R1 | SUCCESS =&gt; {
-    &#34;ansible_facts&#34;: {
-        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
-    },
-    &#34;changed&#34;: false,
-    &#34;stdout&#34;: [
-        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.60    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.1        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
-    ],
-    &#34;stdout_lines&#34;: [
-        [
-            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
-            &#34;Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      &#34;,
-            &#34;Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      &#34;,
-            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
-            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
-        ]
-    ]
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@workstation cisco]$ ansible lab -m ios_command -a &#34;commands=&#39;sh ip int br&#39;&#34;
+</span></span><span class="line"><span class="cl">lab-R2 | SUCCESS =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;ansible_facts&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;changed&#34;: false,
+</span></span><span class="line"><span class="cl">    &#34;stdout&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.50    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.2        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;stdout_lines&#34;: [
+</span></span><span class="line"><span class="cl">        [
+</span></span><span class="line"><span class="cl">            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/0                192.168.1.50    YES NVRAM  up                    up      &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/1                10.1.1.2        YES NVRAM  up                    up      &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+</span></span><span class="line"><span class="cl">        ]
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">lab-R1 | SUCCESS =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;ansible_facts&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;discovered_interpreter_python&#34;: &#34;/usr/libexec/platform-python&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;changed&#34;: false,
+</span></span><span class="line"><span class="cl">    &#34;stdout&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;Interface                  IP-Address      OK? Method Status                Protocol\nEthernet0/0                192.168.1.60    YES NVRAM  up                    up      \nEthernet0/1                10.1.1.1        YES NVRAM  up                    up      \nEthernet0/2                unassigned      YES NVRAM  administratively down down    \nEthernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    &#34;stdout_lines&#34;: [
+</span></span><span class="line"><span class="cl">        [
+</span></span><span class="line"><span class="cl">            &#34;Interface                  IP-Address      OK? Method Status                Protocol&#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/2                unassigned      YES NVRAM  administratively down down    &#34;,
+</span></span><span class="line"><span class="cl">            &#34;Ethernet0/3                unassigned      YES NVRAM  administratively down down&#34;
+</span></span><span class="line"><span class="cl">        ]
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="42-撰寫-playbook">4.2. 撰寫 Playbook</h3>
 <p>設定 Banner 訊息及創建四個 Loopback 介面：</p>
@@ -364,27 +363,27 @@ lab-R1 | SUCCESS =&gt; {
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- name : Gemeral Config
-  hosts: lab
-  tasks:
-    - name: Add Banner..
-      ios_banner:
-        banner: motd
-        text: |
-          Hello Cisco Route
-          Maked by Asible...
-        state: present
- 
-    - name: Add loopback
-      ios_interface:
-        name: &#34;Loopback{{item}}&#34;
-        state: present
-      loop:
-        - 77
-        - 78
-        - 79
-        - 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- name : Gemeral Config
+</span></span><span class="line"><span class="cl">  hosts: lab
+</span></span><span class="line"><span class="cl">  tasks:
+</span></span><span class="line"><span class="cl">    - name: Add Banner..
+</span></span><span class="line"><span class="cl">      ios_banner:
+</span></span><span class="line"><span class="cl">        banner: motd
+</span></span><span class="line"><span class="cl">        text: |
+</span></span><span class="line"><span class="cl">          Hello Cisco Route
+</span></span><span class="line"><span class="cl">          Maked by Asible...
+</span></span><span class="line"><span class="cl">        state: present
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">    - name: Add loopback
+</span></span><span class="line"><span class="cl">      ios_interface:
+</span></span><span class="line"><span class="cl">        name: &#34;Loopback{{item}}&#34;
+</span></span><span class="line"><span class="cl">        state: present
+</span></span><span class="line"><span class="cl">      loop:
+</span></span><span class="line"><span class="cl">        - 77
+</span></span><span class="line"><span class="cl">        - 78
+</span></span><span class="line"><span class="cl">        - 79
+</span></span><span class="line"><span class="cl">        - 80
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>執行 playbook</li>
@@ -424,38 +423,38 @@ lab-R1 | SUCCESS =&gt; {
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="p">[</span><span class="n">student</span><span class="o">@</span><span class="n">workstation</span><span class="w"> </span><span class="n">cisco</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span><span class="w"> </span><span class="n">basic_setting</span><span class="p">.</span><span class="n">yml</span><span class="w"> 
-</span><span class="w"></span><span class="p">[</span><span class="n">DEPRECATION</span><span class="w"> </span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">ios_interface</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">kept</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">backwards</span><span class="w"> </span><span class="n">compatibility</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">discouraged</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">module</span><span class="w"> 
-</span><span class="w"></span><span class="n">documentation</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="k">explain</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">rationale</span><span class="p">..</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">future</span><span class="w"> 
-</span><span class="w"></span><span class="k">release</span><span class="p">.</span><span class="w"> </span><span class="n">Deprecation</span><span class="w"> </span><span class="n">warnings</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">disabled</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">setting</span><span class="w"> </span><span class="n">deprecation_warnings</span><span class="o">=</span><span class="no">False</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ansible</span><span class="p">.</span><span class="n">cfg</span><span class="p">.</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="p">[</span><span class="n">Gemeral</span><span class="w"> </span><span class="n">Config</span><span class="p">]</span><span class="w"> </span><span class="o">*****************************************************************************************</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="n">Gathering</span><span class="w"> </span><span class="n">Facts</span><span class="p">]</span><span class="w"> </span><span class="o">****************************************************************************************</span><span class="w">
-</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
-</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
-</span><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">`</span><span class="n">gather_subset</span><span class="o">`</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">`</span><span class="n">min</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">`!</span><span class="n">config</span><span class="o">`</span><span class="w"> </span><span class="n">v2</span><span class="p">.</span><span class="mi">11</span><span class="w"> </span><span class="n">onwards</span><span class="w">
-</span><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">Banner</span><span class="p">..]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">loopback</span><span class="p">]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
-</span><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="n">RECAP</span><span class="w"> </span><span class="o">****************************************************************************************************</span><span class="w">
-</span><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
-</span><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="p">[</span><span class="n">student</span><span class="o">@</span><span class="n">workstation</span><span class="w"> </span><span class="n">cisco</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span><span class="w"> </span><span class="n">basic_setting</span><span class="p">.</span><span class="n">yml</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="n">DEPRECATION</span><span class="w"> </span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">ios_interface</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">kept</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">backwards</span><span class="w"> </span><span class="n">compatibility</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">discouraged</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">module</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">documentation</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="k">explain</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">rationale</span><span class="p">..</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">future</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">release</span><span class="p">.</span><span class="w"> </span><span class="n">Deprecation</span><span class="w"> </span><span class="n">warnings</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">disabled</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">setting</span><span class="w"> </span><span class="n">deprecation_warnings</span><span class="o">=</span><span class="no">False</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ansible</span><span class="p">.</span><span class="n">cfg</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="p">[</span><span class="n">Gemeral</span><span class="w"> </span><span class="n">Config</span><span class="p">]</span><span class="w"> </span><span class="o">*****************************************************************************************</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="n">Gathering</span><span class="w"> </span><span class="n">Facts</span><span class="p">]</span><span class="w"> </span><span class="o">****************************************************************************************</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="n">Ignoring</span><span class="w"> </span><span class="nf">timeout</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">ios_facts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">[</span><span class="n">WARNING</span><span class="p">]:</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="o">`</span><span class="n">gather_subset</span><span class="o">`</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">changed</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="o">`</span><span class="n">min</span><span class="o">`</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">`!</span><span class="n">config</span><span class="o">`</span><span class="w"> </span><span class="n">v2</span><span class="p">.</span><span class="mi">11</span><span class="w"> </span><span class="n">onwards</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">Banner</span><span class="p">..]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TASK</span><span class="w"> </span><span class="p">[</span><span class="k">Add</span><span class="w"> </span><span class="n">loopback</span><span class="p">]</span><span class="w"> </span><span class="o">*******************************************************************************************</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">78</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">79</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">changed</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PLAY</span><span class="w"> </span><span class="n">RECAP</span><span class="w"> </span><span class="o">****************************************************************************************************</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R1</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">lab</span><span class="o">-</span><span class="n">R2</span><span class="w">                     </span><span class="p">:</span><span class="w"> </span><span class="n">ok</span><span class="o">=</span><span class="mi">3</span><span class="w">    </span><span class="n">changed</span><span class="o">=</span><span class="mi">2</span><span class="w">    </span><span class="n">unreachable</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">failed</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">skipped</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">rescued</span><span class="o">=</span><span class="mi">0</span><span class="w">    </span><span class="n">ignored</span><span class="o">=</span><span class="mi">0</span><span class="w">   
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>至 lab-R1 路由器上查看會顯示 motd 訊息及新增的網路介面</li>
@@ -482,25 +481,25 @@ lab-R1 | SUCCESS =&gt; {
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@workstation cisco]# ssh admin@10.1.1.1
-Password: 
-
-Hello Cisco Route
-Maked by Asible...
-
-lab-r1&gt;en
-Password: 
-lab-r1#sh ip int br
-Interface                  IP-Address      OK? Method Status                Protocol
-Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      
-Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      
-Ethernet0/2                unassigned      YES NVRAM  administratively down down    
-Ethernet0/3                unassigned      YES NVRAM  administratively down down    
-Loopback77                 unassigned      YES unset  up                    up      
-Loopback78                 unassigned      YES unset  up                    up      
-Loopback79                 unassigned      YES unset  up                    up      
-Loopback80                 unassigned      YES unset  up                    up 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@workstation cisco]# ssh admin@10.1.1.1
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hello Cisco Route
+</span></span><span class="line"><span class="cl">Maked by Asible...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">lab-r1&gt;en
+</span></span><span class="line"><span class="cl">Password: 
+</span></span><span class="line"><span class="cl">lab-r1#sh ip int br
+</span></span><span class="line"><span class="cl">Interface                  IP-Address      OK? Method Status                Protocol
+</span></span><span class="line"><span class="cl">Ethernet0/0                192.168.1.60    YES NVRAM  up                    up      
+</span></span><span class="line"><span class="cl">Ethernet0/1                10.1.1.1        YES NVRAM  up                    up      
+</span></span><span class="line"><span class="cl">Ethernet0/2                unassigned      YES NVRAM  administratively down down    
+</span></span><span class="line"><span class="cl">Ethernet0/3                unassigned      YES NVRAM  administratively down down    
+</span></span><span class="line"><span class="cl">Loopback77                 unassigned      YES unset  up                    up      
+</span></span><span class="line"><span class="cl">Loopback78                 unassigned      YES unset  up                    up      
+</span></span><span class="line"><span class="cl">Loopback79                 unassigned      YES unset  up                    up      
+</span></span><span class="line"><span class="cl">Loopback80                 unassigned      YES unset  up                    up 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-掌握更多的-ansible-控制-ios-模組用法">5. 掌握更多的 Ansible 控制 IOS 模組用法</h2>
@@ -518,28 +517,7 @@ Loopback80                 unassigned      YES unset  up                    up
     </figure></p>
 <h2 id="6-小結">6. 小結</h2>
 <p>Cisco 逐漸增加自動化的佔比在認證考試中，無論是 CCNA 及 CCNP 都佔有相當大的份量，也代表自動化這個趨勢勢不可檔，未來必須要掌握的技能之一。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-network-automation%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

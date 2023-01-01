@@ -4,7 +4,31 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - DHCP 伺服器</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</guid>
+    <description><![CDATA[除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv]]></description>
+</item>
+<item>
+    <title>Linux - Teaming 網路</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</guid>
+    <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
+</item>
+<item>
+    <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</guid>
+    <description><![CDATA[Linux - 打造輕巧 Linux 練習 Lab 第二版 1. 練習環境介紹 虛擬主機網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控]]></description>
+</item>
+<item>
     <title>GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集</title>
     <link>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
@@ -59,30 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</guid>
     <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由 ( 使用 L3 Switch 取代一般的路由器 )協助轉發至對應的 VLAN 內。 先前介紹的三種路由方式，路由速度最快設定步驟容易的方式]]></description>
-</item>
-<item>
-    <title>Cisco - VLAN - Router on a Stick</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</link>
-    <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_route_on_stick/</guid>
-    <description><![CDATA[Router on a Stick 在中型網路較常使用的 VLAN 路由解決方案，價格實惠且能達成 VLAN 路由目標。 先前介紹的三種路由方式，其中 CP 較高的就是透過此方式，因為架構多一個路]]></description>
-</item>
-<item>
-    <title>Cisco - VLAN Routing 路由簡介</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</link>
-    <pubDate>Thu, 19 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_routing_concept/</guid>
-    <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由協助轉發至對應的 VLAN 內。 1. VLAN 路由方式 Legacy Inter VLAN routing Router on a Stick Layer 3 Switch 1.1. Legacy Inter VLAN routing 傳統的方式，囿於需要額外佔用兩個 Router 的實]]></description>
-</item>
-<item>
-    <title>Cisco - VLAN 虛擬 LAN 網路</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</link>
-    <pubDate>Wed, 18 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_concept/</guid>
-    <description><![CDATA[VLAN 技術透過將實體的 LAN 切割成不同的區塊，方便進行管理，並且可以有效增加效率。 1. Vlan 原理 一棟大樓內，每一層都有自己的網段，要跟上下樓不同網段要在同]]></description>
 </item>
 </channel>
 </rss>

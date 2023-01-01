@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ansible/2022/ansible-variables/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-04-01T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible - 變數管理及應用"/>
 <meta name="twitter:description" content="透過 Playbook 可以很方便執行大量機器部署，在大量環境下可以透過變數方式，如同寫程式一般可以更靈活且彈性的進行部署及維護。 練習環境 可以使用 HowHow 的創建 Lab 練"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-variables\/"
-        },"genre": "posts","keywords": "Ansible","wordcount":  1741 ,
+        },"genre": "posts","keywords": "Ansible","wordcount":  1787 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/ansible\/2022\/ansible-variables\/","datePublished": "2022-04-01T00:00:00+00:00","dateModified": "2022-04-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ansible - 變數管理及應用</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Ansible</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-01">2022-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1741 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-04-01">2022-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1787 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -135,13 +134,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
-</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
-</span><span class="w">      </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l">/home/joe</span><span class="w">
-</span><span class="w"></span><span class="nn">...</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l">/home/joe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-定義變數檔案於-playbook-內">2.2. 定義變數檔案於 PlayBook 內</h3>
 <p>使用 vars_files 關鍵字定義變數的檔案路徑 ， Playbook 範例:</p>
@@ -154,12 +153,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
-</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span><span class="w">  </span><span class="nt">vars_files</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">users.yml</span><span class="w">
-</span><span class="w"></span><span class="nn">...</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vars_files</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">users.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>user.yml 變數檔案內容範例 :</p>
 <div class="highlight"><div class="chroma">
@@ -168,9 +167,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
-</span><span class="w"></span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l">/home/joe</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l">/home/joe</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-playbook-中使用變數">3. PlayBook 中使用變數</h2>
@@ -188,16 +187,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
-</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">user </span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
-</span><span class="w">    
-</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create the User  {{ user }}</span><span class="w">
-</span><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ user }}&#34;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">var example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vars</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user </span><span class="p">:</span><span class="w"> </span><span class="l">joe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create the User  {{ user }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ user }}&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -230,24 +229,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[servera]
-demo1.example.com
-demo2.example.com
-
-[web]
-demo2.example.com
-demo3.exmaple.com
-
-[servera:vars]
-user=joe
-
-[pd:children]
-web
-servera
-
-[pd:vars]
-user=administrator
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[servera]
+</span></span><span class="line"><span class="cl">demo1.example.com
+</span></span><span class="line"><span class="cl">demo2.example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[web]
+</span></span><span class="line"><span class="cl">demo2.example.com
+</span></span><span class="line"><span class="cl">demo3.exmaple.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[servera:vars]
+</span></span><span class="line"><span class="cl">user=joe
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[pd:children]
+</span></span><span class="line"><span class="cl">web
+</span></span><span class="line"><span class="cl">servera
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[pd:vars]
+</span></span><span class="line"><span class="cl">user=administrator
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-使用資料夾管理主機變數及群組變數">5. 使用資料夾管理主機變數及群組變數</h2>
@@ -268,19 +267,19 @@ user=administrator
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[student@workstation example-project]$ tree -F
-.
-├── ansible.cfg
-├── group_vars/
-│   ├── datacenter1
-│   ├── datacenter2
-│   └── datacenters
-├── host_vars/
-│   ├── demo1.example.com
-│   └── demo2.example.com
-├── inventory
-└── playbook.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@workstation example-project]$ tree -F
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── ansible.cfg
+</span></span><span class="line"><span class="cl">├── group_vars/
+</span></span><span class="line"><span class="cl">│   ├── datacenter1
+</span></span><span class="line"><span class="cl">│   ├── datacenter2
+</span></span><span class="line"><span class="cl">│   └── datacenters
+</span></span><span class="line"><span class="cl">├── host_vars/
+</span></span><span class="line"><span class="cl">│   ├── demo1.example.com
+</span></span><span class="line"><span class="cl">│   └── demo2.example.com
+</span></span><span class="line"><span class="cl">├── inventory
+</span></span><span class="line"><span class="cl">└── playbook.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>inventory 內容:</p>
 <div class="highlight"><div class="chroma">
@@ -299,19 +298,19 @@ user=administrator
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat inventory 
-<span class="o">[</span>datacenter1<span class="o">]</span>
-demo1.example.com
-demo2.example.com
-
-<span class="o">[</span>datacenter2<span class="o">]</span>
-demo3.example.com
-demo4.example.com
-
-<span class="o">[</span>datecenters:children<span class="o">]</span>
-datacenter1
-datacenter2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat inventory 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>datacenter1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">demo1.example.com
+</span></span><span class="line"><span class="cl">demo2.example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>datacenter2<span class="o">]</span>
+</span></span><span class="line"><span class="cl">demo3.example.com
+</span></span><span class="line"><span class="cl">demo4.example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>datecenters:children<span class="o">]</span>
+</span></span><span class="line"><span class="cl">datacenter1
+</span></span><span class="line"><span class="cl">datacenter2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="51-group_vars-資料夾管理群組變數">5.1. group_vars 資料夾管理群組變數</h3>
 <p>在 group_vars 資料夾內建立對應群組的檔案名稱，並在該檔案內定義變數。</p>
@@ -325,13 +324,13 @@ datacenter2
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenter1
-service: httpd
-<span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenter2
-service: php
-<span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenters
-package: httpd
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenter1
+</span></span><span class="line"><span class="cl">service: httpd
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenter2
+</span></span><span class="line"><span class="cl">service: php
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat group_vars/datacenters
+</span></span><span class="line"><span class="cl">package: httpd
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="52-host_vars-資料夾管理主機變數">5.2. host_vars 資料夾管理主機變數</h3>
 <p>在 host_vars 資料夾內建立對應主機的檔案名稱，並在該檔案內定義變數。</p>
@@ -343,11 +342,11 @@ package: httpd
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat host_vars/demo1.example.com 
-packege: mysql-server
-<span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat host_vars/demo2.example.com 
-package: firewalld
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat host_vars/demo1.example.com 
+</span></span><span class="line"><span class="cl">packege: mysql-server
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example-project<span class="o">]</span>$ cat host_vars/demo2.example.com 
+</span></span><span class="line"><span class="cl">package: firewalld
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="6-指令定義變數">6. 指令定義變數</h2>
@@ -357,8 +356,8 @@ package: firewalld
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ansible-playbook example.yml -e &#34;package=httpd&#34;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ansible-playbook example.yml -e &#34;package=httpd&#34;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="7-ansible-變數使用建議">7. Ansible 變數使用建議</h2>
@@ -391,14 +390,14 @@ Fact 會採集下列相關訊息( 僅列出部分 ):</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ cat fact.yml 
-- name: Fact dump
-  hosts: serverb
-  tasks:
-    - name: Print all facts
-      debug:
-        var: ansible_facts
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ cat fact.yml 
+</span></span><span class="line"><span class="cl">- name: Fact dump
+</span></span><span class="line"><span class="cl">  hosts: serverb
+</span></span><span class="line"><span class="cl">  tasks:
+</span></span><span class="line"><span class="cl">    - name: Print all facts
+</span></span><span class="line"><span class="cl">      debug:
+</span></span><span class="line"><span class="cl">        var: ansible_facts
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>範例執行結果 ( ansible_facts 為 fact 的關鍵字) :</p>
 <div class="highlight"><div class="chroma">
@@ -434,36 +433,36 @@ Fact 會採集下列相關訊息( 僅列出部分 ):</p>
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook fact.yml 
-
-PLAY <span class="o">[</span>Fact dump<span class="o">]</span> ***********************************************************************************************
-
-TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *****************************************************************************************
-ok: <span class="o">[</span>serverb<span class="o">]</span>
-
-TASK <span class="o">[</span>Print all facts<span class="o">]</span> *****************************************************************************************
-ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;all_ipv4_addresses&#34;</span>: <span class="o">[</span>
-            <span class="s2">&#34;172.25.250.11&#34;</span>
-        <span class="o">]</span>,
-        <span class="s2">&#34;all_ipv6_addresses&#34;</span>: <span class="o">[]</span>,
-        <span class="s2">&#34;ansible_local&#34;</span>: <span class="o">{}</span>,
-        <span class="s2">&#34;apparmor&#34;</span>: <span class="o">{</span>
-            <span class="s2">&#34;status&#34;</span>: <span class="s2">&#34;disabled&#34;</span>
-        <span class="o">}</span>,
-        <span class="s2">&#34;architecture&#34;</span>: <span class="s2">&#34;x86_64&#34;</span>,
-        <span class="s2">&#34;bios_date&#34;</span>: <span class="s2">&#34;04/01/2014&#34;</span>,
-        <span class="s2">&#34;bios_version&#34;</span>: <span class="s2">&#34;1.13.0-2.module+el8.4.0+534+4680a14e&#34;</span>,
-        <span class="s2">&#34;cmdline&#34;</span>: <span class="o">{</span>
-            <span class="s2">&#34;BOOT_IMAGE&#34;</span>: <span class="s2">&#34;(hd0,msdos1)/vmlinuz-4.18.0-348.el8.0.2.x86_64&#34;</span>,
-            <span class="s2">&#34;rd.lvm.lv&#34;</span>: <span class="s2">&#34;rl_workstation/swap&#34;</span>,
-            <span class="s2">&#34;resume&#34;</span>: <span class="s2">&#34;/dev/mapper/rl_workstation-swap&#34;</span>,
-            <span class="s2">&#34;ro&#34;</span>: true,
-            <span class="s2">&#34;root&#34;</span>: <span class="s2">&#34;/dev/mapper/rl_workstation-root&#34;</span>
-        <span class="o">}</span>,
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook fact.yml 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>Fact dump<span class="o">]</span> ***********************************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> *****************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Print all facts<span class="o">]</span> *****************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;all_ipv4_addresses&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;172.25.250.11&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;all_ipv6_addresses&#34;</span>: <span class="o">[]</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ansible_local&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;apparmor&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;status&#34;</span>: <span class="s2">&#34;disabled&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;architecture&#34;</span>: <span class="s2">&#34;x86_64&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;bios_date&#34;</span>: <span class="s2">&#34;04/01/2014&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;bios_version&#34;</span>: <span class="s2">&#34;1.13.0-2.module+el8.4.0+534+4680a14e&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;cmdline&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;BOOT_IMAGE&#34;</span>: <span class="s2">&#34;(hd0,msdos1)/vmlinuz-4.18.0-348.el8.0.2.x86_64&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;rd.lvm.lv&#34;</span>: <span class="s2">&#34;rl_workstation/swap&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;resume&#34;</span>: <span class="s2">&#34;/dev/mapper/rl_workstation-swap&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;ro&#34;</span>: true,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;root&#34;</span>: <span class="s2">&#34;/dev/mapper/rl_workstation-root&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="81-fact-變數取值">8.1. Fact 變數取值</h3>
 <p>透過上述範例，可以知道 ansible_facts 變數內存放不同的內容，可以使用於 Python Dict 字典方式將 Value 取出。</p>
@@ -522,13 +521,13 @@ ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</s
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Example</span><span class="w">
-</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print various Ansible facts</span><span class="w">
-</span><span class="w">      </span><span class="nt">debug</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="l">The default IPv4 address of {{ ansible_facts.fqdn }} is {{ ansible_facts.default_ipv4.address  }}</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print various Ansible facts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">debug</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">msg</span><span class="p">:</span><span class="w"> </span><span class="l">The default IPv4 address of {{ ansible_facts.fqdn }} is {{ ansible_facts.default_ipv4.address  }}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Playbook 執行結果 :</p>
 <div class="highlight"><div class="chroma">
@@ -559,31 +558,31 @@ ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</s
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example.yml 
-
-PLAY <span class="o">[</span>Example<span class="o">]</span> ************************************************************************************************
-
-TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> ****************************************************************************************
-ok: <span class="o">[</span>serverb<span class="o">]</span>
-ok: <span class="o">[</span>servera<span class="o">]</span>
-ok: <span class="o">[</span>serverc<span class="o">]</span>
-
-TASK <span class="o">[</span>Print various Ansible facts<span class="o">]</span> ****************************************************************************
-ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of servera.lab.example.com is 172.25.250.10&#34;</span>
-<span class="o">}</span>
-ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of serverb.lab.example.com is 172.25.250.11&#34;</span>
-<span class="o">}</span>
-ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of serverc.lab.example.com is 172.25.250.12&#34;</span>
-<span class="o">}</span>
-
-PLAY RECAP ****************************************************************************************************
-servera                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-serverb                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-serverc                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible-playbook example.yml 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY <span class="o">[</span>Example<span class="o">]</span> ************************************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Gathering Facts<span class="o">]</span> ****************************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera<span class="o">]</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverc<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TASK <span class="o">[</span>Print various Ansible facts<span class="o">]</span> ****************************************************************************
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>servera<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of servera.lab.example.com is 172.25.250.10&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverb<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of serverb.lab.example.com is 172.25.250.11&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">ok: <span class="o">[</span>serverc<span class="o">]</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;msg&#34;</span>: <span class="s2">&#34;The default IPv4 address of serverc.lab.example.com is 172.25.250.12&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PLAY RECAP ****************************************************************************************************
+</span></span><span class="line"><span class="cl">servera                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</span></span><span class="line"><span class="cl">serverb                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</span></span><span class="line"><span class="cl">serverc                    : <span class="nv">ok</span><span class="o">=</span><span class="m">2</span>    <span class="nv">changed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>    <span class="nv">skipped</span><span class="o">=</span><span class="m">0</span>    <span class="nv">rescued</span><span class="o">=</span><span class="m">0</span>    <span class="nv">ignored</span><span class="o">=</span><span class="m">0</span>   
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="83-儲存-fact-變數內容小技巧">8.3. 儲存 Fact 變數內容小技巧</h3>
 <p>使用 ansible 的 setup 模組，可以採集 fact 再藉由 Linux 輸出導向至檔案內，就可以慢慢查看並找到所要的變數內容來應用。</p>
@@ -603,19 +602,19 @@ serverc                    : <span class="nv">ok</span><span class="o">=</span><
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible serverc -m setup &gt; /tmp/serverc.facts
-<span class="o">[</span>student@workstation example<span class="o">]</span>$ head /tmp/serverc.facts 
-serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
-    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
-        <span class="s2">&#34;ansible_all_ipv4_addresses&#34;</span>: <span class="o">[</span>
-            <span class="s2">&#34;172.25.250.12&#34;</span>
-        <span class="o">]</span>,
-        <span class="s2">&#34;ansible_all_ipv6_addresses&#34;</span>: <span class="o">[]</span>,
-        <span class="s2">&#34;ansible_apparmor&#34;</span>: <span class="o">{</span>
-            <span class="s2">&#34;status&#34;</span>: <span class="s2">&#34;disabled&#34;</span>
-        <span class="o">}</span>,
-        <span class="s2">&#34;ansible_architecture&#34;</span>: <span class="s2">&#34;x86_64&#34;</span>,
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ ansible serverc -m setup &gt; /tmp/serverc.facts
+</span></span><span class="line"><span class="cl"><span class="o">[</span>student@workstation example<span class="o">]</span>$ head /tmp/serverc.facts 
+</span></span><span class="line"><span class="cl">serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o">=</span>&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ansible_facts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ansible_all_ipv4_addresses&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;172.25.250.12&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ansible_all_ipv6_addresses&#34;</span>: <span class="o">[]</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ansible_apparmor&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;status&#34;</span>: <span class="s2">&#34;disabled&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ansible_architecture&#34;</span>: <span class="s2">&#34;x86_64&#34;</span>,
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="84-停止自動採集-fact">8.4. 停止自動採集 Fact</h3>
 <p>每一次採集 Fact 大約耗上 1 - 2 秒時間，少量機器執行不會有感覺，如果今天要部署上千台機器，且又不會使用到 Fact 變數，就可以手動關閉採集 ( gather_facts : no ) ，加速 Playbook 執行效率。</p>
@@ -629,12 +628,12 @@ serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o"
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
-</span><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
-</span><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
-</span><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="l">...</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="kc">no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">...</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="9-ansible-魔法變數">9. Ansible 魔法變數</h2>
@@ -648,28 +647,7 @@ serverc <span class="p">|</span> <span class="nv">SUCCESS</span> <span class="o"
 <hr>
 <h2 id="10-小結">10. 小結</h2>
 <p>Ansible 變數運用千變萬化， 能有效掌握變數更能寫出可讀性且彈性較高的 PlayBook 。</p>
-</div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fansible%2f2022%2fansible-variables%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

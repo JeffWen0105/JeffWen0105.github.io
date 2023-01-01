@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-storage-partition/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-02-14T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - 硬碟的分割及掛載"/>
 <meta name="twitter:description" content="全新的硬碟沒有做任何處理，對於作業系統是無法使用的，必須修進行硬碟分割及格式化之後才能有效的掛載及使用。"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-partition\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  3591 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  3587 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-storage-partition\/","datePublished": "2022-02-14T00:00:00+00:00","dateModified": "2022-02-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 硬碟的分割及掛載</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3591 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3587 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -182,18 +181,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk </span>
-NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sr0                      11:0    <span class="m">1</span> 1024M  <span class="m">0</span> rom  
-vda                     252:0    <span class="m">0</span>   10G  <span class="m">0</span> disk 
-├─vda1                  252:1    <span class="m">0</span>    1G  <span class="m">0</span> part /boot
-└─vda2                  252:2    <span class="m">0</span>    9G  <span class="m">0</span> part 
-  ├─rl_workstation-root 253:0    <span class="m">0</span>    8G  <span class="m">0</span> lvm  /
-  └─rl_workstation-swap 253:1    <span class="m">0</span>    1G  <span class="m">0</span> lvm  <span class="o">[</span>SWAP<span class="o">]</span>
-vdb                     252:16   <span class="m">0</span>  200M  <span class="m">0</span> disk 
-vdc                     252:32   <span class="m">0</span>  300M  <span class="m">0</span> disk 
-vdd                     252:48   <span class="m">0</span>  500M  <span class="m">0</span> disk 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk </span>
+</span></span><span class="line"><span class="cl">NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span><span class="line"><span class="cl">sr0                      11:0    <span class="m">1</span> 1024M  <span class="m">0</span> rom  
+</span></span><span class="line"><span class="cl">vda                     252:0    <span class="m">0</span>   10G  <span class="m">0</span> disk 
+</span></span><span class="line"><span class="cl">├─vda1                  252:1    <span class="m">0</span>    1G  <span class="m">0</span> part /boot
+</span></span><span class="line"><span class="cl">└─vda2                  252:2    <span class="m">0</span>    9G  <span class="m">0</span> part 
+</span></span><span class="line"><span class="cl">  ├─rl_workstation-root 253:0    <span class="m">0</span>    8G  <span class="m">0</span> lvm  /
+</span></span><span class="line"><span class="cl">  └─rl_workstation-swap 253:1    <span class="m">0</span>    1G  <span class="m">0</span> lvm  <span class="o">[</span>SWAP<span class="o">]</span>
+</span></span><span class="line"><span class="cl">vdb                     252:16   <span class="m">0</span>  200M  <span class="m">0</span> disk 
+</span></span><span class="line"><span class="cl">vdc                     252:32   <span class="m">0</span>  300M  <span class="m">0</span> disk 
+</span></span><span class="line"><span class="cl">vdd                     252:48   <span class="m">0</span>  500M  <span class="m">0</span> disk 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition danger open">
         <div class="details-summary admonition-title">
@@ -229,27 +228,27 @@ vdd                     252:48   <span class="m">0</span>  500M  <span class="m"
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted /dev/vdb</span>
-GNU Parted 3.2
-Using /dev/vdb
-Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
-<span class="o">(</span>parted<span class="o">)</span> mklabel                                                          
-New disk label type? msdos                                                
-<span class="o">(</span>parted<span class="o">)</span> mkpart 
-Partition type?  primary/extended? primary                                
-File system type?  <span class="o">[</span>ext2<span class="o">]</span>? xfs                                            
-Start? 2048s                                                              
-End? 100%
-<span class="o">(</span>parted<span class="o">)</span> print                                                            
-Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
-Disk /dev/vdb: 210MB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
-Partition Table: msdos
-Disk Flags: 
-
-Number  Start   End    Size   Type     File system  Flags
- <span class="m">1</span>      1049kB  210MB  209MB  primary  xfs          lba
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted /dev/vdb</span>
+</span></span><span class="line"><span class="cl">GNU Parted 3.2
+</span></span><span class="line"><span class="cl">Using /dev/vdb
+</span></span><span class="line"><span class="cl">Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> mklabel                                                          
+</span></span><span class="line"><span class="cl">New disk label type? msdos                                                
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> mkpart 
+</span></span><span class="line"><span class="cl">Partition type?  primary/extended? primary                                
+</span></span><span class="line"><span class="cl">File system type?  <span class="o">[</span>ext2<span class="o">]</span>? xfs                                            
+</span></span><span class="line"><span class="cl">Start? 2048s                                                              
+</span></span><span class="line"><span class="cl">End? 100%
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> print                                                            
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/vdb: 210MB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: msdos
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End    Size   Type     File system  Flags
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>      1049kB  210MB  209MB  primary  xfs          lba
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>步驟分解：</strong></p>
 <h4 id="211-建立分表格式">2.1.1 建立分表格式</h4>
@@ -300,15 +299,15 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span>
-  align-check TYPE N                        check partition N <span class="k">for</span> TYPE<span class="o">(</span>min<span class="p">|</span>opt<span class="o">)</span> alignment
-  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           print general help, or <span class="nb">help</span> on COMMAND
-  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
-  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
-  name NUMBER NAME                         name partition NUMBER as NAME
-  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>NUMBER<span class="o">]</span>     display the partition table, available devices, free space, all found partitions, or a particular partition
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">  align-check TYPE N                        check partition N <span class="k">for</span> TYPE<span class="o">(</span>min<span class="p">|</span>opt<span class="o">)</span> alignment
+</span></span><span class="line"><span class="cl">  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           print general help, or <span class="nb">help</span> on COMMAND
+</span></span><span class="line"><span class="cl">  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
+</span></span><span class="line"><span class="cl">  name NUMBER NAME                         name partition NUMBER as NAME
+</span></span><span class="line"><span class="cl">  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>NUMBER<span class="o">]</span>     display the partition table, available devices, free space, all found partitions, or a particular partition
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>查看分割表格式有哪些可以選</li>
@@ -321,11 +320,11 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mktable                                                     
-  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
-
-	LABEL-TYPE is one of: atari, aix, amiga, bsd, dvh, gpt, mac, msdos, pc98, sun, loop                                        
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mktable                                                     
+</span></span><span class="line"><span class="cl">  mklabel,mktable LABEL-TYPE               create a new disklabel <span class="o">(</span>partition table<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	LABEL-TYPE is one of: atari, aix, amiga, bsd, dvh, gpt, mac, msdos, pc98, sun, loop                                        
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>查看檔案系統格式化有哪些種類</li>
@@ -342,15 +341,15 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mkpart                                                     
-  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
-
-	PART-TYPE is one of: primary, logical, extended
-        FS-TYPE is one of: btrfs, nilfs2, ext4, ext3, ext2, fat32, fat16, hfsx, hfs+, hfs, jfs, swsusp, linux-swap<span class="o">(</span>v1<span class="o">)</span>, linux-swap<span class="o">(</span>v0<span class="o">)</span>, ntfs, reiserfs, hp-ufs, sun-ufs, xfs, apfs2, apfs1, asfs, amufs5, amufs4,
-        amufs3, amufs2, amufs1, amufs0, amufs, affs7, affs6, affs5, affs4, affs3, affs2, affs1, affs0, linux-swap, linux-swap<span class="o">(</span>new<span class="o">)</span>, linux-swap<span class="o">(</span>old<span class="o">)</span>
-        START and END are disk locations, such as 4GB or 10%.  Negative values count from the end of the disk.  For example, -1s specifies exactly the last sector.   
-...
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> <span class="nb">help</span> mkpart                                                     
+</span></span><span class="line"><span class="cl">  mkpart PART-TYPE <span class="o">[</span>FS-TYPE<span class="o">]</span> START END     make a partition
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	PART-TYPE is one of: primary, logical, extended
+</span></span><span class="line"><span class="cl">        FS-TYPE is one of: btrfs, nilfs2, ext4, ext3, ext2, fat32, fat16, hfsx, hfs+, hfs, jfs, swsusp, linux-swap<span class="o">(</span>v1<span class="o">)</span>, linux-swap<span class="o">(</span>v0<span class="o">)</span>, ntfs, reiserfs, hp-ufs, sun-ufs, xfs, apfs2, apfs1, asfs, amufs5, amufs4,
+</span></span><span class="line"><span class="cl">        amufs3, amufs2, amufs1, amufs0, amufs, affs7, affs6, affs5, affs4, affs3, affs2, affs1, affs0, linux-swap, linux-swap<span class="o">(</span>new<span class="o">)</span>, linux-swap<span class="o">(</span>old<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        START and END are disk locations, such as 4GB or 10%.  Negative values count from the end of the disk.  For example, -1s specifies exactly the last sector.   
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="22-parted-指令式操作">2.2 Parted 指令式操作</h3>
 <p>指令式操作就是把交談式會做的步驟一氣呵成的輸入，在 shell script 腳本是很常見來使用的方式，選擇 vdc 設備並以 GPT 格式為分割，並切割出約末 150 Mib 空間。</p>
@@ -367,16 +366,16 @@ Number  Start   End    Size   Type     File system  Flags
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc  mklabel gpt mkpart gpt-example ext4 2048s 150Mib print</span>
-Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
-Disk /dev/vdc: 315MB
-Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
-Partition Table: gpt
-Disk Flags: 
-
-Number  Start   End    Size   File system  Name         Flags
- <span class="m">1</span>      1049kB  157MB  156MB  ext4         gpt-example
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc  mklabel gpt mkpart gpt-example ext4 2048s 150Mib print</span>
+</span></span><span class="line"><span class="cl">Model: Virtio Block Device <span class="o">(</span>virtblk<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Disk /dev/vdc: 315MB
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: 512B/512B
+</span></span><span class="line"><span class="cl">Partition Table: gpt
+</span></span><span class="line"><span class="cl">Disk Flags: 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Number  Start   End    Size   File system  Name         Flags
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>      1049kB  157MB  156MB  ext4         gpt-example
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="3-創建檔案系統">3. 創建檔案系統</h2>
@@ -389,8 +388,8 @@ ext 系列、 xfs 及 linux-swap ，其中儲存檔案最常用 xfs 及 ext4 這
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkfs.xfs  &lt; device &gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkfs.xfs  &lt; device &gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -408,19 +407,19 @@ ext 系列、 xfs 及 linux-swap ，其中儲存檔案最常用 xfs 及 ext4 這
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdb1 </span>
-meta-data<span class="o">=</span>/dev/vdb1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">12736</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>50944, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-Discarding blocks...Done.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdb1 </span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/vdb1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">12736</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>50944, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">Discarding blocks...Done.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="32-創建-ext4-檔案系統">3.2 創建 ext4 檔案系統</h3>
 <p>使用 mkfs.ext4 可以將已經分割好的設備裝置進行格式化。</p>
@@ -429,8 +428,8 @@ Discarding blocks...Done.
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4  &lt; device &gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkfs.ext4  &lt; device &gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -448,19 +447,19 @@ Discarding blocks...Done.
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdc1</span>
-mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
-Discarding device blocks: <span class="k">done</span>                            
-Creating filesystem with <span class="m">152576</span> 1k blocks and <span class="m">38152</span> inodes
-Filesystem UUID: 8c67e55f-03e5-44fe-9587-aae5753b2db5
-Superblock backups stored on blocks: 
-	8193, 24577, 40961, 57345, <span class="m">73729</span>
-
-Allocating group tables: <span class="k">done</span>                            
-Writing inode tables: <span class="k">done</span>                            
-Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
-Writing superblocks and filesystem accounting information: <span class="k">done</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdc1</span>
+</span></span><span class="line"><span class="cl">mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Discarding device blocks: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating filesystem with <span class="m">152576</span> 1k blocks and <span class="m">38152</span> inodes
+</span></span><span class="line"><span class="cl">Filesystem UUID: 8c67e55f-03e5-44fe-9587-aae5753b2db5
+</span></span><span class="line"><span class="cl">Superblock backups stored on blocks: 
+</span></span><span class="line"><span class="cl">	8193, 24577, 40961, 57345, <span class="m">73729</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Allocating group tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Writing inode tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Writing superblocks and filesystem accounting information: <span class="k">done</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="33-創建-swap-檔案系統">3.3 創建 swap 檔案系統</h3>
 <p>使用 mkswap 可以將已經分割好的設備裝置進行格式化。</p>
@@ -469,8 +468,8 @@ Writing superblocks and filesystem accounting information: <span class="k">done<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mkswap  &lt; device &gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkswap  &lt; device &gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -479,10 +478,10 @@ Writing superblocks and filesystem accounting information: <span class="k">done<
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc2</span>
-Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">49</span> MiB <span class="o">(</span><span class="m">51376128</span> bytes<span class="o">)</span>
-no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821-b73b-99a1ef64d020
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc2</span>
+</span></span><span class="line"><span class="cl">Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">49</span> MiB <span class="o">(</span><span class="m">51376128</span> bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821-b73b-99a1ef64d020
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition example open">
         <div class="details-summary admonition-title">
@@ -533,8 +532,8 @@ no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mount  &lt; device &gt;  &lt; mount dir &gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mount  &lt; device &gt;  &lt; mount dir &gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>創建一個目錄 /xfs ，並將以 xfs 格式化的分割槽掛載 。</p>
 <div class="highlight"><div class="chroma">
@@ -547,13 +546,13 @@ no label, <span class="nv">UUID</span><span class="o">=</span>1dc93a43-a0a4-4821
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir  -v /xfs</span>
-mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount /dev/vdb1 /xfs/</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs/</span>
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/vdb1       194M   12M  183M   6% /xfs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir  -v /xfs</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount /dev/vdb1 /xfs/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs/</span>
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/vdb1       194M   12M  183M   6% /xfs
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition quote open">
         <div class="details-summary admonition-title">
@@ -572,9 +571,9 @@ Filesystem      Size  Used Avail Use% Mounted on
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1                                              #2      #3      #4              #5      #6</span>
-<span class="nv">UUID</span><span class="o">=</span>59196483-d800-4fa3-8c10-72513c9f93ab       /boot   xfs     defaults        <span class="m">0</span>       <span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#1                                              #2      #3      #4              #5      #6</span>
+</span></span><span class="line"><span class="cl"><span class="nv">UUID</span><span class="o">=</span>59196483-d800-4fa3-8c10-72513c9f93ab       /boot   xfs     defaults        <span class="m">0</span>       <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol>
 <li>欄位一 : 硬碟設備或是 UUID</li>
@@ -598,16 +597,16 @@ Filesystem      Size  Used Avail Use% Mounted on
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
-mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOF</span>
-/dev/vdc1    /ext4    ext4    defaults    <span class="m">0</span>    <span class="m">0</span>
-EOF
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/vdc1       141M  1.6M  129M   2% /ext4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOF</span>
+</span></span><span class="line"><span class="cl">/dev/vdc1    /ext4    ext4    defaults    <span class="m">0</span>    <span class="m">0</span>
+</span></span><span class="line"><span class="cl">EOF
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/vdc1       141M  1.6M  129M   2% /ext4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition quote open">
         <div class="details-summary admonition-title">
@@ -647,21 +646,21 @@ Filesystem      Size  Used Avail Use% Mounted on
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk -fp</span>
-NAME                                FSTYPE      LABEL UUID                                   MOUNTPOINT
-/dev/sr0                                                                                     
-/dev/vda                                                                                     
-├─/dev/vda1                         xfs               59196483-d800-4fa3-8c10-72513c9f93ab   /boot
-└─/dev/vda2                         LVM2_member       6YQy3s-SGvB-u8Tt-t3hT-fdZr-xHd7-eKmZpl 
-  ├─/dev/mapper/rl_workstation-root xfs               e77f3419-e69b-4a2a-8677-43165f90a6e5   /
-  └─/dev/mapper/rl_workstation-swap swap              589264ff-b23a-437d-8e5e-e45f9d5ebdf5   <span class="o">[</span>SWAP<span class="o">]</span>
-/dev/vdb                                                                                     
-└─/dev/vdb1                         xfs               c7ba49dd-8c65-4f54-ac7c-13bec9970493   /xfs
-/dev/vdc                                                                                     
-├─/dev/vdc1                         ext4              97d8b42f-bbd4-48e6-9da9-bed24e0193af   /ext4
-└─/dev/vdc2                         swap              1dc93a43-a0a4-4821-b73b-99a1ef64d020   
-/dev/vdd           
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># lsblk -fp</span>
+</span></span><span class="line"><span class="cl">NAME                                FSTYPE      LABEL UUID                                   MOUNTPOINT
+</span></span><span class="line"><span class="cl">/dev/sr0                                                                                     
+</span></span><span class="line"><span class="cl">/dev/vda                                                                                     
+</span></span><span class="line"><span class="cl">├─/dev/vda1                         xfs               59196483-d800-4fa3-8c10-72513c9f93ab   /boot
+</span></span><span class="line"><span class="cl">└─/dev/vda2                         LVM2_member       6YQy3s-SGvB-u8Tt-t3hT-fdZr-xHd7-eKmZpl 
+</span></span><span class="line"><span class="cl">  ├─/dev/mapper/rl_workstation-root xfs               e77f3419-e69b-4a2a-8677-43165f90a6e5   /
+</span></span><span class="line"><span class="cl">  └─/dev/mapper/rl_workstation-swap swap              589264ff-b23a-437d-8e5e-e45f9d5ebdf5   <span class="o">[</span>SWAP<span class="o">]</span>
+</span></span><span class="line"><span class="cl">/dev/vdb                                                                                     
+</span></span><span class="line"><span class="cl">└─/dev/vdb1                         xfs               c7ba49dd-8c65-4f54-ac7c-13bec9970493   /xfs
+</span></span><span class="line"><span class="cl">/dev/vdc                                                                                     
+</span></span><span class="line"><span class="cl">├─/dev/vdc1                         ext4              97d8b42f-bbd4-48e6-9da9-bed24e0193af   /ext4
+</span></span><span class="line"><span class="cl">└─/dev/vdc2                         swap              1dc93a43-a0a4-4821-b73b-99a1ef64d020   
+</span></span><span class="line"><span class="cl">/dev/vdd           
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="5-lab-練習">5. LAB 練習</h2>
@@ -707,25 +706,25 @@ NAME                                FSTYPE      LABEL UUID                      
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 掛載前檢查</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
-              total        used        free      shared  buff/cache   available
-Mem:        <span class="m">1508408</span>      <span class="m">167488</span>     <span class="m">1085724</span>        <span class="m">8760</span>      <span class="m">255196</span>     <span class="m">1188524</span>
-Swap:       <span class="m">1048572</span>           <span class="m">0</span>     <span class="m">1048572</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc mklabel msdos mkpart primary linux-swap 2048s 201Mib </span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc1</span>
-Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">200</span> MiB <span class="o">(</span><span class="m">209711104</span> bytes<span class="o">)</span>
-no label, <span class="nv">UUID</span><span class="o">=</span>d5c11287-33bc-432d-9d4c-c3c6777f1256
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-&gt; /dev/vdc1 swap swap defaults <span class="m">0</span> <span class="m">0</span>
-&gt; EOL
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># swapon /dev/vdc1</span>
-<span class="c1"># 掛載後增加 swap 分區</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
-              total        used        free      shared  buff/cache   available
-Mem:        <span class="m">1508408</span>      <span class="m">167912</span>     <span class="m">1085320</span>        <span class="m">8760</span>      <span class="m">255176</span>     <span class="m">1188100</span>
-Swap:       <span class="m">1253368</span>           <span class="m">0</span>     <span class="m">1253368</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 掛載前檢查</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
+</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:        <span class="m">1508408</span>      <span class="m">167488</span>     <span class="m">1085724</span>        <span class="m">8760</span>      <span class="m">255196</span>     <span class="m">1188524</span>
+</span></span><span class="line"><span class="cl">Swap:       <span class="m">1048572</span>           <span class="m">0</span>     <span class="m">1048572</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s /dev/vdc mklabel msdos mkpart primary linux-swap 2048s 201Mib </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkswap /dev/vdc1</span>
+</span></span><span class="line"><span class="cl">Setting up swapspace version 1, <span class="nv">size</span> <span class="o">=</span> <span class="m">200</span> MiB <span class="o">(</span><span class="m">209711104</span> bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">no label, <span class="nv">UUID</span><span class="o">=</span>d5c11287-33bc-432d-9d4c-c3c6777f1256
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+</span></span><span class="line"><span class="cl">&gt; /dev/vdc1 swap swap defaults <span class="m">0</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># swapon /dev/vdc1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 掛載後增加 swap 分區</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># free</span>
+</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:        <span class="m">1508408</span>      <span class="m">167912</span>     <span class="m">1085320</span>        <span class="m">8760</span>      <span class="m">255176</span>     <span class="m">1188100</span>
+</span></span><span class="line"><span class="cl">Swap:       <span class="m">1253368</span>           <span class="m">0</span>     <span class="m">1253368</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="522-掛載-xfs">5.2.2. 掛載 /xfs</h4>
 <div class="highlight"><div class="chroma">
@@ -754,29 +753,29 @@ Swap:       <span class="m">1253368</span>           <span class="m">0</span>   
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd mklabel msdos mkpart primary xfs 2048s 151Mib </span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdd1</span>
-meta-data<span class="o">=</span>/dev/vdd1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">9600</span> <span class="nv">blks</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
-         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
-         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>38400, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
-         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
-<span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
-<span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
-         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
-<span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
-Discarding blocks...Done.
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /xfs</span>
-mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-&gt; /dev/vdd1 /xfs xfs defaults <span class="m">0</span> <span class="m">0</span>
-&gt; EOL
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs</span>
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/vdd1       145M  8.8M  136M   7% /xfs
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd mklabel msdos mkpart primary xfs 2048s 151Mib </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.xfs /dev/vdd1</span>
+</span></span><span class="line"><span class="cl">meta-data<span class="o">=</span>/dev/vdd1              <span class="nv">isize</span><span class="o">=</span><span class="m">512</span>    <span class="nv">agcount</span><span class="o">=</span>4, <span class="nv">agsize</span><span class="o">=</span><span class="m">9600</span> <span class="nv">blks</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">attr</span><span class="o">=</span>2, <span class="nv">projid32bit</span><span class="o">=</span><span class="nv">1</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">crc</span><span class="o">=</span><span class="m">1</span>        <span class="nv">finobt</span><span class="o">=</span>1, <span class="nv">sparse</span><span class="o">=</span>1, <span class="nv">rmapbt</span><span class="o">=</span><span class="nv">0</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">reflink</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">data</span>     <span class="o">=</span>                       <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>38400, <span class="nv">imaxpct</span><span class="o">=</span><span class="nv">25</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span>      <span class="nv">swidth</span><span class="o">=</span><span class="m">0</span> blks
+</span></span><span class="line"><span class="cl"><span class="nv">naming</span>   <span class="o">=</span>version <span class="m">2</span>              <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   ascii-ci<span class="o">=</span>0, <span class="nv">ftype</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">log</span>      <span class="o">=</span>internal log           <span class="nv">bsize</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>1368, <span class="nv">version</span><span class="o">=</span><span class="nv">2</span>
+</span></span><span class="line"><span class="cl">         <span class="o">=</span>                       <span class="nv">sectsz</span><span class="o">=</span><span class="m">512</span>   <span class="nv">sunit</span><span class="o">=</span><span class="m">0</span> blks, lazy-count<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">realtime</span> <span class="o">=</span>none                   <span class="nv">extsz</span><span class="o">=</span><span class="m">4096</span>   <span class="nv">blocks</span><span class="o">=</span>0, <span class="nv">rtextents</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">Discarding blocks...Done.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /xfs</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/xfs&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+</span></span><span class="line"><span class="cl">&gt; /dev/vdd1 /xfs xfs defaults <span class="m">0</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /xfs</span>
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/vdd1       145M  8.8M  136M   7% /xfs
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="523-掛載-ext4">5.2.3. 掛載 /ext4</h4>
 <div class="highlight"><div class="chroma">
@@ -806,30 +805,30 @@ Filesystem      Size  Used Avail Use% Mounted on
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd  mkpart primary ext4 152Mib 352Mib </span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdd2</span>
-mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
-Discarding device blocks: <span class="k">done</span>                            
-Creating filesystem with <span class="m">204800</span> 1k blocks and <span class="m">51200</span> inodes
-Filesystem UUID: 023a65b7-c2de-45db-852e-53059e5e57f5
-Superblock backups stored on blocks: 
-	8193, 24577, 40961, 57345, <span class="m">73729</span>
-
-Allocating group tables: <span class="k">done</span>                            
-Writing inode tables: <span class="k">done</span>                            
-Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
-Writing superblocks and filesystem accounting information: <span class="k">done</span> 
-
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
-mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
-&gt; /dev/vdd2 /ext4 ext4 defaults <span class="m">0</span> <span class="m">0</span>
-&gt; EOL
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
-<span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/vdd2       190M  1.6M  175M   1% /ext4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># parted -s  /dev/vdd  mkpart primary ext4 152Mib 352Mib </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkfs.ext4 /dev/vdd2</span>
+</span></span><span class="line"><span class="cl">mke2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Discarding device blocks: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating filesystem with <span class="m">204800</span> 1k blocks and <span class="m">51200</span> inodes
+</span></span><span class="line"><span class="cl">Filesystem UUID: 023a65b7-c2de-45db-852e-53059e5e57f5
+</span></span><span class="line"><span class="cl">Superblock backups stored on blocks: 
+</span></span><span class="line"><span class="cl">	8193, 24577, 40961, 57345, <span class="m">73729</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Allocating group tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Writing inode tables: <span class="k">done</span>                            
+</span></span><span class="line"><span class="cl">Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Writing superblocks and filesystem accounting information: <span class="k">done</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mkdir -v /ext4</span>
+</span></span><span class="line"><span class="cl">mkdir: created directory <span class="s1">&#39;/ext4&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/fstab &lt;&lt; EOL</span>
+</span></span><span class="line"><span class="cl">&gt; /dev/vdd2 /ext4 ext4 defaults <span class="m">0</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">&gt; EOL
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># mount -a</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverc ~<span class="o">]</span><span class="c1"># df -h /ext4/</span>
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/vdd2       190M  1.6M  175M   1% /ext4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="524-reboot-重新開機">5.2.4. reboot 重新開機</h4>
 <p>確保重新開機後，所有目錄都正常掛載。</p>
@@ -843,28 +842,7 @@ Filesystem      Size  Used Avail Use% Mounted on
     </div>
 <hr>
 <h2 id="6-小結">6. 小結</h2>
-<p>操作硬碟分割、格式化及掛載是 Linux 的基本功，熟悉方式就是不斷的練習才是不二法門，透過練習才能掌握這個必備的技術。</p></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-storage-partition%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+<p>操作硬碟分割、格式化及掛載是 Linux 的基本功，熟悉方式就是不斷的練習才是不二法門，透過練習才能掌握這個必備的技術。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

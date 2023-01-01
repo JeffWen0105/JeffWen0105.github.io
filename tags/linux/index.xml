@@ -4,7 +4,31 @@
         <link>https://blog.howhow.tk/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 31 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - DHCP 伺服器</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</guid>
+    <description><![CDATA[除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv]]></description>
+</item>
+<item>
+    <title>Linux - Teaming 網路</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</guid>
+    <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
+</item>
+<item>
+    <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</link>
+    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</guid>
+    <description><![CDATA[Linux - 打造輕巧 Linux 練習 Lab 第二版 1. 練習環境介紹 虛擬主機網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控]]></description>
+</item>
+<item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
     <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
@@ -59,32 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum-repository/</guid>
     <description><![CDATA[<p>YUM 為高階的套件管理工具，解決軟體套件依賴問題，並且可以批量更新，非常好用的工具。另外可以自行定義倉庫位置，如指定台灣的軟體倉庫比美國軟體倉庫下載速度快的多。</p>]]></description>
-</item>
-<item>
-    <title>Linux - YUM 安裝及更新套件</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-yum/</link>
-    <pubDate>Wed, 02 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-yum/</guid>
-    <description><![CDATA[<p>RPM 做為套件軟體工具的管理，YUM 為更上一階工具，能解決相依性問題並請能指定套件倉庫地址做自動更新。</p>]]></description>
-</item>
-<item>
-    <title>Linux - RPM 套件管理工具</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</link>
-    <pubDate>Tue, 01 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-rpm/</guid>
-    <description><![CDATA[<!-- ###### tags: `Linux` `RHCSA` -->
-<!-- ![](https://i.imgur.com/6EKNLD4.jpg) -->
-<p>在 RHEL 家族系列的 (Redhat、Fedora、CentOS、Rocky Linux、 Oracle Linux 等) 都是使用 RPM 來做套件管理，具體是怎麼一回事呢？</p>]]></description>
-</item>
-<item>
-    <title>Linux - 虛擬資料優化系統 - VDO</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/</link>
-    <pubDate>Wed, 16 Feb 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-vdo/</guid>
-    <description><![CDATA[<p>建立一個雲端空間共同存放影片是的很好的地方，不過有 100 個每個人都存一部內容一模一樣佔 10GB 空間影片，就必須騰出 1TB 來存放，十分浪費，故 VDO ( Virtual Data Optimizer )目的就是重複檔案僅存一次，重複的內容使用捷徑方式儲存就可以大大的降低空間浪費。</p>]]></description>
 </item>
 </channel>
 </rss>

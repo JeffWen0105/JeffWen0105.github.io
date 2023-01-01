@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-10T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-10T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux - Iptables Filter 表規則管理"/>
 <meta name="twitter:description" content="iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。"/>
@@ -28,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-iptables-filter\/"
-        },"genre": "posts","keywords": "Linux","wordcount":  1497 ,
+        },"genre": "posts","keywords": "Linux","wordcount":  1495 ,
         "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2022\/linux-iptables-filter\/","datePublished": "2022-05-10T00:00:00+00:00","dateModified": "2022-05-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -71,7 +70,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - Iptables Filter 表規則管理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-10">2022-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1497 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-10">2022-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1495 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -159,16 +158,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -t filter -L 
-Chain INPUT (policy ACCEPT)
-target     prot opt source               destination         
-   
-Chain FORWARD (policy ACCEPT)
-target     prot opt source               destination         
-
-Chain OUTPUT (policy ACCEPT)
-target     prot opt source               destination  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -t filter -L 
+</span></span><span class="line"><span class="cl">Chain INPUT (policy ACCEPT)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">Chain FORWARD (policy ACCEPT)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Chain OUTPUT (policy ACCEPT)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="211-只查看-input-chain-規則">2.1.1 只查看 INPUT chain 規則</h3>
 <div class="highlight"><div class="chroma">
@@ -178,10 +177,10 @@ target     prot opt source               destination
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -L INPUT
-Chain INPUT (policy ACCEPT)
-target     prot opt source               destination         
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -L INPUT
+</span></span><span class="line"><span class="cl">Chain INPUT (policy ACCEPT)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -199,8 +198,8 @@ target     prot opt source               destination
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables  -P INPUT DROP
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables  -P INPUT DROP
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition warning open">
         <div class="details-summary admonition-title">
@@ -232,12 +231,12 @@ target     prot opt source               destination
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
-[root@servera ~]# iptables -nL INPUT
-Chain INPUT (policy DROP)
-target     prot opt source               destination         
-ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
+</span></span><span class="line"><span class="cl">[root@servera ~]# iptables -nL INPUT
+</span></span><span class="line"><span class="cl">Chain INPUT (policy DROP)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -260,13 +259,13 @@ ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT  -s 127.0.0.1 -j ACCEPT
-[root@servera ~]# iptables -nL 
-Chain INPUT (policy DROP)
-target     prot opt source               destination         
-ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22     
-ACCEPT     all  --  127.0.0.1            0.0.0.0/0    
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -A INPUT  -s 127.0.0.1 -j ACCEPT
+</span></span><span class="line"><span class="cl">[root@servera ~]# iptables -nL 
+</span></span><span class="line"><span class="cl">Chain INPUT (policy DROP)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22     
+</span></span><span class="line"><span class="cl">ACCEPT     all  --  127.0.0.1            0.0.0.0/0    
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="6-開放任一網路能訪問-http-服務">6. 開放任一網路能訪問 http 服務</h2>
@@ -282,14 +281,14 @@ ACCEPT     all  --  127.0.0.1            0.0.0.0/0
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -p tcp --dport 80  -j ACCEPT
-[root@servera ~]# iptables -nL INPUT
-Chain INPUT (policy DROP)
-target     prot opt source               destination         
-ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
-ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
-ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80     
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+</span></span><span class="line"><span class="cl">[root@servera ~]# iptables -nL INPUT
+</span></span><span class="line"><span class="cl">Chain INPUT (policy DROP)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+</span></span><span class="line"><span class="cl">ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80     
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="7-開放-1722525011-主機能發送-icmp-封包">7. 開放 172.25.250.11 主機能發送 ICMP 封包</h2>
@@ -306,15 +305,15 @@ ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[root@servera ~]# iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
-[root@servera ~]# iptables -nL INPUT
-Chain INPUT (policy DROP)
-target     prot opt source               destination         
-ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
-ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
-ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80
-ACCEPT     icmp --  172.25.250.11        0.0.0.0/0           
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera ~]# iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
+</span></span><span class="line"><span class="cl">[root@servera ~]# iptables -nL INPUT
+</span></span><span class="line"><span class="cl">Chain INPUT (policy DROP)
+</span></span><span class="line"><span class="cl">target     prot opt source               destination         
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  172.25.250.0/24      0.0.0.0/0            tcp dpt:22
+</span></span><span class="line"><span class="cl">ACCEPT     all  --  127.0.0.1            0.0.0.0/0           
+</span></span><span class="line"><span class="cl">ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80
+</span></span><span class="line"><span class="cl">ACCEPT     icmp --  172.25.250.11        0.0.0.0/0           
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="8-保存機制">8. 保存機制</h2>
@@ -326,8 +325,8 @@ ACCEPT     icmp --  172.25.250.11        0.0.0.0/0
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">iptables-save
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iptables-save
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition example open">
         <div class="details-summary admonition-title">
@@ -357,21 +356,21 @@ ACCEPT     icmp --  172.25.250.11        0.0.0.0/0
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cat &gt;&gt; /usr/sbin/my-iptables <span class="s">&lt;&lt; EOF
-</span><span class="s">#!/bin/bash
-</span><span class="s">
-</span><span class="s"># Delete ALL of rule
-</span><span class="s">iptables -F
-</span><span class="s">
-</span><span class="s">iptables -P INPUT DROP
-</span><span class="s">iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
-</span><span class="s">iptables -A INPUT -s 127.0.0.1 -j ACCEPT
-</span><span class="s">iptables -A INPUT -p tcp --dport 80  -j ACCEPT
-</span><span class="s">iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
-</span><span class="s">EOF</span>
-
-chmod <span class="m">700</span> /usr/sbin/my-iptables
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat &gt;&gt; /usr/sbin/my-iptables <span class="s">&lt;&lt; EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s"># Delete ALL of rule
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -F
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -P INPUT DROP
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -A INPUT -s 172.25.250.0/24 -p tcp --dport 22 -j ACCEPT
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+</span></span></span><span class="line"><span class="cl"><span class="s">iptables -A INPUT -p ICMP -s 172.25.250.11 -j ACCEPT
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chmod <span class="m">700</span> /usr/sbin/my-iptables
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="822-撰寫-system-service-單元並交由-systemd-託管">8.2.2. 撰寫 system service 單元，並交由 systemd 託管。</h4>
 <div class="highlight"><div class="chroma">
@@ -391,20 +390,20 @@ chmod <span class="m">700</span> /usr/sbin/my-iptables
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cat &gt;&gt; /lib/systemd/system/my-iptable.service &lt;&lt; EOF
-[Unit]
-Description=iptables-rule
-
-[Service]
-ExecStart=/usr/sbin/my-iptables
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-systemctl daemon-reload 
-systemctl enable my-iptable.service
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat &gt;&gt; /lib/systemd/system/my-iptable.service &lt;&lt; EOF
+</span></span><span class="line"><span class="cl">[Unit]
+</span></span><span class="line"><span class="cl">Description=iptables-rule
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Service]
+</span></span><span class="line"><span class="cl">ExecStart=/usr/sbin/my-iptables
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Install]
+</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
+</span></span><span class="line"><span class="cl">EOF
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">systemctl daemon-reload 
+</span></span><span class="line"><span class="cl">systemctl enable my-iptable.service
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="9-小結">9. 小結</h2>
@@ -418,34 +417,13 @@ systemctl enable my-iptable.service
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># Iptables
-iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
-# ACL 
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Iptables
+</span></span><span class="line"><span class="cl">iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
+</span></span><span class="line"><span class="cl"># ACL 
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span></code></pre></td></tr></table>
 </div>
-</div></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2022%2flinux-iptables-filter%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

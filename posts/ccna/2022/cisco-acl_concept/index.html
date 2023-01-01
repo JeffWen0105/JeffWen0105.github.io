@@ -10,7 +10,6 @@
 <meta property="og:url" content="https://blog.howhow.tk/posts/ccna/2022/cisco-acl_concept/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-09T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-05-09T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cisco - Access Control List"/>
 <meta name="twitter:description" content="Cisco 網路設備上實現簡易的防火牆功能，透過 ACL 存取控制清單 (Access Control List) 機制對封包進行篩選與過濾。 1. ACL 存取控制清單簡述 在網路架構中所有的封包流向都是沒有進"/>
@@ -171,8 +170,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">access-list &lt;sequence-number&gt; { permit | deny } 來源地址或來源網段
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">access-list &lt;sequence-number&gt; { permit | deny } 來源地址或來源網段
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>sequence-number -&gt; 0-99, 1300-1999</em></p>
 <p><strong>允許所有來源 192.168.50.0/24 網段封包放行。</strong></p>
@@ -182,9 +181,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 1 permit 192.168.50.0 0.0.0.255
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 1 permit 192.168.50.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -200,8 +199,8 @@ access-list 1 permit 192.168.50.0 0.0.0.255
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">access-list &lt;sequence-number&gt; { permit | deny }  { tcp | upd | icmp }  來源地址或來源網段 目的地址或目的網段  [{ eq port | range min-port max-port }]
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">access-list &lt;sequence-number&gt; { permit | deny }  { tcp | upd | icmp }  來源地址或來源網段 目的地址或目的網段  [{ eq port | range min-port max-port }]
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>sequence-number -&gt; 100-199, 2000-2699</em></p>
 <p><strong>允許所有來源 192.168.50.0/24 網段封包可以存取 10.10.10.10 指定主機的 tcp/80 服務。</strong></p>
@@ -211,9 +210,9 @@ access-list 1 permit 192.168.50.0 0.0.0.255
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="313-命名型-acl-語法">3.1.3 命名型 ACL 語法</h2>
 <p>除上述使用 ID 來區分標準或是延伸型的 ACL 之外，在新版本引入透過賦予名子方式來定義 ACL，定義完後會自動進入 ACL 的子命令模式設定條件。</p>
@@ -222,8 +221,8 @@ access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ip access-list { standard | extended }  &lt;ACL_Name&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip access-list { standard | extended }  &lt;ACL_Name&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>標準型命名方式 - 允許所有來源 192.168.50.0/24 網段封包放行。</strong></p>
 <div class="highlight"><div class="chroma">
@@ -233,10 +232,10 @@ access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">R1#conf t
-R1(config)#ip access-list standard example_acl1
-R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R1#conf t
+</span></span><span class="line"><span class="cl">R1(config)#ip access-list standard example_acl1
+</span></span><span class="line"><span class="cl">R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>延伸型命名方式 - 允許所有來源 192.168.50.0/24 網段封包可以存取 10.10.10.10 指定主機的 tcp/80 服務。</strong></p>
 <div class="highlight"><div class="chroma">
@@ -246,10 +245,10 @@ R1(config-std-nacl)# permit 192.168.50.0 0.0.0.255
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">R1#conf t
-R1(config)#ip access-list extended example_acl2
-R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R1#conf t
+</span></span><span class="line"><span class="cl">R1(config)#ip access-list extended example_acl2
+</span></span><span class="line"><span class="cl">R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h2 id="4-啟用-acl">4 啟用 ACL</h2>
@@ -265,12 +264,12 @@ R1(config-ext-nacl)# access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 1 deny 192.168.50.0 0.0.0.255
-access-list 1 permit any
-int g0/0/0
-    ip access-group 1 in
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 1 deny 192.168.50.0 0.0.0.255
+</span></span><span class="line"><span class="cl">access-list 1 permit any
+</span></span><span class="line"><span class="cl">int g0/0/0
+</span></span><span class="line"><span class="cl">    ip access-group 1 in
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -290,11 +289,11 @@ int g0/0/0
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-int g0/0/1
-    ip access-group 101 out
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span><span class="line"><span class="cl">int g0/0/1
+</span></span><span class="line"><span class="cl">    ip access-group 101 out
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -355,18 +354,18 @@ int g0/0/1
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">conf t
-ip access-list extended ACL-LAB
- deny tcp host 172.31.1.101 host 64.101.255.254 eq 80
- deny tcp host 172.31.1.101 host 64.101.255.254 eq 443
- deny tcp host 172.31.1.101 host 64.103.255.254 eq 80
- deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
- deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
- deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
- deny icmp host 172.31.1.103 host 64.101.255.254
- deny icmp host 172.31.1.103 host 64.103.255.254
- permit ip any any
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conf t
+</span></span><span class="line"><span class="cl">ip access-list extended ACL-LAB
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.101.255.254 eq 80
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.101.255.254 eq 443
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.103.255.254 eq 80
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
+</span></span><span class="line"><span class="cl"> deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
+</span></span><span class="line"><span class="cl"> deny icmp host 172.31.1.103 host 64.101.255.254
+</span></span><span class="line"><span class="cl"> deny icmp host 172.31.1.103 host 64.103.255.254
+</span></span><span class="line"><span class="cl"> permit ip any any
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>啟用 ACL</li>
@@ -377,9 +376,9 @@ ip access-list extended ACL-LAB
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">int g0/0
- ip access-group ACL-LAB in
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">int g0/0
+</span></span><span class="line"><span class="cl"> ip access-group ACL-LAB in
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -402,18 +401,18 @@ ip access-list extended ACL-LAB
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">show ip access-lists
-Extended IP access list ACL-LAB
-10 deny tcp host 172.31.1.101 host 64.101.255.254 eq www (12 match(es))
-20 deny tcp host 172.31.1.101 host 64.101.255.254 eq 443 (12 match(es))
-30 deny tcp host 172.31.1.101 host 64.103.255.254 eq www
-40 deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
-50 deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
-60 deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
-70 deny icmp host 172.31.1.103 host 64.101.255.254
-80 deny icmp host 172.31.1.103 host 64.103.255.254
-90 permit ip any any
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">show ip access-lists
+</span></span><span class="line"><span class="cl">Extended IP access list ACL-LAB
+</span></span><span class="line"><span class="cl">10 deny tcp host 172.31.1.101 host 64.101.255.254 eq www (12 match(es))
+</span></span><span class="line"><span class="cl">20 deny tcp host 172.31.1.101 host 64.101.255.254 eq 443 (12 match(es))
+</span></span><span class="line"><span class="cl">30 deny tcp host 172.31.1.101 host 64.103.255.254 eq www
+</span></span><span class="line"><span class="cl">40 deny tcp host 172.31.1.101 host 64.103.255.254 eq 443
+</span></span><span class="line"><span class="cl">50 deny tcp host 172.31.1.102 host 64.101.255.254 eq ftp
+</span></span><span class="line"><span class="cl">60 deny tcp host 172.31.1.102 host 64.103.255.254 eq ftp
+</span></span><span class="line"><span class="cl">70 deny icmp host 172.31.1.103 host 64.101.255.254
+</span></span><span class="line"><span class="cl">80 deny icmp host 172.31.1.103 host 64.103.255.254
+</span></span><span class="line"><span class="cl">90 permit ip any any
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -430,34 +429,13 @@ Extended IP access list ACL-LAB
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># ACL 
-access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
-# Iptables
-iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ACL 
+</span></span><span class="line"><span class="cl">access-list 101 permit tcp 192.168.50.0 0.0.0.255 10.10.10.10 0.0.0.0 ep 80
+</span></span><span class="line"><span class="cl"># Iptables
+</span></span><span class="line"><span class="cl">iptables -A OUTPUT -s 192.168.50.0/24 -d 10.10.10.10 -p tcp --dport 80 -j ACCEPT 
+</span></span></code></pre></td></tr></table>
 </div>
-</div></div><br>
-
-<br>
-<blockquote style="font-style: italic;border-left: 4px solid #ddd;color: var(--blockquote-color);margin: 0;padding: 0 15px;">
-  <p>如果還沒有註冊 Like Coin，可以在下方看到拍手的按鈕，點下去後即可申請帳號，註冊後最多可以拍手五下，而且不用付出任何一塊錢，就能給這篇文章的最大的鼓勵！</p>
-</blockquote>
-
-<iframe
-  class="LikeCoin"
-  height=50%;
-  src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2fccna%2f2022%2fcisco-acl_concept%2f"
-  width=45%
-  frameborder="0"
-></iframe>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-P7XL29C3NC');
-</script><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
