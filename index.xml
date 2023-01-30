@@ -4,9 +4,25 @@
         <link>https://blog.howhow.tk/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Openshift - 單機個人版 Openshift 安裝及啟用</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
+    <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</guid>
+    <description><![CDATA[<p>部屬 OpenShift Cluster 需要較大的資源，如果只是練習測試，可以使用個人版的 OCP，學習如何操作單機版的 OpenShift</p>]]></description>
+</item>
+<item>
+    <title>Openshift - Podman 管理容器基礎</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-basic/</link>
+    <pubDate>Sat, 28 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-basic/</guid>
+    <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，RHEL 中安全且好用的工具 - Podman。</p>]]></description>
+</item>
+<item>
     <title>Linux - DHCP 伺服器</title>
     <link>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -69,22 +85,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</guid>
     <description><![CDATA[1. SSL 介紹 傳輸層安全性協定（英語：Transport Layer Security，縮寫：TLS) 安全通訊協定（英語：Secure Sockets Layer，縮寫：SS]]></description>
-</item>
-<item>
-    <title>NetWork - 註冊自己的 Domain ( Free 無料 )</title>
-    <link>https://blog.howhow.tk/posts/network/2022/register_free_domain/</link>
-    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/network/2022/register_free_domain/</guid>
-    <description><![CDATA[1. Freenom 介紹 Freenom 是世界上第一家提供免費網域的註冊商，目前有提供.tk .ml .ga .cf 的免費域名。 2. 註冊方式 登入 Freenom 網站。 輸入自己喜歡的網域名稱並查看目前有哪些]]></description>
-</item>
-<item>
-    <title>Cisco - VLAN - Layer 3 Switch</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</link>
-    <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-vlan_layer3_switch/</guid>
-    <description><![CDATA[在不同的 VLAN 如果要互相溝通需要透過路由 ( 使用 L3 Switch 取代一般的路由器 )協助轉發至對應的 VLAN 內。 先前介紹的三種路由方式，路由速度最快設定步驟容易的方式]]></description>
 </item>
 </channel>
 </rss>

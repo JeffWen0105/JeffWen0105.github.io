@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift</title>
+    <link>https://blog.howhow.tk/tags/openshift/</link>
+    <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/tags/openshift/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Linux</title>
     <link>https://blog.howhow.tk/tags/linux/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -74,14 +82,6 @@
     <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/tags/ad/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Windows</title>
-    <link>https://blog.howhow.tk/tags/windows/</link>
-    <pubDate>Mon, 11 Apr 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/windows/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
