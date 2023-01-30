@@ -26,7 +26,7 @@
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</guid>
-    <description><![CDATA[Linux - 打造輕巧 Linux 練習 Lab 第二版 1. 練習環境介紹 虛擬主機網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控]]></description>
+    <description><![CDATA[Linux - 打造輕巧 Linux 練習 Lab 第二版 1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及]]></description>
 </item>
 <item>
     <title>GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集</title>
