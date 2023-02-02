@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - Podman 進階管理容器</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</link>
+    <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</guid>
+    <description><![CDATA[<p>Poman 除了執行容器外還能掛載持久化目錄及管理本地Image映像檔。</p>]]></description>
+</item>
+<item>
     <title>Openshift - 單機個人版 Openshift 安裝及啟用</title>
     <link>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
     <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
-</item>
-<item>
-    <title>NetWork - 申請 SSL 憑證 ( Free 無料 )</title>
-    <link>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</link>
-    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/network/2022/register_free_ssl/</guid>
-    <description><![CDATA[1. SSL 介紹 傳輸層安全性協定（英語：Transport Layer Security，縮寫：TLS) 安全通訊協定（英語：Secure Sockets Layer，縮寫：SS]]></description>
 </item>
 </channel>
 </rss>

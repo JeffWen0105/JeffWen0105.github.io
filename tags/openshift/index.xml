@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/tags/openshift/</link>
         <description>Openshift - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/openshift/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/openshift/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - Podman 進階管理容器</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</link>
+    <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</guid>
+    <description><![CDATA[<p>Poman 除了執行容器外還能掛載持久化目錄及管理本地Image映像檔。</p>]]></description>
+</item>
+<item>
     <title>Openshift - 單機個人版 Openshift 安裝及啟用</title>
     <link>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
     <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
