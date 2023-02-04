@@ -82,7 +82,7 @@
     <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
-    <description><![CDATA[1. 練習環境介紹 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時快速還]]></description>
+    <description><![CDATA[1. 練習環境介紹 架構圖 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時]]></description>
 </item>
 </channel>
 </rss>
