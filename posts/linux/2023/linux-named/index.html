@@ -146,6 +146,7 @@
             alt="https://hackmd.io/_uploads/SJIBdg63j.png" />
     </a><figcaption class="image-caption">DNS 查詢 - aws.amazon.com</figcaption>
     </figure></p>
+<hr>
 <h2 id="2-bind-server-安裝">2. BIND Server 安裝</h2>
 <p>BIND Server 安裝方式十分容易 ， 已經預設在 RHEL 8 的 AppStream 倉庫裡，直接透過 yum 即可安裝。</p>
 <div class="highlight"><div class="chroma">
@@ -354,7 +355,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="sc">11</span><span class="w">      </span><span class="k">IN</span><span class="w">      </span><span class="k">PTR</span><span class="w">     </span><span class="py">videos.howhow.lab.example.com.</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="4-開通防火牆">4. 開通防火牆</h2>
+</div><hr>
+<h2 id="4-開通防火牆">4. 開通防火牆</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -373,6 +375,7 @@
             <div class="admonition-content"><em>DNS 預設使用 53/UDP 及 53/TCP (伺服器傳輸) 通訊。</em></div>
         </div>
     </div>
+<hr>
 <h2 id="5-啟用服務">5. 啟用服務</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -390,6 +393,7 @@
             <div class="admonition-content">啟動 named 前可以使用 named-checkconf 來驗證 /etc/named.&lt;自定義名稱&gt;.conf 是否正確，及使用 named-checkzone 檢查 zone 是否正確。</div>
         </div>
     </div>
+<hr>
 <h2 id="6-dns-查詢">6. DNS 查詢</h2>
 <p>使用 dig 或是 host 工具都可以方便查詢，可以透過 <code>yum install bind-utils</code> 安裝套件使用。</p>
 <h3 id="61-dns-查詢測試">6.1 DNS 查詢測試</h3>
@@ -467,7 +471,8 @@
 </span></span><span class="line"><span class="cl">12.10.168.192.in-addr.arpa. <span class="m">86400</span> IN    PTR     serverb.howhow.lab.example.com.
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="7-延伸---配置-次要secondary名稱伺服器">7. 延伸 - 配置 次要(Secondary)名稱伺服器</h2>
+</div><hr>
+<h2 id="7-延伸---配置-次要secondary名稱伺服器">7. 延伸 - 配置 次要(Secondary)名稱伺服器</h2>
 <p>次要伺服器一樣也是安裝 bind ，設定檔就複製主名稱伺服器在修改部分即可，會自動同步主名稱伺服器 ZONE 配置文件。</p>
 <h3 id="71-安裝-bind-及複製檔案">7.1 安裝 bind 及複製檔案</h3>
 <div class="highlight"><div class="chroma">

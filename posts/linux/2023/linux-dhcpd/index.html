@@ -103,13 +103,14 @@
         <li><a href="#65-查看客戶端">6.5 查看客戶端</a></li>
       </ul>
     </li>
-    <li><a href="#5-小節">5. 小節</a></li>
+    <li><a href="#7-小節">7. 小節</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Server。</p>
 <!-- more -->
 <h2 id="1-dhcp-伺服器簡介">1. DHCP 伺服器簡介</h2>
 <p>DHCP 伺服器是接收 LAN 內的 255.255.255.255 的 DHCPDISCOVER 廣播封包後，來發送 DHCPOFFER 給客戶端，並且會記錄客戶端的租借時間跟 MAC 地址，並且能設定發放的IP範圍及手動綁定MAC 地址所對應的 IP，對於發送多台區域網路內機器及管理有者不同的許用需求。</p>
+<hr>
 <h2 id="2-dhcp-server-安裝">2. DHCP Server 安裝</h2>
 <p>DHCP Server 安裝方式十分容易 ， 已經預設在 RHEL 8 的 BaseOS 倉庫裡，直接透過 yum 即可安裝</p>
 <div class="highlight"><div class="chroma">
@@ -170,6 +171,7 @@
 <li>設定客戶端 MAC Address</li>
 <li>固定此 MAC Address IP</li>
 </ol>
+<hr>
 <h2 id="4-開通防火牆">4. 開通防火牆</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -189,6 +191,7 @@
             <div class="admonition-content"><em>DHCP 預設使用 67/UDP 通訊。</em></div>
         </div>
     </div>
+<hr>
 <h2 id="5-啟用服務">5. 啟用服務</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -360,7 +363,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="5-小節">5. 小節</h2>
+<h2 id="7-小節">7. 小節</h2>
 <p>DHCP Server 在內部私人網路十分方便，不僅配置容易，也能自定義所需來管理機器。</p>
 </div>
 
