@@ -4,31 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>RHCSA - 模擬考 - 設定 AutoFS - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCSA - 模擬考 - 設定 AutoFS" />
-<meta property="og:description" content="題目 在 Server B 上設定 : 安裝 nfs-utils 套件。 創建目錄 /shares ，並且在 export 上分享該目錄。 防火牆開放 tcp/nfs。 在 Server A 上設定 : 安裝 nfs-utils。 安裝 auto" />
+        <title>RHCSA - 模擬考 - 調整 LVM 大小 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="RHCSA - 模擬考 - 調整 LVM 大小" />
+<meta property="og:description" content="題目 在 Server B 上設定 : 將 qa lvm 調整接近 200 Mib，且檔案目錄也調整。 提示 分區指定大小很難100%吻合，會有上下誤差值是合法的。 參考作法 ： man 相關手冊 -&gt;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2000-01-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2000-01-01T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RHCSA - 模擬考 - 設定 AutoFS"/>
-<meta name="twitter:description" content="題目 在 Server B 上設定 : 安裝 nfs-utils 套件。 創建目錄 /shares ，並且在 export 上分享該目錄。 防火牆開放 tcp/nfs。 在 Server A 上設定 : 安裝 nfs-utils。 安裝 auto"/>
+<meta name="twitter:title" content="RHCSA - 模擬考 - 調整 LVM 大小"/>
+<meta name="twitter:description" content="題目 在 Server B 上設定 : 將 qa lvm 調整接近 200 Mib，且檔案目錄也調整。 提示 分區指定大小很難100%吻合，會有上下誤差值是合法的。 參考作法 ： man 相關手冊 -&gt;"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam005/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam018/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" /><link rel="prev" href="https://blog.howhow.tk/posts/rhcsa/mock-exam003/" /><link rel="next" href="https://blog.howhow.tk/posts/rhcsa/mock-exam001/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "RHCSA - 模擬考 - 設定 AutoFS",
+        "headline": "RHCSA - 模擬考 - 調整 LVM 大小",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam008\/"
-        },"genre": "posts","wordcount":  356 ,
-        "url": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam008\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
+            "@id": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam015\/"
+        },"genre": "posts","wordcount":  230 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/rhcsa\/mock-exam015\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -68,9 +68,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCSA - 模擬考 - 設定 AutoFS</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCSA - 模擬考 - 調整 LVM 大小</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;356 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;230 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -92,18 +92,7 @@
 <p><strong>在 Server B  上設定 :</strong></p>
 <blockquote>
 <ul>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 安裝 nfs-utils 套件。</li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 創建目錄 /shares ，並且在 export 上分享該目錄。</li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 防火牆開放 tcp/nfs。</li>
-</ul>
-</blockquote>
-<p><strong>在 Server A  上設定 :</strong></p>
-<blockquote>
-<ul>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 安裝 nfs-utils。</li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 安裝 autofs。</li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 創建目錄 /rhome 目錄。</li>
-<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 透過 autofs 將 serverb:/shares 目錄掛載至 /rhome/shares，並且開機後自動掛載。</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> 將 qa lvm 調整接近 200 Mib，且檔案目錄也調整。</li>
 </ul>
 </blockquote>
 <div class="details admonition tip open">
@@ -112,7 +101,7 @@
         </div>
         <div class="details-content">
             <div class="admonition-content"><ul>
-<li>驗證完畢後至 Basation 主機上執行 rht-vmctl reset servera，重置 servera 及serverb 機器，避免影響後續 LAB 操作。</li>
+<li>分區指定大小很難100%吻合，會有上下誤差值是合法的。</li>
 </ul>
 </div>
         </div>
@@ -120,7 +109,7 @@
 <hr>
 <h3 id="參考作法-">參考作法 ：</h3>
 <ol>
-<li>man 相關手冊 -&gt; auto.master 、 autofs、 mount、  firewall-cmd。</li>
+<li>man 相關手冊 -&gt; lvextend、 resize2fs。</li>
 </ol>
 <hr>
 <h3 id="參考解答">參考解答</h3>
@@ -148,42 +137,30 @@
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ServerB 設定</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl enable --now nfs-server.service</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># mkdir -p /shares</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/exports &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /shares *<span class="o">(</span>rw,sync<span class="o">)</span>
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># systemctl restart nfs-server.service</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --add-service=nfs --permanent</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb shares<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># showmount -e 127.0.0.1</span>
-</span></span><span class="line"><span class="cl">Export list <span class="k">for</span> 127.0.0.1:
-</span></span><span class="line"><span class="cl">/shares *
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># lvextend -L 200Mib qagroup/qa</span>
+</span></span><span class="line"><span class="cl">  Rounding size to boundary between physical extents: 208.00 MiB.
+</span></span><span class="line"><span class="cl">  Size of logical volume qagroup/qa changed from 160.00 MiB <span class="o">(</span><span class="m">10</span> extents<span class="o">)</span> to 208.00 MiB <span class="o">(</span><span class="m">13</span> extents<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">  Logical volume qagroup/qa successfully resized.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># lvdisplay qagroup/qa</span>
+</span></span><span class="line"><span class="cl">  --- Logical volume ---
+</span></span><span class="line"><span class="cl">  LV Path                /dev/qagroup/qa
+</span></span><span class="line"><span class="cl">  LV Name                qa
+</span></span><span class="line"><span class="cl">  VG Name                qagroup
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">  <span class="c1"># open                 1</span>
+</span></span><span class="line"><span class="cl">  LV Size                208.00 MiB
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># resize2fs /dev/mapper/qagroup-qa</span>
+</span></span><span class="line"><span class="cl">resize2fs 1.45.6 <span class="o">(</span>20-Mar-2020<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Filesystem at /dev/mapper/qagroup-qa is mounted on /mnt/qa<span class="p">;</span> on-line resizing required
+</span></span><span class="line"><span class="cl"><span class="nv">old_desc_blocks</span> <span class="o">=</span> 1, <span class="nv">new_desc_blocks</span> <span class="o">=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">The filesystem on /dev/mapper/qagroup-qa is now <span class="m">212992</span> <span class="o">(</span>1k<span class="o">)</span> blocks long.
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># ServerA 設定</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install -y nfs-utils autofs</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/auto.master.d/lab.autofs &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /- /etc/my-autofs.conf
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt;&gt; /etc/my-autofs.conf &lt;&lt; EOF</span>
-</span></span><span class="line"><span class="cl">&gt; /nfs-lab -fstype<span class="o">=</span>nfs4,rw,sync  serverb:/shares
-</span></span><span class="line"><span class="cl">&gt; EOF
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now autofs</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ls /nfs-lab/</span>
-</span></span><span class="line"><span class="cl">RHEL-LAB
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># df  /nfs-lab/</span>
-</span></span><span class="line"><span class="cl">Filesystem      1K-blocks    Used Available Use% Mounted on
-</span></span><span class="line"><span class="cl">serverb:/shares  <span class="m">10265600</span> <span class="m">2107392</span>   <span class="m">8158208</span>  21% /nfs-lab
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># df -h /mnt/qa</span>
+</span></span><span class="line"><span class="cl">Filesystem              Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/mapper/qagroup-qa  196M   31K  186M   1% /mnt/qa
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div>
@@ -194,7 +171,7 @@
   <span STYLE="font-size:10px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
       最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
   <iframe class="LikeCoin" height="235"
-    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2frhcsa%2fmock-exam008%2f" width="70%"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2frhcsa%2fmock-exam015%2f" width="70%"
     frameborder="0"></iframe>
 </blockquote><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -205,7 +182,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" data-title="RHCSA - 模擬考 - 設定 AutoFS"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam008/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" data-title="RHCSA - 模擬考 - 設定 AutoFS"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" data-title="RHCSA - 模擬考 - 設定 AutoFS"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam008/" data-title="RHCSA - 模擬考 - 設定 AutoFS"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" data-title="RHCSA - 模擬考 - 調整 LVM 大小"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam015/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" data-title="RHCSA - 模擬考 - 調整 LVM 大小"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" data-title="RHCSA - 模擬考 - 調整 LVM 大小"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/rhcsa/mock-exam015/" data-title="RHCSA - 模擬考 - 調整 LVM 大小"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -217,8 +194,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/rhcsa/mock-exam005/" class="prev" rel="prev" title="RHCSA - 模擬考 - 設定 Cron 排程任務"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 設定 Cron 排程任務</a>
-            <a href="/posts/rhcsa/mock-exam018/" class="next" rel="next" title="RHCSA - 模擬考 - 系統調整">RHCSA - 模擬考 - 系統調整<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/rhcsa/mock-exam003/" class="prev" rel="prev" title="RHCSA - 模擬考 - 調整 SELinux 策略"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 調整 SELinux 策略</a>
+            <a href="/posts/rhcsa/mock-exam001/" class="next" rel="next" title="RHCSA - 模擬考 - 設定網路組態">RHCSA - 模擬考 - 設定網路組態<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
