@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - BIND 名稱伺服器 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - BIND 名稱伺服器" />
+<meta property="og:description" content="封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.howhow.tk/posts/linux/2023/linux-named/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-05T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - BIND 名稱伺服器"/>
+<meta name="twitter:description" content="封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.howhow.tk/posts/linux/2023/linux-named/" /><link rel="prev" href="https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - BIND 名稱伺服器",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.howhow.tk\/posts\/linux\/2023\/linux-named\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  2101 ,
+        "url": "https:\/\/blog.howhow.tk\/posts\/linux\/2023\/linux-named\/","datePublished": "2023-02-05T00:00:00+00:00","dateModified": "2023-02-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://how64bit.com/redhat/" rel="noopener noreffer" target="_blank"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://how64bit.com/redhat/" title="" rel="noopener noreffer" target="_blank">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - BIND 名稱伺服器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-05">2023-02-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2101 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-bind-名稱伺服器簡介">1. BIND 名稱伺服器簡介</a></li>
+    <li><a href="#2-bind-server-安裝">2. BIND Server 安裝</a></li>
+    <li><a href="#3-dhcp-server-設定">3. DHCP Server 設定</a>
+      <ul>
+        <li><a href="#31-設定檔配置">3.1 設定檔配置</a>
+          <ul>
+            <li><a href="#311-設定伺服器監聽介面">3.1.1 設定伺服器監聽介面</a></li>
+            <li><a href="#312-限制查詢">3.1.2 限制查詢</a></li>
+          </ul>
+        </li>
+        <li><a href="#32-定義-zone-區域">3.2 定義 Zone 區域</a></li>
+        <li><a href="#33-設定-zone-檔案">3.3 設定 ZONE 檔案</a></li>
+        <li><a href="#331-設定正向解析-zone">3.3.1 設定正向解析 ZONE</a></li>
+        <li><a href="#332-設定反向解析-zone">3.3.2 設定反向解析 ZONE</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-開通防火牆">4. 開通防火牆</a></li>
+    <li><a href="#5-啟用服務">5. 啟用服務</a></li>
+    <li><a href="#6-dns-查詢">6. DNS 查詢</a>
+      <ul>
+        <li><a href="#61-dns-查詢測試">6.1 DNS 查詢測試</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-延伸---配置-次要secondary名稱伺服器">7. 延伸 - 配置 次要(Secondary)名稱伺服器</a>
+      <ul>
+        <li><a href="#71-安裝-bind-及複製檔案">7.1 安裝 bind 及複製檔案</a></li>
+        <li><a href="#72-設定為-slave-模式">7.2 設定為 slave 模式</a></li>
+        <li><a href="#73-開放防火牆及啟動伺服器">7.3 開放防火牆及啟動伺服器</a></li>
+        <li><a href="#74-dns-查詢測試">7.4 DNS 查詢測試</a></li>
+        <li><a href="#741-驗證-serverd-查詢">7.4.1 驗證 ServerD 查詢</a></li>
+        <li><a href="#742-次要名稱伺服器同步檔案">7.4.2 次要名稱伺服器同步檔案</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-小節">8. 小節</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP　一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早期的 /etc/hosts 靜態名稱伺服器到現在的分布式網域名稱系統。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來操作多台機器練習 使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-bind-名稱伺服器簡介">1. BIND 名稱伺服器簡介</h2>
+<p>DNS 提供所管理的 ZONE (區域) 提供名稱解析查詢，除了最輕量級的 dnsmasq 之外，最常使用的則為 BIND (Berkely Internet Name Domain) 權威域名稱伺服器，除了主要(Primary)名稱伺服器也能配置次要 (Secondary)名稱伺服器。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SJIBdg63j.png" title="https://hackmd.io/_uploads/SJIBdg63j.png" data-thumbnail="https://hackmd.io/_uploads/SJIBdg63j.png" data-sub-html="<h2>DNS 查詢 - aws.amazon.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SJIBdg63j.png"
+            data-srcset="https://hackmd.io/_uploads/SJIBdg63j.png, https://hackmd.io/_uploads/SJIBdg63j.png 1.5x, https://hackmd.io/_uploads/SJIBdg63j.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SJIBdg63j.png" />
+    </a><figcaption class="image-caption">DNS 查詢 - aws.amazon.com</figcaption>
+    </figure></p>
+<h2 id="2-bind-server-安裝">2. BIND Server 安裝</h2>
+<p>BIND Server 安裝方式十分容易 ， 已經預設在 RHEL 8 的 AppStream 倉庫裡，直接透過 yum 即可安裝。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install <span class="nb">bind</span> -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="3-dhcp-server-設定">3. DHCP Server 設定</h2>
+<ol>
+<li>網域定義為 : <code>howhow.lab.example.com.</code></li>
+<li>在 Servera 啟用 主要(Primary)名稱伺服器</li>
+</ol>
+<h3 id="31-設定檔配置">3.1 設定檔配置</h3>
+<p>BIND Server 設定檔路徑 :  /etc/named.conf</p>
+<h4 id="311-設定伺服器監聽介面">3.1.1 設定伺服器監聽介面</h4>
+<p>任何 ipv4 介面監聽 53/TCP, 53/UDP 都可以訪問</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
+</span></span><span class="line"><span class="cl">        listen-on port 53 { any; };
+</span></span><span class="line"><span class="cl">        listen-on-v6 port 53 { ::1; };
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="312-限制查詢">3.1.2 限制查詢</h4>
+<p>限制僅能  172.25.250.11/24 及 192.168.10.0/24 網段查詢，也可以使用 any 開放所有IP查詢。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">options {
+</span></span><span class="line"><span class="cl">        ...output omitted...
+</span></span><span class="line"><span class="cl">        allow-query     {  172.25.250.11/24 ;192.168.10.0/24 };
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Import<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>recursion</strong> 預設值為 yes，建議設定為 no，尤其在開放任何來源IP都可以查詢情況下，避免遭受惡意 DNS 放大攻擊。</div>
+        </div>
+    </div>
+<h3 id="32-定義-zone-區域">3.2 定義 Zone 區域</h3>
+<p>Zone 區域為自訂義所需的名稱區域及反向查詢的區域，此文件一般會存放於 /etc/named.&lt;自定義名稱&gt;.conf ，並在上述的 /etc/name.conf 最後一行加上 <code>include &quot;/etc/named.&lt;自定義名稱&gt;.conf&quot;;</code> 來載入(另外也可以直接寫在 /etc/named.rfc1912.zones 裡也是合法)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zone &#34;howhow.lab.example.com.&#34; IN {
+</span></span><span class="line"><span class="cl">        type master;
+</span></span><span class="line"><span class="cl">        file &#34;howhow.lab.example.com.zone&#34;;
+</span></span><span class="line"><span class="cl">        forwarders {};
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">zone &#34;10.168.192.in-addr.arpa.&#34; IN {
+</span></span><span class="line"><span class="cl">        type master;
+</span></span><span class="line"><span class="cl">        file &#34;192.168.10.zone&#34;;
+</span></span><span class="line"><span class="cl">        forwarders {};
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>反向解析<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">反向解析是個特別的區域，如果主機 IP 為 192.168.10.100 那反向解析區域就會是 10.168.192.in-addr.arpa 將 IP 反過來加上 in-addr.arpa (請注意最後的 .100 不在此內)</div>
+        </div>
+    </div>
+<h3 id="33-設定-zone-檔案">3.3 設定 ZONE 檔案</h3>
+<p>所有區域文件會存於 /var/named/&lt;自訂義名稱&gt;.zone 內</p>
+<p><strong>下列幾點務必遵循 :</strong></p>
+<ol>
+<li>檔案權限必須為 640 。 ex. <code>chmod 640 /var/named/*.zone</code></li>
+<li>檔案擁有者為 root ，檔案群組擁有者為 named 。 ex. <code>chown root:named /var/named/*.zone</code></li>
+<li>SELinux Context 須為 named_zone_t 。 ex. <code>chcon -t named_zone_t /var/named/*.zone</code></li>
+</ol>
+<h3 id="331-設定正向解析-zone">3.3.1 設定正向解析 ZONE</h3>
+<ol>
+<li>
+<p>TTL : TTL 預設以秒為單位，Clinet 多久後會再來查詢。</p>
+</li>
+<li>
+<p>SOA :</p>
+<ul>
+<li><code>@</code>  : 為簡寫(表明為 <code>howhow.lab.example.com.</code> 網域) 。</li>
+<li><code>IN</code> : 所記錄的類別表示為 <code>Internet</code> 。</li>
+<li><code>SOA</code> : 權威記錄起始，表似其ZONE訊息。</li>
+<li><code>servera.howhow.lab.example.com.</code> : 表示為 servera 主要名稱伺服器名稱。</li>
+<li><code>root.example.com.</code> : 表示管理員聯絡 email ，囿於<code>@</code> 有特殊用途，所以其表示 <code>root@example.com</code> 。</li>
+<li><code>2023020501</code>   : 此文件版本序號，每一次更新都需增加，一般會以 YYYYMMDD00 來表示。</li>
+<li><code>1H</code> : 次要伺服器多久會進行更新查詢。</li>
+<li><code>5M</code> : 如果主要伺服器當機，次要伺服器多久會重新連接刷新。</li>
+<li><code>1W</code> : 主要伺服器當機多久後，次要伺服器將不會再查詢刷新。</li>
+<li><code>1M</code> : 其他名稱伺服器對此區要TTL時長。</li>
+</ul>
+</li>
+<li>
+<p>NS : 表示此權威區域的名稱伺服器為 <code>servera.howhow.lab.example.com.</code></p>
+</li>
+<li>
+<p>A  : A 紀錄對應的名稱及 IP，例如查詢 <code> serverb.howhow.lab.example.com</code> 對應正向解析 IP 為 192.168.10.12</p>
+</li>
+<li>
+<p>CNAME : 類似於別名概念，當查詢 <code>viedoe.howhow.lab.example.com</code> 其對應的 IP 則為 192.168.10.11</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="na">$TTL</span><span class="w"> </span><span class="sc">300</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">       </span><span class="k">IN</span><span class="w"> </span><span class="k">SOA</span><span class="w">  </span><span class="py">servera.howhow.lab.example.com. root.example.com. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">2023020501</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">1</span><span class="err">H</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">5</span><span class="err">M</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">1</span><span class="err">W</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">1</span><span class="err">M</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">IN</span><span class="w">      </span><span class="k">NS</span><span class="w">      </span><span class="py">servera.howhow.lab.example.com.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">servera</span><span class="w">         </span><span class="k">IN</span><span class="w">      </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.10.11</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">serverb</span><span class="w">         </span><span class="k">IN</span><span class="w">      </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.10.12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">www</span><span class="w">             </span><span class="k">IN</span><span class="w">      </span><span class="k">A</span><span class="w">       </span><span class="mi">192.168.10.11</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">viedoe</span><span class="w">          </span><span class="k">IN</span><span class="w">      </span><span class="k">CNAME</span><span class="w">   </span><span class="py">www.howhow.lab.example.com.</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw" aria-hidden="true"></i>Import<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>所有的 DNS 名稱強烈要求在配置上一定要在結尾後帶上 <code>.</code> ，表示這為 root 結束，不然會導致解析時重複網域。</strong></div>
+        </div>
+    </div>
+<h3 id="332-設定反向解析-zone">3.3.2 設定反向解析 ZONE</h3>
+<ol>
+<li>PTR : 反向解析 IP 所對應其主機名稱，例如 192.168.10.12 其反向解析名稱為 <code>serverb.howhow.lab.example.com.</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dns" data-lang="dns"><span class="line"><span class="cl"><span class="na">$TTL</span><span class="w"> </span><span class="sc">1</span><span class="err">D</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nc">@</span><span class="w">       </span><span class="k">IN</span><span class="w"> </span><span class="k">SOA</span><span class="w">  </span><span class="py">servera.howhow.lab.example.com. root.example.com. </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">2023020502</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">1</span><span class="err">H</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">5</span><span class="err">M</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">1</span><span class="err">W</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                                        </span><span class="sc">3</span><span class="err">M</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">IN</span><span class="w">      </span><span class="k">NS</span><span class="w">      </span><span class="py">servera.howhow.lab.example.com.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="sc">11</span><span class="w">      </span><span class="k">IN</span><span class="w">      </span><span class="k">PTR</span><span class="w">     </span><span class="py">servera.howhow.lab.example.com.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="sc">12</span><span class="w">      </span><span class="k">IN</span><span class="w">      </span><span class="k">PTR</span><span class="w">     </span><span class="py">serverb.howhow.lab.example.com.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="sc">11</span><span class="w">      </span><span class="k">IN</span><span class="w">      </span><span class="k">PTR</span><span class="w">     </span><span class="py">www.howhow.lab.example.com.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="sc">11</span><span class="w">      </span><span class="k">IN</span><span class="w">      </span><span class="k">PTR</span><span class="w">     </span><span class="py">videos.howhow.lab.example.com.</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-開通防火牆">4. 開通防火牆</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">firewall-cmd --permanent --add-service<span class="o">=</span>dns
+</span></span><span class="line"><span class="cl">firewall-cmd --reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>DNS 預設使用 53/UDP 及 53/TCP (伺服器傳輸) 通訊。</em></div>
+        </div>
+    </div>
+<h2 id="5-啟用服務">5. 啟用服務</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now named
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>設定驗證<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">啟動 named 前可以使用 named-checkconf 來驗證 /etc/named.&lt;自定義名稱&gt;.conf 是否正確，及使用 named-checkzone 檢查 zone 是否正確。</div>
+        </div>
+    </div>
+<h2 id="6-dns-查詢">6. DNS 查詢</h2>
+<p>使用 dig 或是 host 工具都可以方便查詢，可以透過 <code>yum install bind-utils</code> 安裝套件使用。</p>
+<h3 id="61-dns-查詢測試">6.1 DNS 查詢測試</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># host 正向查詢指定所查詢名稱伺服器為 servera</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera named<span class="o">]</span><span class="c1"># host serverb.howhow.lab.example.com. servera</span>
+</span></span><span class="line"><span class="cl">Using domain server:
+</span></span><span class="line"><span class="cl">Name: servera
+</span></span><span class="line"><span class="cl">Address: 172.25.250.11#53
+</span></span><span class="line"><span class="cl">Aliases:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># host 反向查詢指定查詢名稱伺服器為 servera</span>
+</span></span><span class="line"><span class="cl">serverb.howhow.lab.example.com has address 192.168.10.12
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera named<span class="o">]</span><span class="c1"># host 192.168.10.12 servera</span>
+</span></span><span class="line"><span class="cl">Using domain server:
+</span></span><span class="line"><span class="cl">Name: servera
+</span></span><span class="line"><span class="cl">Address: 172.25.250.11#53
+</span></span><span class="line"><span class="cl">Aliases:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">12.10.168.192.in-addr.arpa domain name pointer serverb.howhow.lab.example.com.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera named<span class="o">]</span><span class="c1">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># dig 正向查詢指定所查詢名稱伺服器為 servera</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera named<span class="o">]</span><span class="c1"># dig serverb.howhow.lab.example.com. @servera | grep -A1 ANSWER</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> flags: qr aa rd<span class="p">;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> WARNING: recursion requested but not available
+</span></span><span class="line"><span class="cl">--
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> ANSWER SECTION:
+</span></span><span class="line"><span class="cl">serverb.howhow.lab.example.com. <span class="m">300</span> IN  A       192.168.10.12
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># dig 反向查詢指定所查詢名稱伺服器為 servera</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera named<span class="o">]</span><span class="c1"># dig -x 192.168.10.12 @servera | grep -A1 ANSWER</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> flags: qr aa rd<span class="p">;</span> QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> WARNING: recursion requested but not available
+</span></span><span class="line"><span class="cl">--
+</span></span><span class="line"><span class="cl"><span class="p">;;</span> ANSWER SECTION:
+</span></span><span class="line"><span class="cl">12.10.168.192.in-addr.arpa. <span class="m">86400</span> IN    PTR     serverb.howhow.lab.example.com.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-延伸---配置-次要secondary名稱伺服器">7. 延伸 - 配置 次要(Secondary)名稱伺服器</h2>
+<p>次要伺服器一樣也是安裝 bind ，設定檔就複製主名稱伺服器在修改部分即可，會自動同步主名稱伺服器 ZONE 配置文件。</p>
+<h3 id="71-安裝-bind-及複製檔案">7.1 安裝 bind 及複製檔案</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverd ~]# yum install bind -y
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">[root@serverd ~]# scp servera:/etc/named.conf /etc/named.conf
+</span></span><span class="line"><span class="cl">[root@serverd ~]# scp servera:/etc/named.howhow.conf /etc/named.howhow.conf
+</span></span><span class="line"><span class="cl">[root@serverd ~]# chgrp named /etc/named.conf /etc/named.howhow.conf
+</span></span><span class="line"><span class="cl">[root@serverd ~]# chmod 640 /etc/named.conf  /etc/named.howhow.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="72-設定為-slave-模式">7.2 設定為 slave 模式</h3>
+<p>編輯  /etc/named.howhow.conf 將 type 改為 slave ，並定義 masters 主伺服器的 IP。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">zone &#34;howhow.lab.example.com.&#34; IN {
+</span></span><span class="line"><span class="cl">        type slave;
+</span></span><span class="line"><span class="cl">        file &#34;slaves/howhow.lab.example.com.zone&#34;;
+</span></span><span class="line"><span class="cl">        masters { 172.25.250.11; };
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">zone &#34;10.168.192.in-addr.arpa.&#34; IN {
+</span></span><span class="line"><span class="cl">        type slave;
+</span></span><span class="line"><span class="cl">        file &#34;slaves/192.168.10.zone&#34;;
+</span></span><span class="line"><span class="cl">        masters { 172.25.250.11; };
+</span></span><span class="line"><span class="cl">};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="73-開放防火牆及啟動伺服器">7.3 開放防火牆及啟動伺服器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverd ~]# firewall-cmd --add-service=dns --permanent
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl">[root@serverd ~]# firewall-cmd --add-service=dns
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl">[root@serverd ~]# systemctl enable --now named
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/multi-user.target.wants/named.service → /usr/lib/systemd/system/named.service.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="74-dns-查詢測試">7.4 DNS 查詢測試</h3>
+<h3 id="741-驗證-serverd-查詢">7.4.1 驗證 ServerD 查詢</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@servera named]# host 192.168.10.12 serverd
+</span></span><span class="line"><span class="cl">Using domain server:
+</span></span><span class="line"><span class="cl">Name: serverd
+</span></span><span class="line"><span class="cl">Address: 172.25.250.14#53
+</span></span><span class="line"><span class="cl">Aliases:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">12.10.168.192.in-addr.arpa domain name pointer serverb.howhow.lab.example.com.
+</span></span><span class="line"><span class="cl">[root@servera named]# host www.howhow.lab.example.com serverd
+</span></span><span class="line"><span class="cl">Using domain server:
+</span></span><span class="line"><span class="cl">Name: serverd
+</span></span><span class="line"><span class="cl">Address: 172.25.250.14#53
+</span></span><span class="line"><span class="cl">Aliases:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">www.howhow.lab.example.com has address 192.168.10.11
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="742-次要名稱伺服器同步檔案">7.4.2 次要名稱伺服器同步檔案</h3>
+<p>啟動後次要稱伺服器會找主伺服器的 ZONE ，並將以 cache 方式儲存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverd ~]# ls -l /var/named/slaves/
+</span></span><span class="line"><span class="cl">total 8
+</span></span><span class="line"><span class="cl">-rw-r--r--. 1 named named 447 Feb  5 16:59 192.168.10.zone
+</span></span><span class="line"><span class="cl">-rw-r--r--. 1 named named 469 Feb  5 17:10 howhow.lab.example.com.zone
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="8-小節">8. 小節</h2>
+<p>BIND 名稱伺服器功能非常強大，雖然有些複雜，但是在實務上十分常用的功能，雖然大部主要企業公司內部都已 AD 來管理多數的網域，不過還是有需要定義內部區域的網域名稱時就會需要 BIND 介入。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:10px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fblog.howhow.tk%2fposts%2flinux%2f2023%2flinux-named%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.howhow.tk/posts/linux/2023/linux-named/" data-title="Linux - BIND 名稱伺服器" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.howhow.tk/posts/linux/2023/linux-named/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://blog.howhow.tk/posts/linux/2023/linux-named/" data-title="Linux - BIND 名稱伺服器"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://blog.howhow.tk/posts/linux/2023/linux-named/" data-title="Linux - BIND 名稱伺服器"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://blog.howhow.tk/posts/linux/2023/linux-named/" data-title="Linux - BIND 名稱伺服器"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/openshift/2023/ocp-podman-advanced/" class="prev" rel="prev" title="Openshift - Podman 進階管理容器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Openshift - Podman 進階管理容器</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

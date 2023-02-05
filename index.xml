@@ -4,9 +4,17 @@
         <link>https://blog.howhow.tk/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux - BIND 名稱伺服器</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-named/</link>
+    <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-named/</guid>
+    <description><![CDATA[封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早]]></description>
+</item>
+<item>
     <title>Openshift - Podman 進階管理容器</title>
     <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</link>
     <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</guid>
     <description><![CDATA[在 Google 的 Cloud Shell 上使用 Terraform 可以安全且快速的創建 GCE 機器，而不需要另外使用 credentials。 Terraform Terraform 是由 HashiCorp 建立的開放原始碼「基礎架構即程式碼」工具。 宣]]></description>
-</item>
-<item>
-    <title>Linux - 打造輕巧 Linux 練習 Lab</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
-    <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
-    <description><![CDATA[1. 練習環境介紹 架構圖 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時]]></description>
 </item>
 </channel>
 </rss>
