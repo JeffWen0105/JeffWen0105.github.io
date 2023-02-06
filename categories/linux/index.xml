@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
+    <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</guid>
+    <description><![CDATA[Google Driver 空間分享檔案下載使用在 Desktop 任一作業系統有圖形化介面下都非常方便且容易下載，如果今天只有純 Server 沒有啟用圖形化介面功能，除了桌面端下載後使用 SSH 輸]]></description>
+</item>
+<item>
     <title>Linux - BIND 名稱伺服器</title>
     <link>https://blog.howhow.tk/posts/linux/2023/linux-named/</link>
     <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -30,10 +38,10 @@
 </item>
 <item>
     <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</link>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</guid>
     <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
 </item>
 <item>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</guid>
     <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。</p>]]></description>
-</item>
-<item>
-    <title>Linux - 網路檔案系統 - NFS</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</link>
-    <pubDate>Mon, 07 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-storage-nfs/</guid>
-    <description><![CDATA[<p>NFS 網路檔案系統，透過網路標準協定，在 Unix、 Linux 上進行檔案分享，在大多數的 Linux 都支援使用。</p>]]></description>
 </item>
 </channel>
 </rss>

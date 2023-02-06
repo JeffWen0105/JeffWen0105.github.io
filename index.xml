@@ -4,9 +4,17 @@
         <link>https://blog.howhow.tk/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
+    <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</guid>
+    <description><![CDATA[Google Driver 空間分享檔案下載使用在 Desktop 任一作業系統有圖形化介面下都非常方便且容易下載，如果今天只有純 Server 沒有啟用圖形化介面功能，除了桌面端下載後使用 SSH 輸]]></description>
+</item>
+<item>
     <title>Linux - BIND 名稱伺服器</title>
     <link>https://blog.howhow.tk/posts/linux/2023/linux-named/</link>
     <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -56,10 +64,10 @@
 </item>
 <item>
     <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</link>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2/</guid>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</guid>
     <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
 </item>
 <item>
@@ -77,14 +85,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
-</item>
-<item>
-    <title>Terraform  - 在 Cloud Shell 上創建 GEC 機器</title>
-    <link>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</link>
-    <pubDate>Wed, 01 Jun 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/terraform/2022/terraform-create_gce_instance/</guid>
-    <description><![CDATA[在 Google 的 Cloud Shell 上使用 Terraform 可以安全且快速的創建 GCE 機器，而不需要另外使用 credentials。 Terraform Terraform 是由 HashiCorp 建立的開放原始碼「基礎架構即程式碼」工具。 宣]]></description>
 </item>
 </channel>
 </rss>
