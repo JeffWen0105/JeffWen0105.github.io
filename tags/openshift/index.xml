@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/tags/openshift/</link>
         <description>Openshift - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/openshift/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/openshift/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - 初次部屬 App 應用程式</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</link>
+    <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</guid>
+    <description><![CDATA[部屬一個雲平台的 App 應用程式在 OpenShift 是非常容易達成的，除了最平易近人的 Web Console GUI 之外還能透過 oc cli 指令來達成部屬。 1. Web Console 方式部屬 初學請先使用 kubeadmin 最高 Cluster 管理]]></description>
+</item>
+<item>
     <title>Openshift - Podman 進階管理容器</title>
     <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</link>
     <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>

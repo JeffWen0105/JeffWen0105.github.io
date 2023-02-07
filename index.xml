@@ -4,9 +4,17 @@
         <link>https://blog.howhow.tk/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.howhow.tk/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Openshift - 初次部屬 App 應用程式</title>
+    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</link>
+    <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</guid>
+    <description><![CDATA[部屬一個雲平台的 App 應用程式在 OpenShift 是非常容易達成的，除了最平易近人的 Web Console GUI 之外還能透過 oc cli 指令來達成部屬。 1. Web Console 方式部屬 初學請先使用 kubeadmin 最高 Cluster 管理]]></description>
+</item>
+<item>
     <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
     <link>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
     <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -76,14 +84,6 @@
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</guid>
-    <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
-</item>
-<item>
-    <title>AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集</title>
-    <link>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</link>
-    <pubDate>Sat, 02 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
 </item>
 </channel>
