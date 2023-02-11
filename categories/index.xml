@@ -4,20 +4,20 @@
         <link>https://blog.howhow.tk/categories/</link>
         <description>Categories - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux</title>
+    <link>https://blog.howhow.tk/categories/linux/</link>
+    <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Openshift</title>
     <link>https://blog.howhow.tk/categories/openshift/</link>
     <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/categories/openshift/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Linux</title>
-    <link>https://blog.howhow.tk/categories/linux/</link>
-    <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/categories/linux/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

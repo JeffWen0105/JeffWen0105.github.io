@@ -4,7 +4,15 @@
         <link>https://blog.howhow.tk/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - NTP 時間伺服器</title>
+    <link>https://blog.howhow.tk/posts/linux/2023/linux-chrony/</link>
+    <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://blog.howhow.tk/posts/linux/2023/linux-chrony/</guid>
+    <description><![CDATA[在許多系統確保精確的時間是非常重要的事，例如 Cluster 、 DB 等重要的系統，機器可以透過 網路時間協定 NTP（Network Time Protocol)來同步時間]]></description>
+</item>
+<item>
     <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
     <link>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
     <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</guid>
     <description><![CDATA[RHEL 預設使用 NetworkManager 工具管理網路組態及網路連線，Server 伺服器可以藉由 nmcli 指令或是 nmtui 交談式文字介面來操作。 1. NetworkManager 介紹 舊版本使用 network-scripts 配置管理網路( /etc/sysconfig/network-scripts/ )，]]></description>
-</item>
-<item>
-    <title>Linux - 容器管理工具 - Podman</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</link>
-    <pubDate>Tue, 08 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-containers-podman/</guid>
-    <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，最普遍的為使用 Docker 管理工具，另外 RHEL 有另外一套更安全且好用的工具 - Podman。</p>]]></description>
 </item>
 </channel>
 </rss>
