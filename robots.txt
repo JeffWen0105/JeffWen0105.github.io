@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://blog.howhow.tk/sitemap.xml
+Sitemap: https://how64bit.com/sitemap.xml

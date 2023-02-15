@@ -1,87 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Linux - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/linux/</link>
+        <link>https://how64bit.com/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - NTP 時間伺服器</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-chrony/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-chrony/</link>
     <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-chrony/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-chrony/</guid>
     <description><![CDATA[在許多系統確保精確的時間是非常重要的事，例如 Cluster 、 DB 等重要的系統，機器可以透過 網路時間協定 NTP（Network Time Protocol)來同步時間]]></description>
 </item>
 <item>
     <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
     <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-download-google-drive-file-by-wget/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-download-google-drive-file-by-wget/</guid>
     <description><![CDATA[Google Driver 空間分享檔案下載使用在 Desktop 任一作業系統有圖形化介面下都非常方便且容易下載，如果今天只有純 Server 沒有啟用圖形化介面功能，除了桌面端下載後使用 SSH 輸]]></description>
 </item>
 <item>
     <title>Linux - BIND 名稱伺服器</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-named/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-named/</link>
     <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-named/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-named/</guid>
     <description><![CDATA[封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早]]></description>
 </item>
 <item>
     <title>Linux - DHCP 伺服器</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-dhcpd/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-dhcpd/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-dhcpd/</guid>
     <description><![CDATA[除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv]]></description>
 </item>
 <item>
     <title>Linux - Teaming 網路</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-network-teamd/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-network-teamd/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-network-teamd/</guid>
     <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
 </item>
 <item>
     <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
-    <link>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</link>
+    <link>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</link>
     <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2023/linux-create-playground-v2-copy/</guid>
+    <guid>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</guid>
     <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
 </item>
 <item>
     <title>Linux - 打造輕巧 Linux 練習 Lab</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</link>
+    <link>https://how64bit.com/posts/linux/2022/linux-create-playground/</link>
     <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-create-playground/</guid>
+    <guid>https://how64bit.com/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 架構圖 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時]]></description>
 </item>
 <item>
     <title>Linux - Iptables Filter 表規則管理</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</link>
+    <link>https://how64bit.com/posts/linux/2022/linux-iptables-filter/</link>
     <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-iptables-filter/</guid>
+    <guid>https://how64bit.com/posts/linux/2022/linux-iptables-filter/</guid>
     <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
 </item>
 <item>
     <title>Linux - Firewalld 動態防火牆管理器</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-firewalld/</link>
+    <link>https://how64bit.com/posts/linux/2022/linux-firewalld/</link>
     <pubDate>Wed, 16 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-firewalld/</guid>
+    <guid>https://how64bit.com/posts/linux/2022/linux-firewalld/</guid>
     <description><![CDATA[<p>從 RHEL 8 開始 <strong>firewalld</strong> 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。</p>]]></description>
 </item>
 <item>
     <title>Linux - 網路管理工具 - NetworkManager</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</link>
+    <link>https://how64bit.com/posts/linux/2022/linux-net-configure/</link>
     <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-net-configure/</guid>
+    <guid>https://how64bit.com/posts/linux/2022/linux-net-configure/</guid>
     <description><![CDATA[RHEL 預設使用 NetworkManager 工具管理網路組態及網路連線，Server 伺服器可以藉由 nmcli 指令或是 nmtui 交談式文字介面來操作。 1. NetworkManager 介紹 舊版本使用 network-scripts 配置管理網路( /etc/sysconfig/network-scripts/ )，]]></description>
 </item>
 </channel>

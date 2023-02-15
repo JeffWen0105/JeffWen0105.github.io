@@ -1,87 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/</link>
+        <link>https://how64bit.com/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Linux</title>
-    <link>https://blog.howhow.tk/tags/linux/</link>
+    <link>https://how64bit.com/tags/linux/</link>
     <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/linux/</guid>
+    <guid>https://how64bit.com/tags/linux/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Openshift</title>
-    <link>https://blog.howhow.tk/tags/openshift/</link>
+    <link>https://how64bit.com/tags/openshift/</link>
     <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/openshift/</guid>
+    <guid>https://how64bit.com/tags/openshift/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Ansible</title>
-    <link>https://blog.howhow.tk/tags/ansible/</link>
+    <link>https://how64bit.com/tags/ansible/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/ansible/</guid>
+    <guid>https://how64bit.com/tags/ansible/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>GCP</title>
-    <link>https://blog.howhow.tk/tags/gcp/</link>
+    <link>https://how64bit.com/tags/gcp/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/gcp/</guid>
+    <guid>https://how64bit.com/tags/gcp/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Kubernetes</title>
-    <link>https://blog.howhow.tk/tags/kubernetes/</link>
+    <link>https://how64bit.com/tags/kubernetes/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/kubernetes/</guid>
+    <guid>https://how64bit.com/tags/kubernetes/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Terraform</title>
-    <link>https://blog.howhow.tk/tags/terraform/</link>
+    <link>https://how64bit.com/tags/terraform/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/terraform/</guid>
+    <guid>https://how64bit.com/tags/terraform/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>AWS</title>
-    <link>https://blog.howhow.tk/tags/aws/</link>
+    <link>https://how64bit.com/tags/aws/</link>
     <pubDate>Sat, 02 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/aws/</guid>
+    <guid>https://how64bit.com/tags/aws/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Network</title>
-    <link>https://blog.howhow.tk/tags/network/</link>
+    <link>https://how64bit.com/tags/network/</link>
     <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/network/</guid>
+    <guid>https://how64bit.com/tags/network/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Cisco</title>
-    <link>https://blog.howhow.tk/tags/cisco/</link>
+    <link>https://how64bit.com/tags/cisco/</link>
     <pubDate>Fri, 20 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/cisco/</guid>
+    <guid>https://how64bit.com/tags/cisco/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>AD</title>
-    <link>https://blog.howhow.tk/tags/ad/</link>
+    <link>https://how64bit.com/tags/ad/</link>
     <pubDate>Sun, 08 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/tags/ad/</guid>
+    <guid>https://how64bit.com/tags/ad/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

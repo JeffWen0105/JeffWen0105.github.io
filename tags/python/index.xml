@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Python - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/python/</link>
+        <link>https://how64bit.com/tags/python/</link>
         <description>Python - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/python/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/python/" rel="self" type="application/rss+xml" /><item>
     <title>Python - 函式三劍客 Map, Filter, and Reduce</title>
-    <link>https://blog.howhow.tk/posts/python/2022/python3-function/</link>
+    <link>https://how64bit.com/posts/python/2022/python3-function/</link>
     <pubDate>Sat, 08 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/python/2022/python3-function/</guid>
+    <guid>https://how64bit.com/posts/python/2022/python3-function/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/UvAxLaK.jpg) -->
 <p>Python 的 Map, Filter, Reduce 三劍客函數使用教學.</p>]]></description>
 </item>

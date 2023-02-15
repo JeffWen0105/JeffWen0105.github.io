@@ -1,87 +1,87 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Ansible - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/ansible/</link>
+        <link>https://how64bit.com/tags/ansible/</link>
         <description>Ansible - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/ansible/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/ansible/" rel="self" type="application/rss+xml" /><item>
     <title>GCP - Terraform &amp; Ansible 在 GCP 上自動部署 K8S 叢集</title>
-    <link>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</link>
+    <link>https://how64bit.com/posts/gcp/2022/gcp-iac_k8s/</link>
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/gcp/2022/gcp-iac_k8s/</guid>
+    <guid>https://how64bit.com/posts/gcp/2022/gcp-iac_k8s/</guid>
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
 </item>
 <item>
     <title>AWS - Terraform &amp; Ansible 在 AWS 上自動部署 K8S 叢集</title>
-    <link>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</link>
+    <link>https://how64bit.com/posts/aws/2022/aws-iac_k8s/</link>
     <pubDate>Sat, 02 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/aws/2022/aws-iac_k8s/</guid>
+    <guid>https://how64bit.com/posts/aws/2022/aws-iac_k8s/</guid>
     <description><![CDATA[手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合]]></description>
 </item>
 <item>
     <title>Cisco - Network Automation With Ansible</title>
-    <link>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</link>
+    <link>https://how64bit.com/posts/ccna/2022/cisco-network-automation/</link>
     <pubDate>Sun, 15 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ccna/2022/cisco-network-automation/</guid>
+    <guid>https://how64bit.com/posts/ccna/2022/cisco-network-automation/</guid>
     <description><![CDATA[Cisco IOS 指令可以設定路由器、交換機等設備，如果在數量較多的設備，或是要執行多個指令才能達成任務時候，人為操作出錯機率就比較高而且比較繁瑣，透過自]]></description>
 </item>
 <item>
     <title>Ansible - 流程控制</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-control-flow/</link>
     <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-control-flow/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-control-flow/</guid>
     <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，掌握如何操控 Playbook 流程，例如 Playbook 迴圈或是條件式判斷等操作，能更有效率執行部署機器。 練習環境 可以使用 HowHow 的創建 Lab 練習]]></description>
 </item>
 <item>
     <title>Ansible - 變數管理及應用</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-variables/</link>
     <pubDate>Fri, 01 Apr 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-variables/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-variables/</guid>
     <description><![CDATA[透過 Playbook 可以很方便執行大量機器部署，在大量環境下可以透過變數方式，如同寫程式一般可以更靈活且彈性的進行部署及維護。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
 </item>
 <item>
     <title>Ansible - Vault 加密檔案管理</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-vault-encrypt/</link>
     <pubDate>Tue, 15 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-vault-encrypt/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-vault-encrypt/</guid>
     <description><![CDATA[透過 PlayBook 可以很方便執行大量機器部署，如果要執行的任務有機敏性的資料，並存放在共用的主機控制節點，可以透過 Vault 將檔案加密，在每一次執行要求使用者必]]></description>
 </item>
 <item>
     <title>Ansible - 翻轉你的 Playbook</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-playbook/</link>
     <pubDate>Mon, 14 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-playbook/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-playbook/</guid>
     <description><![CDATA[Playbook 由多個 task 任務組合起來的一本 yaml 格式文件，告訴 Ansible 依據裡面內容一一執行的方式，也是 Ansible 三大要素的核心之一。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來操]]></description>
 </item>
 <item>
     <title>Ansible - 執行 Ad-Hoc 命令</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-adhoc/</link>
     <pubDate>Sun, 13 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-adhoc/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-adhoc/</guid>
     <description><![CDATA[Ad Hoc 是一個拉丁文常用短語，意思是指定或是特殊的任務，在 Ansible 中如果指定單一任務執行，可以使用 ad hoc 命令快速完成指定的任務。 練習環境 可以使用 HowHow 的創建]]></description>
 </item>
 <item>
     <title>Ansible - 管理 Ansible 設定組態檔</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-configuration/</link>
     <pubDate>Sat, 12 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-configuration/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-configuration/</guid>
     <description><![CDATA[Ansible 在執行時，需要明確定義要使用哪一種角色連線、使用哪一種連線機制、要不要提升root權限、提升權限是否要輸入密碼及 inventory 主機清單擺放位置，在每次]]></description>
 </item>
 <item>
     <title>Ansible - 創建 Ansible inventory 主機清單</title>
-    <link>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</link>
+    <link>https://how64bit.com/posts/ansible/2022/ansible-inventory/</link>
     <pubDate>Fri, 11 Mar 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/ansible/2022/ansible-inventory/</guid>
+    <guid>https://how64bit.com/posts/ansible/2022/ansible-inventory/</guid>
     <description><![CDATA[Ansible 中的 Inventory 主機清單是執行 Ansible 的必要元素之一， 藉由該清單可以告訴 Ansible 哪些機器歸它所控制，完成自動化部署工作。 1. inventroy 格式 inventory 格式可以為 Yaml 或是 INI 格式， 對於初]]></description>
 </item>
 </channel>

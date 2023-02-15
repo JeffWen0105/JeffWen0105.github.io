@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Docker - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/docker/</link>
+        <link>https://how64bit.com/tags/docker/</link>
         <description>Docker - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/docker/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/docker/" rel="self" type="application/rss+xml" /><item>
     <title>Docker -  CMD 與 ENTRYPOINT 差別</title>
-    <link>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</link>
+    <link>https://how64bit.com/posts/docker/2022/docker-dockerfile-cmd-entryporint/</link>
     <pubDate>Thu, 03 Feb 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/docker/2022/docker-dockerfile-cmd-entryporint/</guid>
+    <guid>https://how64bit.com/posts/docker/2022/docker-dockerfile-cmd-entryporint/</guid>
     <description><![CDATA[<p>在 Dockerfile 在最末端會看到 Image 會有 CMD 及 ENTRYPOINT 不同寫法，兩種都是執行容器第一個PID要執行的指令，不過用法到底差別在哪呢？</p>]]></description>
 </item>
 </channel>

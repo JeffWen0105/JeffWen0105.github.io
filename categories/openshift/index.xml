@@ -1,39 +1,39 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Openshift - Category - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/categories/openshift/</link>
+        <link>https://how64bit.com/categories/openshift/</link>
         <description>Openshift - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/categories/openshift/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/openshift/" rel="self" type="application/rss+xml" /><item>
     <title>Openshift - 初次部屬 App 應用程式</title>
-    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</link>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</link>
     <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-deploy-first-app/</guid>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</guid>
     <description><![CDATA[部屬一個雲平台的 App 應用程式在 OpenShift 是非常容易達成的，除了最平易近人的 Web Console GUI 之外還能透過 oc cli 指令來達成部屬。 1. Web Console 方式部屬 初學請先使用 kubeadmin 最高 Cluster 管理]]></description>
 </item>
 <item>
     <title>Openshift - Podman 進階管理容器</title>
-    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</link>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-podman-advanced/</link>
     <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-advanced/</guid>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-advanced/</guid>
     <description><![CDATA[<p>Poman 除了執行容器外還能掛載持久化目錄及管理本地Image映像檔。</p>]]></description>
 </item>
 <item>
     <title>Openshift - 單機個人版 Openshift 安裝及啟用</title>
-    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
     <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-install-openshift-local-lab/</guid>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-install-openshift-local-lab/</guid>
     <description><![CDATA[<p>部屬 OpenShift Cluster 需要較大的資源，如果只是練習測試，可以使用個人版的 OCP，學習如何操作單機版的 OpenShift</p>]]></description>
 </item>
 <item>
     <title>Openshift - Podman 管理容器基礎</title>
-    <link>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-basic/</link>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-podman-basic/</link>
     <pubDate>Sat, 28 Jan 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/openshift/2023/ocp-podman-basic/</guid>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-basic/</guid>
     <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，RHEL 中安全且好用的工具 - Podman。</p>]]></description>
 </item>
 </channel>

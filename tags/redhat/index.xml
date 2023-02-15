@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Redhat - Tag - HowHow の WebSite</title>
-        <link>https://blog.howhow.tk/tags/redhat/</link>
+        <link>https://how64bit.com/tags/redhat/</link>
         <description>Redhat - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.howhow.tk/tags/redhat/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/redhat/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - RedHat 8 圖形介面與終端介面切換</title>
-    <link>https://blog.howhow.tk/posts/linux/2022/linux-redhat-ptty/</link>
+    <link>https://how64bit.com/posts/linux/2022/linux-redhat-ptty/</link>
     <pubDate>Sun, 09 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://blog.howhow.tk/posts/linux/2022/linux-redhat-ptty/</guid>
+    <guid>https://how64bit.com/posts/linux/2022/linux-redhat-ptty/</guid>
     <description><![CDATA[<!-- ![](https://i.imgur.com/l3MSZLb.png) -->
 <p>RedHat 8 圖形介面與終端介面切換教學。</p>]]></description>
 </item>
