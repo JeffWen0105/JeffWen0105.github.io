@@ -4,7 +4,15 @@
         <link>https://how64bit.com/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 使用 Role 測試 port 是否開通</title>
+    <link>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</link>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</guid>
+    <description><![CDATA[對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更]]></description>
+</item>
+<item>
     <title>Linux - NTP 時間伺服器</title>
     <link>https://how64bit.com/posts/linux/2023/linux-chrony/</link>
     <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2022/linux-firewalld/</guid>
     <description><![CDATA[<p>從 RHEL 8 開始 <strong>firewalld</strong> 動態防火牆管理器就為主要預設的操作工具，是 Linux  核心 netfilter 封裝過的高階程式，透過簡易的操作就能有效的使用底層 netfilter 功能。</p>]]></description>
-</item>
-<item>
-    <title>Linux - 網路管理工具 - NetworkManager</title>
-    <link>https://how64bit.com/posts/linux/2022/linux-net-configure/</link>
-    <pubDate>Thu, 10 Mar 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2022/linux-net-configure/</guid>
-    <description><![CDATA[RHEL 預設使用 NetworkManager 工具管理網路組態及網路連線，Server 伺服器可以藉由 nmcli 指令或是 nmtui 交談式文字介面來操作。 1. NetworkManager 介紹 舊版本使用 network-scripts 配置管理網路( /etc/sysconfig/network-scripts/ )，]]></description>
 </item>
 </channel>
 </rss>

@@ -4,7 +4,15 @@
         <link>https://how64bit.com/categories/ansible/</link>
         <description>Ansible - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 06 May 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/ansible/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/ansible/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 使用 Role 測試 port 是否開通</title>
+    <link>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</link>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</guid>
+    <description><![CDATA[對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更]]></description>
+</item>
+<item>
     <title>Ansible - 流程控制</title>
     <link>https://how64bit.com/posts/ansible/2022/ansible-control-flow/</link>
     <pubDate>Fri, 06 May 2022 00:00:00 &#43;0000</pubDate>

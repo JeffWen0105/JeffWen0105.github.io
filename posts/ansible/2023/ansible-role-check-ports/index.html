@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Ansible - 使用 Role 測試 port 是否開通 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Ansible - 使用 Role 測試 port 是否開通" />
+<meta property="og:description" content="對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-18T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible - 使用 Role 測試 port 是否開通"/>
+<meta name="twitter:description" content="對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-chrony/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ansible - 使用 Role 測試 port 是否開通",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/ansible\/2023\/ansible-role-check-ports\/"
+        },"genre": "posts","keywords": "Ansible, Linux, Openshift","wordcount":  1131 ,
+        "url": "https:\/\/how64bit.com\/posts\/ansible\/2023\/ansible-role-check-ports\/","datePublished": "2023-02-18T00:00:00+00:00","dateModified": "2023-02-18T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ansible - 使用 Role 測試 port 是否開通</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/ansible/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Ansible</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-18">2023-02-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1131 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-基本需求">1. 基本需求</a></li>
+    <li><a href="#2-安裝方式">2. 安裝方式</a></li>
+    <li><a href="#3-結構樹">3. 結構樹</a></li>
+    <li><a href="#4-使用範例">4. 使用範例</a>
+      <ul>
+        <li><a href="#41-linux">4.1. Linux</a></li>
+        <li><a href="#42-coreos">4.2. CoreOS</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-role-variables">5. Role Variables</a></li>
+    <li><a href="#6-自動生成腳本範例">6. 自動生成腳本範例</a></li>
+    <li><a href="#7-小結">7. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更快速的方式檢查，我們會需要透過 Jump 主機(Bastion or Capsule)使用 Ansible 檢查。 此 Role 會依使用者所需產生一個檢測腳本，並避免 coreos 等輕量級作業系統缺少對應的 module 改用 synchronize 方式及執行腳本。</p>
+<!-- more -->
+<h2 id="1-基本需求">1. 基本需求</h2>
+<ul>
+<li>ansible 套件</li>
+<li>rsync   套件</li>
+</ul>
+<h2 id="2-安裝方式">2. 安裝方式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/JeffWen0105/ansible_role_check_ports.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ansible_role_check_ports
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-結構樹">3. 結構樹</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[howhow@howhow-pc ansible_role_check_ports]$ tree -F .
+</span></span><span class="line"><span class="cl">./
+</span></span><span class="line"><span class="cl">├── ansible.cfg
+</span></span><span class="line"><span class="cl">├── check_file.yml
+</span></span><span class="line"><span class="cl">├── check_port.sh
+</span></span><span class="line"><span class="cl">├── inventory
+</span></span><span class="line"><span class="cl">├── LICENSE
+</span></span><span class="line"><span class="cl">├── playbook.yml
+</span></span><span class="line"><span class="cl">├── README.md
+</span></span><span class="line"><span class="cl">└── roles/
+</span></span><span class="line"><span class="cl">    └── JeffWen0105.check_ports/
+</span></span><span class="line"><span class="cl">        ├── defaults/
+</span></span><span class="line"><span class="cl">        │   └── main.yml
+</span></span><span class="line"><span class="cl">        ├── meta/
+</span></span><span class="line"><span class="cl">        │   └── main.yml
+</span></span><span class="line"><span class="cl">        ├── README.md
+</span></span><span class="line"><span class="cl">        ├── tasks/
+</span></span><span class="line"><span class="cl">        │   └── main.yml
+</span></span><span class="line"><span class="cl">        ├── templates/
+</span></span><span class="line"><span class="cl">        │   └── check_port.sh.j2
+</span></span><span class="line"><span class="cl">        └── vars/
+</span></span><span class="line"><span class="cl">            └── main.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">7 directories, 13 files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-使用範例">4. 使用範例</h2>
+<p>範例以一般 Linux 與 CoreOS 操作說明。</p>
+<h3 id="41-linux">4.1. Linux</h3>
+<ol>
+<li>定義四台受控端機器在 inventory 。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[server]
+</span></span><span class="line"><span class="cl">172.25.250.11
+</span></span><span class="line"><span class="cl">172.25.250.12
+</span></span><span class="line"><span class="cl">172.25.250.13
+</span></span><span class="line"><span class="cl">172.25.250.14
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>設置要檢查的主機、通訊埠及TCP/UDP通訊協定在 check_file.yml 內。</li>
+</ol>
+<p><em>參數詳情請參閱最下方 Role Variables 說明。</em></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>可以設置多台主機及每台主機也能設置多個 port，不過請務必注意縮排 !!</strong></div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">servers:
+</span></span><span class="line"><span class="cl">  - host: 8.8.8.8
+</span></span><span class="line"><span class="cl">    protocol: udp
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - 123
+</span></span><span class="line"><span class="cl">      - 53
+</span></span><span class="line"><span class="cl">  - host: 127.0.0.1
+</span></span><span class="line"><span class="cl">    protocol: tcp
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - 22
+</span></span><span class="line"><span class="cl">      - 80
+</span></span><span class="line"><span class="cl">  - host: google.com
+</span></span><span class="line"><span class="cl">    protocol: tcp
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - 22
+</span></span><span class="line"><span class="cl">      - 443
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>執行範例 playbook.yml</li>
+</ol>
+<p><em>Ansible 最佳實踐直接將 JeffWen0105.check_ports 的 role 加入自定義 playbook內即可。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@bastion 03-Ansible_Role_check_Ports]$ ansible-playbook playbook.yml
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">TASK [JeffWen0105.check_ports : summary result] *******************************************************
+</span></span><span class="line"><span class="cl">ok: [172.25.250.11] =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;msg&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;📝 Test port on servera:&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:123&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:53&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at 127.0.0.1:80&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at google.com:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at google.com:443&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">ok: [172.25.250.12] =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;msg&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;📝 Test port on serverb:&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:123&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:53&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at 127.0.0.1:80&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at google.com:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at google.com:443&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="42-coreos">4.2. CoreOS</h3>
+<ol>
+<li>設定執行參數</li>
+</ol>
+<p>囿於 CoreOS 與一般 Linux 有些許差異，需設定下列參數至 ansible.cfg</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">### for coreos example
+</span></span><span class="line"><span class="cl">remote_user        = core
+</span></span><span class="line"><span class="cl">ansible_python_interpreter=&#34;PATH=/home/core/bin:$PATH python3&#34;
+</span></span><span class="line"><span class="cl">private_key_file=./&lt;ssh to coreos private key&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>coreos 執行結果</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[howhow@ocp4 ansible_role_check_ports]$ oc get no
+</span></span><span class="line"><span class="cl">NAME                         STATUS   ROLES                  AGE     VERSION
+</span></span><span class="line"><span class="cl">master-1.ocp4.how64bit.com   Ready    control-plane,master   5h40m   v1.25.4+a34b9e9
+</span></span><span class="line"><span class="cl">worker-1.ocp4.how64bit.com   Ready    worker                 5h25m   v1.25.4+a34b9e9
+</span></span><span class="line"><span class="cl">worker-2.ocp4.how64bit.com   Ready    worker                 5h25m   v1.25.4+a34b9e9
+</span></span><span class="line"><span class="cl">[howhow@ocp4 ansible_role_check_ports]$ ansible-playbook playbook.yml 
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">TASK [JeffWen0105.check_ports : summary result] *******************************************
+</span></span><span class="line"><span class="cl">ok: [192.168.122.188] =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;msg&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;📝 Test port on master-1.ocp4.how64bit.com:&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:123&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:53&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:80&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at google.com:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at google.com:443&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">ok: [192.168.122.171] =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;msg&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;📝 Test port on worker-1.ocp4.how64bit.com:&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:123&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:53&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at 127.0.0.1:80&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at google.com:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at google.com:443&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">ok: [192.168.122.29] =&gt; {
+</span></span><span class="line"><span class="cl">    &#34;msg&#34;: [
+</span></span><span class="line"><span class="cl">        &#34;📝 Test port on worker-2.ocp4.how64bit.com:&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:123&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 8.8.8.8:53&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at 127.0.0.1:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at 127.0.0.1:80&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 📛 Failure at google.com:22&#34;,
+</span></span><span class="line"><span class="cl">        &#34; 👍 Success at google.com:443&#34;
+</span></span><span class="line"><span class="cl">    ]
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-role-variables">5. Role Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>servers</td>
+<td>預設參數，務必加上</td>
+</tr>
+<tr>
+<td>host</td>
+<td>檢測主機，主機名或是 IP</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>tcp/upd</td>
+</tr>
+<tr>
+<td>ports</td>
+<td>檢測通訊埠以List陣列延伸</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-自動生成腳本範例">6. 自動生成腳本範例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># powered by HowHowWen</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Blog : https://how64bit.com</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Mail : blog@how64bit.com</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TIMEOUT_SECONDS</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LOCAL_HOST_NAME</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">DEVICE_PATH_LIST</span><span class="o">=(</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;/dev/tcp/127.0.0.1/22&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;/dev/tcp/127.0.0.1/80&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;\U1F4DD Test port on </span><span class="si">${</span><span class="nv">LOCAL_HOST_NAME</span><span class="si">}</span><span class="s2">:\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> device_path in <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DEVICE_PATH_LIST</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">HOST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$device_path</span><span class="s2">&#34;</span> <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f 4<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">export</span> <span class="nv">PORT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$device_path</span><span class="s2">&#34;</span> <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f 5<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    timeout <span class="nv">$TIMEOUT_SECONDS</span> bash -c <span class="s2">&#34;echo &#39;What is up by howhow ...&#39; &gt;</span><span class="si">${</span><span class="nv">device_path</span><span class="si">}</span><span class="s2">&#34;</span> 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="nb">printf</span> <span class="s2">&#34; \U1F44D Success at </span><span class="nv">$HOST</span><span class="s2">:</span><span class="nv">$PORT</span><span class="s2">&#34;</span> <span class="o">||</span>  <span class="nb">printf</span> <span class="s2">&#34; \U1F4DB Failure at </span><span class="nv">$HOST</span><span class="s2">:</span><span class="nv">$PORT</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> 
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-小結">7. 小結</h2>
+<p>透過 Ansible template 模組的優勢，可以很彈性產生所需執行的腳本，再透過分發到受控端結點，可以很輕鬆且快速取得所要的結果。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fansible%2f2023%2fansible-role-check-ports%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-18</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" data-title="Ansible - 使用 Role 測試 port 是否開通" data-hashtags="Ansible,Linux,Openshift"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" data-hashtag="Ansible"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" data-title="Ansible - 使用 Role 測試 port 是否開通" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" data-title="Ansible - 使用 Role 測試 port 是否開通"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" data-title="Ansible - 使用 Role 測試 port 是否開通"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/ansible/">Ansible</a>,&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/openshift/">Openshift</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-chrony/" class="prev" rel="prev" title="Linux - NTP 時間伺服器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - NTP 時間伺服器</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

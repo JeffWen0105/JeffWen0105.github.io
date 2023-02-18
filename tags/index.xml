@@ -4,10 +4,18 @@
         <link>https://how64bit.com/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible</title>
+    <link>https://how64bit.com/tags/ansible/</link>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/tags/ansible/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Linux</title>
     <link>https://how64bit.com/tags/linux/</link>
-    <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/tags/linux/</guid>
     <description><![CDATA[]]></description>
@@ -15,17 +23,9 @@
 <item>
     <title>Openshift</title>
     <link>https://how64bit.com/tags/openshift/</link>
-    <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/tags/openshift/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Ansible</title>
-    <link>https://how64bit.com/tags/ansible/</link>
-    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/tags/ansible/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>

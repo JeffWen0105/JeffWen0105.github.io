@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Ansible - 使用 Role 測試 port 是否開通</title>
+    <link>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</link>
+    <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</guid>
+    <description><![CDATA[對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更]]></description>
+</item>
+<item>
     <title>Linux - NTP 時間伺服器</title>
     <link>https://how64bit.com/posts/linux/2023/linux-chrony/</link>
     <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-network-teamd/</guid>
     <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
-</item>
-<item>
-    <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</guid>
-    <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
 </item>
 </channel>
 </rss>
