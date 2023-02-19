@@ -2,16 +2,18 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://how64bit.com/categories/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/categories/linux/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-iscsi-target/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/tags/ansible/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/categories/ansible/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/categories/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/tags/openshift/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/posts/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/</loc><lastmod>2023-02-18T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/categories/linux/</loc><lastmod>2023-02-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2023/linux-chrony/</loc><lastmod>2023-02-10T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/categories/openshift/</loc><lastmod>2023-02-07T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</loc><lastmod>2023-02-07T00:00:00&#43;00:00</lastmod></url><url>

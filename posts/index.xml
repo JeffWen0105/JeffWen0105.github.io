@@ -4,7 +4,23 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 存取 iSCSI Target </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</link>
+    <pubDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</guid>
+    <description><![CDATA[對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟]]></description>
+</item>
+<item>
+    <title>Linux - 提供 iSCSI 儲存</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-iscsi-target/</link>
+    <pubDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-iscsi-target/</guid>
+    <description><![CDATA[對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟]]></description>
+</item>
+<item>
     <title>Ansible - 使用 Role 測試 port 是否開通</title>
     <link>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</link>
     <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -67,22 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-basic/</guid>
     <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，RHEL 中安全且好用的工具 - Podman。</p>]]></description>
-</item>
-<item>
-    <title>Linux - DHCP 伺服器</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-dhcpd/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-dhcpd/</guid>
-    <description><![CDATA[除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv]]></description>
-</item>
-<item>
-    <title>Linux - Teaming 網路</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-network-teamd/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-network-teamd/</guid>
-    <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
 </item>
 </channel>
 </rss>

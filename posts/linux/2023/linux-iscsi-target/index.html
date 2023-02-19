@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - 提供 iSCSI 儲存 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - 提供 iSCSI 儲存" />
+<meta property="og:description" content="對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-19T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - 提供 iSCSI 儲存"/>
+<meta name="twitter:description" content="對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" /><link rel="prev" href="https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/" /><link rel="next" href="https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - 提供 iSCSI 儲存",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-iscsi-target\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  1879 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-iscsi-target\/","datePublished": "2023-02-19T00:00:00+00:00","dateModified": "2023-02-19T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - 提供 iSCSI 儲存</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-19">2023-02-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1879 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-iscsi-簡述">1. iSCSI 簡述</a></li>
+    <li><a href="#2-iscsi-常用術語">2. iSCSI 常用術語</a></li>
+    <li><a href="#3-提供-iscsi-target-步驟">3. 提供 iSCSI Target 步驟</a>
+      <ul>
+        <li><a href="#31-安裝套件">3.1. 安裝套件</a></li>
+        <li><a href="#32-開放防火牆規則">3.2. 開放防火牆規則</a></li>
+        <li><a href="#33-檢視所有的儲存設備">3.3. 檢視所有的儲存設備</a></li>
+        <li><a href="#34-設定-iscsi-target">3.4. 設定 iSCSI Target</a></li>
+        <li><a href="#35-啟動-iscsi-target">3.5. 啟動 iSCSI Target</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-設定網路介面">4. 設定網路介面</a></li>
+    <li><a href="#5-小結">5. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟體會要求需要一整顆硬碟才能使用，此時就需要 iSCSI 的幫助了。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來實作分享 iSCSI Target 操作，使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-iscsi-簡述">1. iSCSI 簡述</h2>
+<p>iSCSI 是一種基於 TCP/IP 協議上並藉由網路發送 SCSI 指令，可以藉由網路方式將一整顆硬碟分享給 Client 端並作為儲存區域網路(SAN)，對於客戶端來說看到的就一整顆完整的硬碟，而非是一般 NAS或是 CIFS 上分享的檔案目錄，在生產環境中 LAN 區域網路中使用 iSCSI 為避免網路頻寬上瓶頸，最好具備 10G 乙太網路，才能發揮最好的性能。</p>
+<hr>
+<h2 id="2-iscsi-常用術語">2. iSCSI 常用術語</h2>
+<ol>
+<li>Initiator :</li>
+</ol>
+<ul>
+<li>一個 iSCSI 的 Client 端，並須授予其唯一名稱 (IQN)才能訪問其 iSCSI Target。</li>
+</ul>
+<ol start="2">
+<li>Target :</li>
+</ol>
+<ul>
+<li>iSCSI Server 上的儲存資源，也是需授予危機名稱，每一個目標可以提供一個或多個設備或是邏輯單元，大多是都是一個目標對應一個設備。</li>
+</ul>
+<ol start="3">
+<li>IQN (iSCSI Qualified Name) :</li>
+</ol>
+<ul>
+<li>唯一的全球範圍名稱，用於識別 Initiator 與 Target，其格式如下:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iqn.YYYY-MM.com.reversed.domain:name_string
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>NOTE<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><em>reversed.domain 為反向網域名稱。 EX. <a href="https://www.example.com" target="_blank" rel="noopener noreffer ">www.example.com</a> -&gt;  com.example.www</em></p>
+<p><em>name_string ，用於識別管理的目標，通常以主機名稱當作設定值</em></p>
+</div>
+        </div>
+    </div>
+<ol start="4">
+<li>Portal :</li>
+</ol>
+<ul>
+<li>Initiator 需要存取的目標 IP　位置及 Port 通訊埠號。</li>
+</ul>
+<ol start="5">
+<li>LUN (Logical Unit Number) :</li>
+</ol>
+<ul>
+<li>LUN 表示目標所提空的區塊設備，每一個目標可以提供一個至多個 LUN。</li>
+</ul>
+<ol start="6">
+<li>ACL (Access Control List) :</li>
+</ol>
+<ul>
+<li>現在哪些 Initiator 可以存取 Server 存取權限。</li>
+</ul>
+<ol start="7">
+<li>TPG (Target Portal Group) :</li>
+</ol>
+<ul>
+<li>TPG 為 Target 完整配置，包含 Portal、LUN及ACL等。</li>
+</ul>
+<hr>
+<h2 id="3-提供-iscsi-target-步驟">3. 提供 iSCSI Target 步驟</h2>
+<h3 id="31-安裝套件">3.1. 安裝套件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install targetcli -y | grep Installed -B 5</span>
+</span></span><span class="line"><span class="cl">Transaction <span class="nv">Summary</span>
+</span></span><span class="line"><span class="cl"><span class="o">================================================================================</span>
+</span></span><span class="line"><span class="cl">Install  <span class="m">7</span> Packages
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Total download size: 1.3 M
+</span></span><span class="line"><span class="cl">Installed size: 4.7 M
+</span></span><span class="line"><span class="cl">--
+</span></span><span class="line"><span class="cl">  Verifying        : python3-pyparsing-2.1.10-7.el8.noarch                  4/7
+</span></span><span class="line"><span class="cl">  Verifying        : python3-rtslib-2.1.75-4.el8.noarch                     5/7
+</span></span><span class="line"><span class="cl">  Verifying        : python3-urwid-1.3.1-4.el8.x86_64                       6/7
+</span></span><span class="line"><span class="cl">  Verifying        : target-restore-2.1.75-4.el8.noarch                     7/7
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="32-開放防火牆規則">3.2. 開放防火牆規則</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent  --add-service=iscsi-target</span>
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-檢視所有的儲存設備">3.3. 檢視所有的儲存設備</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># lsblk</span>
+</span></span><span class="line"><span class="cl">NAME           MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span><span class="line"><span class="cl">vda            252:0    <span class="m">0</span>   10G  <span class="m">0</span> disk
+</span></span><span class="line"><span class="cl">├─vda1         252:1    <span class="m">0</span>  100M  <span class="m">0</span> part /boot/efi
+</span></span><span class="line"><span class="cl">├─vda2         252:2    <span class="m">0</span> 1000M  <span class="m">0</span> part /boot
+</span></span><span class="line"><span class="cl">├─vda3         252:3    <span class="m">0</span>  8.9G  <span class="m">0</span> part
+</span></span><span class="line"><span class="cl">│ └─rocky-root 253:0    <span class="m">0</span>  8.9G  <span class="m">0</span> lvm  /
+</span></span><span class="line"><span class="cl">└─vda4         252:4    <span class="m">0</span>    1M  <span class="m">0</span> part
+</span></span><span class="line"><span class="cl">vdb            252:16   <span class="m">0</span>   50G  <span class="m">0</span> disk
+</span></span><span class="line"><span class="cl">vdc            252:32   <span class="m">0</span>   50G  <span class="m">0</span> disk
+</span></span><span class="line"><span class="cl">vdd            252:48   <span class="m">0</span>   50G  <span class="m">0</span> disk
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-設定-iscsi-target">3.4. 設定 iSCSI Target</h3>
+<p><strong>藉由互動模式的 targetcli 操作</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">使用 ServerA 為 Target 範例:
+</span></span><span class="line"><span class="cl">    1. IQN : iqn.2023-02.com.example:servera
+</span></span><span class="line"><span class="cl">    2. 監聽的網路介面為 : 192.168.0.10
+</span></span><span class="line"><span class="cl">    3. 使用虛擬硬碟 : /dev/vdb 為其 Block 並命名 mybk
+</span></span><span class="line"><span class="cl">    4. ACL 限制 : iqn.2023-02.com.example:serverb 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>查看所有的內容</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># targetcli</span>
+</span></span><span class="line"><span class="cl">Warning: Could not load preferences file /root/.targetcli/prefs.bin.
+</span></span><span class="line"><span class="cl">targetcli shell version 2.1.53
+</span></span><span class="line"><span class="cl">Copyright 2011-2013 by Datera, Inc and others.
+</span></span><span class="line"><span class="cl">For <span class="nb">help</span> on commands, <span class="nb">type</span> <span class="s1">&#39;help&#39;</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/&gt; ls
+</span></span><span class="line"><span class="cl">o- / ............................................................................................ <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- backstores ................................................................................. <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- block ..................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- fileio .................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- pscsi ..................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- ramdisk ................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- iscsi ............................................................................... <span class="o">[</span>Targets: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- loopback ............................................................................ <span class="o">[</span>Targets: 0<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>儲存設備<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>在 backstore 物件中可以選擇下列得儲存設備:</p>
+<ol>
+<li>block : 一整顆硬碟、硬碟分區或是 LVM。</li>
+<li>fileio : 以本地文件系統中的檔案當作硬碟 Image。</li>
+<li>pscsi : 連接到真實物理的 SCSI 設備。</li>
+<li>ramdisk : 使用記憶體分享，一但 Target 重啟後，將會喪失其數據。</li>
+</ol>
+</div>
+        </div>
+    </div>
+<ol start="2">
+<li>使用 /dev/vdb 一整顆虛擬硬碟分享</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; /backstores/block create mybk /dev/vdb
+</span></span><span class="line"><span class="cl">Created block storage object mybk using /dev/vdb.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>創建 Target IQN</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; /iscsi create iqn.2023-02.com.example:servera
+</span></span><span class="line"><span class="cl">Created target iqn.2023-02.com.example:servera.
+</span></span><span class="line"><span class="cl">Created TPG 1.
+</span></span><span class="line"><span class="cl">Global pref <span class="nv">auto_add_default_portal</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">Created default portal listening on all IPs <span class="o">(</span>0.0.0.0<span class="o">)</span>, port 3260.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>查閱所創建的內容</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; ls
+</span></span><span class="line"><span class="cl">o- / ............................................................................................ <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- backstores ................................................................................. <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- block ..................................................................... <span class="o">[</span>Storage Objects: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span> o- mybk ............................................. <span class="o">[</span>/dev/vdb <span class="o">(</span>50.0GiB<span class="o">)</span> write-thru deactivated<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span>   o- alua ...................................................................... <span class="o">[</span>ALUA Groups: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span>     o- default_tg_pt_gp .......................................... <span class="o">[</span>ALUA state: Active/optimized<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- fileio .................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- pscsi ..................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- ramdisk ................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- iscsi ............................................................................... <span class="o">[</span>Targets: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- iqn.2023-02.com.example:servera ...................................................... <span class="o">[</span>TPGs: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>   o- tpg1 .................................................................. <span class="o">[</span>no-gen-acls, no-auth<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- acls ............................................................................. <span class="o">[</span>ACLs: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- luns ............................................................................. <span class="o">[</span>LUNs: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- portals ....................................................................... <span class="o">[</span>Portals: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>       o- 0.0.0.0:3260 ........................................................................ <span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- loopback ............................................................................ <span class="o">[</span>Targets: 0<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>刪除任何網路介面存取即設定限定介面</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; /iscsi/iqn.2023-02.com.example:servera/tpg1/portals/ delete 0.0.0.0 <span class="m">3260</span>
+</span></span><span class="line"><span class="cl">Deleted network portal 0.0.0.0:3260
+</span></span><span class="line"><span class="cl">/&gt; /iscsi/iqn.2023-02.com.example:servera/tpg1/portals create 192.168.0.10 <span class="m">3260</span>
+</span></span><span class="line"><span class="cl">Using default IP port <span class="m">3260</span>
+</span></span><span class="line"><span class="cl">Created network portal 192.168.0.10:3260.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>設定 Target 掛載的 LUN</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; /iscsi/iqn.2023-02.com.example:servera/tpg1/luns create /backstores/block/mybk
+</span></span><span class="line"><span class="cl">Created LUN 0.
+</span></span><span class="line"><span class="cl">Created LUN 0-&gt;0 mapping in node ACL iqn.2023-02.com.example:serverb
+</span></span><span class="line"><span class="cl">/&gt; ls
+</span></span><span class="line"><span class="cl">o- / ............................................................................................ <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- backstores ................................................................................. <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- block ..................................................................... <span class="o">[</span>Storage Objects: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span> o- mybk ............................................... <span class="o">[</span>/dev/vdb <span class="o">(</span>50.0GiB<span class="o">)</span> write-thru activated<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span>   o- alua ...................................................................... <span class="o">[</span>ALUA Groups: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> <span class="p">|</span>     o- default_tg_pt_gp .......................................... <span class="o">[</span>ALUA state: Active/optimized<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- fileio .................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- pscsi ..................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- ramdisk ................................................................... <span class="o">[</span>Storage Objects: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- iscsi ............................................................................... <span class="o">[</span>Targets: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span> o- iqn.2023-02.com.example:servera ...................................................... <span class="o">[</span>TPGs: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>   o- tpg1 .................................................................. <span class="o">[</span>no-gen-acls, no-auth<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- acls ............................................................................. <span class="o">[</span>ACLs: 0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     <span class="p">|</span>   o- mapped_lun0 ..................................................... <span class="o">[</span>lun0 block/mybk <span class="o">(</span>rw<span class="o">)]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- luns ............................................................................. <span class="o">[</span>LUNs: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     <span class="p">|</span> o- lun0 .......................................... <span class="o">[</span>block/mybk <span class="o">(</span>/dev/vdb<span class="o">)</span> <span class="o">(</span>default_tg_pt_gp<span class="o">)]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>     o- portals ....................................................................... <span class="o">[</span>Portals: 1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">|</span>       o- 192.168.0.10:3260 ................................................................... <span class="o">[</span>OK<span class="o">]</span>
+</span></span><span class="line"><span class="cl">  o- loopback ............................................................................ <span class="o">[</span>Targets: 0<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>設定 ACL 存取後離開</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/&gt; /iscsi/iqn.2023-02.com.example:servera/tpg1/acls create iqn.2023-02.com.example:serverb
+</span></span><span class="line"><span class="cl">Created Node ACL <span class="k">for</span> iqn.2023-02.com.example:serverb
+</span></span><span class="line"><span class="cl">/&gt; <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">Global pref <span class="nv">auto_save_on_exit</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">Configuration saved to /etc/target/saveconfig.json
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>自動保存<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在互動模式下只要離開後會自動保存於 /etc/target/saveconfig.json 檔案內。</div>
+        </div>
+    </div>
+<h3 id="35-啟動-iscsi-target">3.5. 啟動 iSCSI Target</h3>
+<p><em>設定開機後即現在立即啟動其服務。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable target --now</span>
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/multi-user.target.wants/target.service → /usr/lib/systemd/system/target.service.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="4-設定網路介面">4. 設定網路介面</h2>
+<p>囿於 Target 分享於 192.168.0.10 ，可以使用 eth3 網路介面卡設定 IP，其步驟如下 :</p>
+<p><em>關於如何使用 nmcli 操作方式可以參閱 <a href="https://how64bit.com/posts/linux/2022/linux-net-configure/" target="_blank" rel="noopener noreffer ">HowHow 的網路管理工具 - NetworkManager 文章</a>。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ip -4 a</span>
+</span></span><span class="line"><span class="cl">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+</span></span><span class="line"><span class="cl">    inet 127.0.0.1/8 scope host lo
+</span></span><span class="line"><span class="cl">       valid_lft forever preferred_lft forever
+</span></span><span class="line"><span class="cl">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+</span></span><span class="line"><span class="cl">    altname enp1s0
+</span></span><span class="line"><span class="cl">    inet 172.25.250.11/24 brd 172.25.250.255 scope global dynamic noprefixroute eth0
+</span></span><span class="line"><span class="cl">       valid_lft 484sec preferred_lft 484sec
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli con add con-name eth3 ipv4.method manual ipv4.addresses 192.168.0.10/24 autoconnect yes ifname eth3 type ethernet</span>
+</span></span><span class="line"><span class="cl">Connection <span class="s1">&#39;eth3&#39;</span> <span class="o">(</span>0e521351-81f3-481a-8b6e-84a177ea456f<span class="o">)</span> successfully added.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># nmcli con up eth3</span>
+</span></span><span class="line"><span class="cl">Connection successfully activated <span class="o">(</span>D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/63<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># ip -4 a</span>
+</span></span><span class="line"><span class="cl">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+</span></span><span class="line"><span class="cl">    inet 127.0.0.1/8 scope host lo
+</span></span><span class="line"><span class="cl">       valid_lft forever preferred_lft forever
+</span></span><span class="line"><span class="cl">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+</span></span><span class="line"><span class="cl">    altname enp1s0
+</span></span><span class="line"><span class="cl">    inet 172.25.250.11/24 brd 172.25.250.255 scope global dynamic noprefixroute eth0
+</span></span><span class="line"><span class="cl">       valid_lft 410sec preferred_lft 410sec
+</span></span><span class="line"><span class="cl">5: eth3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+</span></span><span class="line"><span class="cl">    altname enp13s0
+</span></span><span class="line"><span class="cl">    inet 192.168.0.10/24 brd 192.168.0.255 scope global noprefixroute eth3
+</span></span><span class="line"><span class="cl">       valid_lft forever preferred_lft forever
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="5-小結">5. 小結</h2>
+<p>提供 iSCSI Target 藉由 targetcli 可以非常方便就完成其設定，除了互動模式外，也可以直接補齊晚整指令藉由 Shell 自動化完成，例如 : <code>targetcli /backstores/block create mybk /dev/vdb</code> 方式，將所有步驟寫入腳本中。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-iscsi-target%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-19</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" data-title="Linux - 提供 iSCSI 儲存" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" data-title="Linux - 提供 iSCSI 儲存" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" data-title="Linux - 提供 iSCSI 儲存"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" data-title="Linux - 提供 iSCSI 儲存"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ansible/2023/ansible-role-check-ports/" class="prev" rel="prev" title="Ansible - 使用 Role 測試 port 是否開通"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Ansible - 使用 Role 測試 port 是否開通</a>
+            <a href="/posts/linux/2023/linux-iscsi-initiator/" class="next" rel="next" title="Linux - 存取 iSCSI Target ">Linux - 存取 iSCSI Target <i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
