@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - NFS 檔案系統 </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-nfs/</guid>
+    <description><![CDATA[在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
+</item>
+<item>
     <title>Linux - 存取 iSCSI Target</title>
     <link>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</link>
     <pubDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-install-openshift-local-lab/</guid>
     <description><![CDATA[<p>部屬 OpenShift Cluster 需要較大的資源，如果只是練習測試，可以使用個人版的 OCP，學習如何操作單機版的 OpenShift</p>]]></description>
-</item>
-<item>
-    <title>Openshift - Podman 管理容器基礎</title>
-    <link>https://how64bit.com/posts/openshift/2023/ocp-podman-basic/</link>
-    <pubDate>Sat, 28 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-basic/</guid>
-    <description><![CDATA[<p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，RHEL 中安全且好用的工具 - Podman。</p>]]></description>
 </item>
 </channel>
 </rss>

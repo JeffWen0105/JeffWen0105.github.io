@@ -4,7 +4,15 @@
         <link>https://how64bit.com/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - NFS 檔案系統 </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-nfs/</guid>
+    <description><![CDATA[在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
+</item>
+<item>
     <title>Linux - 存取 iSCSI Target</title>
     <link>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</link>
     <pubDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2022/linux-create-playground/</guid>
     <description><![CDATA[1. 練習環境介紹 架構圖 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時]]></description>
-</item>
-<item>
-    <title>Linux - Iptables Filter 表規則管理</title>
-    <link>https://how64bit.com/posts/linux/2022/linux-iptables-filter/</link>
-    <pubDate>Tue, 10 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2022/linux-iptables-filter/</guid>
-    <description><![CDATA[<p>iptables 是 Linux 非常強大的工具，可以藉由此工具控制核心 netfilter ，針對從 Lay 2 - 4 訊框、封包等各種攔截及過濾，並且還具備 NAT、路由、頻管合併等各式高階功能。</p>]]></description>
 </item>
 </channel>
 </rss>

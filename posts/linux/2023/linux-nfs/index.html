@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - NFS 檔案系統  - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - NFS 檔案系統 " />
+<meta property="og:description" content="在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-nfs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - NFS 檔案系統 "/>
+<meta name="twitter:description" content="在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-nfs/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - NFS 檔案系統 ",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-nfs\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  653 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-nfs\/","datePublished": "2023-02-21T00:00:00+00:00","dateModified": "2023-02-21T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - NFS 檔案系統 </h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;653 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-nfs-檔案系統簡介">1. NFS 檔案系統簡介</a></li>
+    <li><a href="#2-nfs-server-設定-servera">2. NFS Server 設定 (ServerA)</a>
+      <ul>
+        <li><a href="#21-安裝-nfs-套件">2.1. 安裝 NFS 套件</a></li>
+        <li><a href="#22-分享目錄及設定-nfs-server">2.2. 分享目錄及設定 NFS Server</a></li>
+        <li><a href="#23-啟用服務及開放防火牆規則">2.3. 啟用服務及開放防火牆規則</a></li>
+        <li><a href="#24-檢查開放的分享目錄">2.4. 檢查開放的分享目錄</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-nfs-client-設定-serverb">3. NFS Client 設定 (ServerB)</a>
+      <ul>
+        <li><a href="#21-安裝-nfs-套件-1">2.1. 安裝 NFS 套件</a></li>
+        <li><a href="#22-掛載硬碟及其看內容">2.2 掛載硬碟及其看內容</a></li>
+        <li><a href="#23-開機自動掛載">2.3 開機自動掛載</a></li>
+        <li><a href="#3-小結">3. 小結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來實作 NFS 伺服器與存取操作，使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-nfs-檔案系統簡介">1. NFS 檔案系統簡介</h2>
+<p>NFS 是一種基於檔案儲存的協定，提供網路接入伺服器(NAS)設備使用，NFS可以使用 NFSv4 (TCP )或是 NFSv3 (TCP + UDP)協定，NFS 伺服器透過暴露出分享的檔案系統目錄及其內容，就可以使 Client 端直接在本地機器上掛載其檔案目錄使用。</p>
+<h2 id="2-nfs-server-設定-servera">2. NFS Server 設定 (ServerA)</h2>
+<h3 id="21-安裝-nfs-套件">2.1. 安裝 NFS 套件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install  nfs-utils -y | tail -n 4</span>
+</span></span><span class="line"><span class="cl">Upgraded:
+</span></span><span class="line"><span class="cl">  nfs-utils-1:2.3.3-57.el8_7.1.x86_64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Complete!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>無論是 Client 或是 Server 均需安裝此 nfs-utils套件。</em></div>
+        </div>
+    </div>
+<!-- more -->
+<h3 id="22-分享目錄及設定-nfs-server">2.2. 分享目錄及設定 NFS Server</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mkdir -p /shares</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># echo &#34;Hello World&#34; &gt; /shares/example.log</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># cat &gt; /etc/exports.d/server.exports &lt;&lt;EOF</span>
+</span></span><span class="line"><span class="cl">&gt; /shares *.lab.example.com<span class="o">(</span>ro,no_root_squash<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; EOF
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>權限 rw<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>可以設定 rw 或是 ro來限制其單一主機或是網段內的機器存取權限。</em></div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>權限 no_root_squash<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>當 Client 端進行存取時預設的使用者會變成 nobody使用者，表示 Client 的 root 將完全無法使用其遠端掛載 NFS 內容，可以透過設定 <code>no_root_squash</code> 來進用此保護措施。</em></div>
+        </div>
+    </div>
+<h3 id="23-啟用服務及開放防火牆規則">2.3. 啟用服務及開放防火牆規則</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now nfs-server</span>
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/multi-user.target.wants/nfs-server.service → /usr/lib/systemd/system/nfs-server.service.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --add-service=nfs</span>
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="24-檢查開放的分享目錄">2.4. 檢查開放的分享目錄</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># exportfs -v</span>
+</span></span><span class="line"><span class="cl">/shares         172.25.250.0/24<span class="o">(</span>sync,wdelay,hide,no_subtree_check,sec<span class="o">=</span>sys,ro,secure,no_root_squash,no_all_squash<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-nfs-client-設定-serverb">3. NFS Client 設定 (ServerB)</h2>
+<h3 id="21-安裝-nfs-套件-1">2.1. 安裝 NFS 套件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum install  nfs-utils -y | tail -n 4</span>
+</span></span><span class="line"><span class="cl">Upgraded:
+</span></span><span class="line"><span class="cl">  nfs-utils-1:2.3.3-57.el8_7.1.x86_64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Complete!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="22-掛載硬碟及其看內容">2.2 掛載硬碟及其看內容</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># mount servera:/shares /mnt</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@serverb ~<span class="o">]</span><span class="c1"># cat /mnt/example.log</span>
+</span></span><span class="line"><span class="cl">Hello World
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="23-開機自動掛載">2.3 開機自動掛載</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@serverb ~]# vim /etc/fstab
+</span></span><span class="line"><span class="cl">[root@serverb ~]# cat &gt;&gt; /etc/fstab &lt;&lt; EOF
+</span></span><span class="line"><span class="cl">servera:/shares /mnt nfs defaults,_netdev 0 0
+</span></span><span class="line"><span class="cl">EOF
+</span></span><span class="line"><span class="cl">[root@serverb ~]# mount -a
+</span></span><span class="line"><span class="cl">[root@serverb ~]# cat /mnt/example.log
+</span></span><span class="line"><span class="cl">Hello World
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw" aria-hidden="true"></i>autofs<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>強烈建議使用 autofs 套件來代替一般的掛載，可以減少無用的頻寬開銷。</em></div>
+        </div>
+    </div>
+<h3 id="3-小結">3. 小結</h3>
+<p>NFS 在網路分享上是最簡單也是最容易的一種方式， Windows 也可以安裝內建的 nfs client 套件來掛載由 Linux 分享出來的網路磁碟機使用。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-nfs%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/" data-title="Linux - NFS 檔案系統 " data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/" data-title="Linux - NFS 檔案系統 " data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/" data-title="Linux - NFS 檔案系統 "><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-nfs/" data-title="Linux - NFS 檔案系統 "><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-iscsi-initiator/" class="prev" rel="prev" title="Linux - 存取 iSCSI Target"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 存取 iSCSI Target</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
