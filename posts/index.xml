@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 提供 SMB 檔案分享</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
+    <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
+</item>
+<item>
     <title>Linux - NFS 檔案系統 </title>
     <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-advanced/</guid>
     <description><![CDATA[<p>Poman 除了執行容器外還能掛載持久化目錄及管理本地Image映像檔。</p>]]></description>
-</item>
-<item>
-    <title>Openshift - 單機個人版 Openshift 安裝及啟用</title>
-    <link>https://how64bit.com/posts/openshift/2023/ocp-install-openshift-local-lab/</link>
-    <pubDate>Sun, 29 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/openshift/2023/ocp-install-openshift-local-lab/</guid>
-    <description><![CDATA[<p>部屬 OpenShift Cluster 需要較大的資源，如果只是練習測試，可以使用個人版的 OCP，學習如何操作單機版的 OpenShift</p>]]></description>
 </item>
 </channel>
 </rss>

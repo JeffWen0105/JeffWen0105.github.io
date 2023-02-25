@@ -4,7 +4,15 @@
         <link>https://how64bit.com/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 提供 SMB 檔案分享</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
+    <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
+</item>
+<item>
     <title>Linux - NFS 檔案系統 </title>
     <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</guid>
     <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
-</item>
-<item>
-    <title>Linux - 打造輕巧 Linux 練習 Lab</title>
-    <link>https://how64bit.com/posts/linux/2022/linux-create-playground/</link>
-    <pubDate>Tue, 31 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2022/linux-create-playground/</guid>
-    <description><![CDATA[1. 練習環境介紹 架構圖 主控端虛擬化 bastion Server 。 4 台巢狀式虛擬式機器 (練習區)。 所有均為無圖形化伺服器，減少無用資源消耗及硬碟空間。 可以透過主控端隨時]]></description>
 </item>
 </channel>
 </rss>
