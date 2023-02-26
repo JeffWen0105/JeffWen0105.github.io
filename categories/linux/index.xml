@@ -4,10 +4,34 @@
         <link>https://how64bit.com/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 設定 Web 伺服器(Nginx) </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
+    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-nginx/</guid>
+    <description><![CDATA[Nginx 是另一種比 Apache HTTP 更輕量且更簡單上的 Web 伺服器，也是反向代理與負載平衡中的佼佼者。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 Web 伺服器與存取操作，]]></description>
+</item>
+<item>
+    <title>Linux - Web 伺服器(httpd) 使用 SSL (TLS)</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</guid>
+    <description><![CDATA[HTTP 伺服器固然方便，不過明碼在網路世界上裸奔還是有一定的風險，尤其有個資或是機敏資料傳輸時顯得格外不安全，必須透過 HTTPS 傳輸更為安全。 練習環境 可以]]></description>
+</item>
+<item>
+    <title>Linux - 設定  Web 伺服器(httpd)</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-httd/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-httd/</guid>
+    <description><![CDATA[目前任何操作都能透過瀏覽器在上面操作，無論是編輯影片、圖片甚至是寫文件等，故 Web 伺服器建立就十分重要，而 Apache HTTP 伺服器是一種很常用的選擇。 練習環境]]></description>
+</item>
+<item>
     <title>Linux - 提供 SMB 檔案分享</title>
     <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
-    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Fri, 24 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
     <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
@@ -59,30 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-named/</guid>
     <description><![CDATA[封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早]]></description>
-</item>
-<item>
-    <title>Linux - DHCP 伺服器</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-dhcpd/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-dhcpd/</guid>
-    <description><![CDATA[除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv]]></description>
-</item>
-<item>
-    <title>Linux - Teaming 網路</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-network-teamd/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-network-teamd/</guid>
-    <description><![CDATA[Teamd 是一種可以達成網路高可用性或是合併頻寬的手法，RHEL 可以使用 nmcli 非常容易地達成目的。 1. Teaming 網路簡介 為了保持網路高可用性或是更高的頻寬可以透過]]></description>
-</item>
-<item>
-    <title>Linux - 打造輕巧 Linux 練習 Lab 第二版</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</link>
-    <pubDate>Sun, 01 Jan 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-create-playground-v2-copy/</guid>
-    <description><![CDATA[1. 練習環境介紹 LAB 環境 虛擬主機網路拓樸 網路拓樸 注: eth0 為管理網路(未列入上圖)，各機器有固定 mac address ，並向 DHCP Server 索取對應 IP 及 主機名稱。 主控端虛擬化 bastion Server]]></description>
 </item>
 </channel>
 </rss>

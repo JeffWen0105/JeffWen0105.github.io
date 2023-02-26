@@ -4,7 +4,15 @@
         <link>https://how64bit.com/tags/nginx/</link>
         <description>Nginx - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 14 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/nginx/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - 設定 Web 伺服器(Nginx) </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
+    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-nginx/</guid>
+    <description><![CDATA[Nginx 是另一種比 Apache HTTP 更輕量且更簡單上的 Web 伺服器，也是反向代理與負載平衡中的佼佼者。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 Web 伺服器與存取操作，]]></description>
+</item>
+<item>
     <title>Nginx - 反向代理的代名詞</title>
     <link>https://how64bit.com/posts/nginx/2022/nginx-introduction/</link>
     <pubDate>Mon, 14 Feb 2022 00:00:00 &#43;0000</pubDate>

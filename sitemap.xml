@@ -2,13 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://how64bit.com/categories/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/categories/linux/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/posts/linux/2023/linux-smb/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/posts/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/categories/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/categories/linux/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-nginx/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/nginx/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/</loc><lastmod>2023-02-26T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-httd/</loc><lastmod>2023-02-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/linux/2023/linux-smb/</loc><lastmod>2023-02-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2023/linux-nfs/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2023/linux-iscsi-target/</loc><lastmod>2023-02-19T00:00:00&#43;00:00</lastmod></url><url>
@@ -82,7 +86,6 @@
             <loc>https://how64bit.com/posts/linux/2022/linux-storage-vdo/</loc><lastmod>2022-02-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2022/linux-storage-lvm/</loc><lastmod>2022-02-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2022/linux-storage-partition/</loc><lastmod>2022-02-14T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/nginx/</loc><lastmod>2022-02-14T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/categories/nginx/</loc><lastmod>2022-02-14T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/nginx/2022/nginx-introduction/</loc><lastmod>2022-02-14T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2022/linux-selinux/</loc><lastmod>2022-02-12T00:00:00&#43;00:00</lastmod></url><url>

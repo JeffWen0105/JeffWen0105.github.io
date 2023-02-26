@@ -4,12 +4,36 @@
         <link>https://how64bit.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://how64bit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux - 設定 Web 伺服器(Nginx) </title>
+    <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
+    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-nginx/</guid>
+    <description><![CDATA[Nginx 是另一種比 Apache HTTP 更輕量且更簡單上的 Web 伺服器，也是反向代理與負載平衡中的佼佼者。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 Web 伺服器與存取操作，]]></description>
+</item>
+<item>
+    <title>Linux - Web 伺服器(httpd) 使用 SSL (TLS)</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</guid>
+    <description><![CDATA[HTTP 伺服器固然方便，不過明碼在網路世界上裸奔還是有一定的風險，尤其有個資或是機敏資料傳輸時顯得格外不安全，必須透過 HTTPS 傳輸更為安全。 練習環境 可以]]></description>
+</item>
+<item>
+    <title>Linux - 設定  Web 伺服器(httpd)</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-httd/</link>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-httd/</guid>
+    <description><![CDATA[目前任何操作都能透過瀏覽器在上面操作，無論是編輯影片、圖片甚至是寫文件等，故 Web 伺服器建立就十分重要，而 Apache HTTP 伺服器是一種很常用的選擇。 練習環境]]></description>
+</item>
+<item>
     <title>Linux - 提供 SMB 檔案分享</title>
     <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
-    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Fri, 24 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
     <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
@@ -61,30 +85,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</guid>
     <description><![CDATA[部屬一個雲平台的 App 應用程式在 OpenShift 是非常容易達成的，除了最平易近人的 Web Console GUI 之外還能透過 oc cli 指令來達成部屬。 1. Web Console 方式部屬 初學請先使用 kubeadmin 最高 Cluster 管理]]></description>
-</item>
-<item>
-    <title>Linux - 使用 wget 下載 Google Driver 檔案</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-download-google-drive-file-by-wget/</link>
-    <pubDate>Mon, 06 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-download-google-drive-file-by-wget/</guid>
-    <description><![CDATA[Google Driver 空間分享檔案下載使用在 Desktop 任一作業系統有圖形化介面下都非常方便且容易下載，如果今天只有純 Server 沒有啟用圖形化介面功能，除了桌面端下載後使用 SSH 輸]]></description>
-</item>
-<item>
-    <title>Linux - BIND 名稱伺服器</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-named/</link>
-    <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-named/</guid>
-    <description><![CDATA[封包傳輸在 L3 層均透過 IP 來處理要往哪裡轉發及發送，不過 IP 一連串無意義的數字對於人類來說記憶上較為困難，故 DNS 名稱伺服器問世就是要解決此問題，從早]]></description>
-</item>
-<item>
-    <title>Openshift - Podman 進階管理容器</title>
-    <link>https://how64bit.com/posts/openshift/2023/ocp-podman-advanced/</link>
-    <pubDate>Wed, 01 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/openshift/2023/ocp-podman-advanced/</guid>
-    <description><![CDATA[<p>Poman 除了執行容器外還能掛載持久化目錄及管理本地Image映像檔。</p>]]></description>
 </item>
 </channel>
 </rss>
