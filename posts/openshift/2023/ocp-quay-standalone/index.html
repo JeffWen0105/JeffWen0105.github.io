@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Openshift - Quay 本地私有 Registry 倉庫 (standalone) - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Openshift - Quay 本地私有 Registry 倉庫 (standalone)" />
+<meta property="og:description" content="Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-30T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Openshift - Quay 本地私有 Registry 倉庫 (standalone)"/>
+<meta name="twitter:description" content="Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-nginx/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Openshift - Quay 本地私有 Registry 倉庫 (standalone)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/openshift\/2023\/ocp-quay-standalone\/"
+        },"genre": "posts","keywords": "Openshift, kubernetes","wordcount":  1202 ,
+        "url": "https:\/\/how64bit.com\/posts\/openshift\/2023\/ocp-quay-standalone\/","datePublished": "2023-03-30T00:00:00+00:00","dateModified": "2023-03-30T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Openshift - Quay 本地私有 Registry 倉庫 (standalone)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/openshift/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Openshift</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-30">2023-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1202 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-quay-簡介">1. Quay 簡介</a></li>
+    <li><a href="#2-quay-架構組成">2. Quay 架構組成</a>
+      <ul>
+        <li><a href="#21-單機版-quay-資源要求">2.1. 單機版 Quay 資源要求</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-安裝步驟">3. 安裝步驟</a>
+      <ul>
+        <li><a href="#31--podman-安裝及登陸">3.1.  Podman 安裝及登陸</a></li>
+        <li><a href="#32-設定防火牆規則">3.2. 設定防火牆規則</a></li>
+        <li><a href="#33--設定儲存路徑">3.3.  設定儲存路徑</a></li>
+        <li><a href="#34--設定-postgres">3.4.  設定 Postgres</a></li>
+        <li><a href="#35-啟動-postgres">3.5. 啟動 Postgres</a></li>
+        <li><a href="#36-啟用-pg_trgm-模組">3.6. 啟用 <code>pg_trgm</code> 模組</a></li>
+        <li><a href="#37-啟用-redis">3.7 啟用 Redis</a></li>
+        <li><a href="#38-透過-web-ui-設定-quay-參數">3.8 透過 Web UI 設定 Quay 參數</a></li>
+        <li><a href="#39-部屬-quay">3.9 部屬 Quay</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-委由-systemd-管理">4. 委由 systemd 管理</a></li>
+    <li><a href="#5-小結">5. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>
+<h2 id="1-quay-簡介">1. Quay 簡介</h2>
+<p>Quay 與 Harbor 都是企業上選擇的私有化 Registry 倉庫，Redhat 的 Quay 具備下列功能 :</p>
+<ol>
+<li>Image 儲存</li>
+<li>異地複製</li>
+<li>企業身分驗證</li>
+<li>標籤管理</li>
+<li>自動排程移除過期 Image</li>
+<li>Image 弱點掃描</li>
+<li>事件通知</li>
+</ol>
+<p><em><strong>官方介紹 Project Quay</strong></em></p>
+<p>Community Central: Container Registries: Then and Now</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/M1GWYTJhMos" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="2-quay-架構組成">2. Quay 架構組成</h2>
+<ol>
+<li>Quay -&gt;  Image Registry 主要主件 。</li>
+<li>Clair (可選) -&gt; Image 弱點掃描。</li>
+<li>Database (Mysql or Postgres) -&gt; 儲存 Matedata 資訊。</li>
+<li>Redis -&gt; 提供 Web UI 介面快取 。</li>
+<li>儲存 -&gt; Production 要求必須使用 Object 儲存 (S3, Ceph RADOS, OpenStack Swift 等)，單機可以選擇本地儲存。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Bkc9zIEb3.png" title="https://hackmd.io/_uploads/Bkc9zIEb3.png" data-thumbnail="https://hackmd.io/_uploads/Bkc9zIEb3.png" data-sub-html="<h2>From access.redhat.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/Bkc9zIEb3.png"
+            data-srcset="https://hackmd.io/_uploads/Bkc9zIEb3.png, https://hackmd.io/_uploads/Bkc9zIEb3.png 1.5x, https://hackmd.io/_uploads/Bkc9zIEb3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/Bkc9zIEb3.png" />
+    </a><figcaption class="image-caption">From access.redhat.com</figcaption>
+    </figure></p>
+<h3 id="21-單機版-quay-資源要求">2.1. 單機版 Quay 資源要求</h3>
+<ol>
+<li>CPU : 2 Cores (含)以上</li>
+<li>Memory : 4GB (含)以上</li>
+<li>Disk : 30 GB (含)以上</li>
+<li>DNS 名稱解析或是 /etc/hosts 靜態解析</li>
+</ol>
+<p><em>請先至 registry.redhat.io 註冊紅帽試用帳號或是具備開者者帳號，如果沒有 Redis 與 Postgresql 可以使用 Docker Hub 上面的 Image 來更換。</em></p>
+<h2 id="3-安裝步驟">3. 安裝步驟</h2>
+<p><strong>以 RHEL8 為例</strong></p>
+<h3 id="31--podman-安裝及登陸">3.1.  Podman 安裝及登陸</h3>
+<ol>
+<li>安裝 Podman 及 工具</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">yum</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">y</span> <span class="nv">podman</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sudo</span> <span class="nv">yum</span> <span class="kn">module</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">y</span> <span class="nv">container</span><span class="o">-</span><span class="nv">tools</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>登入 <code>registry.redhat.io</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman login registry.redhat.io
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源版 QUAY<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p><em>如沒有 <code>registry.redhat.io</code> 可以登入 <code>quay.io</code> 非官方的倉庫使用 (任何人都可以免費註冊) 。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman login quay.io
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<h3 id="32-設定防火牆規則">3.2. 設定防火牆規則</h3>
+<p>開放 Web 介面、Postgres 與 Redis 防火牆規則</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">firewall-cmd --permanent --add-port=80/tcp
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --add-port=443/tcp
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --add-port=5432/tcp
+</span></span><span class="line"><span class="cl">firewall-cmd --permanent --add-port=6379/tcp
+</span></span><span class="line"><span class="cl">firewall-cmd --reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33--設定儲存路徑">3.3.  設定儲存路徑</h3>
+<p><strong>以 /data 路徑為例</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir -p /data
+</span></span><span class="line"><span class="cl">export QUAY=/data
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34--設定-postgres">3.4.  設定 Postgres</h3>
+<p>建立資料夾與設定權限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir -p $QUAY/postgres-quay
+</span></span><span class="line"><span class="cl">setfacl -m u:26:-wx $QUAY/postgres-quay
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="35-啟動-postgres">3.5. 啟動 Postgres</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman run -d --rm --name postgresql-quay \
+</span></span><span class="line"><span class="cl">  -e POSTGRESQL_USER=quayuser \
+</span></span><span class="line"><span class="cl">  -e POSTGRESQL_PASSWORD=quaypass \
+</span></span><span class="line"><span class="cl">  -e POSTGRESQL_DATABASE=quay \
+</span></span><span class="line"><span class="cl">  -e POSTGRESQL_ADMIN_PASSWORD=adminpass \
+</span></span><span class="line"><span class="cl">  -p 5432:5432 \
+</span></span><span class="line"><span class="cl">  -v $QUAY/postgres-quay:/var/lib/pgsql/data:Z \
+</span></span><span class="line"><span class="cl">  registry.redhat.io/rhel8/postgresql-13:1-109
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源版 Postgres<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>將 Image 來源改為 <code>docker.io/library/postgres:13.1</code> 。</em></div>
+        </div>
+    </div>
+<h3 id="36-啟用-pg_trgm-模組">3.6. 啟用 <code>pg_trgm</code> 模組</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman exec -it postgresql-quay /bin/bash -c &#39;echo &#34;CREATE EXTENSION IF NOT EXISTS pg_trgm&#34; | psql -d quay -U postgres&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="37-啟用-redis">3.7 啟用 Redis</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman run -d --rm --name redis \
+</span></span><span class="line"><span class="cl">-p 6379:6379 \
+</span></span><span class="line"><span class="cl">-e REDIS_PASSWORD=strongpassword \
+</span></span><span class="line"><span class="cl">registry.redhat.io/rhel8/redis-6:1-110
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源版 Redis<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>將 Image 來源改為 <code>docker.io/library/redis:6-alpine3.14</code> 。</em></div>
+        </div>
+    </div>
+<h3 id="38-透過-web-ui-設定-quay-參數">3.8 透過 Web UI 設定 Quay 參數</h3>
+<p><em>host 主機以 registry.lab.example.com 為例</em></p>
+<ol>
+<li>啟用設定 QUAY 工具</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman run --rm -it --name quay_config -p 80:8080 -p 443:8443 registry.redhat.io/quay/quay-rhel8:v3.8.5 config secret
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源版 QUAY<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>將 Image 來源改為 <code>quay.io/projectquay/quay:v3.8.5</code> 。</em></div>
+        </div>
+    </div>
+<ol start="2">
+<li>
+<p>透過瀏覽器登入<code>http://registry.lab.example.com </code>頁面，帳號為 :  <code>quayconfig</code> ， 密碼為 : <code>secret</code> 。</p>
+</li>
+<li>
+<p>基本必須要設定參數 :</p>
+<ol>
+<li>Server Hostname : 為主機解析名稱。</li>
+<li>Database :
+<ol>
+<li>Type : Postgres</li>
+<li>Server : registry.lab.example.com:5432</li>
+<li>Username : quayuser</li>
+<li>Password : quaypass</li>
+<li>DB Name : quay</li>
+</ol>
+</li>
+<li>Redis :
+<ol>
+<li>Hostname: registry.lab.example.com</li>
+<li>Port : 6379</li>
+<li>Password: strongpassword</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i> Validate Config<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>透過頁面最下方的驗證設定無誤後，即可下載設定檔，並將下載後的設定檔上傳至 host 內。</em></div>
+        </div>
+    </div>
+<h3 id="39-部屬-quay">3.9 部屬 Quay</h3>
+<ol>
+<li>創建 config 目錄及本地 Image 儲存目錄，及設定權限。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir $QUAY/{config,storage}
+</span></span><span class="line"><span class="cl">setfacl -m u:1001:-wx $QUAY/storage
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>
+<p>將下載的設定檔 (quay-config.tar.gz  )複製至 <code>$QUAY/config</code> 目錄內，並在<code>$QUAY/config</code> 內解開tar 壓縮。</p>
+</li>
+<li>
+<p>啟動 Quay</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman run -d --rm -p 80:8080 -p 443:8443  \
+</span></span><span class="line"><span class="cl">   --name=quay \
+</span></span><span class="line"><span class="cl">   -v $QUAY/config:/conf/stack:Z \
+</span></span><span class="line"><span class="cl">   -v $QUAY/storage:/datastorage:Z \
+</span></span><span class="line"><span class="cl">   registry.redhat.io/quay/quay-rhel8:v3.8.5
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源版 QUAY<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>將 Image 來源改為 <code>quay.io/projectquay/quay:v3.8.5</code> 。</em></div>
+        </div>
+    </div>
+<ol start="4">
+<li>透過瀏覽器登入頁面<code>registry.lab.example.com</code>，並創建使用者。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rk3G2S4W3.png" title="https://hackmd.io/_uploads/rk3G2S4W3.png" data-thumbnail="https://hackmd.io/_uploads/rk3G2S4W3.png" data-sub-html="<h2>登入頁面</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rk3G2S4W3.png"
+            data-srcset="https://hackmd.io/_uploads/rk3G2S4W3.png, https://hackmd.io/_uploads/rk3G2S4W3.png 1.5x, https://hackmd.io/_uploads/rk3G2S4W3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rk3G2S4W3.png" />
+    </a><figcaption class="image-caption">登入頁面</figcaption>
+    </figure></p>
+<ol start="5">
+<li>測試 Podman CLI 登入及 Web 介面</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@howhow-pc ~]# podman login --tls-verify=false registry.lab.example.com
+</span></span><span class="line"><span class="cl">Username: example
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">Login Succeeded!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/r1PJprEW3.png" title="https://hackmd.io/_uploads/r1PJprEW3.png" data-thumbnail="https://hackmd.io/_uploads/r1PJprEW3.png" data-sub-html="<h2>使用者畫面</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/r1PJprEW3.png"
+            data-srcset="https://hackmd.io/_uploads/r1PJprEW3.png, https://hackmd.io/_uploads/r1PJprEW3.png 1.5x, https://hackmd.io/_uploads/r1PJprEW3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/r1PJprEW3.png" />
+    </a><figcaption class="image-caption">使用者畫面</figcaption>
+    </figure></p>
+<h2 id="4-委由-systemd-管理">4. 委由 systemd 管理</h2>
+<p><strong>將容器透過 systemd 管理可以使容器退出自動重啟，且開機後能自行載入。</strong></p>
+<ol>
+<li>創建 systemd 服務</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd /etc/systemd/system
+</span></span><span class="line"><span class="cl">podman generate systemd --new --files --name redis
+</span></span><span class="line"><span class="cl">podman generate systemd --new --files --name postgresql-quay
+</span></span><span class="line"><span class="cl">podman generate systemd --new --files --name quay
+</span></span><span class="line"><span class="cl">systemctl daemon-reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>停止執行中的 podman</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">podman stop quay
+</span></span><span class="line"><span class="cl">podman stop redis
+</span></span><span class="line"><span class="cl">podman stop postgresql-quay
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>啟動服務並設定開機後自動載入</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo systemctl enable --now container-redis.service
+</span></span><span class="line"><span class="cl">sudo systemctl enable --now container-postgresql-quay.service
+</span></span><span class="line"><span class="cl">sudo systemctl enable --now container-quay.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-小結">5. 小結</h2>
+<p>Quay 部屬十分的容易且快速，透過容器化方式能非常容易達成，如果要具備高可用性及擴展性，請務必創建多個 Quay 容器，必須使用 Object 物件做為高可用儲存媒介。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SkRRRBEbh.png" title="https://hackmd.io/_uploads/SkRRRBEbh.png" data-thumbnail="https://hackmd.io/_uploads/SkRRRBEbh.png" data-sub-html="<h2>鏡像 OCP Image </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SkRRRBEbh.png"
+            data-srcset="https://hackmd.io/_uploads/SkRRRBEbh.png, https://hackmd.io/_uploads/SkRRRBEbh.png 1.5x, https://hackmd.io/_uploads/SkRRRBEbh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SkRRRBEbh.png" />
+    </a><figcaption class="image-caption">鏡像 OCP Image </figcaption>
+    </figure></p></div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fopenshift%2f2023%2focp-quay-standalone%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-30</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" data-title="Openshift - Quay 本地私有 Registry 倉庫 (standalone)" data-hashtags="Openshift,kubernetes"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" data-hashtag="Openshift"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" data-title="Openshift - Quay 本地私有 Registry 倉庫 (standalone)" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" data-title="Openshift - Quay 本地私有 Registry 倉庫 (standalone)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" data-title="Openshift - Quay 本地私有 Registry 倉庫 (standalone)"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/openshift/">Openshift</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-nginx/" class="prev" rel="prev" title="Linux - 設定 Web 伺服器(Nginx) "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 設定 Web 伺服器(Nginx) </a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
