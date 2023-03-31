@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 31 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - Quay 本地私有 Registry 倉庫 - standalone</title>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</link>
+    <pubDate>Fri, 31 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</guid>
+    <description><![CDATA[<p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>]]></description>
+</item>
+<item>
     <title>Linux - 設定 Web 伺服器(Nginx) </title>
     <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
     <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-chrony/</guid>
     <description><![CDATA[在許多系統確保精確的時間是非常重要的事，例如 Cluster 、 DB 等重要的系統，機器可以透過 網路時間協定 NTP（Network Time Protocol)來同步時間]]></description>
-</item>
-<item>
-    <title>Openshift - 初次部屬 App 應用程式</title>
-    <link>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</link>
-    <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/openshift/2023/ocp-deploy-first-app/</guid>
-    <description><![CDATA[部屬一個雲平台的 App 應用程式在 OpenShift 是非常容易達成的，除了最平易近人的 Web Console GUI 之外還能透過 oc cli 指令來達成部屬。 1. Web Console 方式部屬 初學請先使用 kubeadmin 最高 Cluster 管理]]></description>
 </item>
 </channel>
 </rss>
