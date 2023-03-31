@@ -4,10 +4,10 @@
         <link>https://how64bit.com/categories/openshift/</link>
         <description>Openshift - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Fri, 31 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/openshift/" rel="self" type="application/rss+xml" /><item>
-    <title>Openshift - Quay 本地私有 Registry 倉庫 - standalone</title>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/openshift/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - Quay 本地私有 Registry 倉庫 (standalone)</title>
     <link>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</link>
-    <pubDate>Fri, 31 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</guid>
     <description><![CDATA[<p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>]]></description>
