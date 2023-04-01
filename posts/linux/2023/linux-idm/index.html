@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - IdM 身份管理伺服器安裝 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - IdM 身份管理伺服器安裝" />
+<meta property="og:description" content="在企業中隨時使用者人數增加，在身份管理上對於管理員再做一致性管理有者很有很大的挑戰，除了 Windows Active Directory 網域服務伺服器上，在 Linux 上使用 Identity management 來做為管理。 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-idm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-01T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - IdM 身份管理伺服器安裝"/>
+<meta name="twitter:description" content="在企業中隨時使用者人數增加，在身份管理上對於管理員再做一致性管理有者很有很大的挑戰，除了 Windows Active Directory 網域服務伺服器上，在 Linux 上使用 Identity management 來做為管理。 1."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-idm/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - IdM 身份管理伺服器安裝",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-idm\/"
+        },"genre": "posts","keywords": "Linux","wordcount":  1179 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-idm\/","datePublished": "2023-04-01T00:00:00+00:00","dateModified": "2023-04-01T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - IdM 身份管理伺服器安裝</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1179 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-identity-management-簡介">1. Identity management 簡介</a></li>
+    <li><a href="#2-idm-安裝步驟">2. IdM 安裝步驟</a>
+      <ul>
+        <li><a href="#21-utility-設定-dns-與-ntp">2.1. Utility 設定 DNS 與 NTP</a></li>
+        <li><a href="#22-idm-套件安裝">2.2. IdM 套件安裝</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-idm-web-介面">3. IdM Web 介面</a></li>
+    <li><a href="#4-idm-cli">4. IdM CLI</a></li>
+    <li><a href="#5-小結">5. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在企業中隨時使用者人數增加，在身份管理上對於管理員再做一致性管理有者很有很大的挑戰，除了 Windows Active Directory 網域服務伺服器上，在 Linux 上使用 Identity management 來做為管理。</p>
+<!-- more -->
+<h2 id="1-identity-management-簡介">1. Identity management 簡介</h2>
+<p>身份管理（IdM）將 LDAP、Kerberos、DNS和 PKI 協定整合，並且具有 Web UI 與 CLI 指令管理操作，並且可以透過 Kerberos 信任  Active Directory 來達到與 AD 整合同步功能。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryS0vCHb3.png" title="https://hackmd.io/_uploads/ryS0vCHb3.png" data-thumbnail="https://hackmd.io/_uploads/ryS0vCHb3.png" data-sub-html="<h2>From www.redhat.com </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/ryS0vCHb3.png"
+            data-srcset="https://hackmd.io/_uploads/ryS0vCHb3.png, https://hackmd.io/_uploads/ryS0vCHb3.png 1.5x, https://hackmd.io/_uploads/ryS0vCHb3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/ryS0vCHb3.png" />
+    </a><figcaption class="image-caption">From www.redhat.com </figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">所有紅帽系列產品都有上游開源版，對於 Idm 來說上游就屬於<a href="https://www.freeipa.org/page/Main_Page" target="_blank" rel="noopener noreffer "> FreeIPA 組織</a>。</div>
+        </div>
+    </div>
+<h2 id="2-idm-安裝步驟">2. IdM 安裝步驟</h2>
+<p><strong>先決必要條件:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. DNS 名稱正反解析 
+</span></span><span class="line"><span class="cl">2. 主機固定 IP 
+</span></span><span class="line"><span class="cl">3. 時間同步
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th>主機名稱</th>
+<th>IP</th>
+<th>用途</th>
+<th>規格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>utility.lab.example.com</code></td>
+<td>192.168.50.125</td>
+<td>IdM (Rocky 8)</td>
+<td>CPU: 2  MEM : 4G</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21-utility-設定-dns-與-ntp">2.1. Utility 設定 DNS 與 NTP</h3>
+<ol>
+<li>名稱正反解析</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host utility.lab.example.com</span>
+</span></span><span class="line"><span class="cl">utility.lab.example.com has address 192.168.50.125
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host 192.168.50.125</span>
+</span></span><span class="line"><span class="cl">125.50.168.192.in-addr.arpa domain name pointer utility.lab.example.com.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>名稱伺服器設定<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">正反解析名稱伺服器可以參考 <a href="https://how64bit.com/posts/linux/2023/linux-named/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - BIND 名稱伺服器</a>。</div>
+        </div>
+    </div>
+<ol start="2">
+<li>時間同步</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# systemctl enable --now chronyd
+</span></span><span class="line"><span class="cl">[root@utility ~]# chronyc sources -v
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  .-- Source mode  &#39;^&#39; = server, &#39;=&#39; = peer, &#39;#&#39; = local clock.
+</span></span><span class="line"><span class="cl"> / .- Source state &#39;*&#39; = current best, &#39;+&#39; = combined, &#39;-&#39; = not combined,
+</span></span><span class="line"><span class="cl">| /             &#39;x&#39; = may be in error, &#39;~&#39; = too variable, &#39;?&#39; = unusable.
+</span></span><span class="line"><span class="cl">||                                                 .- xxxx [ yyyy ] +/- zzzz
+</span></span><span class="line"><span class="cl">||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+</span></span><span class="line"><span class="cl">||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+</span></span><span class="line"><span class="cl">||                                \     |          |  zzzz = estimated error.
+</span></span><span class="line"><span class="cl">||                                 |    |           \
+</span></span><span class="line"><span class="cl">MS Name/IP address         Stratum Poll Reach LastRx Last sample
+</span></span><span class="line"><span class="cl">===============================================================================
+</span></span><span class="line"><span class="cl">^* bastion.lab.example.com       3   6     7    63   -127us[ +288us] +/-   22ms
+</span></span><span class="line"><span class="cl">^- 140.137.11.50                 2   6    77    57   -459us[ -459us] +/-   42ms
+</span></span><span class="line"><span class="cl">^- ntp2.ntu.edu.tw               2   6    77    60   +314us[ +314us] +/-   49ms
+</span></span><span class="line"><span class="cl">^- twtpe2-ntp-002.aaplimg.c&gt;     1   6    77    59   +239us[ +239us] +/- 2125us
+</span></span><span class="line"><span class="cl">^- 114-35-131-27.hinet-ip.h&gt;     2   6    77    58  +2128us[+2128us] +/-   32ms
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>時間同步<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">時間同步可以參考 <a href="https://how64bit.com/posts/linux/2023/linux-chrony/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - NTP 時間伺服器</a>。</div>
+        </div>
+    </div>
+<h3 id="22-idm-套件安裝">2.2. IdM 套件安裝</h3>
+<ol>
+<li>啟用 idm:DL1 Stream</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">yum</span> <span class="kn">module</span> <span class="nv">enable</span> <span class="nv">idm</span><span class="p">:</span><span class="nc">DL1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>切換至 idm:DL1 Stream</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yum distro-sync
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>安裝 IdM Server 套件。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">yum</span> <span class="kn">module</span> <span class="nv">install</span> <span class="nv">idm</span><span class="p">:</span><span class="nc">DL1</span><span class="o">/</span><span class="nv">server</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>IdM Server 安裝</li>
+</ol>
+<ul>
+<li><code>--realm</code> 提供 Kerberos 域名</li>
+<li><code>--ds-password</code> DS 目錄伺服器管理員密碼</li>
+<li><code>--admin-password</code> IdM 管理員密碼 (admin)</li>
+<li><code>--unattended</code> ，主機名與域名自動選擇 FQDN</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># ipa-server-install --realm LAB.EXAMPLE.COM --ds-password redhat123 --admin-password redhat123 --unattended</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The IPA Master Server will be configured with:
+</span></span><span class="line"><span class="cl">Hostname:       utility.lab.example.com
+</span></span><span class="line"><span class="cl">IP address<span class="o">(</span>es<span class="o">)</span>: 192.168.50.125
+</span></span><span class="line"><span class="cl">Domain name:    lab.example.com
+</span></span><span class="line"><span class="cl">Realm name:     LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The CA will be configured with:
+</span></span><span class="line"><span class="cl">Subject DN:   <span class="nv">CN</span><span class="o">=</span>Certificate Authority,O<span class="o">=</span>LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">Subject base: <span class="nv">O</span><span class="o">=</span>LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">Chaining:     self-signed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">Next steps:
+</span></span><span class="line"><span class="cl">        1. You must make sure these network ports are open:
+</span></span><span class="line"><span class="cl">                TCP Ports:
+</span></span><span class="line"><span class="cl">                  * 80, 443: HTTP/HTTPS
+</span></span><span class="line"><span class="cl">                  * 389, 636: LDAP/LDAPS
+</span></span><span class="line"><span class="cl">                  * 88, 464: kerberos
+</span></span><span class="line"><span class="cl">                UDP Ports:
+</span></span><span class="line"><span class="cl">                  * 88, 464: kerberos
+</span></span><span class="line"><span class="cl">                  * 123: ntp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        2. You can now obtain a kerberos ticket using the command: <span class="s1">&#39;kinit admin&#39;</span>
+</span></span><span class="line"><span class="cl">           This ticket will allow you to use the IPA tools <span class="o">(</span>e.g., ipa user-add<span class="o">)</span>
+</span></span><span class="line"><span class="cl">           and the web user interface.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Be sure to back up the CA certificates stored in /root/cacert.p12
+</span></span><span class="line"><span class="cl">These files are required to create replicas. The password <span class="k">for</span> these
+</span></span><span class="line"><span class="cl">files is the Directory Manager password
+</span></span><span class="line"><span class="cl">The ipa-server-install <span class="nb">command</span> was successful
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>開放防火牆規則</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# firewall-cmd --permanent --add-service freeipa-4
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl">firewall-cmd: error: unrecognized arguments: reload
+</span></span><span class="line"><span class="cl">[root@utility ~]# firewall-cmd --reload
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-idm-web-介面">3. IdM Web 介面</h2>
+<ol>
+<li>瀏覽器登入 <code>https://utility.lab.example.com</code> ，並輸入帳號 <code>admin</code> ， 密碼 <code>redhat123</code>。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/B1DgEJUWh.png"
+        data-srcset="https://hackmd.io/_uploads/B1DgEJUWh.png, https://hackmd.io/_uploads/B1DgEJUWh.png 1.5x, https://hackmd.io/_uploads/B1DgEJUWh.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/B1DgEJUWh.png"
+        title="https://hackmd.io/_uploads/B1DgEJUWh.png" /></p>
+<ol start="2">
+<li>創建使用者 <code>rhvm</code> 測試。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/BkzhVkLb2.png"
+        data-srcset="https://hackmd.io/_uploads/BkzhVkLb2.png, https://hackmd.io/_uploads/BkzhVkLb2.png 1.5x, https://hackmd.io/_uploads/BkzhVkLb2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/BkzhVkLb2.png"
+        title="https://hackmd.io/_uploads/BkzhVkLb2.png" /></p>
+<h2 id="4-idm-cli">4. IdM CLI</h2>
+<ol>
+<li>取得 admin kerberos ticket。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# kinit admin
+</span></span><span class="line"><span class="cl">Password for admin@LAB.EXAMPLE.COM:
+</span></span><span class="line"><span class="cl">[root@utility ~]# klist
+</span></span><span class="line"><span class="cl">Ticket cache: KCM:0
+</span></span><span class="line"><span class="cl">Default principal: admin@LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Valid starting       Expires              Service principal
+</span></span><span class="line"><span class="cl">04/02/2023 01:08:13  04/03/2023 00:12:09  krbtgt/LAB.EXAMPLE.COM@LAB.EXAMPLE.COM
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>創建 <code>developer</code> 使用者測試。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# ipa user-add developer --first=dev --last=user --password
+</span></span><span class="line"><span class="cl">Password:
+</span></span><span class="line"><span class="cl">Enter Password again to verify:
+</span></span><span class="line"><span class="cl">----------------------
+</span></span><span class="line"><span class="cl">Added user &#34;developer&#34;
+</span></span><span class="line"><span class="cl">----------------------
+</span></span><span class="line"><span class="cl">  User login: developer
+</span></span><span class="line"><span class="cl">  First name: dev
+</span></span><span class="line"><span class="cl">  Last name: user
+</span></span><span class="line"><span class="cl">  Full name: dev user
+</span></span><span class="line"><span class="cl">  Display name: dev user
+</span></span><span class="line"><span class="cl">  Initials: du
+</span></span><span class="line"><span class="cl">  Home directory: /home/developer
+</span></span><span class="line"><span class="cl">  GECOS: dev user
+</span></span><span class="line"><span class="cl">  Login shell: /bin/sh
+</span></span><span class="line"><span class="cl">  Principal name: developer@LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">  Principal alias: developer@LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">  User password expiration: 20230401170910Z
+</span></span><span class="line"><span class="cl">  Email address: developer@lab.example.com
+</span></span><span class="line"><span class="cl">  UID: 857400004
+</span></span><span class="line"><span class="cl">  GID: 857400004
+</span></span><span class="line"><span class="cl">  Password: True
+</span></span><span class="line"><span class="cl">  Member of groups: ipausers
+</span></span><span class="line"><span class="cl">  Kerberos keys available: True
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>查看使用者詳情</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# ipa user-find rhvm --raw  --all
+</span></span><span class="line"><span class="cl">--------------
+</span></span><span class="line"><span class="cl">1 user matched
+</span></span><span class="line"><span class="cl">--------------
+</span></span><span class="line"><span class="cl">  dn: uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">  uid: rhvm
+</span></span><span class="line"><span class="cl">  givenname: admin
+</span></span><span class="line"><span class="cl">  sn: admin
+</span></span><span class="line"><span class="cl">  cn: admin admin
+</span></span><span class="line"><span class="cl">  initials: aa
+</span></span><span class="line"><span class="cl">  homedirectory: /home/rhvm
+</span></span><span class="line"><span class="cl">  gecos: admin admin
+</span></span><span class="line"><span class="cl">  loginshell: /bin/sh
+</span></span><span class="line"><span class="cl">  krbcanonicalname: rhvm@LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">  krbprincipalname: rhvm@LAB.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">  mail: rhvm@lab.example.com
+</span></span><span class="line"><span class="cl">  uidnumber: 857400003
+</span></span><span class="line"><span class="cl">  gidnumber: 857400003
+</span></span><span class="line"><span class="cl">  nsaccountlock: FALSE
+</span></span><span class="line"><span class="cl">  displayName: admin admin
+</span></span><span class="line"><span class="cl">  ipaNTSecurityIdentifier: S-1-5-21-1342798991-565468756-2456127613-1003
+</span></span><span class="line"><span class="cl">  ipaUniqueID: 999d5806-d0af-11ed-a2d8-52540001329e
+</span></span><span class="line"><span class="cl">  krbExtraData: AAKsZChkcm9vdC9hZG1pbkBMQUIuRVhBTVBMRS5DT00A
+</span></span><span class="line"><span class="cl">  krbLastPwdChange: 20230401170652Z
+</span></span><span class="line"><span class="cl">  krbPasswordExpiration: 20230401170652Z
+</span></span><span class="line"><span class="cl">  memberOf: cn=ipausers,cn=groups,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">  mepManagedEntry: cn=rhvm,cn=groups,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">  objectClass: top
+</span></span><span class="line"><span class="cl">  objectClass: person
+</span></span><span class="line"><span class="cl">  objectClass: organizationalperson
+</span></span><span class="line"><span class="cl">  objectClass: inetorgperson
+</span></span><span class="line"><span class="cl">  objectClass: inetuser
+</span></span><span class="line"><span class="cl">  objectClass: posixaccount
+</span></span><span class="line"><span class="cl">  objectClass: krbprincipalaux
+</span></span><span class="line"><span class="cl">  objectClass: krbticketpolicyaux
+</span></span><span class="line"><span class="cl">  objectClass: ipaobject
+</span></span><span class="line"><span class="cl">  objectClass: ipasshuser
+</span></span><span class="line"><span class="cl">  objectClass: ipaSshGroupOfPubKeys
+</span></span><span class="line"><span class="cl">  objectClass: mepOriginEntry
+</span></span><span class="line"><span class="cl">  objectClass: ipantuserattrs
+</span></span><span class="line"><span class="cl">----------------------------
+</span></span><span class="line"><span class="cl">Number of entries returned 1
+</span></span><span class="line"><span class="cl">----------------------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-小結">5. 小結</h2>
+<p>IdM 無論是安裝方式或是操作都十分容易，另位 微軟的 Windows  Active Directory 授權費昂貴可以改用 FreeIPA 來當作身份管理伺服器使用。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-idm%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-idm/" data-title="Linux - IdM 身份管理伺服器安裝" data-hashtags="Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-idm/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-idm/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-idm/" data-title="Linux - IdM 身份管理伺服器安裝" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-idm/" data-title="Linux - IdM 身份管理伺服器安裝"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-idm/" data-title="Linux - IdM 身份管理伺服器安裝"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-idm/" class="prev" rel="prev" title="Linux - RHV 整合 Idm 身份驗證"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 整合 Idm 身份驗證</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

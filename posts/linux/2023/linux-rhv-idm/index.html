@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - RHV 整合 Idm 身份驗證 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - RHV 整合 Idm 身份驗證" />
+<meta property="og:description" content="RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-01T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - RHV 整合 Idm 身份驗證"/>
+<meta name="twitter:description" content="RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-install/" /><link rel="next" href="https://how64bit.com/posts/linux/2023/linux-idm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - RHV 整合 Idm 身份驗證",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-idm\/"
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1204 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-idm\/","datePublished": "2023-04-01T00:00:00+00:00","dateModified": "2023-04-01T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 整合 Idm 身份驗證</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1204 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-rhv-簡介">1. RHV 簡介</a></li>
+    <li><a href="#2-設定步驟">2. 設定步驟</a>
+      <ul>
+        <li><a href="#21-登入-rhvm-虛擬機">2.1. 登入 rhvm 虛擬機</a></li>
+        <li><a href="#22-使用-ovirt-engine-extension-aaa-ldap-setup-工具測試並寫入設定檔">2.2. 使用 ovirt-engine-extension-aaa-ldap-setup 工具測試並寫入設定檔</a></li>
+        <li><a href="#23-添加-rhvm-為管理員">2.3. 添加 rhvm 為管理員</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。</p>
+<!-- more -->
+<h2 id="1-rhv-簡介">1. RHV 簡介</h2>
+<p>紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容易使用的基礎架構與集中式管理平台，適用於 Linux 虛擬化的平台，底層基本 KVM 技術架構，可以較低成本建置企業內部的虛擬化平台，並且可以在短時間內完成部屬與啟用。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BJcPMjrWn.png" title="https://hackmd.io/_uploads/BJcPMjrWn.png" data-thumbnail="https://hackmd.io/_uploads/BJcPMjrWn.png" data-sub-html="<h2>From www.redhat.com </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BJcPMjrWn.png"
+            data-srcset="https://hackmd.io/_uploads/BJcPMjrWn.png, https://hackmd.io/_uploads/BJcPMjrWn.png 1.5x, https://hackmd.io/_uploads/BJcPMjrWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BJcPMjrWn.png" />
+    </a><figcaption class="image-caption">From www.redhat.com </figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">所有紅帽系列產品都有上開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
+        </div>
+    </div>
+<h2 id="2-設定步驟">2. 設定步驟</h2>
+<p><strong>先決必要條件:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 具有 IdM 或是 Windows AD
+</span></span><span class="line"><span class="cl">2. 創建可以查詢的使用者為 rhvm ，密碼為 redhat123
+</span></span><span class="line"><span class="cl">3. 完整 bindDN 為 : uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>身份管理伺服器<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">IdM 身份管理伺服器 <a href="https://how64bit.com/posts/linux/2023/linux-idm/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - IdM 身份管理伺服器安裝</a>。</div>
+        </div>
+    </div>
+<h3 id="21-登入-rhvm-虛擬機">2.1. 登入 rhvm 虛擬機</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ssh rhvm.lab.example.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>帳號 : root</li>
+<li>密碼 : redhat</li>
+</ul>
+<h3 id="22-使用-ovirt-engine-extension-aaa-ldap-setup-工具測試並寫入設定檔">2.2. 使用 ovirt-engine-extension-aaa-ldap-setup 工具測試並寫入設定檔</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@rhvm ~]# ovirt-engine-extension-aaa-ldap-setup
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">          Available LDAP implementations:
+</span></span><span class="line"><span class="cl">           1 - 389ds
+</span></span><span class="line"><span class="cl">           2 - 389ds RFC-2307 Schema
+</span></span><span class="line"><span class="cl">           3 - Active Directory
+</span></span><span class="line"><span class="cl">           4 - IBM Security Directory Server
+</span></span><span class="line"><span class="cl">           5 - IBM Security Directory Server RFC-2307 Schema
+</span></span><span class="line"><span class="cl">           6 - IPA
+</span></span><span class="line"><span class="cl">           7 - Novell eDirectory RFC-2307 Schema
+</span></span><span class="line"><span class="cl">           8 - OpenLDAP RFC-2307 Schema
+</span></span><span class="line"><span class="cl">           9 - OpenLDAP Standard Schema
+</span></span><span class="line"><span class="cl">          10 - Oracle Unified Directory RFC-2307 Schema
+</span></span><span class="line"><span class="cl">          11 - RFC-2307 Schema (Generic)
+</span></span><span class="line"><span class="cl">          12 - RHDS
+</span></span><span class="line"><span class="cl">          13 - RHDS RFC-2307 Schema
+</span></span><span class="line"><span class="cl">          14 - iPlanet
+</span></span><span class="line"><span class="cl">          Please select: 6
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">          Use DNS (Yes, No) [Yes]:
+</span></span><span class="line"><span class="cl">          Available policy method:
+</span></span><span class="line"><span class="cl">           1 - Single server
+</span></span><span class="line"><span class="cl">           2 - DNS domain LDAP SRV record
+</span></span><span class="line"><span class="cl">           3 - Round-robin between multiple hosts
+</span></span><span class="line"><span class="cl">           4 - Failover between multiple hosts
+</span></span><span class="line"><span class="cl">          Please select: 1
+</span></span><span class="line"><span class="cl">          Please enter host address: utility.lab.example.com
+</span></span><span class="line"><span class="cl">[ INFO  ] Trying to resolve host &#39;utility.lab.example.com&#39;
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">          Please select protocol to use (startTLS, ldaps, plain) [startTLS]: URL
+</span></span><span class="line"><span class="cl">          URL: http://utility.lab.example.com/ipa/config/ca.crt
+</span></span><span class="line"><span class="cl">[ INFO  ] Connecting to LDAP using &#39;ldap://utility.lab.example.com:389&#39;
+</span></span><span class="line"><span class="cl">[ INFO  ] Executing startTLS
+</span></span><span class="line"><span class="cl">[ INFO  ] Connection succeeded
+</span></span><span class="line"><span class="cl">          Enter search user DN (for example uid=username,dc=example,dc=com or leave empty for anonymous): uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">          Enter search user password:
+</span></span><span class="line"><span class="cl">[ INFO  ] Attempting to bind using &#39;uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com&#39;
+</span></span><span class="line"><span class="cl">          Please enter base DN (dc=lab,dc=example,dc=com) [dc=lab,dc=example,dc=com]:
+</span></span><span class="line"><span class="cl">          Are you going to use Single Sign-On for Virtual Machines (Yes, No) [Yes]: NO
+</span></span><span class="line"><span class="cl">          Please specify profile name that will be visible to users [utility.lab.example.com ]:
+</span></span><span class="line"><span class="cl">[ INFO  ] Stage: Setup validation
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">          Please provide credentials to test login flow:
+</span></span><span class="line"><span class="cl">          Enter user name: rhvm
+</span></span><span class="line"><span class="cl">          Enter user password:
+</span></span><span class="line"><span class="cl">[ INFO  ] Executing login sequence...
+</span></span><span class="line"><span class="cl">          Login output:
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">[ INFO  ] Login sequence executed successfully
+</span></span><span class="line"><span class="cl">          Please make sure that user details are correct and group membership meets expectations (search for PrincipalRecord and GroupRecord titles).
+</span></span><span class="line"><span class="cl">          Abort if output is incorrect.
+</span></span><span class="line"><span class="cl">          Select test sequence to execute (Done, Abort, Login, Search) [Done]:
+</span></span><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">[ INFO  ] Stage: Pre-termination
+</span></span><span class="line"><span class="cl">[ INFO  ] Stage: Termination
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>選擇 LDAP 認證方式 。</li>
+<li>選擇 DNS 是否使用 。</li>
+<li>選擇總類 。</li>
+<li>輸入 FQDN 使其查詢 。</li>
+<li>認證方式選擇 startTLS 。</li>
+<li>選擇透過 URL 驗證 。</li>
+<li>CA URL <code>http://utility.lab.example.com/ipa/config/ca.crt</code> ，<strong>請注意不要添加到 https 會因為沒有添加過導致驗證不過</strong>。</li>
+<li>bindDN 使用  。<code>uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com</code> 來查詢，密碼為 <code>redhat123</code> 。</li>
+<li>baseDN 使用預設值即可 。</li>
+<li>不開啟單點SSO登入 。</li>
+<li>profile name 使用預設值即可 。</li>
+<li>使用 rhvm 使用者測試登入 。</li>
+</ol>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>測試 LDAP 連線<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>上述測試一定要100%完成才會寫入設定檔，輸入時請小心。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>設定完畢後重啟 ovirt-engine 服務，使其設定生效。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">systemctl restart ovirt-engine.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>重啟服務後 503 <i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>囿於是 Jboss 主要後端服務，重啟後需要等待一段時間頁面才會正常顯示，請耐心等待。</em></div>
+        </div>
+    </div>
+<h3 id="23-添加-rhvm-為管理員">2.3. 添加 rhvm 為管理員</h3>
+<ol>
+<li>使用瀏覽器登入<code>https://rhvm.lab.example.com</code> 頁面。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/SJqHp2SWn.png"
+        data-srcset="https://hackmd.io/_uploads/SJqHp2SWn.png, https://hackmd.io/_uploads/SJqHp2SWn.png 1.5x, https://hackmd.io/_uploads/SJqHp2SWn.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/SJqHp2SWn.png"
+        title="https://hackmd.io/_uploads/SJqHp2SWn.png" /></p>
+<ol start="2">
+<li>選擇 Administration Portal ，並輸入 <code>admin</code> 帳號及密碼。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">帳號 : admin
+</span></span><span class="line"><span class="cl">密碼 : redhat
+</span></span><span class="line"><span class="cl">Profile : internal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/SylaT2Hb3.png"
+        data-srcset="https://hackmd.io/_uploads/SylaT2Hb3.png, https://hackmd.io/_uploads/SylaT2Hb3.png 1.5x, https://hackmd.io/_uploads/SylaT2Hb3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/SylaT2Hb3.png"
+        title="https://hackmd.io/_uploads/SylaT2Hb3.png" /></p>
+<ol start="3">
+<li>選擇 Administration -&gt; Users -&gt; Add 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1UxdgUW3.png"
+        data-srcset="https://hackmd.io/_uploads/r1UxdgUW3.png, https://hackmd.io/_uploads/r1UxdgUW3.png 1.5x, https://hackmd.io/_uploads/r1UxdgUW3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1UxdgUW3.png"
+        title="https://hackmd.io/_uploads/r1UxdgUW3.png" /></p>
+<ol start="4">
+<li>Search 下拉選單選擇 oauth 並點擊 go，將會列出 Idm 上使用者。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/r1Gd_l8-2.png" title="https://hackmd.io/_uploads/r1Gd_l8-2.png" data-thumbnail="https://hackmd.io/_uploads/r1Gd_l8-2.png" data-sub-html="<h2>search user</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/r1Gd_l8-2.png"
+            data-srcset="https://hackmd.io/_uploads/r1Gd_l8-2.png, https://hackmd.io/_uploads/r1Gd_l8-2.png 1.5x, https://hackmd.io/_uploads/r1Gd_l8-2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/r1Gd_l8-2.png" />
+    </a><figcaption class="image-caption">search user</figcaption>
+    </figure></p>
+<ol start="5">
+<li>選擇 rhvm 使用者 並點擊 add 添加。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/ryYZFx8-h.png"
+        data-srcset="https://hackmd.io/_uploads/ryYZFx8-h.png, https://hackmd.io/_uploads/ryYZFx8-h.png 1.5x, https://hackmd.io/_uploads/ryYZFx8-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/ryYZFx8-h.png"
+        title="https://hackmd.io/_uploads/ryYZFx8-h.png" /></p>
+<ol start="6">
+<li>點擊 rhvm 使用者，並授予其 DataCenter Admin 權限後登出。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/ByzCYgIZn.png"
+        data-srcset="https://hackmd.io/_uploads/ByzCYgIZn.png, https://hackmd.io/_uploads/ByzCYgIZn.png 1.5x, https://hackmd.io/_uploads/ByzCYgIZn.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/ByzCYgIZn.png"
+        title="https://hackmd.io/_uploads/ByzCYgIZn.png" /></p>
+<ol start="7">
+<li>重新登入 Profile 選怎 Oauth 登入，使用者為 <code>rhvm</code>，密碼為 <code>redhat123</code> 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1THFeIW2.png"
+        data-srcset="https://hackmd.io/_uploads/r1THFeIW2.png, https://hackmd.io/_uploads/r1THFeIW2.png 1.5x, https://hackmd.io/_uploads/r1THFeIW2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1THFeIW2.png"
+        title="https://hackmd.io/_uploads/r1THFeIW2.png" /></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>登入失敗<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>如因為 cookies 無法登入可以清除或是使用無痕視窗再次登入。</em></div>
+        </div>
+    </div>
+<ol start="8">
+<li>登入後即可看到所有資源。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1f8cx8-2.png"
+        data-srcset="https://hackmd.io/_uploads/r1f8cx8-2.png, https://hackmd.io/_uploads/r1f8cx8-2.png 1.5x, https://hackmd.io/_uploads/r1f8cx8-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1f8cx8-2.png"
+        title="https://hackmd.io/_uploads/r1f8cx8-2.png" /></p>
+<h2 id="4-小結">4. 小結</h2>
+<p>一般都會禁用 local admin 帳號登入，除非系統有問題之外，local admin 帳號等於最高權限之 root ，如果給有心人士取得或是不熟悉操作會導致不可逆之破壞產生。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-rhv-idm%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" data-title="Linux - RHV 整合 Idm 身份驗證" data-hashtags="Linux,KVM"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" data-title="Linux - RHV 整合 Idm 身份驗證" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" data-title="Linux - RHV 整合 Idm 身份驗證"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" data-title="Linux - RHV 整合 Idm 身份驗證"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/kvm/">KVM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-install/" class="prev" rel="prev" title="Linux - RHV 虛擬化平台安裝"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 虛擬化平台安裝</a>
+            <a href="/posts/linux/2023/linux-idm/" class="next" rel="next" title="Linux - IdM 身份管理伺服器安裝">Linux - IdM 身份管理伺服器安裝<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
