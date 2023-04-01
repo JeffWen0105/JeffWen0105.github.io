@@ -13,6 +13,14 @@
     <description><![CDATA[<p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>]]></description>
 </item>
 <item>
+    <title>Linux - RHV 虛擬化平台安裝</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
+    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-install/</guid>
+    <description><![CDATA[私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 >]]></description>
+</item>
+<item>
     <title>Linux - 設定 Web 伺服器(Nginx) </title>
     <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
     <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/ansible/2023/ansible-role-check-ports/</guid>
     <description><![CDATA[對於網管人員在防火牆設定後驗證是否生效，時常需要連線至該主機使用 telnet 或是 nc 方式檢查，有些作業系統沒有內建上述的套件也無法很快地安裝及為了使用更]]></description>
-</item>
-<item>
-    <title>Linux - NTP 時間伺服器</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-chrony/</link>
-    <pubDate>Fri, 10 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-chrony/</guid>
-    <description><![CDATA[在許多系統確保精確的時間是非常重要的事，例如 Cluster 、 DB 等重要的系統，機器可以透過 網路時間協定 NTP（Network Time Protocol)來同步時間]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - RHV 虛擬化平台安裝 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - RHV 虛擬化平台安裝" />
+<meta property="og:description" content="私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 &gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-rhv-install/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-26T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - RHV 虛擬化平台安裝"/>
+<meta name="twitter:description" content="私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 &gt;"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-rhv-install/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-nginx/" /><link rel="next" href="https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - RHV 虛擬化平台安裝",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-install\/"
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1254 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-install\/","datePublished": "2023-02-26T00:00:00+00:00","dateModified": "2023-02-26T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 虛擬化平台安裝</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-26">2023-02-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1254 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-rhv-簡介">1. RHV 簡介</a></li>
+    <li><a href="#2-ovirt-安裝步驟">2. oVirt 安裝步驟</a>
+      <ul>
+        <li><a href="#21-utility-設定-dns-與-nfs">2.1. Utility 設定 DNS 與 NFS</a></li>
+        <li><a href="#22-ovirt-光碟安裝">2.2. oVirt 光碟安裝</a></li>
+        <li><a href="#23-hosted-engine-安裝">2.3. Hosted Engine 安裝</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-rhv-虛擬化平台設定">3. RHV 虛擬化平台設定</a>
+      <ul>
+        <li><a href="#31-加入-hostb-機器">3.1. 加入 hostb 機器</a></li>
+        <li><a href="#32-等待-hostb-機器加入">3.2. 等待 hostb 機器加入</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。</p>
+<!-- more -->>
+<h2 id="1-rhv-簡介">1. RHV 簡介</h2>
+<p>紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容易使用的基礎架構與集中式管理平台，適用於 Linux 虛擬化的平台，底層基本 KVM 技術架構，可以較低成本建置企業內部的虛擬化平台，並且可以在短時間內完成部屬與架構。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BJcPMjrWn.png" title="https://hackmd.io/_uploads/BJcPMjrWn.png" data-thumbnail="https://hackmd.io/_uploads/BJcPMjrWn.png" data-sub-html="<h2>From www.redhat.com </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BJcPMjrWn.png"
+            data-srcset="https://hackmd.io/_uploads/BJcPMjrWn.png, https://hackmd.io/_uploads/BJcPMjrWn.png 1.5x, https://hackmd.io/_uploads/BJcPMjrWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BJcPMjrWn.png" />
+    </a><figcaption class="image-caption">From www.redhat.com </figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">所有紅帽系列產品都有上開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
+        </div>
+    </div>
+<h2 id="2-ovirt-安裝步驟">2. oVirt 安裝步驟</h2>
+<p><strong>先決必要條件:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. DNS 名稱正反解析 
+</span></span><span class="line"><span class="cl">2. 主機固定 IP (或 DHCP MAC address 派發)
+</span></span><span class="line"><span class="cl">3. 外部 NFS 掛載點 (user id -&gt; 36 , group id -&gt; 36)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>以 oVirt 4.3 安裝( <a href="https://resources.ovirt.org/pub/ovirt-4.3/iso/ovirt-node-ng-installer/4.3.10-2020060117/el7/ovirt-node-ng-installer-4.3.10-2020060117.el7.iso" target="_blank" rel="noopener noreffer ">ISO下載請點我</a> ..)及下列主機清單為例。</em></p>
+<p><em>非必要條件</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. FreeIPA : 當作 AD 使用。
+</span></span><span class="line"><span class="cl">2. Iscsi target : 提供 Iscsi 存取。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th>主機名稱</th>
+<th>IP</th>
+<th>用途</th>
+<th>規格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hosta.lab.example.com</code></td>
+<td>192.168.50.120</td>
+<td>HOST A 主機 (oVirt 4.3)</td>
+<td>CPU: 4  MEM : 8G</td>
+</tr>
+<tr>
+<td><code>hostb.lab.example.com</code></td>
+<td>192.168.50.121</td>
+<td>HOST B 主機 (oVirt 4.3)</td>
+<td>CPU: 4  MEM : 8G</td>
+</tr>
+<tr>
+<td><code>rhvm.lab.example.com</code></td>
+<td>192.168.50.124</td>
+<td>RHVM Hosted 虛擬機</td>
+<td>CPU: 4  MEM : 4G</td>
+</tr>
+<tr>
+<td><code>utility.lab.example.com</code></td>
+<td>192.168.50.125</td>
+<td>NFS 與 IDM (RHEL 8)</td>
+<td>CPU: 2  MEM : 1.5G</td>
+</tr>
+</tbody>
+</table>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>oVirt<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">oVirt 底層為 RHEL Linux 的特規定製版，移除一些不必要元件，專注在虛擬化底層平台上，類似於 VMware Esxi 版本。</div>
+        </div>
+    </div>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJanLjSWn.png" title="https://hackmd.io/_uploads/rJanLjSWn.png" data-thumbnail="https://hackmd.io/_uploads/rJanLjSWn.png" data-sub-html="<h2>架構圖</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rJanLjSWn.png"
+            data-srcset="https://hackmd.io/_uploads/rJanLjSWn.png, https://hackmd.io/_uploads/rJanLjSWn.png 1.5x, https://hackmd.io/_uploads/rJanLjSWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rJanLjSWn.png" />
+    </a><figcaption class="image-caption">架構圖</figcaption>
+    </figure></p>
+<h3 id="21-utility-設定-dns-與-nfs">2.1. Utility 設定 DNS 與 NFS</h3>
+<ol>
+<li>名稱正反解析</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host hosta</span>
+</span></span><span class="line"><span class="cl">hosta.lab.example.com has address 192.168.50.120
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host hostb</span>
+</span></span><span class="line"><span class="cl">hostb.lab.example.com has address 192.168.50.121
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host 192.168.50.120</span>
+</span></span><span class="line"><span class="cl">120.50.168.192.in-addr.arpa domain name pointer hosta.lab.example.com.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># host 192.168.50.121</span>
+</span></span><span class="line"><span class="cl">121.50.168.192.in-addr.arpa domain name pointer hostb.lab.example.com.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>名稱伺服器設定<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">正反解析名稱伺服器可以參考 <a href="https://how64bit.com/posts/linux/2023/linux-named/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - BIND 名稱伺服器</a>。</div>
+        </div>
+    </div>
+<ol start="2">
+<li>NFS Exports</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># exportfs -v</span>
+</span></span><span class="line"><span class="cl">/data           &lt;world&gt;<span class="o">(</span>sync,wdelay,hide,no_subtree_check,sec<span class="o">=</span>sys,rw,secure,no_root_squash,no_all_squash<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># chown 36:36 /data/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># chmod 0755 /data/</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># ls -ld /data/</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x. <span class="m">2</span> <span class="m">36</span> kvm <span class="m">6</span> Apr  <span class="m">1</span> 19:59 /data/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>NFS 設定<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">NFS Server 如何提供掛載點可以參考 <a href="https://how64bit.com/posts/linux/2023/linux-nfs/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - NFS 檔案系統</a>。</div>
+        </div>
+    </div>
+<h3 id="22-ovirt-光碟安裝">2.2. oVirt 光碟安裝</h3>
+<ol>
+<li>載入 oVirt ISO 光碟並開機。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/H10DsiBZ3.png" title="https://hackmd.io/_uploads/H10DsiBZ3.png" data-thumbnail="https://hackmd.io/_uploads/H10DsiBZ3.png" data-sub-html="<h2>開機選單</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/H10DsiBZ3.png"
+            data-srcset="https://hackmd.io/_uploads/H10DsiBZ3.png, https://hackmd.io/_uploads/H10DsiBZ3.png 1.5x, https://hackmd.io/_uploads/H10DsiBZ3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/H10DsiBZ3.png" />
+    </a><figcaption class="image-caption">開機選單</figcaption>
+    </figure></p>
+<ol start="2">
+<li>安裝使用 RHEL Anaconda 圖形化安裝。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Sk9KoiB-3.png" title="https://hackmd.io/_uploads/Sk9KoiB-3.png" data-thumbnail="https://hackmd.io/_uploads/Sk9KoiB-3.png" data-sub-html="<h2>語言選單</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/Sk9KoiB-3.png"
+            data-srcset="https://hackmd.io/_uploads/Sk9KoiB-3.png, https://hackmd.io/_uploads/Sk9KoiB-3.png 1.5x, https://hackmd.io/_uploads/Sk9KoiB-3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/Sk9KoiB-3.png" />
+    </a><figcaption class="image-caption">語言選單</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HyWJnor-3.png" title="https://hackmd.io/_uploads/HyWJnor-3.png" data-thumbnail="https://hackmd.io/_uploads/HyWJnor-3.png" data-sub-html="<h2>安裝畫面</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HyWJnor-3.png"
+            data-srcset="https://hackmd.io/_uploads/HyWJnor-3.png, https://hackmd.io/_uploads/HyWJnor-3.png 1.5x, https://hackmd.io/_uploads/HyWJnor-3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HyWJnor-3.png" />
+    </a><figcaption class="image-caption">安裝畫面</figcaption>
+    </figure></p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>GUI 安裝<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>oVirt 安裝就與一般 RHEL 或是 CentOS 安裝方式一樣，非常簡單且直覺。</em></div>
+        </div>
+    </div>
+<ol start="3">
+<li>安裝完畢後會登入出現 Cockpit 操作艙登入 URL 。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryG8piSW2.png" title="https://hackmd.io/_uploads/ryG8piSW2.png" data-thumbnail="https://hackmd.io/_uploads/ryG8piSW2.png" data-sub-html="<h2>Login</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/ryG8piSW2.png"
+            data-srcset="https://hackmd.io/_uploads/ryG8piSW2.png, https://hackmd.io/_uploads/ryG8piSW2.png 1.5x, https://hackmd.io/_uploads/ryG8piSW2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/ryG8piSW2.png" />
+    </a><figcaption class="image-caption">Login</figcaption>
+    </figure></p>
+<ol start="4">
+<li>使用瀏覽器登入<code>https://hosta.lab.example.com:9090</code>，並輸入系統 <code>root</code> 帳號及密碼。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/ByNyk3H-2.png"
+        data-srcset="https://hackmd.io/_uploads/ByNyk3H-2.png, https://hackmd.io/_uploads/ByNyk3H-2.png 1.5x, https://hackmd.io/_uploads/ByNyk3H-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/ByNyk3H-2.png"
+        title="https://hackmd.io/_uploads/ByNyk3H-2.png" /></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>不安全連線<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>囿於是系統自簽憑證，點擊進階同意此連線即可。</em></div>
+        </div>
+    </div>
+<h3 id="23-hosted-engine-安裝">2.3. Hosted Engine 安裝</h3>
+<ol>
+<li>依序點擊使用 Hosted Engine 精靈進行安裝。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/SkNTJ3HZ3.png"
+        data-srcset="https://hackmd.io/_uploads/SkNTJ3HZ3.png, https://hackmd.io/_uploads/SkNTJ3HZ3.png 1.5x, https://hackmd.io/_uploads/SkNTJ3HZ3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/SkNTJ3HZ3.png"
+        title="https://hackmd.io/_uploads/SkNTJ3HZ3.png" /></p>
+<ol start="2">
+<li>Hosted Engine &ndash;&gt; VM 設定</li>
+</ol>
+<p><strong>必要設定 (Example):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. FQDN : rhvm.lab.example.com
+</span></span><span class="line"><span class="cl">2. 網路設定 : 靜態網路
+</span></span><span class="line"><span class="cl">3. VM IP : 192.168.50.124/24
+</span></span><span class="line"><span class="cl">4. GW : 192.168.50.1
+</span></span><span class="line"><span class="cl">5. DNS : 192.168.50.119
+</span></span><span class="line"><span class="cl">6. ROOT PASSWD : redhat
+</span></span><span class="line"><span class="cl">7. CPU : 4 cores
+</span></span><span class="line"><span class="cl">8. MEM : 4096 MB
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SJU2x3H-h.png" title="https://hackmd.io/_uploads/SJU2x3H-h.png" data-thumbnail="https://hackmd.io/_uploads/SJU2x3H-h.png" data-sub-html="<h2>VM Setting</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SJU2x3H-h.png"
+            data-srcset="https://hackmd.io/_uploads/SJU2x3H-h.png, https://hackmd.io/_uploads/SJU2x3H-h.png 1.5x, https://hackmd.io/_uploads/SJU2x3H-h.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SJU2x3H-h.png" />
+    </a><figcaption class="image-caption">VM Setting</figcaption>
+    </figure></p>
+<ol start="3">
+<li>Hosted Engine &ndash;&gt; Engine 設定</li>
+</ol>
+<p><strong>必要設定 (Example):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Admin 管理員密碼 : redhat
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SyTYbhHZ2.png" title="https://hackmd.io/_uploads/SyTYbhHZ2.png" data-thumbnail="https://hackmd.io/_uploads/SyTYbhHZ2.png" data-sub-html="<h2>Engine Setting</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SyTYbhHZ2.png"
+            data-srcset="https://hackmd.io/_uploads/SyTYbhHZ2.png, https://hackmd.io/_uploads/SyTYbhHZ2.png 1.5x, https://hackmd.io/_uploads/SyTYbhHZ2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SyTYbhHZ2.png" />
+    </a><figcaption class="image-caption">Engine Setting</figcaption>
+    </figure></p>
+<ol start="4">
+<li>檢視安裝細項與初始化安裝</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJckM3HWn.png" title="https://hackmd.io/_uploads/rJckM3HWn.png" data-thumbnail="https://hackmd.io/_uploads/rJckM3HWn.png" data-sub-html="<h2>Prepare VM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rJckM3HWn.png"
+            data-srcset="https://hackmd.io/_uploads/rJckM3HWn.png, https://hackmd.io/_uploads/rJckM3HWn.png 1.5x, https://hackmd.io/_uploads/rJckM3HWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rJckM3HWn.png" />
+    </a><figcaption class="image-caption">Prepare VM</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rkVNM2S-3.png" title="https://hackmd.io/_uploads/rkVNM2S-3.png" data-thumbnail="https://hackmd.io/_uploads/rkVNM2S-3.png" data-sub-html="<h2>Installing</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rkVNM2S-3.png"
+            data-srcset="https://hackmd.io/_uploads/rkVNM2S-3.png, https://hackmd.io/_uploads/rkVNM2S-3.png 1.5x, https://hackmd.io/_uploads/rkVNM2S-3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rkVNM2S-3.png" />
+    </a><figcaption class="image-caption">Installing</figcaption>
+    </figure></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>Ansible Install<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>Host Engine 會透過 Ansible 自動進行安裝下載必要套件與設定初始化設定虛擬機，依給的不同資源來決定所耗時，請耐心等待。</em></div>
+        </div>
+    </div>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SJPCwnrZ3.png" title="https://hackmd.io/_uploads/SJPCwnrZ3.png" data-thumbnail="https://hackmd.io/_uploads/SJPCwnrZ3.png" data-sub-html="<h2>虛擬機初始設定完成</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SJPCwnrZ3.png"
+            data-srcset="https://hackmd.io/_uploads/SJPCwnrZ3.png, https://hackmd.io/_uploads/SJPCwnrZ3.png 1.5x, https://hackmd.io/_uploads/SJPCwnrZ3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SJPCwnrZ3.png" />
+    </a><figcaption class="image-caption">虛擬機初始設定完成</figcaption>
+    </figure></p>
+<ol start="5">
+<li>設定 RHVM 虛擬機儲存位置</li>
+</ol>
+<p><strong>必要設定 (Example):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">儲存類別 : NFS
+</span></span><span class="line"><span class="cl">儲存連線資訊 : utility.lab.example.com:/data
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SywPO2HZh.png" title="https://hackmd.io/_uploads/SywPO2HZh.png" data-thumbnail="https://hackmd.io/_uploads/SywPO2HZh.png" data-sub-html="<h2>Storage Setting</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SywPO2HZh.png"
+            data-srcset="https://hackmd.io/_uploads/SywPO2HZh.png, https://hackmd.io/_uploads/SywPO2HZh.png 1.5x, https://hackmd.io/_uploads/SywPO2HZh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SywPO2HZh.png" />
+    </a><figcaption class="image-caption">Storage Setting</figcaption>
+    </figure></p>
+<ol start="6">
+<li>檢測儲存細項及執行虛擬機部屬作業</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HyWxKhS-2.png" title="https://hackmd.io/_uploads/HyWxKhS-2.png" data-thumbnail="https://hackmd.io/_uploads/HyWxKhS-2.png" data-sub-html="<h2>Revrew Storage Config</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HyWxKhS-2.png"
+            data-srcset="https://hackmd.io/_uploads/HyWxKhS-2.png, https://hackmd.io/_uploads/HyWxKhS-2.png 1.5x, https://hackmd.io/_uploads/HyWxKhS-2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HyWxKhS-2.png" />
+    </a><figcaption class="image-caption">Revrew Storage Config</figcaption>
+    </figure></p>
+<ol start="7">
+<li>等待部屬完畢即可關閉此頁面</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/H190h2BZn.png" title="https://hackmd.io/_uploads/H190h2BZn.png" data-thumbnail="https://hackmd.io/_uploads/H190h2BZn.png" data-sub-html="<h2>Finish Deploy</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/H190h2BZn.png"
+            data-srcset="https://hackmd.io/_uploads/H190h2BZn.png, https://hackmd.io/_uploads/H190h2BZn.png 1.5x, https://hackmd.io/_uploads/H190h2BZn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/H190h2BZn.png" />
+    </a><figcaption class="image-caption">Finish Deploy</figcaption>
+    </figure></p>
+<h2 id="3-rhv-虛擬化平台設定">3. RHV 虛擬化平台設定</h2>
+<ol>
+<li>使用瀏覽器登入<code>https://rhvm.lab.example.com</code> 頁面。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/SJqHp2SWn.png"
+        data-srcset="https://hackmd.io/_uploads/SJqHp2SWn.png, https://hackmd.io/_uploads/SJqHp2SWn.png 1.5x, https://hackmd.io/_uploads/SJqHp2SWn.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/SJqHp2SWn.png"
+        title="https://hackmd.io/_uploads/SJqHp2SWn.png" /></p>
+<ol start="2">
+<li>選擇 Administration Portal ，並輸入 <code>admin</code> 帳號及密碼。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">帳號 : admin
+</span></span><span class="line"><span class="cl">密碼 : redhat
+</span></span><span class="line"><span class="cl">Profile : internal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/SylaT2Hb3.png"
+        data-srcset="https://hackmd.io/_uploads/SylaT2Hb3.png, https://hackmd.io/_uploads/SylaT2Hb3.png 1.5x, https://hackmd.io/_uploads/SylaT2Hb3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/SylaT2Hb3.png"
+        title="https://hackmd.io/_uploads/SylaT2Hb3.png" /></p>
+<h3 id="31-加入-hostb-機器">3.1. 加入 hostb 機器</h3>
+<p>選擇 Computer -&gt; Hosts -&gt; New 新增主機</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJUDAhrbn.png" title="https://hackmd.io/_uploads/rJUDAhrbn.png" data-thumbnail="https://hackmd.io/_uploads/rJUDAhrbn.png" data-sub-html="<h2>Navigation Bar</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rJUDAhrbn.png"
+            data-srcset="https://hackmd.io/_uploads/rJUDAhrbn.png, https://hackmd.io/_uploads/rJUDAhrbn.png 1.5x, https://hackmd.io/_uploads/rJUDAhrbn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rJUDAhrbn.png" />
+    </a><figcaption class="image-caption">Navigation Bar</figcaption>
+    </figure></p>
+<p><strong>必要設定 (Example):</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Name : hostb
+</span></span><span class="line"><span class="cl">Hostname : hostb.lab.example.com
+</span></span><span class="line"><span class="cl">password : redhat
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HkvA0hrW3.png" title="https://hackmd.io/_uploads/HkvA0hrW3.png" data-thumbnail="https://hackmd.io/_uploads/HkvA0hrW3.png" data-sub-html="<h2>New Hosts</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HkvA0hrW3.png"
+            data-srcset="https://hackmd.io/_uploads/HkvA0hrW3.png, https://hackmd.io/_uploads/HkvA0hrW3.png 1.5x, https://hackmd.io/_uploads/HkvA0hrW3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HkvA0hrW3.png" />
+    </a><figcaption class="image-caption">New Hosts</figcaption>
+    </figure></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Power Management<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>出現警告 Power Management 未設定，按下 OK 及可。</em></div>
+        </div>
+    </div>
+<h3 id="32-等待-hostb-機器加入">3.2. 等待 hostb 機器加入</h3>
+<ol>
+<li>加入後會進行套件與安裝</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HyYpypBW3.png" title="https://hackmd.io/_uploads/HyYpypBW3.png" data-thumbnail="https://hackmd.io/_uploads/HyYpypBW3.png" data-sub-html="<h2>Host B Installing </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HyYpypBW3.png"
+            data-srcset="https://hackmd.io/_uploads/HyYpypBW3.png, https://hackmd.io/_uploads/HyYpypBW3.png 1.5x, https://hackmd.io/_uploads/HyYpypBW3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HyYpypBW3.png" />
+    </a><figcaption class="image-caption">Host B Installing </figcaption>
+    </figure></p>
+<ol start="2">
+<li>等待安裝完畢後狀態顯示為 UP</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HJJW-aSbh.png" title="https://hackmd.io/_uploads/HJJW-aSbh.png" data-thumbnail="https://hackmd.io/_uploads/HJJW-aSbh.png" data-sub-html="<h2>status up</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HJJW-aSbh.png"
+            data-srcset="https://hackmd.io/_uploads/HJJW-aSbh.png, https://hackmd.io/_uploads/HJJW-aSbh.png 1.5x, https://hackmd.io/_uploads/HJJW-aSbh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HJJW-aSbh.png" />
+    </a><figcaption class="image-caption">status up</figcaption>
+    </figure></p>
+<h2 id="4-小結">4. 小結</h2>
+<p>RHV 虛擬化平台安裝步驟非常簡單，很快速就能完成，後續可以延伸加入 Windows AD 或是 FreeIPA 做為企業及登入驗證，也能自定義定義 Data Center、 Cluster 、儲存資源、網路設定、虛擬機模板及機虛擬的動態或手動轉移等各式進階操作。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-rhv-install%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-26</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/" data-title="Linux - RHV 虛擬化平台安裝" data-hashtags="Linux,KVM"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/" data-title="Linux - RHV 虛擬化平台安裝" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/" data-title="Linux - RHV 虛擬化平台安裝"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-install/" data-title="Linux - RHV 虛擬化平台安裝"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/kvm/">KVM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-nginx/" class="prev" rel="prev" title="Linux - 設定 Web 伺服器(Nginx) "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - 設定 Web 伺服器(Nginx) </a>
+            <a href="/posts/openshift/2023/ocp-quay-standalone/" class="next" rel="next" title="Openshift - Quay 本地私有 Registry 倉庫 (standalone)">Openshift - Quay 本地私有 Registry 倉庫 (standalone)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
