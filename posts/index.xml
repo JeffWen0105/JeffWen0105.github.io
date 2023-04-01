@@ -4,21 +4,21 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - RHV 虛擬化平台安裝</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
+    <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-install/</guid>
+    <description><![CDATA[私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 >]]></description>
+</item>
+<item>
     <title>Openshift - Quay 本地私有 Registry 倉庫 (standalone)</title>
     <link>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</link>
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</guid>
     <description><![CDATA[<p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>]]></description>
-</item>
-<item>
-    <title>Linux - RHV 虛擬化平台安裝</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
-    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-install/</guid>
-    <description><![CDATA[私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 >]]></description>
 </item>
 <item>
     <title>Linux - 設定 Web 伺服器(Nginx) </title>

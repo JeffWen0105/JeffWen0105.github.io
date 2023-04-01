@@ -4,10 +4,10 @@
         <link>https://how64bit.com/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - RHV 虛擬化平台安裝</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
-    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-rhv-install/</guid>
     <description><![CDATA[私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 >]]></description>
