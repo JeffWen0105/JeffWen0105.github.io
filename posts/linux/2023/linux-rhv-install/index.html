@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-install\/"
-        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1253 ,
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1259 ,
         "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-install\/","datePublished": "2023-04-01T00:00:00+00:00","dateModified": "2023-04-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 虛擬化平台安裝</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1253 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1259 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -100,6 +100,7 @@
       <ul>
         <li><a href="#31-加入-hostb-機器">3.1. 加入 hostb 機器</a></li>
         <li><a href="#32-等待-hostb-機器加入">3.2. 等待 hostb 機器加入</a></li>
+        <li><a href="#33--dashboard--demo-頁面">3.3.  Dashboard  DEMO 頁面</a></li>
       </ul>
     </li>
     <li><a href="#4-小結">4. 小結</a></li>
@@ -124,7 +125,7 @@
             <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">所有紅帽系列產品都有上開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
+            <div class="admonition-content">所有紅帽系列產品都有上游開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
         </div>
     </div>
 <h2 id="2-ovirt-安裝步驟">2. oVirt 安裝步驟</h2>
@@ -184,8 +185,8 @@
 <tr>
 <td><code>utility.lab.example.com</code></td>
 <td>192.168.50.125</td>
-<td>NFS 與 IDM (RHEL 8)</td>
-<td>CPU: 2  MEM : 1.5G</td>
+<td>NFS 與 IdM (Rocky 8)</td>
+<td>CPU: 2  MEM : 4G</td>
 </tr>
 </tbody>
 </table>
@@ -613,6 +614,15 @@
             alt="https://hackmd.io/_uploads/HJJW-aSbh.png" />
     </a><figcaption class="image-caption">status up</figcaption>
     </figure></p>
+<h3 id="33--dashboard--demo-頁面">3.3.  Dashboard  DEMO 頁面</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/HJ5CkAS-2.png"
+        data-srcset="https://hackmd.io/_uploads/HJ5CkAS-2.png, https://hackmd.io/_uploads/HJ5CkAS-2.png 1.5x, https://hackmd.io/_uploads/HJ5CkAS-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/HJ5CkAS-2.png"
+        title="https://hackmd.io/_uploads/HJ5CkAS-2.png" /></p>
 <h2 id="4-小結">4. 小結</h2>
 <p>RHV 虛擬化平台安裝步驟非常簡單，很快速就能完成，後續可以延伸加入 Windows AD 或是 FreeIPA 做為企業及登入驗證，也能自定義定義 Data Center、 Cluster 、儲存資源、網路設定、虛擬機模板及機虛擬的動態或手動轉移等各式進階操作。</p>
 </div>
