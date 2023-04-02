@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-idm\/"
-        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1175 ,
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1169 ,
         "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-idm\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 整合 IdM 身份驗證</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1175 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1169 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -377,7 +377,7 @@
         alt="https://hackmd.io/_uploads/r1UxdgUW3.png"
         title="https://hackmd.io/_uploads/r1UxdgUW3.png" /></p>
 <ol start="4">
-<li>Search 下拉選單選擇 oauth 並點擊 go，將會列出 Idm 上使用者。</li>
+<li>Search 下拉選單選擇 LDAP 並點擊 go，將會列出 Idm 上使用者。</li>
 </ol>
 <p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/r1Gd_l8-2.png" title="https://hackmd.io/_uploads/r1Gd_l8-2.png" data-thumbnail="https://hackmd.io/_uploads/r1Gd_l8-2.png" data-sub-html="<h2>search user</h2>">
         <img
@@ -412,7 +412,7 @@
         alt="https://hackmd.io/_uploads/ByzCYgIZn.png"
         title="https://hackmd.io/_uploads/ByzCYgIZn.png" /></p>
 <ol start="7">
-<li>重新登入 Profile 選怎 Oauth 登入，使用者為 <code>rhvm</code>，密碼為 <code>redhat123</code> 。</li>
+<li>重新登入 Profile 選怎 LDAP 登入，使用者為 <code>rhvm</code>，密碼為 <code>redhat123</code> 。</li>
 </ol>
 <p><img
         class="lazyload"
@@ -442,7 +442,7 @@
         alt="https://hackmd.io/_uploads/r1f8cx8-2.png"
         title="https://hackmd.io/_uploads/r1f8cx8-2.png" /></p>
 <h2 id="4-小結">4. 小結</h2>
-<p>一般都會禁用 local admin 帳號登入，除非系統有問題之外，local admin 帳號等於最高權限之 root ，如果給有心人士取得或是不熟悉操作會導致不可逆之破壞產生。</p>
+<p>在企業內使用 LDAP 登入對於量大的使用者管理是非常容易，透過不同使用者對應不同的 ROLE 或是針對 Group 貼上 ROLE ，就可以很方便且容易的管理權限。</p>
 </div>
 
         <br>
