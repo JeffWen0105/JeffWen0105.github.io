@@ -4,10 +4,10 @@
         <link>https://how64bit.com/tags/kvm/</link>
         <description>KVM - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/kvm/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/kvm/" rel="self" type="application/rss+xml" /><item>
     <title>Linux - RHV 整合 Idm 身份驗證</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-idm/</link>
-    <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-rhv-idm/</guid>
     <description><![CDATA[RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容]]></description>
