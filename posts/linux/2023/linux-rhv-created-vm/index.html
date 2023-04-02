@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/"
-        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1514 ,
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1712 ,
         "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 部屬與管理虛擬機器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1514 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1712 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -101,7 +101,12 @@
         <li><a href="#31-創建-storage-domains">3.1. 創建 Storage Domains</a></li>
       </ul>
     </li>
-    <li><a href="#4-附錄---console-改為-vnc-模式">4. 附錄 - Console 改為 VNC 模式</a></li>
+    <li><a href="#4-附錄">4. 附錄</a>
+      <ul>
+        <li><a href="#41-console-改為-vnc-模式">4.1. Console 改為 VNC 模式</a></li>
+        <li><a href="#42-hosted-engine-ha-高可用性">4.2. Hosted Engine HA 高可用性</a></li>
+      </ul>
+    </li>
     <li><a href="#5-小結">5. 小結</a></li>
   </ul>
 </nav></div>
@@ -568,7 +573,24 @@
         data-sizes="auto"
         alt="https://hackmd.io/_uploads/rkDXxpIZ2.png"
         title="https://hackmd.io/_uploads/rkDXxpIZ2.png" /></p>
-<h2 id="4-附錄---console-改為-vnc-模式">4. 附錄 - Console 改為 VNC 模式</h2>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>Failed login iSCSI Target<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em><strong>如果出現未授權登入 iSCSI 會因為節點 IQN 未加入 ACL 導致，可以點擊 host 訊息查尋其 host 的 IQN 並加入 iSCSI Target ACL 內。</strong></em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/ByzLra8b2.png"
+        data-srcset="https://hackmd.io/_uploads/ByzLra8b2.png, https://hackmd.io/_uploads/ByzLra8b2.png 1.5x, https://hackmd.io/_uploads/ByzLra8b2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/ByzLra8b2.png"
+        title="https://hackmd.io/_uploads/ByzLra8b2.png" /></div>
+        </div>
+    </div>
+<h2 id="4-附錄">4. 附錄</h2>
+<h3 id="41-console-改為-vnc-模式">4.1. Console 改為 VNC 模式</h3>
 <ol>
 <li>編輯虛擬機並開啟左下方進階選項，選擇 VGA type 使用 VNC 的協定。</li>
 </ol>
@@ -607,6 +629,48 @@
             alt="https://hackmd.io/_uploads/Sy6W-TL-n.png" />
     </a><figcaption class="image-caption">VNC</figcaption>
     </figure></p>
+<h3 id="42-hosted-engine-ha-高可用性">4.2. Hosted Engine HA 高可用性</h3>
+<p>Hosted Engine 是 RHV 最重要的心臟，不過如果 Host A (預設安裝的節點)失效，也會導致其虛擬機失效，故在加入機器時可以多部屬幾個 Hosted Engine 作為備用，當主 Hosted Engine失效可以由其他的補上，所以有共同的分享儲存資源就是很重要的一件事情。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HyjeaTLW3.png" title="https://hackmd.io/_uploads/HyjeaTLW3.png" data-thumbnail="https://hackmd.io/_uploads/HyjeaTLW3.png" data-sub-html="<h2>Deploy Hosted Engine</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HyjeaTLW3.png"
+            data-srcset="https://hackmd.io/_uploads/HyjeaTLW3.png, https://hackmd.io/_uploads/HyjeaTLW3.png 1.5x, https://hackmd.io/_uploads/HyjeaTLW3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HyjeaTLW3.png" />
+    </a><figcaption class="image-caption">Deploy Hosted Engine</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HysVhpU-3.png" title="https://hackmd.io/_uploads/HysVhpU-3.png" data-thumbnail="https://hackmd.io/_uploads/HysVhpU-3.png" data-sub-html="<h2>HA 高可用性</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HysVhpU-3.png"
+            data-srcset="https://hackmd.io/_uploads/HysVhpU-3.png, https://hackmd.io/_uploads/HysVhpU-3.png 1.5x, https://hackmd.io/_uploads/HysVhpU-3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HysVhpU-3.png" />
+    </a><figcaption class="image-caption">HA 高可用性</figcaption>
+    </figure></p>
+<p>進入維護模式會執行切轉。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Bk-8aaUWh.png" title="https://hackmd.io/_uploads/Bk-8aaUWh.png" data-thumbnail="https://hackmd.io/_uploads/Bk-8aaUWh.png" data-sub-html="<h2>PreparingForMaintenance</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/Bk-8aaUWh.png"
+            data-srcset="https://hackmd.io/_uploads/Bk-8aaUWh.png, https://hackmd.io/_uploads/Bk-8aaUWh.png 1.5x, https://hackmd.io/_uploads/Bk-8aaUWh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/Bk-8aaUWh.png" />
+    </a><figcaption class="image-caption">PreparingForMaintenance</figcaption>
+    </figure></p>
+<p>切轉完成，Host A 進入維護模式。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/ByTJA6I-2.png"
+        data-srcset="https://hackmd.io/_uploads/ByTJA6I-2.png, https://hackmd.io/_uploads/ByTJA6I-2.png 1.5x, https://hackmd.io/_uploads/ByTJA6I-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/ByTJA6I-2.png"
+        title="https://hackmd.io/_uploads/ByTJA6I-2.png" /></p>
 <h2 id="5-小結">5. 小結</h2>
 <p>對於中小型企業及個人 LAB 環境來說 RHV (oVirt) 是非常足夠的，所有東西都有開源版可以使用，不會受到商用版的虛擬化平台試用期限或是試用版有使用量上限而被限制住，可以完全自由且靈活的進行操作。</p>
 </div>
