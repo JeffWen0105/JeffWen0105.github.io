@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - RHV 部屬與管理虛擬機器 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - RHV 部屬與管理虛擬機器" />
+<meta property="og:description" content="RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-02T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - RHV 部屬與管理虛擬機器"/>
+<meta name="twitter:description" content="RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-idm/" /><link rel="next" href="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - RHV 部屬與管理虛擬機器",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/"
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1514 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 部屬與管理虛擬機器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1514 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-rhv-簡介">1. RHV 簡介</a></li>
+    <li><a href="#2-rhv-創建虛擬機">2. RHV 創建虛擬機</a>
+      <ul>
+        <li><a href="#21-上傳-fedora-iso-至-rhv">2.1. 上傳 Fedora ISO 至 RHV</a></li>
+        <li><a href="#22-創建-vm-虛擬機">2.2. 創建 VM 虛擬機</a></li>
+        <li><a href="#23-移轉虛擬機">2.3. 移轉虛擬機</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-添加-iscsi-作為儲存資源">3. 添加 iSCSI 作為儲存資源</a>
+      <ul>
+        <li><a href="#31-創建-storage-domains">3.1. 創建 Storage Domains</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-附錄---console-改為-vnc-模式">4. 附錄 - Console 改為 VNC 模式</a></li>
+    <li><a href="#5-小結">5. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可行性。</p>
+<!-- more -->
+<h2 id="1-rhv-簡介">1. RHV 簡介</h2>
+<p>紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容易使用的基礎架構與集中式管理平台，適用於 Linux 虛擬化的平台，底層基本 KVM 技術架構，可以較低成本建置企業內部的虛擬化平台，並且可以在短時間內完成部屬與啟用。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BJcPMjrWn.png" title="https://hackmd.io/_uploads/BJcPMjrWn.png" data-thumbnail="https://hackmd.io/_uploads/BJcPMjrWn.png" data-sub-html="<h2>From www.redhat.com </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BJcPMjrWn.png"
+            data-srcset="https://hackmd.io/_uploads/BJcPMjrWn.png, https://hackmd.io/_uploads/BJcPMjrWn.png 1.5x, https://hackmd.io/_uploads/BJcPMjrWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BJcPMjrWn.png" />
+    </a><figcaption class="image-caption">From www.redhat.com </figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">所有紅帽系列產品都有上開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
+        </div>
+    </div>
+<h2 id="2-rhv-創建虛擬機">2. RHV 創建虛擬機</h2>
+<p><strong>透過 ISO 創建虛擬機先決必要條件 :</strong></p>
+<p>必須下載 RHV CA 憑證並由瀏覽器認證 (僅需認證一次即可)，否則會因憑證導致瀏覽器禁止上傳檔案而失敗。</p>
+<ol>
+<li>至登入頁面 <code>https://rhvm.lab.example.com</code> 下載 CA Certificate。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22"
+        data-srcset="https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22, https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22 1.5x, https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/S1Ual2LZ3.png&#34;下載CA憑證&#34;"
+        title="https://hackmd.io/_uploads/S1Ual2LZ3.png&#34;下載CA憑證&#34;" /></p>
+<ol start="2">
+<li>以 FireFox 為例選擇設定並且匯入憑證。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22"
+        data-srcset="https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22, https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22 1.5x, https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rJ5nenUZ2.png&#34;匯入憑證&#34;"
+        title="https://hackmd.io/_uploads/rJ5nenUZ2.png&#34;匯入憑證&#34;" /></p>
+<ol start="3">
+<li>將下載的憑證匯入(檔案如未找到請選擇所有檔案格式)。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22"
+        data-srcset="https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22, https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22 1.5x, https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/B16jxnUbh.png&#34;檔案類型&#34;"
+        title="https://hackmd.io/_uploads/B16jxnUbh.png&#34;檔案類型&#34;" /></p>
+<ol start="4">
+<li>信任此 CA 來辨識網站。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22"
+        data-srcset="https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22, https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22 1.5x, https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/Hkkjlh8-h.png&#34;信任CA&#34;"
+        title="https://hackmd.io/_uploads/Hkkjlh8-h.png&#34;信任CA&#34;" /></p>
+<ol start="5">
+<li>網頁連線就會顯示安全性連線。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/S1zqehIbh.png" title="https://hackmd.io/_uploads/S1zqehIbh.png" data-thumbnail="https://hackmd.io/_uploads/S1zqehIbh.png" data-sub-html="<h2>安全連線</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/S1zqehIbh.png"
+            data-srcset="https://hackmd.io/_uploads/S1zqehIbh.png, https://hackmd.io/_uploads/S1zqehIbh.png 1.5x, https://hackmd.io/_uploads/S1zqehIbh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/S1zqehIbh.png" />
+    </a><figcaption class="image-caption">安全連線</figcaption>
+    </figure></p>
+<h3 id="21-上傳-fedora-iso-至-rhv">2.1. 上傳 Fedora ISO 至 RHV</h3>
+<p><em><strong>Fedora Workstation 37 ISO 下載<a href="https://ftp.riken.jp/Linux/fedora/releases/37/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-37-1.7.iso" target="_blank" rel="noopener noreffer ">連結請點我</a>。</strong></em></p>
+<ol>
+<li>使用 admin 登入 <code>https://rhvm.lab.example.com</code> 頁面後選擇 Storage -&gt; Disks -&gt; Upload</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1u_e38-3.png"
+        data-srcset="https://hackmd.io/_uploads/r1u_e38-3.png, https://hackmd.io/_uploads/r1u_e38-3.png 1.5x, https://hackmd.io/_uploads/r1u_e38-3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1u_e38-3.png"
+        title="https://hackmd.io/_uploads/r1u_e38-3.png" /></p>
+<ol start="2">
+<li>點擊 Fedora ISO 作為上傳光碟後點擊 OK 上傳。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HkDrx38b3.png" title="https://hackmd.io/_uploads/HkDrx38b3.png" data-thumbnail="https://hackmd.io/_uploads/HkDrx38b3.png" data-sub-html="<h2>上傳 ISO</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HkDrx38b3.png"
+            data-srcset="https://hackmd.io/_uploads/HkDrx38b3.png, https://hackmd.io/_uploads/HkDrx38b3.png 1.5x, https://hackmd.io/_uploads/HkDrx38b3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HkDrx38b3.png" />
+    </a><figcaption class="image-caption">上傳 ISO</figcaption>
+    </figure></p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>重要<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如果執行 Test Connection 出現下列失敗，表示未進行 CA 憑證匯入。</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/B1x4gn8-h.png"
+        data-srcset="https://hackmd.io/_uploads/B1x4gn8-h.png, https://hackmd.io/_uploads/B1x4gn8-h.png 1.5x, https://hackmd.io/_uploads/B1x4gn8-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/B1x4gn8-h.png"
+        title="https://hackmd.io/_uploads/B1x4gn8-h.png" /></div>
+        </div>
+    </div>
+<ol start="3">
+<li>上傳後從 Lock 狀態變成 OK 表示上傳完畢。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rkjZbnU-h.png" title="https://hackmd.io/_uploads/rkjZbnU-h.png" data-thumbnail="https://hackmd.io/_uploads/rkjZbnU-h.png" data-sub-html="<h2>Status OK</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rkjZbnU-h.png"
+            data-srcset="https://hackmd.io/_uploads/rkjZbnU-h.png, https://hackmd.io/_uploads/rkjZbnU-h.png 1.5x, https://hackmd.io/_uploads/rkjZbnU-h.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rkjZbnU-h.png" />
+    </a><figcaption class="image-caption">Status OK</figcaption>
+    </figure></p>
+<h3 id="22-創建-vm-虛擬機">2.2. 創建 VM 虛擬機</h3>
+<ol>
+<li>選擇左側 Computer -&gt; Virtual Machines -&gt; New 新增虛擬機器。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        data-srcset="https://hackmd.io/_uploads/r1ar-nU-h.png, https://hackmd.io/_uploads/r1ar-nU-h.png 1.5x, https://hackmd.io/_uploads/r1ar-nU-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        title="https://hackmd.io/_uploads/r1ar-nU-h.png" /></p>
+<ol start="2">
+<li>創建新虛擬機</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 作業系統 : Linux
+</span></span><span class="line"><span class="cl">2. 虛擬機 SIZE : Small
+</span></span><span class="line"><span class="cl">        Tiny：    CPU: 1 ,RAM : 512  MB
+</span></span><span class="line"><span class="cl">        Small：   CPU: 1 ,RAM : 2084 MB
+</span></span><span class="line"><span class="cl">        Medium：  CPU: 2 ,RAM : 4096 MB
+</span></span><span class="line"><span class="cl">        Large：   CPU: 4, RAM : 8192 MB
+</span></span><span class="line"><span class="cl">        XLarge：  CPU: 4, RAM :16384 MB
+</span></span><span class="line"><span class="cl">        Custom :  自定義
+</span></span><span class="line"><span class="cl">3. 最佳化 : Desktop ( Desktop, Server, High Perfomance )
+</span></span><span class="line"><span class="cl">4. 虛擬機名稱 : fedora37
+</span></span><span class="line"><span class="cl">5. 創建新硬碟 10 GB (使用 Thin Provision 精簡佈建)
+</span></span><span class="line"><span class="cl">6. 網卡選擇 ovirtmgmt/ovirtmgmt ( 預設的邏輯網路 ) 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HkY9-n8W3.png" title="https://hackmd.io/_uploads/HkY9-n8W3.png" data-thumbnail="https://hackmd.io/_uploads/HkY9-n8W3.png" data-sub-html="<h2>Create VM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HkY9-n8W3.png"
+            data-srcset="https://hackmd.io/_uploads/HkY9-n8W3.png, https://hackmd.io/_uploads/HkY9-n8W3.png 1.5x, https://hackmd.io/_uploads/HkY9-n8W3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HkY9-n8W3.png" />
+    </a><figcaption class="image-caption">Create VM</figcaption>
+    </figure></p>
+<ol start="3">
+<li>點擊新創建的虛擬機並選擇 Run Once</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/H1Zd428-3.png" title="https://hackmd.io/_uploads/H1Zd428-3.png" data-thumbnail="https://hackmd.io/_uploads/H1Zd428-3.png" data-sub-html="<h2>Run Once</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/H1Zd428-3.png"
+            data-srcset="https://hackmd.io/_uploads/H1Zd428-3.png, https://hackmd.io/_uploads/H1Zd428-3.png 1.5x, https://hackmd.io/_uploads/H1Zd428-3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/H1Zd428-3.png" />
+    </a><figcaption class="image-caption">Run Once</figcaption>
+    </figure></p>
+<ol start="4">
+<li>選擇 Boot Options -&gt; Attach CD 選擇 Fedora ISO ，開機選項可以調整 CD-ROM 優先，點擊 OK 開機。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rkjhV28Z2.png" title="https://hackmd.io/_uploads/rkjhV28Z2.png" data-thumbnail="https://hackmd.io/_uploads/rkjhV28Z2.png" data-sub-html="<h2>Boot 光碟開機</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rkjhV28Z2.png"
+            data-srcset="https://hackmd.io/_uploads/rkjhV28Z2.png, https://hackmd.io/_uploads/rkjhV28Z2.png 1.5x, https://hackmd.io/_uploads/rkjhV28Z2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rkjhV28Z2.png" />
+    </a><figcaption class="image-caption">Boot 光碟開機</figcaption>
+    </figure></p>
+<ol start="5">
+<li>選擇 Fedora37 虛擬機點擊 Console 會下載連線方式。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1f3Fh8Z3.png"
+        data-srcset="https://hackmd.io/_uploads/r1f3Fh8Z3.png, https://hackmd.io/_uploads/r1f3Fh8Z3.png 1.5x, https://hackmd.io/_uploads/r1f3Fh8Z3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1f3Fh8Z3.png"
+        title="https://hackmd.io/_uploads/r1f3Fh8Z3.png" /></p>
+<ol start="6">
+<li>點擊下載的 console 會自動喚起  Remote-Viwer 來存取虛擬機。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/H1Yb22U-2.png"
+        data-srcset="https://hackmd.io/_uploads/H1Yb22U-2.png, https://hackmd.io/_uploads/H1Yb22U-2.png 1.5x, https://hackmd.io/_uploads/H1Yb22U-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/H1Yb22U-2.png"
+        title="https://hackmd.io/_uploads/H1Yb22U-2.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Console 連線方式<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>Linux 機器可以直接使用 Remote-Viwer 直接存取訪問，如果是 Windows 可以下載 <a href="https://www.spice-space.org/download.html" target="_blank" rel="noopener noreffer "> spice client </a>。 或是進階設定將此改成 VNC 連線。</strong></div>
+        </div>
+    </div>
+<h3 id="23-移轉虛擬機">2.3. 移轉虛擬機</h3>
+<p>當 host 節點需要維護或是要平衡其虛擬機運作資源，可以透過 Migrate 來在虛擬機執行狀態中移轉虛擬機器至別的節點上。</p>
+<ol>
+<li>選擇虛擬機點擊 Migrate 。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BkVun2LZ2.png" title="https://hackmd.io/_uploads/BkVun2LZ2.png" data-thumbnail="https://hackmd.io/_uploads/BkVun2LZ2.png" data-sub-html="<h2>Migrate VM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BkVun2LZ2.png"
+            data-srcset="https://hackmd.io/_uploads/BkVun2LZ2.png, https://hackmd.io/_uploads/BkVun2LZ2.png 1.5x, https://hackmd.io/_uploads/BkVun2LZ2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BkVun2LZ2.png" />
+    </a><figcaption class="image-caption">Migrate VM</figcaption>
+    </figure></p>
+<ol start="2">
+<li>可以透過自動選擇或是下拉選單選擇要轉移至哪一個節點 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/Bk31a3IW2.png"
+        data-srcset="https://hackmd.io/_uploads/Bk31a3IW2.png, https://hackmd.io/_uploads/Bk31a3IW2.png 1.5x, https://hackmd.io/_uploads/Bk31a3IW2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/Bk31a3IW2.png"
+        title="https://hackmd.io/_uploads/Bk31a3IW2.png" /></p>
+<ol start="3">
+<li>點擊後會開始執行轉移 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rkiep2L-2.png"
+        data-srcset="https://hackmd.io/_uploads/rkiep2L-2.png, https://hackmd.io/_uploads/rkiep2L-2.png 1.5x, https://hackmd.io/_uploads/rkiep2L-2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rkiep2L-2.png"
+        title="https://hackmd.io/_uploads/rkiep2L-2.png" /></p>
+<ol start="4">
+<li>直到跳出通知表示轉移完成 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rJHfphU-3.png"
+        data-srcset="https://hackmd.io/_uploads/rJHfphU-3.png, https://hackmd.io/_uploads/rJHfphU-3.png 1.5x, https://hackmd.io/_uploads/rJHfphU-3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rJHfphU-3.png"
+        title="https://hackmd.io/_uploads/rJHfphU-3.png" /></p>
+<h2 id="3-添加-iscsi-作為儲存資源">3. 添加 iSCSI 作為儲存資源</h2>
+<p>最初安裝時使用 NFS 來當作初始儲存媒介，也可以添加 iSCSI 當作儲存資源池。</p>
+<p><strong>先決必要條件 :</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 創建 iScsi Target
+</span></span><span class="line"><span class="cl">2. 具備 ACL 可以存取
+</span></span><span class="line"><span class="cl">3. 開放防火牆規則
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th>主機名稱</th>
+<th>IP</th>
+<th>用途</th>
+<th>規格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hosta.lab.example.com</code></td>
+<td>192.168.50.120</td>
+<td>HOST A 主機 (oVirt 4.3)</td>
+<td>CPU: 4  MEM : 8G</td>
+</tr>
+<tr>
+<td><code>hostb.lab.example.com</code></td>
+<td>192.168.50.121</td>
+<td>HOST B 主機 (oVirt 4.3)</td>
+<td>CPU: 4  MEM : 8G</td>
+</tr>
+<tr>
+<td><code>rhvm.lab.example.com</code></td>
+<td>192.168.50.124</td>
+<td>RHVM Hosted 虛擬機</td>
+<td>CPU: 4  MEM : 4G</td>
+</tr>
+<tr>
+<td><code>utility.lab.example.com</code></td>
+<td>192.168.50.125</td>
+<td>NFS 、 IdM 與 iScsi Target (Rocky 8)</td>
+<td>CPU: 2  MEM : 4G</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# targetcli ls
+</span></span><span class="line"><span class="cl">o- / ...................................................................................... [...]
+</span></span><span class="line"><span class="cl">  o- backstores ........................................................................... [...]
+</span></span><span class="line"><span class="cl">  | o- block ............................................................... [Storage Objects: 1]
+</span></span><span class="line"><span class="cl">  | | o- rhvm ........................................ [/dev/vdc (100.0GiB) write-thru activated]
+</span></span><span class="line"><span class="cl">  | |   o- alua ................................................................ [ALUA Groups: 1]
+</span></span><span class="line"><span class="cl">  | |     o- default_tg_pt_gp .................................... [ALUA state: Active/optimized]
+</span></span><span class="line"><span class="cl">  | o- fileio .............................................................. [Storage Objects: 0]
+</span></span><span class="line"><span class="cl">  | o- pscsi ............................................................... [Storage Objects: 0]
+</span></span><span class="line"><span class="cl">  | o- ramdisk ............................................................. [Storage Objects: 0]
+</span></span><span class="line"><span class="cl">  o- iscsi ......................................................................... [Targets: 1]
+</span></span><span class="line"><span class="cl">  | o- iqn.2023-04.com.example.lab:utility ............................................ [TPGs: 1]
+</span></span><span class="line"><span class="cl">  |   o- tpg1 ............................................................ [no-gen-acls, no-auth]
+</span></span><span class="line"><span class="cl">  |     o- acls ....................................................................... [ACLs: 3]
+</span></span><span class="line"><span class="cl">  |     | o- iqn.1994-05.com.redhat:594eac084eaf ............................... [Mapped LUNs: 1]
+</span></span><span class="line"><span class="cl">  |     | | o- mapped_lun0 ............................................... [lun0 block/rhvm (rw)]
+</span></span><span class="line"><span class="cl">  |     | o- iqn.1994-05.com.redhat:97b664fd36a5 ............................... [Mapped LUNs: 1]
+</span></span><span class="line"><span class="cl">  |     | | o- mapped_lun0 ............................................... [lun0 block/rhvm (rw)]
+</span></span><span class="line"><span class="cl">  |     | o- iqn.1994-05.com.redhat:d0338f08c069 ............................... [Mapped LUNs: 1]
+</span></span><span class="line"><span class="cl">  |     |   o- mapped_lun0 ............................................... [lun0 block/rhvm (rw)]
+</span></span><span class="line"><span class="cl">  |     o- luns ....................................................................... [LUNs: 1]
+</span></span><span class="line"><span class="cl">  |     | o- lun0 .................................... [block/rhvm (/dev/vdc) (default_tg_pt_gp)]
+</span></span><span class="line"><span class="cl">  |     o- portals ................................................................. [Portals: 1]
+</span></span><span class="line"><span class="cl">  |       o- 0.0.0.0:3260 .................................................................. [OK]
+</span></span><span class="line"><span class="cl">  o- loopback ...................................................................... [Targets: 0]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>iSCSI Target 設定<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">如何提供 iSCSI Target 可以參考 <a href="https://how64bit.com/posts/linux/2023/linux-iscsi-target/" target="_blank" rel="noopener noreffer ">HowHow 的 Linux - 提供 iSCSI 儲存</a>。</div>
+        </div>
+    </div>
+<h3 id="31-創建-storage-domains">3.1. 創建 Storage Domains</h3>
+<ol>
+<li>點擊左側 Storage -&gt; Domains -&gt; New Domain 。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r15tT3Lbn.png"
+        data-srcset="https://hackmd.io/_uploads/r15tT3Lbn.png, https://hackmd.io/_uploads/r15tT3Lbn.png 1.5x, https://hackmd.io/_uploads/r15tT3Lbn.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r15tT3Lbn.png"
+        title="https://hackmd.io/_uploads/r15tT3Lbn.png" /></p>
+<ol start="2">
+<li>選擇可用 LUN ID 並點擊 OK 同意。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 建立 Domain 名稱: lab-data
+</span></span><span class="line"><span class="cl">2. 儲存類別 : iSCSI
+</span></span><span class="line"><span class="cl">3. Target IP : 192.168.50.125
+</span></span><span class="line"><span class="cl">4. 選擇發現其 Target
+</span></span><span class="line"><span class="cl">5. Login 此 Target
+</span></span><span class="line"><span class="cl">6. 選擇可用的 Lun 加入
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rJ4UJp8Wh.png"
+        data-srcset="https://hackmd.io/_uploads/rJ4UJp8Wh.png, https://hackmd.io/_uploads/rJ4UJp8Wh.png 1.5x, https://hackmd.io/_uploads/rJ4UJp8Wh.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rJ4UJp8Wh.png"
+        title="https://hackmd.io/_uploads/rJ4UJp8Wh.png" /></p>
+<ol start="3">
+<li>加入後即看到該儲存資源。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rkDXxpIZ2.png"
+        data-srcset="https://hackmd.io/_uploads/rkDXxpIZ2.png, https://hackmd.io/_uploads/rkDXxpIZ2.png 1.5x, https://hackmd.io/_uploads/rkDXxpIZ2.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rkDXxpIZ2.png"
+        title="https://hackmd.io/_uploads/rkDXxpIZ2.png" /></p>
+<h2 id="4-附錄---console-改為-vnc-模式">4. 附錄 - Console 改為 VNC 模式</h2>
+<ol>
+<li>編輯虛擬機並開啟左下方進階選項，選擇 VGA type 使用 VNC 的協定。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HkqdeaIWn.png" title="https://hackmd.io/_uploads/HkqdeaIWn.png" data-thumbnail="https://hackmd.io/_uploads/HkqdeaIWn.png" data-sub-html="<h2>Edit VM Console</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HkqdeaIWn.png"
+            data-srcset="https://hackmd.io/_uploads/HkqdeaIWn.png, https://hackmd.io/_uploads/HkqdeaIWn.png 1.5x, https://hackmd.io/_uploads/HkqdeaIWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HkqdeaIWn.png" />
+    </a><figcaption class="image-caption">Edit VM Console</figcaption>
+    </figure></p>
+<ol start="2">
+<li>虛擬機開機後檢視其下載的 console 檔案。</li>
+</ol>
+<p><strong>會出現其連線 IP、 Port 、 Password 等資訊</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/HkB3gTIb3.png"
+        data-srcset="https://hackmd.io/_uploads/HkB3gTIb3.png, https://hackmd.io/_uploads/HkB3gTIb3.png 1.5x, https://hackmd.io/_uploads/HkB3gTIb3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/HkB3gTIb3.png"
+        title="https://hackmd.io/_uploads/HkB3gTIb3.png" /></p>
+<ol start="3">
+<li>可以至任一作業系統使用 VNC viwer 存取其虛擬機。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Sy6W-TL-n.png" title="https://hackmd.io/_uploads/Sy6W-TL-n.png" data-thumbnail="https://hackmd.io/_uploads/Sy6W-TL-n.png" data-sub-html="<h2>VNC</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/Sy6W-TL-n.png"
+            data-srcset="https://hackmd.io/_uploads/Sy6W-TL-n.png, https://hackmd.io/_uploads/Sy6W-TL-n.png 1.5x, https://hackmd.io/_uploads/Sy6W-TL-n.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/Sy6W-TL-n.png" />
+    </a><figcaption class="image-caption">VNC</figcaption>
+    </figure></p>
+<h2 id="5-小結">5. 小結</h2>
+<p>對於中小型企業及個人 LAB 環境來說 RHV (oVirt) 是非常足夠的，所有東西都有開源版可以使用，不會受到商用版的虛擬化平台試用期限或是試用版有使用量上限而被限制住，可以完全自由且靈活的進行操作。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-rhv-created-vm%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" data-title="Linux - RHV 部屬與管理虛擬機器" data-hashtags="Linux,KVM"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" data-title="Linux - RHV 部屬與管理虛擬機器" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" data-title="Linux - RHV 部屬與管理虛擬機器"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" data-title="Linux - RHV 部屬與管理虛擬機器"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/kvm/">KVM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-idm/" class="prev" rel="prev" title="Linux - IdM 身份管理伺服器安裝"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - IdM 身份管理伺服器安裝</a>
+            <a href="/posts/linux/2023/linux-rhv-idm/" class="next" rel="next" title="Linux - RHV 整合 Idm 身份驗證">Linux - RHV 整合 Idm 身份驗證<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

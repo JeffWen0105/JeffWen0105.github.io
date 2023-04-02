@@ -13,6 +13,14 @@
     <description><![CDATA[RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容]]></description>
 </item>
 <item>
+    <title>Linux - RHV 部屬與管理虛擬機器</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/</link>
+    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/</guid>
+    <description><![CDATA[RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可]]></description>
+</item>
+<item>
     <title>Linux - RHV 虛擬化平台安裝</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
     <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>

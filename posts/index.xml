@@ -13,6 +13,14 @@
     <description><![CDATA[RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容]]></description>
 </item>
 <item>
+    <title>Linux - RHV 部屬與管理虛擬機器</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/</link>
+    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/</guid>
+    <description><![CDATA[RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可]]></description>
+</item>
+<item>
     <title>Linux - IdM 身份管理伺服器安裝</title>
     <link>https://how64bit.com/posts/linux/2023/linux-idm/</link>
     <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-nfs/</guid>
     <description><![CDATA[在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
-</item>
-<item>
-    <title>Linux - 存取 iSCSI Target</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</link>
-    <pubDate>Sun, 19 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-iscsi-initiator/</guid>
-    <description><![CDATA[對於儲存空間不足除了本體主機加裝硬碟之外，也可以透過像是網路芳鄰(CIFS)或是網路磁碟機(NFS)將檔案或資料儲存到其他設備上，不過有些軟]]></description>
 </item>
 </channel>
 </rss>

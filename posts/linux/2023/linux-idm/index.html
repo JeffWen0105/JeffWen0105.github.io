@@ -16,7 +16,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-idm/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-install/" /><link rel="next" href="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-idm/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-install/" /><link rel="next" href="https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -205,24 +205,24 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# systemctl enable --now chronyd
-</span></span><span class="line"><span class="cl">[root@utility ~]# chronyc sources -v
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># systemctl enable --now chronyd</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># chronyc sources -v</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  .-- Source mode  &#39;^&#39; = server, &#39;=&#39; = peer, &#39;#&#39; = local clock.
-</span></span><span class="line"><span class="cl"> / .- Source state &#39;*&#39; = current best, &#39;+&#39; = combined, &#39;-&#39; = not combined,
-</span></span><span class="line"><span class="cl">| /             &#39;x&#39; = may be in error, &#39;~&#39; = too variable, &#39;?&#39; = unusable.
-</span></span><span class="line"><span class="cl">||                                                 .- xxxx [ yyyy ] +/- zzzz
-</span></span><span class="line"><span class="cl">||      Reachability register (octal) -.           |  xxxx = adjusted offset,
-</span></span><span class="line"><span class="cl">||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
-</span></span><span class="line"><span class="cl">||                                \     |          |  zzzz = estimated error.
-</span></span><span class="line"><span class="cl">||                                 |    |           \
-</span></span><span class="line"><span class="cl">MS Name/IP address         Stratum Poll Reach LastRx Last sample
-</span></span><span class="line"><span class="cl">===============================================================================
-</span></span><span class="line"><span class="cl">^* bastion.lab.example.com       3   6     7    63   -127us[ +288us] +/-   22ms
-</span></span><span class="line"><span class="cl">^- 140.137.11.50                 2   6    77    57   -459us[ -459us] +/-   42ms
-</span></span><span class="line"><span class="cl">^- ntp2.ntu.edu.tw               2   6    77    60   +314us[ +314us] +/-   49ms
-</span></span><span class="line"><span class="cl">^- twtpe2-ntp-002.aaplimg.c&gt;     1   6    77    59   +239us[ +239us] +/- 2125us
-</span></span><span class="line"><span class="cl">^- 114-35-131-27.hinet-ip.h&gt;     2   6    77    58  +2128us[+2128us] +/-   32ms
+</span></span><span class="line"><span class="cl">  .-- Source mode  <span class="s1">&#39;^&#39;</span> <span class="o">=</span> server, <span class="s1">&#39;=&#39;</span> <span class="o">=</span> peer, <span class="s1">&#39;#&#39;</span> <span class="o">=</span> <span class="nb">local</span> clock.
+</span></span><span class="line"><span class="cl"> / .- Source state <span class="s1">&#39;*&#39;</span> <span class="o">=</span> current best, <span class="s1">&#39;+&#39;</span> <span class="o">=</span> combined, <span class="s1">&#39;-&#39;</span> <span class="o">=</span> not combined,
+</span></span><span class="line"><span class="cl"><span class="p">|</span> /             <span class="s1">&#39;x&#39;</span> <span class="o">=</span> may be in error, <span class="s1">&#39;~&#39;</span> <span class="o">=</span> too variable, <span class="s1">&#39;?&#39;</span> <span class="o">=</span> unusable.
+</span></span><span class="line"><span class="cl"><span class="o">||</span>                                                 .- xxxx <span class="o">[</span> yyyy <span class="o">]</span> +/- zzzz
+</span></span><span class="line"><span class="cl"><span class="o">||</span>      Reachability register <span class="o">(</span>octal<span class="o">)</span> -.           <span class="p">|</span>  <span class="nv">xxxx</span> <span class="o">=</span> adjusted offset,
+</span></span><span class="line"><span class="cl"><span class="o">||</span>      Log2<span class="o">(</span>Polling interval<span class="o">)</span> --.      <span class="p">|</span>          <span class="p">|</span>  <span class="nv">yyyy</span> <span class="o">=</span> measured offset,
+</span></span><span class="line"><span class="cl"><span class="o">||</span>                                <span class="se">\ </span>    <span class="p">|</span>          <span class="p">|</span>  <span class="nv">zzzz</span> <span class="o">=</span> estimated error.
+</span></span><span class="line"><span class="cl"><span class="o">||</span>                                 <span class="p">|</span>    <span class="p">|</span>           <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>MS Name/IP address         Stratum Poll Reach LastRx Last <span class="nv">sample</span>
+</span></span><span class="line"><span class="cl"><span class="o">===============================================================================</span>
+</span></span><span class="line"><span class="cl">^* bastion.lab.example.com       <span class="m">3</span>   <span class="m">6</span>     <span class="m">7</span>    <span class="m">63</span>   -127us<span class="o">[</span> +288us<span class="o">]</span> +/-   22ms
+</span></span><span class="line"><span class="cl">^- 140.137.11.50                 <span class="m">2</span>   <span class="m">6</span>    <span class="m">77</span>    <span class="m">57</span>   -459us<span class="o">[</span> -459us<span class="o">]</span> +/-   42ms
+</span></span><span class="line"><span class="cl">^- ntp2.ntu.edu.tw               <span class="m">2</span>   <span class="m">6</span>    <span class="m">77</span>    <span class="m">60</span>   +314us<span class="o">[</span> +314us<span class="o">]</span> +/-   49ms
+</span></span><span class="line"><span class="cl">^- twtpe2-ntp-002.aaplimg.c&gt;     <span class="m">1</span>   <span class="m">6</span>    <span class="m">77</span>    <span class="m">59</span>   +239us<span class="o">[</span> +239us<span class="o">]</span> +/- 2125us
+</span></span><span class="line"><span class="cl">^- 114-35-131-27.hinet-ip.h&gt;     <span class="m">2</span>   <span class="m">6</span>    <span class="m">77</span>    <span class="m">58</span>  +2128us<span class="o">[</span>+2128us<span class="o">]</span> +/-   32ms
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
@@ -242,7 +242,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">yum</span> <span class="kn">module</span> <span class="nv">enable</span> <span class="nv">idm</span><span class="p">:</span><span class="nc">DL1</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum module <span class="nb">enable</span> idm:DL1
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
@@ -253,7 +253,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yum distro-sync
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum distro-sync
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -264,7 +264,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-v" data-lang="v"><span class="line"><span class="cl"><span class="nv">yum</span> <span class="kn">module</span> <span class="nv">install</span> <span class="nv">idm</span><span class="p">:</span><span class="nc">DL1</span><span class="o">/</span><span class="nv">server</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum module install idm:DL1/server
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
@@ -362,10 +362,10 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# firewall-cmd --permanent --add-service freeipa-4
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --add-service freeipa-4</span>
 </span></span><span class="line"><span class="cl">success
 </span></span><span class="line"><span class="cl">firewall-cmd: error: unrecognized arguments: reload
-</span></span><span class="line"><span class="cl">[root@utility ~]# firewall-cmd --reload
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
 </span></span><span class="line"><span class="cl">success
 </span></span></code></pre></td></tr></table>
 </div>
@@ -408,9 +408,9 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# kinit admin
-</span></span><span class="line"><span class="cl">Password for admin@LAB.EXAMPLE.COM:
-</span></span><span class="line"><span class="cl">[root@utility ~]# klist
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># kinit admin</span>
+</span></span><span class="line"><span class="cl">Password <span class="k">for</span> admin@LAB.EXAMPLE.COM:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># klist</span>
 </span></span><span class="line"><span class="cl">Ticket cache: KCM:0
 </span></span><span class="line"><span class="cl">Default principal: admin@LAB.EXAMPLE.COM
 </span></span><span class="line"><span class="cl">
@@ -449,11 +449,11 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# ipa user-add developer --first=dev --last=user --password
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># ipa user-add developer --first=dev --last=user --password</span>
 </span></span><span class="line"><span class="cl">Password:
 </span></span><span class="line"><span class="cl">Enter Password again to verify:
 </span></span><span class="line"><span class="cl">----------------------
-</span></span><span class="line"><span class="cl">Added user &#34;developer&#34;
+</span></span><span class="line"><span class="cl">Added user <span class="s2">&#34;developer&#34;</span>
 </span></span><span class="line"><span class="cl">----------------------
 </span></span><span class="line"><span class="cl">  User login: developer
 </span></span><span class="line"><span class="cl">  First name: dev
@@ -468,8 +468,8 @@
 </span></span><span class="line"><span class="cl">  Principal alias: developer@LAB.EXAMPLE.COM
 </span></span><span class="line"><span class="cl">  User password expiration: 20230401170910Z
 </span></span><span class="line"><span class="cl">  Email address: developer@lab.example.com
-</span></span><span class="line"><span class="cl">  UID: 857400004
-</span></span><span class="line"><span class="cl">  GID: 857400004
+</span></span><span class="line"><span class="cl">  UID: <span class="m">857400004</span>
+</span></span><span class="line"><span class="cl">  GID: <span class="m">857400004</span>
 </span></span><span class="line"><span class="cl">  Password: True
 </span></span><span class="line"><span class="cl">  Member of groups: ipausers
 </span></span><span class="line"><span class="cl">  Kerberos keys available: True
@@ -525,11 +525,11 @@
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[root@utility ~]# ipa user-find rhvm --raw  --all
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@utility ~<span class="o">]</span><span class="c1"># ipa user-find rhvm --raw  --all</span>
 </span></span><span class="line"><span class="cl">--------------
-</span></span><span class="line"><span class="cl">1 user matched
+</span></span><span class="line"><span class="cl"><span class="m">1</span> user matched
 </span></span><span class="line"><span class="cl">--------------
-</span></span><span class="line"><span class="cl">  dn: uid=rhvm,cn=users,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">  dn: <span class="nv">uid</span><span class="o">=</span>rhvm,cn<span class="o">=</span>users,cn<span class="o">=</span>accounts,dc<span class="o">=</span>lab,dc<span class="o">=</span>example,dc<span class="o">=</span>com
 </span></span><span class="line"><span class="cl">  uid: rhvm
 </span></span><span class="line"><span class="cl">  givenname: admin
 </span></span><span class="line"><span class="cl">  sn: admin
@@ -541,8 +541,8 @@
 </span></span><span class="line"><span class="cl">  krbcanonicalname: rhvm@LAB.EXAMPLE.COM
 </span></span><span class="line"><span class="cl">  krbprincipalname: rhvm@LAB.EXAMPLE.COM
 </span></span><span class="line"><span class="cl">  mail: rhvm@lab.example.com
-</span></span><span class="line"><span class="cl">  uidnumber: 857400003
-</span></span><span class="line"><span class="cl">  gidnumber: 857400003
+</span></span><span class="line"><span class="cl">  uidnumber: <span class="m">857400003</span>
+</span></span><span class="line"><span class="cl">  gidnumber: <span class="m">857400003</span>
 </span></span><span class="line"><span class="cl">  nsaccountlock: FALSE
 </span></span><span class="line"><span class="cl">  displayName: admin admin
 </span></span><span class="line"><span class="cl">  ipaNTSecurityIdentifier: S-1-5-21-1342798991-565468756-2456127613-1003
@@ -550,8 +550,8 @@
 </span></span><span class="line"><span class="cl">  krbExtraData: AAKsZChkcm9vdC9hZG1pbkBMQUIuRVhBTVBMRS5DT00A
 </span></span><span class="line"><span class="cl">  krbLastPwdChange: 20230401170652Z
 </span></span><span class="line"><span class="cl">  krbPasswordExpiration: 20230401170652Z
-</span></span><span class="line"><span class="cl">  memberOf: cn=ipausers,cn=groups,cn=accounts,dc=lab,dc=example,dc=com
-</span></span><span class="line"><span class="cl">  mepManagedEntry: cn=rhvm,cn=groups,cn=accounts,dc=lab,dc=example,dc=com
+</span></span><span class="line"><span class="cl">  memberOf: <span class="nv">cn</span><span class="o">=</span>ipausers,cn<span class="o">=</span>groups,cn<span class="o">=</span>accounts,dc<span class="o">=</span>lab,dc<span class="o">=</span>example,dc<span class="o">=</span>com
+</span></span><span class="line"><span class="cl">  mepManagedEntry: <span class="nv">cn</span><span class="o">=</span>rhvm,cn<span class="o">=</span>groups,cn<span class="o">=</span>accounts,dc<span class="o">=</span>lab,dc<span class="o">=</span>example,dc<span class="o">=</span>com
 </span></span><span class="line"><span class="cl">  objectClass: top
 </span></span><span class="line"><span class="cl">  objectClass: person
 </span></span><span class="line"><span class="cl">  objectClass: organizationalperson
@@ -566,7 +566,7 @@
 </span></span><span class="line"><span class="cl">  objectClass: mepOriginEntry
 </span></span><span class="line"><span class="cl">  objectClass: ipantuserattrs
 </span></span><span class="line"><span class="cl">----------------------------
-</span></span><span class="line"><span class="cl">Number of entries returned 1
+</span></span><span class="line"><span class="cl">Number of entries returned <span class="m">1</span>
 </span></span><span class="line"><span class="cl">----------------------------
 </span></span></code></pre></td></tr></table>
 </div>
@@ -604,7 +604,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-install/" class="prev" rel="prev" title="Linux - RHV 虛擬化平台安裝"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 虛擬化平台安裝</a>
-            <a href="/posts/linux/2023/linux-rhv-idm/" class="next" rel="next" title="Linux - RHV 整合 Idm 身份驗證">Linux - RHV 整合 Idm 身份驗證<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/posts/linux/2023/linux-rhv-created-vm/" class="next" rel="next" title="Linux - RHV 部屬與管理虛擬機器">Linux - RHV 部屬與管理虛擬機器<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
