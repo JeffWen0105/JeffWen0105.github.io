@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/"
-        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1712 ,
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1715 ,
         "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-created-vm\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 部屬與管理虛擬機器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1712 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1715 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -630,7 +630,7 @@
     </a><figcaption class="image-caption">VNC</figcaption>
     </figure></p>
 <h3 id="42-hosted-engine-ha-高可用性">4.2. Hosted Engine HA 高可用性</h3>
-<p>Hosted Engine 是 RHV 最重要的心臟，不過如果 Host A (預設安裝的節點)失效，也會導致其虛擬機失效，故在加入機器時可以多部屬幾個 Hosted Engine 作為備用，當主 Hosted Engine失效可以由其他的補上，所以有共同的分享儲存資源就是很重要的一件事情。</p>
+<p>Hosted Engine 是 RHV 最重要的心臟，不過如果 Host A (預設安裝的節點)失效，也會導致其虛擬機失效，故在加入機器時可以多部屬幾個 Hosted Engine 作為備用，當主 Hosted Engine失效可以由其他的補上，所以有共同的儲存資源就是很重要的一件事情。</p>
 <p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HyjeaTLW3.png" title="https://hackmd.io/_uploads/HyjeaTLW3.png" data-thumbnail="https://hackmd.io/_uploads/HyjeaTLW3.png" data-sub-html="<h2>Deploy Hosted Engine</h2>">
         <img
             class="lazyload"
@@ -663,14 +663,16 @@
     </a><figcaption class="image-caption">PreparingForMaintenance</figcaption>
     </figure></p>
 <p>切轉完成，Host A 進入維護模式。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://hackmd.io/_uploads/ByTJA6I-2.png"
-        data-srcset="https://hackmd.io/_uploads/ByTJA6I-2.png, https://hackmd.io/_uploads/ByTJA6I-2.png 1.5x, https://hackmd.io/_uploads/ByTJA6I-2.png 2x"
-        data-sizes="auto"
-        alt="https://hackmd.io/_uploads/ByTJA6I-2.png"
-        title="https://hackmd.io/_uploads/ByTJA6I-2.png" /></p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ByTJA6I-2.png" title="https://hackmd.io/_uploads/ByTJA6I-2.png" data-thumbnail="https://hackmd.io/_uploads/ByTJA6I-2.png" data-sub-html="<h2>Hosted Engine on Host C</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/ByTJA6I-2.png"
+            data-srcset="https://hackmd.io/_uploads/ByTJA6I-2.png, https://hackmd.io/_uploads/ByTJA6I-2.png 1.5x, https://hackmd.io/_uploads/ByTJA6I-2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/ByTJA6I-2.png" />
+    </a><figcaption class="image-caption">Hosted Engine on Host C</figcaption>
+    </figure></p>
 <h2 id="5-小結">5. 小結</h2>
 <p>對於中小型企業及個人 LAB 環境來說 RHV (oVirt) 是非常足夠的，所有東西都有開源版可以使用，不會受到商用版的虛擬化平台試用期限或是試用版有使用量上限而被限制住，可以完全自由且靈活的進行操作。</p>
 </div>

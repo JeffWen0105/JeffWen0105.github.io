@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Linux - RHV 使用 Template 模板與 Cloud-init - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Linux - RHV 使用 Template 模板與 Cloud-init" />
+<meta property="og:description" content="在公有雲上建置的虛擬機器都會產生專門的主機名跟其內容，在 RHV 中也能透過 Cloud-init 方式再啟動自動部屬虛擬機器，也可以藉由 Template 模板大量部屬機器。 1. RHV 簡介 紅帽" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-02T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux - RHV 使用 Template 模板與 Cloud-init"/>
+<meta name="twitter:description" content="在公有雲上建置的虛擬機器都會產生專門的主機名跟其內容，在 RHV 中也能透過 Cloud-init 方式再啟動自動部屬虛擬機器，也可以藉由 Template 模板大量部屬機器。 1. RHV 簡介 紅帽"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-idm/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux - RHV 使用 Template 模板與 Cloud-init",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-template-cloud-init\/"
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1137 ,
+        "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-template-cloud-init\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 使用 Template 模板與 Cloud-init</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1137 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-rhv-簡介">1. RHV 簡介</a></li>
+    <li><a href="#2-創建--template-模板">2. 創建  Template 模板</a>
+      <ul>
+        <li><a href="#21-上傳-fedora-qcow2-至-rhv">2.1. 上傳 Fedora qcow2 至 RHV</a></li>
+        <li><a href="#22-製作-templates-模板">2.2. 製作 Templates 模板</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-使用-cloud-init">3. 使用 cloud-init</a></li>
+    <li><a href="#5-小結">5. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在公有雲上建置的虛擬機器都會產生專門的主機名跟其內容，在 RHV 中也能透過 Cloud-init 方式再啟動自動部屬虛擬機器，也可以藉由 Template 模板大量部屬機器。</p>
+<!-- more -->
+<h2 id="1-rhv-簡介">1. RHV 簡介</h2>
+<p>紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容易使用的基礎架構與集中式管理平台，適用於 Linux 虛擬化的平台，底層基本 KVM 技術架構，可以較低成本建置企業內部的虛擬化平台，並且可以在短時間內完成部屬與啟用。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BJcPMjrWn.png" title="https://hackmd.io/_uploads/BJcPMjrWn.png" data-thumbnail="https://hackmd.io/_uploads/BJcPMjrWn.png" data-sub-html="<h2>From www.redhat.com </h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BJcPMjrWn.png"
+            data-srcset="https://hackmd.io/_uploads/BJcPMjrWn.png, https://hackmd.io/_uploads/BJcPMjrWn.png 1.5x, https://hackmd.io/_uploads/BJcPMjrWn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BJcPMjrWn.png" />
+    </a><figcaption class="image-caption">From www.redhat.com </figcaption>
+    </figure></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>開源上游版<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">所有紅帽系列產品都有上開源版，對於 RHV 來說上游就屬於<a href="https://www.ovirt.org/" target="_blank" rel="noopener noreffer "> oVirt 組織</a> 。</div>
+        </div>
+    </div>
+<h2 id="2-創建--template-模板">2. 創建  Template 模板</h2>
+<p><strong>透過 ISO 創建虛擬機先決必要條件 :</strong></p>
+<p>必須下載 RHV CA 憑證並由瀏覽器認證 (僅需認證一次即可)，否則會因憑證導致瀏覽器禁止上傳檔案而失敗。</p>
+<ol>
+<li>至登入頁面 <code>https://rhvm.lab.example.com</code> 下載 CA Certificate。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22"
+        data-srcset="https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22, https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22 1.5x, https://hackmd.io/_uploads/S1Ual2LZ3.png%22%e4%b8%8b%e8%bc%89CA%e6%86%91%e8%ad%89%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/S1Ual2LZ3.png&#34;下載CA憑證&#34;"
+        title="https://hackmd.io/_uploads/S1Ual2LZ3.png&#34;下載CA憑證&#34;" /></p>
+<ol start="2">
+<li>以 FireFox 為例選擇設定並且匯入憑證。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22"
+        data-srcset="https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22, https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22 1.5x, https://hackmd.io/_uploads/rJ5nenUZ2.png%22%e5%8c%af%e5%85%a5%e6%86%91%e8%ad%89%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/rJ5nenUZ2.png&#34;匯入憑證&#34;"
+        title="https://hackmd.io/_uploads/rJ5nenUZ2.png&#34;匯入憑證&#34;" /></p>
+<ol start="3">
+<li>將下載的憑證匯入(檔案如未找到請選擇所有檔案格式)。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22"
+        data-srcset="https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22, https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22 1.5x, https://hackmd.io/_uploads/B16jxnUbh.png%22%e6%aa%94%e6%a1%88%e9%a1%9e%e5%9e%8b%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/B16jxnUbh.png&#34;檔案類型&#34;"
+        title="https://hackmd.io/_uploads/B16jxnUbh.png&#34;檔案類型&#34;" /></p>
+<ol start="4">
+<li>信任此 CA 來辨識網站。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22"
+        data-srcset="https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22, https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22 1.5x, https://hackmd.io/_uploads/Hkkjlh8-h.png%22%e4%bf%a1%e4%bb%bbCA%22 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/Hkkjlh8-h.png&#34;信任CA&#34;"
+        title="https://hackmd.io/_uploads/Hkkjlh8-h.png&#34;信任CA&#34;" /></p>
+<ol start="5">
+<li>網頁連線就會顯示安全性連線。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/S1zqehIbh.png" title="https://hackmd.io/_uploads/S1zqehIbh.png" data-thumbnail="https://hackmd.io/_uploads/S1zqehIbh.png" data-sub-html="<h2>安全連線</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/S1zqehIbh.png"
+            data-srcset="https://hackmd.io/_uploads/S1zqehIbh.png, https://hackmd.io/_uploads/S1zqehIbh.png 1.5x, https://hackmd.io/_uploads/S1zqehIbh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/S1zqehIbh.png" />
+    </a><figcaption class="image-caption">安全連線</figcaption>
+    </figure></p>
+<h3 id="21-上傳-fedora-qcow2-至-rhv">2.1. 上傳 Fedora qcow2 至 RHV</h3>
+<p><em><strong>Fedora 37 Cloud Base Images下載<a href="https://download.fedoraproject.org/pub/fedora/linux/releases/37/Cloud/x86_64/images/Fedora-Cloud-Base-37-1.7.x86_64.qcow2" target="_blank" rel="noopener noreffer ">連結請點我</a>。</strong></em></p>
+<ol>
+<li>使用 admin 登入 <code>https://rhvm.lab.example.com</code> 頁面後選擇 Storage -&gt; Disks -&gt; Upload  。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1u_e38-3.png"
+        data-srcset="https://hackmd.io/_uploads/r1u_e38-3.png, https://hackmd.io/_uploads/r1u_e38-3.png 1.5x, https://hackmd.io/_uploads/r1u_e38-3.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1u_e38-3.png"
+        title="https://hackmd.io/_uploads/r1u_e38-3.png" /></p>
+<ol start="2">
+<li>點擊 Fedora qcow2  作為上傳 Image 後點擊 OK 上傳。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryaVSJwZ3.png" title="https://hackmd.io/_uploads/ryaVSJwZ3.png" data-thumbnail="https://hackmd.io/_uploads/ryaVSJwZ3.png" data-sub-html="<h2>upload qcow2</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/ryaVSJwZ3.png"
+            data-srcset="https://hackmd.io/_uploads/ryaVSJwZ3.png, https://hackmd.io/_uploads/ryaVSJwZ3.png 1.5x, https://hackmd.io/_uploads/ryaVSJwZ3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/ryaVSJwZ3.png" />
+    </a><figcaption class="image-caption">upload qcow2</figcaption>
+    </figure></p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>重要<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>如果執行 Test Connection 出現下列失敗，表示未進行 CA 憑證匯入。</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/B1x4gn8-h.png"
+        data-srcset="https://hackmd.io/_uploads/B1x4gn8-h.png, https://hackmd.io/_uploads/B1x4gn8-h.png 1.5x, https://hackmd.io/_uploads/B1x4gn8-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/B1x4gn8-h.png"
+        title="https://hackmd.io/_uploads/B1x4gn8-h.png" /></div>
+        </div>
+    </div>
+<ol start="3">
+<li>上傳後從 Lock 狀態變成 OK 表示上傳完畢。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rk8Kr1wWh.png" title="https://hackmd.io/_uploads/rk8Kr1wWh.png" data-thumbnail="https://hackmd.io/_uploads/rk8Kr1wWh.png" data-sub-html="<h2>qcow2 status</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rk8Kr1wWh.png"
+            data-srcset="https://hackmd.io/_uploads/rk8Kr1wWh.png, https://hackmd.io/_uploads/rk8Kr1wWh.png 1.5x, https://hackmd.io/_uploads/rk8Kr1wWh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rk8Kr1wWh.png" />
+    </a><figcaption class="image-caption">qcow2 status</figcaption>
+    </figure></p>
+<h3 id="22-製作-templates-模板">2.2. 製作 Templates 模板</h3>
+<ol>
+<li>選擇左側 Computer -&gt; Virtual Machines -&gt; New 新增虛擬機器。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        data-srcset="https://hackmd.io/_uploads/r1ar-nU-h.png, https://hackmd.io/_uploads/r1ar-nU-h.png 1.5x, https://hackmd.io/_uploads/r1ar-nU-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        title="https://hackmd.io/_uploads/r1ar-nU-h.png" /></p>
+<ol start="2">
+<li>創建新虛擬機。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 作業系統 : Linux
+</span></span><span class="line"><span class="cl">2. 虛擬機 SIZE : Small
+</span></span><span class="line"><span class="cl">        Tiny：    CPU: 1 ,RAM : 512  MB
+</span></span><span class="line"><span class="cl">        Small：   CPU: 1 ,RAM : 2084 MB
+</span></span><span class="line"><span class="cl">        Medium：  CPU: 2 ,RAM : 4096 MB
+</span></span><span class="line"><span class="cl">        Large：   CPU: 4, RAM : 8192 MB
+</span></span><span class="line"><span class="cl">        XLarge：  CPU: 4, RAM :16384 MB
+</span></span><span class="line"><span class="cl">        Custom :  自定義
+</span></span><span class="line"><span class="cl">3. 最佳化 : Server ( Desktop, Server, High Perfomance )
+</span></span><span class="line"><span class="cl">4. 虛擬機名稱 : fedora37-base
+</span></span><span class="line"><span class="cl">5. 硬碟選擇 Fedora37.qcow Image
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Bym3SyDWh.png" title="https://hackmd.io/_uploads/Bym3SyDWh.png" data-thumbnail="https://hackmd.io/_uploads/Bym3SyDWh.png" data-sub-html="<h2>ceate base vm</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/Bym3SyDWh.png"
+            data-srcset="https://hackmd.io/_uploads/Bym3SyDWh.png, https://hackmd.io/_uploads/Bym3SyDWh.png 1.5x, https://hackmd.io/_uploads/Bym3SyDWh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/Bym3SyDWh.png" />
+    </a><figcaption class="image-caption">ceate base vm</figcaption>
+    </figure></p>
+<ol start="3">
+<li>選擇新創建的虛擬機，並點擊右方漢堡圖案選擇製作模板。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJwbL1vW2.png" title="https://hackmd.io/_uploads/rJwbL1vW2.png" data-thumbnail="https://hackmd.io/_uploads/rJwbL1vW2.png" data-sub-html="<h2>make template</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rJwbL1vW2.png"
+            data-srcset="https://hackmd.io/_uploads/rJwbL1vW2.png, https://hackmd.io/_uploads/rJwbL1vW2.png 1.5x, https://hackmd.io/_uploads/rJwbL1vW2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rJwbL1vW2.png" />
+    </a><figcaption class="image-caption">make template</figcaption>
+    </figure></p>
+<ol start="4">
+<li>模板名稱與 Alias 命名為 <code>Fedora37-Template</code>，並點擊 Ok 創建。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryI88kwWh.png" title="https://hackmd.io/_uploads/ryI88kwWh.png" data-thumbnail="https://hackmd.io/_uploads/ryI88kwWh.png" data-sub-html="<h2>new template</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/ryI88kwWh.png"
+            data-srcset="https://hackmd.io/_uploads/ryI88kwWh.png, https://hackmd.io/_uploads/ryI88kwWh.png 1.5x, https://hackmd.io/_uploads/ryI88kwWh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/ryI88kwWh.png" />
+    </a><figcaption class="image-caption">new template</figcaption>
+    </figure></p>
+<ol start="5">
+<li>至 Computer -&gt; Templates 頁面等待模板建立完成。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/By1iL1vb3.png" title="https://hackmd.io/_uploads/By1iL1vb3.png" data-thumbnail="https://hackmd.io/_uploads/By1iL1vb3.png" data-sub-html="<h2>template status</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/By1iL1vb3.png"
+            data-srcset="https://hackmd.io/_uploads/By1iL1vb3.png, https://hackmd.io/_uploads/By1iL1vb3.png 1.5x, https://hackmd.io/_uploads/By1iL1vb3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/By1iL1vb3.png" />
+    </a><figcaption class="image-caption">template status</figcaption>
+    </figure></p>
+<h2 id="3-使用-cloud-init">3. 使用 cloud-init</h2>
+<ol>
+<li>選擇左側 Computer -&gt; Virtual Machines -&gt; New 新增虛擬機器。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        data-srcset="https://hackmd.io/_uploads/r1ar-nU-h.png, https://hackmd.io/_uploads/r1ar-nU-h.png 1.5x, https://hackmd.io/_uploads/r1ar-nU-h.png 2x"
+        data-sizes="auto"
+        alt="https://hackmd.io/_uploads/r1ar-nU-h.png"
+        title="https://hackmd.io/_uploads/r1ar-nU-h.png" /></p>
+<ol start="2">
+<li>選擇模板創建虛擬機器</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. Template 選擇 Fedora37-Template
+</span></span><span class="line"><span class="cl">2. 虛擬機 Type 選擇 small
+</span></span><span class="line"><span class="cl">3. 名稱命名為 Fedora37-cloud
+</span></span><span class="line"><span class="cl">4. 網卡選擇 ovirtmgmt/ovirtmgmt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/B19Kw1Pbh.png" title="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-thumbnail="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-sub-html="<h2>create vm</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/B19Kw1Pbh.png"
+            data-srcset="https://hackmd.io/_uploads/B19Kw1Pbh.png, https://hackmd.io/_uploads/B19Kw1Pbh.png 1.5x, https://hackmd.io/_uploads/B19Kw1Pbh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/B19Kw1Pbh.png" />
+    </a><figcaption class="image-caption">create vm</figcaption>
+    </figure></p>
+<ol start="3">
+<li>左側選擇 Inital Run，並輸入下列參數點擊 OK 產生虛擬機器。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 確保 Use Cloud-Init/Sysprep 開啟
+</span></span><span class="line"><span class="cl">2. VM Hostname : Lab-cloud
+</span></span><span class="line"><span class="cl">3. User Name: student
+</span></span><span class="line"><span class="cl">4. Password : student
+</span></span><span class="line"><span class="cl">5. 啟動腳本:
+</span></span><span class="line"><span class="cl">    write_files:
+</span></span><span class="line"><span class="cl">      - path: /etc/motd
+</span></span><span class="line"><span class="cl">        content: |
+</span></span><span class="line"><span class="cl">          This VM has been provisioned using cloud-init. 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BkVZs1w-2.png" title="https://hackmd.io/_uploads/BkVZs1w-2.png" data-thumbnail="https://hackmd.io/_uploads/BkVZs1w-2.png" data-sub-html="<h2>cloud init setup</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BkVZs1w-2.png"
+            data-srcset="https://hackmd.io/_uploads/BkVZs1w-2.png, https://hackmd.io/_uploads/BkVZs1w-2.png 1.5x, https://hackmd.io/_uploads/BkVZs1w-2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BkVZs1w-2.png" />
+    </a><figcaption class="image-caption">cloud init setup</figcaption>
+    </figure></p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>重要<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em><strong>cloud-init</strong> 所用的 YAML 對於空格縮排特別要求，請嚴格對其縮排格式(請勿使用 TAB)，並在最後一行加上一個空白。</em></div>
+        </div>
+    </div>
+<ol start="4">
+<li>執行虛擬機器，透過 console ，登入帳號 : <code>student</code> ，密碼 : <code>student</code> ，應顯示 <code>This VM has been provisioned using cloud-init.</code> 。</li>
+</ol>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/BJbOKyv-2.png" title="https://hackmd.io/_uploads/BJbOKyv-2.png" data-thumbnail="https://hackmd.io/_uploads/BJbOKyv-2.png" data-sub-html="<h2>vm console</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/BJbOKyv-2.png"
+            data-srcset="https://hackmd.io/_uploads/BJbOKyv-2.png, https://hackmd.io/_uploads/BJbOKyv-2.png 1.5x, https://hackmd.io/_uploads/BJbOKyv-2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/BJbOKyv-2.png" />
+    </a><figcaption class="image-caption">vm console</figcaption>
+    </figure></p>
+<ol start="5">
+<li>透過查看 <code>/var/log/cloud-init.log</code> 可以看出 Cloud-init 執行的 Log 紀錄。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[student@Lab-cloud ~]$ tail /var/log/cloud-init.log
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,495 - cc_power_state_change.py[DEBUG]: no power_state provided. doing nothing
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,495 - handlers.py[DEBUG]: finish: modules-final/config-power-state-change: SUCCESS: config-power-state-change ran successfully
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,495 - main.py[DEBUG]: Ran 20 modules with 0 failures
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,495 - atomic_helper.py[DEBUG]: Atomically writing to file /var/lib/cloud/data/status.json (via temporary file /var/lib/cloud/data/tmpgkql5yy3) - w: [644] 604 bytes/chars
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - atomic_helper.py[DEBUG]: Atomically writing to file /var/lib/cloud/data/result.json (via temporary file /var/lib/cloud/data/tmpw2gr7zm0) - w: [644] 103 bytes/chars
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - util.py[DEBUG]: Creating symbolic link from &#39;/run/cloud-init/result.json&#39; =&gt; &#39;../../var/lib/cloud/data/result.json&#39;
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - util.py[DEBUG]: Reading from /proc/uptime (quiet=False)
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - util.py[DEBUG]: Read 11 bytes from /proc/uptime
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - util.py[DEBUG]: cloud-init mode &#39;modules&#39; took 0.298 seconds (0.30)
+</span></span><span class="line"><span class="cl">2023-04-02 11:14:18,496 - handlers.py[DEBUG]: finish: modules-final: SUCCESS: running modules for final
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-小結">5. 小結</h2>
+<p>RHV 虛擬化的私有化雲平台功能十分完整且強大，可以透過多個二手 X86 機器組成一個強大的虛擬化平台 ( CPU Family 盡可能一致)，讓舊電腦也能發揮出最大的功效。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2flinux%2f2023%2flinux-rhv-template-cloud-init%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" data-title="Linux - RHV 使用 Template 模板與 Cloud-init" data-hashtags="Linux,KVM"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" data-title="Linux - RHV 使用 Template 模板與 Cloud-init" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" data-title="Linux - RHV 使用 Template 模板與 Cloud-init"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" data-title="Linux - RHV 使用 Template 模板與 Cloud-init"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/kvm/">KVM</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-idm/" class="prev" rel="prev" title="Linux - RHV 整合 Idm 身份驗證"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 整合 Idm 身份驗證</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

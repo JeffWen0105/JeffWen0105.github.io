@@ -74,6 +74,11 @@
         alt="https://i0.wp.com/jeffwen0105.com/wp-content/uploads/2021/08/10521193_10152476366924667_4206814152634701259_n-e1629204387122.jpeg"
         title="https://i0.wp.com/jeffwen0105.com/wp-content/uploads/2021/08/10521193_10152476366924667_4206814152634701259_n-e1629204387122.jpeg" /></a></div><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="https://github.com/JeffWen0105" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github fa-fw" aria-hidden="true"></i></a><a href="https://linkedin.com/in/%e8%bb%8d%e7%9a%93-%e6%96%87-4b9749196" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="mailto:wen9077@gmail.com" title="Email" rel="me"><i class="far fa-envelope fa-fw" aria-hidden="true"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/openshift/2023/ocp-podman-basic/">Openshift - Podman 管理容器基礎</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-28">2023-01-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/openshift/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Openshift</a></span></div><div class="content"><p>輕巧且快速部署應用程式的方式，可以透過容器化( Containerd )來達成，RHEL 中安全且好用的工具 - Podman。</p></div><div class="post-footer">
+        <a href="/posts/openshift/2023/ocp-podman-basic/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/openshift/">Openshift</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux/2023/linux-dhcpd/">Linux - DHCP 伺服器</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-publish">published on <time datetime="2023-01-01">2023-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div><div class="content">除了手動設置伺服器 IP ，最常用的就是 DHCP 動態主機設定協定 (Dynamic Host Configuration Protocol)，除了常見的家用路由器有此功能外，也能在 RHEL 上架設私人的 DHCP Serv</div><div class="post-footer">
         <a href="/posts/linux/2023/linux-dhcpd/">Read More</a><div class="post-tags">
@@ -93,11 +98,6 @@
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-03">2022-07-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/gcp/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>GCP</a></span></div><div class="content">手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合</div><div class="post-footer">
         <a href="/posts/gcp/2022/gcp-iac_k8s/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/gcp/">GCP</a>,&nbsp;<a href="/tags/terraform/">Terraform</a>,&nbsp;<a href="/tags/ansible/">Ansible</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/aws/2022/aws-iac_k8s/">AWS - Terraform & Ansible 在 AWS 上自動部署 K8S 叢集</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-publish">published on <time datetime="2022-07-02">2022-07-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/aws/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>AWS</a></span></div><div class="content">手動部署 K8s 叢集是件重複又繁瑣的事情，除了要先準備好基礎機器環境之外，還要每一台機器安裝依賴套件後，並一個一個加入叢集內，透過 Terraform + Ansible Iac 最佳組合</div><div class="post-footer">
-        <a href="/posts/aws/2022/aws-iac_k8s/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aws/">AWS</a>,&nbsp;<a href="/tags/terraform/">Terraform</a>,&nbsp;<a href="/tags/ansible/">Ansible</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -128,7 +128,7 @@
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/17/">17</a>
+                        <a href="/page/18/">18</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

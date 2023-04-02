@@ -5,6 +5,14 @@
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
             <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - RHV 使用 Template 模板與 Cloud-init</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</link>
+    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</guid>
+    <description><![CDATA[在公有雲上建置的虛擬機器都會產生專門的主機名跟其內容，在 RHV 中也能透過 Cloud-init 方式再啟動自動部屬虛擬機器，也可以藉由 Template 模板大量部屬機器。 1. RHV 簡介 紅帽]]></description>
+</item>
+<item>
     <title>Linux - RHV 整合 Idm 身份驗證</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-idm/</link>
     <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
     <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
-</item>
-<item>
-    <title>Linux - NFS 檔案系統 </title>
-    <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-nfs/</guid>
-    <description><![CDATA[在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
 </item>
 </channel>
 </rss>
