@@ -16,7 +16,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/rhce/mock-exam006/" /><link rel="prev" href="https://how64bit.com/posts/rhcsa/mock-exam004/" /><link rel="next" href="https://how64bit.com/posts/rhce/mock-exam007/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/rhce/mock-exam006/" /><link rel="prev" href="https://how64bit.com/posts/rhce/mock-exam009/" /><link rel="next" href="https://how64bit.com/posts/rhce/mock-exam012/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/rhce\/mock-exam006\/"
-        },"genre": "posts","wordcount":  358 ,
+        },"genre": "posts","wordcount":  363 ,
         "url": "https:\/\/how64bit.com\/posts\/rhce\/mock-exam006\/","datePublished": "2000-01-01T00:00:00+00:00","dateModified": "2000-01-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">RHCE - 模擬考 創建 Roles 並使用 </h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;358 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2000-01-01">2000-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;363 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -92,7 +92,7 @@
       <ul>
         <li><a href="#題目">題目</a></li>
         <li><a href="#參考作法-">參考作法 ：</a></li>
-        <li><a href="#參考解答">參考解答</a></li>
+        <li><a href="#參考解答-">參考解答 :</a></li>
       </ul>
     </li>
   </ul>
@@ -134,7 +134,7 @@
 <h3 id="參考作法-">參考作法 ：</h3>
 <p><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html" target="_blank" rel="noopener noreffer ">Ansible - Doc</a>。</p>
 <hr>
-<h3 id="參考解答">參考解答</h3>
+<h3 id="參考解答-">參考解答 :</h3>
 <ol>
 <li>創建 httpd Role</li>
 </ol>
@@ -178,9 +178,12 @@
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># tasks file for roles/httpd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">install http</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">yum</span><span class="p">:</span><span class="w">
@@ -197,7 +200,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">firewalld</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">firewall rule</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">firewalld</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">firewalld</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l">http</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">permanent</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">immediate</span><span class="p">:</span><span class="w"> </span><span class="kc">yes</span><span class="w">
@@ -210,7 +214,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
-<li>創建 roles/httpd/emplates/index.html.j2</li>
+<li>創建 roles/httpd/templates/index.html.j2</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -229,13 +233,15 @@
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- name: use httpd role
-</span></span><span class="line"><span class="cl">  hosts: webservers
-</span></span><span class="line"><span class="cl">  roles:
-</span></span><span class="line"><span class="cl">    - httpd
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">use httpd role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l">webservers</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">roles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">httpd</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 
@@ -268,8 +274,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/rhcsa/mock-exam004/" class="prev" rel="prev" title="RHCSA - 模擬考 - 創建使用者帳號"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCSA - 模擬考 - 創建使用者帳號</a>
-            <a href="/posts/rhce/mock-exam007/" class="next" rel="next" title="RHCE - 模擬考 Ansible Galaxy 使用角色 ">RHCE - 模擬考 Ansible Galaxy 使用角色 <i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/rhce/mock-exam009/" class="prev" rel="prev" title="RHCE - 模擬考 創建帳號及密碼"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>RHCE - 模擬考 創建帳號及密碼</a>
+            <a href="/posts/rhce/mock-exam012/" class="next" rel="next" title="RHCE - 模擬考 Playbook 管理網站目錄">RHCE - 模擬考 Playbook 管理網站目錄<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
