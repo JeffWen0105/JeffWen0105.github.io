@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-template-cloud-init\/"
-        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1137 ,
+        },"genre": "posts","keywords": "Linux, KVM","wordcount":  1138 ,
         "url": "https:\/\/how64bit.com\/posts\/linux\/2023\/linux-rhv-template-cloud-init\/","datePublished": "2023-04-02T00:00:00+00:00","dateModified": "2023-04-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Linux - RHV 使用 Template 模板與 Cloud-init</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1137 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-02">2023-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1138 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -279,7 +279,7 @@
 </span></span><span class="line"><span class="cl">5. 硬碟選擇 Fedora37.qcow Image
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Bym3SyDWh.png" title="https://hackmd.io/_uploads/Bym3SyDWh.png" data-thumbnail="https://hackmd.io/_uploads/Bym3SyDWh.png" data-sub-html="<h2>ceate base vm</h2>">
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/Bym3SyDWh.png" title="https://hackmd.io/_uploads/Bym3SyDWh.png" data-thumbnail="https://hackmd.io/_uploads/Bym3SyDWh.png" data-sub-html="<h2>Create base vm</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -287,12 +287,12 @@
             data-srcset="https://hackmd.io/_uploads/Bym3SyDWh.png, https://hackmd.io/_uploads/Bym3SyDWh.png 1.5x, https://hackmd.io/_uploads/Bym3SyDWh.png 2x"
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/Bym3SyDWh.png" />
-    </a><figcaption class="image-caption">ceate base vm</figcaption>
+    </a><figcaption class="image-caption">Create base vm</figcaption>
     </figure></p>
 <ol start="3">
 <li>選擇新創建的虛擬機，並點擊右方漢堡圖案選擇製作模板。</li>
 </ol>
-<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJwbL1vW2.png" title="https://hackmd.io/_uploads/rJwbL1vW2.png" data-thumbnail="https://hackmd.io/_uploads/rJwbL1vW2.png" data-sub-html="<h2>make template</h2>">
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rJwbL1vW2.png" title="https://hackmd.io/_uploads/rJwbL1vW2.png" data-thumbnail="https://hackmd.io/_uploads/rJwbL1vW2.png" data-sub-html="<h2>Make template</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -300,12 +300,12 @@
             data-srcset="https://hackmd.io/_uploads/rJwbL1vW2.png, https://hackmd.io/_uploads/rJwbL1vW2.png 1.5x, https://hackmd.io/_uploads/rJwbL1vW2.png 2x"
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/rJwbL1vW2.png" />
-    </a><figcaption class="image-caption">make template</figcaption>
+    </a><figcaption class="image-caption">Make template</figcaption>
     </figure></p>
 <ol start="4">
 <li>模板名稱與 Alias 命名為 <code>Fedora37-Template</code>，並點擊 Ok 創建。</li>
 </ol>
-<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryI88kwWh.png" title="https://hackmd.io/_uploads/ryI88kwWh.png" data-thumbnail="https://hackmd.io/_uploads/ryI88kwWh.png" data-sub-html="<h2>new template</h2>">
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/ryI88kwWh.png" title="https://hackmd.io/_uploads/ryI88kwWh.png" data-thumbnail="https://hackmd.io/_uploads/ryI88kwWh.png" data-sub-html="<h2>New template</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -313,12 +313,12 @@
             data-srcset="https://hackmd.io/_uploads/ryI88kwWh.png, https://hackmd.io/_uploads/ryI88kwWh.png 1.5x, https://hackmd.io/_uploads/ryI88kwWh.png 2x"
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/ryI88kwWh.png" />
-    </a><figcaption class="image-caption">new template</figcaption>
+    </a><figcaption class="image-caption">New template</figcaption>
     </figure></p>
 <ol start="5">
 <li>至 Computer -&gt; Templates 頁面等待模板建立完成。</li>
 </ol>
-<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/By1iL1vb3.png" title="https://hackmd.io/_uploads/By1iL1vb3.png" data-thumbnail="https://hackmd.io/_uploads/By1iL1vb3.png" data-sub-html="<h2>template status</h2>">
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/By1iL1vb3.png" title="https://hackmd.io/_uploads/By1iL1vb3.png" data-thumbnail="https://hackmd.io/_uploads/By1iL1vb3.png" data-sub-html="<h2>Check template status</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -326,7 +326,7 @@
             data-srcset="https://hackmd.io/_uploads/By1iL1vb3.png, https://hackmd.io/_uploads/By1iL1vb3.png 1.5x, https://hackmd.io/_uploads/By1iL1vb3.png 2x"
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/By1iL1vb3.png" />
-    </a><figcaption class="image-caption">template status</figcaption>
+    </a><figcaption class="image-caption">Check template status</figcaption>
     </figure></p>
 <h2 id="3-使用-cloud-init">3. 使用 cloud-init</h2>
 <ol>
@@ -357,7 +357,7 @@
 </span></span><span class="line"><span class="cl">4. 網卡選擇 ovirtmgmt/ovirtmgmt
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/B19Kw1Pbh.png" title="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-thumbnail="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-sub-html="<h2>create vm</h2>">
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/B19Kw1Pbh.png" title="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-thumbnail="https://hackmd.io/_uploads/B19Kw1Pbh.png" data-sub-html="<h2>Create vm</h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -365,7 +365,7 @@
             data-srcset="https://hackmd.io/_uploads/B19Kw1Pbh.png, https://hackmd.io/_uploads/B19Kw1Pbh.png 1.5x, https://hackmd.io/_uploads/B19Kw1Pbh.png 2x"
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/B19Kw1Pbh.png" />
-    </a><figcaption class="image-caption">create vm</figcaption>
+    </a><figcaption class="image-caption">Create vm</figcaption>
     </figure></p>
 <ol start="3">
 <li>左側選擇 Inital Run，並輸入下列參數點擊 OK 產生虛擬機器。</li>
