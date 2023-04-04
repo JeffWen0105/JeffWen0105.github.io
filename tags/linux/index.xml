@@ -4,7 +4,15 @@
         <link>https://how64bit.com/tags/linux/</link>
         <description>Linux - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Database - 安裝 MariaBD 與配置</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</guid>
+    <description><![CDATA[關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就]]></description>
+</item>
+<item>
     <title>Linux - RHV 使用 Template 模板與 Cloud-init</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</link>
     <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
     <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
-</item>
-<item>
-    <title>Linux - NFS 檔案系統 </title>
-    <link>https://how64bit.com/posts/linux/2023/linux-nfs/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-nfs/</guid>
-    <description><![CDATA[在 Unix 系列家族中最方便使用的遠端檔案系統莫過於 NFS，除了設定Export Server 容易之外，作為 Client 也很輕鬆就能實踐掛載。 練習環境 可以使用 HowHow 的創建 Lab 練]]></description>
 </item>
 </channel>
 </rss>

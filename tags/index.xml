@@ -4,20 +4,36 @@
         <link>https://how64bit.com/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>KVM</title>
-    <link>https://how64bit.com/tags/kvm/</link>
-    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Database</title>
+    <link>https://how64bit.com/tags/database/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
-    <guid>https://how64bit.com/tags/kvm/</guid>
+    <guid>https://how64bit.com/tags/database/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Linux</title>
     <link>https://how64bit.com/tags/linux/</link>
-    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/tags/linux/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>MariaDB</title>
+    <link>https://how64bit.com/tags/mariadb/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/tags/mariadb/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>KVM</title>
+    <link>https://how64bit.com/tags/kvm/</link>
+    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/tags/kvm/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -66,22 +82,6 @@
     <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/tags/terraform/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>AWS</title>
-    <link>https://how64bit.com/tags/aws/</link>
-    <pubDate>Sat, 02 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/tags/aws/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Network</title>
-    <link>https://how64bit.com/tags/network/</link>
-    <pubDate>Sun, 29 May 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/tags/network/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

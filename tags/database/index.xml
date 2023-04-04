@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Database - Tag - HowHow の WebSite</title>
+        <link>https://how64bit.com/tags/database/</link>
+        <description>Database - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/database/" rel="self" type="application/rss+xml" /><item>
+    <title>Database - 安裝 MariaBD 與配置</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</guid>
+    <description><![CDATA[關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就]]></description>
+</item>
+</channel>
+</rss>

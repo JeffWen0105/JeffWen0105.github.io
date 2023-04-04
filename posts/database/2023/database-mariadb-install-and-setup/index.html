@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Database - 安裝 MariaBD 與配置 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Database - 安裝 MariaBD 與配置" />
+<meta property="og:description" content="關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Database - 安裝 MariaBD 與配置"/>
+<meta name="twitter:description" content="關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Database - 安裝 MariaBD 與配置",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-install-and-setup\/"
+        },"genre": "posts","keywords": "Database, MariaDB, Linux","wordcount":  1261 ,
+        "url": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-install-and-setup\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Database - 安裝 MariaBD 與配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/database/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Database</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1261 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-mariadb--簡介">1. MariaDB  簡介</a></li>
+    <li><a href="#2-安裝-mariadb">2. 安裝 MariaDB</a>
+      <ul>
+        <li><a href="#21-列出-appstream-所有可用的--mariadb-版本">2.1. 列出 AppStream 所有可用的  MariaDB 版本</a></li>
+        <li><a href="#22-安裝指定版本">2.2. 安裝指定版本</a></li>
+        <li><a href="#23-啟動服務及開放防火牆規則">2.3. 啟動服務及開放防火牆規則</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-保護-mariadb-初始設定">3. 保護 MariaDB 初始設定</a>
+      <ul>
+        <li><a href="#31-mysql_secure_installation-腳本">3.1. mysql_secure_installation 腳本</a></li>
+        <li><a href="#32-驗證-root-需輸入密碼登入">3.2. 驗證 root 需輸入密碼登入</a></li>
+        <li><a href="#33-驗證-test-資料庫移除">3.3. 驗證 test 資料庫移除</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就會使用到 MySQL、MariaDB 或是 PostgreSQL 做為資料儲存。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝及操作，使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-mariadb--簡介">1. MariaDB  簡介</h2>
+<p>MariaDB 是一個開源的關聯式資料庫管理系統，它是 MySQL 的分支版本，提供了更多的功能和性能優化。它支援多種作業系統，包括 Linux、Windows 和 macOS 等，並且能夠與許多不同的程式語言進行互動，例如 PHP、Java 和 Python 等。它還支援多種儲存引擎，包括 InnoDB、MyISAM、Memory 等，用戶可以根據需要進行選擇。 MariaDB 還提供了許多高級功能，例如支援 JSON、GIS 和虛擬列等，這些功能能夠讓用戶更加方便地進行資料管理和查詢。</p>
+<h2 id="2-安裝-mariadb">2. 安裝 MariaDB</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">使用 Server A 安裝 MariaDB 範例
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="21-列出-appstream-所有可用的--mariadb-版本">2.1. 列出 AppStream 所有可用的  MariaDB 版本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum module list mariadb</span>
+</span></span><span class="line"><span class="cl">Last metadata expiration check: 0:00:07 ago on Tue <span class="m">04</span> Apr <span class="m">2023</span> 11:08:34 PM CST.
+</span></span><span class="line"><span class="cl">Rocky Linux <span class="m">8</span> - AppStream
+</span></span><span class="line"><span class="cl">Name              Stream             Profiles                             Summary
+</span></span><span class="line"><span class="cl">mariadb           10.3 <span class="o">[</span>d<span class="o">]</span>           client, galera, server <span class="o">[</span>d<span class="o">]</span>           MariaDB Module
+</span></span><span class="line"><span class="cl">mariadb           10.5               client, galera, server <span class="o">[</span>d<span class="o">]</span>           MariaDB Module
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hint: <span class="o">[</span>d<span class="o">]</span>efault, <span class="o">[</span>e<span class="o">]</span>nabled, <span class="o">[</span>x<span class="o">]</span>disabled, <span class="o">[</span>i<span class="o">]</span>nstalled
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Aapp Streams Life Cycle<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><em>MariaDB 10.3 是在 2019 年 5 月随 RHEL 8.0.0 提供的，其官方 support 至 2023 年 5 月結束，相關訊息可以參閱 - <a href="https://access.redhat.com/support/policy/updates/rhel-app-streams-life-cycle" target="_blank" rel="noopener noreffer ">Red Hat Enterprise Linux Application Streams Life Cycle - Red Hat Customer Portal</a> 。</em></div>
+        </div>
+    </div>
+<h3 id="22-安裝指定版本">2.2. 安裝指定版本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># yum module install mariadb:10.3/server -y | tail -n 4</span>
+</span></span><span class="line"><span class="cl">  perl-threads-1:2.21-2.el8.x86_64
+</span></span><span class="line"><span class="cl">  perl-threads-shared-1.58-2.el8.x86_64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Complete!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="23-啟動服務及開放防火牆規則">2.3. 啟動服務及開放防火牆規則</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># systemctl enable --now mariadb</span>
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/mysql.service → /usr/lib/systemd/system/mariadb.service.
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/mysqld.service → /usr/lib/systemd/system/mariadb.service.
+</span></span><span class="line"><span class="cl">Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → /usr/lib/systemd/system/mariadb.service.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --permanent --add-service=mysql</span>
+</span></span><span class="line"><span class="cl">success
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># firewall-cmd --reload</span>
+</span></span><span class="line"><span class="cl">success
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-保護-mariadb-初始設定">3. 保護 MariaDB 初始設定</h2>
+<p>預設啟動的 MariaDB 會有測試資料庫及一些不安全的設定，可以透過 <code>mysql_secure_installation</code> 腳本，使得 Database 更加安全。</p>
+<p>其腳本會執行下列更改 :</p>
+<ul>
+<li><em>設定 root 帳號的密碼。</em></li>
+<li><em>移除從外部主機使用 root 帳號存取。</em></li>
+<li><em>移除 <code>anonymous-user</code> 帳號。</em></li>
+<li><em>移除 <code>test</code> 資料庫。</em></li>
+</ul>
+<h3 id="31-mysql_secure_installation-腳本">3.1. mysql_secure_installation 腳本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mysql_secure_installation</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+</span></span><span class="line"><span class="cl">      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">In order to log into MariaDB to secure it, we<span class="s1">&#39;ll need the current
+</span></span></span><span class="line"><span class="cl"><span class="s1">password for the root user.  If you&#39;</span>ve just installed MariaDB, and
+</span></span><span class="line"><span class="cl">you haven<span class="s1">&#39;t set the root password yet, the password will be blank,
+</span></span></span><span class="line"><span class="cl"><span class="s1">so you should just press enter here.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Enter current password for root (enter for none): Enter
+</span></span></span><span class="line"><span class="cl"><span class="s1">OK, successfully used password, moving on...
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Setting the root password ensures that nobody can log into the MariaDB
+</span></span></span><span class="line"><span class="cl"><span class="s1">root user without the proper authorisation.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Set root password? [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="s1">New password: redhat
+</span></span></span><span class="line"><span class="cl"><span class="s1">Re-enter new password: redhat
+</span></span></span><span class="line"><span class="cl"><span class="s1">Password updated successfully!
+</span></span></span><span class="line"><span class="cl"><span class="s1">Reloading privilege tables..
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">By default, a MariaDB installation has an anonymous user, allowing anyone
+</span></span></span><span class="line"><span class="cl"><span class="s1">to log into MariaDB without having to have a user account created for
+</span></span></span><span class="line"><span class="cl"><span class="s1">them.  This is intended only for testing, and to make the installation
+</span></span></span><span class="line"><span class="cl"><span class="s1">go a bit smoother.  You should remove them before moving into a
+</span></span></span><span class="line"><span class="cl"><span class="s1">production environment.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Remove anonymous users? [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Normally, root should only be allowed to connect from &#39;</span>localhost<span class="s1">&#39;.  This
+</span></span></span><span class="line"><span class="cl"><span class="s1">ensures that someone cannot guess at the root password from the network.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Disallow root login remotely? [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">By default, MariaDB comes with a database named &#39;</span>test<span class="s1">&#39; that anyone can
+</span></span></span><span class="line"><span class="cl"><span class="s1">access.  This is also intended only for testing, and should be removed
+</span></span></span><span class="line"><span class="cl"><span class="s1">before moving into a production environment.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Remove test database and access to it? [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="s1"> - Dropping test database...
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1"> - Removing privileges on test database...
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Reloading the privilege tables will ensure that all changes made so far
+</span></span></span><span class="line"><span class="cl"><span class="s1">will take effect immediately.
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Reload privilege tables now? [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="s1"> ... Success!
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">Cleaning up...
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">All done!  If you&#39;</span>ve completed all of the above steps, your MariaDB
+</span></span><span class="line"><span class="cl">installation should now be secure.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Thanks <span class="k">for</span> using MariaDB!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="32-驗證-root-需輸入密碼登入">3.2. 驗證 root 需輸入密碼登入</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mysql -u root</span>
+</span></span><span class="line"><span class="cl">ERROR <span class="m">1045</span> <span class="o">(</span>28000<span class="o">)</span>: Access denied <span class="k">for</span> user <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> <span class="o">(</span>using password: NO<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-驗證-test-資料庫移除">3.3. 驗證 test 資料庫移除</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mysql -u root -p</span>
+</span></span><span class="line"><span class="cl">Enter password: redhat
+</span></span><span class="line"><span class="cl">Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+</span></span><span class="line"><span class="cl">Your MariaDB connection id is <span class="m">17</span>
+</span></span><span class="line"><span class="cl">Server version: 10.3.35-MariaDB MariaDB Server
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> performance_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">3</span> rows in <span class="nb">set</span> <span class="o">(</span>0.001 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; exit<span class="p">;</span>
+</span></span><span class="line"><span class="cl">Bye
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-小結">4. 小結</h2>
+<p>在 Linux 上安裝及啟用 MariaDB 是非常容易的，並且對於測試驗證都可以數分鐘內完成搭建，如果只需要使用 MariaDB 的客戶端，可以只安裝 <code>mariadb</code> 或是 <code>mysql</code> 上述任一套件，就具備客戶端 CLI 套件。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fdatabase%2f2023%2fdatabase-mariadb-install-and-setup%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" data-title="Database - 安裝 MariaBD 與配置" data-hashtags="Database,MariaDB,Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" data-hashtag="Database"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" data-title="Database - 安裝 MariaBD 與配置" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" data-title="Database - 安裝 MariaBD 與配置"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" data-title="Database - 安裝 MariaBD 與配置"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/mariadb/">MariaDB</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-template-cloud-init/" class="prev" rel="prev" title="Linux - RHV 使用 Template 模板與 Cloud-init"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 使用 Template 模板與 Cloud-init</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

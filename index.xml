@@ -4,9 +4,17 @@
         <link>https://how64bit.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://how64bit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Database - 安裝 MariaBD 與配置</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</guid>
+    <description><![CDATA[關聯式資料庫將結構化的資料儲存在一組互相關聯的資料表內，大部分關聯式資料庫都是透過 SQL (Structured Query Language) 語言來查詢及管理數據，常見的 Web 解決方案 LAMP ( LNMP )，就]]></description>
+</item>
+<item>
     <title>Linux - RHV 使用 Template 模板與 Cloud-init</title>
     <link>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</link>
     <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-httd/</guid>
     <description><![CDATA[目前任何操作都能透過瀏覽器在上面操作，無論是編輯影片、圖片甚至是寫文件等，故 Web 伺服器建立就十分重要，而 Apache HTTP 伺服器是一種很常用的選擇。 練習環境]]></description>
-</item>
-<item>
-    <title>Linux - 提供 SMB 檔案分享</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
-    <pubDate>Fri, 24 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
-    <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
 </item>
 </channel>
 </rss>
