@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Database - 在 MariaDB 中使用 SQL 語言 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Database - 在 MariaDB 中使用 SQL 語言" />
+<meta property="og:description" content="透過 SQL 語言可以在 MariaDB 做 CRUD 創建 (INSERT)、查詢 (SELECT)、更新 (UPDATE) 和刪除 (DELETE) 等資料操作。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-04T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Database - 在 MariaDB 中使用 SQL 語言"/>
+<meta name="twitter:description" content="透過 SQL 語言可以在 MariaDB 做 CRUD 創建 (INSERT)、查詢 (SELECT)、更新 (UPDATE) 和刪除 (DELETE) 等資料操作。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" /><link rel="prev" href="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" /><link rel="next" href="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Database - 在 MariaDB 中使用 SQL 語言",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-use-sql\/"
+        },"genre": "posts","keywords": "Database, MariaDB, Linux","wordcount":  1400 ,
+        "url": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-use-sql\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Database - 在 MariaDB 中使用 SQL 語言</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/database/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Database</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1400 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-mariadb--簡介">1. MariaDB  簡介</a></li>
+    <li><a href="#2-存取-mariadb-資料庫">2. 存取 MariaDB 資料庫</a></li>
+    <li><a href="#3-資料庫操作">3. 資料庫操作</a>
+      <ul>
+        <li><a href="#31-顯示所有資料庫">3.1. 顯示所有資料庫</a></li>
+        <li><a href="#32-使用資料庫">3.2. 使用資料庫</a></li>
+        <li><a href="#33-創建資料庫">3.3 創建資料庫</a></li>
+        <li><a href="#34-刪除資料庫">3.4. 刪除資料庫</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-創建資料表">4. 創建資料表</a>
+      <ul>
+        <li><a href="#41-創建-product-資料表">4.1. 創建 product 資料表</a></li>
+        <li><a href="#42-顯示資料表">4.2. 顯示資料表</a></li>
+        <li><a href="#43-顯示資料表詳情">4.3. 顯示資料表詳情</a></li>
+        <li><a href="#44-插入資料">4.4. 插入資料</a></li>
+        <li><a href="#45-顯示資料">4.5. 顯示資料</a>
+          <ul>
+            <li><a href="#451-選擇指定的欄位">4.5.1 選擇指定的欄位</a></li>
+            <li><a href="#452-指定條件查詢">4.5.2 指定條件查詢</a></li>
+          </ul>
+        </li>
+        <li><a href="#46-更新資料">4.6. 更新資料</a></li>
+        <li><a href="#47-刪除資料">4.7. 刪除資料</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>透過 SQL 語言可以在 MariaDB 做 CRUD 創建 (<code>INSERT</code>)、查詢 (<code>SELECT</code>)、更新 (<code>UPDATE</code>) 和刪除 (<code>DELETE</code>) 等資料操作。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝及操作，使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-mariadb--簡介">1. MariaDB  簡介</h2>
+<p>MariaDB 是一個開源的關聯式資料庫管理系統，它是 MySQL 的分支版本，提供了更多的功能和性能優化。它支援多種作業系統，包括 Linux、Windows 和 macOS 等，並且能夠與許多不同的程式語言進行互動，例如 PHP、Java 和 Python 等。它還支援多種儲存引擎，包括 InnoDB、MyISAM、Memory 等，使用者可以根據需要進行選擇。 MariaDB 還提供了許多高級功能，例如支援 JSON、GIS 和虛擬列等，這些功能能夠讓使用者更加方便地進行資料管理和查詢。</p>
+<h2 id="2-存取-mariadb-資料庫">2. 存取 MariaDB 資料庫</h2>
+<p>mariadb 套件提供 mysql 指令，能透對 MariaDB 或 MySQL 資料庫進行互動式或是非互動式存取，其查詢的結果會以 ASCII Table 格式來顯示。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mysql -u root -h localhost  -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p>-u : 用來指定帳號的選項。</p>
+</li>
+<li>
+<p>-h : 用來指定的主機選項，預設為 localhost。</p>
+</li>
+<li>
+<p>-p : 用來輸入帳號密碼的選項。</p>
+</li>
+<li>
+<p>連接本地資料庫</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@servera ~<span class="o">]</span><span class="c1"># mysql -u root -p</span>
+</span></span><span class="line"><span class="cl">Enter password:
+</span></span><span class="line"><span class="cl">Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+</span></span><span class="line"><span class="cl">Your MariaDB connection id is <span class="m">18</span>
+</span></span><span class="line"><span class="cl">Server version: 10.3.35-MariaDB MariaDB Server
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-資料庫操作">3. 資料庫操作</h2>
+<h3 id="31-顯示所有資料庫">3.1. 顯示所有資料庫</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SHOW</span><span class="w"> </span><span class="n">databases</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">Database</span><span class="w">           </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">information_schema</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">mysql</span><span class="w">              </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">performance_schema</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">3</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>SQL 大小寫<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>SQL 語法不區分大小寫，通常大寫會表示其為關鍵字。</strong></div>
+        </div>
+    </div>
+<h3 id="32-使用資料庫">3.2. 使用資料庫</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">mysql</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Reading</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">completion</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">names</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="k">off</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">quicker</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Database</span><span class="w"> </span><span class="n">changed</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-創建資料庫">3.3 創建資料庫</h3>
+<p><em>創建 inventory 並使用其資料庫。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">mysql</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">mysql</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Database</span><span class="w"> </span><span class="n">changed</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-刪除資料庫">3.4. 刪除資料庫</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">188</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw" aria-hidden="true"></i>警告<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>使用 DROP DATABASE 時要十分小心，會刪除指定的整個資料庫及資料表。</strong></div>
+        </div>
+    </div>
+<h2 id="4-創建資料表">4. 創建資料表</h2>
+<p>SQL 常用的操作 -&gt; <code>CRUD</code> ，CRUD 表示創建 (<code>INSERT</code>)、查詢 (<code>SELECT</code>)、更新 (<code>UPDATE</code>) 和刪除 (<code>DELETE</code>)。</p>
+<h3 id="41-創建-product-資料表">4.1. 創建 product 資料表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">id_pk</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">warning</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">173</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="42-顯示資料表">4.2. 顯示資料表</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SHOW</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Tables_in_inventory</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">product</span><span class="w">             </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="43-顯示資料表詳情">4.3. 顯示資料表詳情</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------------+--------------+------+-----+---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Field</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="k">Type</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="k">Null</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Default</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Extra</span><span class="w">          </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------------+--------------+------+-----+---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">id</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">PRI</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">auto_increment</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">                </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">price</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="n">double</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">                </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">stock</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">                </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">id_category</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">                </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">                </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------------+--------------+------+-----+---------+----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">6</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">002</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="44-插入資料">4.4. 插入資料</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">stock</span><span class="p">,</span><span class="n">id_category</span><span class="p">,</span><span class="n">id_manufacturer</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;RHEL8&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">046</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="45-顯示資料">4.5. 顯示資料</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RHEL8</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">100</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">86</span><span class="w"> </span><span class="o">|</span><span class="w">           </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">               </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="451-選擇指定的欄位">4.5.1 選擇指定的欄位</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-SQL" data-lang="SQL"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="n">price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------+-------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------+-------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">RHEL8</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">100</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------+-------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="452-指定條件查詢">4.5.2 指定條件查詢</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Empty</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>常見的運算式<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>運算式</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>等於</td>
+</tr>
+<tr>
+<td><code>&lt; &gt;</code></td>
+<td>不等於( 有些版本為 <code>!=</code>)</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大於</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小於</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>大於等於</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>小於等於</td>
+</tr>
+<tr>
+<td><code>BETWEEN</code></td>
+<td>介於之間</td>
+</tr>
+<tr>
+<td><code>LIKE</code></td>
+<td>模糊查詢</td>
+</tr>
+<tr>
+<td><code>IN</code></td>
+<td>一個或多個值</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h3 id="46-更新資料">4.6. 更新資料</h3>
+<p><em>更新品名為 RHEL9 價格為 2000。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">price</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;RHEL9&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">112</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Rows</span><span class="w"> </span><span class="n">matched</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="n">Changed</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="n">Warnings</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>顯示資料。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RHEL9</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="mi">2000</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">86</span><span class="w"> </span><span class="o">|</span><span class="w">           </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">               </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="47-刪除資料">4.7. 刪除資料</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">030</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Empty</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-小結">4. 小結</h2>
+<p>SQL 除了基礎的 CURD 之外還有更多進階的操作 : 子查詢、 Join、 Group by、 Aggregate、 Stored Procedure、 View、 Transaction、Window Function 與 Full Text Search 等。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fdatabase%2f2023%2fdatabase-mariadb-use-sql%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" data-title="Database - 在 MariaDB 中使用 SQL 語言" data-hashtags="Database,MariaDB,Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" data-hashtag="Database"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" data-title="Database - 在 MariaDB 中使用 SQL 語言" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" data-title="Database - 在 MariaDB 中使用 SQL 語言"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" data-title="Database - 在 MariaDB 中使用 SQL 語言"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/mariadb/">MariaDB</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/database/2023/database-mariadb-install-and-setup/" class="prev" rel="prev" title="Database - 安裝 MariaBD 與配置"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Database - 安裝 MariaBD 與配置</a>
+            <a href="/posts/database/2023/database-mariadb-user-and-access/" class="next" rel="next" title="Database - 管理 MariaDB 用户和存取權限">Database - 管理 MariaDB 用户和存取權限<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

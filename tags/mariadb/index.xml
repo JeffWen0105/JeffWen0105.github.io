@@ -4,7 +4,23 @@
         <link>https://how64bit.com/tags/mariadb/</link>
         <description>MariaDB - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/mariadb/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/mariadb/" rel="self" type="application/rss+xml" /><item>
+    <title>Database - 管理 MariaDB 用户和存取權限</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</link>
+    <pubDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</guid>
+    <description><![CDATA[權限管理是非常重要的一環，對於資料庫來說都是儲存較敏感且重要的資料，藉由不同的權限授權跟使用者限制存取能更有效且安全的管理。 練習環境 可以使用]]></description>
+</item>
+<item>
+    <title>Database - 在 MariaDB 中使用 SQL 語言</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-use-sql/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-use-sql/</guid>
+    <description><![CDATA[透過 SQL 語言可以在 MariaDB 做 CRUD 創建 (INSERT)、查詢 (SELECT)、更新 (UPDATE) 和刪除 (DELETE) 等資料操作。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝]]></description>
+</item>
+<item>
     <title>Database - 安裝 MariaBD 與配置</title>
     <link>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</link>
     <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>

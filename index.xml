@@ -4,9 +4,25 @@
         <link>https://how64bit.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://how64bit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Database - 管理 MariaDB 用户和存取權限</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</link>
+    <pubDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</guid>
+    <description><![CDATA[權限管理是非常重要的一環，對於資料庫來說都是儲存較敏感且重要的資料，藉由不同的權限授權跟使用者限制存取能更有效且安全的管理。 練習環境 可以使用]]></description>
+</item>
+<item>
+    <title>Database - 在 MariaDB 中使用 SQL 語言</title>
+    <link>https://how64bit.com/posts/database/2023/database-mariadb-use-sql/</link>
+    <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/database/2023/database-mariadb-use-sql/</guid>
+    <description><![CDATA[透過 SQL 語言可以在 MariaDB 做 CRUD 創建 (INSERT)、查詢 (SELECT)、更新 (UPDATE) 和刪除 (DELETE) 等資料操作。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝]]></description>
+</item>
+<item>
     <title>Database - 安裝 MariaBD 與配置</title>
     <link>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</link>
     <pubDate>Tue, 04 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -69,22 +85,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-nginx/</guid>
     <description><![CDATA[Nginx 是另一種比 Apache HTTP 更輕量且更簡單上的 Web 伺服器，也是反向代理與負載平衡中的佼佼者。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 Web 伺服器與存取操作，]]></description>
-</item>
-<item>
-    <title>Linux - Web 伺服器(httpd) 使用 SSL (TLS)</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</link>
-    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-httd-over-tls/</guid>
-    <description><![CDATA[HTTP 伺服器固然方便，不過明碼在網路世界上裸奔還是有一定的風險，尤其有個資或是機敏資料傳輸時顯得格外不安全，必須透過 HTTPS 傳輸更為安全。 練習環境 可以]]></description>
-</item>
-<item>
-    <title>Linux - 設定  Web 伺服器(httpd)</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-httd/</link>
-    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-httd/</guid>
-    <description><![CDATA[目前任何操作都能透過瀏覽器在上面操作，無論是編輯影片、圖片甚至是寫文件等，故 Web 伺服器建立就十分重要，而 Apache HTTP 伺服器是一種很常用的選擇。 練習環境]]></description>
 </item>
 </channel>
 </rss>

@@ -16,7 +16,7 @@
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/" /><link rel="prev" href="https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/" /><link rel="next" href="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-install-and-setup\/"
-        },"genre": "posts","keywords": "Database, MariaDB, Linux","wordcount":  1261 ,
+        },"genre": "posts","keywords": "Database, MariaDB, Linux","wordcount":  1263 ,
         "url": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-install-and-setup\/","datePublished": "2023-04-04T00:00:00+00:00","dateModified": "2023-04-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Database - 安裝 MariaBD 與配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/database/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Database</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1261 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-04">2023-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1263 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -117,7 +117,7 @@
     </div>
 <!-- more -->
 <h2 id="1-mariadb--簡介">1. MariaDB  簡介</h2>
-<p>MariaDB 是一個開源的關聯式資料庫管理系統，它是 MySQL 的分支版本，提供了更多的功能和性能優化。它支援多種作業系統，包括 Linux、Windows 和 macOS 等，並且能夠與許多不同的程式語言進行互動，例如 PHP、Java 和 Python 等。它還支援多種儲存引擎，包括 InnoDB、MyISAM、Memory 等，用戶可以根據需要進行選擇。 MariaDB 還提供了許多高級功能，例如支援 JSON、GIS 和虛擬列等，這些功能能夠讓用戶更加方便地進行資料管理和查詢。</p>
+<p>MariaDB 是一個開源的關聯式資料庫管理系統，它是 MySQL 的分支版本，提供了更多的功能和性能優化。它支援多種作業系統，包括 Linux、Windows 和 macOS 等，並且能夠與許多不同的程式語言進行互動，例如 PHP、Java 和 Python 等。它還支援多種儲存引擎，包括 InnoDB、MyISAM、Memory 等，使用者可以根據需要進行選擇。 MariaDB 還提供了許多高級功能，例如支援 JSON、GIS 和虛擬列等，這些功能能夠讓使用者更加方便地進行資料管理和查詢。</p>
 <h2 id="2-安裝-mariadb">2. 安裝 MariaDB</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -431,7 +431,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-template-cloud-init/" class="prev" rel="prev" title="Linux - RHV 使用 Template 模板與 Cloud-init"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 使用 Template 模板與 Cloud-init</a></div>
+    <div class="post-nav"><a href="/posts/linux/2023/linux-rhv-template-cloud-init/" class="prev" rel="prev" title="Linux - RHV 使用 Template 模板與 Cloud-init"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Linux - RHV 使用 Template 模板與 Cloud-init</a>
+            <a href="/posts/database/2023/database-mariadb-use-sql/" class="next" rel="next" title="Database - 在 MariaDB 中使用 SQL 語言">Database - 在 MariaDB 中使用 SQL 語言<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

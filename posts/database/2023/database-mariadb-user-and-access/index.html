@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Database - 管理 MariaDB 用户和存取權限 - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Database - 管理 MariaDB 用户和存取權限" />
+<meta property="og:description" content="權限管理是非常重要的一環，對於資料庫來說都是儲存較敏感且重要的資料，藉由不同的權限授權跟使用者限制存取能更有效且安全的管理。 練習環境 可以使用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-05T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Database - 管理 MariaDB 用户和存取權限"/>
+<meta name="twitter:description" content="權限管理是非常重要的一環，對於資料庫來說都是儲存較敏感且重要的資料，藉由不同的權限授權跟使用者限制存取能更有效且安全的管理。 練習環境 可以使用"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" /><link rel="prev" href="https://how64bit.com/posts/database/2023/database-mariadb-use-sql/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Database - 管理 MariaDB 用户和存取權限",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-user-and-access\/"
+        },"genre": "posts","keywords": "Database, MariaDB, Linux","wordcount":  2100 ,
+        "url": "https:\/\/how64bit.com\/posts\/database\/2023\/database-mariadb-user-and-access\/","datePublished": "2023-04-05T00:00:00+00:00","dateModified": "2023-04-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Database - 管理 MariaDB 用户和存取權限</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/database/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Database</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-05">2023-04-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2100 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-mariadb--簡介">1. MariaDB  簡介</a></li>
+    <li><a href="#2-使用者帳號">2. 使用者帳號</a>
+      <ul>
+        <li><a href="#21-創建使用者帳號">2.1. 創建使用者帳號</a></li>
+        <li><a href="#22-刪除使用者帳號">2.2. 刪除使用者帳號</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-控制使用者特權">3. 控制使用者特權</a>
+      <ul>
+        <li><a href="#31-授予使用者權限">3.1. 授予使用者權限</a></li>
+        <li><a href="#32-撤銷使用者權限">3.2. 撤銷使用者權限</a></li>
+        <li><a href="#33-顯示使用者權限">3.3. 顯示使用者權限</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-常見故障排除問題">4. 常見故障排除問題</a></li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>權限管理是非常重要的一環，對於資料庫來說都是儲存較敏感且重要的資料，藉由不同的權限授權跟使用者限制存取能更有效且安全的管理。</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>練習環境<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以使用 HowHow 的創建 Lab 練習環境，來實作 MariaDB 安裝及操作，使用方式請參閱 <a href="https://how64bit.com/posts/linux/2023/linux-create-playground-v2/" target="_blank" rel="noopener noreffer ">HowHow 網站 - Linux 練習 Lab 第二版</a>。</div>
+        </div>
+    </div>
+<!-- more -->
+<h2 id="1-mariadb--簡介">1. MariaDB  簡介</h2>
+<p>MariaDB 是一個開源的關聯式資料庫管理系統，它是 MySQL 的分支版本，提供了更多的功能和性能優化。它支援多種作業系統，包括 Linux、Windows 和 macOS 等，並且能夠與許多不同的程式語言進行互動，例如 PHP、Java 和 Python 等。它還支援多種儲存引擎，包括 InnoDB、MyISAM、Memory 等，使用者可以根據需要進行選擇。 MariaDB 還提供了許多高級功能，例如支援 JSON、GIS 和虛擬列等，這些功能能夠讓使用者更加方便地進行資料管理和查詢。</p>
+<h2 id="2-使用者帳號">2. 使用者帳號</h2>
+<p>創建新使用者須具備下列條件之一 :</p>
+<ul>
+<li>是 MariaDB <code>root</code> 帳號</li>
+<li>具有 <code>CREATE USER </code> 的特權帳號。</li>
+<li>具有 <code>INSERT</code> 特權的帳號。</li>
+</ul>
+<p><code>CREATE USER</code> 語法在 mysql 資料庫中 user 表中創建一個新記錄。該 user 創建時僅有最小的權限。</p>
+<p>帳號指定為 user_name@host_name。這樣便可以根據指令來源主機來創建多個名稱相同但特權不同的使用者帳戶。</p>
+<h3 id="21-創建使用者帳號">2.1. 創建使用者帳號</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">student</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;redhat&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">002</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>創建帳號名稱<code>@</code>主機來源。</li>
+<li>帳號的密碼。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">host</span><span class="p">,</span><span class="k">user</span><span class="p">,</span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;student&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------+---------+-------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">host</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="k">user</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">password</span><span class="w">                                  </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------+---------+-------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">localhost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="mi">84</span><span class="n">BB5DF4823DA319BBF86C99624479A198E6EEE9</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-----------+---------+-------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">002</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw" aria-hidden="true"></i>帳號定義方式<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>定義</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>student</code></td>
+<td>使用者 <code>student</code> 可以從任何主機進行連線。</td>
+</tr>
+<tr>
+<td><code>student@'%'</code></td>
+<td>使用者 <code>student</code> 可以從任何主機進行連線。</td>
+</tr>
+<tr>
+<td><code>student@'localhost'</code></td>
+<td>使用者 <code>student</code> 可以從 <code>localhost</code> 進行連線。</td>
+</tr>
+<tr>
+<td><code>student@'192.168.1.5'</code></td>
+<td>使用者 <code>student</code> 只能從來源 IP  <code>192.168.1.5</code> 進行連線。</td>
+</tr>
+<tr>
+<td><code>student@'192.168.1.%'</code></td>
+<td>使用者 <code>student</code> 可以從任何屬於 <code>192.168.1.0/24</code> 的網段進行連線。</td>
+</tr>
+<tr>
+<td><code>student@'2001:db8:18:b51:c32:a21'</code></td>
+<td>使用者 <code>student</code> 可以從來源 IP  <code>2001:db8:18:b51:c32:a21</code> 進行連線。</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h3 id="22-刪除使用者帳號">2.2. 刪除使用者帳號</h3>
+<p>如果不需要其使用者可以透過 DROP 刪除。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">student</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-控制使用者特權">3. 控制使用者特權</h2>
+<p>預設下，新使用者被授予最小特權。在不授予額外特權的情況下，student 使用者可以查詢最少的資料，大多數其他操作都被拒絕。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="p">[</span><span class="n">root</span><span class="o">@</span><span class="n">servera</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">#</span><span class="w"> </span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Enter</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="n">redhat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Welcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">monitor</span><span class="p">.</span><span class="w">  </span><span class="n">Commands</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="err">\</span><span class="k">g</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Your</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="k">connection</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="mi">9</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Server</span><span class="w"> </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">35</span><span class="o">-</span><span class="n">MariaDB</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Copyright</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">)</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w"> </span><span class="n">Oracle</span><span class="p">,</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Corporation</span><span class="w"> </span><span class="n">Ab</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">others</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;help;&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">&#39;\h&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">help</span><span class="p">.</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;\c&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">statement</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">USER</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">USER</span><span class="p">()</span><span class="w">            </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">student</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">-------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">002</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">Database</span><span class="w">           </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">information_schema</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">--------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>權限最小，導致多數操作被拒絕。</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">mysql</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ERROR</span><span class="w"> </span><span class="mi">1044</span><span class="w"> </span><span class="p">(</span><span class="mi">42000</span><span class="p">):</span><span class="w"> </span><span class="k">Access</span><span class="w"> </span><span class="n">denied</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="s1">&#39;student&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="s1">&#39;mysql&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ERROR</span><span class="w"> </span><span class="mi">1044</span><span class="w"> </span><span class="p">(</span><span class="mi">42000</span><span class="p">):</span><span class="w"> </span><span class="k">Access</span><span class="w"> </span><span class="n">denied</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="s1">&#39;student&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="s1">&#39;inventory&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>SQL 大小寫<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>SQL 語法不區分大小寫，通常大寫會表示其為關鍵字。</strong></div>
+        </div>
+    </div>
+<h3 id="31-授予使用者權限">3.1. 授予使用者權限</h3>
+<ol>
+<li><em>創建 inventory 資料庫與 product 資料表。</em></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="p">[</span><span class="n">root</span><span class="o">@</span><span class="n">servera</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">#</span><span class="w">  </span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Enter</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="n">redhat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Welcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">monitor</span><span class="p">.</span><span class="w">  </span><span class="n">Commands</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="err">\</span><span class="k">g</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Your</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="k">connection</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="mi">12</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Server</span><span class="w"> </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">35</span><span class="o">-</span><span class="n">MariaDB</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Copyright</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">)</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w"> </span><span class="n">Oracle</span><span class="p">,</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Corporation</span><span class="w"> </span><span class="n">Ab</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">others</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;help;&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">&#39;\h&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">help</span><span class="p">.</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;\c&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">statement</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Database</span><span class="w"> </span><span class="n">changed</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="n">DOUBLE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">id_pk</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">warning</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">177</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">price</span><span class="p">,</span><span class="n">stock</span><span class="p">,</span><span class="n">id_category</span><span class="p">,</span><span class="n">id_manufacturer</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;RHEL8&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">86</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">041</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><em>授權 student 能執行 CRUD 權限在 inventory 資料庫的 product 資料表，並且限制只有來源於 localhost。</em></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">inventory</span><span class="p">.</span><span class="n">product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">student</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">exit</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Bye</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li><em>驗證 student 權限。</em></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="p">[</span><span class="n">root</span><span class="o">@</span><span class="n">servera</span><span class="w"> </span><span class="o">~</span><span class="p">]</span><span class="o">#</span><span class="w"> </span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Enter</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="n">redhat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Welcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">monitor</span><span class="p">.</span><span class="w">  </span><span class="n">Commands</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="err">\</span><span class="k">g</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Your</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="k">connection</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="mi">13</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Server</span><span class="w"> </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">3</span><span class="p">.</span><span class="mi">35</span><span class="o">-</span><span class="n">MariaDB</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Server</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Copyright</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">)</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w"> </span><span class="n">Oracle</span><span class="p">,</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">Corporation</span><span class="w"> </span><span class="n">Ab</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">others</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;help;&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">&#39;\h&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">help</span><span class="p">.</span><span class="w"> </span><span class="k">Type</span><span class="w"> </span><span class="s1">&#39;\c&#39;</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="k">statement</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="n">inventory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Reading</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">information</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">completion</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">names</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">turn</span><span class="w"> </span><span class="k">off</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">quicker</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">Database</span><span class="w"> </span><span class="n">changed</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[</span><span class="n">inventory</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">id_manufacturer</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RHEL8</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="mi">100</span><span class="w"> </span><span class="o">|</span><span class="w">    </span><span class="mi">86</span><span class="w"> </span><span class="o">|</span><span class="w">           </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">               </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----+-------+-------+-------+-------------+-----------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>GRANT 授權操作<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>授權</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GRANT SELECT ON database.table TO username@hostname</code></td>
+<td>向特定使用者授予對特定資料庫中特定表的 SELECT 權限。</td>
+</tr>
+<tr>
+<td><code>GRANT SELECT ON database.* TO username@hostname</code></td>
+<td>向特定使用者授予對特定資料庫中所有表的 SELECT 權限。</td>
+</tr>
+<tr>
+<td><code>GRANT SELECT ON *.* TO username@hostname</code></td>
+<td>向特定使用者授予對所有資料庫中所有表的 SELECT 權限。</td>
+</tr>
+<tr>
+<td><code>GRANT CREATE, ALTER, DROP ON database.* to username@hostname</code></td>
+<td>向特定使用者授予在特定資料庫中 CREATE、ALTER 和 DROP TABLES 權限。</td>
+</tr>
+<tr>
+<td><code>GRANT ALL PRIVILEGES ON *.* to username@hostname</code></td>
+<td>向特定使用者授予對所有資料庫的所有可用權限，也是創建一個超級使用者（類似於 <code>root</code> 使用者）。</td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<h3 id="32-撤銷使用者權限">3.2. 撤銷使用者權限</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">REVOKE</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">inventory</span><span class="p">.</span><span class="n">product</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>刷新權限<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>建議在所有權限更新後執行 <code>FLUSH PRIVILEGES</code> 指令，雖然授權會立即生效，不過在撤銷權限時大多數需重新載入刷新才會生效。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Query</span><span class="w"> </span><span class="n">OK</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="n">affected</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<h3 id="33-顯示使用者權限">3.3. 顯示使用者權限</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">MariaDB</span><span class="w"> </span><span class="p">[(</span><span class="k">none</span><span class="p">)]</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SHOW</span><span class="w"> </span><span class="n">GRANTS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">root</span><span class="o">@</span><span class="n">localhost</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">Grants</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">root</span><span class="o">@</span><span class="n">localhost</span><span class="w">                                                                                                              </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="o">`</span><span class="n">root</span><span class="o">`@`</span><span class="n">localhost</span><span class="o">`</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;*84BB5DF4823DA319BBF86C99624479A198E6EEE9&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="n">PROXY</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="w">                                                                          </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">+</span><span class="c1">----------------------------------------------------------------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-常見故障排除問題">4. 常見故障排除問題</h2>
+<table>
+<thead>
+<tr>
+<th>常見問題</th>
+<th>排除方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用者已被授予從任何主機進行連線的訪問權限，但只能通過從資料庫服務器上的 shell 使用 <code>mysql</code> 指令進行連線。</td>
+<td>如果在 <code>/etc/my.cnf.d/mariadb-server.cnf</code> 中設定了 <code>skip-networking</code>，請刪除設定並重新啟動服務。</td>
+</tr>
+<tr>
+<td>使用者在 <code>localhost</code> 上可以使用任何程序進行連線，但是無法遠程進行連線。</td>
+<td>確保 <code>/etc/my.cnf.d/mariadb-server.cnf</code> 中的 <code>bind-address</code> 配置正確無誤以確保資料庫可以訪問；  確保 <code>user</code> 表包含使用者嘗試從中進行連線的來源主機中使用者的項目。</td>
+</tr>
+<tr>
+<td>使用者可以連線，但是看不到 <code>information_schema</code> 以外的任何其他資料庫。</td>
+<td>確保已授予使用者存取其資料庫的權限。這是剛創建使用者時遇到的常見問題，因為預設情況下，創建使用者帳戶時提供的是最小權限。</td>
+</tr>
+<tr>
+<td>使用者可以連線，但是不能創建任何資料庫。</td>
+<td>為使用者授予全域的 <code>CREATE</code> 權限。</td>
+</tr>
+<tr>
+<td>使用者可以連線，但是不能讀寫任何資料。</td>
+<td>為使用者授予要使用的資料庫的 CRUD 權限。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-小結">4. 小結</h2>
+<p>SQL 授權是使得 DB 更安全的管理不二法門，避免任意使用者在任何來源都都能存取或是修改其資料內容。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fdatabase%2f2023%2fdatabase-mariadb-user-and-access%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" data-title="Database - 管理 MariaDB 用户和存取權限" data-hashtags="Database,MariaDB,Linux"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" data-hashtag="Database"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" data-title="Database - 管理 MariaDB 用户和存取權限" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" data-title="Database - 管理 MariaDB 用户和存取權限"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/" data-title="Database - 管理 MariaDB 用户和存取權限"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/mariadb/">MariaDB</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/database/2023/database-mariadb-use-sql/" class="prev" rel="prev" title="Database - 在 MariaDB 中使用 SQL 語言"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Database - 在 MariaDB 中使用 SQL 語言</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

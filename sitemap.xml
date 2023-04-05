@@ -2,15 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://how64bit.com/categories/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/database/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/categories/database/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/categories/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/database/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/categories/database/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/mariadb/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/tags/</loc><lastmod>2023-04-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://how64bit.com/posts/database/2023/database-mariadb-use-sql/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/database/2023/database-mariadb-install-and-setup/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/linux/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/mariadb/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/posts/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://how64bit.com/tags/</loc><lastmod>2023-04-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/tags/kvm/</loc><lastmod>2023-04-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/categories/linux/</loc><lastmod>2023-04-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</loc><lastmod>2023-04-02T00:00:00&#43;00:00</lastmod></url><url>
