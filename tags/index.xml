@@ -4,7 +4,23 @@
         <link>https://how64bit.com/tags/</link>
         <description>Tags - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Azure</title>
+    <link>https://how64bit.com/tags/azure/</link>
+    <pubDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/tags/azure/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Cloud</title>
+    <link>https://how64bit.com/tags/cloud/</link>
+    <pubDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/tags/cloud/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Kubernetes</title>
     <link>https://how64bit.com/tags/kubernetes/</link>
     <pubDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -66,22 +82,6 @@
     <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/tags/ansible/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>GCP</title>
-    <link>https://how64bit.com/tags/gcp/</link>
-    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/tags/gcp/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Terraform</title>
-    <link>https://how64bit.com/tags/terraform/</link>
-    <pubDate>Sun, 03 Jul 2022 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/tags/terraform/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

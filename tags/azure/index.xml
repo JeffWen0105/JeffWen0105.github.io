@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Azure - Tag - HowHow の WebSite</title>
+        <link>https://how64bit.com/tags/azure/</link>
+        <description>Azure - Tag - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/azure/" rel="self" type="application/rss+xml" /><item>
+    <title>Azure - 設定使用者與群組帳號</title>
+    <link>https://how64bit.com/posts/azure/2023/azure-aad-user-and-group/</link>
+    <pubDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/azure/2023/azure-aad-user-and-group/</guid>
+    <description><![CDATA[Azure 資源的存取權是透過 Azure Active Directory (Azure AD) 中所定義的使用者帳號和身分識別來控制，另外 Azure AD 也能透過群組帳號來控制，使得對於組織內帳號能更方便的管理。 1. 使用]]></description>
+</item>
+</channel>
+</rss>
