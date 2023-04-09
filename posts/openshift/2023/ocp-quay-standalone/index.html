@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/how64bit.com\/posts\/openshift\/2023\/ocp-quay-standalone\/"
-        },"genre": "posts","keywords": "Openshift, kubernetes","wordcount":  1202 ,
+        },"genre": "posts","keywords": "Openshift, kubernetes","wordcount":  1371 ,
         "url": "https:\/\/how64bit.com\/posts\/openshift\/2023\/ocp-quay-standalone\/","datePublished": "2023-03-30T00:00:00+00:00","dateModified": "2023-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -79,7 +79,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Openshift - Quay 本地私有 Registry 倉庫 (standalone)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/openshift/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Openshift</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-30">2023-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1202 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-30">2023-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1371 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -108,7 +108,8 @@
       </ul>
     </li>
     <li><a href="#4-委由-systemd-管理">4. 委由 systemd 管理</a></li>
-    <li><a href="#5-小結">5. 小結</a></li>
+    <li><a href="#5-延伸---鏡像-openshift-image">5. 延伸 - 鏡像 OpenShift Image</a></li>
+    <li><a href="#6-小結">6. 小結</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>
@@ -498,9 +499,120 @@
 </span></span><span class="line"><span class="cl">sudo systemctl enable --now container-quay.service
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="5-小結">5. 小結</h2>
-<p>Quay 部屬十分的容易且快速，透過容器化方式能非常容易達成，如果要具備高可用性及擴展性，請務必創建多個 Quay 容器，必須使用 Object 物件做為高可用儲存媒介。</p>
-<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SkRRRBEbh.png" title="https://hackmd.io/_uploads/SkRRRBEbh.png" data-thumbnail="https://hackmd.io/_uploads/SkRRRBEbh.png" data-sub-html="<h2>鏡像 OCP Image </h2>">
+</div><h2 id="5-延伸---鏡像-openshift-image">5. 延伸 - 鏡像 OpenShift Image</h2>
+<ol>
+<li>Shell example</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">cat &gt; ocp412-mirror.sh <span class="s">&lt;&lt; EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">export OCP_RELEASE=&#34;4.12.8-x86_64&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">export LOCAL_REGISTRY=&#39;registry.lab.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">export LOCAL_REPOSITORY=&#39;redhat123/ocp&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">export PRODUCT_REPO=&#39;openshift-release-dev&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">export LOCAL_SECRET_JSON=&#39;./pull-secret.json&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">export RELEASE_NAME=&#34;ocp-release&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">oc adm release mirror -a ${LOCAL_SECRET_JSON}   \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --from=quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE} \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --to=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY}   \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --to-release-image=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY}:${OCP_RELEASE} \
+</span></span></span><span class="line"><span class="cl"><span class="s">  --insecure
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>輸出 example</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...output omitted...
+</span></span><span class="line"><span class="cl">Success
+</span></span><span class="line"><span class="cl">Update image:  registry.lab.example.com/redhat123/ocp:4.12.8-x86_64
+</span></span><span class="line"><span class="cl">Mirror prefix: registry.lab.example.com/redhat123/ocp
+</span></span><span class="line"><span class="cl">Mirror prefix: registry.lab.example.com/redhat123/ocp:4.12.8-x86_64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To use the new mirrored repository to install, add the following section to the install-config.yaml:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">imageContentSources:
+</span></span><span class="line"><span class="cl">- mirrors:
+</span></span><span class="line"><span class="cl">  - registry.lab.example.com/redhat123/ocp
+</span></span><span class="line"><span class="cl">  source: quay.io/openshift-release-dev/ocp-release
+</span></span><span class="line"><span class="cl">- mirrors:
+</span></span><span class="line"><span class="cl">  - registry.lab.example.com/redhat123/ocp
+</span></span><span class="line"><span class="cl">  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To use the new mirrored repository <span class="k">for</span> upgrades, use the following to create an ImageContentSourcePolicy:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">apiVersion: operator.openshift.io/v1alpha1
+</span></span><span class="line"><span class="cl">kind: ImageContentSourcePolicy
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: example
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  repositoryDigestMirrors:
+</span></span><span class="line"><span class="cl">  - mirrors:
+</span></span><span class="line"><span class="cl">    - registry.lab.example.com/redhat123/ocp
+</span></span><span class="line"><span class="cl">    source: quay.io/openshift-release-dev/ocp-release
+</span></span><span class="line"><span class="cl">  - mirrors:
+</span></span><span class="line"><span class="cl">    - registry.lab.example.com/redhat123/ocp
+</span></span><span class="line"><span class="cl">    source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SkRRRBEbh.png" title="https://hackmd.io/_uploads/SkRRRBEbh.png" data-thumbnail="https://hackmd.io/_uploads/SkRRRBEbh.png" data-sub-html="<h2>鏡像 OCP Image </h2>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
@@ -509,7 +621,9 @@
             data-sizes="auto"
             alt="https://hackmd.io/_uploads/SkRRRBEbh.png" />
     </a><figcaption class="image-caption">鏡像 OCP Image </figcaption>
-    </figure></p></div>
+    </figure></p>
+<h2 id="6-小結">6. 小結</h2>
+<p>Quay 部屬十分的容易且快速，透過容器化方式能非常容易達成，如果要具備高可用性及擴展性，請務必創建多個 Quay 容器，必須使用 Object 物件做為高可用儲存媒介。</p></div>
 
         <br>
 <br>

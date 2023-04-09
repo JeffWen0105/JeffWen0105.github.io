@@ -4,7 +4,15 @@
         <link>https://how64bit.com/tags/kubernetes/</link>
         <description>Kubernetes - Tag - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Openshift - Cluster 安裝簡述</title>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-cluster-install-describe/</link>
+    <pubDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-cluster-install-describe/</guid>
+    <description><![CDATA[1. OpenShift 安裝簡介 在 Redhat OpenShift 3.x 系列的版本安裝步驟十分複雜且繁瑣， OpenShift 改善了整體安裝流程，將大部份事情自動化、減少人為操作安裝等。 區分為兩種安裝方法 ( IPI 與]]></description>
+</item>
+<item>
     <title>Openshift - Quay 本地私有 Registry 倉庫 (standalone)</title>
     <link>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</link>
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>

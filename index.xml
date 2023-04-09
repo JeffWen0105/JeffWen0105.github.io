@@ -4,9 +4,17 @@
         <link>https://how64bit.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://how64bit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Openshift - Cluster 安裝簡述</title>
+    <link>https://how64bit.com/posts/openshift/2023/ocp-cluster-install-describe/</link>
+    <pubDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/openshift/2023/ocp-cluster-install-describe/</guid>
+    <description><![CDATA[1. OpenShift 安裝簡介 在 Redhat OpenShift 3.x 系列的版本安裝步驟十分複雜且繁瑣， OpenShift 改善了整體安裝流程，將大部份事情自動化、減少人為操作安裝等。 區分為兩種安裝方法 ( IPI 與]]></description>
+</item>
+<item>
     <title>Database - 管理 MariaDB 用户和存取權限</title>
     <link>https://how64bit.com/posts/database/2023/database-mariadb-user-and-access/</link>
     <pubDate>Wed, 05 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-quay-standalone/</guid>
     <description><![CDATA[<p>Quay 本地私有化的 Image Registry 無論是儲存、管理、維護都具備高彈性，除了常見的公共的 Image Registry 要設定私人倉庫都是有限制且在免費版帳號有流量限制等因數，本地倉庫就是在大量存取且企業內部使用最佳選擇。</p>]]></description>
-</item>
-<item>
-    <title>Linux - 設定 Web 伺服器(Nginx) </title>
-    <link>https://how64bit.com/posts/linux/2023/linux-nginx/</link>
-    <pubDate>Sun, 26 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-nginx/</guid>
-    <description><![CDATA[Nginx 是另一種比 Apache HTTP 更輕量且更簡單上的 Web 伺服器，也是反向代理與負載平衡中的佼佼者。 練習環境 可以使用 HowHow 的創建 Lab 練習環境，來實作 Web 伺服器與存取操作，]]></description>
 </item>
 </channel>
 </rss>
