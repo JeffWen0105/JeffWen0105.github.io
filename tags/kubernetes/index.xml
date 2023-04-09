@@ -10,7 +10,7 @@
     <pubDate>Thu, 06 Apr 2023 00:00:00 &#43;0000</pubDate>
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/openshift/2023/ocp-cluster-install-describe/</guid>
-    <description><![CDATA[1. OpenShift 安裝簡介 在 Redhat OpenShift 3.x 系列的版本安裝步驟十分複雜且繁瑣， OpenShift 改善了整體安裝流程，將大部份事情自動化、減少人為操作安裝等。 區分為兩種安裝方法 ( IPI 與]]></description>
+    <description><![CDATA[OpenShift 是一基於 Kubernetes 的企業及容器化平台，無論是私有雲、公有雲或是任一環境中都能透過不同的部屬方式與模式來快速達成部屬及安裝。 1. OpenShift Cluster 安裝簡介 在 Redhat OpenShift 3.x 系]]></description>
 </item>
 <item>
     <title>Openshift - Quay 本地私有 Registry 倉庫 (standalone)</title>
