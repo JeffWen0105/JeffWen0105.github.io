@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Azure - 設定角色存取控制 (RBAC) - HowHow の WebSite</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Azure - 設定角色存取控制 (RBAC)" />
+<meta property="og:description" content="對於任何使用雲端的使用者、組織或是企業來說，對於 Azure 上的資源控制保護是非常重要的一門課題，無論是虛擬機器、網路、硬碟、容器等都需要特定的人員可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://how64bit.com/posts/azure/2023/azure-rbac/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-09T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Azure - 設定角色存取控制 (RBAC)"/>
+<meta name="twitter:description" content="對於任何使用雲端的使用者、組織或是企業來說，對於 Azure 上的資源控制保護是非常重要的一門課題，無論是虛擬機器、網路、硬碟、容器等都需要特定的人員可"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://how64bit.com/posts/azure/2023/azure-rbac/" /><link rel="prev" href="https://how64bit.com/posts/azure/2023/azure-aad-user-and-group/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Azure - 設定角色存取控制 (RBAC)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/how64bit.com\/posts\/azure\/2023\/azure-rbac\/"
+        },"genre": "posts","keywords": "Azure, Cloud","wordcount":  663 ,
+        "url": "https:\/\/how64bit.com\/posts\/azure\/2023\/azure-rbac\/","datePublished": "2023-04-09T00:00:00+00:00","dateModified": "2023-04-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "HowHow"
+            },"description": ""
+    }
+    </script></head>
+            
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7XL29C3NC"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-P7XL29C3NC');
+        </script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/"> Home </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/redhat/"> RedHat-Certified </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="HowHow の WebSite"><span class="header-title-pre"><i class='fab fa-blogger'></i></span>HowHow</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/" title="">Home</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/redhat/" title="">RedHat-Certified</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Azure - 設定角色存取控制 (RBAC)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>HowHow</a></span>&nbsp;<span class="post-category">included in <a href="/categories/azure/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Azure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-04-09">2023-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;663 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-azure-角色用途">1. Azure 角色用途</a></li>
+    <li><a href="#2-建立角色定義">2. 建立角色定義</a>
+      <ul>
+        <li><a href="#21-預設-role">2.1 預設 Role</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-scopes-範圍">3. Scopes 範圍</a></li>
+    <li><a href="#3-角色與-role-綁定">3. 角色與 Role 綁定</a></li>
+    <li><a href="#4-小結">4. 小結</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>對於任何使用雲端的使用者、組織或是企業來說，對於 Azure 上的資源控制保護是非常重要的一門課題，無論是虛擬機器、網路、硬碟、容器等都需要特定的人員可以操作又或是特定的人員可以管理，甚至授權給外部合作夥伴等權限，透過角色存取控制 (RBAC) 可以限定哪些帳號或是群組可以存取該資源。</p>
+<!--  more -->
+<h2 id="1-azure-角色用途">1. Azure 角色用途</h2>
+<p>若是公司內所有員工帳號人人都是管理員會導致無論是安全性或是可控性出現很大的漏洞，下列為使用 RBAC 的用途 :</p>
+<ol>
+<li>准許專案經理能查看旗下所有專案的虛擬機資源與狀態，但是不可以進行任何修改新增。</li>
+<li>准許 AP 可以查看特定的 SQL 資料庫，DBA 能管理所有 SQL 資料庫。</li>
+<li>准許稽核人員可以查閱所有雲端資源，但是不可查閱帳單資訊。</li>
+</ol>
+<h2 id="2-建立角色定義">2. 建立角色定義</h2>
+<ul>
+<li>對於角色定義使用 JSON 來定義其權限，以 <code>Contributor</code> 角色為例，定義 actions 可以執行任何事情，在 notActions 中禁止新增刪除任何與授權有關的能力， assignableScopes 表示從該資源的根以下都會繼承。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// ...output omitted...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;assignableScopes&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;permissions&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;*&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;notActions&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Authorization/*/Delete&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Authorization/*/Write&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Authorization/elevateAccess/Action&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Blueprint/blueprintAssignments/write&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Blueprint/blueprintAssignments/delete&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Microsoft.Compute/galleries/share/action&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;dataActions&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;notDataActions&#34;</span><span class="p">:</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ...output omitted...
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>可以看出 <code>Contributor</code>  僅比 <code>Owner</code> 權限小一階，絕大多數的事情都能執行。</strong></p>
+<h3 id="21-預設-role">2.1 預設 Role</h3>
+<p>預設 Azure 已經定義不少的 Role 角色，如果有任何藥個細部調整可以透過 colne 原有的 Role 再進行調整。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/rkz0LLxzn.png" title="https://hackmd.io/_uploads/rkz0LLxzn.png" data-thumbnail="https://hackmd.io/_uploads/rkz0LLxzn.png" data-sub-html="<h2>Default Role</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/rkz0LLxzn.png"
+            data-srcset="https://hackmd.io/_uploads/rkz0LLxzn.png, https://hackmd.io/_uploads/rkz0LLxzn.png 1.5x, https://hackmd.io/_uploads/rkz0LLxzn.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/rkz0LLxzn.png" />
+    </a><figcaption class="image-caption">Default Role</figcaption>
+    </figure></p>
+<h2 id="3-scopes-範圍">3. Scopes 範圍</h2>
+<p>在 Azure 資源中最上層的是 Management group -&gt; Subscription
+-&gt; Resource group -&gt; Resource。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Management group<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">預設是沒有 Management group ，需手動創建後才會顯示。</div>
+        </div>
+    </div>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/H1j2SUlG2.png" title="https://hackmd.io/_uploads/H1j2SUlG2.png" data-thumbnail="https://hackmd.io/_uploads/H1j2SUlG2.png" data-sub-html="<h2>From learn.microsoft.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/H1j2SUlG2.png"
+            data-srcset="https://hackmd.io/_uploads/H1j2SUlG2.png, https://hackmd.io/_uploads/H1j2SUlG2.png 1.5x, https://hackmd.io/_uploads/H1j2SUlG2.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/H1j2SUlG2.png" />
+    </a><figcaption class="image-caption">From learn.microsoft.com</figcaption>
+    </figure></p>
+<h2 id="3-角色與-role-綁定">3. 角色與 Role 綁定</h2>
+<p>透過 Role 指派使用者帳號或是群組綁定。</p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/SkesUIxf3.png" title="https://hackmd.io/_uploads/SkesUIxf3.png" data-thumbnail="https://hackmd.io/_uploads/SkesUIxf3.png" data-sub-html="<h2>Add role assignment</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/SkesUIxf3.png"
+            data-srcset="https://hackmd.io/_uploads/SkesUIxf3.png, https://hackmd.io/_uploads/SkesUIxf3.png 1.5x, https://hackmd.io/_uploads/SkesUIxf3.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/SkesUIxf3.png" />
+    </a><figcaption class="image-caption">Add role assignment</figcaption>
+    </figure></p>
+<p><figure><a class="lightgallery" href="https://hackmd.io/_uploads/HJ0KHUezh.png" title="https://hackmd.io/_uploads/HJ0KHUezh.png" data-thumbnail="https://hackmd.io/_uploads/HJ0KHUezh.png" data-sub-html="<h2>From learn.microsoft.com</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://hackmd.io/_uploads/HJ0KHUezh.png"
+            data-srcset="https://hackmd.io/_uploads/HJ0KHUezh.png, https://hackmd.io/_uploads/HJ0KHUezh.png 1.5x, https://hackmd.io/_uploads/HJ0KHUezh.png 2x"
+            data-sizes="auto"
+            alt="https://hackmd.io/_uploads/HJ0KHUezh.png" />
+    </a><figcaption class="image-caption">From learn.microsoft.com</figcaption>
+    </figure></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>角色繼承<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">底層資源會從上游的資源繼承其 Role 角色能力。</div>
+        </div>
+    </div>
+<h2 id="4-小結">4. 小結</h2>
+<p>Azure 角色存取控制 (RBAC) 是一種系統，其可確保更細緻的 Azure 資源存取權管理。 Azure 系統管理員會使用 Azure RBAC 來進行各不同群組及帳號來授予所其作業所需的最小存取權限。</p>
+</div>
+
+        <br>
+<br>
+<blockquote>
+  <span STYLE="font-size:12px" face="DFKai-sb"><I>如果你還沒有註冊 Like Coin，你可以在文章最下方看到 Like 的按鈕，點下去後即可申請帳號，透過申請帳號後可以幫我的文章按下 Like，而 Like
+      最多可以點五次，而你不用付出任何一塊錢，就能給我寫這篇文章的最大的回饋！</I></span>
+  <iframe class="LikeCoin" height="235"
+    src="https://button.like.co/in/embed/wen9077/button?referrer=https%3a%2f%2fhow64bit.com%2fposts%2fazure%2f2023%2fazure-rbac%2f" width="70%"
+    frameborder="0"></iframe>
+</blockquote><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-04-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/" data-title="Azure - 設定角色存取控制 (RBAC)" data-hashtags="Azure,Cloud"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/" data-hashtag="Azure"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/" data-title="Azure - 設定角色存取控制 (RBAC)" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/" data-title="Azure - 設定角色存取控制 (RBAC)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.0.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Skype" data-sharer="skype" data-url="https://how64bit.com/posts/azure/2023/azure-rbac/" data-title="Azure - 設定角色存取控制 (RBAC)"><i class="fab fa-skype fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/azure/">Azure</a>,&nbsp;<a href="/tags/cloud/">Cloud</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/azure/2023/azure-aad-user-and-group/" class="prev" rel="prev" title="Azure - 設定使用者與群組帳號"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Azure - 設定使用者與群組帳號</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><h3  style="font-style:italic;">你不一定要很厲害，才能開始；但你要開始，才能很厲害。</h3></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://howhowwen.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

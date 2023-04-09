@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Apr 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Azure - 設定角色存取控制 (RBAC)</title>
+    <link>https://how64bit.com/posts/azure/2023/azure-rbac/</link>
+    <pubDate>Sun, 09 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/azure/2023/azure-rbac/</guid>
+    <description><![CDATA[對於任何使用雲端的使用者、組織或是企業來說，對於 Azure 上的資源控制保護是非常重要的一門課題，無論是虛擬機器、網路、硬碟、容器等都需要特定的人員可]]></description>
+</item>
+<item>
     <title>Azure - 設定使用者與群組帳號</title>
     <link>https://how64bit.com/posts/azure/2023/azure-aad-user-and-group/</link>
     <pubDate>Sat, 08 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-idm/</guid>
     <description><![CDATA[在企業中隨時使用者人數增加，在身份管理上對於管理員再做一致性管理有者很有很大的挑戰，除了 Windows Active Directory 網域服務伺服器上，在 Linux 上使用 Identity management 來做為管理。 1.]]></description>
-</item>
-<item>
-    <title>Linux - RHV 虛擬化平台安裝</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-rhv-install/</link>
-    <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-install/</guid>
-    <description><![CDATA[私有虛擬化平台除了龍頭 VMware vSphere 及微軟 Hyper-V 外，開源的虛擬化平台 RHV 對於成本來說有絕對優勢，也不像是 OpenStack 那樣的巨量，對於中小型企業使用量來說是綽綽有餘。 1.]]></description>
 </item>
 </channel>
 </rss>
