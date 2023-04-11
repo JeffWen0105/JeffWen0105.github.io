@@ -4,9 +4,17 @@
         <link>https://how64bit.com/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sun, 09 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://how64bit.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Azure - 設定 Azure Active Directory </title>
+    <link>https://how64bit.com/posts/azure/2023/azure-aad/</link>
+    <pubDate>Mon, 10 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/azure/2023/azure-aad/</guid>
+    <description><![CDATA[在 Windows 地端上保護存取資源、驗證使用者等均可以透過 Active Directory Domain Services (ADDS) 來達成，在雲端 Azure 上會改用 Azure Active Directory (AAD) 來進行身分識別、存取管理、Azure AD Join 和自助式密碼]]></description>
+</item>
+<item>
     <title>Azure - 設定角色存取控制 (RBAC)</title>
     <link>https://how64bit.com/posts/azure/2023/azure-rbac/</link>
     <pubDate>Sun, 09 Apr 2023 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-rhv-created-vm/</guid>
     <description><![CDATA[RHV 紅帽虛擬化平台可以創建不同的作業系統的虛擬機器，也能將虛擬機器透過不關機方式轉移至不同的 host 節點，達成效能使用最佳化，也使得不中斷維護成為可]]></description>
-</item>
-<item>
-    <title>Linux - IdM 身份管理伺服器安裝</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-idm/</link>
-    <pubDate>Sat, 01 Apr 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-idm/</guid>
-    <description><![CDATA[在企業中隨時使用者人數增加，在身份管理上對於管理員再做一致性管理有者很有很大的挑戰，除了 Windows Active Directory 網域服務伺服器上，在 Linux 上使用 Identity management 來做為管理。 1.]]></description>
 </item>
 </channel>
 </rss>
