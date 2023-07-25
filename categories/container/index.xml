@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Container - Category - HowHow の WebSite</title>
+        <link>https://how64bit.com/categories/container/</link>
+        <description>Container - Category - HowHow の WebSite</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/container/" rel="self" type="application/rss+xml" /><item>
+    <title>Container - Podman 網路</title>
+    <link>https://how64bit.com/posts/container/2023/container-podman-network/</link>
+    <pubDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/container/2023/container-podman-network/</guid>
+    <description><![CDATA[Podman 創建容器除了使用預設的網路 (Bridge 模式) 之外，也可以透過創建自定義網路，使得容器網路可有效隔離或互相通聯。 1. Podman 網路簡介 除預設網路之外，創建自定義]]></description>
+</item>
+</channel>
+</rss>
