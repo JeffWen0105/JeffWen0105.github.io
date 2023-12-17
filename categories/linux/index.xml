@@ -4,7 +4,15 @@
         <link>https://how64bit.com/categories/linux/</link>
         <description>Linux - Category - HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 16 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - SSH 透過 Proxy jump (Bastion Site) 至遠端主機</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-ssh-proxy-jump/</link>
+    <pubDate>Sat, 16 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-ssh-proxy-jump/</guid>
+    <description><![CDATA[Bastion 主機( 堡壘機 )是常見的一種在防火牆後面可以訪問到各主機的機器，但是透過 Proxy Jump 方式可以直接於 Client 藉由堡壘機跳躍至目的主機，實現進階的 ssh 技巧。 From software.com]]></description>
+</item>
+<item>
     <title>Container - Podman 網路</title>
     <link>https://how64bit.com/posts/container/2023/container-podman-network/</link>
     <pubDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-httd/</guid>
     <description><![CDATA[目前任何操作都能透過瀏覽器在上面操作，無論是編輯影片、圖片甚至是寫文件等，故 Web 伺服器建立就十分重要，而 Apache HTTP 伺服器是一種很常用的選擇。 練習環境]]></description>
-</item>
-<item>
-    <title>Linux - 提供 SMB 檔案分享</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-smb/</link>
-    <pubDate>Fri, 24 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-smb/</guid>
-    <description><![CDATA[Windows 作業系統中透過網路芳鄰 (CIFS) 互相傳輸，然而 Linux 要存取可以透過 SMB (逆向工程解析出來的CIFS) 來傳輸，也能在 Linux 提供 SMB 服務分享檔案給 Windows OS 使用 。 練習環]]></description>
 </item>
 </channel>
 </rss>

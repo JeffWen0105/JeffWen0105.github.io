@@ -4,7 +4,15 @@
         <link>https://how64bit.com/posts/</link>
         <description>All Posts | HowHow の WebSite</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>wen9077@gmail.com (HowHow)</managingEditor>
-            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>wen9077@gmail.com (HowHow)</webMaster><lastBuildDate>Sat, 16 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://how64bit.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux - SSH 透過 Proxy jump (Bastion Site) 至遠端主機</title>
+    <link>https://how64bit.com/posts/linux/2023/linux-ssh-proxy-jump/</link>
+    <pubDate>Sat, 16 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>HowHow</author>
+    <guid>https://how64bit.com/posts/linux/2023/linux-ssh-proxy-jump/</guid>
+    <description><![CDATA[Bastion 主機( 堡壘機 )是常見的一種在防火牆後面可以訪問到各主機的機器，但是透過 Proxy Jump 方式可以直接於 Client 藉由堡壘機跳躍至目的主機，實現進階的 ssh 技巧。 From software.com]]></description>
+</item>
+<item>
     <title>Container - Podman 網路</title>
     <link>https://how64bit.com/posts/container/2023/container-podman-network/</link>
     <pubDate>Thu, 20 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>HowHow</author>
     <guid>https://how64bit.com/posts/linux/2023/linux-rhv-template-cloud-init/</guid>
     <description><![CDATA[在公有雲上建置的虛擬機器都會產生專門的主機名跟其內容，在 RHV 中也能透過 Cloud-init 方式再啟動自動部屬虛擬機器，也可以藉由 Template 模板大量部屬機器。 1. RHV 簡介 紅帽]]></description>
-</item>
-<item>
-    <title>Linux - RHV 整合 IdM 身份驗證</title>
-    <link>https://how64bit.com/posts/linux/2023/linux-rhv-idm/</link>
-    <pubDate>Sun, 02 Apr 2023 00:00:00 &#43;0000</pubDate>
-    <author>HowHow</author>
-    <guid>https://how64bit.com/posts/linux/2023/linux-rhv-idm/</guid>
-    <description><![CDATA[RHV 紅帽虛擬化平台藉由身份驗證整合可以達到更細粒度的權限分組，在企業上是十分常見且好用的方式。 1. RHV 簡介 紅帽虛擬化 (Red Hat Virtualization) 是一個開放、軟體定義、容]]></description>
 </item>
 </channel>
 </rss>
